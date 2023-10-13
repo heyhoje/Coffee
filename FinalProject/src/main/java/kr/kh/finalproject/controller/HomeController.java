@@ -1,4 +1,4 @@
-package kr.kh.finalproject;
+package kr.kh.finalproject.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -23,7 +23,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String write(HttpSession session, HttpServletRequest request) throws Exception {
 	
-		return "/index";
+		return "main/index";
 	}
 	
 }

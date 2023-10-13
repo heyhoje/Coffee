@@ -8,7 +8,7 @@
 
 @font-face {
     font-family: 'Hanna';
-    src: url('resources/css/BMHANNAPRO.TTF') format('truetype');
+    src: url('resources/fonts/BMHANNAPro.ttf'); format('truetype');
 }
 /*****---------------------------------------- 1) font-family: 'Rajdhani', sans-serif;
  2) font-family: 'Poppins', sans-serif;
@@ -222,6 +222,7 @@ button {
 /* header section start */
 
 .header_section {
+	font-family: 'Hanna';
     width: 100%;
     float: left;
     background-color: #252525;
