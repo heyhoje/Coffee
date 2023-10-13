@@ -77,7 +77,10 @@
                      
                      
                      <li class="form-group">
-						<input type="submit" value="Login" class="btn float-right login_btn">
+						<input type="submit" value="Member" class="btn float-right login_btn">
+					 </li>
+					 <li class="form-group">
+						<input type="submit" value="Manager" class="btn float-right login2_btn">
 					 </li>
 					 <li class="d-flex justify-content-end social_icon">
 					
