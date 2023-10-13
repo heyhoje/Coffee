@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<!------ Include the above in your HEAD tag ---------->
@@ -14,9 +14,11 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<!--Custom styles-->
 	<link rel="stylesheet" type="text/css" href="styles.css">
-<title>Login Form</title>
+<title>login logic jsp</title>
 </head>
 <body>
-	
+<script type="text/javascript">
+
+</script>	
 </body>
 </html>
