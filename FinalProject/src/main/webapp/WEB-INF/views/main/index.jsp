@@ -44,52 +44,7 @@
   </style>
    <body>
       <!--header section start -->
-      <div class="header_section">
-         <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-               <div class="logo"><a href="resources/index.html"><img src="resources/images/로고.png"></a></div>
-               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-               </button>
-               <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav ml-auto">
-                     <li class="nav-item active">
-                        <a class="nav-link" href="resources/about.html">소개</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="resources/about.html">프로모션</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="resources/about.html">주문</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="resources/gallery.html">게시판</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="resources/services.html">갤러리</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="resources/contact.html">채용정보</a>
-                     </li>
-                      <li class="nav-item mr-5">
-                        <a class="nav-link" href="resources/contact.html">고객센터</a>
-                     </li>
-                     
-                     
-                     <li class="form-group">
-						<input type="submit" value="Member" class="btn float-right login_btn">
-					 </li>
-					 <li class="form-group">
-						<input type="submit" value="Manager" class="btn float-right login2_btn">
-					 </li>
-					 <li class="d-flex justify-content-end social_icon">
-					
-					</li>
-                  </ul>
-               </div>
-            </nav>
-         </div>
-      </div>
+     
       <!--header section end -->
       <!-- banner section start -->
       
@@ -350,7 +305,7 @@
                    <div class="row">
                       <div class="col-md-12">
                          <div class="testimonial_section_2">
-                            <h4 class="client_name_text">Monila <span class="quick_icon"><img src="resources/images/quick-icon.png"></span></h4>
+                            <h4 class="client_name_text">Monila <span class="quick_icon"></span></h4>
                             <p class="customer_text"></p>
                          </div>
                       </div>
@@ -364,7 +319,7 @@
                    <div class="row">
                       <div class="col-md-12">
                          <div class="testimonial_section_2">
-                            <h4 class="client_name_text">Monila <span class="quick_icon"><img src="resources/images/quick-icon.png"></span></h4>
+                            <h4 class="client_name_text">Monila <span class="quick_icon"></span></h4>
                             <p class="customer_text"></p>
                          </div>
                       </div>
