@@ -23,7 +23,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String write(HttpSession session, HttpServletRequest request) throws Exception {
 	
-		return "main/index";
+		return "/main/index";
 	}
 	
 }
