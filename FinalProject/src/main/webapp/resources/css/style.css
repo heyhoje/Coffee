@@ -49,10 +49,9 @@ body {
     overflow-x: hidden !important;
 }
 .modal-container{
-	width: auto;
     position: fixed;
     top : calc(50vh - 200px);
-    left : calc(50vh - 18px);
+    left : calc(50vw - 185px);
 }
 .card{
     height: 370px;
