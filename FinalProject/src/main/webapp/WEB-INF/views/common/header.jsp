@@ -68,10 +68,7 @@
                      
                      
                      <li class="form-group">
-						<input type="submit" value="Member" class="btn float-right login_btn" data-toggle="modal" data-target="#loginModal">
-					 </li>
-					 <li class="form-group">
-						<input type="submit" value="Manager" class="btn float-right login2_btn" data-toggle="modal" data-target="#loginModal">
+						<input type="submit" value="login" class="btn float-right login_btn" data-toggle="modal" data-target="#loginModal">
 					 </li>
 					
 					  <!-- The Login Modal -->
