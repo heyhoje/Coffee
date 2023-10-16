@@ -723,7 +723,11 @@ a:hover {
 .carousel-indicators .active {
     background-color: #f76d37;
 }
-
+.modal-container{
+    position: fixed;
+    top : calc(50vh - 200px);
+    left : calc(50vw - 185px);
+}
 /* client section end */
 
 /* contact section start */
@@ -947,3 +951,4 @@ a:hover {
 .margin_top90 {
     margin-top: 90px;
 }
+

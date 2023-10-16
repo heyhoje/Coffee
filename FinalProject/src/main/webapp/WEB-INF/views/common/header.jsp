@@ -73,7 +73,8 @@
 					 <li class="form-group">
 						<input type="submit" value="Manager" class="btn float-right login2_btn" data-toggle="modal" data-target="#loginModal">
 					 </li>
-					 <!-- The Login Modal -->
+					
+					  <!-- The Login Modal -->
 						<div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true" id="loginPage">
 						<!-- <button type="button" class="close" data-dismiss="modal" style="display: none">&times;</button> -->
 						    <div class="modal-container">
@@ -108,7 +109,7 @@
 										</div>
 										<div class="card-footer">
 											<div class="d-flex justify-content-center links">
-												Don't have an account?<a href="#'/>">Sign Up</a>
+												Don't have an account?<a href="<c:url value='/member/signup'/>">Sign Up</a>
 											</div>
 											<div class="d-flex justify-content-center">
 												<a href="#">Forgot your password?</a>
@@ -120,7 +121,6 @@
 								</div>
 							</div>
 						</div>
-					 
 					 
 					 <li class="d-flex justify-content-end social_icon">
 					
