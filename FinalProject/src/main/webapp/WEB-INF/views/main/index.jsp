@@ -96,7 +96,7 @@
                </a>
             </div>
          </div>
-      </div>
+      
       <!-- banner section end -->
       <!-- about section start -->
       <div class="about_section layout_padding">
