@@ -9,16 +9,10 @@
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<java-version>1.6</java-version>
-<<<<<<< HEAD
-		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
-		<org.aspectj-version>1.6.10</org.aspectj-version>
-		<org.slf4j-version>1.6.6</org.slf4j-version>
-=======
 		<org.springframework-version>5.1.8.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 		<org.apache.tiles-version>3.0.8</org.apache.tiles-version>
->>>>>>> main
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -122,9 +116,6 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-<<<<<<< HEAD
-		</dependency>        
-=======
 		</dependency>
 		<!-- mybatis 의존성 추가 -->
 		<dependency>
@@ -228,7 +219,6 @@
 		    <artifactId>jackson-annotations</artifactId>
 		    <version>2.15.2</version>
 		</dependency>		               
->>>>>>> main
 	</dependencies>
     <build>
         <plugins>

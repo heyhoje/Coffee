@@ -21,13 +21,6 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-<<<<<<< HEAD
-	<context:component-scan base-package="kr.kh.finalproject" />
-	
-	
-	
-</beans:beans>
-=======
 	<context:component-scan base-package="kr.kh.finalproject.*" />
 	
 	<beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
@@ -46,4 +39,3 @@
 	
 	
 </beans:beans> 
->>>>>>> main
