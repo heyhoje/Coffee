@@ -12,4 +12,9 @@ public class MemberController {
 		
 		return "/member/signup";
 	}
+	@RequestMapping(value="/member/signup2", method=RequestMethod.GET)
+	public String signup2() {
+		
+		return "/member/signup2";
+	}
 }
