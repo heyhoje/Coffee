@@ -120,13 +120,12 @@
 
 												</a>
 												<div class="form-group">
-													<input style="margin: auto; display: block; top: 20px;" type="submit" value="login"
+													<input style="margin: auto; display: block;" type="submit" value="login"
 														class="btn login_btn">
-
 												</div>
 											</form>
 										</div>
-										<div class="card-footer">
+										<div class="card-footer" style="margin-top:20px">
 											<div class="d-flex justify-content-center links">
 												Don't have an account?<a
 													href="<c:url value='/member/signup'/>">Sign Up</a>
