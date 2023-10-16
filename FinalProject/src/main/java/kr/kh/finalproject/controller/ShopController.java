@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ShopController {
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/shop", method = RequestMethod.GET)
 	public String write(HttpSession session, HttpServletRequest request) throws Exception {
 	
 		return "shop/search";
