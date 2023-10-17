@@ -45,35 +45,35 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
-	<!--header section start -->
-	<div class="header_section">
-		<div class="container-fluid">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<div class="logo">
-					<a href="resources/index.html"><img
-						src="resources/images/로고.png"></a>
-				</div>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarNav" aria-controls="navbarNav"
-					aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link"
-							href="resources/about.html">소개</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="resources/about.html">프로모션</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="resources/about.html">주문</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="resources/gallery.html">게시판</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="resources/services.html">갤러리</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="resources/contact.html">채용정보</a></li>
-						<li class="nav-item mr-5"><a class="nav-link"
-							href="resources/contact.html">고객센터</a></li>
+	 <!--header section start -->
+      <div class="header_section">
+         <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+               <div class="logo"><a href="resources/index.html"><img src="<c:url value='/resources/images/로고.png'/>"></a></div>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav ml-auto">
+                     <li class="nav-item active">
+                        <a class="nav-link" href="resources/about.html">소개</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="<c:url value='/main/promotion'/>">이벤트&뉴스</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="<c:url value='/order/bag'/>">주문</a>
+                     </li>
+                   
+                     <li class="nav-item">
+                        <a class="nav-link" href="resources/services.html">갤러리</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="resources/contact.html">채용정보</a>
+                     </li>
+                      <li class="nav-item mr-5">
+                        <a class="nav-link" href="resources/contact.html">고객센터</a>
+                     </li>
 
 
 						<li class="form-group"><input type="submit" value="login"
@@ -147,5 +147,6 @@
 			</nav>
 		</div>
 	</div>
+
 </body>
 </html>
