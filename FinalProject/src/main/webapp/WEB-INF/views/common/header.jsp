@@ -48,7 +48,7 @@
 	 <!--header section start -->
       <div class="header_section">
          <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar">
                <div class="logo"><a href="resources/index.html"><img src="<c:url value='/resources/images/로고.png'/>"></a></div>
                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
