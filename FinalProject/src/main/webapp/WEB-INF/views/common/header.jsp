@@ -1,6 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+	pageEncoding="utf-8" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -81,21 +81,7 @@
                       <li class="nav-item mr-5">
                         <a class="nav-link" href="resources/contact.html">고객센터</a>
                      </li>
-
-						<li class="form-group"><input type="submit" value="login"
-							class="btn float-right login_btn" data-toggle="modal"
-							data-target="#loginModal"></li>
-
-						<!-- The Login Modal -->
-						<div class="modal" id="loginModal" tabindex="-1" role="dialog"
-							aria-labelledby="loginModalLabel" aria-hidden="true"
-							id="loginPage">
-							<!-- <button type="button" class="close" data-dismiss="modal" style="display: none">&times;</button> -->
-							<div class="modal-container">
-								<div class="d-flex justify-content-center h-100">
-									<div class="card">
-										<div class="card-header">
-											<h3>Sign In</h3>
+                     
                      
                      <li class="form-group">
 						<input type="submit" value="login" class="btn float-right login_btn" data-toggle="modal" data-target="#loginModal">
@@ -117,45 +103,6 @@
 											<form>
 												<div class="input-group form-group">
 													<div class="input-group-prepend">
-														<span class="input-group-text"><i
-															class="fas fa-user"></i></span>
-													</div>
-													<input type="text" class="form-control"
-														placeholder="username">
-
-												</div>
-												<div class="input-group form-group">
-													<div class="input-group-prepend">
-														<span class="input-group-text"><i
-															class="fas fa-key"></i></span>
-													</div>
-													<input type="password" class="form-control"
-														placeholder="password">
-												</div>
-												<div class="row align-items-center remember">
-													<input type="checkbox">Remember Me
-												</div>
-											   <span><i style="font-size: 50px; margin-left: 10%" class="fab fa-facebook-square"></i></span>
-		                                       <span><i style="font-size: 50px; margin-left: 10%" class="fab fa-twitter-square"></i></span>
-		                                       <span><i style="font-size: 50px; margin-left: 10%" class="fab fa-facebook-square"></i></span>
-		                                       <span><i style="font-size: 50px; margin-left: 10%" class="fab fa-google-plus-square"></i></span>
-
-												</a>
-												<div class="form-group">
-													<input style="margin: auto; display: block;" type="submit" value="login"
-														class="btn login_btn">
-												</div>
-											</form>
-										</div>
-										<div class="card-footer" style="margin-top:20px">
-											<div class="d-flex justify-content-center links">
-												Don't have an account?<a
-													href="<c:url value='/member/signup'/>">Sign Up</a>
-											</div>
-											<div class="d-flex justify-content-center">
-												<a href="#">Forgot your password?</a>
-											</div>
-
 														<span class="input-group-text"><i class="fas fa-user"></i></span>
 													</div>
 													<input type="text" class="form-control" placeholder="username">
@@ -193,14 +140,6 @@
 								</div>
 							</div>
 						</div>
-
-						<li class="d-flex justify-content-end social_icon"></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-	</div>
-
                </div>
          </div>
 </body>
