@@ -10,16 +10,17 @@
 </head>
 <body>
 <div class="form-group">
-	<form>
+	<form method="post" action="/shop/name">
 		<div>
 			<label for="search_name">가게 이름으로 검색</label>
-			<input type="text" class="form-control" id="search_name"> 
-			<button>검색</button>
+			<input type="text" class="form-control" id="search_name" placeholder="상호명을 입력해 주세요."> 
+			<button type="submit" class="btn btn-search_name">검색</button>
 		</div>
+	</form>
 		<div>
 			<label for="search_map">지역으로 검색</label>  
-			<input type="text" class="form-control" id="search_map">
-			<button>검색</button>
+			<input type="text" class="form-control" id="search_map" placeholder="검색할 위치를 입력해 주세요.">
+			<button type="submit" class="btn btn-search_name">검색</button>
 		</div>
 		<div id="map" style="width: 500px; height: 400px;"></div>
 		<script type="text/javascript">
@@ -31,9 +32,33 @@
 			};
 		
 			var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-			
+			// 장소 검색 객체를 생성합니다
+			var ps = new kakao.maps.services.Places(); 
+
+			// 키워드로 장소를 검색합니다
+			ps.keywordSearch('이태원 맛집', placesSearchCB); 
+
+			// 키워드 검색 완료 시 호출되는 콜백함수 입니다
+			function placesSearchCB (data, status, pagination) {
+			    if (status === kakao.maps.services.Status.OK) {
+
+			        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+			        // LatLngBounds 객체에 좌표를 추가합니다
+			        var bounds = new kakao.maps.LatLngBounds();
+
+			        for (var i=0; i<data.length; i++) {
+			            displayMarker(data[i]);    
+			            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+			        }       
+
+			        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+			        map.setBounds(bounds);
+			    } 
+			}
+
+
 		</script>
-	</form>
+
 </div>
 </body>
 </html>
