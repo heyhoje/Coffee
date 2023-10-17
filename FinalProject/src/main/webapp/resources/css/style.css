@@ -271,6 +271,7 @@ button {
 
 .logo {}
 
+/* modal */
 .card{
 height: 420px;
 margin-top: auto;
@@ -278,6 +279,30 @@ margin-bottom: auto;
 width: 400px;
 background-color: rgba(0,0,0,0.5) !important;
 }
+
+/* hover flashing */
+.flashing figure:hover img {
+  opacity: 1;
+  -webkit-animation: flash 1.5s;
+  animation: flash 1.5s;
+}
+@-webkit-keyframes flash {
+  0% {
+    opacity: .4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes flash {
+  0% {
+    opacity: .4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .login_btn{
 color: black; 
 opacity:0.9;
@@ -288,6 +313,7 @@ margin-top: 5px;
 margin-left:900px;
 margin-right:10px;
 }
+
 
 .login_btn:hover{
 color: black;
@@ -306,6 +332,23 @@ margin-left:10px;
 }
 
 .login2_btn:hover{
+color: black;
+background-color: white; 
+width
+}
+
+.logout_btn{
+color: black; 
+opacity:0.9;
+background-color: #FFC312;
+width: 100px;
+height: 95%;
+margin-top: 5px;
+margin-left:10px;
+}
+
+
+.logout_btn:hover{
 color: black;
 background-color: white; 
 width
@@ -952,5 +995,23 @@ a:hover {
 
 .margin_top90 {
     margin-top: 90px;
+}
+
+/* icon */
+.social_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: #FFC312;
+}
+
+.social_icon span:hover{
+background-color: white;
+cursor: pointer;
+}
+
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
 }
 
