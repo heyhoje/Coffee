@@ -88,6 +88,9 @@
                      <li class="form-group">
 						<input type="submit" value="login" class="btn float-right login_btn" data-toggle="modal" data-target="#loginModal">
 					 </li>
+					 <li class="form-group">
+						<input style="display: none;" type="submit" value="logout" class="btn float-right logout_btn" data-toggle="modal" data-target="#logoutModal">
+					 </li>
 					
 					  <!-- The Login Modal -->
 						<div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true" id="loginPage">
@@ -142,6 +145,27 @@
                </div>
          </div>
 </body>
+
+<script>
+function showLogoutButton() {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("logout").style.display = "block";
+    
+	document.getElementById("login").addEventListener("click", function() {
+    // 로그인 프로세스를 완료한 후
+    // 로그인 버튼을 숨기고 로그아웃 버튼을 표시
+    showLogoutButton();
+	});
+	
+	document.getElementById("logout").addEventListener("click", function() {
+	    // 로그아웃 프로세스를 완료한 후
+	    // 로그인 버튼을 표시하고 로그아웃 버튼을 숨김
+	    document.getElementById("login").style.display = "block";
+	    document.getElementById("logout").style.display = "none";
+	});
+}
+
+</script>
 
 <script>
 <!-- 구글 로그인 -->
