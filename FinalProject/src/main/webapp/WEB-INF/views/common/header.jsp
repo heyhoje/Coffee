@@ -55,7 +55,7 @@
 	 <!--header section start -->
       <div class="header_section">
          <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar">
                <div class="logo"><a href="resources/index.html"><img src="<c:url value='/resources/images/로고.png'/>"></a></div>
                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
@@ -118,9 +118,9 @@
 													<input style="margin-left: 20px;" type="checkbox">Remember Me
 												</div>
 												<div class="form-group">
-													<div class="flashing column"><figure><img id="naverIdLogin_loginButton" href="javascript:void(0)" style="max-height: 38px; float: left;" src="resources/images/navericon.png"></figure></div>
-													<div class="flashing column"><figure><img onclick="kakaoLogin();" href="javascript:void(0)" style="max-height: 38px; float: left; margin-left: 5%;" src="resources/images/kakaoicon.png"></figure></div>
-													<div class="flashing column"><figure><img id="GgCustomLogin" href="javascript:void(0)" style="max-height: 38px; float: left;margin-left: 5%;" src="resources/images/googleicon.png"></figure></div>
+													<div class="flashing column"><figure><img id="naverIdLogin_loginButton" href="javascript:void(0)" style="max-width: 38px; max-height: 38px; float: left;" src="resources/images/navericon.png"></figure></div>
+													<div class="flashing column"><figure><img onclick="kakaoLogin();" href="javascript:void(0)" style="max-width: 38px; max-height: 38px; float: left; margin-left: 5%;" src="resources/images/kakaoicon.png"></figure></div>
+													<div class="flashing column"><figure><img id="GgCustomLogin" href="javascript:void(0)" style="max-width: 38px; max-height: 38px; float: left;margin-left: 5%;" src="resources/images/googleicon.png"></figure></div>
 													<div><input style="max-height: 44px; margin:auto; float: right;" type="submit" value="Login" class="btn login_btn"></div>
 												</div>
 													<div class="card-footer" style="margin-top: 120px;">
