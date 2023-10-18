@@ -28,7 +28,7 @@
                 pay_method : 'card',
                 merchant_uid: "IMP"+makeMerchantUid, 
                 name : '당근 10kg',
-                amount : 30000,
+                amount : 1000,
                 //구매자 정보 입력
                 buyer_email : 'Iamport@chai.finance',
                 buyer_name : '아임포트 기술지원팀',

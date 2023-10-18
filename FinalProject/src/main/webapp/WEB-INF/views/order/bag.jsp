@@ -74,7 +74,7 @@
                 <tbody>
                     <tr class="cart__list__detail">
                         <td><input type="checkbox"></td>
-                        <td><img src="image/keyboard.jpg" alt="magic keyboard"></td>
+                        <td><img src="" alt="magic keyboard"></td>
                         <td><a href="#">애플 공식 브랜드스토어</a><span class="cart__list__smartstore"> 스마트스토어</span>
                             <p>Apple 매직 키보드 - 한국어(MK2A3KH/A)</p>
                             <sapn class="price">116,62원</sapn><span
@@ -92,7 +92,7 @@
                     <tr class="cart__list__detail">
                         <td style="width: 2%;"><input type="checkbox"></td>
                         <td style="width: 13%;">
-                            <img src="image/mouse.jpg" alt="magic mouse">
+                            <img src="" alt="magic mouse">
                         </td>
                         <td style="width: 27%;"><a href="#">컴퓨존</a><span class="cart__list__smartstore"> 스마트스토어</span>
                             <p>[애플] Magic Mouse [MK2E3KH/A]</p>
