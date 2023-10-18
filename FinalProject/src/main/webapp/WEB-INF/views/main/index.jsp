@@ -133,7 +133,7 @@
                         <div class="container_main">
                            <img src="resources/images/starbucks.png" alt="Avatar" class="image">
                            <div class="overlay">
-                              <div class="text"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div>
+                              <div class="text"><a href="<c:url value='/menu/starbucks'/>"><i class="fa fa-search" aria-hidden="true"></i></a></div>
                            </div>
                         </div>
                      </div>

@@ -45,23 +45,23 @@
                <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav ml-auto">
                      <li class="nav-item active">
-                        <a class="nav-link" href="resources/about.html">소개</a>
+                        <a class="nav-link" href="<c:url value='/main/intro'/>"><img src="<c:url value='/resources/images/소개.png'/>"></a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='/main/promotion'/>">이벤트&뉴스</a>
+                        <a class="nav-link" href="<c:url value='/main/promotion'/>"><img src="<c:url value='/resources/images/이벤트&뉴스.png'/>"></a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='/order/bag'/>">주문</a>
+                        <a class="nav-link" href="<c:url value='/main/search'/>"><img src="<c:url value='/resources/images/주문.png'/>"></a>
                      </li>
                    
                      <li class="nav-item">
-                        <a class="nav-link" href="resources/services.html">갤러리</a>
+                        <a class="nav-link" href="<c:url value='/main/search'/>"><img src="<c:url value='/resources/images/갤러리.png'/>"></a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="resources/contact.html">채용정보</a>
+                        <a class="nav-link" href="<c:url value='/main/search'/>"><img src="<c:url value='/resources/images/채용정보.png'/>"></a>
                      </li>
                       <li class="nav-item mr-5">
-                        <a class="nav-link" href="resources/contact.html">고객센터</a>
+                        <a class="nav-link" href="<c:url value='/main/search'/>"><img src="<c:url value='/resources/images/고객센터.png'/>"></a>
                      </li>
                      
                      

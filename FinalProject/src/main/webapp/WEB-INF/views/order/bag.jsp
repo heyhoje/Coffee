@@ -31,7 +31,7 @@
                 pay_method : 'card',
                 merchant_uid: "IMP"+makeMerchantUid, 
                 name : '당근 10kg',
-                amount : 30000,
+                amount : 1000,
                 //구매자 정보 입력
                 buyer_email : 'Iamport@chai.finance',
                 buyer_name : '아임포트 기술지원팀',
@@ -46,6 +46,26 @@
                 }
             });
         }
+        
+        IMP.request_pay({ /** 요청 객체를 추가해주세요 */ },
+        		  rsp => {
+        		    if (rsp.success) {   
+        		      // axios로 HTTP 요청
+        		      axios({
+        		        url: "{서버의 결제 정보를 받는 endpoint}",
+        		        method: "post",
+        		        headers: { "Content-Type": "application/json" },
+        		        data: {
+        		          imp_uid: rsp.imp_uid,
+        		          merchant_uid: rsp.merchant_uid
+        		        }
+        		      }).then((data) => {
+        		        // 서버 결제 API 성공시 로직
+        		      })
+        		    } else {
+        		      alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
+        		    }
+        		  });
         </script>
 <title>Insert title here</title>
 
