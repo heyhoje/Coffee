@@ -30,16 +30,13 @@
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- owl stylesheets --> 
       <link rel="stylesheet" href="<c:url value='/resources/css/owl.carousel.min.css'/>">
-      <link rel="stylesheet" href="<c:url value='/resources/css/owl.theme.default.min.css'/>">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+      <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 	  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
       <!--Fontawesome CDN-->
 	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-  	  <!--Custom styles-->
-      <link rel="stylesheet" type="/css" href="styles.css">
       <!-- 카카오 로그인 -->
       <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
       <!-- 네이버 로그인 -->
@@ -118,9 +115,9 @@
 													<input style="margin-left: 20px;" type="checkbox">Remember Me
 												</div>
 												<div class="form-group">
-													<div class="flashing column"><figure><img id="naverIdLogin_loginButton" href="javascript:void(0)" style="max-width: 38px; max-height: 38px; float: left;" src="resources/images/navericon.png"></figure></div>
-													<div class="flashing column"><figure><img onclick="kakaoLogin();" href="javascript:void(0)" style="max-width: 38px; max-height: 38px; float: left; margin-left: 5%;" src="resources/images/kakaoicon.png"></figure></div>
-													<div class="flashing column"><figure><img id="GgCustomLogin" href="javascript:void(0)" style="max-width: 38px; max-height: 38px; float: left;margin-left: 5%;" src="resources/images/googleicon.png"></figure></div>
+													<div class="flashing column"><figure><img id="naverIdLogin_loginButton" href="javascript:void(0)" style="max-width: 38px; max-height: 38px; float: left;" src="<c:url value='/resources/images/navericon.png'/>"></figure></div>
+													<div class="flashing column"><figure><img onclick="kakaoLogin();" href="javascript:void(0)" style="max-width: 38px; max-height: 38px; float: left; margin-left: 5%;" src="<c:url value='/resources/images/kakaoicon.png'/>"></figure></div>
+													<div class="flashing column"><figure><img id="GgCustomLogin" href="javascript:void(0)" style="max-width: 38px; max-height: 38px; float: left;margin-left: 5%;" src="<c:url value='/resources/images/googleicon.png'/>"></figure></div>
 													<div><input style="max-height: 44px; margin:auto; float: right;" type="submit" value="Login" class="btn login_btn"></div>
 												</div>
 													<div class="card-footer" style="margin-top: 120px;">
@@ -278,7 +275,7 @@ function kakaoLogout() {
   }  
 </script>
 <!-- 네이버 로그인 -->
-<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 
 <script>
 
