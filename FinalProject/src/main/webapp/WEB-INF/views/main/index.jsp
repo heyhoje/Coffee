@@ -29,10 +29,10 @@
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="resources/css/jquery.mCustomScrollbar.min.css">
       <!-- Tweaks for older IEs-->
-      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+ 
       <!-- owl stylesheets --> 
       <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
-      <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
+     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
    </head>
    <style>
@@ -96,7 +96,7 @@
                </a>
             </div>
          </div>
-      </div>
+      
       <!-- banner section end -->
       <!-- about section start -->
       <div class="about_section layout_padding">

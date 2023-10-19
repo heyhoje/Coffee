@@ -6,10 +6,7 @@
 @import url('https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700');
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
-@font-face {
-    font-family: 'Hanna';
-    src: url('resources/fonts/BMHANNAPro.ttf'); format('truetype');
-}
+
 /*****---------------------------------------- 1) font-family: 'Rajdhani', sans-serif;
  2) font-family: 'Poppins', sans-serif;
  ----------------------------------------*****/
@@ -20,10 +17,9 @@
 @import url(animate.min.css);
 @import url(normalize.css);
 @import url(icomoon.css);
-@import url(css/font-awesome.min.css);
+
 @import url(meanmenu.css);
 @import url(owl.carousel.min.css);
-@import url(swiper.min.css);
 @import url(slick.css);
 @import url(jquery.fancybox.min.css);
 @import url(jquery-ui.css);
@@ -81,6 +77,8 @@ h1 {
 }
 
 h2 {
+	margin-top:40px;
+	margin-bottom:40px;
     font-size: 22px
 }
 
@@ -156,7 +154,7 @@ a,
 }
 
 img {
-    max-width: 100%;
+    width: 80%;
     height: auto;
 }
 
@@ -245,7 +243,7 @@ button {
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .show>.nav-link {
-    color: #f76d37;
+    color: #FFFFFF;
 }
 
 .navbar-light .navbar-nav .nav-link:focus,
@@ -269,13 +267,38 @@ button {
 
 .logo {}
 
+/* modal */
 .card{
-height: 370px;
+height: 420px;
 margin-top: auto;
 margin-bottom: auto;
 width: 400px;
 background-color: rgba(0,0,0,0.5) !important;
 }
+
+/* hover flashing */
+.flashing figure:hover img {
+  opacity: 1;
+  -webkit-animation: flash 1.5s;
+  animation: flash 1.5s;
+}
+@-webkit-keyframes flash {
+  0% {
+    opacity: .4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes flash {
+  0% {
+    opacity: .4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .login_btn{
 color: black; 
 opacity:0.9;
@@ -283,9 +306,10 @@ background-color: #FFC312;
 width: 100px;
 height: 95%;
 margin-top: 5px;
-margin-left:700px;
+margin-left:900px;
 margin-right:10px;
 }
+
 
 .login_btn:hover{
 color: black;
@@ -304,6 +328,23 @@ margin-left:10px;
 }
 
 .login2_btn:hover{
+color: black;
+background-color: white; 
+width
+}
+
+.logout_btn{
+color: black; 
+opacity:0.9;
+background-color: #FFC312;
+width: 100px;
+height: 95%;
+margin-top: 5px;
+margin-left:10px;
+}
+
+
+.logout_btn:hover{
 color: black;
 background-color: white; 
 width
@@ -723,7 +764,11 @@ a:hover {
 .carousel-indicators .active {
     background-color: #f76d37;
 }
-
+.modal-container{
+    position: fixed;
+    top : calc(50vh - 200px);
+    left : calc(50vw - 185px);
+}
 /* client section end */
 
 /* contact section start */
@@ -947,3 +992,22 @@ a:hover {
 .margin_top90 {
     margin-top: 90px;
 }
+
+/* icon */
+.social_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: #FFC312;
+}
+
+.social_icon span:hover{
+background-color: white;
+cursor: pointer;
+}
+
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
+}
+
