@@ -18,5 +18,10 @@ public class StoreController {
 		
 		return "/order/store";
 	}
+	@RequestMapping(value="/store/starbucks", method=RequestMethod.GET)
+	public String storeStarbucks() {
+		
+		return "/store/starbucks";
+	}
 	
 }
