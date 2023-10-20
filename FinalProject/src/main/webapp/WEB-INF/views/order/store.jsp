@@ -33,7 +33,7 @@
 	    <a class="nav-link" href="#" style="font-size:20px; margin-right:20px;">지역으로 검색하기</a>
 	  </li>
 	  <li>
-	  	<a class="map-selection-border"><img src="<c:url value='/resources/images/map-selection-border.png'/>"></a>
+	  	<a class="map-selection-border"></a>
 	  </li>
 	  <li class="nav-item">
 	    <a class="nav-link" href="<c:url value='/shop/name'/>"
