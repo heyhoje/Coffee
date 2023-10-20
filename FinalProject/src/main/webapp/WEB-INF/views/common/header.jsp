@@ -66,7 +66,7 @@
                         <a class="nav-link" href="<c:url value='/main/promotion'/>">이벤트&뉴스</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='/order/bag'/>">주문</a>
+                        <a class="nav-link" href="<c:url value='/order/store'/>">주문</a>
                      </li>
                    
                      <li class="nav-item">
@@ -86,7 +86,9 @@
 					 <li class="form-group">
 						<input style="display: none;" type="submit" value="logout" class="btn float-right logout_btn" data-toggle="modal" data-target="#logoutModal">
 					 </li>
-					
+					</ul>
+				</div>
+				</nav>
 					  <!-- The Login Modal -->
 						<div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true" id="loginPage">
 						<!-- <button type="button" class="close" data-dismiss="modal" style="display: none">&times;</button> -->
@@ -138,7 +140,7 @@
 							</div>
 						</div>
                </div>
-         </div>
+        
 </body>
 
 <script>
