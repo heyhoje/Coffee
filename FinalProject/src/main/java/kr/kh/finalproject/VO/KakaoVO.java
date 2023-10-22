@@ -1,4 +1,4 @@
-package kr.kh.finalproject.VO;
+package kr.kh.finalproject.vo;
 
 import lombok.Data;
 @Data

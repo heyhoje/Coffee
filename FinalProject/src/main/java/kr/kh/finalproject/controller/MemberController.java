@@ -3,19 +3,36 @@ package kr.kh.finalproject.controller;
 
 import java.util.HashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import kr.kh.finalproject.service.MemberService;
+import kr.kh.finalproject.util.Message;
+import kr.kh.finalproject.vo.MemberVO;
 
 @Controller
 
 public class MemberController {
 
-	@RequestMapping(value="/member/signup", method=RequestMethod.GET)
+	@Autowired MemberService memberService;
+	
+	@RequestMapping(value="/member/signup2", method=RequestMethod.GET)
 	public String signup() {
 		
-		return "/member/signup";
+		return "/member/signup2";
+	}
+	@RequestMapping("/member/signup2", method=RequestMethod.POST)
+	public String signupPost(MemberVO member, Model model) {
+		Message msg = new Message("/member/signup2", "회원가입에 실패했습니다.");
+		if(memberService.signup(member)) {
+			msg = new Message ("/", "회원가입에 성공했습니다.");
+		}
+		model.addAttribute("msg",msg);
+		return "message";
 	}
 
 	@RequestMapping(value="/kakaoLogin", method=RequestMethod.GET)

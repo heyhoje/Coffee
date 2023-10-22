@@ -122,7 +122,7 @@
 												</div>
 													<div class="card-footer" style="margin-top: 120px;">
 														<div style="color: white;" class="d-flex justify-content-center links">
-															Don't have an account?<a href="<c:url value='/member/signup'/>">Sign Up</a>
+															Don't have an account?<a href="<c:url value='/member/signup2'/>">Sign Up</a>
 														</div>
 														<div class="d-flex justify-content-center">
 														<a href="#">Forgot your password?</a>
