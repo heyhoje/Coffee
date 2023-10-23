@@ -288,7 +288,7 @@ button {
 .logo {}
 
 /* modal */
-.card{
+.login-modal .card{
 height: 420px;
 margin-top: auto;
 margin-bottom: auto;
