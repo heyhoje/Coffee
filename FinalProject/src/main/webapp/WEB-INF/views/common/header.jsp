@@ -87,7 +87,7 @@
 						<input style="display: none;" type="submit" value="logout" class="btn float-right logout_btn" data-toggle="modal" data-target="#logoutModal">
 					 </li>
 					
-					  
+
                </div>
          </div>
          
