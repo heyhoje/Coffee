@@ -28,7 +28,7 @@
     
 </head>
 <body>
-	<ul class="nav-searchcategory">
+	<ul class="nav-searchcategory" style="justify-content:center;">
 	  <li class="nav-item align-items-center">
 	    <a class="nav-link" href="#" style="font-size:20px; margin-right:20px;">지역으로 검색하기</a>
 	  </li>
@@ -50,10 +50,12 @@
               max-width: 80%;">
 
                 <form onsubmit="searchPlaces(); return false;" style="
-           			margin-left: 180px;
+           		
            			margin-bottom:50px;
+           			text-align:center;
+           		
            			">
-                    <input type="text" class="form-control input-text" value="" id="keyword" size="30px;" aria-describedby="basic-addon2">  <button class="btn btn-outline-warning btn-lg" type="submit" style="margin-top: 20px; margin-left:450px;">검색하기</button>
+                    <input type="text" class="form-control input-text" value="" id="keyword" size="10px;" aria-describedby="basic-addon2" style="width:100%;">  <button class="btn btn-outline-warning btn-lg" type="submit" style="margin-top: 20px;">검색하기</button>
                    
                 </form>
                 
@@ -78,8 +80,7 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c4efc38a6ad2e481f05e226066782e8c&libraries=services"></script>
 <script>
-// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
@@ -138,13 +139,69 @@ function displayMarker(place) {
         map: map,
         position: new kakao.maps.LatLng(place.y, place.x) 
     });
+}
+//마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
+var positions = [
+    {
+        content:
+        '<div class="wrap">' + 
+        '    <div class="info">' + 
+        '        <div class="title">' + 
+        '            카카오 스페이스닷원' + 
+        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+        '        </div>' + 
+        '        <div class="body">' + 
+        '            <div class="img">' +
+        '                <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/thumnail.png" width="73" height="70">' +
+        '           </div>' + 
+        '            <div class="desc">' + 
+        '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' + 
+        '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
+        '                <div><a href="store/77777" target="_blank" class="link">홈페이지</a></div>' + 
+        '            </div>' + 
+        '        </div>' + 
+        '    </div>' +    
+        '</div>',
+        latlng: new kakao.maps.LatLng(37.4995, 127.0338)
+    },
+    {
+        content: '<div>매머드 신안유토빌점</div>', 
+        latlng: new kakao.maps.LatLng(37.4989, 127.0336)
+    },
+    {
+        content: '<div>컴포즈커피 논현85길점</div>', 
+        latlng: new kakao.maps.LatLng(37.4979, 127.0336)
+    },
+    {
+        content: '<div>해머스미스커피 역삼휘트니스점</div>',
+        latlng: new kakao.maps.LatLng(37.4991, 127.0331)
+    }
+];
+var iwRemoveable = true;
 
-    // 마커에 클릭이벤트를 등록합니다
-    kakao.maps.event.addListener(marker, 'click', function() {
-        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
-        infowindow.open(map, marker);
+for (var i = 0; i < positions.length; i ++) {
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng // 마커의 위치
     });
+    
+
+    // 마커에 표시할 인포윈도우를 생성합니다 
+    var infowindow = new kakao.maps.InfoWindow({
+    	content: positions[i].content,  // 인포윈도우에 표시할 내용
+    	removable : iwRemoveable
+    });
+    
+    // 마커에 클릭이벤트를 등록합니다
+    kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
+}
+
+//인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+function makeOverListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    };
 }
 </script>
 </body>
