@@ -6,25 +6,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-      
-      <!--Fontawesome CDN-->
-	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-      <!-- 카카오 로그인 -->
-      <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-      <!-- 네이버 로그인 -->
-      <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-      <!-- 페이스북 로그인 -->
-      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=1588150011384568" nonce="SiOBIhLG"></script>
-      <!-- 구글 로그인  -->
-      <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-      <!-- 구글 로그인 OAuth 2.0 클라이언트 ID -->
-      <meta name ="google-signin-client_id" content="149402920505-d1e55rs2dj0r689vqffl8nhqkaeair15.apps.googleusercontent.com">
-      
+
+<!--Fontawesome CDN-->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+	crossorigin="anonymous">
+<!-- 카카오 로그인 -->
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<!-- 네이버 로그인 -->
+<script
+	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
+	charset="utf-8"></script>
+<!-- 페이스북 로그인 -->
+<script async defer crossorigin="anonymous"
+	src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=1588150011384568"
+	nonce="SiOBIhLG"></script>
+<!-- 구글 로그인  -->
+<script src="https://apis.google.com/js/platform.js?onload=init" async
+	defer></script>
+<!-- 구글 로그인 OAuth 2.0 클라이언트 ID -->
+<meta name="google-signin-client_id"
+	content="149402920505-d1e55rs2dj0r689vqffl8nhqkaeair15.apps.googleusercontent.com">
+
 </head>
 <body>
 	<!-- The Login Modal -->
-	<div class="modal login-modal" id="loginModal" tabindex="-1" role="dialog"
-		aria-labelledby="loginModalLabel" aria-hidden="true" id="loginPage">
+	<div class="modal login-modal" id="loginModal" tabindex="-1"
+		role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true"
+		id="loginPage">
 		<!-- <button type="button" class="close" data-dismiss="modal" style="display: none">&times;</button> -->
 		<div class="modal-container">
 			<div class="d-flex justify-content-center h-100">
@@ -33,23 +43,25 @@
 						<h3 style="color: white;">로그인</h3>
 					</div>
 					<div class="card-body">
-						<form>
+						<form action="/login" method="post">
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
 								</div>
-								<input type="text" class="form-control" placeholder="아이디">
+								<input type="text" name="username" required class="form-control"
+									placeholder="아이디">
 
 							</div>
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
-								<input type="password" class="form-control"
-									placeholder="비밀번호">
+								<input type="password" name="password" required
+									class="form-control" placeholder="비밀번호">
 							</div>
 							<div class="row align-items-center remember">
-								<input style="margin-left: 20px;" type="checkbox">로그인 기억하기
+								<input style="margin-left: 20px;" type="checkbox">로그인
+								기억하기
 							</div>
 							<div class="form-group">
 								<div class="flashing column">
@@ -81,8 +93,7 @@
 							<div class="card-footer" style="margin-top: 120px;">
 								<div style="color: white;"
 									class="d-flex justify-content-center links">
-									회원이 아니신가요?<a
-										href="<c:url value='/member/signup2'/>">회원가입</a>
+									회원이 아니신가요?<a href="<c:url value='/member/signup2'/>">회원가입</a>
 								</div>
 								<div class="d-flex justify-content-center">
 									<a href="<c:url value='/member/forgotpw'/>">아이디/비밀번호찾기</a>

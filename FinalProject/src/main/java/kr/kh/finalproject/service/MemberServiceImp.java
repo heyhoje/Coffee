@@ -17,7 +17,11 @@ public class MemberServiceImp implements MemberService {
 	
 	@Autowired 
 	private BCryptPasswordEncoder passwordEncoder;
-	
+
+    @Override
+    public boolean authenticateUser(String username, String password) {
+        return memberDao.authenticateUser(username, password);
+    }
 	/*
 	 * @Override public boolean signup(MemberVO member) { if(member == null) {
 	 * return false; } MemberVO dbMember =

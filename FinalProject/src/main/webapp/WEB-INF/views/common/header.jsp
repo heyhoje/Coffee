@@ -47,50 +47,56 @@
 </style>
 </head>
 <body>
-	 <!--header section start -->
-      <div class="header_section">
-         <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg navbar">
-               <div class="logo"><a href="<c:url value='/'/>"><img src="<c:url value='/resources/images/로고.png'/>"></a></div>
-               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-               </button>
-               <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav ml-auto">
-                     <li class="nav-item active">
-                        <a class="nav-link" href="resources/about.html"><img src="<c:url value='/resources/images/소개.png'/>"></a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='/main/promotion'/>"><img id="eventmenu" src="<c:url value='/resources/images/이벤트&뉴스.png'/>" style="margin-left:10px;"></a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='/order/store'/>"><img src="<c:url value='/resources/images/주문.png'/>"></a>
-                     </li>
-                   
-                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='/main/gallery'/>"><img src="<c:url value='/resources/images/갤러리.png'/>"></a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="resources/contact.html"><img src="<c:url value='/resources/images/채용정보.png'/>"></a>
-                     </li>
-                      <li class="nav-item mr-5">
-                        <a class="nav-link" href="resources/contact.html"><img src="<c:url value='/resources/images/고객센터.png'/>"></a>
-                     </li>
-                     
-                     
-                     <li class="form-group">
-						<input type="submit" value="login" class="btn float-right login_btn" data-toggle="modal" data-target="#loginModal">
-					 </li>
-					 <li class="form-group">
-						<input style="display: none;" type="submit" value="logout" class="btn float-right logout_btn" data-toggle="modal" data-target="#logoutModal">
-					 </li>
+	<!--header section start -->
+	<div class="header_section">
+		<div class="container-fluid">
+			<nav class="navbar navbar-expand-lg navbar">
+				<div class="logo">
+					<a href="<c:url value='/'/>"><img
+						src="<c:url value='/resources/images/로고.png'/>"></a>
+				</div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarNav" aria-controls="navbarNav"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active"><a class="nav-link"
+							href="resources/about.html"><img
+								src="<c:url value='/resources/images/소개.png'/>"></a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="<c:url value='/main/promotion'/>"><img id="eventmenu"
+								src="<c:url value='/resources/images/이벤트&뉴스.png'/>"
+								style="margin-left: 10px;"></a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="<c:url value='/order/store'/>"><img
+								src="<c:url value='/resources/images/주문.png'/>"></a></li>
+
+						<li class="nav-item"><a class="nav-link"
+							href="<c:url value='/main/gallery'/>"><img
+								src="<c:url value='/resources/images/갤러리.png'/>"></a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="resources/contact.html"><img
+								src="<c:url value='/resources/images/채용정보.png'/>"></a></li>
+						<li class="nav-item mr-5"><a class="nav-link"
+							href="resources/contact.html"><img
+								src="<c:url value='/resources/images/고객센터.png'/>"></a></li>
+
+
+						<li class="form-group"><input type="submit" value="login"
+							class="btn float-right login_btn" data-toggle="modal"
+							data-target="#loginModal"></li>
+						<li class="form-group"><input style="display: none;"
+							type="submit" value="logout" class="btn float-right logout_btn"
+							data-toggle="modal" data-target="#logoutModal"></li>
 					</ul>
 				</div>
-				</nav>
+			</nav>
 
-						</div>
-               </div>
-        
+		</div>
+	</div>
+
 </body>
 
 
