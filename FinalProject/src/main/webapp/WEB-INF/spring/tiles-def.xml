@@ -10,12 +10,10 @@
         <put-attribute name="login" value="/WEB-INF/views/member/login.jsp" />
         <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
      </definition>
-        
     
     <!-- (1) -->    
     <definition name="/login/*" extends=".login">
       <put-attribute name="body" value="/WEB-INF/views/login/{1}.jsp" />
     </definition>
  
-   
  </tiles-definitions>
