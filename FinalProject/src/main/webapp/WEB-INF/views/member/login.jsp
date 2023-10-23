@@ -30,7 +30,7 @@
 			<div class="d-flex justify-content-center h-100">
 				<div class="card">
 					<div class="card-header">
-						<h3 style="color: white;">Sign In</h3>
+						<h3 style="color: white;">로그인</h3>
 					</div>
 					<div class="card-body">
 						<form>
@@ -49,8 +49,7 @@
 									placeholder="password">
 							</div>
 							<div class="row align-items-center remember">
-								<input style="margin-left: 20px;" type="checkbox">Remember
-								Me
+								<input style="margin-left: 20px;" type="checkbox">로그인 기억하기
 							</div>
 							<div class="form-group">
 								<div class="flashing column">
@@ -76,17 +75,17 @@
 								</div>
 								<div>
 									<input style="max-height: 44px; margin: auto; float: right;"
-										type="submit" value="Login" class="btn login_btn">
+										type="submit" value="로그인" class="btn login_btn">
 								</div>
 							</div>
 							<div class="card-footer" style="margin-top: 120px;">
 								<div style="color: white;"
 									class="d-flex justify-content-center links">
-									Don't have an account?<a
-										href="<c:url value='/member/signup2'/>">Sign Up</a>
+									회원이 아니신가요?<a
+										href="<c:url value='/member/signup2'/>">회원가입</a>
 								</div>
 								<div class="d-flex justify-content-center">
-									<a href="<c:url value='/member/forgotpw'/>">Forgot your password?</a>
+									<a href="<c:url value='/member/forgotpw'/>">아이디/비밀번호찾기</a>
 								</div>
 							</div>
 						</form>
