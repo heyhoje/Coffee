@@ -135,52 +135,52 @@
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation"><a
 					class="nav-link active" id="login-tab" data-toggle="tab"
-					href="#login" role="tab" aria-controls="login" aria-selected="true">Member</a>
+					href="#login" role="tab" aria-controls="login" aria-selected="true">멤버</a>
 				</li>
 				<li class="nav-item" role="presentation"><a class="nav-link"
 					id="register-tab" data-toggle="tab" href="#register" role="tab"
-					aria-controls="register" aria-selected="false">Company</a></li>
+					aria-controls="register" aria-selected="false">매니저</a></li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="login" role="tabpanel"
 					aria-labelledby="login-tab">
 					<h4 class="text-center mt-4 mb-4"
-						style="text-transform: uppercase;">Member Signup</h4>
+						style="text-transform: uppercase;">멤버 회원가입</h4>
 <form>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">Your Name</label> <input type="text"
+								<label for="inputName">이름</label> <input type="text"
 									class="form-control" id="inputEmail4"
-									placeholder="Enter your name" required="">
+									placeholder="이름을 입력하세요" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="inputName">Your Username</label> <input type="text"
+								<label for="inputName">아이디</label> <input type="text"
 									class="form-control" id="inputPassword4"
-									placeholder="Enter your username" required="">
+									placeholder="아이디를 입력하세요" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="inputName">Your Phone</label> <input type="text"
+								<label for="inputName">전화번호</label> <input type="text"
 									class="form-control" id="inputPassword4"
-									placeholder="Enter your Phone" required="">
+									placeholder="전화번호를 입력하세요" required="">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">Your Email Address</label> <input
+								<label for="inputName">이메일</label> <input
 									type="email" class="form-control" id="inputEmail4"
-									placeholder="Enter your email address" required="">
+									placeholder="이메일을 입력하세요" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="inputName">Your Password</label> <input
+								<label for="inputName">비밀번호</label> <input
 									type="password" class="form-control" id="inputPassword4"
-									placeholder="Enter your password" required="">
+									placeholder="비밀번호를 입력하세요" required="">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">Your Confirm Password</label> <input
+								<label for="inputName">비밀번호 확인</label> <input
 									type="password" class="form-control" id="inputPassword4"
-									placeholder="Enter your confirm password" required="">
+									placeholder="동일한 비밀번호를 입력하세요." required="">
 							</div>
 
 						</div>
@@ -203,10 +203,9 @@
 								class="d-flex flex-wrap justify-content-between align-items-center">
 								<div class="custom-checkbox d-block">
 									<a href="<c:url value='/'/>"
-										class="nav-link-inline font-size-sm">Already have an
-										account? Login</a>
+										class="nav-link-inline font-size-sm">이미 계정이 있으신가요? 로그인</a>
 								</div>
-								<button class="btn btn-primary mt-3 mt-sm-0" type="submit">Register</button>
+								<button class="btn btn-primary mt-3 mt-sm-0" type="submit">회원가입</button>
 							</div>
 						</div>
 					</form>
@@ -215,62 +214,61 @@
 				<div class="tab-pane fade" id="register" role="tabpanel"
 					aria-labelledby="register-tab">
 					<h4 class="text-center mt-4 mb-4"
-						style="text-transform: uppercase;">Company Register <br>
-						Business Member Signup</h4>
+						style="text-transform: uppercase;">매니저 회원가입</h4>
 					<form>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">Your Name</label> <input type="text"
+								<label for="inputName">이름</label> <input type="text"
 									class="form-control" id="inputEmail4"
-									placeholder="Enter your name" required="">
+									placeholder="이름을 입력하세요" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="inputName">Your Username</label> <input type="text"
+								<label for="inputName">아이디</label> <input type="text"
 									class="form-control" id="inputPassword4"
-									placeholder="Enter your username" required="">
+									placeholder="아이디를 입력하세요" required="">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">Your Email Address</label> <input
+								<label for="inputName">이메일</label> <input
 									type="email" class="form-control" id="inputEmail4"
-									placeholder="Enter your email address" required="">
+									placeholder="이메일을 입력하세요" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="inputName">Your Password</label> <input
+								<label for="inputName">비밀번호</label> <input
 									type="password" class="form-control" id="inputPassword4"
-									placeholder="Enter your password" required="">
+									placeholder="비밀번호를 입력하세요" required="">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">Your Confirm Password</label> <input
+								<label for="inputName">비밀번호 확인</label> <input
 									type="password" class="form-control" id="inputPassword4"
-									placeholder="Enter your confirm password" required="">
+									placeholder="동일한 비밀번호를 입력하세요" required="">
 							</div>
 
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">Your Company Registration Number</label> <input
+								<label for="inputName">사업자 등록 번호</label> <input
 									type="password" class="form-control" id="inputPassword4"
-									placeholder="Enter your Company Registration Number" required="">
+									placeholder="사업자 등록 번호를 입력하세요" required="">
 							</div>
 
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">Your Business Phone</label> <input
+								<label for="inputName">매장 전화번호</label> <input
 									type="password" class="form-control" id="inputPassword4"
-									placeholder="Enter your Business/Company Phone Number" required="">
+									placeholder="매장 전화번호를 입력하세요" required="">
 							</div>
 
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">Your Business Address</label> <input
+								<label for="inputName">매장 주소</label> <input
 									type="password" class="form-control" id="inputPassword4"
-									placeholder="Enter your Business/Company Address" required="">
+									placeholder="매장 주소를 입력하세요" required="">
 							</div>
 
 						</div>
@@ -292,10 +290,9 @@
 								class="d-flex flex-wrap justify-content-between align-items-center">
 								<div class="custom-checkbox d-block">
 									<a href="<c:url value='/'/>"
-										class="nav-link-inline font-size-sm">Already have an
-										account? Login</a>
+										class="nav-link-inline font-size-sm">이미 계정이 있으신가요? 로그인</a>
 								</div>
-								<button class="btn btn-primary mt-3 mt-sm-0" type="submit">Register</button>
+								<button class="btn btn-primary mt-3 mt-sm-0" type="submit">회원가입</button>
 							</div>
 						</div>
 					</form>
