@@ -13,6 +13,10 @@
     display: inline-block;
 }
 
+.image-container:hover .image-title {
+    display: block;
+}
+
 .image-title {
     position: absolute; /* 제목을 절대 위치로 설정 */
     bottom: 0;
@@ -36,8 +40,6 @@
 				src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
 				class="w-100 shadow-1-strong rounded mb-4" 
 				alt="Boat on Calm Water"
-				title="게시글 제목 1"
-				onmouseover="displayImageTitle(this);" onmouseout="hideImageTitle(this);"
 				 />
 				<div class="image-title">게시글 제목 1</div>
 
@@ -72,7 +74,15 @@
 		</div>
 	</div>
 	<!-- Gallery -->
-	
+	<script type="text/javascript">
+	  function displayImageTitle(img) {
+	        img.nextElementSibling.style.display = "block";
+	    }
+
+	    function hideImageTitle(img) {
+	        img.nextElementSibling.style.display = "none";
+	    }
+	</script>
 	
 	
 </body>
