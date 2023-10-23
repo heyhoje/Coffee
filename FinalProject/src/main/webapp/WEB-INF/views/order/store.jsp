@@ -36,7 +36,7 @@
 	  	<a class="map-selection-border"></a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="<c:url value='/shop/name'/>"
+	    <a class="nav-link" href="<c:url value='/order/store2'/>"
 	    style="font-weight: normal; font-size:20px;">가게 이름으로 검색하기</a>
 	  </li>
 	 </ul>
@@ -50,10 +50,10 @@
               max-width: 80%;">
 
                 <form onsubmit="searchPlaces(); return false;" style="
-           			margin-left: 200px;
+           			margin-left: 180px;
            			margin-bottom:50px;
            			">
-                    <input type="text" class="form-control input-text" value="" id="keyword" size="40px;" aria-describedby="basic-addon2">  <button class="btn btn-outline-warning btn-lg" type="submit" style="margin-top: 20px; margin-left:450px;">검색하기</button>
+                    <input type="text" class="form-control input-text" value="" id="keyword" size="30px;" aria-describedby="basic-addon2">  <button class="btn btn-outline-warning btn-lg" type="submit" style="margin-top: 20px; margin-left:450px;">검색하기</button>
                    
                 </form>
                 
