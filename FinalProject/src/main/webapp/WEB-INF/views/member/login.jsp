@@ -38,7 +38,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
 								</div>
-								<input type="text" class="form-control" placeholder="username">
+								<input type="text" class="form-control" placeholder="아이디">
 
 							</div>
 							<div class="input-group form-group">
@@ -46,7 +46,7 @@
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
 								<input type="password" class="form-control"
-									placeholder="password">
+									placeholder="비밀번호">
 							</div>
 							<div class="row align-items-center remember">
 								<input style="margin-left: 20px;" type="checkbox">로그인 기억하기
