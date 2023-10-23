@@ -4,20 +4,53 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-	  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-      <!--Fontawesome CDN-->
-	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-      <!-- 카카오 로그인 -->
-      <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-      <!-- 네이버 로그인 -->
-      <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-      <!-- 페이스북 로그인 -->
-      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=1588150011384568" nonce="SiOBIhLG"></script>
-      <!-- 구글 로그인  -->
-      <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-      <!-- 구글 로그인 OAuth 2.0 클라이언트 ID -->
-      <meta name ="google-signin-client_id" content="149402920505-d1e55rs2dj0r689vqffl8nhqkaeair15.apps.googleusercontent.com">
+<title>로그인</title>
+	<!-- bootstrap css -->
+	<link rel="stylesheet"
+		href="<c:url value='/resources/css/bootstrap.min.css'/>">
+	<!-- style css -->
+	<link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>">
+	<!-- Responsive-->
+	<link rel="stylesheet"
+		href="<c:url value='/resources/css/responsive.css'/>">
+	<!-- Scrollbar Custom CSS -->
+	<link rel="stylesheet"
+		href="<c:url value='/resources/css/jquery.mCustomScrollbar.min.css'/>">
+	<!-- Tweaks for older IEs-->
+	
+	<!-- owl stylesheets -->
+	<link rel="stylesheet"
+		href="<c:url value='/resources/css/owl.carousel.min.css'/>">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+		media="screen">
+	<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+	<!--Fontawesome CDN-->
+	<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+		crossorigin="anonymous">
+	<!-- 카카오 로그인 -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<!-- 네이버 로그인 -->
+	<script
+		src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
+		charset="utf-8"></script>
+	<!-- 페이스북 로그인 -->
+	<script async defer crossorigin="anonymous"
+		src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=1588150011384568"
+		nonce="SiOBIhLG"></script>
+	<!-- 구글 로그인  -->
+	<script src="https://apis.google.com/js/platform.js?onload=init" async
+		defer></script>
+	<!-- 구글 로그인 OAuth 2.0 클라이언트 ID -->
+	<meta name="google-signin-client_id"
+		content="149402920505-d1e55rs2dj0r689vqffl8nhqkaeair15.apps.googleusercontent.com">
 </head>
 <body>
 	<!-- The Login Modal -->

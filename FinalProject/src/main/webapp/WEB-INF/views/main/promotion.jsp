@@ -5,7 +5,7 @@
 
 <!DOCTYPE html>
 <html lang="Ko">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
 
 <div class="event-schedule-area-two bg-color pad100">
     <div class="container">

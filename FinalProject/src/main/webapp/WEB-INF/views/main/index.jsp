@@ -29,10 +29,10 @@
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="resources/css/jquery.mCustomScrollbar.min.css">
       <!-- Tweaks for older IEs-->
-      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+ 
       <!-- owl stylesheets --> 
       <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
-      <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
+     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
    </head>
    <style>
@@ -133,7 +133,7 @@
                         <div class="container_main">
                            <img src="resources/images/starbucks.png" alt="Avatar" class="image">
                            <div class="overlay">
-                              <div class="text"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div>
+                              <div class="text"><a href="<c:url value='/menu/starbucks'/>"><i class="fa fa-search" aria-hidden="true"></i></a></div>
                            </div>
                         </div>
                      </div>

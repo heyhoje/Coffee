@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class PaymentController {
+public class MenuController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	
-	@RequestMapping(value="/main/search", method=RequestMethod.GET)
+	@RequestMapping(value="/menu/starbucks", method=RequestMethod.GET)
 	public String signup() {
 		
-		return "/main/search";
+		return "/menu/starbucks";
 	}
 	
 }
