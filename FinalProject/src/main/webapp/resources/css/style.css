@@ -287,14 +287,7 @@ button {
 
 .logo {}
 
-/* modal */
-.login-modal .card{
-height: 420px;
-margin-top: auto;
-margin-bottom: auto;
-width: 400px;
-background-color: rgba(0,0,0,0.5) !important;
-}
+
 
 /* hover flashing */
 .flashing figure:hover img {
@@ -784,11 +777,7 @@ a:hover {
 .carousel-indicators .active {
     background-color: #f76d37;
 }
-.modal-container{
-    position: fixed;
-    top : calc(50vh - 200px);
-    left : calc(50vw - 185px);
-}
+
 /* client section end */
 
 /* contact section start */
