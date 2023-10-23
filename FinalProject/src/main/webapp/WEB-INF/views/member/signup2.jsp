@@ -13,10 +13,6 @@
 <title>회원가입 페이지</title>
 
 <style>
-body{
-position: fixed;
-
-}
 /* Login v4 */
 .signup_v4 .social-area {
 	text-align: center;
@@ -118,10 +114,15 @@ position: fixed;
 
 .signup_v4 .card-body {
 	padding: 0px;
+	
 }
 
 .signup_v4 .card-body .tab-content {
 	padding: 0 1.25rem 1.75em;
+}
+.card{
+	height: 850px;
+	background-color: gainsboro;
 }
 </style>
 </head>
@@ -131,63 +132,88 @@ position: fixed;
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation"><a
 					class="nav-link active" id="login-tab" data-toggle="tab"
-					href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
+					href="#login" role="tab" aria-controls="login" aria-selected="true">Member</a>
 				</li>
 				<li class="nav-item" role="presentation"><a class="nav-link"
 					id="register-tab" data-toggle="tab" href="#register" role="tab"
-					aria-controls="register" aria-selected="false">Register</a></li>
+					aria-controls="register" aria-selected="false">Company</a></li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="login" role="tabpanel"
 					aria-labelledby="login-tab">
 					<h4 class="text-center mt-4 mb-4"
-						style="text-transform: uppercase;">Login</h4>
-					<form>
+						style="text-transform: uppercase;">Member Signup</h4>
+<form>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">Your Username</label> <input type="text"
+								<label for="inputName">Your Name</label> <input type="text"
 									class="form-control" id="inputEmail4"
+									placeholder="Enter your name" required="">
+							</div>
+							<div class="form-group col-md-12">
+								<label for="inputName">Your Username</label> <input type="text"
+									class="form-control" id="inputPassword4"
 									placeholder="Enter your username" required="">
+							</div>
+							<div class="form-group col-md-12">
+								<label for="inputName">Your Phone</label> <input type="text"
+									class="form-control" id="inputPassword4"
+									placeholder="Enter your Phone" required="">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<label for="inputName">Your Email Address</label> <input
+									type="email" class="form-control" id="inputEmail4"
+									placeholder="Enter your email address" required="">
 							</div>
 							<div class="form-group col-md-12">
 								<label for="inputName">Your Password</label> <input
 									type="password" class="form-control" id="inputPassword4"
 									placeholder="Enter your password" required="">
 							</div>
+						</div>
+						<div class="form-row">
 							<div class="form-group col-md-12">
-								<div
-									class="d-flex flex-wrap justify-content-between align-items-center">
-									<div class="custom-checkbox d-block">
-										<label class="custom-control custom-checkbox checkbox-lg">
-											<input type="checkbox" class="custom-control-input"
-											id="customCheck1">
-											<div class="custom-control-label" for="customCheck1">Remember
-												Password</div>
-										</label>
+								<label for="inputName">Your Confirm Password</label> <input
+									type="password" class="form-control" id="inputPassword4"
+									placeholder="Enter your confirm password" required="">
+							</div>
+
+						</div>
+					
+						<div class="form-group form-row">
+							<div class="col-md-12">
+								<label class="custom-control custom-checkbox checkbox-lg">
+									<input type="checkbox" class="custom-control-input"
+									id="customCheck1">
+									<div class="custom-control-label" for="customCheck1">
+										I agree with <a href="#" target="_blank">terms and
+											conditions</a>
 									</div>
-									<a href="#" target="_blank">Forgot Password?</a>
-								</div>
+								</label>
 							</div>
 						</div>
-						<div class="mt-2 mb-3">
-							<button class="btn btn-primary full-width" type="submit">Login</button>
+						<hr class="mt-3 mb-4">
+						<div class="col-12">
+							<div
+								class="d-flex flex-wrap justify-content-between align-items-center">
+								<div class="custom-checkbox d-block">
+									<a href="<c:url value='/'/>"
+										class="nav-link-inline font-size-sm">Already have an
+										account? Login</a>
+								</div>
+								<button class="btn btn-primary mt-3 mt-sm-0" type="submit">Register</button>
+							</div>
 						</div>
 					</form>
-					<div class="social-area">
-						<h3 class="title">Or</h3>
-						<p class="text">Sign In with social media</p>
-						<ul class="social-links">
-							<li><a href="#"> <i class="fab fa-facebook-f"></i>
-							</a></li>
-							<li><a href="#"> <i class="fab fa-google-plus-g"></i>
-							</a></li>
-						</ul>
-					</div>
+					
 				</div>
 				<div class="tab-pane fade" id="register" role="tabpanel"
 					aria-labelledby="register-tab">
 					<h4 class="text-center mt-4 mb-4"
-						style="text-transform: uppercase;">Register</h4>
+						style="text-transform: uppercase;">Company Register <br>
+						Business Member Signup</h4>
 					<form>
 						<div class="form-row">
 							<div class="form-group col-md-12">
@@ -221,25 +247,29 @@ position: fixed;
 							</div>
 
 						</div>
-						<div class="form-group form-row mt-2">
-							<label class="col-md-2 col-form-label user_group">I am a</label>
-							<div class="col-md-10 pt-1">
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio"
-										name="inlineRadioOptions" id="inlineRadio1" value="option1">
-									<label class="form-check-label" for="inlineRadio1">Customer</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio"
-										name="inlineRadioOptions" id="inlineRadio2" value="option2">
-									<label class="form-check-label" for="inlineRadio2">Vendor</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio"
-										name="inlineRadioOptions" id="inlineRadio2" value="option2">
-									<label class="form-check-label" for="inlineRadio2">Both</label>
-								</div>
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<label for="inputName">Your Company Registration Number</label> <input
+									type="password" class="form-control" id="inputPassword4"
+									placeholder="Enter your Company Registration Number" required="">
 							</div>
+
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<label for="inputName">Your Business Phone</label> <input
+									type="password" class="form-control" id="inputPassword4"
+									placeholder="Enter your Business/Company Phone Number" required="">
+							</div>
+
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<label for="inputName">Your Business Address</label> <input
+									type="password" class="form-control" id="inputPassword4"
+									placeholder="Enter your Business/Company Address" required="">
+							</div>
+
 						</div>
 						<div class="form-group form-row">
 							<div class="col-md-12">
@@ -270,45 +300,6 @@ position: fixed;
 			</div>
 		</div>
 	</div>
-	<script>
-		function validateForm() {
-			var userType = document
-					.querySelector('input[name="userType"]:checked').value;
-			var fullName = document.getElementById('fullName').value;
-			var email = document.getElementById('email').value;
-			var password = document.getElementById('password').value;
-			var businessNumber = document.getElementById('businessNumber').value;
-
-			// You can implement more advanced validation here
-
-			if (userType === 'business' && businessNumber.trim() === '') {
-				alert('Please enter a Business Number.');
-				return false;
-			}
-
-			// For now, just display the user's input
-			alert('User Type: ' + userType + '\nFull Name: ' + fullName
-					+ '\nEmail: ' + email + '\nPassword: ' + password
-					+ '\nBusiness Number: ' + businessNumber);
-
-			return false; // Prevent form submission for this example
-		}
-
-		// Show/hide the Business Number field when the user selects the "Business" option
-		document.getElementById('businessRadio').addEventListener(
-				'change',
-				function() {
-					var businessNumberDiv = document
-							.getElementById('businessNumberDiv');
-					if (this.checked) {
-						businessNumberDiv.style.display = 'block';
-					} else {
-						businessNumberDiv.style.display = 'none';
-					}
-				});
-
-		// Initially hide the Business Number field
-		document.getElementById('businessNumberDiv').style.display = 'none';
-	</script>
+	
 </body>
 </html>
