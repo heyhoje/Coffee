@@ -5,7 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <meta charset="utf-8">
 <title>Insert title here</title>
 </head>
@@ -46,25 +49,30 @@
           </div>
     <div class="row">
             <div class="col-lg-12" style="
-            margin-left: 15%;
-            max-width: 75%;">
-                <ul class="nav custom-tab" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active show" id="home-taThursday" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">9월</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">10월</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">11월</a>
-                    </li>
-                    <li class="nav-item d-none d-lg-block">
-                        <a class="nav-link" id="sunday-tab" data-toggle="tab" href="#sunday" role="tab" aria-controls="sunday" aria-selected="false">12월</a>
-                    </li>
-                    <li class="nav-item mr-0 d-none d-lg-block">
-                        <a class="nav-link" id="monday-tab" data-toggle="tab" href="#monday" role="tab" aria-controls="monday" aria-selected="false">1월</a>
-                    </li>
-                </ul>
+            margin-left: 31%;
+            max-width: 40%;">
+             	<div class="container">           
+				  <div class="dropdown" style="margin-bottom:20px;">
+				    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="background-color:aliceblue; color:black; font-weight: bold;">
+				      브랜드
+				    </button>
+				    
+				    <div class="dropdown-menu" style=width:10%;">
+				     <ul>
+				  
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/starbucks.png'/>"></a>
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/twosome.jpg'/>"></a>
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/megacoffee.png'/>"></a>
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/megacoffee.png'/>"></a>
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/megacoffee.png'/>"></a>
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/megacoffee.png'/>"></a>
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/megacoffee.png'/>"></a>
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/megacoffee.png'/>"></a>
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/megacoffee.png'/>"></a>
+				   	</ul>
+				    </div>
+				  </div>
+				</div>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade active show" id="home" role="tabpanel">
                         <div class="table-responsive">
@@ -199,15 +207,7 @@
 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="table-responsive">
                             <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Speakers</th>
-                                        <th scope="col">Session</th>
-                                        <th scope="col">Venue</th>
-                                        <th scope="col">Venue</th>
-                                    </tr>
-                                </thead>
+                                
                                 <tbody>
                                     <tr class="inner-box">
                                         <th scope="row">
