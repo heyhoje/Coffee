@@ -52,7 +52,7 @@
 		<div class="container-fluid">
 			<nav class="navbar navbar-expand-lg navbar">
 				<div class="logo">
-					<a href="resources/index.html"><img
+					<a href="<c:url value='/'/>"><img
 						src="<c:url value='/resources/images/로고.png'/>"></a>
 				</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -77,7 +77,7 @@
 							href="resources/services.html"><img
 								src="<c:url value='/resources/images/갤러리.png'/>"></a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="resources/contact.html"><img
+							href="<c:url value='/main/gallery'/>"><img
 								src="<c:url value='/resources/images/채용정보.png'/>"></a></li>
 						<li class="nav-item mr-5"><a class="nav-link"
 							href="resources/contact.html"><img
