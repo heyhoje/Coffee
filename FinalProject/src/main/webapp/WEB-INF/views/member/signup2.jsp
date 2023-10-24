@@ -7,9 +7,11 @@
 <!-- signup css -->
 <link rel="stylesheet" href="<c:url value='/resources/css/signup.css'/>">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.8.1/css/all.css"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,12 +35,12 @@
 					aria-labelledby="login-tab">
 					<h4 class="text-center mt-4 mb-4"
 						style="text-transform: uppercase;">멤버 회원가입</h4>
-<form>
+					<form action="/member/signup2" method="post">
 						<div class="form-row">
 							<div class="form-group col-md-12">
 								<label for="me_name">이름</label> <input type="text"
-									class="form-control" id="inputEmail4"
-									placeholder="이름을 입력하세요" name="me_name" required="">
+									class="form-control" id="inputEmail4" placeholder="이름을 입력하세요"
+									name="me_name" required="">
 							</div>
 							<div class="form-group col-md-12">
 								<label for="me_oi_id">아이디</label> <input type="text"
@@ -53,25 +55,25 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="me_email">이메일</label> <input
-									type="email" class="form-control" id="inputEmail4"
-									placeholder="이메일을 입력하세요" name="me_email" required="">
+								<label for="me_email">이메일</label> <input type="email"
+									class="form-control" id="inputEmail4" placeholder="이메일을 입력하세요"
+									name="me_email" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="me_pw">비밀번호</label> <input
-									type="password" class="form-control" id="inputPassword4"
+								<label for="me_pw">비밀번호</label> <input type="password"
+									class="form-control" id="inputPassword4"
 									placeholder="비밀번호를 입력하세요" name="me_pw" required="">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="me_pw2">비밀번호 확인</label> <input
-									type="password" class="form-control" id="inputPassword4"
+								<label for="me_pw2">비밀번호 확인</label> <input type="password"
+									class="form-control" id="inputPassword4"
 									placeholder="동일한 비밀번호를 입력하세요." name="me_pw2" required="">
 							</div>
 
 						</div>
-					
+
 						<div class="form-group form-row">
 							<div class="col-md-12">
 								<label class="custom-control custom-checkbox checkbox-lg">
@@ -96,18 +98,18 @@
 							</div>
 						</div>
 					</form>
-					
+
 				</div>
 				<div class="tab-pane fade" id="register" role="tabpanel"
 					aria-labelledby="register-tab">
 					<h4 class="text-center mt-4 mb-4"
 						style="text-transform: uppercase;">매니저 회원가입</h4>
-					<form>
+					<form action="/member/signup2" method="post">
 						<div class="form-row">
 							<div class="form-group col-md-12">
 								<label for="bm_manager">담당자</label> <input type="text"
-									class="form-control" id="inputEmail4"
-									placeholder="성함을 입력하세요" name="bm_manager" required="">
+									class="form-control" id="inputEmail4" placeholder="성함을 입력하세요"
+									name="bm_manager" required="">
 							</div>
 							<div class="form-group col-md-12">
 								<label for="bm_id">아이디</label> <input type="text"
@@ -117,44 +119,44 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_email">이메일</label> <input
-									type="email" class="form-control" id="inputEmail4"
-									placeholder="이메일을 입력하세요" name="bm_email" required="">
+								<label for="bm_email">이메일</label> <input type="email"
+									class="form-control" id="inputEmail4" placeholder="이메일을 입력하세요"
+									name="bm_email" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="bm_pw">비밀번호</label> <input
-									type="password" class="form-control" id="inputPassword4"
+								<label for="bm_pw">비밀번호</label> <input type="password"
+									class="form-control" id="inputPassword4"
 									placeholder="비밀번호를 입력하세요" name="bm_pw" required="">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_pw2">비밀번호 확인</label> <input
-									type="password" class="form-control" id="inputPassword4"
+								<label for="bm_pw2">비밀번호 확인</label> <input type="password"
+									class="form-control" id="inputPassword4"
 									placeholder="동일한 비밀번호를 입력하세요" name="bm_pw2" required="">
 							</div>
 
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_num">사업자 등록 번호</label> <input
-									type="password" class="form-control" id="inputPassword4"
+								<label for="bm_num">사업자 등록 번호</label> <input type="password"
+									class="form-control" id="inputPassword4"
 									placeholder="사업자 등록 번호를 입력하세요" name="bm_num" required="">
 							</div>
 
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_phone">매장 전화번호</label> <input
-									type="password" class="form-control" id="inputPassword4"
+								<label for="bm_phone">매장 전화번호</label> <input type="password"
+									class="form-control" id="inputPassword4"
 									placeholder="매장 전화번호를 입력하세요" name="bm_phone" required="">
 							</div>
 
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_address">매장 주소</label> <input
-									type="password" class="form-control" id="inputPassword4"
+								<label for="bm_address">매장 주소</label> <input type="password"
+									class="form-control" id="inputPassword4"
 									placeholder="매장 주소를 입력하세요" name="bm_address" required="">
 							</div>
 
@@ -187,6 +189,6 @@
 			</div>
 		</div>
 	</div>
-	
+
 </body>
 </html>
