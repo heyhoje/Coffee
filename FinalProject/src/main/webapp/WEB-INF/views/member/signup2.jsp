@@ -35,7 +35,7 @@
 					aria-labelledby="login-tab">
 					<h4 class="text-center mt-4 mb-4"
 						style="text-transform: uppercase;">멤버 회원가입</h4>
-					<form action="/member/signup2" method="post">
+					<form action="<c:url value='/member/signup2'/>" method="post">
 						<div class="form-row">
 							<div class="form-group col-md-12">
 								<label for="me_name">이름</label> <input type="text"
@@ -104,7 +104,7 @@
 					aria-labelledby="register-tab">
 					<h4 class="text-center mt-4 mb-4"
 						style="text-transform: uppercase;">매니저 회원가입</h4>
-					<form action="/member/signup2" method="post">
+					<form action="<c:url value='/member/signup2'/>" method="post">
 						<div class="form-row">
 							<div class="form-group col-md-12">
 								<label for="bm_manager">담당자</label> <input type="text"
@@ -139,7 +139,7 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_num">사업자 등록 번호</label> <input type="password"
+								<label for="bm_num">사업자 등록 번호</label> <input type="text"
 									class="form-control" id="inputPassword4"
 									placeholder="사업자 등록 번호를 입력하세요" name="bm_num" required="">
 							</div>
@@ -147,7 +147,7 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_phone">매장 전화번호</label> <input type="password"
+								<label for="bm_phone">매장 전화번호</label> <input type="text"
 									class="form-control" id="inputPassword4"
 									placeholder="매장 전화번호를 입력하세요" name="bm_phone" required="">
 							</div>
@@ -155,7 +155,7 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_address">매장 주소</label> <input type="password"
+								<label for="bm_address">매장 주소</label> <input type="text"
 									class="form-control" id="inputPassword4"
 									placeholder="매장 주소를 입력하세요" name="bm_address" required="">
 							</div>
