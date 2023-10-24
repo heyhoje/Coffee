@@ -10,6 +10,8 @@ public interface MemberDAO {
 
 	MemberVO selectMember(@Param("id")String id);
 
+	boolean isMember(@Param("user_id")String user_id);
+
 
 
 }

@@ -3,6 +3,7 @@ package kr.kh.finalproject.service;
 
 import java.util.regex.Pattern;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,6 @@ import kr.kh.finalproject.vo.MemberVO;
 public class MemberServiceImp implements MemberService {
 
 	@Autowired MemberDAO memberDao;
-	
 	@Autowired BCryptPasswordEncoder passwordEncoder;
 	
 	@Override
@@ -52,6 +52,11 @@ public class MemberServiceImp implements MemberService {
 			return false;
 		}
 		return Pattern.matches(regexId, id);
+	}
+
+	@Override
+	public boolean isMember(String user_id) {
+		return memberDao.isMember(user_id);
 	}
 
 
