@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+
+.nav-searchcategory{
+font-size:20px;
+margin-right:20px;
+font-weight:normal;
+
+}
+.nav-item #searchlocation{
+color:black;
+font-size:20px;
+	
+}
+.nav-item #searchname{
+color:black;
+font-size:20px;
+font-weight: bold;
+}
+
+.col-md-6 {
+flex: 0 0 70%;
+max-width: 80%;
+}
+
+#searchplace{
+margin-bottom:50px;
+text-align:center;	
+	
+}
+#keyword{
+width:100%;	
+	
+}
+#searchplace .btn-outline-warning.btn-lg{
+margin-top:20px;
+	
+}
+.col-lg-12{
+margin-left:31%;
+max-width:40%;	
+	
+}
+.col-lg-12 .container .dropdown{
+margin-bottom:20px;	
+}
+.col-lg-12 .container .dropdown .btn .btn-primary .dropdown-toggle{
+background-color:aliceblue;
+color:black;
+font-weight:bold;	
+}
+.col-lg-12 .container .dropdown .dropdown-menu{
+width: 10%;
+}
+
+

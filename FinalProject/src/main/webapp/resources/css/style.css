@@ -172,11 +172,16 @@ a,
 }
 
 img {
-    width: 80%;
+   	width: 80%;
     height: auto;
     margin-top:15px;
 }
 
+marker{
+	width:30%;
+	margin-top:15px;
+	height: auto;
+}
 
  :focus {
     outline: 0;
