@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS `member`;
 
 CREATE TABLE `member` (
-	`me_oi_id`	varchar(20)	NOT NULL,
+	`me_user_id`	varchar(20)	NOT NULL,
 	`me_pw`	varchar(255)	NULL,
 	`me_name`	varchar(50)	NULL,
 	`me_email`	varchar(30)	NULL,
@@ -18,16 +18,16 @@ DROP TABLE IF EXISTS `business_member`;
 CREATE TABLE `business_member` (
 	`bm_id`	varchar(50)	NOT NULL,
 	`bm_pw`	varchar(255)	NULL,
-	`bm_phone`	varchar(11)	NULL,
-	`bm_contens`	longtext	NULL,
+	`bm_num`	varchar(20)	NULL,
+	`bm_phone`	varchar(13)	NULL,
+	`bm_contents`	longtext	NULL,
 	`bm_address`	varchar(255)	NULL,
 	`bm_geocoding`	varchar(100)	NULL,
 	`bm_manager`	varchar(10)	NULL,
 	`bm_seat`	int	NULL,
 	`bm_parking`	varchar(5)	NULL,
 	`bm_drive`	varchar(5)	NULL,
-	`bm_stroe_name`	varchar(30)	NULL,
-	`bm_num`	varchar(20)	NULL
+	`bm_store_name`	varchar(30)	NULL
 );
 
 DROP TABLE IF EXISTS `menu`;
@@ -35,9 +35,10 @@ DROP TABLE IF EXISTS `menu`;
 CREATE TABLE `menu` (
 	`mn_num`	int	NOT NULL,
 	`mn_name`	varchar(50)	NULL,
-	`mn_contens`	longtext	NULL,
+	`mn_contents`	longtext	NULL,
 	`mn_price`	int	NULL,
-	`mn_st_num`	int	NOT NULL
+	`mn_st_num`	int	NOT NULL,
+	`mn_mc_num`	int	NOT NULL
 );
 
 DROP TABLE IF EXISTS `image`;
@@ -46,7 +47,7 @@ CREATE TABLE `image` (
 	`im_num`	int	NOT NULL,
 	`im_ori_name`	varchar(255)	NULL,
 	`im_name`	varchar(50)	NULL,
-	`im_contens`	longtext	NULL,
+	`im_contents`	longtext	NULL,
 	`im_tableName`	varchar(20)	NULL,
 	`im_tableNum`	int	NULL
 );
@@ -54,17 +55,17 @@ CREATE TABLE `image` (
 DROP TABLE IF EXISTS `order`;
 
 CREATE TABLE `order` (
-	`or_ol_num`	int	NOT NULL,
+	`or_num`	int	NOT NULL,
 	`or_time`	datetime	NULL,
 	`or_drinks`	varchar(20)	NULL
 );
 
-DROP TABLE IF EXISTS `order_information`;
+DROP TABLE IF EXISTS `user`;
 
-CREATE TABLE `order_information` (
-	`oi_id`	varchar(20)	NOT NULL,
-	`oi_aorb`	varchar(10)	NULL,
-	`oi_phone`	varchar(15)	NULL
+CREATE TABLE `user` (
+	`user_id`	varchar(20)	NOT NULL,
+	`user_aorb`	varchar(10)	NULL,
+	`user_phone`	varchar(15)	NULL
 );
 
 DROP TABLE IF EXISTS `review`;
@@ -96,12 +97,12 @@ DROP TABLE IF EXISTS `store`;
 
 CREATE TABLE `store` (
 	`st_num`	int	NOT NULL,
+	`st_br_name`	varchar(20)	NOT NULL,
 	`st_bm_id`	varchar(50)	NOT NULL,
 	`st_open`	varchar(5)	NULL,
 	`st_opentime`	datetime	NULL,
 	`st_closetime`	datetime	NULL,
-	`st_image`	varchar(50)	NULL,
-	`st_br_name`	varchar(20)	NOT NULL
+	`st_image`	varchar(50)	NULL
 );
 
 DROP TABLE IF EXISTS `shop_basket`;
@@ -110,7 +111,7 @@ CREATE TABLE `shop_basket` (
 	`sb_num`	int	NOT NULL,
 	`sb_mn_num`	int	NOT NULL,
 	`sb_quantity`	int	NULL,
-	`sb_oi_id`	varchar(20)	NOT NULL
+	`sb_user_id`	varchar(20)	NOT NULL
 );
 
 DROP TABLE IF EXISTS `promotion`;
@@ -118,7 +119,7 @@ DROP TABLE IF EXISTS `promotion`;
 CREATE TABLE `promotion` (
 	`pr_num`	int	NOT NULL,
 	`pr_contents`	longtext	NULL,
-	`pr_types`	int	NULL,
+	`Field`	VARCHAR(255)	NULL,
 	`pr_discount`	int	NULL,
 	`pr_save`	int	NULL
 );
@@ -137,11 +138,11 @@ DROP TABLE IF EXISTS `meetingroom`;
 
 CREATE TABLE `meetingroom` (
 	`room_num`	int	NOT NULL,
+	`room_st_num`	int	NOT NULL,
 	`room_price`	int	NULL,
 	`room_seat`	int	NULL,
 	`room_etc`	varchar(100)	NULL,
 	`room_starttime`	datetime	NULL,
-	`room_st_num`	int	NOT NULL,
 	`room_endtime`	datetime	NULL
 );
 
@@ -179,8 +180,23 @@ CREATE TABLE `brand` (
 	`br_logo`	varchar(30)	NULL
 );
 
+DROP TABLE IF EXISTS `large_category`;
+
+CREATE TABLE `large_category` (
+	`lc_num`	int	NOT NULL,
+	`lc_name`	varchar(20)	NULL
+);
+
+DROP TABLE IF EXISTS `medium_category`;
+
+CREATE TABLE `medium_category` (
+	`mc_num`	int	NOT NULL,
+	`mc_lc_num`	int	NOT NULL,
+	`mc_name`	varchar(20)	NULL
+);
+
 ALTER TABLE `member` ADD CONSTRAINT `PK_MEMBER` PRIMARY KEY (
-	`me_oi_id`
+	`me_user_id`
 );
 
 ALTER TABLE `business_member` ADD CONSTRAINT `PK_BUSINESS_MEMBER` PRIMARY KEY (
@@ -196,11 +212,11 @@ ALTER TABLE `image` ADD CONSTRAINT `PK_IMAGE` PRIMARY KEY (
 );
 
 ALTER TABLE `order` ADD CONSTRAINT `PK_ORDER` PRIMARY KEY (
-	`or_ol_num`
+	`or_num`
 );
 
-ALTER TABLE `order_information` ADD CONSTRAINT `PK_ORDER_INFORMATION` PRIMARY KEY (
-	`oi_id`
+ALTER TABLE `user` ADD CONSTRAINT `PK_USER` PRIMARY KEY (
+	`user_id`
 );
 
 ALTER TABLE `review` ADD CONSTRAINT `PK_REVIEW` PRIMARY KEY (
@@ -247,17 +263,25 @@ ALTER TABLE `brand` ADD CONSTRAINT `PK_BRAND` PRIMARY KEY (
 	`br_name`
 );
 
-ALTER TABLE `member` ADD CONSTRAINT `FK_order_information_TO_member_1` FOREIGN KEY (
-	`me_oi_id`
+ALTER TABLE `large_category` ADD CONSTRAINT `PK_LARGE_CATEGORY` PRIMARY KEY (
+	`lc_num`
+);
+
+ALTER TABLE `medium_category` ADD CONSTRAINT `PK_MEDIUM_CATEGORY` PRIMARY KEY (
+	`mc_num`
+);
+
+ALTER TABLE `member` ADD CONSTRAINT `FK_user_TO_member_1` FOREIGN KEY (
+	`me_user_id`
 )
-REFERENCES `order_information` (
-	`oi_id`
+REFERENCES `user` (
+	`user_id`
 );
 
 ALTER TABLE `promotion_on` ADD CONSTRAINT `FK_order_TO_promotion_on_1` FOREIGN KEY (
 	`po_or_num`
 )
 REFERENCES `order` (
-	`or_ol_num`
+	`or_num`
 );
 
