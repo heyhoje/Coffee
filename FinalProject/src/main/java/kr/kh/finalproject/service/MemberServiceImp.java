@@ -23,11 +23,11 @@ public class MemberServiceImp implements MemberService {
 		if(member == null) {
 			return false;
 		}
-		if(!checkIdRegex(member.getUser_id()) || !checkPwRegex(member.getMe_pw())) {
+		if(!checkIdRegex(member.getMe_user_id()) || !checkPwRegex(member.getMe_pw())) {
 			return false;
 		}
 		
-		MemberVO dbMember = memberDao.selectMember(member.getUser_id());
+		MemberVO dbMember = memberDao.selectMember(member.getMe_user_id());
 		
 		if(dbMember != null) {
 			return false;
