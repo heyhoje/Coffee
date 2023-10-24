@@ -22,18 +22,18 @@ public class MemberController {
 		return "/member/signup2";
 	}
 	//회원가입 기능구현 시작
-	@RequestMapping(value="/member/signup2", method=RequestMethod.POST)
-	public String signupPost(MemberVO member, Model model) {
-		boolean res = memberService.signup(member);
-		if(res) {
-			model.addAttribute("msg", "회원가입 성공!");
-			model.addAttribute("url", "");
-		} else {
-			model.addAttribute("msg", "회원가입 실패!");
-			model.addAttribute("url", "/member/signup2");
-		}
-		return "/main/message";
-	}
+//	@RequestMapping(value="/member/signup2", method=RequestMethod.POST)
+//	public String signupPost(MemberVO member, Model model) {
+//		boolean res = memberService.signup(member);
+//		if(res) {
+//			model.addAttribute("msg", "회원가입 성공!");
+//			model.addAttribute("url", "");
+//		} else {
+//			model.addAttribute("msg", "회원가입 실패!");
+//			model.addAttribute("url", "/member/signup2");
+//		}
+//		return "/main/message";
+//	}
 	//비밀번호 찾기 페이지
 	@RequestMapping(value="/member/forgotpw", method=RequestMethod.GET)
 	public String forgotpw() {
