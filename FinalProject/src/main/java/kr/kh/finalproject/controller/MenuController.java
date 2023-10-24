@@ -25,7 +25,7 @@ public class MenuController {
 //	}
 	
 	@GetMapping("/store/menu/{a}/{b}")
-	public String storeMenu() {
+	public String storeMenu(@PathVariable("a") int st_num, @PathVariable("b") String category, Model model) {
 		// 0. @PathVariable로 a, b가 무엇인지 설정~?
 		// 1. 서비스한테 일을 시켰을 때 어떤일을 시켜야할까 고민해야함
 		// => 메뉴 리스트를 가져다줘??? 

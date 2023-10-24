@@ -8,6 +8,6 @@ import kr.kh.finalproject.vo.MCategoryVO;
 
 public interface MenuDAO {
 
-	List<MCategoryVO> selectMenuList();
+	List<MCategoryVO> selectMenuList(@Param("st_num")int st_num, @Param("category")String category);
 
 }
