@@ -29,12 +29,11 @@
 	<br>
 	<div class="checkbox box" >
 		<p>메뉴검색/분류보기</p>
-		<input type=checkbox> 전체
-		<input type=checkbox> 신메뉴
-		<input type=checkbox> 커피
-		<input type=checkbox> 프라페&스무디
-		<input type=checkbox> 주스&에이드&티
-		<input type=checkbox> 기타
+		<c:forEach items="${list}" var="category">
+			<input type=checkbox> ${category.mc_name}
+		</c:forEach>
+		${medium_category} // 서버가 얘를 보냈는지 확인
+		
 	</div>
 </div>
   
