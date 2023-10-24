@@ -171,7 +171,7 @@ a,
     transition: all .3s ease-in-out;
 }
 
-img {
+.about_img img {
     width: 80%;
     height: auto;
     margin-top:15px;
@@ -237,133 +237,7 @@ button {
     padding-bottom: 0px;
 }
 
-/* header section start */
 
-.header_section {
-	font-family: 'Hanna';
-    width: 100%;
-    float: left;
-    background-color: #252525;
-    height: auto;
-    background-size: 100%;
-}
-
-.bg-light {
-    background-color: transparent !important;
-}
-
-.header_main {
-    width: 100%;
-    float: left;
-    background: #10e2bd;
-    height: 80px;
-}
-
-.navbar-light .navbar-nav .active>.nav-link,
-.navbar-light .navbar-nav .nav-link.active,
-.navbar-light .navbar-nav .nav-link.show,
-.navbar-light .navbar-nav .show>.nav-link {
-    color: #FFFFFF;
-}
-
-.navbar-light .navbar-nav .nav-link:focus,
-.navbar-light .navbar-nav .nav-link:hover {
-    color: #f76d37;
-}
-
-.navbar {
-	font-family:'Hanna';
-    padding: 20px 1rem;
-}
-
-.navbar-expand-lg .navbar-nav .nav-link {
-	font-family:'Hanna';
-    padding-right: .5rem;
-    padding-left: .5rem;
-    font-size: 18px;
-    color: #fff;
-    margin-top: 5px;
-}
-
-.logo {}
-
-
-
-/* hover flashing */
-.flashing figure:hover img {
-  opacity: 1;
-  -webkit-animation: flash 1.5s;
-  animation: flash 1.5s;
-}
-@-webkit-keyframes flash {
-  0% {
-    opacity: .4;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes flash {
-  0% {
-    opacity: .4;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.login_btn{
-color: black; 
-opacity:0.9;
-background-color: #FFC312;
-width: 100px;
-height: 95%;
-margin-top: 5px;
-margin-left:900px;
-margin-right:10px;
-}
-
-
-.login_btn:hover{
-color: black;
-background-color: white; 
-width
-}
-
-.login2_btn{
-color: black; 
-opacity:0.9;
-background-color: #FFC312;
-width: 100px;
-height: 95%;
-margin-top: 5px;
-margin-left:10px;
-}
-
-.login2_btn:hover{
-color: black;
-background-color: white; 
-width
-}
-
-.logout_btn{
-color: black; 
-opacity:0.9;
-background-color: #FFC312;
-width: 100px;
-height: 95%;
-margin-top: 5px;
-margin-left:10px;
-}
-
-
-.logout_btn:hover{
-color: black;
-background-color: white; 
-width
-}
-
-/* header section end */
 
 /* banner section start */
 
