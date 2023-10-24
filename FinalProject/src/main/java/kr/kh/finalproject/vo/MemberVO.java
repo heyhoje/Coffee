@@ -5,8 +5,8 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class MemberVO extends OrderInfoVO{
-	private int me_oi_num; 
+public class MemberVO extends UserVO{
+	private int me_oi_id; 
 	private String me_pw; 
 	private String me_name; 
 	private String me_email; 

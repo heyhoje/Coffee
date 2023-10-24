@@ -36,38 +36,38 @@
 <form>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">이름</label> <input type="text"
+								<label for="me_name">이름</label> <input type="text"
 									class="form-control" id="inputEmail4"
-									placeholder="이름을 입력하세요" required="">
+									placeholder="이름을 입력하세요" name="me_name" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="inputName">아이디</label> <input type="text"
+								<label for="me_oi_id">아이디</label> <input type="text"
 									class="form-control" id="inputPassword4"
-									placeholder="아이디를 입력하세요" required="">
+									placeholder="아이디를 입력하세요" name="me_oi_id" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="inputName">전화번호</label> <input type="text"
+								<label for="oi_phone">전화번호</label> <input type="text"
 									class="form-control" id="inputPassword4"
-									placeholder="전화번호를 입력하세요" required="">
+									placeholder="전화번호를 입력하세요" name="oi_phone" required="">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">이메일</label> <input
+								<label for="me_email">이메일</label> <input
 									type="email" class="form-control" id="inputEmail4"
-									placeholder="이메일을 입력하세요" required="">
+									placeholder="이메일을 입력하세요" name="me_email" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="inputName">비밀번호</label> <input
+								<label for="me_pw">비밀번호</label> <input
 									type="password" class="form-control" id="inputPassword4"
-									placeholder="비밀번호를 입력하세요" required="">
+									placeholder="비밀번호를 입력하세요" name="me_pw" required="">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">비밀번호 확인</label> <input
+								<label for="me_pw2">비밀번호 확인</label> <input
 									type="password" class="form-control" id="inputPassword4"
-									placeholder="동일한 비밀번호를 입력하세요." required="">
+									placeholder="동일한 비밀번호를 입력하세요." name="me_pw2" required="">
 							</div>
 
 						</div>
@@ -105,57 +105,57 @@
 					<form>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">이름</label> <input type="text"
+								<label for="bm_manager">담당자</label> <input type="text"
 									class="form-control" id="inputEmail4"
-									placeholder="이름을 입력하세요" required="">
+									placeholder="성함을 입력하세요" name="bm_manager" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="inputName">아이디</label> <input type="text"
+								<label for="bm_id">아이디</label> <input type="text"
 									class="form-control" id="inputPassword4"
-									placeholder="아이디를 입력하세요" required="">
+									placeholder="아이디를 입력하세요" name="bm_id" required="">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">이메일</label> <input
+								<label for="bm_email">이메일</label> <input
 									type="email" class="form-control" id="inputEmail4"
-									placeholder="이메일을 입력하세요" required="">
+									placeholder="이메일을 입력하세요" name="bm_email" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="inputName">비밀번호</label> <input
+								<label for="bm_pw">비밀번호</label> <input
 									type="password" class="form-control" id="inputPassword4"
-									placeholder="비밀번호를 입력하세요" required="">
+									placeholder="비밀번호를 입력하세요" name="bm_pw" required="">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">비밀번호 확인</label> <input
+								<label for="bm_pw2">비밀번호 확인</label> <input
 									type="password" class="form-control" id="inputPassword4"
-									placeholder="동일한 비밀번호를 입력하세요" required="">
+									placeholder="동일한 비밀번호를 입력하세요" name="bm_pw2" required="">
 							</div>
 
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">사업자 등록 번호</label> <input
+								<label for="bm_num">사업자 등록 번호</label> <input
 									type="password" class="form-control" id="inputPassword4"
-									placeholder="사업자 등록 번호를 입력하세요" required="">
+									placeholder="사업자 등록 번호를 입력하세요" name="bm_num" required="">
 							</div>
 
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">매장 전화번호</label> <input
+								<label for="bm_phone">매장 전화번호</label> <input
 									type="password" class="form-control" id="inputPassword4"
-									placeholder="매장 전화번호를 입력하세요" required="">
+									placeholder="매장 전화번호를 입력하세요" name="bm_phone" required="">
 							</div>
 
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="inputName">매장 주소</label> <input
+								<label for="bm_address">매장 주소</label> <input
 									type="password" class="form-control" id="inputPassword4"
-									placeholder="매장 주소를 입력하세요" required="">
+									placeholder="매장 주소를 입력하세요" name="bm_address" required="">
 							</div>
 
 						</div>
