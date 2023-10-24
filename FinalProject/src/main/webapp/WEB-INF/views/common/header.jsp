@@ -82,14 +82,21 @@
 						<li class="nav-item mr-5"><a class="nav-link"
 							href="resources/contact.html"><img
 								src="<c:url value='/resources/images/고객센터.png'/>"></a></li>
-
-
-						<li class="form-group"><input type="submit" value="login"
-							class="btn float-right login_btn" data-toggle="modal"
+						<li class="nav-item"><span
+							style="color: white; float: right;">${user.me_oi_id}</span></li>
+						<%-- <c:if test="${user == null }"> --%>
+						<li class="form-group" id="loginButton"><input type="submit"
+							value="회원 로그인" class="btn login_btn" data-toggle="modal"
 							data-target="#loginModal"></li>
-						<li class="form-group"><input style="display: none;"
-							type="submit" value="logout" class="btn float-right logout_btn"
+						<li class="form-group" id="loginButton2"><input style="margin-right: 10px" type="submit"
+							value="사업자 로그인" class="btn login2_btn" data-toggle="modal"
+							data-target="#loginModal2"></li>
+						<%-- </c:if> --%>
+						<%-- <c:if test="${user != null }"> --%>
+						<li class="form-group" id="logoutButton"><input type="submit"
+							value="로그아웃" class="btn float-right logout_btn"
 							data-toggle="modal" data-target="#logoutModal"></li>
+						<%-- </c:if> --%>
 					</ul>
 				</div>
 			</nav>
@@ -97,7 +104,50 @@
 		</div>
 	</div>
 
-</body>
+	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	//페이지 로드 시 실행되는 함수
+	$(document).ready(function() {
+		// 사용자 상태를 확인하는 AJAX 요청을 보냅니다.
+		$.ajax({
+			url : '/', // 사용자 상태를 확인하는 엔드포인트 URL을 설정하세요.
+			type : 'GET',
+			dataType : 'json',
+			success : function(data) {
+				if (data.userLoggedIn) {
+					// 사용자가 로그인되어 있는 경우
+					$('#loginButton').hide(); // 로그인 버튼 숨기기
+					$('#logoutButton').show(); // 로그아웃 버튼 표시
+				} else {
+					// 사용자가 로그아웃된 경우
+					$('#loginButton').show(); // 로그인 버튼 표시
+					$('#logoutButton').hide(); // 로그아웃 버튼 숨기기
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				// 오류 처리
+				console.error('Error:', errorThrown);
+			}
+		});
+	});
 
+	// 로그아웃 버튼 클릭 시 실행되는 함수
+	$('#logoutButton').click(function() {
+		// 로그아웃 요청을 보냅니다.
+		$.ajax({
+			url : '/member/logout', // 로그아웃 엔드포인트 URL을 설정하세요.
+			type : 'POST',
+			success : function(data) {
+				// 로그아웃이 성공하면 페이지를 새로고침하여 버튼 상태를 업데이트합니다.
+				location.reload();
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				// 오류 처리
+				console.error('Error:', errorThrown);
+			}
+		});
+	});
+</script> -->
+</body>
 
 </html>
