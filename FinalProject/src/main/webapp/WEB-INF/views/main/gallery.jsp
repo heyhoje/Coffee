@@ -73,16 +73,16 @@
 				<div class="image-title">게시글 제목 5</div>
 		</div>
 	</div>
-	<!-- Gallery -->
-	<script type="text/javascript">
-	  function displayImageTitle(img) {
-	        img.nextElementSibling.style.display = "block";
-	    }
-
-	    function hideImageTitle(img) {
-	        img.nextElementSibling.style.display = "none";
-	    }
-	</script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.image-container').hover(function () {
+                $(this).find('.image-title').fadeIn(200);
+            }, function () {
+                $(this).find('.image-title').fadeOut(200);
+            });
+        });
+    </script>
 	
 	
 </body>

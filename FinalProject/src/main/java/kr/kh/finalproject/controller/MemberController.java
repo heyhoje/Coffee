@@ -26,12 +26,6 @@ public class MemberController {
 		return "/member/forgotpw";
 	}
 
-	/*
-	 * @RequestMapping("/member/signup2", method=RequestMethod.POST) public String
-	 * signupPost(MemberVO member, Model model) { Message msg = new
-	 * Message("/member/signup2", "회원가입에 실패했습니다."); if(memberService.signup(member))
-	 * { msg = new Message ("/", "회원가입에 성공했습니다."); } model.addAttribute("msg",msg);
-	 * return "message"; }
-	 */
+	
 
 }
