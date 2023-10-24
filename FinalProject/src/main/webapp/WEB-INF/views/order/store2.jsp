@@ -5,21 +5,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="<c:url value='/resources/css/store2.css'/>">
 <meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<ul class="nav-searchcategory" style="justify-content:center;">
 	  <li class="nav-item align-items-center">
-	    <a class="nav-link" href="<c:url value='/order/store'/>" style="font-size:20px; margin-right:20px; font-weight:normal;">지역으로 검색하기</a>
+	    <a class="nav-link" id="searchlocation" href="<c:url value='/order/store'/>">지역으로 검색하기</a>
 	  </li>
 	  <li>
 	  	<a class="map-selection-border"></a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="<c:url value='/order/store2'/>"
-	    style="font-weight: bold; font-size:20px; font-size:20px;">가게 이름으로 검색하기</a>
+	    <a class="nav-link" id="searchname" href="<c:url value='/order/store2'/>">가게 이름으로 검색하기</a>
 	  </li>
 	 </ul>
  <div class="search-container">
@@ -27,15 +30,12 @@
 
             <div class="row height d-flex justify-content-center align-items-center">
 
-              <div class="col-md-6" style="
-              flex:0 0 70%;
-              max-width: 80%;">
+              <div class="col-md-6">
 
-                <form onsubmit="searchPlaces(); return false;" style="
-           			margin-bottom:50px;
-           			text-align: center;
+                <form onsubmit="searchPlaces(); return false;" id="searchplace" style="
+           			
            			">
-                    <input type="text" class="form-control input-text" value="" id="keyword" size="10px;" aria-describedby="basic-addon2" style="width:100%;">  <button class="btn btn-outline-warning btn-lg" type="submit" style="margin-top: 20px;">검색하기</button>
+                    <input type="text" class="form-control input-text" value="" id="keyword" size="10px;" aria-describedby="basic-addon2">  <button class="btn btn-outline-warning btn-lg" type="submit">검색하기</button>
                    
                 </form>
                 
@@ -45,26 +45,29 @@
             
           </div>
     <div class="row">
-            <div class="col-lg-12" style="
-            margin-left: 15%;
-            max-width: 75%;">
-                <ul class="nav custom-tab" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active show" id="home-taThursday" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">9월</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">10월</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">11월</a>
-                    </li>
-                    <li class="nav-item d-none d-lg-block">
-                        <a class="nav-link" id="sunday-tab" data-toggle="tab" href="#sunday" role="tab" aria-controls="sunday" aria-selected="false">12월</a>
-                    </li>
-                    <li class="nav-item mr-0 d-none d-lg-block">
-                        <a class="nav-link" id="monday-tab" data-toggle="tab" href="#monday" role="tab" aria-controls="monday" aria-selected="false">1월</a>
-                    </li>
-                </ul>
+            <div class="col-lg-12">
+             	<div class="container">           
+				  <div class="dropdown">
+				    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+				      브랜드
+				    </button>
+				    
+				    <div class="dropdown-menu">
+				     <ul>
+				  
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/starbucks.png'/>"></a>
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/twosome.jpg'/>"></a>
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/megacoffee.png'/>"></a>
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/megacoffee.png'/>"></a>
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/megacoffee.png'/>"></a>
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/megacoffee.png'/>"></a>
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/megacoffee.png'/>"></a>
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/megacoffee.png'/>"></a>
+				      <a class="dropdown-item" href="#"><img src="<c:url value='/resources/images/megacoffee.png'/>"></a>
+				   	</ul>
+				    </div>
+				  </div>
+				</div>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade active show" id="home" role="tabpanel">
                         <div class="table-responsive">
@@ -82,8 +85,8 @@
                                     <tr class="inner-box">
                                         <th scope="row">
                                             <div class="event-date">
-                                                <span>16</span>
-                                                <p>11월</p>
+                                                <span>1</span>
+                                                
                                             </div>
                                         </th>
                                         <td>
@@ -122,9 +125,8 @@
                                     <tr class="inner-box">
                                         <th scope="row">
                                             <div class="event-date">
-                                                <span>20</span>
-                                                <p>11월</p>
-                                            </div>
+                                                <span>2</span>
+                                                                                            </div>
                                         </th>
                                         <td>
                                             <div class="event-img">
@@ -161,8 +163,8 @@
                                     <tr class="inner-box border-bottom-0">
                                         <th scope="row">
                                             <div class="event-date">
-                                                <span>18</span>
-                                                <p>11월</p>
+                                                <span>3</span>
+                                               
                                             </div>
                                         </th>
                                         <td>
@@ -199,22 +201,12 @@
 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="table-responsive">
                             <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Speakers</th>
-                                        <th scope="col">Session</th>
-                                        <th scope="col">Venue</th>
-                                        <th scope="col">Venue</th>
-                                    </tr>
-                                </thead>
+                                
                                 <tbody>
                                     <tr class="inner-box">
                                         <th scope="row">
                                             <div class="event-date">
-                                                <span>16</span>
-                                                <p>Novembar</p>
-                                            </div>
+                                                <span>4</span>
                                         </th>
                                         <td>
                                             <div class="event-img">
@@ -251,8 +243,8 @@
                                     <tr class="inner-box">
                                         <th scope="row">
                                             <div class="event-date">
-                                                <span>16</span>
-                                                <p>Novembar</p>
+                                                <span>5</span>
+                                                
                                             </div>
                                         </th>
                                         <td>
@@ -290,8 +282,7 @@
                                     <tr class="inner-box border-bottom-0">
                                         <th scope="row">
                                             <div class="event-date">
-                                                <span>16</span>
-                                                <p>Novembar</p>
+                                                <span>6</span>
                                             </div>
                                         </th>
                                         <td>
@@ -346,8 +337,7 @@
                                     <tr class="inner-box">
                                         <th scope="row">
                                             <div class="event-date">
-                                                <span>16</span>
-                                                <p>Novembar</p>
+                                                <span>7</span>
                                             </div>
                                         </th>
                                         <td>
@@ -385,8 +375,7 @@
                                     <tr class="inner-box">
                                         <th scope="row">
                                             <div class="event-date">
-                                                <span>16</span>
-                                                <p>Novembar</p>
+                                                <span>8</span>
                                             </div>
                                         </th>
                                         <td>

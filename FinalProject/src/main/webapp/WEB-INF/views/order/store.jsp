@@ -27,7 +27,7 @@
  
     
 </head>
-<body>
+<body id="storejsp">
 	<ul class="nav-searchcategory" style="justify-content:center;">
 	  <li class="nav-item align-items-center">
 	    <a class="nav-link" href="#" style="font-size:20px; margin-right:20px;">지역으로 검색하기</a>
@@ -65,7 +65,7 @@
             
           </div>
    
-<div class="map_wrap">
+<div class="map_wrap" id="marker">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden; border:solid 2px black;margin-bottom:200px" ></div>
 
  
