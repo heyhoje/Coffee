@@ -73,18 +73,7 @@
 				alt="Yosemite National Park" />
 				<div class="image-title">게시글 제목 5</div>
 		</div>
-	</div>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.image-container').hover(function () {
-                $(this).find('.image-title').fadeIn(200);
-            }, function () {
-                $(this).find('.image-title').fadeOut(200);
-            });
-        });
-    </script>
-	
+	</div>	
 	
 </body>
 </html>
