@@ -40,10 +40,10 @@ public class MemberServiceImp implements MemberService {
 		if (!checkIdRegex(member.getMe_oi_id()) || !checkPwRegex(member.getMe_pw())) {
 			return null;
 		}
-		// ì•„ì´ë””ì™€ ì¼ì¹˜í•˜ëŠ” íšŒì› ì •ë³´ë¥¼ ê°€ì ¸ì˜´
+		// ¾ÆÀÌµğ¿Í ÀÏÄ¡ÇÏ´Â È¸¿ø Á¤º¸¸¦ °¡Á®¿È
 		MemberVO user = memberDao.selectMember(member.getMe_oi_id());
 		System.out.println(user);
-		// ì•„ì´ë””ì™€ ì¼ì¹˜í•˜ëŠ” íšŒì› ì •ë³´ê°€ ìˆê³ , ë¹„ë²ˆì´ ì¼ì¹˜í•˜ë©´
+		// ¾ÆÀÌµğ¿Í ÀÏÄ¡ÇÏ´Â È¸¿ø Á¤º¸°¡ ÀÖ°í, ºñ¹øÀÌ ÀÏÄ¡ÇÏ¸é
 		//if (user != null && passwordEncoder.matches(member.getMe_pw(), user.getMe_pw())) {
 		if (user != null && user.getMe_pw().equals(member.getMe_pw())) {
 			return user;
@@ -52,7 +52,7 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	private boolean checkIdRegex(String id) {
-		// ì „ì²´ 6~20ì, ì˜ë¬¸ìœ¼ë¡œ ì‹œì‘, ì˜ë¬¸ ìˆ«ìë§Œ ê°€ëŠ¥
+		// ÀüÃ¼ 6~20ÀÚ, ¿µ¹®À¸·Î ½ÃÀÛ, ¿µ¹® ¼ıÀÚ¸¸ °¡´É
 		String regexId = "^[a-zA-Z]\\w{4,15}$";
 		if (id == null) {
 			return false;

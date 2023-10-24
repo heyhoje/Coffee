@@ -11,12 +11,12 @@ import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import kr.kh.finalproject.service.MemberService;
-import kr.kh.finalproject.vo.MemberVO;
+import kr.kh.finalproject.service.BusinessMemberService;
+import kr.kh.finalproject.vo.BusinessMemberVO;
 
-public class LoginInterceptor extends HandlerInterceptorAdapter {
+public class LoginInterceptor2 extends HandlerInterceptorAdapter {
 	@Autowired
-	MemberService memberService;
+	BusinessMemberService businessMemberService;
 
 	@Override
 	// 컨트롤러에서 빠져 나올 때 실행
@@ -24,15 +24,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			@Nullable ModelAndView modelAndView) throws Exception {
 
 		// 회원 정보가 있는지 확인 => 컨트롤러가 model에 다음 user 정보가 있는지 확인
-		MemberVO user = (MemberVO) modelAndView.getModel().get("user");
-		if (user == null) {
+		BusinessMemberVO user2 = (BusinessMemberVO) modelAndView.getModel().get("user2");
+		if (user2 == null) {
 			return;
 		}
 
 		// 있으면 세션에 저장, 저장한 이름을 잘 기억 => 곳곳에서 사용될 예정
-		request.getSession().setAttribute("user", user);
+		request.getSession().setAttribute("user2", user2);
 		// 자동 로그인 체크를 안했으면
-		if (!user.isAutoLogin()) {
+		if (!user2.isAutoLogin()) {
 			return;
 		}
 
@@ -49,8 +49,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 		// DB 회원 정보에 쿠키 정보를 추가
 		Date date = new Date(System.currentTimeMillis() + time * 1000);
-		user.setMe_session_id(sessionId);
-		user.setMe_session_limit(date);
-		memberService.updateMemberSession(user);
+		user2.setBm_session_id(sessionId);
+		user2.setBm_session_limit(date);
+		businessMemberService.updateMemberSession(user2);
 	}
 }

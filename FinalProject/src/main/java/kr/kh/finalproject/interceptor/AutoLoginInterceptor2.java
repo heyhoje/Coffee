@@ -9,22 +9,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import org.springframework.web.util.WebUtils;
 
-import kr.kh.finalproject.service.MemberService;
-import kr.kh.finalproject.vo.MemberVO;
+import kr.kh.finalproject.service.BusinessMemberService;
+import kr.kh.finalproject.vo.BusinessMemberVO;
 
-public class AutoLoginInterceptor extends HandlerInterceptorAdapter {
+public class AutoLoginInterceptor2 extends HandlerInterceptorAdapter {
 
 	@Autowired
-	MemberService memberService;
+	BusinessMemberService businessMemberService;
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		HttpSession session = request.getSession();
-		MemberVO user = (MemberVO)session.getAttribute("user");
+		BusinessMemberVO user2 = (BusinessMemberVO)session.getAttribute("user2");
 		
 		//이미 로그인 됨 == 자동 로그인 안해도 됨
-		if(user != null) {
+		if(user2 != null) {
 			return true;
 		}
 		//쿠키 정보를 가져옴
@@ -35,9 +35,9 @@ public class AutoLoginInterceptor extends HandlerInterceptorAdapter {
 		}
 		
 		//쿠키값과 같은 정보를 가진 회원 정보를 가져옴
-		user = memberService.getMemberBySessionId(cookie.getValue());
-		if(user != null) {
-			session.setAttribute("user", user);
+		user2 = businessMemberService.getMemberBySessionId(cookie.getValue());
+		if(user2 != null) {
+			session.setAttribute("user2", user2);
 		}
 		return true;
 	}

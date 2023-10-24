@@ -118,12 +118,12 @@
 						<h3 style="color: white;">사업자 로그인</h3>
 					</div>
 					<div class="card-body">
-						<form action="<c:url value='/member/login'/>" method="post">
+						<form action="<c:url value='/member/login2'/>" method="post">
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
 								</div>
-								<input type="text" name="me_oi_id" required class="form-control"
+								<input type="text" name="bm_Id" required class="form-control"
 									placeholder="사업자 아이디">
 
 							</div>
@@ -131,7 +131,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
-								<input type="password" name="me_pw" required
+								<input type="password" name="bm_Pw" required
 									class="form-control" placeholder="비밀번호">
 							</div>
 							<div class="row align-items-center remember">
@@ -171,7 +171,7 @@
 									회원이 아니신가요?<a href="<c:url value='/member/signup2'/>">회원가입</a>
 								</div>
 								<div class="d-flex justify-content-center">
-									<a href="<c:url value='/member/forgotpw'/>">아이디/비밀번호찾기</a>
+									<a href="<c:url value='/member/forgotpw2'/>">아이디/비밀번호찾기</a>
 								</div>
 							</div>
 						</form>
@@ -181,7 +181,7 @@
 		</div>
 	</div>
 
-	<!-- 로그아웃 모달창 -->
+	<!-- 회원 로그아웃 모달창 -->
 	<div class="modal login-modal" id="logoutModal" tabindex="-1"
 		role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true"
 		id="logoutPage">
@@ -194,6 +194,32 @@
 					</div>
 					<div class="card-body" style="height: 300px">
 						<form action="<c:url value='/member/logout'/>" method="post">
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<input
+										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; 
+										max-height: 44px; max-width:100px; margin: auto; margin-left: 134%"
+										type="submit" value="로그아웃" class="btn logout_btn">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- 사업자 로그아웃 모달창 -->
+	<div class="modal login-modal" id="logoutModal2" tabindex="-1"
+		role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true"
+		id="logoutPage">
+		<!-- <button type="button" class="close" data-dismiss="modal" style="display: none">&times;</button> -->
+		<div class="modal-container">
+			<div class="d-flex justify-content-center h-100">
+				<div class="card" style="height: 150px">
+					<div class="card-header">
+						<h1 style="margin-top: 2%; text-align: center; color: white;">로그아웃하시겠습니까?</h1>
+					</div>
+					<div class="card-body" style="height: 300px">
+						<form action="<c:url value='/member/logout2'/>" method="post">
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<input
