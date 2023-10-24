@@ -1,59 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>아이디와 비밀번호 찾기</title>
 </head>
 <body>
-	<div class="container">
-		<div class="mb-3 text-center row">
-			<!-- 아이디 찾기 -->
-			<div class="col-sm-6">
-				<h5>아이디 찾기</h5>
-				<form action="searchForm" action="searchID" method="post">
-					<div class="form-group row">
-						<label for="mem_name" class="col-sm-4 col-form-label">이름</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" id="mem_name" name="mem_name" placeholder="이름">
-						</div>					
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<h2 class="text-center mb-4">아이디와 비밀번호 찾기</h2>
+				<form>
+					<div class="form-group">
+						<label for="name">이름</label> <input type="name"
+							class="form-control" id="name" placeholder="이름을 입력하세요">
 					</div>
-					<div class="form-group row">
-						<label for="mem_email" class="col-sm-4 col-form-label">이메일</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" id="mem_email" name="mem_email" placeholder="이메일">
-						</div>					
+					<div class="form-group">
+						<label for="email">이메일 주소</label> <input type="email"
+							class="form-control" id="email" placeholder="이메일을 입력하세요">
 					</div>
-					<div class="form-group row">
-						<div class="col-sm-12 text-center">
-							<button type="submit" class="btn btn-dark" id="btnfindID">아이디 찾기</button>
-							<button type="submit" class="btn btn-dark" id="btnfindPW">비밀번호 찾기</button>
-						</div>					
+					<div class="form-group">
+						<label for="verify">인증번호</label> <input type="verify"
+							class="form-control" id="verify" placeholder="인증번호 6자 입력하세요">
 					</div>
-				</form>
-			</div>
-			<div class="col-sm-6">
-				<h5>인증코드 발급</h5>
-				<form id="loginForm" action="TemporaryPW" method="post">
-					<div class="form-group row">
-						<label for="mem_id" class="col-sm-4 col-form-label">아이디</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" id="mem_id" name="mem_id" placeholder="아이디">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="mem_email" class="col-sm-4 col-form-label">이메일</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" id="mem_email" name="mem_email" placeholder="이메일">
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-sm-12 text-center">
-							<button type="submit" class="btn btn-dark" id="btntempPW">인증코드 발급</button>
-							<button type="submit" class="btn btn-dark" id="btnlogin">로그인</button>
-						</div>
-					</div>
+					<button type="submit" class="btn btn-primary">아이디 찾기</button>
+					<button type="submit" class="btn btn-primary">비밀번호 찾기</button>
 				</form>
 			</div>
 		</div>
