@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <!--Fontawesome CDN-->
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -61,33 +60,39 @@
 									class="form-control" placeholder="비밀번호">
 							</div>
 							<div class="row align-items-center remember">
-								<input style="margin-left: 20px;" type="checkbox">로그인
-								기억하기
+								<label style="color: white;"> <input
+									style="color: white; margin-left: 20px; margin-right: 5px;"
+									type="checkbox"> 아이디 기억
+								</label> <label style="color: white;"for="autoLogin"> <input
+									style="color: white; margin-left: 15px; margin-right: 5px;"
+									type="checkbox"> 자동 로그인
+								</label>
 							</div>
 							<div class="form-group">
 								<div class="flashing column">
 									<figure>
 										<img id="naverIdLogin_loginButton" href="javascript:void(0)"
-											style="margin-top:2px; max-width: 38px; max-height: 38px; float: left;"
+											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left;"
 											src="<c:url value='/resources/images/navericon.png'/>">
 									</figure>
 								</div>
 								<div class="flashing column">
 									<figure>
 										<img onclick="kakaoLogin();" href="javascript:void(0)"
-											style="margin-top:2px; max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
+											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
 											src="<c:url value='/resources/images/kakaoicon.png'/>">
 									</figure>
 								</div>
 								<div class="flashing column">
 									<figure>
 										<img id="GgCustomLogin" href="javascript:void(0)"
-											style="margin-top:2px; max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
+											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
 											src="<c:url value='/resources/images/googleicon.png'/>">
 									</figure>
 								</div>
 								<div>
-									<input style="max-height: 44px; max-width:100px; margin: auto; float: right;"
+									<input
+										style="max-height: 44px; max-width: 100px; margin: auto; float: right;"
 										type="submit" value="로그인" class="btn login_btn">
 								</div>
 							</div>
@@ -142,26 +147,27 @@
 								<div class="flashing column">
 									<figure>
 										<img id="naverIdLogin_loginButton" href="javascript:void(0)"
-											style="margin-top:2px; max-width: 38px; max-height: 38px; float: left;"
+											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left;"
 											src="<c:url value='/resources/images/navericon.png'/>">
 									</figure>
 								</div>
 								<div class="flashing column">
 									<figure>
 										<img onclick="kakaoLogin();" href="javascript:void(0)"
-											style="margin-top:2px; max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
+											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
 											src="<c:url value='/resources/images/kakaoicon.png'/>">
 									</figure>
 								</div>
 								<div class="flashing column">
 									<figure>
 										<img id="GgCustomLogin" href="javascript:void(0)"
-											style="margin-top:2px; max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
+											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
 											src="<c:url value='/resources/images/googleicon.png'/>">
 									</figure>
 								</div>
 								<div>
-									<input style="max-height: 44px; max-width:100px; margin: auto; float: right;"
+									<input
+										style="max-height: 44px; max-width: 100px; margin: auto; float: right;"
 										type="submit" value="로그인" class="btn login_btn">
 								</div>
 							</div>
@@ -197,8 +203,7 @@
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<input
-										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; 
-										max-height: 44px; max-width:100px; margin: auto; margin-left: 134%"
+										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto; margin-left: 134%"
 										type="submit" value="로그아웃" class="btn logout_btn">
 								</div>
 							</div>
@@ -207,7 +212,8 @@
 				</div>
 			</div>
 		</div>
-	</div><!-- 사업자 로그아웃 모달창 -->
+	</div>
+	<!-- 사업자 로그아웃 모달창 -->
 	<div class="modal login-modal" id="logoutModal2" tabindex="-1"
 		role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true"
 		id="logoutPage">
@@ -223,8 +229,7 @@
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<input
-										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; 
-										max-height: 44px; max-width:100px; margin: auto; margin-left: 134%"
+										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto; margin-left: 134%"
 										type="submit" value="로그아웃" class="btn logout_btn">
 								</div>
 							</div>
@@ -235,6 +240,7 @@
 		</div>
 	</div>
 	<script>
+		
 	</script>
 	<script>
 	<!-- 구글 로그인 -->

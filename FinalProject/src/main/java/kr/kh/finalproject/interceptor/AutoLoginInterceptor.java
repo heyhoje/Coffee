@@ -23,18 +23,18 @@ public class AutoLoginInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
-		//ÀÌ¹Ì ·Î±×ÀÎ µÊ == ÀÚµ¿ ·Î±×ÀÎ ¾ÈÇØµµ µÊ
+		//ì´ë¯¸ ë¡œê·¸ì¸ ë¨ == ìë™ ë¡œê·¸ì¸ ì•ˆí•´ë„ ë¨
 		if(user != null) {
 			return true;
 		}
-		//ÄíÅ° Á¤º¸¸¦ °¡Á®¿È
+		//ì¿ í‚¤ ì •ë³´ë¥¼ ê°€ì ¸ì˜´
 		Cookie cookie = WebUtils.getCookie(request, "FinalProject");
-		//ÄíÅ° Á¤º¸°¡ ¾øÀ½ == ÀÚµ¿ ·Î±×ÀÎ ¾ÈÇØµµ µÊ
+		//ì¿ í‚¤ ì •ë³´ê°€ ì—†ìŒ == ìë™ ë¡œê·¸ì¸ ì•ˆí•´ë„ ë¨
 		if(cookie == null) {
 			return true;
 		}
 		
-		//ÄíÅ°°ª°ú °°Àº Á¤º¸¸¦ °¡Áø È¸¿ø Á¤º¸¸¦ °¡Á®¿È
+		//ì¿ í‚¤ê°’ê³¼ ê°™ì€ ì •ë³´ë¥¼ ê°€ì§„ íšŒì› ì •ë³´ë¥¼ ê°€ì ¸ì˜´
 		user = memberService.getMemberBySessionId(cookie.getValue());
 		if(user != null) {
 			session.setAttribute("user", user);

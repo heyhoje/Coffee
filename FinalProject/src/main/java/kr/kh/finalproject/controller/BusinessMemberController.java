@@ -48,9 +48,10 @@ public class BusinessMemberController {
 		BusinessMemberVO user2 = businessMemberService.login(businessMember);
 		//가져왔으면 => 로그인 성공하면 
 		if(user2 != null) {
-			model.addAttribute("user2", user2);
+			model.addAttribute("buser", user2);
+			model.addAttribute("type", "b");
 			model.addAttribute("msg", "로그인 성공!");
-			model.addAttribute("url", "");
+			model.addAttribute("url", "/business/home");
 			//화면에서 보낸 자동 로그인 체크 여부를 user에 적용
 			user2.setAutoLogin(businessMember.isAutoLogin());
 		}else {
@@ -62,8 +63,8 @@ public class BusinessMemberController {
 	
 	@PostMapping("/member/logout2")
 	public String logout(Model model, HttpSession session) {
-		BusinessMemberVO user2 = (BusinessMemberVO)session.getAttribute("user2");
-		session.removeAttribute("user2");
+		BusinessMemberVO user2 = (BusinessMemberVO)session.getAttribute("buser");
+		session.removeAttribute("buser");
 		
 		if(user2 != null) {
 			user2.setBm_session_limit(null);

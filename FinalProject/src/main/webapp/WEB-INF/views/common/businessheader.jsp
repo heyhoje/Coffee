@@ -4,9 +4,6 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<!-- 폰트 -->
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/static/fonts/font.css'/>">
 <!-- basic -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,12 +63,16 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link"
-							href="resources/about.html" style="font-family: 'BM HANNA Pro', sans-serif;">소개</a></li>
+							href="resources/about.html"><img
+								src="<c:url value='/resources/images/소개.png'/>"></a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/main/promotion'/>"></a></li>
+							href="<c:url value='/main/promotion'/>"><img id="eventmenu"
+								src="<c:url value='/resources/images/이벤트&뉴스.png'/>"
+								style="margin-left: 10px;"></a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/order/store'/>"><img
 								src="<c:url value='/resources/images/주문.png'/>"></a></li>
+
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/main/gallery'/>"><img
 								src="<c:url value='/resources/images/갤러리.png'/>"></a></li>
@@ -82,28 +83,42 @@
 							href="resources/contact.html"><img
 								src="<c:url value='/resources/images/고객센터.png'/>"></a></li>
 						<li class="nav-item"><span
-							style="color: white; float: right;">${user.me_oi_id}</span></li>
-						<c:if test="${user == null && user2 == null}">
-							<li class="form-group" id="loginButton"><input type="submit"
-								value="회원 로그인" class="btn login_btn" data-toggle="modal"
-								data-target="#loginModal"></li>
-						</c:if>
-						<c:if test="${user2 == null && user == null}">
-							<li class="form-group" id="loginButton2"><input
-								style="margin-right: 10px" type="submit" value="사업자 로그인"
-								class="btn login2_btn" data-toggle="modal"
-								data-target="#loginModal2"></li>
-						</c:if>
-						<c:if test="${user != null}">
-							<li class="form-group" id="logoutButton"><input
-								style="margin-right: 10px" type="submit" value="로그아웃"
-								class="btn float-right logout_btn" data-toggle="modal"
-								data-target="#logoutModal"></li>
-						</c:if>
+							style="color: white; float: right;">${buser.bm_Id}</span></li>
+						<li class="nav-item">
+						<li class="form-group" id="logoutButton2"><input
+							type="submit" value="로그아웃" class="btn float-right logout_btn"
+							data-toggle="modal" data-target="#logoutModal2"></li>
 					</ul>
 				</div>
 			</nav>
 
+		</div>
+	</div>
+	<!-- 사업자 로그아웃 모달창 -->
+	<div class="modal login-modal" id="logoutModal2" tabindex="-1"
+		role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true"
+		id="logoutPage">
+		<!-- <button type="button" class="close" data-dismiss="modal" style="display: none">&times;</button> -->
+		<div class="modal-container">
+			<div class="d-flex justify-content-center h-100">
+				<div class="card" style="height: 150px">
+					<div class="card-header">
+						<h1 style="margin-top: 2%; text-align: center; color: white;">로그아웃하시겠습니까?</h1>
+					</div>
+					<div class="card-body" style="height: 300px">
+						<form action="<c:url value='/member/logout2'/>" method="post">
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<input
+										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; 
+										max-height: 44px; max-width:100px; margin: auto; margin-left: 134%"
+										type="submit" value="로그아웃" class="btn logout_btn">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

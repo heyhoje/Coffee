@@ -55,12 +55,13 @@ public class MemberController {
 		//가져왔으면 => 로그인 성공하면 
 		if(user != null) {
 			model.addAttribute("user", user);
+			model.addAttribute("type", "u");
 			model.addAttribute("msg", "로그인 성공!");
 			model.addAttribute("url", "");
 			//화면에서 보낸 자동 로그인 체크 여부를 user에 적용
 			user.setAutoLogin(member.isAutoLogin());
 		}else {
-			model.addAttribute("msg", "로그인 실패!");
+			model.addAttribute("msg", "아이디 또는 비밀번호가 잘못되었습니다.");
 			model.addAttribute("url", "/member/login");
 		}
 		return "/main/message";
@@ -68,13 +69,13 @@ public class MemberController {
 	
 	@PostMapping("/member/logout")
 	public String logout(Model model, HttpSession session) {
-		MemberVO user = (MemberVO)session.getAttribute("user");
+		Object user = session.getAttribute("user");
 		session.removeAttribute("user");
 		
-		if(user != null) {
+		/*if(user != null) {
 			user.setMe_session_limit(null);
 			memberService.updateMemberSession(user);
-		}
+		}*/
 		
 		model.addAttribute("msg", "로그아웃 성공!");
 		model.addAttribute("url", "");

@@ -19,35 +19,35 @@ public class LoginInterceptor2 extends HandlerInterceptorAdapter {
 	BusinessMemberService businessMemberService;
 
 	@Override
-	// ÄÁÆ®·Ñ·¯¿¡¼­ ºüÁ® ³ª¿Ã ¶§ ½ÇÇà
+	// ì»¨íŠ¸ë¡¤ëŸ¬ì—ì„œ ë¹ ì ¸ ë‚˜ì˜¬ ë•Œ ì‹¤í–‰
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			@Nullable ModelAndView modelAndView) throws Exception {
 
-		// È¸¿ø Á¤º¸°¡ ÀÖ´ÂÁö È®ÀÎ => ÄÁÆ®·Ñ·¯°¡ model¿¡ ´ÙÀ½ user Á¤º¸°¡ ÀÖ´ÂÁö È®ÀÎ
-		BusinessMemberVO user2 = (BusinessMemberVO) modelAndView.getModel().get("user2");
+		// íšŒì› ì •ë³´ê°€ ìˆëŠ”ì§€ í™•ì¸ => ì»¨íŠ¸ë¡¤ëŸ¬ê°€ modelì— ë‹¤ìŒ user ì •ë³´ê°€ ìˆëŠ”ì§€ í™•ì¸
+		BusinessMemberVO user2 = (BusinessMemberVO) modelAndView.getModel().get("buser");
 		if (user2 == null) {
 			return;
 		}
 
-		// ÀÖÀ¸¸é ¼¼¼Ç¿¡ ÀúÀå, ÀúÀåÇÑ ÀÌ¸§À» Àß ±â¾ï => °÷°÷¿¡¼­ »ç¿ëµÉ ¿¹Á¤
-		request.getSession().setAttribute("user2", user2);
-		// ÀÚµ¿ ·Î±×ÀÎ Ã¼Å©¸¦ ¾ÈÇßÀ¸¸é
+		// ìˆìœ¼ë©´ ì„¸ì…˜ì— ì €ì¥, ì €ì¥í•œ ì´ë¦„ì„ ì˜ ê¸°ì–µ => ê³³ê³³ì—ì„œ ì‚¬ìš©ë  ì˜ˆì •
+		request.getSession().setAttribute("buser", user2);
+		// ìë™ ë¡œê·¸ì¸ ì²´í¬ë¥¼ ì•ˆí–ˆìœ¼ë©´
 		if (!user2.isAutoLogin()) {
 			return;
 		}
 
-		// ÀÚµ¿ ·Î±×ÀÎ Ã¼Å©¸¦ ÇßÀ¸¸é
+		// ìë™ ë¡œê·¸ì¸ ì²´í¬ë¥¼ í–ˆìœ¼ë©´
 		String sessionId = request.getSession().getId();
-		// ÄíÅ° »ı¼º
+		// ì¿ í‚¤ ìƒì„±
 		Cookie cookie = new Cookie("FinalProject", sessionId);
-		// ÄíÅ° °æ·Î¿Í ¸¸·á ½Ã°£À» ¼³Á¤
+		// ì¿ í‚¤ ê²½ë¡œì™€ ë§Œë£Œ ì‹œê°„ì„ ì„¤ì •
 		cookie.setPath("/");
-		int time = 60 * 60 * 24 * 7; // 60 * 60 * 24 * 7 == 7ÀÏÀ» ÃÊ·Î È¯»ê
+		int time = 60 * 60 * 24 * 7; // 60 * 60 * 24 * 7 == 7ì¼ì„ ì´ˆë¡œ í™˜ì‚°
 		cookie.setMaxAge(time);
-		// È­¸éÀ¸·Î ÄíÅ° Á¤º¸¸¦ Àü´Ş
+		// í™”ë©´ìœ¼ë¡œ ì¿ í‚¤ ì •ë³´ë¥¼ ì „ë‹¬
 		response.addCookie(cookie);
 
-		// DB È¸¿ø Á¤º¸¿¡ ÄíÅ° Á¤º¸¸¦ Ãß°¡
+		// DB íšŒì› ì •ë³´ì— ì¿ í‚¤ ì •ë³´ë¥¼ ì¶”ê°€
 		Date date = new Date(System.currentTimeMillis() + time * 1000);
 		user2.setBm_session_id(sessionId);
 		user2.setBm_session_limit(date);

@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import kr.kh.finalproject.service.MemberService;
+import kr.kh.finalproject.vo.BusinessMemberVO;
 import kr.kh.finalproject.vo.MemberVO;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter {
@@ -19,38 +20,50 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	MemberService memberService;
 
 	@Override
-	// ÄÁÆ®·Ñ·¯¿¡¼­ ºüÁ® ³ª¿Ã ¶§ ½ÇÇà
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			@Nullable ModelAndView modelAndView) throws Exception {
 
-		// È¸¿ø Á¤º¸°¡ ÀÖ´ÂÁö È®ÀÎ => ÄÁÆ®·Ñ·¯°¡ model¿¡ ´ÙÀ½ user Á¤º¸°¡ ÀÖ´ÂÁö È®ÀÎ
-		MemberVO user = (MemberVO) modelAndView.getModel().get("user");
-		if (user == null) {
-			return;
+		String type = (String) modelAndView.getModel().get("type");
+		//ì¼ë°˜ íšŒì›ì¸ ê²½ìš°
+		if(type.equals("u")) {
+		
+			MemberVO user = (MemberVO) modelAndView.getModel().get("user");
+			if (user == null) {
+				return;
+			}
+			request.getSession().setAttribute("user", user);
+		}else if(type.equals("b")) {
+			BusinessMemberVO user = (BusinessMemberVO) modelAndView.getModel().get("buser");
+			if (user == null) {
+				return;
+			}
+			request.getSession().setAttribute("buser", user);
 		}
-
-		// ÀÖÀ¸¸é ¼¼¼Ç¿¡ ÀúÀå, ÀúÀåÇÑ ÀÌ¸§À» Àß ±â¾ï => °÷°÷¿¡¼­ »ç¿ëµÉ ¿¹Á¤
-		request.getSession().setAttribute("user", user);
-		// ÀÚµ¿ ·Î±×ÀÎ Ã¼Å©¸¦ ¾ÈÇßÀ¸¸é
+		request.getSession().setAttribute("type", type);
+		
+		
+		/*
+		// ï¿½Úµï¿½ ï¿½Î±ï¿½ï¿½ï¿½ Ã¼Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if (!user.isAutoLogin()) {
 			return;
 		}
 
-		// ÀÚµ¿ ·Î±×ÀÎ Ã¼Å©¸¦ ÇßÀ¸¸é
+		// ï¿½Úµï¿½ ï¿½Î±ï¿½ï¿½ï¿½ Ã¼Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		String sessionId = request.getSession().getId();
-		// ÄíÅ° »ý¼º
+		// ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½
 		Cookie cookie = new Cookie("FinalProject", sessionId);
-		// ÄíÅ° °æ·Î¿Í ¸¸·á ½Ã°£À» ¼³Á¤
+		// ï¿½ï¿½Å° ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		cookie.setPath("/");
-		int time = 60 * 60 * 24 * 7; // 60 * 60 * 24 * 7 == 7ÀÏÀ» ÃÊ·Î È¯»ê
+		int time = 60 * 60 * 24 * 7; // 60 * 60 * 24 * 7 == 7ï¿½ï¿½ï¿½ï¿½ ï¿½Ê·ï¿½ È¯ï¿½ï¿½
 		cookie.setMaxAge(time);
-		// È­¸éÀ¸·Î ÄíÅ° Á¤º¸¸¦ Àü´Þ
+		// È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		response.addCookie(cookie);
 
-		// DB È¸¿ø Á¤º¸¿¡ ÄíÅ° Á¤º¸¸¦ Ãß°¡
+		// DB È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 		Date date = new Date(System.currentTimeMillis() + time * 1000);
 		user.setMe_session_id(sessionId);
 		user.setMe_session_limit(date);
 		memberService.updateMemberSession(user);
+		*/
 	}
 }
