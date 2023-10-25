@@ -10,30 +10,30 @@
 <style type="text/css">
 
 .main{
-  width: 90vw;
-  margin: 0 auto;
-  display: flex;
-  gap: 3px;
+	width: 90vw;
+	margin: 0 auto;
+	display: flex;
+	gap: 3px;
 }
 
 .main_bar {
-  position: relative;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  border-radius: 10px;
-  padding: 1rem;
-  height: 250px;
-  background-color: #00000052;
-  flex: 1;
-  transition: 0.2s ease-in-out;
+	position: relative;
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+	border-radius: 10px;
+	padding: 1rem;
+	height: 250px;
+	background-color: #212529;
+	flex: 1;
+	transition: 0.2s ease-in-out;
 }
 
 .main_bar:hover {
-  transform: perspective(1500px) rotateY(30deg);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
-  cursor: pointer;
+	transform: perspective(1500px) rotateY(30deg);
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+	cursor: pointer;
 }
 
 .test{
@@ -45,7 +45,9 @@
 	cursor: pointer;
 }
 .image{
-overflow: hidden;
+	overflow: hidden;
+	width: 280px;
+	height: 180px;
 }
 </style>
 </head>
@@ -56,19 +58,19 @@ overflow: hidden;
 			커피
 		</div>
 		<div class="main_bar">
-			<img class="image" alt="coffee" src="https://cafepleno.wisacdn.com/_data/product/202104/27/d138802bc96626c54bb35229db6e64c9.jpg">
+			<img class="image" alt="greentea" src="https://cafepleno.wisacdn.com/_data/product/202104/27/d138802bc96626c54bb35229db6e64c9.jpg">
 			논커피
 		</div>
 		<div class="main_bar">
-			<img class="image" alt="coffee" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6x2oXAPGtZyQbiJr0C-J7ibJYSvDCJqhDJw&usqp=CAU">
+			<img class="image" alt="ade" src="https://www.parrfarm.com/wp-content/uploads/2023/04/12_%EB%B8%94%EB%A3%A8%EC%97%90%EC%9D%B4%EB%93%9C.jpg">
 			음료
 		</div>
 		<div class="main_bar">
-			<img class="image" alt="coffee" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6x2oXAPGtZyQbiJr0C-J7ibJYSvDCJqhDJw&usqp=CAU">
+			<img class="image" alt="food" src="https://cdn.imweb.me/thumbnail/20190717/f6d83991ad479.jpg">
 			푸드
 		</div>
 		<div class="main_bar">
-			<img class="image" alt="coffee" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6x2oXAPGtZyQbiJr0C-J7ibJYSvDCJqhDJw&usqp=CAU">
+			<img class="image" alt="store" src="https://t1.daumcdn.net/cfile/tistory/997B123E5B14FF3F2A">
 			카페사진
 		</div>
 	</div>
