@@ -40,8 +40,15 @@
 		${medium_category} 
 		<br>
 		${list}// 서버가 얘를 보냈는지 확인 => 드뎌 확인됨!!!!
-		
 	</div>
+	<div class="imagebox box">
+		<p>메뉴사진 / 메뉴이름</p>
+		${menuList}
+		<c:forEach items="${menuList}" var="menu">
+			<image src="#" width="" height="" alt="${menu.mn_name}"> 
+		</c:forEach>
+	</div>
+	
 </div>
   
 </body>
