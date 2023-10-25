@@ -34,7 +34,9 @@ public class MemberServiceImp implements MemberService {
 		String encodedPassword = passwordEncoder.encode(member.getMe_pw());
 		
 		member.setMe_pw(encodedPassword);
-		return memberDao.insertMember(member);
+		memberDao.insertUser(member);
+		memberDao.insertMember(member);
+		return true;
 	}
 
 	private boolean checkPwRegex(String pw) {
@@ -51,6 +53,11 @@ public class MemberServiceImp implements MemberService {
 			return false;
 		}
 		return Pattern.matches(regexId, id);
+	}
+
+	@Override
+	public boolean checkId(String id) {
+		return memberDao.selectMember(id) == null;
 	}
 
 

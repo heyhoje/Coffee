@@ -43,14 +43,14 @@
 									name="me_name" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="me_oi_id">아이디</label> <input type="text"
+								<label for="user_id">아이디</label> <input type="text"
 									class="form-control" id="inputPassword4"
-									placeholder="아이디를 입력하세요" name="me_oi_id" required="">
+									placeholder="아이디를 입력하세요" name="user_id" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="oi_phone">전화번호</label> <input type="text"
+								<label for="user_phone">전화번호</label> <input type="text"
 									class="form-control" id="inputPassword4"
-									placeholder="전화번호를 입력하세요" name="oi_phone" required="">
+									placeholder="전화번호를 입력하세요" name="user_phone" required="">
 							</div>
 						</div>
 						<div class="form-row">

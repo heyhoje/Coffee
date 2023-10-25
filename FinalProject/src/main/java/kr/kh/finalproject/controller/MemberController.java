@@ -4,8 +4,11 @@ package kr.kh.finalproject.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.kh.finalproject.service.MemberService;
 import kr.kh.finalproject.vo.MemberVO;
@@ -24,6 +27,7 @@ public class MemberController {
 	//회원가입 기능구현 시작
 	@RequestMapping(value="/member/signup2", method=RequestMethod.POST)
 	public String signupPost(MemberVO member, Model model) {
+		System.out.println(member);
 		boolean res = memberService.signup(member);
 		if(res) {
 			model.addAttribute("msg", "회원가입 성공!");
@@ -34,6 +38,12 @@ public class MemberController {
 		}
 		return "/main/message";
 	}
+	@ResponseBody
+	@PostMapping("/member/id/check")
+	public boolean idCheck(@RequestParam("id") String id){
+		return memberService.checkId(id);
+	}
+	
 	//비밀번호 찾기 페이지
 	@RequestMapping(value="/member/forgotpw", method=RequestMethod.GET)
 	public String forgotpw() {
