@@ -28,6 +28,7 @@ public class MemberController {
 	@RequestMapping(value="/member/signup2", method=RequestMethod.POST)
 	public String signupPost(MemberVO member, Model model) {
 		System.out.println(member);
+		
 		boolean res = memberService.signup(member);
 		if(res) {
 			model.addAttribute("msg", "회원가입 성공!");

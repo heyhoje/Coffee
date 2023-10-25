@@ -73,7 +73,7 @@
 							</div>
 
 						</div>
-
+						<input type="hidden" name="user_aorb" value="회원">
 						<div class="form-group form-row">
 							<div class="col-md-12">
 								<label class="custom-control custom-checkbox checkbox-lg">
@@ -159,7 +159,7 @@
 									class="form-control" id="inputPassword4"
 									placeholder="매장 주소를 입력하세요" name="bm_address" required="">
 							</div>
-
+						<input type="hidden" name="user_aorb" value="담당자">
 						</div>
 						<div class="form-group form-row">
 							<div class="col-md-12">

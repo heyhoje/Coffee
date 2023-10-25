@@ -35,8 +35,7 @@ public class MemberServiceImp implements MemberService {
 		
 		member.setMe_pw(encodedPassword);
 		memberDao.insertUser(member);
-		memberDao.insertMember(member);
-		return true;
+		return memberDao.insertMember(member);
 	}
 
 	private boolean checkPwRegex(String pw) {
