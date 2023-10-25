@@ -15,7 +15,7 @@ a {
   color: black;
 }
 
-img {
+.cart__list__detail img {
   display: block;
   width: 80%;
   height: 80px;
@@ -37,6 +37,7 @@ img {
   font-size: 13px;
   font-weight: 300;
 }
+
 
 .cart ul :first-child {
   color: limegreen;
