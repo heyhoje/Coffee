@@ -1,4 +1,3 @@
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -6,16 +5,15 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
- <!-- style css -->
-      <link rel="stylesheet" href="<c:url value='/resources/css/bag.css'/>">
-      <!-- jQuery -->
+	<!--  style -->
+	<link rel="stylesheet" href="<c:url value='/resources/css/bag.css'/>">
+    <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
     <!-- iamport.payment.js -->
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
     <script>
         var IMP = window.IMP; 
-        IMP.init("imp67011510"); 
+        IMP.init("imp14674302"); 
       
         var today = new Date();   
         var hours = today.getHours(); // 시
@@ -26,13 +24,13 @@
         
 
         function requestPay() {
-            IMP.request_pay({
-                pg : 'kcp',
+            IMP.request_pay(
+            	{
+                pg : "danal_tpay",
                 pay_method : 'card',
                 merchant_uid: "IMP"+makeMerchantUid, 
                 name : '당근 10kg',
-                amount : 1000,
-                //구매자 정보 입력
+                amount : 1004,
                 buyer_email : 'Iamport@chai.finance',
                 buyer_name : '아임포트 기술지원팀',
                 buyer_tel : '010-1234-5678',
@@ -46,31 +44,9 @@
                 }
             });
         }
-        
-        IMP.request_pay({ /** 요청 객체를 추가해주세요 */ },
-        		  rsp => {
-        		    if (rsp.success) {   
-        		      // axios로 HTTP 요청
-        		      axios({
-        		        url: "{서버의 결제 정보를 받는 endpoint}",
-        		        method: "post",
-        		        headers: { "Content-Type": "application/json" },
-        		        data: {
-        		          imp_uid: rsp.imp_uid,
-        		          merchant_uid: rsp.merchant_uid
-        		        }
-        		      }).then((data) => {
-        		        // 서버 결제 API 성공시 로직
-        		      })
-        		    } else {
-        		      alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
-        		    }
-        		  });
-        </script>
-<title>Insert title here</title>
-
+    </script>
+    
 </head>
-
 <body>
     <section class="cart">
         <div class="cart__information">
@@ -94,7 +70,7 @@
                 <tbody>
                     <tr class="cart__list__detail">
                         <td><input type="checkbox"></td>
-                        <td><img src="" alt="magic keyboard"></td>
+                        <td><img src="image/keyboard.jpg" alt="magic keyboard"></td>
                         <td><a href="#">애플 공식 브랜드스토어</a><span class="cart__list__smartstore"> 스마트스토어</span>
                             <p>Apple 매직 키보드 - 한국어(MK2A3KH/A)</p>
                             <sapn class="price">116,62원</sapn><span
@@ -112,7 +88,7 @@
                     <tr class="cart__list__detail">
                         <td style="width: 2%;"><input type="checkbox"></td>
                         <td style="width: 13%;">
-                            <img src="" alt="magic mouse">
+                            <img src="image/mouse.jpg" alt="magic mouse">
                         </td>
                         <td style="width: 27%;"><a href="#">컴퓨존</a><span class="cart__list__smartstore"> 스마트스토어</span>
                             <p>[애플] Magic Mouse [MK2E3KH/A]</p>
@@ -142,9 +118,8 @@
         </table>
         <div class="cart__mainbtns">
             <button class="cart__bigorderbtn left">쇼핑 계속하기</button>
-            <button class="cart__bigorderbtn right" onclick="requestPay()">주문</a>주문하기</button>
+            <button class="cart__bigorderbtn right" onclick="requestPay()">주문하기</button>
         </div>
     </section>
-
 </body>
 </html>

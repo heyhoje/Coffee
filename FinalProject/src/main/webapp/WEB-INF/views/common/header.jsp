@@ -19,8 +19,8 @@
 <!-- bootstrap css -->
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/bootstrap.min.css'/>">
-<!-- style css -->
-<link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>">
+<!-- header css -->
+<link rel="stylesheet" href="<c:url value='/resources/css/header.css'/>">
 <!-- Responsive-->
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/responsive.css'/>">
@@ -61,7 +61,7 @@
                         <a class="nav-link" href="resources/about.html"><img src="<c:url value='/resources/images/소개.png'/>"></a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='/main/promotion'/>"><img id="eventmenu" src="<c:url value='/resources/images/이벤트&뉴스.png'/>" style="margin-left:10px;"></a>
+                        <a class="nav-link" href="<c:url value='/main/promotion'/>"><img id="eventmenu" src="<c:url value='/resources/images/이벤트&뉴스.png'/>"></a>
                      </li>
                      <li class="nav-item">
                         <a class="nav-link" href="<c:url value='/order/store'/>"><img src="<c:url value='/resources/images/주문.png'/>"></a>

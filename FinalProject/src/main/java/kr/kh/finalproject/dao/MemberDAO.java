@@ -6,6 +6,9 @@ import kr.kh.finalproject.vo.MemberVO;
 
 public interface MemberDAO {
 
-	boolean insertMember(@Param("me_io_num")MemberVO member);
+	boolean insertMember(@Param("member")MemberVO member);
+
+	MemberVO selectMember(@Param("id")String id);
+
 
 }
