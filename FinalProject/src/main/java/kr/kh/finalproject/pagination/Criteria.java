@@ -9,7 +9,8 @@ public class Criteria {
 	
 	public Criteria() {
 		page = 1;
-		perPageNum = 10;
+		perPageNum = 8; // 사진으로 배치할 경우, 몇개씩 배치할지를 어떻게 적용할까?
+						// 전체 페이지에 나오는 게시물 개수 (4로 설정하면 X한 행에 4개의 이미지X가 배치되는것! 아님. 전체페이지 개수)
 	}
 	
 	public Criteria(int page, int perPageNum) {

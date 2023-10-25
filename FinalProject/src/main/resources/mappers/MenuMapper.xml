@@ -4,14 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.finalproject.dao.MenuDAO">
 	
-	<!-- 메뉴 대분류/중분류 카테고리 -->
+	<!-- 메뉴 대분류에 맞는 중분류이름 -->
 	<select id="selectMenuList" resultType="kr.kh.finalproject.vo.MCategoryVO">
-		select * from medium_category join large_category on mc_lc_num = lc_num;
-		<!-- where mn_mc_num = #{category} -->
+		select mc_name from medium_category join large_category on mc_lc_num = lc_num
+		where lc_name = #{category};
 	</select>
-	<!-- 메뉴 이미지/사진파트 -->
+	<!-- 메뉴 중분류에 맞는 메뉴 정보 -->
 	<select id="selectMainList" resultType="kr.kh.finalproject.vo.MenuVO">
-		select mn_name from menu <!-- where mn_num = ${mn_num}  -->
+		 select * from menu <!-- where mn_num = ${mn_num} -->
+		 	join medium_category on mc_mn_num = mn_num
+		 	 
 	</select>
 </mapper>
 
