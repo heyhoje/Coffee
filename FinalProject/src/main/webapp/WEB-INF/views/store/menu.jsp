@@ -36,15 +36,7 @@
 			<input type=checkbox> 전체
 			<input type=checkbox> 신메뉴
 			<c:forEach items="${list}" var="category">
-				<c:if test == "lc_name = '음료'">
-					<input type=checkbox> ${category.mc_name}				
-				</c:if>
-				<c:if test == "lc_name = '푸드'">
-					<input type=checkbox> ${category.mc_name}				
-				</c:if>
-				<c:if test == "lc_name = 'MD'">
-					<input type=checkbox> ${category.mc_name}				
-				</c:if>
+				<input type=checkbox> ${category.mc_name}				
 			</c:forEach>
 			
 		</div>
