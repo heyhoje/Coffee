@@ -107,7 +107,7 @@
 					<form action="<c:url value='/member/signup2'/>" method="post">
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_manager">담당자</label> <input type="text"
+								<label for="bm_manager">매니저</label> <input type="text"
 									class="form-control" id="inputEmail4" placeholder="성함을 입력하세요"
 									name="bm_manager" required="">
 							</div>
@@ -159,7 +159,7 @@
 									class="form-control" id="inputPassword4"
 									placeholder="매장 주소를 입력하세요" name="bm_address" required="">
 							</div>
-						<input type="hidden" name="user_aorb" value="담당자">
+						<input type="hidden" name="user_aorb" value="매니저">
 						</div>
 						<div class="form-group form-row">
 							<div class="col-md-12">

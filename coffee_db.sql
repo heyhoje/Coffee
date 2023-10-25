@@ -294,4 +294,3 @@ ALTER TABLE `promotion_on` ADD CONSTRAINT `FK_order_menu_TO_promotion_on_1` FORE
 REFERENCES `order_menu` (
 	`or_num`
 );
-

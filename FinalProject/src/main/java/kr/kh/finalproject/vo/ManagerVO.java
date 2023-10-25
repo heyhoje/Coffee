@@ -3,7 +3,7 @@ package kr.kh.finalproject.vo;
 import lombok.Data;
 
 @Data
-public class BusinessVO {
+public class ManagerVO {
 
 	/* 사업자  */
 	private String bm_id; //아이디
