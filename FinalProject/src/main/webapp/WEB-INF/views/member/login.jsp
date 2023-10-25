@@ -6,25 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-      <!-- bootstrap css -->
-      <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css'/>">
-      <!-- style css -->
-      <link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>">
-      <!-- Responsive-->
-      <link rel="stylesheet" href="<c:url value='/resources/css/responsive.css'/>">
-      <!-- fevicon -->
-      <link rel="icon" href="<c:url value='/resources/images/fevicon.png"'/> type="image/gif" />
-      <!-- Scrollbar Custom CSS -->
-      <link rel="stylesheet" href="<c:url value='/resources/css/jquery.mCustomScrollbar.min.css'/>">
-      <!-- Tweaks for older IEs-->
+
+		<!-- style css -->
+		<link rel="stylesheet" href="<c:url value='/resources/css/login.css'/>">
       
-      <!-- owl stylesheets --> 
-      <link rel="stylesheet" href="<c:url value='/resources/css/owl.carousel.min.css'/>">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-      <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
-	  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-	  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
       <!--Fontawesome CDN-->
 	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
       <!-- 카카오 로그인 -->
@@ -41,14 +26,14 @@
 </head>
 <body>
 	<!-- The Login Modal -->
-	<div class="modal" id="loginModal" tabindex="-1" role="dialog"
+	<div class="modal login-modal" id="loginModal" tabindex="-1" role="dialog"
 		aria-labelledby="loginModalLabel" aria-hidden="true" id="loginPage">
 		<!-- <button type="button" class="close" data-dismiss="modal" style="display: none">&times;</button> -->
 		<div class="modal-container">
 			<div class="d-flex justify-content-center h-100">
 				<div class="card">
 					<div class="card-header">
-						<h3 style="color: white;">Sign In</h3>
+						<h3 style="color: white;">로그인</h3>
 					</div>
 					<div class="card-body">
 						<form>
@@ -56,7 +41,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
 								</div>
-								<input type="text" class="form-control" placeholder="username">
+								<input type="text" class="form-control" placeholder="아이디">
 
 							</div>
 							<div class="input-group form-group">
@@ -64,11 +49,10 @@
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
 								<input type="password" class="form-control"
-									placeholder="password">
+									placeholder="비밀번호">
 							</div>
 							<div class="row align-items-center remember">
-								<input style="margin-left: 20px;" type="checkbox">Remember
-								Me
+								<input style="margin-left: 20px;" type="checkbox">로그인 기억하기
 							</div>
 							<div class="form-group">
 								<div class="flashing column">
@@ -94,23 +78,21 @@
 								</div>
 								<div>
 									<input style="max-height: 44px; margin: auto; float: right;"
-										type="submit" value="Login" class="btn login_btn">
+										type="submit" value="로그인" class="btn login_btn">
 								</div>
 							</div>
 							<div class="card-footer" style="margin-top: 120px;">
 								<div style="color: white;"
 									class="d-flex justify-content-center links">
-									Don't have an account?<a href="<c:url value='/member/signup'/>">Sign
-										Up</a>
+									회원이 아니신가요?<a
+										href="<c:url value='/member/signup2'/>">회원가입</a>
 								</div>
 								<div class="d-flex justify-content-center">
-									<a href="#">Forgot your password?</a>
+									<a href="<c:url value='/member/forgotpw'/>">아이디/비밀번호찾기</a>
 								</div>
 							</div>
 						</form>
 					</div>
-
-
 				</div>
 			</div>
 		</div>
@@ -322,6 +304,5 @@
 	<script async defer crossorigin="anonymous"
 		src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=903275711202980"
 		nonce="SiOBIhLG"></script>
-	
 </body>
 </html>
