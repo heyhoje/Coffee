@@ -104,7 +104,7 @@
 					aria-labelledby="register-tab">
 					<h4 class="text-center mt-4 mb-4"
 						style="text-transform: uppercase;">매니저 회원가입</h4>
-					<form action="<c:url value='/manager/signup2'/>" method="post">
+					<form action="<c:url value='/member/signup2'/>" method="post">
 						<div class="form-row">
 							<div class="form-group col-md-12">
 								<label for="bm_manager">매니저</label> <input type="text"

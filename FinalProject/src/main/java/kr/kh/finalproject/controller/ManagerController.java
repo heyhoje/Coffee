@@ -18,13 +18,13 @@ public class ManagerController {
 	@Autowired
 	ManagerService managerService;
 	
-	@RequestMapping(value="member/signup2", method=RequestMethod.GET)
+	@RequestMapping(value="/manager/signup2", method=RequestMethod.GET)
 	public String signup() {
 		
-		return "/member/signup2";
+		return "/manager/signup2";
 	}
 	
-	@RequestMapping(value="/member/signup2", method=RequestMethod.POST)
+	@RequestMapping(value="/manager/signup2", method=RequestMethod.POST)
 	public String managerRegister(ManagerVO manager, Model model) {
 		boolean res = managerService.managerRegister(manager);
 		if(res) {
@@ -32,7 +32,7 @@ public class ManagerController {
 			model.addAttribute("url", "");
 		} else {
 			model.addAttribute("msg", "회원가입 실패!");
-			model.addAttribute("url", "/member/signup2");
+			model.addAttribute("url", "/manager/signup2");
 		}
 		return "/main/message";
 	}
