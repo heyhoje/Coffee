@@ -17,8 +17,6 @@
       <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
       <!-- 네이버 로그인 -->
       <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-      <!-- 페이스북 로그인 -->
-      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=1588150011384568" nonce="SiOBIhLG"></script>
       <!-- 구글 로그인  -->
       <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
       <!-- 구글 로그인 OAuth 2.0 클라이언트 ID -->
@@ -286,44 +284,6 @@
 	</script>
 
 	<script>
-	<!-- 페이스북 로그인 -->
-		//기존 로그인 상태를 가져오기 위해 Facebook에 대한 호출
-		function statusChangeCallback(res) {
-			statusChangeCallback(response);
-		}
-
-		function fnFbCustomLogin() {
-			FB.login(function(response) {
-				if (response.status === 'connected') {
-					FB.api('/me', 'get', {
-						fields : 'name,email'
-					}, function(r) {
-						console.log(r);
-					})
-				} else if (response.status === 'not_authorized') {
-					// 사람은 Facebook에 로그인했지만 앱에는 로그인하지 않았습니다.
-					alert('앱에 로그인해야 이용가능한 기능입니다.');
-				} else {
-					// 그 사람은 Facebook에 로그인하지 않았으므로이 앱에 로그인했는지 여부는 확실하지 않습니다.
-					alert('페이스북에 로그인해야 이용가능한 기능입니다.');
-				}
-			}, {
-				scope : 'public_profile,email'
-			});
-		}
-
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId : '903275711202980', // 내 앱 ID를 입력한다.
-				cookie : true,
-				xfbml : true,
-				version : 'v10.0'
-			});
-			FB.AppEvents.logPageView();
-		};
-	</script>
-
-	<script>
 	<!-- 카카오 로그인  -->
 		Kakao.init('b2ec646ca536be97bb14d5da3d5ff63b'); //발급받은 키 중 javascript키를 사용해준다.
 		console.log(Kakao.isInitialized()); // sdk초기화여부판단
@@ -413,9 +373,6 @@
 
 		}
 	</script>
-	<!-- 페이스북 앱아이디  -->
-	<script async defer crossorigin="anonymous"
-		src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=903275711202980"
-		nonce="SiOBIhLG"></script>
+	
 </body>
 </html>
