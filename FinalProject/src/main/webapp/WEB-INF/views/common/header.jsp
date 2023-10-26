@@ -69,19 +69,15 @@
 						<li class="nav-item active"><a class="nav-link"
 							href="resources/about.html" style="font-family: 'BM HANNA Pro', sans-serif;">소개</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/main/promotion'/>"></a></li>
+							href="<c:url value='/main/promotion'/>"style="font-family: 'BM HANNA Pro', sans-serif;">이벤트&프로모션</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/order/store'/>"><img
-								src="<c:url value='/resources/images/주문.png'/>"></a></li>
+							href="<c:url value='/order/store'/>"style="font-family: 'BM HANNA Pro', sans-serif;">주문</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/main/gallery'/>"><img
-								src="<c:url value='/resources/images/갤러리.png'/>"></a></li>
+							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">갤러리</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="resources/contact.html"><img
-								src="<c:url value='/resources/images/채용정보.png'/>"></a></li>
+							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">채용정보</a></li>
 						<li class="nav-item mr-5"><a class="nav-link"
-							href="resources/contact.html"><img
-								src="<c:url value='/resources/images/고객센터.png'/>"></a></li>
+							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">고객센터</a></li>
 						<li class="nav-item"><span
 							style="color: white; float: right;">${user.me_oi_id}</span></li>
 						<c:if test="${user == null && user2 == null}">
