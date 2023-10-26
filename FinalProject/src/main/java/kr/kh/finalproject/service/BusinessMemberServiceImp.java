@@ -28,19 +28,19 @@ public class BusinessMemberServiceImp implements BusinessMemberService{
 		if (!checkIdRegex(businessMember.getBm_Id()) || !checkPwRegex(businessMember.getBm_Pw())) {
 			return null;
 		}
-		// ¾ÆÀÌµð¿Í ÀÏÄ¡ÇÏ´Â È¸¿ø Á¤º¸¸¦ °¡Á®¿È
+		// ï¿½ï¿½ï¿½Ìµï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		BusinessMemberVO user2 = businessMemberDao.selectMember(businessMember.getBm_Id());
 		System.out.println(user2);
-		// ¾ÆÀÌµð¿Í ÀÏÄ¡ÇÏ´Â È¸¿ø Á¤º¸°¡ ÀÖ°í, ºñ¹øÀÌ ÀÏÄ¡ÇÏ¸é
-		//if (user != null && passwordEncoder.matches(member.getMe_pw(), user.getMe_pw())) {
-		if (user2 != null && user2.getBm_Pw().equals(businessMember.getBm_Pw())) {
+		// ï¿½ï¿½ï¿½Ìµï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ï¸ï¿½
+		if (user2 != null && passwordEncoder.matches(user2.getBm_Pw(), user2.getBm_Pw())) {
+		//if (user2 != null && user2.getBm_Pw().equals(businessMember.getBm_Pw())) {
 			return user2;
 		}
 		return null;
 	}
 
 	private boolean checkIdRegex(String id) {
-		// ÀüÃ¼ 6~20ÀÚ, ¿µ¹®À¸·Î ½ÃÀÛ, ¿µ¹® ¼ýÀÚ¸¸ °¡´É
+		// ï¿½ï¿½Ã¼ 6~20ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 		String regexId = "^[a-zA-Z]\\w{4,15}$";
 		if (id == null) {
 			return false;

@@ -9,6 +9,6 @@
 	</insert>
 	
 	<select id="selectManager" resultType="kr.kh.finalproject.vo.ManagerVO">
-		select * from user where bm_id = #{id}
+		select * from business_member where bm_id = #{bm_id}
 	</select>
 </mapper>
