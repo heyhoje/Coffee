@@ -7,6 +7,7 @@
 		insert into user (user_id, user_aorb, user_phone) 
 		values (#{member.user_id}, #{member.user_aorb}, #{member.user_phone})
 	</insert>
+	
 	<insert id="insertMember">
 		insert into member(me_user_id, me_pw, me_name, me_email)
 		values (#{member.user_id}, #{member.me_pw}, #{member.me_name}, #{member.me_email})
@@ -15,4 +16,14 @@
 	<select id="selectMember" resultType="kr.kh.finalproject.vo.MemberVO">
 		select * from user where user_id = #{id} 
 	</select>
+
+	<update id="updateMemberSession">
+		update
+			member
+		set
+			me_session_id = #{member.me_session_id},
+			me_session_limit = #{member.me_session_limit}
+		where
+			me_id = #{member.me_id}
+	</update>
 </mapper>

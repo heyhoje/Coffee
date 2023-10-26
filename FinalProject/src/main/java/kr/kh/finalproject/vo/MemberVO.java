@@ -14,6 +14,7 @@ public class MemberVO extends UserVO{
 	private String me_session_id; 
 	private Date me_session_limit; 
 	
+
 	private boolean autoLogin;
 
 	@Override

@@ -1,0 +1,10 @@
+@charset "EUC-KR";
+	.container {
+  	text-align: center; padding: 20px;
+  	}
+  	.box{
+  	padding: 20px;
+  	}
+  	.checkbox{
+  	border: 3px solid black; text-align: left;
+  	}

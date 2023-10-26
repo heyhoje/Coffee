@@ -1,3 +1,4 @@
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -22,70 +23,78 @@
       <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
       <!-- 구글 로그인 OAuth 2.0 클라이언트 ID -->
       <meta name ="google-signin-client_id" content="149402920505-d1e55rs2dj0r689vqffl8nhqkaeair15.apps.googleusercontent.com">
-      
+
 </head>
 <body>
-	<!-- The Login Modal -->
-	<div class="modal login-modal" id="loginModal" tabindex="-1" role="dialog"
-		aria-labelledby="loginModalLabel" aria-hidden="true" id="loginPage">
+	<!-- 회원 로그인 모달창 -->
+	<div class="modal login-modal" id="loginModal" tabindex="-1"
+		role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true"
+		id="loginPage">
 		<!-- <button type="button" class="close" data-dismiss="modal" style="display: none">&times;</button> -->
 		<div class="modal-container">
 			<div class="d-flex justify-content-center h-100">
 				<div class="card">
 					<div class="card-header">
-						<h3 style="color: white;">로그인</h3>
+						<h3 style="color: white;">회원 로그인</h3>
 					</div>
 					<div class="card-body">
-						<form>
+						<form action="<c:url value='/member/login'/>" method="post">
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
 								</div>
-								<input type="text" class="form-control" placeholder="아이디">
+								<input type="text" name="me_oi_id" required class="form-control"
+									placeholder="회원 아이디">
 
 							</div>
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
-								<input type="password" class="form-control"
-									placeholder="비밀번호">
+								<input type="password" name="me_pw" required
+									class="form-control" placeholder="비밀번호">
 							</div>
 							<div class="row align-items-center remember">
-								<input style="margin-left: 20px;" type="checkbox">로그인 기억하기
+								<label style="color: white;"> <input
+									style="color: white; margin-left: 20px; margin-right: 5px;"
+									type="checkbox"> 아이디 기억
+								</label> <label style="color: white;"for="autoLogin"> <input
+									style="color: white; margin-left: 15px; margin-right: 5px;"
+									type="checkbox"> 자동 로그인
+								</label>
 							</div>
 							<div class="form-group">
 								<div class="flashing column">
 									<figure>
 										<img id="naverIdLogin_loginButton" href="javascript:void(0)"
-											style="max-width: 38px; max-height: 38px; float: left;"
+											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left;"
 											src="<c:url value='/resources/images/navericon.png'/>">
 									</figure>
 								</div>
 								<div class="flashing column">
 									<figure>
 										<img onclick="kakaoLogin();" href="javascript:void(0)"
-											style="max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
+											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
 											src="<c:url value='/resources/images/kakaoicon.png'/>">
 									</figure>
 								</div>
 								<div class="flashing column">
 									<figure>
 										<img id="GgCustomLogin" href="javascript:void(0)"
-											style="max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
+											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
 											src="<c:url value='/resources/images/googleicon.png'/>">
 									</figure>
 								</div>
 								<div>
-									<input style="max-height: 44px; margin: auto; float: right;"
+									<input
+										style="max-height: 44px; max-width: 100px; margin: auto; float: right;"
 										type="submit" value="로그인" class="btn login_btn">
 								</div>
 							</div>
 							<div class="card-footer" style="margin-top: 120px;">
 								<div style="color: white;"
 									class="d-flex justify-content-center links">
-									회원이 아니신가요?<a
-										href="<c:url value='/member/signup2'/>">회원가입</a>
+									회원이 아니신가요?<a href="<c:url value='/member/signup2'/>">회원가입</a>
 								</div>
 								<div class="d-flex justify-content-center">
 									<a href="<c:url value='/member/forgotpw'/>">아이디/비밀번호찾기</a>
@@ -97,32 +106,137 @@
 			</div>
 		</div>
 	</div>
+	<!-- 사업자로그인 모달창 -->
+	<div class="modal login-modal" id="loginModal2" tabindex="-1"
+		role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true"
+		id="loginPage2">
+		<!-- <button type="button" class="close" data-dismiss="modal" style="display: none">&times;</button> -->
+		<div class="modal-container">
+			<div class="d-flex justify-content-center h-100">
+				<div class="card">
+					<div class="card-header">
+						<h3 style="color: white;">사업자 로그인</h3>
+					</div>
+					<div class="card-body">
+						<form action="<c:url value='/member/login2'/>" method="post">
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-user"></i></span>
+								</div>
+								<input type="text" name="bm_Id" required class="form-control"
+									placeholder="사업자 아이디">
 
+							</div>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-key"></i></span>
+								</div>
+								<input type="password" name="bm_Pw" required
+									class="form-control" placeholder="비밀번호">
+							</div>
+							<div class="row align-items-center remember">
+								<input style="margin-left: 20px;" type="checkbox">로그인
+								기억하기
+							</div>
+							<div class="form-group">
+								<div class="flashing column">
+									<figure>
+										<img id="naverIdLogin_loginButton" href="javascript:void(0)"
+											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left;"
+											src="<c:url value='/resources/images/navericon.png'/>">
+									</figure>
+								</div>
+								<div class="flashing column">
+									<figure>
+										<img onclick="kakaoLogin();" href="javascript:void(0)"
+											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
+											src="<c:url value='/resources/images/kakaoicon.png'/>">
+									</figure>
+								</div>
+								<div class="flashing column">
+									<figure>
+										<img id="GgCustomLogin" href="javascript:void(0)"
+											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
+											src="<c:url value='/resources/images/googleicon.png'/>">
+									</figure>
+								</div>
+								<div>
+									<input
+										style="max-height: 44px; max-width: 100px; margin: auto; float: right;"
+										type="submit" value="로그인" class="btn login_btn">
+								</div>
+							</div>
+							<div class="card-footer" style="margin-top: 120px;">
+								<div style="color: white;"
+									class="d-flex justify-content-center links">
+									회원이 아니신가요?<a href="<c:url value='/member/signup2'/>">회원가입</a>
+								</div>
+								<div class="d-flex justify-content-center">
+									<a href="<c:url value='/member/forgotpw2'/>">아이디/비밀번호찾기</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 회원 로그아웃 모달창 -->
+	<div class="modal login-modal" id="logoutModal" tabindex="-1"
+		role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true"
+		id="logoutPage">
+		<!-- <button type="button" class="close" data-dismiss="modal" style="display: none">&times;</button> -->
+		<div class="modal-container">
+			<div class="d-flex justify-content-center h-100">
+				<div class="card" style="height: 150px">
+					<div class="card-header">
+						<h1 style="margin-top: 2%; text-align: center; color: white;">로그아웃하시겠습니까?</h1>
+					</div>
+					<div class="card-body" style="height: 300px">
+						<form action="<c:url value='/member/logout'/>" method="post">
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<input
+										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto; margin-left: 134%"
+										type="submit" value="로그아웃" class="btn logout_btn">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 사업자 로그아웃 모달창 -->
+	<div class="modal login-modal" id="logoutModal2" tabindex="-1"
+		role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true"
+		id="logoutPage">
+		<!-- <button type="button" class="close" data-dismiss="modal" style="display: none">&times;</button> -->
+		<div class="modal-container">
+			<div class="d-flex justify-content-center h-100">
+				<div class="card" style="height: 150px">
+					<div class="card-header">
+						<h1 style="margin-top: 2%; text-align: center; color: white;">로그아웃하시겠습니까?</h1>
+					</div>
+					<div class="card-body" style="height: 300px">
+						<form action="<c:url value='/member/logout2'/>" method="post">
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<input
+										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto; margin-left: 134%"
+										type="submit" value="로그아웃" class="btn logout_btn">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<script>
-		function showLogoutButton() {
-			document.getElementById("login").style.display = "none";
-			document.getElementById("logout").style.display = "block";
-
-			document.getElementById("login").addEventListener("click",
-					function() {
-						// 로그인 프로세스를 완료한 후
-						// 로그인 버튼을 숨기고 로그아웃 버튼을 표시
-						showLogoutButton();
-					});
-
-			document
-					.getElementById("logout")
-					.addEventListener(
-							"click",
-							function() {
-								// 로그아웃 프로세스를 완료한 후
-								// 로그인 버튼을 표시하고 로그아웃 버튼을 숨김
-								document.getElementById("login").style.display = "block";
-								document.getElementById("logout").style.display = "none";
-							});
-		}
+		
 	</script>
-
 	<script>
 	<!-- 구글 로그인 -->
 		//처음 실행하는 함수
@@ -145,7 +259,6 @@
 												onSignInFailure);
 							})
 		}
-
 		function onSignIn(googleUser) {
 			var access_token = googleUser.getAuthResponse().access_token
 			$.ajax({
