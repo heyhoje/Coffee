@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.service.MemberService;
-import kr.kh.finalproject.vo.MemberVO;
 
 @Controller
 
@@ -58,13 +57,6 @@ public class MemberController {
 		return "/member/forgotpw";
 	}
 
-
-	@ResponseBody
-	@PostMapping("/member/id/check")
-	public boolean idCheck(@RequestParam("id") String id){
-		return memberService.checkId(id);
-	}
-	
 //	회원 로그인	
 	@GetMapping("/member/login")
 	public String login() {

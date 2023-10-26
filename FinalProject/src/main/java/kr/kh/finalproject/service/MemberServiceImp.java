@@ -59,39 +59,19 @@ public class MemberServiceImp implements MemberService {
 		return memberDao.selectMember(id) == null;
 	}
 
-
-
 	@Override
 	public MemberVO login(MemberVO member) {
-		if (!checkIdRegex(member.getMe_oi_id()) || !checkPwRegex(member.getMe_pw())) {
+		if (!checkIdRegex(member.getUser_id()) || !checkPwRegex(member.getMe_pw())) {
 			return null;
 		}
-		// ���̵�� ��ġ�ϴ� ȸ�� ������ ������
-		MemberVO user = memberDao.selectMember(member.getMe_oi_id());
+		MemberVO user = memberDao.selectMember(member.getUser_id());
 		System.out.println(user);
-		// ���̵�� ��ġ�ϴ� ȸ�� ������ �ְ�, ����� ��ġ�ϸ�
+		
 		//if (user != null && passwordEncoder.matches(member.getMe_pw(), user.getMe_pw())) {
 		if (user != null && user.getMe_pw().equals(member.getMe_pw())) {
 			return user;
 		}
 		return null;
-	}
-
-	private boolean checkIdRegex(String id) {
-		// ��ü 6~20��, �������� ����, ���� ���ڸ� ����
-		String regexId = "^[a-zA-Z]\\w{4,15}$";
-		if (id == null) {
-			return false;
-		}
-		return Pattern.matches(regexId, id);
-	}
-
-	private boolean checkPwRegex(String pw) {
-		String regexPw = "\\w{8,20}";
-		if (pw == null) {
-			return false;
-		}
-		return Pattern.matches(regexPw, pw);
 	}
 
 	@Override
