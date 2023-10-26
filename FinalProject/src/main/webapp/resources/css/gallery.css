@@ -15,7 +15,6 @@
 	flex-wrap: wrap;
 	margin-right: -15px;
 	margin-left: -15px;
-	gap: 3px;
 }
 
 .main_bar {
@@ -24,12 +23,12 @@
 	font-weight: bold;
 	color: white;
 	text-align: center;
-	border-radius: 10px;
 	padding: 1rem;
 	height: 250px;
-	background-color: #212529;
+	background-color: #fff;
 	flex: 1;
 	transition: 0.2s ease-in-out;
+	border-bottom: 55px solid black;
 }
 
 .main_bar:hover {
