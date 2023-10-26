@@ -79,7 +79,7 @@
 						<li class="nav-item mr-5"><a class="nav-link"
 							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">고객센터</a></li>
 						<li class="nav-item"><span
-							style="color: white; float: right;">${user.me_oi_id}</span></li>
+							style="color: white; float: right;">${user.me_user_id}</span></li>
 						<c:if test="${user == null && user2 == null}">
 							<li class="form-group" id="loginButton"><input type="submit"
 								value="회원 로그인" class="btn login_btn" data-toggle="modal"

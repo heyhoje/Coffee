@@ -61,14 +61,13 @@ public class MemberServiceImp implements MemberService {
 
 	@Override
 	public MemberVO login(MemberVO member) {
-		if (!checkIdRegex(member.getUser_id()) || !checkPwRegex(member.getMe_pw())) {
+		if (!checkIdRegex(member.getMe_user_id()) || !checkPwRegex(member.getMe_pw())) {
 			return null;
 		}
-		MemberVO user = memberDao.selectMember(member.getUser_id());
+		MemberVO user = memberDao.selectMember(member.getMe_user_id());
 		System.out.println(user);
 		
-		//if (user != null && passwordEncoder.matches(member.getMe_pw(), user.getMe_pw())) {
-		if (user != null && user.getMe_pw().equals(member.getMe_pw())) {
+		if (user != null && passwordEncoder.matches(member.getMe_pw(), user.getMe_pw())) {
 			return user;
 		}
 		return null;

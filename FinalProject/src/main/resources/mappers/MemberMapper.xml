@@ -14,7 +14,7 @@
 	</insert>
 	
 	<select id="selectMember" resultType="kr.kh.finalproject.vo.MemberVO">
-		select * from user where user_id = #{id} 
+		select * from member where me_user_id = #{id} 
 	</select>
 
 	<update id="updateMemberSession">
@@ -24,6 +24,6 @@
 			me_session_id = #{member.me_session_id},
 			me_session_limit = #{member.me_session_limit}
 		where
-			me_id = #{member.me_id}
+			me_user_id = #{member.me_user_id}
 	</update>
 </mapper>

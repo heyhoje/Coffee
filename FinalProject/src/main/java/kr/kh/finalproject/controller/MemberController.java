@@ -48,22 +48,19 @@ public class MemberController {
 	public boolean idCheck(@RequestParam("id") String id){
 		return memberService.checkId(id);
 	}
-	
-	//비밀번호 찾기 페이지
-
+	//	아이디 비밀번호 찾기 페이지
 	@RequestMapping(value="/member/forgotpw", method=RequestMethod.GET)
 	public String forgotpw() {
 		
 		return "/member/forgotpw";
 	}
+	
 
-//	회원 로그인	
+	//	회원 로그인	
 	@GetMapping("/member/login")
 	public String login() {
 		return "/member/login";
 	}
-	
-
 
 	@PostMapping("/member/login")
 	public String loginPost(Model model, MemberVO member) {
