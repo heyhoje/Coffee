@@ -9,34 +9,14 @@
 <link rel="stylesheet" href="<c:url value='/resources/css/gallery.css'/>">
 <style type="text/css">
 
-.image-container {
-    position: relative; /* 컨테이너를 상대 위치로 설정 */
-    display: inline-block;
-}
-
-.image-container:hover .image-title {
-    display: block;
-}
-
-.image-title {
-    position: absolute; /* 제목을 절대 위치로 설정 */
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* 투명한 검은색 배경 */
-    color: white;
-    padding: 5px;
-    text-align: center;
-    display: none; /* 초기에는 숨김 상태 */
-}
 
 
 </style>
 </head>
 <body>
 	<!-- Gallery -->
-	<div class="row">
-		<div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+	<div class="row" id="gallery">
+		<div class="col-lg-4 col-md-12 mb-4 mb-lg-0" ">
 			<img
 				src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
 				class="w-100 shadow-1-strong rounded mb-4" 
