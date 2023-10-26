@@ -6,9 +6,16 @@ import kr.kh.finalproject.vo.MemberVO;
 
 public interface MemberDAO {
 
+
 	boolean insertMember(@Param("member")MemberVO member);
 
 	MemberVO selectMember(@Param("id")String id);
+
+
+
+	void updateMemberSession(MemberVO user);
+
+	MemberVO selectMemberBySessionId(String sId);
 
 
 }

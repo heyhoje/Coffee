@@ -1,0 +1,11 @@
+
+@font-face {
+    font-family: 'BM HANNA Pro';
+    src: url('BMHANNAPro.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'BM HANNA Pro', sans-serif;
+}
