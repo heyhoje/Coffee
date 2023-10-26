@@ -54,15 +54,4 @@
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 	</interceptors>
-	
-<!-- 	<beans:bean id="loginInterceptor2"
-		class="kr.kh.finalproject.interceptor.LoginInterceptor2" />
-	<interceptors>
-		<interceptor>
-			매핑할 url
-			<mapping path="/member/login" />
-			<beans:ref bean="loginInterceptor2" />
-		</interceptor>
-	</interceptors> -->
-
 </beans:beans> 

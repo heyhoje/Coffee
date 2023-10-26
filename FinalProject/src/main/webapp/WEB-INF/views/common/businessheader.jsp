@@ -4,6 +4,9 @@
 <!doctype html>
 <html lang="ko">
 <head>
+<!-- 폰트 -->
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/resources/static/fonts/font.css'/>">
 <!-- basic -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,9 +54,8 @@
 	<div class="header_section">
 		<div class="container-fluid">
 			<nav class="navbar navbar-expand-lg navbar">
-				<div class="logo">
-					<a href="<c:url value='/'/>"><img
-						src="<c:url value='/resources/images/로고.png'/>"></a>
+				<div>
+					<a href="<c:url value='/business/home'/>" style="color:white; font-size:50px; max-height:30px; font-family: 'BM HANNA Pro', sans-serif;"> 커피의 민족</a>
 				</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarNav" aria-controls="navbarNav"
@@ -63,25 +65,17 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link"
-							href="resources/about.html"><img
-								src="<c:url value='/resources/images/소개.png'/>"></a></li>
+							href="resources/about.html"></a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/main/promotion'/>"><img id="eventmenu"
-								src="<c:url value='/resources/images/이벤트&뉴스.png'/>"
-								style="margin-left: 10px;"></a></li>
+							href="<c:url value='/main/promotion'/>"></a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/order/store'/>"><img
-								src="<c:url value='/resources/images/주문.png'/>"></a></li>
-
+							href="<c:url value='/order/store'/>"></a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/main/gallery'/>"><img
-								src="<c:url value='/resources/images/갤러리.png'/>"></a></li>
+							href="<c:url value='/main/gallery'/>"></a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="resources/contact.html"><img
-								src="<c:url value='/resources/images/채용정보.png'/>"></a></li>
+							href="resources/contact.html"></a></li>
 						<li class="nav-item mr-5"><a class="nav-link"
-							href="resources/contact.html"><img
-								src="<c:url value='/resources/images/고객센터.png'/>"></a></li>
+							href="resources/contact.html"></a></li>
 						<li class="nav-item"><span
 							style="color: white; float: right;">${buser.bm_Id}</span></li>
 						<li class="nav-item">
