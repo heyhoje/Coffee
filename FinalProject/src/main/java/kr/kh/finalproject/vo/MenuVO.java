@@ -12,5 +12,5 @@ public class MenuVO {
 	
 	int mn_st_num; // 매장 고유번호
 	int mn_mc_num; // 메뉴 중분류번호
-	
+	ImageVO image;
 }

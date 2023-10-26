@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import kr.kh.finalproject.pagination.Criteria;
+import kr.kh.finalproject.vo.ImageVO;
 import kr.kh.finalproject.vo.MCategoryVO;
 import kr.kh.finalproject.vo.MenuVO;
 
@@ -14,4 +14,5 @@ public interface MenuDAO {
 
 	List<MenuVO> selectMainList(@Param("st_num")int st_num, @Param("mc_list")int[] mc_numList);
 
+	ImageVO selectMenuImage(@Param("mn_num")int mn_num);
 }

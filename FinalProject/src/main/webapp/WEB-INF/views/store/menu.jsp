@@ -50,11 +50,11 @@
 <body>
 
 	<div class="menu-container">
-		<h2>음료</h2>
+		<h2>${category.lc_name}</h2>
 		<div class="btn-group box" style="width: px;">
-			<a href="<c:url value='/store/menu/1/drink'/>" class="btn btn-success">음료</a>
-			<a href="<c:url value='/store/menu/1/food'/>" class="btn btn-success">푸드</a>
-			<a href="<c:url value='/store/menu/1/md'/>" class="btn btn-success">상품</a>
+			<a href="<c:url value='/store/menu/1/1'/>" class="btn btn-success">음료</a>
+			<a href="<c:url value='/store/menu/1/2'/>" class="btn btn-success">푸드</a>
+			<a href="<c:url value='/store/menu/1/3'/>" class="btn btn-success">상품</a>
 		</div>
 		<br>
 		<div class="checkbox box" >
@@ -78,7 +78,7 @@
 						<li class="item-image">
 							<a href="#" class="link-image">
 								<span class="box-image-menu">
-									<image class="image-menu" src="#" width="100px" height="150px" alt=""> 
+									<image class="image-menu" src="<c:url value='/image/menu/${menu.image.im_ori_name}'/>" width="100px" height="150px" alt=""> 
 								</span>
 								<div class="hover">
 									<p class="menu-title">${menu.mn_name}</p>
@@ -89,6 +89,7 @@
 				</c:forEach>
 			</div>
 		</div>
+		${menuList}
 		${list}
 	</div>
 	
