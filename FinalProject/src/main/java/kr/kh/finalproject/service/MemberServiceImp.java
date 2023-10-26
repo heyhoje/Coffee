@@ -61,11 +61,6 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public boolean checkId(String id) {
-		return memberDao.selectMember(id) == null;
-	}
-
-	@Override
 	public MemberVO login(MemberVO member) {
 		if (!checkIdRegex(member.getMe_user_id()) || !checkPwRegex(member.getMe_pw())) {
 			return null;

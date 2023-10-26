@@ -43,23 +43,17 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		
 		
 		MemberVO user = (MemberVO) modelAndView.getModel().get("user");
-		// �ڵ� �α��� üũ�� ��������
 		if (!user.isAutoLogin()) {
 			return;
 		}
 
-		// �ڵ� �α��� üũ�� ������
 		String sessionId = request.getSession().getId();
-		// ��Ű ����
 		Cookie cookie = new Cookie("FinalProject", sessionId);
-		// ��Ű ��ο� ���� �ð��� ����
 		cookie.setPath("/");
-		int time = 60 * 60 * 24 * 7; // 60 * 60 * 24 * 7 == 7���� �ʷ� ȯ��
+		int time = 60 * 60 * 24 * 7;
 		cookie.setMaxAge(time);
-		// ȭ������ ��Ű ������ ����
 		response.addCookie(cookie);
 
-		// DB ȸ�� ������ ��Ű ������ �߰�
 		Date date = new Date(System.currentTimeMillis() + time * 1000);
 		user.setMe_session_id(sessionId);
 		user.setMe_session_limit(date);

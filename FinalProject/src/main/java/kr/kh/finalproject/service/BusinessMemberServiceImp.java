@@ -28,11 +28,8 @@ public class BusinessMemberServiceImp implements BusinessMemberService{
 		if (!checkIdRegex(businessMember.getBm_Id()) || !checkPwRegex(businessMember.getBm_Pw())) {
 			return null;
 		}
-		// 아이디와 일치하는 회원 정보를 가져옴
 		BusinessMemberVO user2 = businessMemberDao.selectMember(businessMember.getBm_Id());
 		System.out.println(user2);
-		// 아이디와 일치하는 회원 정보가 있고, 비번이 일치하면
-		//if (user != null && passwordEncoder.matches(member.getMe_pw(), user.getMe_pw())) {
 		if (user2 != null && user2.getBm_Pw().equals(businessMember.getBm_Pw())) {
 			return user2;
 		}
@@ -40,7 +37,6 @@ public class BusinessMemberServiceImp implements BusinessMemberService{
 	}
 
 	private boolean checkIdRegex(String id) {
-		// 전체 6~20자, 영문으로 시작, 영문 숫자만 가능
 		String regexId = "^[a-zA-Z]\\w{4,15}$";
 		if (id == null) {
 			return false;
