@@ -22,8 +22,8 @@
 <!-- bootstrap css -->
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/bootstrap.min.css'/>">
-<!-- style css -->
-<link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>">
+<!-- header css -->
+<link rel="stylesheet" href="<c:url value='/resources/css/header.css'/>">
 <!-- Responsive-->
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/responsive.css'/>">
@@ -54,8 +54,10 @@
 	<div class="header_section">
 		<div class="container-fluid">
 			<nav class="navbar navbar-expand-lg navbar">
-				<div>
-					<a href="<c:url value='/business/home'/>" style="color:white; font-size:50px; max-height:30px; font-family: 'BM HANNA Pro', sans-serif;"> 커피의 민족</a>
+				<div class="logo">
+					<a href="<c:url value='/business/home'/>"
+						style="color: white; font-size: 60px; font-family: 'BM HANNA Pro', sans-serif;">커피의
+						민족</a>
 				</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarNav" aria-controls="navbarNav"
@@ -65,17 +67,15 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link"
-							href="resources/about.html"></a></li>
+							href="resources/about.html"
+							style="font-family: 'BM HANNA Pro', sans-serif;">메뉴</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/main/promotion'/>"></a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/order/store'/>"></a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/main/gallery'/>"></a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="resources/contact.html"></a></li>
-						<li class="nav-item mr-5"><a class="nav-link"
-							href="resources/contact.html"></a></li>
+							href="/main/promotion"
+							style="font-family: 'BM HANNA Pro', sans-serif;">주문확인</a></li>
+						<li class="nav-item"><a class="nav-link" href="/order/store"
+							style="font-family: 'BM HANNA Pro', sans-serif;">매장관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="/main/gallery"
+							style="font-family: 'BM HANNA Pro', sans-serif;">판매정보조회</a></li>
 						<li class="nav-item"><span
 							style="color: white; float: right;">${buser.bm_Id}</span></li>
 						<li class="nav-item">
@@ -104,8 +104,7 @@
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<input
-										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; 
-										max-height: 44px; max-width:100px; margin: auto; margin-left: 134%"
+										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto; margin-left: 134%"
 										type="submit" value="로그아웃" class="btn logout_btn">
 								</div>
 							</div>

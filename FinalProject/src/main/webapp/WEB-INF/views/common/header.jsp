@@ -83,7 +83,7 @@
 							href="resources/contact.html"><img
 								src="<c:url value='/resources/images/고객센터.png'/>"></a></li>
 						<li class="nav-item"><span
-							style="color: white; float: right;">${user.me_oi_id}</span></li>
+							style="color: white; float: right;">${user.me_user_id}</span></li>
 						<c:if test="${user == null && user2 == null}">
 							<li class="form-group" id="loginButton"><input type="submit"
 								value="회원 로그인" class="btn login_btn" data-toggle="modal"

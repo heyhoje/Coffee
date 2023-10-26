@@ -34,7 +34,12 @@ public class MemberServiceImp implements MemberService {
 		String encodedPassword = passwordEncoder.encode(member.getMe_pw());
 		
 		member.setMe_pw(encodedPassword);
+		/* memberDao.insertUser(member); */
 		return memberDao.insertMember(member);
+	}
+	@Override
+	public boolean checkId(String id) {
+		return memberDao.selectMember(id) == null;
 	}
 
 	private boolean checkPwRegex(String pw) {
@@ -57,11 +62,11 @@ public class MemberServiceImp implements MemberService {
 
 	@Override
 	public MemberVO login(MemberVO member) {
-		if (!checkIdRegex(member.getMe_oi_id()) || !checkPwRegex(member.getMe_pw())) {
+		if (!checkIdRegex(member.getMe_user_id()) || !checkPwRegex(member.getMe_pw())) {
 			return null;
 		}
 		// ���̵�� ��ġ�ϴ� ȸ�� ������ ������
-		MemberVO user = memberDao.selectMember(member.getMe_oi_id());
+		MemberVO user = memberDao.selectMember(member.getMe_user_id());
 		System.out.println(user);
 		// ���̵�� ��ġ�ϴ� ȸ�� ������ �ְ�, ����� ��ġ�ϸ�
 		//if (user != null && passwordEncoder.matches(member.getMe_pw(), user.getMe_pw())) {
@@ -69,23 +74,6 @@ public class MemberServiceImp implements MemberService {
 			return user;
 		}
 		return null;
-	}
-
-	private boolean checkIdRegex(String id) {
-		// ��ü 6~20��, �������� ����, ���� ���ڸ� ����
-		String regexId = "^[a-zA-Z]\\w{4,15}$";
-		if (id == null) {
-			return false;
-		}
-		return Pattern.matches(regexId, id);
-	}
-
-	private boolean checkPwRegex(String pw) {
-		String regexPw = "\\w{8,20}";
-		if (pw == null) {
-			return false;
-		}
-		return Pattern.matches(regexPw, pw);
 	}
 
 	@Override
@@ -101,4 +89,5 @@ public class MemberServiceImp implements MemberService {
 	public MemberVO getMemberBySessionId(String sId) {
 		return memberDao.selectMemberBySessionId(sId);
 	}
+
 }

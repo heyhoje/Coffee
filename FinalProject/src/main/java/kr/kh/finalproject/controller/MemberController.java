@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.service.MemberService;
-import kr.kh.finalproject.vo.MemberVO;
 
 @Controller
 

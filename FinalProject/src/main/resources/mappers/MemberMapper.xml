@@ -5,13 +5,16 @@
 
 
 <mapper namespace="kr.kh.finalproject.dao.MemberDAO">
+	
 	<insert id="insertMember">
-		insert into user(user_id, user_aorb, user_phone)
-		values(#{user_id},#{user_aorb},#{user_phone}
-	</insert>
+      insert into member(me_user_id, me_pw, me_name, me_email)
+      values (#{member.user_id}, #{member.me_pw}, #{member.me_name}, #{member.me_email})
+   </insert>
+	
 	<select id="selectMember" resultType="kr.kh.finalproject.vo.MemberVO">
-		select * from member where me_oi_id = #{id}
+		select * from member where me_user_id = #{id}
 	</select>
+	
 	<update id="updateMemberSession">
 		update
 			member
