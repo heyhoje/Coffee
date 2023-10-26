@@ -22,6 +22,8 @@
 <!-- bootstrap css -->
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/bootstrap.min.css'/>">
+<!-- login css -->
+<link rel="stylesheet" href="<c:url value='/resources/css/login.css'/>">
 <!-- header css -->
 <link rel="stylesheet" href="<c:url value='/resources/css/header.css'/>">
 <!-- Responsive-->
@@ -77,7 +79,7 @@
 						<li class="nav-item"><a class="nav-link" href="/main/gallery"
 							style="font-family: 'BM HANNA Pro', sans-serif;">판매정보조회</a></li>
 						<li class="nav-item"><span
-							style="color: white; float: right;">${buser.bm_Id}</span></li>
+							style="color: white; float: right;">${buser.bm_id}</span></li>
 						<li class="nav-item">
 						<li class="form-group" id="logoutButton2"><input
 							type="submit" value="로그아웃" class="btn float-right logout_btn"
@@ -97,7 +99,7 @@
 			<div class="d-flex justify-content-center h-100">
 				<div class="card" style="height: 150px">
 					<div class="card-header">
-						<h1 style="margin-top: 2%; text-align: center; color: white;">로그아웃하시겠습니까?</h1>
+						<h4 style="margin-top: 2%; text-align: center; color: white;">로그아웃하시겠습니까?</h4>
 					</div>
 					<div class="card-body" style="height: 300px">
 						<form action="<c:url value='/member/logout2'/>" method="post">

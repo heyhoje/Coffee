@@ -25,12 +25,12 @@ public class BusinessMemberServiceImp implements BusinessMemberService{
 
 	@Override
 	public BusinessMemberVO login(BusinessMemberVO businessMember) {
-		if (!checkIdRegex(businessMember.getBm_Id()) || !checkPwRegex(businessMember.getBm_Pw())) {
+		if (!checkIdRegex(businessMember.getBm_id()) || !checkPwRegex(businessMember.getBm_pw())) {
 			return null;
 		}
-		BusinessMemberVO user2 = businessMemberDao.selectMember(businessMember.getBm_Id());
+		BusinessMemberVO user2 = businessMemberDao.selectMember(businessMember.getBm_id());
 		System.out.println(user2);
-		if (user2 != null && user2.getBm_Pw().equals(businessMember.getBm_Pw())) {
+		if (user2 != null && user2.getBm_pw().equals(businessMember.getBm_pw())) {
 			return user2;
 		}
 		return null;

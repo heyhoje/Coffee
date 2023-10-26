@@ -121,7 +121,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
 								</div>
-								<input type="text" name="bm_Id" required class="form-control"
+								<input type="text" name="bm_id" required class="form-control"
 									placeholder="사업자 아이디">
 
 							</div>
@@ -129,7 +129,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
-								<input type="password" name="bm_Pw" required
+								<input type="password" name="bm_pw" required
 									class="form-control" placeholder="비밀번호">
 							</div>
 							<div class="row align-items-center remember">
@@ -295,6 +295,7 @@
 						url : '/v2/user/me',
 						success : function(response) {
 							console.log(response)
+							location.href = '/kakaoLoginCallback?kakaoId=' + response.id + '&email=' + response.kakao_account.email + '&nickname=' + response.properties.nickname;
 						},
 						fail : function(error) {
 							console.log(error)

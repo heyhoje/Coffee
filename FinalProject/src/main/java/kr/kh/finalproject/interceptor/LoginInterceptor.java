@@ -42,22 +42,17 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		request.getSession().setAttribute("type", type);
 		
 		
-		MemberVO user = (MemberVO) modelAndView.getModel().get("user");
-		if (!user.isAutoLogin()) {
-			return;
-		}
-
-		String sessionId = request.getSession().getId();
-		Cookie cookie = new Cookie("FinalProject", sessionId);
-		cookie.setPath("/");
-		int time = 60 * 60 * 24 * 7;
-		cookie.setMaxAge(time);
-		response.addCookie(cookie);
-
-		Date date = new Date(System.currentTimeMillis() + time * 1000);
-		user.setMe_session_id(sessionId);
-		user.setMe_session_limit(date);
-		memberService.updateMemberSession(user);
-		
+		/*
+		 * MemberVO user = (MemberVO) modelAndView.getModel().get("user"); if
+		 * (!user.isAutoLogin()) { return; }
+		 * 
+		 * String sessionId = request.getSession().getId(); Cookie cookie = new
+		 * Cookie("FinalProject", sessionId); cookie.setPath("/"); int time = 60 * 60 *
+		 * 24 * 7; cookie.setMaxAge(time); response.addCookie(cookie);
+		 * 
+		 * Date date = new Date(System.currentTimeMillis() + time * 1000);
+		 * user.setMe_session_id(sessionId); user.setMe_session_limit(date);
+		 * memberService.updateMemberSession(user);
+		 */		
 	}
 }

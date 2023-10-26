@@ -6,18 +6,18 @@ import lombok.Data;
 @Data
 public class BusinessMemberVO {
 	private boolean autoLogin;
-	private String bm_Id;
-    private String bm_Pw;
-    private String bm_Phone;
-    private String bm_Contents;
-    private String bm_Address;
-    private String bm_Geocoding;
-    private String bm_Manager;
-    private int bm_Seat;
-    private String bm_Parking;
-    private String bm_Drive;
-    private String bm_StoreName;
-    private String bm_Num;
+	private String bm_id;
+    private String bm_pw;
+    private String bm_num;
+    private String bm_phone;
+    private String bm_contents;
+    private String bm_address;
+    private String bm_geocoding;
+    private String bm_manager;
+    private int bm_seat;
+    private String bm_parking;
+    private String bm_drive;
+    private String bm_storeName;
     private String bm_session_id;
     private Date bm_session_limit;
 }

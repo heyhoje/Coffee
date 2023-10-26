@@ -50,7 +50,6 @@
 </style>
 </head>
 <body>
-
 	<!--header section start -->
 	<div class="header_section">
 		<div class="container-fluid">
