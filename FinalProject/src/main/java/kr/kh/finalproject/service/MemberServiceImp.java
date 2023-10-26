@@ -34,7 +34,9 @@ public class MemberServiceImp implements MemberService {
 		String encodedPassword = passwordEncoder.encode(member.getMe_pw());
 		
 		member.setMe_pw(encodedPassword);
-		/* memberDao.insertUser(member); */
+
+		memberDao.insertUser(member);
+
 		return memberDao.insertMember(member);
 	}
 	@Override
@@ -58,19 +60,21 @@ public class MemberServiceImp implements MemberService {
 		return Pattern.matches(regexId, id);
 	}
 
-
+	@Override
+	public boolean checkId(String id) {
+		return memberDao.selectMember(id) == null;
+	}
 
 	@Override
 	public MemberVO login(MemberVO member) {
 		if (!checkIdRegex(member.getMe_user_id()) || !checkPwRegex(member.getMe_pw())) {
 			return null;
 		}
-		// ���̵�� ��ġ�ϴ� ȸ�� ������ ������
+
 		MemberVO user = memberDao.selectMember(member.getMe_user_id());
 		System.out.println(user);
-		// ���̵�� ��ġ�ϴ� ȸ�� ������ �ְ�, ����� ��ġ�ϸ�
-		//if (user != null && passwordEncoder.matches(member.getMe_pw(), user.getMe_pw())) {
-		if (user != null && user.getMe_pw().equals(member.getMe_pw())) {
+		
+		if (user != null && passwordEncoder.matches(member.getMe_pw(), user.getMe_pw())) {
 			return user;
 		}
 		return null;

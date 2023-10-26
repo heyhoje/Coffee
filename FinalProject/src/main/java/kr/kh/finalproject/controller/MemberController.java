@@ -22,7 +22,7 @@ import kr.kh.finalproject.service.MemberService;
 public class MemberController {
 
 	@Autowired MemberService memberService;
-	//�쉶�썝媛��엯 �럹�씠吏�
+	//회원가입 페이지
 	@RequestMapping(value="/member/signup2", method=RequestMethod.GET)
 	public String signup() {
 		
@@ -31,6 +31,8 @@ public class MemberController {
 	//회원가입 기능구현 시작
 	@RequestMapping(value="/member/signup2", method=RequestMethod.POST)
 	public String signupPost(MemberVO member, Model model) {
+		System.out.println(member);
+		
 		boolean res = memberService.signup(member);
 		if(res) {
 			model.addAttribute("msg", "회원가입 성공!");
@@ -41,28 +43,24 @@ public class MemberController {
 		}
 		return "/main/message";
 	}
-	//비밀번호 찾기 페이지
-
-	@RequestMapping(value="/member/forgotpw", method=RequestMethod.GET)
-	public String forgotpw() {
-		
-		return "/member/forgotpw";
-	}
-
-
 	@ResponseBody
 	@PostMapping("/member/id/check")
 	public boolean idCheck(@RequestParam("id") String id){
 		return memberService.checkId(id);
 	}
+	//	아이디 비밀번호 찾기 페이지
+	@RequestMapping(value="/member/forgotpw", method=RequestMethod.GET)
+	public String forgotpw() {
+		
+		return "/member/forgotpw";
+	}
 	
-//	회원 로그인	
+
+	//	회원 로그인	
 	@GetMapping("/member/login")
 	public String login() {
 		return "/member/login";
 	}
-	
-
 
 	@PostMapping("/member/login")
 	public String loginPost(Model model, MemberVO member) {

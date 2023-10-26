@@ -43,14 +43,14 @@
 									name="me_name" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="me_oi_id">아이디</label> <input type="text"
+								<label for="user_id">아이디</label> <input type="text"
 									class="form-control" id="inputPassword4"
-									placeholder="아이디를 입력하세요" name="me_oi_id" required="">
+									placeholder="아이디를 입력하세요" name="user_id" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="oi_phone">전화번호</label> <input type="text"
+								<label for="user_phone">전화번호</label> <input type="text"
 									class="form-control" id="inputPassword4"
-									placeholder="전화번호를 입력하세요" name="oi_phone" required="">
+									placeholder="전화번호를 입력하세요" name="user_phone" required="">
 							</div>
 						</div>
 						<div class="form-row">
@@ -73,7 +73,7 @@
 							</div>
 
 						</div>
-
+						<input type="hidden" name="user_aorb" value="회원">
 						<div class="form-group form-row">
 							<div class="col-md-12">
 								<label class="custom-control custom-checkbox checkbox-lg">
@@ -104,10 +104,10 @@
 					aria-labelledby="register-tab">
 					<h4 class="text-center mt-4 mb-4"
 						style="text-transform: uppercase;">매니저 회원가입</h4>
-					<form action="<c:url value='/member/signup2'/>" method="post">
+					<form action="<c:url value='/manager/signup2'/>" method="post">
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_manager">담당자</label> <input type="text"
+								<label for="bm_manager">매니저</label> <input type="text"
 									class="form-control" id="inputEmail4" placeholder="성함을 입력하세요"
 									name="bm_manager" required="">
 							</div>
@@ -159,7 +159,7 @@
 									class="form-control" id="inputPassword4"
 									placeholder="매장 주소를 입력하세요" name="bm_address" required="">
 							</div>
-
+						<input type="hidden" name="user_aorb" value="매니저">
 						</div>
 						<div class="form-group form-row">
 							<div class="col-md-12">

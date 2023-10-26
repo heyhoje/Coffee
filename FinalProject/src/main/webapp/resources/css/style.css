@@ -898,3 +898,12 @@ right: 20px;
 top: -45px;
 }
 
+#bannerbox{
+	max-width:3000px;
+	padding-left:0px;
+	padding-right:0px;
+}
+.container-fluid{
+	padding-left:0px;
+	padding-right:0px;
+}

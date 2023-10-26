@@ -1,6 +1,6 @@
 package kr.kh.finalproject.interceptor;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +42,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		request.getSession().setAttribute("type", type);
 		
 		
-		/*
+		MemberVO user = (MemberVO) modelAndView.getModel().get("user");
 		// �ڵ� �α��� üũ�� ��������
 		if (!user.isAutoLogin()) {
 			return;
@@ -64,6 +64,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		user.setMe_session_id(sessionId);
 		user.setMe_session_limit(date);
 		memberService.updateMemberSession(user);
-		*/
+		
 	}
 }

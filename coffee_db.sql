@@ -52,12 +52,18 @@ CREATE TABLE `image` (
 	`im_tableNum`	int	NULL
 );
 
-DROP TABLE IF EXISTS `order`;
+DROP TABLE IF EXISTS `order_menu`;
 
-CREATE TABLE `order` (
+CREATE TABLE `order_menu` (
 	`or_num`	int	NOT NULL,
 	`or_time`	datetime	NULL,
-	`or_drinks`	varchar(20)	NULL
+	`or_drinks`	varchar(20)	NULL,
+	`or_status`	varchar(20)	NULL,
+	`mo_num`	int	NOT NULL,
+	`mo_num2`	int	NOT NULL,
+	`mo_num3`	int	NOT NULL,
+	`mo_num4`	int	NOT NULL,
+	`mo_num5`	int	NOT NULL
 );
 
 DROP TABLE IF EXISTS `user`;
@@ -74,22 +80,20 @@ CREATE TABLE `review` (
 	`re_num`	int	NOT NULL,
 	`re_contens`	longtext	NULL,
 	`re_star`	int	NULL,
-	`re_oi_num`	int	NOT NULL,
-	`re_ol_num`	int	NOT NULL,
-	`re_or_num2`	int	NOT NULL
+	`re_ol_num`	int	NOT NULL
 );
 
 DROP TABLE IF EXISTS `menu_option`;
 
 CREATE TABLE `menu_option` (
 	`mo_num`	int	NOT NULL,
+	`mo_op_name`	varchar(20)	NULL,
 	`mo_option1`	varchar(20)	NULL,
 	`mo_option2`	varchar(20)	NULL,
 	`mo_option3`	varchar(20)	NULL,
 	`mo_op_price1`	int	NULL,
 	`mo_op_price2`	int	NULL,
 	`mo_op_price3`	int	NULL,
-	`mo_op_name`	varchar(20)	NULL,
 	`mo_mn_num`	int	NOT NULL
 );
 
@@ -162,8 +166,7 @@ DROP TABLE IF EXISTS `order_list`;
 CREATE TABLE `order_list` (
 	`ol_num`	int	NOT NULL,
 	`ol_or_num`	int	NOT NULL,
-	`ol_oi_id`	varchar(20)	NOT NULL,
-	`ol_or_num2`	int	NOT NULL
+	`ol_user_id`	varchar(20)	NOT NULL
 );
 
 DROP TABLE IF EXISTS `promotion_on`;
@@ -192,7 +195,8 @@ DROP TABLE IF EXISTS `medium_category`;
 CREATE TABLE `medium_category` (
 	`mc_num`	int	NOT NULL,
 	`mc_lc_num`	int	NOT NULL,
-	`mc_name`	varchar(20)	NULL
+	`mc_name`	varchar(20)	NULL,
+	`mc_st_num`	int	NOT NULL
 );
 
 ALTER TABLE `member` ADD CONSTRAINT `PK_MEMBER` PRIMARY KEY (
@@ -211,7 +215,7 @@ ALTER TABLE `image` ADD CONSTRAINT `PK_IMAGE` PRIMARY KEY (
 	`im_num`
 );
 
-ALTER TABLE `order` ADD CONSTRAINT `PK_ORDER` PRIMARY KEY (
+ALTER TABLE `order_menu` ADD CONSTRAINT `PK_ORDER_MENU` PRIMARY KEY (
 	`or_num`
 );
 
@@ -278,10 +282,9 @@ REFERENCES `user` (
 	`user_id`
 );
 
-ALTER TABLE `promotion_on` ADD CONSTRAINT `FK_order_TO_promotion_on_1` FOREIGN KEY (
+ALTER TABLE `promotion_on` ADD CONSTRAINT `FK_order_menu_TO_promotion_on_1` FOREIGN KEY (
 	`po_or_num`
 )
-REFERENCES `order` (
+REFERENCES `order_menu` (
 	`or_num`
 );
-
