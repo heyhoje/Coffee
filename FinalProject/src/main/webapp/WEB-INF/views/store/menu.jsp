@@ -40,13 +40,26 @@
 			</c:forEach>
 			
 		</div>
-		<div class="imagebox box">
-			<p>메뉴사진 / 메뉴이름</p>
-			${menuList}
-			<c:forEach items="${menuList}" var="menu">
-				<image src="#" width="" height="" alt="${menu.mn_name}"> 
-			</c:forEach>
+		<div class="image-container clearfix">
+			<div class="image-main float-left">
+				<p>메뉴사진 / 메뉴이름</p>
+				<c:forEach items="${menuList}" var="menu">
+					<ul class="list-image clearfix">
+						<li class="item-image float-left">
+							<a href="#" class="link-image">
+								<span class="box-image-menu">
+									<image class="image-menu" src="#" width="100px" height="150px" alt=""> 
+								</span>
+								<div class="hover">
+									<p class="menu-title">${menu.mn_name}</p>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</c:forEach>
+			</div>
 		</div>
+		${menuList}
 	</div>
 	
 	<script>

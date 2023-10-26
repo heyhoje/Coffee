@@ -6,5 +6,16 @@
   	padding: 20px;
   	}
   	.checkbox{
-  	border: 3px solid black; text-align: left;
+  	border: 1px solid black; text-align: left;
+  	}
+  	
+  	li {
+  		list-style: none;
+  	}
+  	.image-container {
+  	border: 1px solid black; margin-top: 20px; padding:30px;
+  	}
+  	.image{
+  	border: 1px solid black; 
+  	width: 100px; height: 150px;
   	}
