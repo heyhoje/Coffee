@@ -65,7 +65,7 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav ml-auto">
+					<ul class="navbar-nav">
 						<li class="nav-item active"><a class="nav-link"
 							href="resources/about.html" style="font-family: 'BM HANNA Pro', sans-serif;">소개</a></li>
 						<li class="nav-item"><a class="nav-link"
@@ -77,7 +77,7 @@
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">채용정보</a></li>
 						<li class="nav-item mr-5"><a class="nav-link"
-							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">고객센터</a></li>
+							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif; margin-right:850px;">고객센터</a></li>
 						<li class="nav-item"><span
 							style="color: white; float: right;">${user.me_user_id}</span></li>
 						<c:if test="${user == null && user2 == null}">
