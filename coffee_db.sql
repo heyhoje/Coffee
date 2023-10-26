@@ -199,12 +199,6 @@ CREATE TABLE `medium_category` (
 	`mc_st_num`	int	NOT NULL
 );
 
-DROP TABLE IF EXISTS `Untitled`;
-
-CREATE TABLE `Untitled` (
-
-);
-
 ALTER TABLE `member` ADD CONSTRAINT `PK_MEMBER` PRIMARY KEY (
 	`me_user_id`
 );
