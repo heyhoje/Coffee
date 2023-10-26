@@ -11,8 +11,13 @@
 	</select>
 	<!-- 메뉴 중분류에 맞는 메뉴 정보 -->
 	<select id="selectMainList" resultType="kr.kh.finalproject.vo.MenuVO">
-		 select * from menu <!-- where mn_num = ${mn_num} -->
-		 	join medium_category on mc_mn_num = mn_num
+		 select * from menu 
+		 	<if test="mc_list != null and mc_list.length != 0">
+		 	where mn_mc_num in 
+		 		<foreach collection="mc_list" item="mc_num" open="(" close=")" separator=",">
+		 			#{mc_num}
+		 		</foreach>
+		 	</if>
 		 	 
 	</select>
 </mapper>

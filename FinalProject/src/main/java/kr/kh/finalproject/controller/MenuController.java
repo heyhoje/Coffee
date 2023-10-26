@@ -21,12 +21,12 @@ public class MenuController {
 	MenuService menuService;
 	
 	/** [ 매장 -> 메뉴 페이지 불러오기 ] 
-	 * List<McategoryVO> cList(이제 매장번호가 상관없어진. 중분류도 고정이기 때문)
+	 * List<McategoryVO> list(이제 매장번호st_num가 상관없어진. 중분류도 고정이기 때문)
 	 * 대분류에 맞는 중분류 리스트
 	 * List<MenuVO> mList
 	 * 선택한 중분류들의 메뉴를 가져오는 일
 	 * 
-	 * category 대분류 정보 => MCategory 중분류정보 (그럼 getCList라고 해야하나 아니다 getMainList하자...
+	 * category 대분류 정보 => MCategory 중분류정보 (그럼 getList라고 해야하나 아니다 getMainList하자...
 	 * => 소분류(메뉴들) mList(진.짜. MenuVO에 있는 정보에 접근하는 것)
 	 * */
 	@GetMapping("/store/menu/{a}/{b}")
