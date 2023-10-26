@@ -54,6 +54,10 @@
 	      </tr>
 	    </tbody>
 	  </table>
+	  <div>
+	  	<button class="btn btn-success" style="float: right; margin-top:10px;">글쓰기</button>
+	  </div>
+	  <br>
 	  <div class="paging">
 	  	<a href="#" class="bt">첫 페이지</a>
 	  	<a href="#" class="bt">이전 페이지</a>
@@ -63,6 +67,7 @@
 	  	<a href="#" class="bt">다음 페이지</a>
 	  	<a href="#" class="bt">마지막 페이지</a>
 	  </div>
+	  
 	</div>
 </body>
 </html>
