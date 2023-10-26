@@ -20,7 +20,7 @@ public class PromotionServiceImp implements PromotionService{
 		if(cri == null) {
 			cri = new Criteria(); 
 		}
-		return promotionDao.selectpromotionList(cri);
+		return promotionDao.selectPromotionList(cri);
 	}
 
 	@Override

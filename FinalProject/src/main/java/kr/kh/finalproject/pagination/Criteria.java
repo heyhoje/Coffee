@@ -26,4 +26,5 @@ public class Criteria {
 	public String getCurrentUrl() {
 		return "?page=" + page;
 	}
+
 }

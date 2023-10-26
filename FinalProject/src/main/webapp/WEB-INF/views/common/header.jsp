@@ -76,8 +76,8 @@
 							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">갤러리</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">채용정보</a></li>
-						<li class="nav-item mr-5"><a class="nav-link"
-							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif; margin-right:850px;">고객센터</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif; margin-right:800px;">고객센터</a></li>
 						<li class="nav-item"><span
 							style="color: white; float: right;">${user.me_user_id}</span></li>
 						<c:if test="${user == null && user2 == null}">
