@@ -11,7 +11,7 @@
 <body>
 	<div class="coffee_list_wrap">
 	  <table class="coffee_list">
-	  	<caption>카페사진</caption>
+	  	<caption>MD</caption>
 	    <thead>
 	      <tr>
 	        <th>번호</th>
@@ -25,7 +25,7 @@
 	      <tr>
 	        <td>3</td>
 	        <td class="title">
-	        	<a href="#">스타벅스 매장 사진!</a>
+	        	<a href="#">키링</a>
 	        </td>
 	        <td>yoo123</td>
 	        <td>2023-10-26</td>
@@ -34,7 +34,7 @@
 	      <tr>
 	        <td>2</td>
 	        <td class="title col-8">
-	        	<a href="#">빽다방 매장 사진!</a>
+	        	<a href="#">텀블러</a>
 	        </td>
 	        <td>yoo123</td>
 	        <td>2023-10-26</td>
@@ -43,7 +43,7 @@
 	      <tr>
 	        <td>1</td>
 	        <td class="title">
-	        	<a href="#">스타벅스 역삼 매장 사진</a>
+	        	<a href="#">머그컵</a>
 	        </td>
 	        <td>yoo123</td>
 	        <td>2023-10-26</td>
