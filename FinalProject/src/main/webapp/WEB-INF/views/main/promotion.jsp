@@ -7,12 +7,12 @@
 <html lang="Ko">
 
 
-<div class="event-schedule-area-two bg-color pad100">
+<div class="event-schedule-area-two bg-color pad100" style="font-family: 'BM HANNA Pro', sans-serif;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title text-center">
-                    <div class="title-text">
+                    <div class="title-text" style="margin-top:30px; margin-bottom:30px;">
                         <h2>이벤트&뉴스</h2>
                     </div>
                     <p>

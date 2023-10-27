@@ -132,7 +132,7 @@
 								<label for="bm_num">사업자 등록 번호</label> <input type="text"
 									class="form-control" id="inputPassword4"
 									placeholder="사업자 등록 번호를 입력하세요" name="bm_num" required="">
-									<button class="btn btn-primary"><a href="" style="color:#fff">조회</a></button>
+									<button class="btn btn-primary" style="margin-top:10px;"><a href="" style="color:#fff">조회</a></button>
 							</div>
 
 						</div>

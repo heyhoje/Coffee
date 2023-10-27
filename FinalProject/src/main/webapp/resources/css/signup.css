@@ -107,10 +107,12 @@
 .signup_v4.card_wrap{
 	width: 500px;
 	margin: 0 auto;
+	margin-top: 20px;
 	
 }
 .signup_v4 .card-body {
 	padding: 0px;
+
 	
 }
 

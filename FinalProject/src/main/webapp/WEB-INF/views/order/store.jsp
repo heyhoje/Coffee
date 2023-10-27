@@ -9,37 +9,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+ 
 <meta charset="utf-8">
 <title>키워드로 장소검색하기</title>
 <style>
     .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 	.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 	.map_wrap {position:relative;width:100%;height:500px;}
-	#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+	#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:300px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
 	.bg_white {background:#fff;}
 	#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
 	#menu_wrap .option{text-align: center;}
 	#menu_wrap .option p {margin:10px 0;}  
 	#menu_wrap .option button {margin-left:5px;}
-
+	.wrap{font-size: 30px; width:200px; height:200px;}
+	.btn-primary{width:99%; padding:0 1px 0 2px; margin-top:4px; border-radius:inherit;}
+	.map_wrap
 </style>
  
     
 </head>
 <body id="storejsp">
-	<ul class="nav-searchcategory" style="justify-content:center;">
-	  <li class="nav-item align-items-center">
-	    <a class="nav-link" href="#" style="font-size:20px; margin-right:20px;">지역으로 검색하기</a>
-	  </li>
-	  <li>
-	  	<a class="map-selection-border"></a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="<c:url value='/order/store2'/>"
-	    style="font-weight: normal; font-size:20px;">가게 이름으로 검색하기</a>
-	  </li>
-	 </ul>
+	<div class="nav-searchcategory" style="justify-content:center; text-align:center; display:flex; margin-top:30px; margin-bottom:30px; font-size:20px; color:black;">
+	    <a class="nav-link" href="#" style="font-family: 'BM HANNA Pro', sans-serif; font-weight:bold; color:black;">지역으로 검색하기</a>
+	    <a class="nav-link" href="<c:url value='/order/store2'/>" style="font-family: 'BM HANNA Pro', sans-serif; color:black;">가게 이름으로 검색하기</a>
+	 </div>
  <div class="search-container">
   		
 
@@ -55,7 +53,7 @@
            			text-align:center;
            		
            			">
-                    <input type="text" class="form-control input-text" value="" id="keyword" size="10px;" aria-describedby="basic-addon2" style="width:100%;">  <button class="btn btn-outline-warning btn-lg" type="submit" style="margin-top: 20px;">검색하기</button>
+                    <input type="text" class="form-control input-text" value="" id="keyword" size="10px;" aria-describedby="basic-addon2" style="width:100%;">  <button class="btn btn-outline-warning btn-lg" type="submit" style="margin-top: 20px; font-family: 'BM HANNA Pro', sans-serif;">검색하기</button>
                    
                 </form>
                 
@@ -66,7 +64,7 @@
           </div>
    
 <div class="map_wrap" id="marker">
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden; border:solid 2px black;margin-bottom:200px" ></div>
+    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden; border:solid 2px black;margin-bottom:200px;" ></div>
 
  
    
@@ -94,8 +92,6 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places(); 
 
-// 키워드로 장소를 검색합니다
-ps.keywordSearch('이태원 맛집', placesSearchCB); 
 
 //키워드 검색을 요청하는 함수입니다
 function searchPlaces() {
@@ -121,14 +117,18 @@ function placesSearchCB (data, status, pagination) {
         // LatLngBounds 객체에 좌표를 추가합니다
         var bounds = new kakao.maps.LatLngBounds();
 
-        for (var i=0; i<data.length; i++) {
+        for (var i=0; i<1; i++) {
             displayMarker(data[0]);    
             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }       
+        
 
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
+        
     } 
+   
+    	
 }
 
 // 지도에 마커를 표시하는 함수입니다
@@ -140,6 +140,7 @@ function displayMarker(place) {
         position: new kakao.maps.LatLng(place.y, place.x) 
     });
 }
+
 //마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
 var positions = [
     {
@@ -147,17 +148,17 @@ var positions = [
         '<div class="wrap">' + 
         '    <div class="info">' + 
         '        <div class="title">' + 
-        '            카카오 스페이스닷원' + 
         '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
         '        </div>' + 
         '        <div class="body">' + 
         '            <div class="img">' +
-        '                <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/thumnail.png" width="73" height="70">' +
+        '                <img src="<c:url value='/resources/images/starbucks1.png'/>" width="198" height="120">' + 
         '           </div>' + 
         '            <div class="desc">' + 
-        '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' + 
-        '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
-        '                <div><a href="store/77777" target="_blank" class="link">홈페이지</a></div>' + 
+        '				 <div class="ellipsis">스타벅스 역삼포스코</div>'+ 
+        '                <div class="ellipsis">서울 강남구 테헤란로 134</div>' + 
+        '                <div class="number ellipsis" id="phoneicon">☎1522-3232	</div>' + 
+        '                <a href="https://www.starbucks.co.kr/index.do" target="_blank" class="link"><button type="button" class="btn btn-primary" onclick="">홈페이지</button></a>' + 
         '            </div>' + 
         '        </div>' + 
         '    </div>' +    
@@ -165,7 +166,24 @@ var positions = [
         latlng: new kakao.maps.LatLng(37.4995, 127.0338)
     },
     {
-        content: '<div>매머드 신안유토빌점</div>', 
+        content:  '<div class="wrap">' + 
+        '    <div class="info">' + 
+        '        <div class="title">' + 
+        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+        '        </div>' + 
+        '        <div class="body">' + 
+        '            <div class="img">' +
+        '                <img src="<c:url value='/resources/images/Mammothcoffee.png'/>" width="198" height="120">' + 
+        '           </div>' + 
+        '            <div class="desc">' + 
+        '				 <div class="ellipsis">매머드 역삼유토빌점</div>'+ 
+        '                <div class="ellipsis">서울 강남구 논현로87길 41 1층 104-1호</div>' + 
+        '                <div class="number ellipsis" id="phoneicon">☎1522-3232	</div>' + 
+        '                <a href="https://www.starbucks.co.kr/index.do" target="_blank" class="link"><button type="button" class="btn btn-primary" onclick="">홈페이지</button></a>' + 
+        '            </div>' + 
+        '        </div>' + 
+        '    </div>' +    
+        '</div>',
         latlng: new kakao.maps.LatLng(37.4989, 127.0336)
     },
     {
@@ -203,6 +221,8 @@ function makeOverListener(map, marker, infowindow) {
         infowindow.open(map, marker);
     };
 }
+
+
 </script>
 </body>
 </html>

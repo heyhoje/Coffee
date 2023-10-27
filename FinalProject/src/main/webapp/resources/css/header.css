@@ -76,6 +76,8 @@ height: 95%;
 margin-top: 5px;
 margin-right:10px;
 float:right;
+font-family:'BM HANNA Pro', sans-serif;
+font-weight:bold;
 }
 
 .login_btn:hover{
@@ -91,6 +93,8 @@ background-color: #FFC312;
 height: 95%;
 margin-top: 5px;
 margin-left:10px;
+font-family:'BM HANNA Pro', sans-serif;
+font-weight:bold;
 }
 
 .login2_btn:hover{
