@@ -56,7 +56,7 @@
 	</div>
 	<!-- Gallery -->
 	<div class="row" id="gallery">
-		<div class="col-lg-4 col-md-12 mb-4 mb-lg-0" ">
+		<div class="col-lg-4 col-md-12 mb-4 mb-lg-0 ">
 			<img
 				src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.18169-9/13713_454264621405951_7878769274095452567_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=7f8c78&_nc_ohc=k0XN4EZ00IQAX9wm4RO&_nc_ht=scontent-ssn1-1.xx&oh=00_AfD0eXI9ecm3I8uxllYSpHbhPaQ9sEtKOqVCcD22OYmCMA&oe=65610C7D"
 				class="w-100 shadow-1-strong rounded mb-4 test" 
