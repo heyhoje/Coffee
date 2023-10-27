@@ -88,5 +88,15 @@ public class MemberServiceImp implements MemberService {
 	public MemberVO getMemberBySessionId(String sId) {
 		return memberDao.selectMemberBySessionId(sId);
 	}
+	
+	@Override
+    public void insertMemberKakao(MemberVO member) {
+        memberDao.insertMemberKakao(member);
+    }
+
+    @Override
+    public MemberVO selectMemberKakao(String kakaoUserId) {
+        return memberDao.selectMemberKakao(kakaoUserId);
+    }
 
 }

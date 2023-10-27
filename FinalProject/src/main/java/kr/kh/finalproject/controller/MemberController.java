@@ -1,6 +1,7 @@
 package kr.kh.finalproject.controller;
 
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,4 +97,21 @@ public class MemberController {
 		model.addAttribute("url", "");
 		return "/main/message";
 	}
+	
+	//카카오
+	@RequestMapping("/kakaoLoginCallback")
+    public String kakaoLoginCallback(HttpServletRequest request) {
+        String kakaoId = request.getParameter("kakaoId");
+        String email = request.getParameter("email");
+        String nickname = request.getParameter("nickname");
+
+        // 카카오 로그인 정보를 Member 테이블에 삽입
+        MemberVO member = new MemberVO();
+        member.setKakao_user_id(kakaoId);
+        member.setKakao_email(email);
+        member.setKakao_name(nickname);
+        memberService.insertMemberKakao(member);
+
+        return "/"; // 홈 페이지로 리다이렉트
+    }
 }

@@ -26,4 +26,16 @@
 		where
 			me_user_id = #{member.me_user_id}
 	</update>
+	
+	<insert id="insertMemberKakao" parameterType="kr.kh.finalproject.vo.MemberVO">
+        INSERT INTO member (me_user_id, me_email, me_name)
+        VALUES (#{kakao_user_id}, #{kakao_email}, #{kakao_name})
+    </insert>
+    
+    <select id="selectMemberKakao" parameterType="String" resultType="kr.kh.finalproject.vo.MemberVO">
+        SELECT me_user_id, me_email, me_name
+        FROM member
+        WHERE kakao_user_id = #{kakao_user_id}
+    </select>
+    
 </mapper>

@@ -14,4 +14,10 @@ public interface MemberService {
 
 	MemberVO getMemberBySessionId(String value);
 
+	//카카오
+
+	void insertMemberKakao(MemberVO member);
+
+	MemberVO selectMemberKakao(String kakaoUserId);
+
 }

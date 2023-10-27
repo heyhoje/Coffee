@@ -285,7 +285,7 @@
 
 	<script>
 	<!-- 카카오 로그인  -->
-		Kakao.init('b2ec646ca536be97bb14d5da3d5ff63b'); //발급받은 키 중 javascript키를 사용해준다.
+		Kakao.init('a5737697fa5f3dd128397ef34179de7a'); //발급받은 키 중 javascript키를 사용해준다.
 		console.log(Kakao.isInitialized()); // sdk초기화여부판단
 		//카카오로그인
 		function kakaoLogin() {
@@ -294,19 +294,34 @@
 					Kakao.API.request({
 						url : '/v2/user/me',
 						success : function(response) {
-							console.log(response)
-							location.href = '/kakaoLoginCallback?kakaoId=' + response.id + '&email=' + response.kakao_account.email + '&nickname=' + response.properties.nickname;
-						},
-						fail : function(error) {
-							console.log(error)
-						},
-					})
-				},
-				fail : function(error) {
-					console.log(error)
-				},
-			})
-		}
+							console.log(response);
+							// 로그인 정보를 서버로 보내는 Ajax 요청 추가
+	                        $.ajax({
+	                            url: 'kakaoLoginCallback', // 서버의 콜백 URL로 변경
+	                            type: 'POST',
+	                            data: {
+	                                kakaoId: response.id,
+	                                email: response.kakao_account.email,
+	                            },
+	                            success: function (data) {
+	                            	console.log(data);
+	                            	alert("로그인이 성공했습니다.");
+	                            },
+	                            error: function (xhr, status, error) {
+	                                console.error(error);
+	                            }
+	                        });
+	                    },
+	                    fail: function (error) {
+	                        console.log(error);
+	                    },
+	                });
+	            },
+	            fail: function (error) {
+	                console.log(error);
+	            },
+	        });
+	    }
 		//카카오로그아웃  
 		function kakaoLogout() {
 			if (Kakao.Auth.getAccessToken()) {
