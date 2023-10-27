@@ -62,6 +62,7 @@
 				class="w-100 shadow-1-strong rounded mb-4 test" 
 				alt="Boat on Calm Water"
 				 />
+			<div class="front_works"></div>
 
 			<img
 				src="https://i.pinimg.com/550x/26/cf/80/26cf803cbc4f48ae672c919fa1434d83.jpg"
