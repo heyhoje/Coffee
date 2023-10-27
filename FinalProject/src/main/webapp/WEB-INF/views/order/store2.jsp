@@ -13,18 +13,11 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 </head>
-<body>
-	<ul class="nav-searchcategory" style="justify-content:center;">
-	  <li class="nav-item align-items-center">
-	    <a class="nav-link" id="searchlocation" href="<c:url value='/order/store'/>">지역으로 검색하기</a>
-	  </li>
-	  <li>
-	  	<a class="map-selection-border"></a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" id="searchname" href="<c:url value='/order/store2'/>">가게 이름으로 검색하기</a>
-	  </li>
-	 </ul>
+<body id="storejsp">
+	<div class="nav-searchcategory" style="justify-content:center; text-align:center; display:flex; margin-top:30px; margin-bottom:30px; font-size:20px; color:black;">
+	    <a class="nav-link" href="<c:url value='/order/store'/>" style="font-family: 'BM HANNA Pro', sans-serif; color:black;">지역으로 검색하기</a>
+	    <a class="nav-link" href="#" style="font-family: 'BM HANNA Pro', sans-serif; color:black;  font-weight:bold;">가게 이름으로 검색하기</a>
+	 </div>
  <div class="search-container">
   		
 
@@ -35,7 +28,7 @@
                 <form onsubmit="searchPlaces(); return false;" id="searchplace" style="
            			
            			">
-                    <input type="text" class="form-control input-text" value="" id="keyword" size="10px;" aria-describedby="basic-addon2">  <button class="btn btn-outline-warning btn-lg" type="submit">검색하기</button>
+                    <input type="text" class="form-control input-text" value="" id="keyword" size="10px;" aria-describedby="basic-addon2">  <button class="btn btn-outline-warning btn-lg" type="submit" style="font-family: 'BM HANNA Pro', sans-serif;">검색하기</button>
                    
                 </form>
                 
@@ -48,7 +41,7 @@
             <div class="col-lg-12">
              	<div class="container">           
 				  <div class="dropdown">
-				    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+				    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="font-family: 'BM HANNA Pro', sans-serif;">
 				      브랜드
 				    </button>
 				    

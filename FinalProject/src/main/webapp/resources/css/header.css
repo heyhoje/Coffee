@@ -36,10 +36,11 @@
 .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: .5rem;
     padding-left: .5rem;
-    font-size: 18px;
+    font-size: 20px;
     color: #fff;
     margin-top: 5px;
 }
+
 #navbarNav #eventmenu{
 	margin-left: 10px;
 }
@@ -71,13 +72,13 @@
 color: black; 
 opacity:0.9;
 background-color: #FFC312;
-width: 100px;
 height: 95%;
 margin-top: 5px;
-margin-left:900px;
 margin-right:10px;
+float:right;
+font-family:'BM HANNA Pro', sans-serif;
+font-weight:bold;
 }
-
 
 .login_btn:hover{
 color: black;
@@ -89,10 +90,11 @@ width
 color: black; 
 opacity:0.9;
 background-color: #FFC312;
-width: 100px;
 height: 95%;
 margin-top: 5px;
 margin-left:10px;
+font-family:'BM HANNA Pro', sans-serif;
+font-weight:bold;
 }
 
 .login2_btn:hover{

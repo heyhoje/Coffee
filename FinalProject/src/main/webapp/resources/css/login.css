@@ -7,12 +7,22 @@ margin-top: auto;
 margin-bottom: auto;
 width: 400px;
 background-color: rgba(0,0,0,0.5) !important;
+
 }
+
+.modal-container .card .card-body .card-footer #signupbtn{
+	color:cyan;
+}
+
 
 /* modal container */
 .modal-container{
     position: fixed;
     top : calc(50vh - 200px);
     left : calc(50vw - 185px);
+}
+
+.modal-container #signupbtn{
+	color:cyan;
 }
 

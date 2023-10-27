@@ -47,7 +47,7 @@ public class MenuController {
 		
 		// 3. 서버 to 화면으로 보내기
 		// model.addAttribute("화면에 보여질 이름", 변수명); 
-		// .jsp파일에서 ${list}, ${menuList}로 화면에 전송되고 있는지 확인 
+		// .jsp파일에서 ${list}, ${menuList}로 화면에 전송되고 있는지 확인 	
 		model.addAttribute("list", list);
 		model.addAttribute("menuList", mList);
 		model.addAttribute("mc_nums", mc_nums);
@@ -55,6 +55,9 @@ public class MenuController {
 		model.addAttribute("allCheckbox", allCheckbox);
 		System.out.println(mc_nums);
 		return "/store/menu";
+	
 	}
+	
+	
 	
 }
