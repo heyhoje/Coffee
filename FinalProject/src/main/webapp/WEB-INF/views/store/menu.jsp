@@ -63,10 +63,9 @@
 				전체를 forEach 안에 넣어야 한다! (이유:아래에 메뉴사진과 이름이 이미지리스트로 들어오면, 또 분류따라 사진이 남고 안남고가 설정되야한다.  
 				=> 아닌가 그러한 이유로 밖에 넣어야 하나.... 아닌가 mc_name(바뀌는건 얘밖에 없음)에 따라 보이고 안보이고로 하면되나?(????뭔소리지?????)
 				=> 그럼 음.... 되려나..... 이미지에 테이블명/테이블번호는 있어도 mc_name에 대한 정보는 없지 않나...... 어렵네~~~~~  -->
-			<input type=checkbox> 전체
-			<input type=checkbox> 신메뉴
+			<input type=checkbox id="allCheckbox" value="true" name="allCheckbox" <c:if test="${allCheckbox}">checked</c:if>> 전체
 			<c:forEach items="${list}" var="category">
-				<input type=checkbox class="abc"> ${category.mc_name}				
+				<input type=checkbox class="medium" value="${category.mc_num}" <c:if test="${mc_nums.indexOf(category.mc_num) >= 0}">checked</c:if>> ${category.mc_name}				
 			</c:forEach>
 			
 		</div>
@@ -94,10 +93,42 @@
 		${list}
 	</div>
 	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
-		$(".abc").click(function(){
+		/*  ex) /store/menu/가게번호/대분류?mc_numList=3&mc_numList=6 
+			1. click이벤트 연습
+			2. click하면 check상태가 되있는지 안되있는지 판별
+			3. value값 4를 가져올 수 있는지
+		*/
+		$(".medium").click(function(){
+			reloadPage(false)
+		});
+		$("#allCheckbox").click(function(){
+			console.log(1)
+			var state = $(this).is(':checked')
+			$(".medium").prop('checked', state);
+			reloadPage(state);
 			
 		})
+		function reloadPage(all){
+			var urlString = window.location.href;
+			var url = new URL(urlString);
+			var searchParams = new URLSearchParams(url.search);
+			searchParams.delete('mc_numList');
+			searchParams.delete('allCheckbox');
+			//alert(searchParams.toString())
+			$(".medium").each(function(i){
+				if($(this).is(':checked')){
+					searchParams.append('mc_numList', $(this).val())
+				}
+				
+			});
+			//alert(searchParams.toString())
+			if(all)
+				searchParams.append('allCheckbox', true)
+			location.href = url.pathname + '?' + searchParams.toString();
+			//window.history.pushState({}, '', newUrl);
+		}
 	</script>
 	
 </body>
