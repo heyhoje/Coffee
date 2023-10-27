@@ -5,36 +5,10 @@
 }
 .row .test:hover {
 	transform: scale(0.9);
-	border-radius: 10px;
 	cursor: pointer;
 	background-color: #000;
 	transition: transform 1s 0.2s;
 	
-}
-.row .test::before {
-	top: 0;
-	clip-path: polygon(0 0, 100% 0, 100% 50%, 0% 100%);
-	transform: translateY(-100%);
-	
-}
-.row .test::after {
-	bottom: -1px;
-  	clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
-  	transform: translateY(100%);
-}
-.row .test:hover::before,
-.works_container:hover::after {
-  transform: translateY(0);
-}
-.works_front {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fff;
-}
-
-.works_container:hover .row .test {
-  opacity: 1;
-  transition-delay: 0.7s;
 }
 
 .main {
