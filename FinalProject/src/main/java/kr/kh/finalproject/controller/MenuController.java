@@ -31,7 +31,7 @@ public class MenuController {
 	 * */
 	@GetMapping("/store/menu/{a}/{b}")
 	public String storeMenu(Model model, int[] mc_numList, 
-			@PathVariable("a") int st_num, @PathVariable("b") String category) {
+			@PathVariable("a") int st_num, @PathVariable("b") int category) {
 		// 0. @PathVariable로 a, b가 무엇인지 설정~?
 			// 5. 페이지네이션 적용
 
@@ -39,7 +39,7 @@ public class MenuController {
 		// => 대분류에 맞는 중분류 리스트를 가져오는 일
 		List<MCategoryVO> list = menuService.getMenuList(category);
 		// 4. => 선택한 중분류들의 메뉴를 가져오는 일
-		List<MenuVO> mList = menuService.getMainList(st_num, mc_numList);
+		List<MenuVO> mList = menuService.getMainList(st_num, mc_numList, category);
 		System.out.println(list); // 2. 리스트를 잘 가져왔는지 확인
 		
 		// 3. 서버 to 화면으로 보내기

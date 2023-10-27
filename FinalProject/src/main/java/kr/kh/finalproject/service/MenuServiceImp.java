@@ -18,15 +18,15 @@ public class MenuServiceImp implements MenuService{
 
 	/** 대분류category 에 맞는 중분류 정보 menuList */
 	@Override
-	public List<MCategoryVO> getMenuList(String category) {
+	public List<MCategoryVO> getMenuList(int category) {
 					
 		return menuDao.selectMenuList(category);
 	}
 
 	/** 중분류...에 맞는 메뉴들 정보 mc_numList */
 	@Override
-	public List<MenuVO> getMainList(int st_num, int[] mc_numList) {
+	public List<MenuVO> getMainList(int st_num, int[] mc_numList, int lc_num) {
 		
-		return menuDao.selectMainList(st_num, mc_numList);
+		return menuDao.selectMainList(st_num, mc_numList, lc_num);
 	}
 }

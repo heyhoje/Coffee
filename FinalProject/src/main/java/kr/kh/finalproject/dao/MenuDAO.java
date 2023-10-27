@@ -10,9 +10,9 @@ import kr.kh.finalproject.vo.MenuVO;
 
 public interface MenuDAO {
 	// 대분류에서 소분류(메뉴들)까지 List
-	List<MCategoryVO> selectMenuList(@Param("category")String category);
+	List<MCategoryVO> selectMenuList(@Param("category")int category);
 
-	List<MenuVO> selectMainList(@Param("st_num")int st_num, @Param("mc_list")int[] mc_numList);
+	List<MenuVO> selectMainList(@Param("st_num")int st_num, @Param("mc_list")int[] mc_numList, @Param("lc_num")int lc_num);
 
 	ImageVO selectMenuImage(@Param("mn_num")int mn_num);
 }

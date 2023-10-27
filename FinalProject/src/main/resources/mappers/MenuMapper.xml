@@ -19,21 +19,24 @@
 	
 	<!-- 메뉴 대분류에 맞는 중분류이름 -->
 	<select id="selectMenuList" resultType="kr.kh.finalproject.vo.MCategoryVO">
-		select mc_name from medium_category join large_category on mc_lc_num = lc_num
+		select * from medium_category join large_category on mc_lc_num = lc_num
 		where lc_num = #{category}
 	</select>
 	
 	<!-- 메뉴 중분류에 맞는 메뉴 정보 -->
-	<!-- resultType을 resultMap="MenuVO" 로 변경! -->
+	<!-- 이미지연동 : resultType을 resultMap="MenuVO" 로 변경! -->
 	<select id="selectMainList" resultMap="MenuVO">
 		 select * from menu 
 		 	<if test="mc_list != null and mc_list.length != 0">
-		 	where mn_mc_num in 
+		 		where mn_mc_num in 
 		 		<foreach collection="mc_list" item="mc_num" open="(" close=")" separator=",">
 		 			#{mc_num}
 		 		</foreach>
 		 	</if>
-		 	 
+		 	<!--  -->
+		 	<if test="mc_list == null or mc_list.length == 0">
+		 		where mn_mc_num in (select mc_num from medium_category where mc_lc_num = #{lc_num})
+		 	</if> 
 	</select>
 	
 	<!-- 자동실행될 MenuImage(메뉴들) 불러오는 쿼리 -->

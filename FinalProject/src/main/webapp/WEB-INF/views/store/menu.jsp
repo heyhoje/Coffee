@@ -73,12 +73,13 @@
 		<div class="image-container clearfix">
 			<div class="image-main float-left">
 				<p>메뉴사진 / 메뉴이름 -> 메뉴설명 들어가는걸 어떻게 처리? / 장바구니 담는것도 기본클릭을 할지 버튼이나 체크박스가 따로 있을지?</p>
+				
 				<c:forEach items="${menuList}" var="menu">
 					<ul class="list-image clearfix">
 						<li class="item-image">
 							<a href="#" class="link-image">
 								<span class="box-image-menu">
-									<image class="image-menu" src="<c:url value='/image/menu/${menu.image.im_ori_name}'/>" width="100px" height="150px" alt=""> 
+									<image class="image-menu" src="<c:url value='/image/menu/${menu.image.im_ori_name}'/>" width="200px" height="200px" alt="">
 								</span>
 								<div class="hover">
 									<p class="menu-title">${menu.mn_name}</p>
