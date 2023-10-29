@@ -26,7 +26,7 @@ public class MenuController {
 	 * List<MenuVO> mList
 	 * 선택한 중분류들의 메뉴를 가져오는 일
 	 * 
-	 * category 대분류 정보 => MCategory 중분류정보 (그럼 getList라고 해야하나 아니다 getMainList하자...
+	 * category 대분류 정보 => MCategory 중분류정보 
 	 * => 소분류(메뉴들) mList(진.짜. MenuVO에 있는 정보에 접근하는 것)
 	 * */
 	@GetMapping("/store/menu/{a}/{b}")
@@ -57,7 +57,5 @@ public class MenuController {
 		return "/store/menu";
 	
 	}
-	
-	
 	
 }
