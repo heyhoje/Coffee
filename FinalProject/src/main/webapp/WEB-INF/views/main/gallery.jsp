@@ -7,7 +7,36 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<c:url value='/resources/css/gallery.css'/>">
+<style type="text/css">
+	img {
+	overflow-clip-margin: content-box;
+	overflow: clip;
+	}
+	.row .main_bar .test{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: filter 0.5s ease-in-out;
 
+	}
+	.row .main_bar p{
+	position: absolute;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #fff;
+	background-color: rgba(O,0,0,0.8);
+	transition: opacity 0.5s ease-in-out;
+	}
+</style>
 </head>
 <body>
 	<div class="main">
@@ -62,7 +91,7 @@
 				class="w-100 shadow-1-strong rounded mb-4 test" 
 				alt="Boat on Calm Water"
 				 />
-		
+			<p>귀여운 곰돌이 라떼</p>
 			<img
 				src="https://i.pinimg.com/550x/26/cf/80/26cf803cbc4f48ae672c919fa1434d83.jpg"
 				class="w-100 shadow-1-strong rounded mb-4 test"

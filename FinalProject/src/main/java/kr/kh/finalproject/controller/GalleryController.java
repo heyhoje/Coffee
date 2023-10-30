@@ -5,8 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping(value="/gallery/*")
 public class GalleryController {
-	@RequestMapping(value="/gallery/*")
+	
 	@GetMapping(value="coffee")
 	public String coffee() {
 		
@@ -32,4 +33,5 @@ public class GalleryController {
 		
 		return "/gallery/cafestore";
 	}
+	
 }
