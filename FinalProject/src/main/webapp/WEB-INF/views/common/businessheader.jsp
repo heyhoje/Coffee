@@ -57,9 +57,8 @@
 		<div class="container-fluid">
 			<nav class="navbar navbar-expand-lg navbar">
 				<div class="logo">
-					<a href="<c:url value='/business/home'/>"
-						style="color: white; font-size: 60px; font-family: 'BM HANNA Pro', sans-serif;">커피의
-						민족</a>
+					<a href="<c:url value='/business/home'/>"><img
+						src="<c:url value='/resources/images/로고.png'/>"></a>
 				</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarNav" aria-controls="navbarNav"
@@ -69,18 +68,17 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link"
-							href="resources/about.html"
-							style="font-family: 'BM HANNA Pro', sans-serif;">메뉴</a></li>
+							 href="<c:url value='/business/menu'/>"
+							style="font-family: 'BM HANNA Pro', sans-serif;">메뉴관리</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/main/promotion"
+							 href="<c:url value='/business/order'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">주문확인</a></li>
-						<li class="nav-item"><a class="nav-link" href="/order/store"
+						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/store'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">매장관리</a></li>
-						<li class="nav-item"><a class="nav-link" href="/main/gallery"
+						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/sales'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">판매정보조회</a></li>
-						<li class="nav-item"><span
-							style="color: white; float: right;">${buser.bm_id}</span></li>
-						<li class="nav-item">
+						<li class="nav-item"><a class="nav-link"
+							style="color: white; font-family: 'BM HANNA Pro', sans-serif; float: right;">${buser.bm_id}</a></li>
 						<li class="form-group" id="logoutButton2"><input
 							type="submit" value="로그아웃" class="btn float-right logout_btn"
 							data-toggle="modal" data-target="#logoutModal2"></li>

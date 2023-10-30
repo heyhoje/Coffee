@@ -12,8 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import kr.kh.finalproject.service.MemberService;
-import kr.kh.finalproject.vo.BusinessMemberVO;
+import kr.kh.finalproject.vo.ManagerVO;
 import kr.kh.finalproject.vo.MemberVO;
+import kr.kh.finalproject.vo.UserVO;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 	@Autowired
@@ -32,13 +33,20 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 				return;
 			}
 			request.getSession().setAttribute("user", user);
-		}else if(type.equals("b")) {
-			BusinessMemberVO user = (BusinessMemberVO) modelAndView.getModel().get("buser");
+			
+		}else if(type.equals("b")) {//사업자 로그인
+			ManagerVO user = (ManagerVO) modelAndView.getModel().get("buser");
 			if (user == null) {
 				return;
 			}
 			request.getSession().setAttribute("buser", user);
-		}
+			
+		}else if (type.equals("k")) { // 카카오 로그인인 경우
+	        UserVO user = (UserVO) modelAndView.getModel().get("user");
+	        if (user != null) {
+	            request.getSession().setAttribute("user", user);
+	        }
+	    }
 		request.getSession().setAttribute("type", type);
 		
 		

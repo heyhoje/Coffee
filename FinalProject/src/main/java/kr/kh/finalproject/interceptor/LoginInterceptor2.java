@@ -11,12 +11,12 @@ import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import kr.kh.finalproject.service.BusinessMemberService;
-import kr.kh.finalproject.vo.BusinessMemberVO;
+import kr.kh.finalproject.service.ManagerService;
+import kr.kh.finalproject.vo.ManagerVO;
 
 public class LoginInterceptor2 extends HandlerInterceptorAdapter {
 	@Autowired
-	BusinessMemberService businessMemberService;
+	ManagerService managerService;
 
 	@Override
 	// 컨트롤러에서 빠져 나올 때 실행
@@ -24,7 +24,7 @@ public class LoginInterceptor2 extends HandlerInterceptorAdapter {
 			@Nullable ModelAndView modelAndView) throws Exception {
 
 		// 회원 정보가 있는지 확인 => 컨트롤러가 model에 다음 user 정보가 있는지 확인
-		BusinessMemberVO user2 = (BusinessMemberVO) modelAndView.getModel().get("buser");
+		ManagerVO user2 = (ManagerVO) modelAndView.getModel().get("buser");
 		if (user2 == null) {
 			return;
 		}
@@ -51,6 +51,6 @@ public class LoginInterceptor2 extends HandlerInterceptorAdapter {
 		Date date = new Date(System.currentTimeMillis() + time * 1000);
 		user2.setBm_session_id(sessionId);
 		user2.setBm_session_limit(date);
-		businessMemberService.updateMemberSession(user2);
+		managerService.updateMemberSession(user2);
 	}
 }

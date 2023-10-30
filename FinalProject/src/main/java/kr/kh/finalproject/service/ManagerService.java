@@ -8,4 +8,12 @@ public interface ManagerService {
 
 	boolean manageridCheck(String id);
 
+	ManagerVO login(ManagerVO manager);
+
+	void updateMemberSession(Object user2);
+
+	ManagerVO getMemberBySessionId(String value);
+
+
+
 }

@@ -302,6 +302,8 @@
 	                            data: {
 	                                kakaoId: response.id,
 	                                email: response.kakao_account.email,
+	                                name : response.kakao_account.name,
+	                                phone_number : response.kakao_account.phone_number,
 	                            },
 	                            success: function (data) {
 	                            	console.log(data);

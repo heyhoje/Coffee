@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.kh.finalproject.dao.MemberDAO;
 import kr.kh.finalproject.vo.MemberVO;
+import kr.kh.finalproject.vo.UserVO;
 
 
 @Service
@@ -98,5 +99,14 @@ public class MemberServiceImp implements MemberService {
     public MemberVO selectMemberKakao(String kakaoUserId) {
         return memberDao.selectMemberKakao(kakaoUserId);
     }
+	@Override
+	public void insertUserKakaoInfo(UserVO user) {
+		memberDao.insertUserKakaoInfo(user);
+		
+	}
+	@Override
+	public UserVO selectUserKakaoInfo(String userId) {
+		return memberDao.selectUserKakaoInfo(userId);
+	}
 
 }
