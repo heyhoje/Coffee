@@ -10,7 +10,8 @@ CREATE TABLE `member` (
 	`me_authority`	varchar(5)	NULL,
 	`me_session_id`	varchar(255)	NULL,
 	`me_session_limit`	datetime	NULL,
-	`me_ip`	varchar(255)	NULL
+	`me_ip`	varchar(255)	NULL,
+	`me_type`	varchar(20)	NULL
 );
 
 DROP TABLE IF EXISTS `business_member`;
@@ -22,7 +23,8 @@ CREATE TABLE `business_member` (
 	`bm_phone`	varchar(13)	NULL,
 	`bm_contents`	longtext	NULL,
 	`bm_address`	varchar(255)	NULL,
-	`bm_geocoding`	varchar(100)	NULL,
+	`bm_geocoding_lati`	double	NULL,
+	`bm_geocoding_longi`	double	NULL,
 	`bm_manager`	varchar(10)	NULL,
 	`bm_seat`	int	NULL,
 	`bm_parking`	varchar(5)	NULL,
@@ -37,16 +39,16 @@ CREATE TABLE `menu` (
 	`mn_name`	varchar(50)	NULL,
 	`mn_contents`	longtext	NULL,
 	`mn_price`	int	NULL,
-	`mn_st_num`	int	NOT NULL,
-	`mn_mc_num`	int	NOT NULL
+	`mn_mc_num`	int	NOT NULL,
+	`mn_st_num`	int	NOT NULL
 );
 
 DROP TABLE IF EXISTS `image`;
 
 CREATE TABLE `image` (
 	`im_num`	int	NOT NULL,
-	`im_ori_name`	varchar(255)	NULL,
 	`im_name`	varchar(50)	NULL,
+	`im_ori_name`	varchar(255)	NULL,
 	`im_contents`	longtext	NULL,
 	`im_tableName`	varchar(20)	NULL,
 	`im_tableNum`	int	NULL
@@ -57,13 +59,13 @@ DROP TABLE IF EXISTS `order_menu`;
 CREATE TABLE `order_menu` (
 	`or_num`	int	NOT NULL,
 	`or_time`	datetime	NULL,
-	`or_drinks`	varchar(20)	NULL,
 	`or_status`	varchar(20)	NULL,
-	`mo_num`	int	NOT NULL,
-	`mo_num2`	int	NOT NULL,
-	`mo_num3`	int	NOT NULL,
-	`mo_num4`	int	NOT NULL,
-	`mo_num5`	int	NOT NULL
+	`or_drinks`	varchar(20)	NULL,
+	`or_mo_num`	int	NOT NULL,
+	`or_mo_num2`	int	NOT NULL,
+	`or_mo_num3`	int	NOT NULL,
+	`or_mo_num4`	int	NOT NULL,
+	`or_mo_num5`	int	NOT NULL
 );
 
 DROP TABLE IF EXISTS `user`;
@@ -122,8 +124,9 @@ DROP TABLE IF EXISTS `promotion`;
 
 CREATE TABLE `promotion` (
 	`pr_num`	int	NOT NULL,
+	`pr_subject`	varchar(30)	NULL,
 	`pr_contents`	longtext	NULL,
-	`Field`	VARCHAR(255)	NULL,
+	`pr_type`	int	NULL,
 	`pr_discount`	int	NULL,
 	`pr_save`	int	NULL
 );
@@ -195,8 +198,29 @@ DROP TABLE IF EXISTS `medium_category`;
 CREATE TABLE `medium_category` (
 	`mc_num`	int	NOT NULL,
 	`mc_lc_num`	int	NOT NULL,
-	`mc_name`	varchar(20)	NULL,
-	`mc_st_num`	int	NOT NULL
+	`mc_name`	varchar(20)	NULL
+);
+
+DROP TABLE IF EXISTS `Untitled`;
+
+CREATE TABLE `Untitled` (
+
+);
+
+DROP TABLE IF EXISTS `gallery`;
+
+CREATE TABLE `gallery` (
+	`gal_num`	int	NOT NULL,
+	`gal_title`	varchar(255)	NULL,
+	`gal_me_user_id`	varchar(20)	NOT NULL,
+	`gal_gc_num`	int	NOT NULL
+);
+
+DROP TABLE IF EXISTS `gallery_category`;
+
+CREATE TABLE `gallery_category` (
+	`gc_num`	int	NOT NULL,
+	`gc_name`	varchar(30)	NULL
 );
 
 ALTER TABLE `member` ADD CONSTRAINT `PK_MEMBER` PRIMARY KEY (
@@ -275,6 +299,14 @@ ALTER TABLE `medium_category` ADD CONSTRAINT `PK_MEDIUM_CATEGORY` PRIMARY KEY (
 	`mc_num`
 );
 
+ALTER TABLE `gallery` ADD CONSTRAINT `PK_GALLERY` PRIMARY KEY (
+	`gal_num`
+);
+
+ALTER TABLE `gallery_category` ADD CONSTRAINT `PK_GALLERY_CATEGORY` PRIMARY KEY (
+	`gc_num`
+);
+
 ALTER TABLE `member` ADD CONSTRAINT `FK_user_TO_member_1` FOREIGN KEY (
 	`me_user_id`
 )
@@ -288,3 +320,4 @@ ALTER TABLE `promotion_on` ADD CONSTRAINT `FK_order_menu_TO_promotion_on_1` FORE
 REFERENCES `order_menu` (
 	`or_num`
 );
+
