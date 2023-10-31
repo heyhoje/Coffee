@@ -5,10 +5,9 @@ import lombok.Data;
 @Data
 public class PromotionVO {
 	
-	int pr_num;
-	String pr_subject;
-	String pr_contents;
-	int pr_types;
-	int pr_discount;
-	int pr_save;
+	int ad_num;
+	String ad_contents; 
+	String ad_image; 
+	String ad_date; 
+	int ad_st_num;
 }

@@ -69,7 +69,7 @@
 						<li class="nav-item active"><a class="nav-link"
 							href="resources/about.html" style="font-family: 'BM HANNA Pro', sans-serif;">소개</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/main/promotion'/>"style="font-family: 'BM HANNA Pro', sans-serif;">이벤트&프로모션</a></li>
+							href="<c:url value='/promotion/list'/>"style="font-family: 'BM HANNA Pro', sans-serif;">이벤트&프로모션</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/order/store'/>"style="font-family: 'BM HANNA Pro', sans-serif;">주문</a></li>
 						<li class="nav-item"><a class="nav-link"

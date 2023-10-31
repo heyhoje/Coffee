@@ -383,7 +383,7 @@
                   <div class="footer_menu">
                      <ul>
                         <li><a href="resources/index.html">소개</a></li>
-                        <li><a href="<c:url value='/main/promotion'/>">프로모션</a></li>
+                        <li><a href="<c:url value='/promotion/list'/>">프로모션</a></li>
                         <li><a href="<c:url value='/order/store'/>">주문</a></li>
                         <li><a href="resources/services.html">게시판</a></li>
                         <li><a href="<c:url value='/main/gallery'/>">갤러리</a></li>
