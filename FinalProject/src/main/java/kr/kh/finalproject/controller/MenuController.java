@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import kr.kh.finalproject.pagination.Criteria;
+import kr.kh.finalproject.pagination.PageMaker;
 import kr.kh.finalproject.service.MenuService;
 import kr.kh.finalproject.vo.MCategoryVO;
 import kr.kh.finalproject.vo.MenuVO;
@@ -30,15 +32,21 @@ public class MenuController {
 	 * => 소분류(메뉴들) mList(진.짜. MenuVO에 있는 정보에 접근하는 것)
 	 * */
 	@GetMapping("/store/menu/{a}/{b}")
-	public String storeMenu(Model model, int[] mc_numList, 
+	public String storeMenu(Model model, int[] mc_numList, Criteria cri,
 			@PathVariable("a") int st_num, @PathVariable("b") int category, Boolean allCheckbox) {
 		// 0. @PathVariable로 a, b가 무엇인지 설정~?		
 		// 1. 서비스한테 일을 시켰을 때 어떤일을 시켜야할까 고민해야함
 		// => 대분류에 맞는 중분류 리스트를 가져오는 일
 		List<MCategoryVO> list = menuService.getMenuList(category);
 		// 4. => 선택한 중분류들의 메뉴를 가져오는 일
-		List<MenuVO> mList = menuService.getMainList(st_num, mc_numList, category);
+		List<MenuVO> mList = menuService.getMainList(st_num, mc_numList, category, cri);
 		System.out.println(list); // 2. 리스트를 잘 가져왔는지 확인
+		
+		// 6. 현재 페이지 정보에 맞는 전체 게시글 수를 가져옴
+		int totalCount = menuService.getTotalCount(st_num, mc_numList, category, cri);
+		// 6. 페이지네이션 페이지수
+		final int DISPLAY_PAGE_NUM = 8;
+		PageMaker pm = new PageMaker(DISPLAY_PAGE_NUM, cri, totalCount);
 		
 		// 5. *체크박스 작업 : 정수배열을 정수리스트로 바꿔주는 코드 - (이유)배열은 기능을 제공하지 않기 때문에 리스트로 바꿨다.
 		List<Object> mc_nums = mc_numList != null ? Arrays.stream(mc_numList)
@@ -54,6 +62,10 @@ public class MenuController {
 		// 5. 전체 체크를 위해 추가
 		model.addAttribute("allCheckbox", allCheckbox);
 		System.out.println(mc_nums);
+		// 6. 페이지네이션
+		model.addAttribute("pm", pm);
+		model.addAttribute("st_num", st_num);
+		model.addAttribute("ca_num", category);
 		return "/store/menu";
 	
 	}

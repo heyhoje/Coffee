@@ -25,8 +25,20 @@ public class MenuServiceImp implements MenuService{
 
 	/** 중분류...에 맞는 메뉴들 정보 mc_numList */
 	@Override
-	public List<MenuVO> getMainList(int st_num, int[] mc_numList, int lc_num) {
+	public List<MenuVO> getMainList(int st_num, int[] mc_numList, int lc_num, Criteria cri) {
+		if(cri == null) {
+			cri = new Criteria();
+		}
+		return menuDao.selectMainList(st_num, mc_numList, lc_num, cri);
+	}
 		
-		return menuDao.selectMainList(st_num, mc_numList, lc_num);
+	
+	/** 페이지네이션 */
+	@Override
+	public int getTotalCount(int st_num, int[] mc_numList, int lc_num, Criteria cri) {
+		if(cri == null) {
+			cri = new Criteria();
+		}
+		return menuDao.selectCountMenuList(st_num, mc_numList, lc_num, cri);
 	}
 }
