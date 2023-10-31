@@ -4,6 +4,9 @@
 <!doctype html>
 <html lang="ko">
 <head>
+<!-- 폰트 -->
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/resources/static/fonts/font.css'/>">
 <!-- basic -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,51 +50,60 @@
 </style>
 </head>
 <body>
-	 <!--header section start -->
-      <div class="header_section">
-         <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg navbar">
-               <div class="logo"><a href="<c:url value='/'/>"><img src="<c:url value='/resources/images/로고.png'/>"></a></div>
-               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-               </button>
-               <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav ml-auto">
-                     <li class="nav-item active">
-                        <a class="nav-link" href="resources/about.html"><img src="<c:url value='/resources/images/소개.png'/>"></a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='/main/promotion'/>"><img id="eventmenu" src="<c:url value='/resources/images/이벤트&뉴스.png'/>"></a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='/order/store'/>"><img src="<c:url value='/resources/images/주문.png'/>"></a>
-                     </li>
-                   
-                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='/main/gallery'/>"><img src="<c:url value='/resources/images/갤러리.png'/>"></a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="resources/contact.html"><img src="<c:url value='/resources/images/채용정보.png'/>"></a>
-                     </li>
-                      <li class="nav-item mr-5">
-                        <a class="nav-link" href="resources/contact.html"><img src="<c:url value='/resources/images/고객센터.png'/>"></a>
-                     </li>
-                     
-                     
-                     <li class="form-group">
-						<input type="submit" value="login" class="btn float-right login_btn" data-toggle="modal" data-target="#loginModal">
-					 </li>
-					 <li class="form-group">
-						<input style="display: none;" type="submit" value="logout" class="btn float-right logout_btn" data-toggle="modal" data-target="#logoutModal">
-					 </li>
+
+	<!--header section start -->
+	<div class="header_section">
+		<div class="container-fluid">
+			<nav class="navbar navbar-expand-lg navbar">
+				<div class="logo">
+					<a href="<c:url value='/'/>"><img
+						src="<c:url value='/resources/images/로고.png'/>"></a>
+				</div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarNav" aria-controls="navbarNav"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item active"><a class="nav-link"
+							href="resources/about.html" style="font-family: 'BM HANNA Pro', sans-serif;">소개</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="<c:url value='/main/promotion'/>"style="font-family: 'BM HANNA Pro', sans-serif;">이벤트&프로모션</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="<c:url value='/order/store'/>"style="font-family: 'BM HANNA Pro', sans-serif;">주문</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">갤러리</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">채용정보</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif; margin-right:800px;">고객센터</a></li>
+						<li class="nav-item"><span
+							style="color: white; float: right;">${user.me_user_id}</span></li>
+						<c:if test="${user == null && user2 == null}">
+							<li class="form-group" id="loginButton"><input type="submit"
+								value="회원 로그인" class="btn login_btn" data-toggle="modal"
+								data-target="#loginModal"></li>
+						</c:if>
+						<c:if test="${user2 == null && user == null}">
+							<li class="form-group" id="loginButton2"><input
+								style="margin-right: 10px" type="submit" value="사업자 로그인"
+								class="btn login2_btn" data-toggle="modal"
+								data-target="#loginModal2"></li>
+						</c:if>
+						<c:if test="${user != null}">
+							<li class="form-group" id="logoutButton"><input
+								style="margin-right: 10px" type="submit" value="로그아웃"
+								class="btn float-right logout_btn" data-toggle="modal"
+								data-target="#logoutModal"></li>
+						</c:if>
+
 					</ul>
 				</div>
-				</nav>
+			</nav>
 
-						</div>
-               </div>
-        
+		</div>
+	</div>
 </body>
-
 
 </html>

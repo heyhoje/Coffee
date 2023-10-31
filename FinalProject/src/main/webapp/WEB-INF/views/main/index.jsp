@@ -48,7 +48,7 @@
       <!--header section end -->
       <!-- banner section start -->
       
-         <div class="container">
+         <div class="container" id="bannerbox">
             <div id="main_slider" class="carousel slide" data-ride="carousel">
                <div class="carousel-inner">
                   <div class="carousel-item active">
@@ -133,7 +133,7 @@
                         <div class="container_main">
                            <img src="resources/images/starbucks.png" alt="Avatar" class="image">
                            <div class="overlay">
-                              <div class="text"><a href="<c:url value='/menu/starbucks'/>"><i class="fa fa-search" aria-hidden="true"></i></a></div>
+                              <div class="text"><a href="<c:url value='/store/menu/1/drinks'/>"><i class="fa fa-search" aria-hidden="true"></i></a></div>
                            </div>
                         </div>
                      </div>

@@ -1,2 +1,45 @@
 @charset "UTF-8";
 
+.row .test {
+	margin-top: 10px;
+	transition: 0.2s ease-in-out;
+}
+.row .test:hover {
+	transform: scale(0.9);
+	border-radius: 10px;
+	cursor: pointer;
+}
+.main {
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -15px;
+	margin-left: -15px;
+}
+
+.main_bar {
+	position: relative;
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+	padding: 1rem;
+	height: 250px;
+	background-color: #fff;
+	flex: 1;
+	transition: 0.2s ease-in-out;
+	border-bottom: 55px solid black;
+}
+
+.main_bar:hover {
+	transform: perspective(1500px) rotateY(30deg);
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+	cursor: pointer;
+}
+
+
+.main .image {
+	overflow: hidden;
+	width: 180px;
+	height: 180px;
+}
