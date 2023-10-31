@@ -1,0 +1,1385 @@
+@charset "UTF-8";
+
+/*--------- 모달 공통 ---------*/
+.modal {
+	
+}
+
+#modal_header {
+	background: #333333;
+	position: relative;
+	width: 100%;
+	display: block;
+}
+
+.closeA {
+	background: #333333;
+	border: none;
+	color: #fff;
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	right: 2%;
+	width: 4%;
+	height: 100%;
+	font-size: 2.4rem;
+}
+
+.closeB {
+	background: #808080;
+}
+
+.modal h1 {
+	color: #fff;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 40px;
+}
+
+#modal_bg {
+	background: rgba(0, 0, 0, 0.3);
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+	z-index: 10;
+}
+
+.modal_box {
+	position: relative;
+	overflow: auto;
+	overflow-x: hidden;
+	/* height: 70vh; */
+	height: calc(100% - 81px);
+}
+
+.modal_box::-webkit-scrollbar {
+	display: none; /* Chrome, Safari, Opera*/
+}
+
+.modal #btn_box {
+	/* 
+	position: absolute;
+	bottom: 0;
+	 */
+	width: 100%;
+	font-size: 1.8rem;
+	border-top: 1px solid #ddd;
+	height: 40px;
+}
+
+.modal .btn_box input, .modal #btn_box button {
+	height: 40px;
+	font-size: 2rem;
+	width: 50%;
+	float: left;
+	border: none;
+	color: white;
+	border-radius: unset;
+}
+
+.modal .btn_box input[type="submit"] {
+	background: #30DAD9;
+}
+
+
+
+/* input file */
+
+.modal .img_box {
+	width: 80%;
+	margin: 0 auto 50px;
+}
+
+.modal .img {
+	display: none; 
+}
+
+.modal .img_box label {
+	display: inline-block;
+	width: 80px;
+	height: 60px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	text-align: center;
+	line-height: 60px;
+}
+
+.modal .img_box div {
+	margin-top: 20px;
+	position: relative;
+	display: none;
+	width: 150px;
+	height: 150px;
+}
+
+.modal .img_box img {
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	object-fit: cover;
+	border: 1px solid #ddd;
+}
+
+.modal .img_close {
+	background: #ccc;
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	width: 25px;
+	height: 25px;
+	color: #fff;
+	border-radius: 50%;
+	border: none;
+}
+
+
+
+
+
+
+@media ( max-width :1023px) {
+}
+
+@media ( max-width :767px) {
+	.modal {
+		width: 80%;
+		margin-left: -40%;
+	}
+	.closeA {
+		display: none;
+	}
+	.modal {
+		width: 100%;
+		margin: 0;
+		/* margin-top: 1vh; */
+		left: 0;
+		height: 100%;
+	}
+	.modal .btn_box input, .modal .btn_box button {
+		height: 45px;
+	}
+}
+
+@media ( max-width :480px) {
+}
+
+/*-------------- 매장 등록 모달 -----------------*/
+
+
+.modal form {
+	display: inline;
+}
+
+.modal .modal_box ul li {
+	padding: 10px;
+	text-align: center;
+}
+
+.modal .input_area {
+	width: 70%;
+	height: 35px;
+	margin: 0 auto;
+}
+
+.modal .modal_box #category {
+	width: 100%;
+	height: 100%;
+	padding: 0 10px;
+	border-radius: 10px;
+	border: 1px solid #000;
+	background: url(/img/arrow.png) no-repeat;
+	background-size: 1.5rem;
+	background-position: 98%;
+}
+
+.modal input[type=text], .modal input[type=number] {
+	width: 100%;
+	height: 100%;
+	padding: 0 10px;
+	box-sizing: border-box;
+	border: 1px solid #000;
+}
+
+.modal .location .input_area {
+	height: 100%;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.modal .location input[type=button] {
+	width: 100%;
+	height: 35px;
+	border: none;
+	border-radius: 0;
+	background: #ddd;
+}
+
+.modal .location input[type=text] {
+	height: 35px;
+	border: none;
+	background: none;
+}
+
+.modal .business_hour .select_box>span:first-child:after {
+	content: "~";
+}
+
+.modal .business_hour select {
+	height: 35px;
+	width: 25%;
+	border-radius: 10px;
+	padding: 0 10px;
+	background: url(/img/arrow.png) no-repeat;
+	background-size: 1.5rem;
+	background-position: 98%;
+}
+
+.modal .min_delivery_price .input_area, .modal .delivery_tip .input_area
+	{
+	position: relative;
+}
+
+.modal .min_delivery_price .input_area:after, .modal .delivery_tip .input_area:after
+	{
+	content: "원";
+	position: absolute;
+	right: 10px;
+	font-size: 1.6rem;
+	bottom: 50%;
+	transform: translateY(50%);
+}
+
+.modal .delivery_time .input_area {
+	position: relative;
+}
+
+.modal .delivery_time .input_area:after {
+	content: "분";
+	position: absolute;
+	right: 10px;
+	font-size: 1.6rem;
+	bottom: 50%;
+	transform: translateY(50%);
+}
+
+.modal .store_des .input_area {
+	height: 100px;
+}
+
+.modal #store_des {
+	width: 100%;
+	height: 100%;
+	padding: 0 10px;
+	box-sizing: border-box;
+	border: 1px solid #000;
+}
+
+#btn_box button:last-child {
+	background: rgb(48, 218, 217);
+}
+
+@media ( max-width :767px) {
+	.modal #store_des {
+		border-radius: 10px;
+	}
+	.modal .input_area {
+		width: 80%;
+	}
+}
+
+@media ( max-width :480px) {
+	.modal .input_area {
+		width: 90%;
+	}
+}
+/*-------------- 매장 등록 모달 -----------------*/
+
+/* 메뉴 추가 모달 */
+.add_menu_modal .option_box {
+	position: relative;  
+}
+
+.add_menu_modal .option_box h2 {
+	width: 70%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.add_menu_modal .option_box h2 .add_option {
+	background: #fff;
+	padding: 3px;
+	font-size: 1.2rem;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.add_menu_modal .option {
+	border: 1px solid #000;
+	width: 70%;
+	margin: 0 auto;
+	border-radius: 10px;
+	display: flex;
+}
+
+.add_menu_modal .option>div {
+	padding: 8px;
+}
+
+.add_menu_modal .option>div:nth-child(1) {
+	flex: 1.5;
+	text-align: left;
+	padding: 10px;
+	min-width: 40px;
+}
+
+.add_menu_modal .option>div:nth-child(1)>div {
+	margin: 5px 0;
+	height: 30px;
+}
+
+.add_menu_modal .option>div:nth-child(2) {
+	flex: 8;
+}
+
+.add_menu_modal .option>div:nth-child(3) {
+	flex: 0.5;
+	min-width: 30px;
+}
+
+.add_menu_modal .option .add_option_cancle {
+	background: #ddd;
+	margin-top: 5px;
+	border-radius: 50%;
+	height: 20px;
+	width: 20px;
+	font-size: 1.1rem;
+	border: none;
+}
+
+.add_menu_modal .option>div input {
+	height: 30px;
+	margin: 5px 0;
+}
+
+.add_menu_modal #btn_box button[type=submit] {
+	background: rgb(48, 218, 217);
+}
+
+@media ( max-width : 767px) {
+	.add_menu_modal .option {
+		width: 80%;
+	}
+	.add_menu_modal .option_box h2 {
+		width: 80%;
+	}
+	.add_menu_modal .option_box h2 .add_option {
+		border-radius: 10px;
+	}
+}
+/* 메뉴 추가 모달 */
+
+/* 인풋 number 화살표 업애기 */
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+}
+/* 헤더 */
+header {
+	width: 100%;
+	height: 80px;
+	background: #2AC1BC;
+	position: relative;
+}
+ 
+#header {
+	width: 1200px;
+	margin: 0 auto;
+}
+ 
+header img {
+	width: 160px;
+}
+ 
+.menu_tab_box {
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	transform: translateY(-50%);
+	z-index: 10;
+}
+ 
+ 
+.menu_tab, 
+.menu_tab span {
+	display: inline-block;
+	transition: all 0.4s;
+	box-sizing: border-box;
+}
+ 
+.menu_tab {
+	position: relative;
+	width: 24px;
+	height: 18px;
+	cursor: pointer;
+/* 	display: none; */
+}
+ 
+.menu_tab span {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background-color: #fff;
+	border-radius: 4px;
+}
+ 
+.menu_tab span:nth-of-type(1) {
+	top: 0;
+}
+ 
+.menu_tab span:nth-of-type(2) {
+	top: 50%;
+	transform: translateY(-50%);
+}
+ 
+.menu_tab span:nth-of-type(3) {
+	bottom: 0;
+}
+ 
+.menu_tab.active span:nth-of-type(1) {
+	transform: translateY(8px) rotate(-45deg);
+}
+ 
+.menu_tab.active span:nth-of-type(2) {
+	opacity: 0;
+}
+ 
+.menu_tab.active span:nth-of-type(3) {
+	transform: translateY(-8px) rotate(45deg);
+}
+ 
+header #menu {
+	background: rgba(0, 0, 0, 0.9);
+	width: 400px;
+	height: 100vh;
+	position: fixed;
+	right: -400px; 
+	top: 0;
+	z-index: 9;
+	transition: all 0.4s;
+}
+ 
+header #menu.active {
+	right: 0;
+}
+ 
+header #menu .box {
+	margin-top: 80px;
+}
+ 
+header #menu .box a {
+	color: #fff;
+	display: block;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	font-size: 2rem;
+	padding-left: 25px;
+}
+ 
+header #menu .box a:hover {
+	background: #eee;
+	color: #000;
+}
+ 
+header #menu_bg {
+	background: rgba(0, 0, 0, 0.1);
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	z-index: 8;
+	top: 0;
+	right: 0;
+	display: none;
+}
+ 
+ 
+@media ( max-width :1250px) {
+	#header {
+		width: 99%;
+	}
+}
+ 
+@media ( max-width :767px) {
+	header img {
+		width: 120px;
+		position: relative;
+		left: -15px;
+	}
+	header {
+		height: 60px;
+	}
+	
+	header #menu {
+		width: 300px; 
+		right: -300px;
+	}
+	
+	header #menu .box {
+		margin-top: 60px;
+	}
+}
+
+@charset "UTF-8";
+
+body {
+	overflow-x: hidden;
+}
+body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, input, fieldset,
+	legend, p, select, table, th, td, tr, textarea, button, form {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%
+}
+
+input, button, textarea {
+	border-radius: 10px;
+}
+
+/*  a 링크 초기화 */
+a {
+	color: #222;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #390;
+}
+
+
+/* 스윗 얼럿 */
+.swal-footer {
+	text-align: center;
+}
+
+.swal-button.swal-button--confirm {
+	background: #2AC1BC;
+	color: #fff;
+}
+
+.swal-button.swal-button--cancel {
+	background: #fff;
+	color: #333333;
+	border: 1px solid #ddd;
+}
+/* 스윗 얼럿 */
+h1, h2 {
+	/* font-weight: bold; */
+	
+}
+
+h1 {
+	font-size: 2.4rem;
+}
+
+h2 {
+	font-size: 2rem;
+}
+
+h3 {
+	font-weight: bold;
+	font-size: 1.8rem;
+}
+
+i {
+	cursor: pointer;
+}
+
+button, input[type="submit"], input[type="button"] {
+	cursor: pointer;
+}
+
+/* 크기 변경 x */
+textarea {
+	resize: none;
+}
+
+/* 폰트 초기화 */
+body, input, textarea, select, button, table {
+	/* font-family: AppleSDGothicNeo-Regular,'Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif;  */
+	font-family: 'Jua', sans-serif;
+	color: #222;
+	font-size: 1.6rem;
+	line-height: 1.5;
+}
+/* 폰트 초기화 */
+
+/* 불릿기호 초기화 */
+dl, ul, ol, li, menu {
+	list-style: none;
+}
+
+
+input:focus {
+	outline: none;
+}
+
+select{
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+}
+
+
+
+@media ( max-width :767px) {
+	html {
+		font-size: 56%;
+	}
+}
+
+@media ( max-width :480px) {
+	html {
+		font-size: 45%;
+	}
+}
+
+@media ( max-width :767px) {
+	input[type="submit"], input[type="button"], textarea, button, select {
+		appearance: none;
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		border-radius: 0;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+	}
+}
+
+/* Btn 10  */
+.add_menu,
+.inf_modify,
+.delete_menu {
+    font-family: "proxima-nova", sans-serif;
+    font-weight: 500;
+    text-transform: uppercase!important;
+    letter-spacing: 2px;
+    color:black;
+    cursor: hand;
+    text-align: center;
+    text-transform: capitalize;
+    border: 1px solid #fff;
+    position: relative;
+    overflow: hidden!important;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    background: transparent!important;
+    z-index:10;
+    
+}
+
+
+.add_menu:hover, .inf_modify:hover, .delete_menu:hover {
+    border: 1px solid #071982;
+    color: #c0c0c0!important;
+}
+.add_menu::before, .inf_modify::before, .delete_menu::before  {
+    content: '';
+    width: 0%;
+    height: 100%;
+    display: block;
+    background: #071982;
+    position: absolute;
+    -ms-transform: skewX(-20deg);
+    -webkit-transform: skewX(-20deg); 
+    transform: skewX(-20deg);   
+    left: -10%;
+    opacity: 1;
+    top: 0;
+    z-index: -12;
+    -moz-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+  -o-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+  -webkit-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+     box-shadow:2px 0px 14px rgba(0,0,0,.6);
+  } 
+
+.add_menu::after, .inf_modify::after, .delete_menu::after  {
+    content: '';
+    width: 0%;
+    height: 100%;
+    display: block;
+    background: #c0c0c0;
+    position: absolute;
+  -ms-transform: skewX(-20deg);
+    -webkit-transform: skewX(-20deg); 
+    transform: skewX(-20deg);   
+    left: -10%;
+    opacity: 0;
+    top: 0;
+    z-index: -15;
+    -webkit-transition: all .94s cubic-bezier(.2,.95,.57,.99);
+    -moz-transition: all .4s cubic-bezier(.2,.95,.57,.99);
+    -o-transition: all .4s cubic-bezier(.2,.95,.57,.99);
+    transition: all .4s cubic-bezier(.2,.95,.57,.99);
+    box-shadow: 2px 0px 14px rgba(0,0,0,.6);
+}
+.add_menu:hover::before, .add_menu::before, .inf_modify:hover::before, .inf_modify::before, .delete_menu:hover::before, .delete_menu::before{
+  opacity:1;
+  width: 116%;
+}
+.add_menu:hover::after, .add_menu::after, .inf_modify:hover::after, .inf_modify::after, .delete_menu:hover::after, .inf_modify::after{
+  opacity:1;
+  width: 120%;
+}
+
+.fas.fa-heart {
+	color: red;
+}
+
+.score_box .fas {
+	color: gold;
+}
+
+.comment .fas {
+	color: gold;
+}
+
+#wrap {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	flex-wrap: wrap;
+	display: flex;
+	min-height: calc(100vh - 210px);
+}
+
+/* -------------- ��� ���� ���� -------------- */
+nav {
+	width: 100%;
+	text-align: center;
+	margin: 30px 0 30px 0;
+}
+
+nav i {
+	font-size: 2rem;
+}
+
+nav div {
+	font-size: 1.8rem;
+}
+
+nav .inf button {
+	width: 200px;
+	height: 40px;
+	margin-top: 20px;
+	font-size: 1.8rem;
+	background: none;
+}
+
+nav .inf .store_review_count:after {
+	content: '|';
+}
+
+/* -------------- ��� ���� ���� -------------- */
+
+/* -------------- ��ٱ��� -------------- */
+
+/* ����� īƮ */
+.m_cart_img {
+	position: fixed;
+	bottom: 3%;
+	right: 3%;
+	display: none;
+	z-index: 11;
+	cursor: pointer;
+}
+
+.m_cart_img_box {
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	background: #2AC1BC;
+	box-shadow: 0px 2px 3px 0px rgb(0 0 0/ 25%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.fa-shopping-cart {
+	color: #fff;
+	font-size: 20px;
+}
+
+.m_cart_count {
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	position: absolute;
+	top: 20%;
+	right: 20%;
+	font-size: 13px;
+	text-align: center;
+	color: #2AC1BC;
+	background: #fff;
+	border: 2px solid #2AC1BC;;
+	vertical-align: middle;
+	font-weight: 1000;
+	display: none;
+}
+/* ����� īƮ */
+
+/* īƮ ������� �޼��� */
+.alarm {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	width: 30vw;
+	height: 15vh;
+	background: rgba(0, 0, 0, 0.7);
+	color: #fff;
+	text-align: center;
+	transform: translate(-50%, -50%);
+	border-radius: 15px;
+	line-height: 15vh;
+	z-index: 1000;
+	min-width: 200px;
+	display: none;
+}
+
+#cart {
+	width: 28%;
+	order: 1;
+}
+
+#cart .cart {
+	position: sticky;
+	top: 10%;
+	font-size: 1.8rem;
+	margin: 5%;
+	border: 1px solid #ddd;
+}
+
+#cart .cart h2 {
+	background-color: #333333;
+	color: #fff;
+	text-align: center;
+}
+
+#cart .cart .deleteAll {
+	font-size: 2rem;
+	cursor: pointer;
+	color: white;
+	position: absolute;
+	right: 10px;
+	top: 5px;
+}
+
+#cart .cart .cart_list {
+	max-height: 400px;
+	overflow: auto;
+}
+
+#cart .cart ul {
+	width: 90%;
+	margin: 0 auto;
+}
+
+#cart .cart li {
+	border-bottom: 1px solid #ddd;
+	padding: 10px 0 10px 0;
+	position: relative;
+}
+
+#cart .cart li .cart_menu_option {
+	color: #999;
+}
+
+#cart .cart button.cancle_btn {
+	font-size: 1.8rem;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	padding-bottom: 30px;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+#cart .cart button.order_btn {
+	width: 100%;
+	height: 30px;
+	margin-top: 20px;
+	font-size: 1.8rem;
+	border: none;
+	cursor: pointer;
+	/* background: #30DAD9; */
+	background: #ddd;
+	color: #fff;
+	border-radius: 0;
+}
+
+#cart .cart .total {
+	text-align: center;
+	margin-top: 10px;
+}
+
+/* -------------- ��ٱ��� -------------- */
+
+/* -------------- ���� -------------- */
+main {
+	margin-top: 30px;
+}
+
+main ul.tab {
+	display: flex;
+	background: #fff;
+}
+
+main ul.tab li {
+	width: 100%;
+	padding: 5px 0;
+	border: 1px solid #ddd;
+	text-align: center;
+	cursor: pointer;
+	font-size: 2rem;
+}
+
+main ul.tab li:hover {
+	background: #30DAD9;
+	color: #fff;
+	transition: 0.1s;
+}
+
+main ul.tab li.select {
+	background: #30DAD9;
+	color: #fff;
+	/* �޴��� Ŭ���� �� �ٲ� */
+}
+
+/* �޴� ���� ���� �� */
+main ul.menu {
+	padding-bottom: 50px;
+	border: 2px solid #ddd;
+	margin-bottom: 30px;
+}
+
+/* �޴� ���� */
+main ul.menu li {
+	border-bottom: 1px solid #ddd;
+}
+
+main ul li .menu_delete_label {
+	margin-left: 15px;
+	cursor: pointer;
+	color: #ddd;
+	/* #30DAD9 */
+}
+
+main ul li .menu_delete_checkbox {
+	display: none;
+}
+
+main ul.menu li .menu_box {
+	display: flex;
+	justify-content: space-between;
+	padding: 15px;
+	cursor: pointer;
+}
+
+main ul.menu li .menu_box img {
+	width: 150px;
+	height: 150px;
+    object-fit: cover;
+}
+
+/* -------------- ���� -------------- */
+
+/* ----------------- ���� �� ----------------- */
+main ul.info {
+	/* display: none; */
+	/* īī�� ���� ������ ��ũ��Ʈ�� hide�� */
+	
+}
+
+.info li {
+	width: 100%;
+	margin: 15px auto;
+}
+
+#map_box {
+	position: relative;
+	width: 100%;
+	height: 400px;
+	margin-bottom: 10px;
+}
+
+#map_box #map {
+	width: 100%;
+	height: 100%;
+}
+
+#map_box #position_box {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	z-index: 1;
+}
+
+#map_box #position_box button {
+	border-radius: 50px;
+	border: 1px solid #999999;
+	background: #fff;
+	padding: 5px 10px;
+	font-size: 1.5rem;
+}
+
+#map_box #position_box .userPosition {
+	display: none;
+}
+
+.info li>div {
+	font-size: 1.8rem;
+	border-radius: 10px;
+	border: 1px solid #ddd;
+	padding: 15px;
+	min-height: 150px;
+}
+
+.info h2 {
+	padding-bottom: 10px;
+}
+
+.info div {
+	font-size: 1.6rem;
+}
+
+.info li .info_detail_title {
+	display: inline-block;
+	width: 200px;
+}
+
+.info li .info_detail {
+	display: inline-block;
+}
+
+/* ----------------- ���� �� ----------------- */
+
+/* ----------------- ���� �� ----------------- */
+main .comment {
+	display: none;
+}
+
+main .comment .score_info {
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	padding: 15px;
+	display: flex;
+	justify-content: space-around;
+}
+
+main .comment .score_info .score {
+	font-size: 4.5rem;
+	font-weight: bold;
+	text-align: center;
+}
+
+main .comment .score_info i {
+	font-size: 1.4rem;
+}
+
+main .comment .score_count {
+	font-size: 1.4rem;
+}
+
+main .comment .score_count>div {
+	display: flex;
+	justify-content: space-between;
+	width: 150px;
+}
+
+main .comment .score_info .score_count>div div:first-child {
+	font-weight: bold;
+}
+
+main .comment .score_count .graph_box {
+	position: relative;
+	width: 100px;
+}
+
+main .comment .score_count .graph_box div {
+	width: 100%;
+	height: 5px;
+	background: #ddd;
+	border-radius: 5px;
+	position: absolute;
+	top: 40%;
+}
+
+main .comment .score_info .score_count .review_count {
+	color: #999999;
+	text-align: left;
+	width: 0px;
+}
+
+main .comment .boss_comment {
+	margin-bottom: 10px;
+}
+
+main .comment li {
+	border-radius: 10px;
+	width: 100%;
+	margin: 15px auto 30px;
+	font-size: 1.8rem;
+}
+
+main .comment li .nickname {
+	font-weight: bold;
+}
+
+main .comment li .client {
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	padding: 15px;
+}
+
+.review_header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+
+.review_header div div:last-child {
+	font-size: 1.4rem;
+}
+
+main .comment li .boss_comment_box {
+	background: #ddd;
+	width: 90%;
+	border-radius: 10px;
+	padding: 15px;
+	position: relative;
+	left: 6%;
+	margin-top: 15px;
+}
+
+.review_btn, .boss_comment_btn {
+	background: #fff;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.boss_comment .comment_area {
+	width: 90%;
+	height: 100px;
+	padding: 10px;
+	border-radius: 5px;
+	margin-top: 5px;
+}
+
+.boss.input {
+	display: none;
+}
+
+.review_img {
+	width: 30%;
+	border-radius: 10px;
+	cursor: pointer;
+}
+/* ������ */
+
+
+
+/* �޴� Ŭ�� ��� */
+.food_modal img {
+	width: 100%;
+}
+
+.food_modal .menu_name {
+	text-align: center;
+	display: block;
+	font-size: 20px;
+}
+
+.food_modal .modal_box>div {
+	font-size: 1.6rem;
+	width: 95%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	padding: 15px 0;
+	border-bottom: 1px solid #ddd;
+}
+
+.food_modal .modal_box .menu_dec {
+	justify-content: center;
+	font-size: 1.8rem;
+}
+
+.food_modal .modal_box .price {
+	font-weight: bold;
+	font-size: 2rem;
+}
+
+.food_modal .modal_box #option {
+	display: block;
+}
+
+.food_modal .modal_box #option .fas {
+	color: #ddd;
+}
+
+.food_modal .amount_box {
+	border: 1px solid #ddd;
+	display: flex;
+	width: 150px;
+	border-radius: 40px;
+	height: 35px;
+	overflow: hidden;
+}
+
+.food_modal .amount_box button {
+	border: none;
+	background: #fff;
+	font-size: 2.2rem;
+	width: 30%;
+}
+
+.food_modal .amount_box #amount {
+	text-align: center;
+	border: none;
+	width: 40%;
+}
+
+
+.food_modal .amount .amount_text {
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 43px;
+}
+
+.food_modal .modal_box {
+	height: calc(100% - 130px);
+}
+
+.food_modal #btn_box {
+	height: 90px;
+	
+}
+
+.food_modal #btn_box>div {
+	text-align: center;
+	height: 45px;
+}
+
+.food_modal .min_delevery {
+	font-size: 1.5rem;
+	margin-top: 5px;
+}
+
+.add_cart {
+	background: #30DAD9;
+}
+
+.food_modal ul {
+	font-size: 1.8rem;
+	width: 95%;
+	margin-left: auto;
+}
+
+.food_modal ul .option_box {
+	display: flex;
+	justify-content: space-between;
+}
+
+.food_modal ul .option_box .menu_option {
+	display: none;
+}
+
+/*-------�޴�����Ʈ Ŭ�� ��� ---------*/
+@media ( max-width :1023px) {
+	#wrap {
+		width: 95%;
+	}
+	#cart {
+		display: none;
+	}
+	.m_cart_img {
+		display: block;
+	}
+	main {
+		width: 100%;
+	}
+	.info li .info_detail_title {
+		width: 40%;
+	}
+	.store_reg_modal .modal_box ul {
+		margin-left: 0px;
+	}
+	.alarm {
+		font-size: 2rem;
+	}
+	
+	main ul.menu li .menu_box img {
+	 	width: 125px;
+		height: 125px;
+	}
+}
+
+@media ( max-width :767px) {
+	html {
+		font-size: 60%;
+	}
+	
+	
+	#wrap {
+		width: 99%;
+	}
+	nav .inf button {
+		width: 100px;
+		font-size: 1.6rem;
+		border-radius: 10px;
+	}
+	main ul.tab {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+	}
+	main ul.menu li .menu_box img {
+	 	width: 100px;
+		height: 100px;
+	}
+	#map_box {
+		height: 300px;
+	}
+	main .comment li .boss {
+		width: 86%;
+	}
+	.alarm {
+		font-size: 1.8rem;
+		height: 10vh;
+		line-height: 10vh;
+	}
+	
+	
+	
+	
+	
+}

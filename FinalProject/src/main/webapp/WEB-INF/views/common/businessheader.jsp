@@ -80,7 +80,7 @@
 						<li class="nav-item"><a class="nav-link"
 							style="color: white; font-family: 'BM HANNA Pro', sans-serif; float: right;">${buser.bm_id}</a></li>
 						<li class="form-group" id="logoutButton2"><input
-							type="submit" value="로그아웃" class="btn float-right logout_btn"
+							style="font-size:20px; type="submit" value="로그아웃" class="btn float-right logout_btn"
 							data-toggle="modal" data-target="#logoutModal2"></li>
 					</ul>
 				</div>
@@ -97,14 +97,14 @@
 			<div class="d-flex justify-content-center h-100">
 				<div class="card" style="height: 150px">
 					<div class="card-header">
-						<h4 style="margin-top: 2%; text-align: center; color: white;">로그아웃하시겠습니까?</h4>
+						<h4 style="font-size:30px; margin-top: 2%; text-align: center; color: white;">로그아웃하시겠습니까?</h4>
 					</div>
 					<div class="card-body" style="height: 300px">
 						<form action="<c:url value='/member/logout2'/>" method="post">
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<input
-										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto; margin-left: 134%"
+										style="font-size:20px; border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto; margin-left: 134%; margin-top: 5%;"
 										type="submit" value="로그아웃" class="btn logout_btn">
 								</div>
 							</div>

@@ -189,7 +189,7 @@
 			<div class="d-flex justify-content-center h-100">
 				<div class="card" style="height: 150px">
 					<div class="card-header">
-						<h1 style="margin-top: 2%; text-align: center; color: white;">로그아웃하시겠습니까?</h1>
+						<h1 style="font-size:25px; margin-top: 2%; text-align: center; color: white;">로그아웃하시겠습니까?</h1>
 					</div>
 					<div class="card-body" style="height: 300px">
 						<form action="<c:url value='/member/logout'/>" method="post">
