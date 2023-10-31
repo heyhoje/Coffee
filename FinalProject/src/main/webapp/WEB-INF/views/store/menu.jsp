@@ -43,15 +43,18 @@
 	</ul>
 </div>
 	<!-- 대분류 이름 및 버튼박스 -->
-	<c:if test="${ca_num == 1}">
-		<h2 class="lc">음료</h2>
-	</c:if>
-	<c:if test="${ca_num == 2}">
-		<h2 class="lc">푸드</h2>
-	</c:if>
-	<c:if test="${ca_num == 3}">
-		<h2 class="lc">상품</h2>
-	</c:if>
+	<c:forEach var="category" begin="1" end="3" varStatus="loop">
+	    <c:if test="${loop.index == ca_num}">
+	        <h2 class="lc">
+	            <c:choose>
+	                <c:when test="${category == 1}">음료</c:when>
+	                <c:when test="${category == 2}">푸드</c:when>
+	                <c:when test="${category == 3}">상품</c:when>
+	            </c:choose>
+	        </h2>
+	    </c:if>
+	</c:forEach>
+	
 	<div class="btn-group-box">
 		<div class="btn-group">
 			<a href="<c:url value='/store/menu/${st_num}/1'/>" class="btn btn-success">음료</a>
