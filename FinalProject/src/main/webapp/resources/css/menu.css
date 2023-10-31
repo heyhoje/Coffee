@@ -15,8 +15,7 @@
 	justify-content: center; align-items: center; /*text-align: center;*/
 	width:100%; padding: 20px;
 	}
-
-	}
+	
 	/* 중분류 및 메뉴파트 */
 	.menu-group {
   	justify-content: center;
@@ -36,7 +35,7 @@
   		list-style: none;
   	}
   	
-  	.image-container {
+  	.image-group {
   	border: 1px solid black; margin: 20px 0; padding: 20px; 
   	}
   	
@@ -44,11 +43,15 @@
   	display: flex; flex-wrap: wrap; /*float-left현상 변경 & 요소들이 너비를 초과하면 다음 줄로 넘어감*/
   	justify-content: flex-start; /* space-around : 내부 요소들을 가로 방향으로 균등 간격으로 배치 */
   	width: 100%; position: relative;/* 부모 요소에 대해 가로로 꽉 채우도록 설정 */
-    padding: 0; /* 기본 패딩 제거 */ margin-left: 40px;
+    padding: 0; /* 기본 패딩 제거 */
+  	}
+  	.item-image:nth-child(n+1){
+  	margin-left: 30px;
   	}
   	
 	.item-image {
-    margin: 0 10px; box-sizing: border-box; /* 너비에 padding과 border를 포함시키기 위해 box-sizing 설정 *//* 패딩과 테두리를 포함한 크기 계산 */
+    /* margin: 0 10px; */ 
+    box-sizing: border-box; /* 너비에 padding과 border를 포함시키기 위해 box-sizing 설정 *//* 패딩과 테두리를 포함한 크기 계산 */
     display: inline-block; /* 가로로 나란히 배치하기 위해 inline-block 설정 */
     vertical-align: middle; 
     

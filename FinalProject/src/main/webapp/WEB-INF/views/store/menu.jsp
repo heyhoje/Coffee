@@ -72,7 +72,7 @@
 
 		</div>
 		<!-- 메뉴데이터 및 이미지파일 -->
-		<div class="image-container clearfix">
+		<div class="image-group clearfix">
 			<div class="image-main">
 				<p>메뉴사진 / 메뉴이름 -> 메뉴설명 들어가는걸 어떻게 처리? / 장바구니 담는것도 기본클릭을 할지 버튼이나 체크박스가 따로 있을지?</p>
 				
@@ -133,7 +133,7 @@
 			var urlString = window.location.href;
 			var url = new URL(urlString);
 			var searchParams = new URLSearchParams(url.search);
-			
+			console.log(1);
 			searchParams.delete('mc_numList');
 			searchParams.delete('allCheckbox');
 			//alert(searchParams.toString())
@@ -147,9 +147,10 @@
 			//alert(searchParams.toString())
 			if(all){
 				searchParams.append('allCheckbox', true)
+			}
 			location.href = url.pathname + '?' + searchParams.toString();
 			//window.history.pushState({}, '', newUrl);
-			}
+		}
 	</script>
 	
 </body>
