@@ -9,33 +9,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import org.springframework.web.util.WebUtils;
 
-import kr.kh.finalproject.service.BusinessMemberService;
-import kr.kh.finalproject.vo.BusinessMemberVO;
+import kr.kh.finalproject.service.ManagerService;
+import kr.kh.finalproject.vo.ManagerVO;
 
 public class AutoLoginInterceptor2 extends HandlerInterceptorAdapter {
 
 	@Autowired
-	BusinessMemberService businessMemberService;
+	ManagerService managerService;
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		HttpSession session = request.getSession();
-		BusinessMemberVO user2 = (BusinessMemberVO)session.getAttribute("user2");
+		ManagerVO user2 = (ManagerVO)session.getAttribute("user2");
 		
-		//ÀÌ¹Ì ·Î±×ÀÎ µÊ == ÀÚµ¿ ·Î±×ÀÎ ¾ÈÇØµµ µÊ
+		//ï¿½Ì¹ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ == ï¿½Úµï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Øµï¿½ ï¿½ï¿½
 		if(user2 != null) {
 			return true;
 		}
-		//ÄíÅ° Á¤º¸¸¦ °¡Á®¿È
+		//ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Cookie cookie = WebUtils.getCookie(request, "FinalProject");
-		//ÄíÅ° Á¤º¸°¡ ¾øÀ½ == ÀÚµ¿ ·Î±×ÀÎ ¾ÈÇØµµ µÊ
+		//ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ == ï¿½Úµï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Øµï¿½ ï¿½ï¿½
 		if(cookie == null) {
 			return true;
 		}
 		
-		//ÄíÅ°°ª°ú °°Àº Á¤º¸¸¦ °¡Áø È¸¿ø Á¤º¸¸¦ °¡Á®¿È
-		user2 = businessMemberService.getMemberBySessionId(cookie.getValue());
+		//ï¿½ï¿½Å°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		user2 = managerService.getMemberBySessionId(cookie.getValue());
 		if(user2 != null) {
 			session.setAttribute("user2", user2);
 		}

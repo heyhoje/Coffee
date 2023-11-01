@@ -57,4 +57,34 @@ public class ManagerServiceImp implements ManagerService{
 	public boolean manageridCheck(String id) {
 		return managerDao.selectManager(id) == null;
 	}
+
+
+	@Override
+	public ManagerVO login(ManagerVO manager) {
+		if (!checkIdRegex(manager.getBm_id()) || !checkPwRegex(manager.getBm_pw())) {
+			return null;
+		}
+
+		ManagerVO user2 = managerDao.selectManager(manager.getBm_id());
+		System.out.println(user2);
+		
+		if (user2 != null && passwordEncoder.matches(manager.getBm_pw(), user2.getBm_pw())) {
+			return user2;
+		}
+		return null;
+	}
+
+	@Override
+	public void updateMemberSession(Object user2) {
+		if(user2 == null) {
+			return;
+		}
+		managerDao.updateMemberSession(user2);
+	}
+
+	@Override
+	public ManagerVO getMemberBySessionId(String bId) {
+		return managerDao.selectMemberBySessionId(bId);
+	}
+
 }

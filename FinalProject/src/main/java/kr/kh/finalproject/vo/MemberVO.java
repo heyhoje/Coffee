@@ -14,6 +14,9 @@ public class MemberVO extends UserVO{
 	private String me_session_id; 
 	private Date me_session_limit; 
 	
+	private String kakao_user_id;
+    private String kakao_email; 
+    private String kakao_name; 
 
 	private boolean autoLogin;
 

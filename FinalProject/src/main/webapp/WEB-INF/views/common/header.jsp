@@ -50,7 +50,6 @@
 </style>
 </head>
 <body>
-
 	<!--header section start -->
 	<div class="header_section">
 		<div class="container-fluid">
@@ -82,16 +81,18 @@
 							style="color: white; float: right;">${user.me_user_id}</span></li>
 						<c:if test="${user == null && user2 == null}">
 							<li class="form-group" id="loginButton"><input type="submit"
-								value="회원 로그인" class="btn login_btn" data-toggle="modal"
+								style="margin-right: 10px"  value="회원 로그인" class="btn login_btn" data-toggle="modal"
 								data-target="#loginModal"></li>
 						</c:if>
 						<c:if test="${user2 == null && user == null}">
 							<li class="form-group" id="loginButton2"><input
-								style="margin-right: 10px" type="submit" value="사업자 로그인"
+								type="submit" value="사업자 로그인"
 								class="btn login2_btn" data-toggle="modal"
 								data-target="#loginModal2"></li>
 						</c:if>
 						<c:if test="${user != null}">
+						<li class="nav-item"><a class="nav-link"
+							href="<c:url value='/member/mypage'/>" style="color: white; font-family: 'BM HANNA Pro', sans-serif; float: right;">${user.me_name}</a></li>
 							<li class="form-group" id="logoutButton"><input
 								style="margin-right: 10px" type="submit" value="로그아웃"
 								class="btn float-right logout_btn" data-toggle="modal"

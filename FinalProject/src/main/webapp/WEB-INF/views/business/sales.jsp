@@ -7,8 +7,6 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	<h1 style="text-align: center; margin-top: 100px;">사업자페이지</h1>
-	<h1 style="text-align: center; margin-top: 100px;">${buser.bm_id}</h1>
-	
+<h1 style="text-align: center; margin-top: 100px;">판매정보조회</h1>
 </body>
 </html>

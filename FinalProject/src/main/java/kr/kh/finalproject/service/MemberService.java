@@ -1,6 +1,7 @@
 package kr.kh.finalproject.service;
 
 import kr.kh.finalproject.vo.MemberVO;
+import kr.kh.finalproject.vo.UserVO;
 
 public interface MemberService {
 
@@ -14,4 +15,13 @@ public interface MemberService {
 
 	MemberVO getMemberBySessionId(String value);
 
+	//카카오
+
+	void insertMemberKakao(MemberVO member);
+
+	MemberVO selectMemberKakao(String kakaoUserId);
+
+	void insertUserKakaoInfo(UserVO user);
+
+	UserVO selectUserKakaoInfo(String userId);
 }
