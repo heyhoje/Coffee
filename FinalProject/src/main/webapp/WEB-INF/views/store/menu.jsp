@@ -20,28 +20,7 @@
 <body>
 
 <div class="menu-container">
-	<!-- 브랜드 breadcrumb -->
-	<ul class="breadcrumb">
-		<!-- 'c:forEach'로 브랜드명 리스트 자동으로 나오게 하고, 브랜드 검색창으로 넘어가도록 링크 연결해주시면 됩니다! -->
-		<!-- ${st_num} 는 브랜드 번호가 아닌 '매장 번호'여서 지도 마크마다 매장 데이터를 넣어야 할 것 입니다.  -->
-		<c:forEach items="brands" var="brand">
-			<li class="breadcrumb-item active">
-				<a href="<c:url value='http://localhost:8080/finalproject/store/menu/${st_num}/1'/>">스타벅스</a>
-			</li>
-			<li class="breadcrumb-item">
-				<a href="#">투썸플레이스</a>
-			</li>
-			<li class="breadcrumb-item"><a href="#">할리스</a></li>
-			<li class="breadcrumb-item"><a href="#">탐앤탐스</a></li>
-			<li class="breadcrumb-item"><a href="#">메가커피</a></li>
-			<li class="breadcrumb-item"><a href="#">이디야</a></li>
-			<li class="breadcrumb-item"><a href="#">컴포즈</a></li>
-			<li class="breadcrumb-item"><a href="#">빽다방</a></li>
-			<li class="breadcrumb-item"><a href="#">커피빈</a></li>
-			
-	  	</c:forEach>
-	</ul>
-</div>
+
 	<!-- 대분류 이름 및 버튼박스 -->
 	<c:forEach var="category" begin="1" end="3" varStatus="loop">
 	    <c:if test="${loop.index == ca_num}">
@@ -77,17 +56,16 @@
 		<!-- 메뉴데이터 및 이미지파일 -->
 		<div class="image-group clearfix">
 			<div class="image-main">
-				<p>메뉴사진 / 메뉴이름 -> 메뉴설명 들어가는걸 어떻게 처리? / 장바구니 담는것도 기본클릭을 할지 버튼이나 체크박스가 따로 있을지?</p>
-				
 				<ul class="list-image">
 					<c:forEach items="${menuList}" var="menu">
 						<li class="item-image">
-							<a href="#" class="link-image">
+							<a href="<c:url value='/store/detail/${menu.mn_num}'/>" class="link-image">
 								<span class="box-image-menu">
 									<image class="image-menu" src="<c:url value='/image/menu/${menu.image.im_ori_name}'/>" width="200px" height="200px" alt="">
 								</span>
 								<div class="hover">
 									<p class="menu-title">${menu.mn_name}</p>
+									
 								</div>
 							</a>
 						</li>
@@ -95,7 +73,6 @@
 				</ul>
 			</div>
 		</div>
-		${pm }
 		<!-- 페이지네이션 -->
 		<!-- Center-aligned -->
 		<ul class="pagination justify-content-center">
