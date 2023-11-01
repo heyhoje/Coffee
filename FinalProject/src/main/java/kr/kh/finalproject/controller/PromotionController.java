@@ -31,7 +31,7 @@ public class PromotionController {
 	public String promotionList(Model model, Criteria cri) {
 		cri.setPerPageNum(5);
 		List<PromotionVO> promotionList = promotionService.getPromotionList(cri);
-		int totalCount = promotionService.getTotalCount();
+		int totalCount = promotionService.getTotalCount(cri);
 		PageMaker pm = new PageMaker(2, cri, totalCount);
 		
 		

@@ -10,4 +10,5 @@ public class PromotionVO {
 	String ad_image; 
 	String ad_date; 
 	int ad_st_num;
+	
 }

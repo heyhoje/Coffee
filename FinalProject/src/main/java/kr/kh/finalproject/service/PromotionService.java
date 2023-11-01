@@ -8,8 +8,8 @@ import kr.kh.finalproject.vo.PromotionVO;
 public interface PromotionService {
 
 	List<PromotionVO> getPromotionList(Criteria cri);
-
-	int getTotalCount();
+	
+	int getTotalCount(Criteria cri);
 
 
 
