@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.kh.finalproject.dao.MemberDAO;
 import kr.kh.finalproject.vo.MemberVO;
+import kr.kh.finalproject.vo.UserVO;
 
 
 @Service
@@ -34,8 +35,14 @@ public class MemberServiceImp implements MemberService {
 		String encodedPassword = passwordEncoder.encode(member.getMe_pw());
 		
 		member.setMe_pw(encodedPassword);
+
 		memberDao.insertUser(member);
+
 		return memberDao.insertMember(member);
+	}
+	@Override
+	public boolean checkId(String id) {
+		return memberDao.selectMember(id) == null;
 	}
 
 	private boolean checkPwRegex(String pw) {
@@ -55,15 +62,11 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public boolean checkId(String id) {
-		return memberDao.selectMember(id) == null;
-	}
-
-	@Override
 	public MemberVO login(MemberVO member) {
 		if (!checkIdRegex(member.getMe_user_id()) || !checkPwRegex(member.getMe_pw())) {
 			return null;
 		}
+
 		MemberVO user = memberDao.selectMember(member.getMe_user_id());
 		System.out.println(user);
 		
@@ -86,4 +89,24 @@ public class MemberServiceImp implements MemberService {
 	public MemberVO getMemberBySessionId(String sId) {
 		return memberDao.selectMemberBySessionId(sId);
 	}
+	
+	@Override
+    public void insertMemberKakao(MemberVO member) {
+        memberDao.insertMemberKakao(member);
+    }
+
+    @Override
+    public MemberVO selectMemberKakao(String kakaoUserId) {
+        return memberDao.selectMemberKakao(kakaoUserId);
+    }
+	@Override
+	public void insertUserKakaoInfo(UserVO user) {
+		memberDao.insertUserKakaoInfo(user);
+		
+	}
+	@Override
+	public UserVO selectUserKakaoInfo(String userId) {
+		return memberDao.selectUserKakaoInfo(userId);
+	}
+
 }

@@ -12,10 +12,12 @@ public class Criteria {
 	
 	public Criteria() {
 		page = 1;
-		perPageNum = 10;
+		perPageNum = 10; // 사진으로 배치할 경우, 몇개씩 배치할지를 어떻게 적용할까?
+						// 전체 페이지에 나오는 게시물 개수 (4로 설정하면 X한 행에 4개의 이미지X가 배치되는것! 아님. 전체페이지 개수)
 		type="0";
 		search="";
 	}
+	
 	public Criteria(int page, int perPageNum, String type, String search) {
 		this.page = page;
 		this.perPageNum = perPageNum;
@@ -29,6 +31,7 @@ public class Criteria {
 		type="0";
 		search="";
 	}
+	
 	//게시글 리스트에서 현재 페이지에 맞는 게시글을 가져오기 위한 시작 번지 
 	public int getPageStart() {
 		return (page - 1) * perPageNum;
@@ -36,7 +39,9 @@ public class Criteria {
 	public String getUrl(int page) {
 		return "?page=" + page + "&type="+type +"&search="+search;
 	}
+
 	public String getCurrentUrl() {
 		return "?page=" + page + "&type="+type +"&search="+search;
+
 	}
 }

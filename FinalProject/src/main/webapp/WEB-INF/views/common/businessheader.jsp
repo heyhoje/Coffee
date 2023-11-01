@@ -22,8 +22,10 @@
 <!-- bootstrap css -->
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/bootstrap.min.css'/>">
-<!-- style css -->
-<link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>">
+<!-- login css -->
+<link rel="stylesheet" href="<c:url value='/resources/css/login.css'/>">
+<!-- header css -->
+<link rel="stylesheet" href="<c:url value='/resources/css/header.css'/>">
 <!-- Responsive-->
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/responsive.css'/>">
@@ -54,8 +56,9 @@
 	<div class="header_section">
 		<div class="container-fluid">
 			<nav class="navbar navbar-expand-lg navbar">
-				<div>
-					<a href="<c:url value='/business/home'/>" style="color:white; font-size:50px; max-height:30px; font-family: 'BM HANNA Pro', sans-serif;"> 커피의 민족</a>
+				<div class="logo">
+					<a href="<c:url value='/business/home'/>"><img
+						src="<c:url value='/resources/images/로고.png'/>"></a>
 				</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarNav" aria-controls="navbarNav"
@@ -65,22 +68,19 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link"
-							href="resources/about.html"></a></li>
+							 href="<c:url value='/business/menu'/>"
+							style="font-family: 'BM HANNA Pro', sans-serif;">메뉴관리</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/main/promotion'/>"></a></li>
+							 href="<c:url value='/business/order'/>"
+							style="font-family: 'BM HANNA Pro', sans-serif;">주문확인</a></li>
+						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/store'/>"
+							style="font-family: 'BM HANNA Pro', sans-serif;">매장관리</a></li>
+						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/sales'/>"
+							style="font-family: 'BM HANNA Pro', sans-serif;">판매정보조회</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/order/store'/>"></a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/main/gallery'/>"></a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="resources/contact.html"></a></li>
-						<li class="nav-item mr-5"><a class="nav-link"
-							href="resources/contact.html"></a></li>
-						<li class="nav-item"><span
-							style="color: white; float: right;">${buser.bm_Id}</span></li>
-						<li class="nav-item">
+							style="color: white; font-family: 'BM HANNA Pro', sans-serif; float: right;">${buser.bm_id}</a></li>
 						<li class="form-group" id="logoutButton2"><input
-							type="submit" value="로그아웃" class="btn float-right logout_btn"
+							style="font-size:20px; type="submit" value="로그아웃" class="btn float-right logout_btn"
 							data-toggle="modal" data-target="#logoutModal2"></li>
 					</ul>
 				</div>
@@ -97,15 +97,14 @@
 			<div class="d-flex justify-content-center h-100">
 				<div class="card" style="height: 150px">
 					<div class="card-header">
-						<h1 style="margin-top: 2%; text-align: center; color: white;">로그아웃하시겠습니까?</h1>
+						<h4 style="font-size:30px; margin-top: 2%; text-align: center; color: white;">로그아웃하시겠습니까?</h4>
 					</div>
 					<div class="card-body" style="height: 300px">
 						<form action="<c:url value='/member/logout2'/>" method="post">
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<input
-										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; 
-										max-height: 44px; max-width:100px; margin: auto; margin-left: 134%"
+										style="font-size:20px; border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto; margin-left: 134%; margin-top: 5%;"
 										type="submit" value="로그아웃" class="btn logout_btn">
 								</div>
 							</div>

@@ -17,8 +17,6 @@
       <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
       <!-- 네이버 로그인 -->
       <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-      <!-- 페이스북 로그인 -->
-      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=1588150011384568" nonce="SiOBIhLG"></script>
       <!-- 구글 로그인  -->
       <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
       <!-- 구글 로그인 OAuth 2.0 클라이언트 ID -->
@@ -123,7 +121,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
 								</div>
-								<input type="text" name="bm_Id" required class="form-control"
+								<input type="text" name="bm_id" required class="form-control"
 									placeholder="사업자 아이디">
 
 							</div>
@@ -131,7 +129,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
-								<input type="password" name="bm_Pw" required
+								<input type="password" name="bm_pw" required
 									class="form-control" placeholder="비밀번호">
 							</div>
 							<div class="row align-items-center remember">
@@ -191,7 +189,7 @@
 			<div class="d-flex justify-content-center h-100">
 				<div class="card" style="height: 150px">
 					<div class="card-header">
-						<h1 style="margin-top: 2%; text-align: center; color: white;">로그아웃하시겠습니까?</h1>
+						<h1 style="font-size:25px; margin-top: 2%; text-align: center; color: white;">로그아웃하시겠습니까?</h1>
 					</div>
 					<div class="card-body" style="height: 300px">
 						<form action="<c:url value='/member/logout'/>" method="post">
@@ -286,46 +284,8 @@
 	</script>
 
 	<script>
-	<!-- 페이스북 로그인 -->
-		//기존 로그인 상태를 가져오기 위해 Facebook에 대한 호출
-		function statusChangeCallback(res) {
-			statusChangeCallback(response);
-		}
-
-		function fnFbCustomLogin() {
-			FB.login(function(response) {
-				if (response.status === 'connected') {
-					FB.api('/me', 'get', {
-						fields : 'name,email'
-					}, function(r) {
-						console.log(r);
-					})
-				} else if (response.status === 'not_authorized') {
-					// 사람은 Facebook에 로그인했지만 앱에는 로그인하지 않았습니다.
-					alert('앱에 로그인해야 이용가능한 기능입니다.');
-				} else {
-					// 그 사람은 Facebook에 로그인하지 않았으므로이 앱에 로그인했는지 여부는 확실하지 않습니다.
-					alert('페이스북에 로그인해야 이용가능한 기능입니다.');
-				}
-			}, {
-				scope : 'public_profile,email'
-			});
-		}
-
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId : '903275711202980', // 내 앱 ID를 입력한다.
-				cookie : true,
-				xfbml : true,
-				version : 'v10.0'
-			});
-			FB.AppEvents.logPageView();
-		};
-	</script>
-
-	<script>
 	<!-- 카카오 로그인  -->
-		Kakao.init('b2ec646ca536be97bb14d5da3d5ff63b'); //발급받은 키 중 javascript키를 사용해준다.
+		Kakao.init('a5737697fa5f3dd128397ef34179de7a'); //발급받은 키 중 javascript키를 사용해준다.
 		console.log(Kakao.isInitialized()); // sdk초기화여부판단
 		//카카오로그인
 		function kakaoLogin() {
@@ -334,18 +294,36 @@
 					Kakao.API.request({
 						url : '/v2/user/me',
 						success : function(response) {
-							console.log(response)
-						},
-						fail : function(error) {
-							console.log(error)
-						},
-					})
-				},
-				fail : function(error) {
-					console.log(error)
-				},
-			})
-		}
+							console.log(response);
+							// 로그인 정보를 서버로 보내는 Ajax 요청 추가
+	                        $.ajax({
+	                            url: 'kakaoLoginCallback', // 서버의 콜백 URL로 변경
+	                            type: 'POST',
+	                            data: {
+	                                kakaoId: response.id,
+	                                email: response.kakao_account.email,
+	                                name : response.kakao_account.name,
+	                                phone_number : response.kakao_account.phone_number,
+	                            },
+	                            success: function (data) {
+	                            	console.log(data);
+	                            	alert("로그인이 성공했습니다.");
+	                            },
+	                            error: function (xhr, status, error) {
+	                                console.error(error);
+	                            }
+	                        });
+	                    },
+	                    fail: function (error) {
+	                        console.log(error);
+	                    },
+	                });
+	            },
+	            fail: function (error) {
+	                console.log(error);
+	            },
+	        });
+	    }
 		//카카오로그아웃  
 		function kakaoLogout() {
 			if (Kakao.Auth.getAccessToken()) {
@@ -413,9 +391,6 @@
 
 		}
 	</script>
-	<!-- 페이스북 앱아이디  -->
-	<script async defer crossorigin="anonymous"
-		src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=903275711202980"
-		nonce="SiOBIhLG"></script>
+	
 </body>
 </html>

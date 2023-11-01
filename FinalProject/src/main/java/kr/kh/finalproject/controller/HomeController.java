@@ -31,10 +31,4 @@ public class HomeController {
 		return "/main/gallery";
 	}
 	
-	//사업자페이지
-	@RequestMapping(value="/business/home", method=RequestMethod.GET)
-	public String businesspage() {
-		
-		return "/business/home";
-	}
 }

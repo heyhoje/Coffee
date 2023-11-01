@@ -1,10 +1,14 @@
 package kr.kh.finalproject.vo;
 
 import lombok.Data;
+
 @Data
-public class KakaoVO {
-		private long k_number;
-		private String k_name;
-		private String k_email;
-		private String k_birthday;
+public class KakaoVO{
+	
+	private String kakao_user_id;
+    private String kakao_email; 
+    private String kakao_name; 
+
+	private boolean autoLogin;
+
 }

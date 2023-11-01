@@ -10,4 +10,10 @@ public interface ManagerDAO {
 
 	boolean insertManager(@Param("manager") ManagerVO manager);
 
+	void updateMemberSession(Object user2);
+
+	ManagerVO selectMemberBySessionId(String bId);
+
+
+
 }
