@@ -1,4 +1,25 @@
+
+
 body{margin-top:20px;}
+
+.col-md-6 {
+flex: 0 0 70%;
+max-width: 80%;
+}
+
+#searchplace{
+margin-bottom:50px;
+text-align:center;	
+	
+}
+#keyword{
+width:100%;	
+	
+}
+#searchplace .btn-outline-warning.btn-lg{
+margin-top:20px;
+	
+}
 .event-schedule-area .section-title .title-text {
     margin-bottom: 50px;
 }
@@ -40,6 +61,7 @@ body{margin-top:20px;}
 .event-schedule-area .tab-area .tab-content .table {
     margin-bottom: 0;
     width: 80%;
+    
 }
 .event-schedule-area .tab-area .tab-content .table thead td,
 .event-schedule-area .tab-area .tab-content .table thead th {
@@ -136,7 +158,7 @@ body{margin-top:20px;}
     margin-bottom: 0;
 }
 .event-schedule-area-two .tab-content .table thead {
-    background-color: #007bff;
+    background-color: #212529;
     color: #fff;
     font-size: 20px;
 }
@@ -155,7 +177,7 @@ body{margin-top:20px;}
     padding: 30px 20px;
     vertical-align: middle;
 }
-.event-schedule-area-two .tab-content .table tbody tr th .event-date {
+.event-schedule-area-two .tab-content .table tbody tr th .promotion-number {
     color: #252525;
     text-align: center;
 }
@@ -171,7 +193,7 @@ body{margin-top:20px;}
 .event-schedule-area-two .tab-content .table tbody tr td .r-no span {
     color: #252525;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap h3 a {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents h3 a {
     font-size: 20px;
     line-height: 20px;
     color: #cf057c;
@@ -179,16 +201,16 @@ body{margin-top:20px;}
     -o-transition: all 0.4s;
     transition: all 0.4s;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap h3 a:hover {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents h3 a:hover {
     color: #4125dd;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap .categories {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents .categories {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
     margin: 10px 0;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap .categories a {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents .categories a {
     color: #252525;
     font-size: 16px;
     margin-left: 10px;
@@ -196,31 +218,31 @@ body{margin-top:20px;}
     -o-transition: all 0.4s;
     transition: all 0.4s;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap .categories a:before {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents .categories a:before {
     content: "\f07b";
     font-family: fontawesome;
     padding-right: 5px;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap .time span {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents .time span {
     color: #252525;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap .organizers {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents .organizers {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
     margin: 10px 0;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap .organizers a {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents .organizers a {
     color: #4125dd;
     font-size: 16px;
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     transition: all 0.4s;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap .organizers a:hover {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents .organizers a:hover {
     color: #4125dd;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap .organizers a:before {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents .organizers a:before {
     content: "\f007";
     font-family: fontawesome;
     padding-right: 5px;
@@ -228,6 +250,7 @@ body{margin-top:20px;}
 .event-schedule-area-two .tab-content .table tbody tr td .primary-btn {
     margin-top: 0;
     text-align: center;
+    background-color:blue;
 }
 .event-schedule-area-two .tab-content .table tbody tr td .event-img img {
     width: 100px;
