@@ -80,13 +80,13 @@
 						<li class="nav-item"><span
 							style="color: white; float: right;">${user.me_user_id}</span></li>
 						<c:if test="${user == null && user2 == null}">
-							<li class="form-group" id="loginButton"><input type="submit"
-								style="margin-right: 10px"  value="회원 로그인" class="btn login_btn" data-toggle="modal"
+							<li class="form-group" id="loginButton"><input type="submit" 
+								style="margin-right: 10px; background-color: floralwhite;"  value="회원 로그인" class="btn login_btn" data-toggle="modal"
 								data-target="#loginModal"></li>
 						</c:if>
 						<c:if test="${user2 == null && user == null}">
 							<li class="form-group" id="loginButton2"><input
-								type="submit" value="사업자 로그인"
+								type="submit" style="background-color: floralwhite;"value="사업자 로그인"
 								class="btn login2_btn" data-toggle="modal"
 								data-target="#loginModal2"></li>
 						</c:if>
@@ -94,7 +94,7 @@
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/member/mypage'/>" style="color: white; font-family: 'BM HANNA Pro', sans-serif; float: right;">${user.me_name}</a></li>
 							<li class="form-group" id="logoutButton"><input
-								style="margin-right: 10px" type="submit" value="로그아웃"
+								style="margin-right: 10px;" type="submit" value="로그아웃"
 								class="btn float-right logout_btn" data-toggle="modal"
 								data-target="#logoutModal"></li>
 						</c:if>
