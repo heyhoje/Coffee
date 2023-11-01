@@ -62,7 +62,9 @@
 						<div>
 							<h2>
 								<span>메뉴 옵션</span>
-								<button type="button" class="add_option">+ 옵션 추가</button>
+								<button type="button" class="add_option"
+									style="border-radius: 10px; border: solid 1px; background: #fff; padding: 3px; font-size: 1.2rem; position: absolute; right: 0; top: 0">+
+									옵션 추가</button>
 							</h2>
 						</div>
 						<div class="option_box_div">
@@ -115,7 +117,7 @@
 	<!-- 메뉴 추가하기  -->
 	<!-- 메뉴 수정하기  -->
 	<div class="add_menu_modal menu_modify modal" id="modifyModal"
-		style="padding:0; position: fixed; z-index: 9999; max-width: 560px; max-height: 85vh; max-height: 720px; left: 50%; margin-left: -275px; margin-top: 3%; border-radius: 10px; overflow-x: hidden; overflow: hidden; background: #fff; box-shadow: 3px 3px 20px 10px rgb(0 0 0/ 25%);">
+		style="padding: 0; position: fixed; z-index: 9999; max-width: 560px; max-height: 85vh; max-height: 720px; left: 50%; margin-left: -275px; margin-top: 3%; border-radius: 10px; overflow-x: hidden; overflow: hidden; background: #fff; box-shadow: 3px 3px 20px 10px rgb(0 0 0/ 25%);">
 		<form>
 			<div id="modal_header">
 				<button type="button" class="closeA">
@@ -144,7 +146,9 @@
 						<div>
 							<h2>
 								<span>메뉴 옵션</span>
-								<button type="button" class="add_option">+ 옵션 추가</button>
+								<button type="button" class="add_option"
+									style="border-radius: 10px; border: solid 1px; background: #fff; padding: 3px; font-size: 1.2rem; position: absolute; right: 0; top: 0">+
+									옵션 추가</button>
 							</h2>
 						</div>
 						<div class="option_box_div">
@@ -427,25 +431,87 @@
 	});
 </script>
 <script>
-//바깥 부분 클릭 시 모달 닫기
-window.addEventListener('click', function (event) {
-    var modal = document.getElementById('addModal');
-    if (event.target == modal) {
-        closeModal();
-    }
-});
+	//바깥 부분 클릭 시 모달 닫기
+	window.addEventListener('click', function(event) {
+		var modal = document.getElementById('addModal');
+		if (event.target == modal) {
+			closeModal();
+		}
+	});
 
-// ESC 키 누를 시 모달 닫기
-document.addEventListener('keydown', function (event) {
-    var modal = document.getElementById('addModal');
-    if (event.key === 'Escape' && modal.style.display === 'block') {
-        closeModal();
-    }
-});
+	// ESC 키 누를 시 모달 닫기
+	document.addEventListener('keydown', function(event) {
+		var modal = document.getElementById('addModal');
+		if (event.key === 'Escape' && modal.style.display === 'block') {
+			closeModal();
+		}
+	});
 
-function closeModal() {
-    var modal = document.getElementById('addModal');
-    modal.style.display = 'none';
-}
+	function closeModal() {
+		var modal = document.getElementById('addModal');
+		modal.style.display = 'none';
+	}
+</script>
+
+<script>
+	// JavaScript 코드
+	document.addEventListener("DOMContentLoaded", function() {
+		var addOptionButton = document.querySelector(".add_option");
+		var optionCount = 1;
+
+		addOptionButton.addEventListener("click",
+				function() {
+					var optionBoxDiv = document
+							.querySelector(".option_box_div");
+					var newOptionBoxDiv = optionBoxDiv.cloneNode(true);
+					var optionNumber = newOptionBoxDiv
+							.querySelector(".option div div");
+					var optionNumberText = "옵션 " + (optionCount + 1);
+					optionNumber.textContent = optionNumberText;
+					optionBoxDiv.parentNode.appendChild(newOptionBoxDiv);
+					optionCount++;
+
+					// "add_option_cancle" 버튼에 대한 클릭 이벤트 핸들러를 추가합니다.
+					var cancelButtons = newOptionBoxDiv
+							.querySelectorAll(".add_option_cancle");
+					cancelButtons.forEach(function(cancelButton) {
+						cancelButton.addEventListener("click", function() {
+							// 삭제할 박스의 부모 요소를 찾아 삭제합니다.
+							var boxToDelete = cancelButton
+									.closest(".option_box_div");
+							boxToDelete.parentNode.removeChild(boxToDelete);
+
+							// 남은 박스의 옵션 번호를 업데이트합니다.
+							var remainingBoxes = document
+									.querySelectorAll(".option_box_div");
+							for (var i = 0; i < remainingBoxes.length; i++) {
+								var optionNumber = remainingBoxes[i]
+										.querySelector(".option div div");
+								optionNumber.textContent = "옵션 " + (i + 1);
+							}
+							optionCount = remainingBoxes.length; // 현재 옵션 번호를 업데이트합니다.
+						});
+					});
+				});
+
+		// 기본으로 존재하는 1번 옵션 박스의 삭제 버튼에 대한 이벤트 핸들러를 추가합니다.
+		var cancelButtons = document.querySelectorAll(".add_option_cancle");
+		cancelButtons.forEach(function(cancelButton) {
+			cancelButton.addEventListener("click", function() {
+				var boxToDelete = cancelButton.closest(".option_box_div");
+				boxToDelete.parentNode.removeChild(boxToDelete);
+
+				// 남은 박스의 옵션 번호를 업데이트합니다.
+				var remainingBoxes = document
+						.querySelectorAll(".option_box_div");
+				for (var i = 0; i < remainingBoxes.length; i++) {
+					var optionNumber = remainingBoxes[i]
+							.querySelector(".option div div");
+					optionNumber.textContent = "옵션 " + (i + 1);
+				}
+				optionCount = remainingBoxes.length; // 현재 옵션 번호를 업데이트합니다.
+			});
+		});
+	});
 </script>
 </html>
