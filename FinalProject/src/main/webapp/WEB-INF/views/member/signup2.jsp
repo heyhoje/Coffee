@@ -255,31 +255,33 @@
         }).open();
     }
     /* 사업자등록번호 조회 시작 */
-	$(document).ready(function(){
-		$("#bidsearch").click(function(){
-			var b_no = document.getElementById("inputbri4").value;
-			var data = {
-				b_no : [b_no],	
-			};
-			
-			let serviceKey ="6%2FljNK6ok3aEAXy70qeiTeq3cPC%2FF9P75ny1k%2F2W3w6eAf9mYAOPohyUQB60NWpRBv%2FH9z85nzxjJgSzwKhYtw%3D%3D";
-			$.ajax({
-				url:
-					"https://api.odcloud.kr/api/nts-businessman/v1/status?servicekey=" + serviceKey,
-				type: "POST",
-				data: JSON.stringify(data),
-				dataType: "JSON",
-				contentType "application/json",
-				accept: "application/json",
-				success: function (result){
-					console.log("결과: ", result);
-				},
-				error: function (error){
-					console.log("에러: ", error);
-				},
-			});
-		});
-	});
+	var button = document.getElementById("bidsearch");
+   		button.addEventListener("click", function(){
+      	let b_no = document.getElementById("inputbri4").value
+   	var data = {
+           "b_no": [b_no] // 사업자번호 "xxxxxxx" 로 조회 시,
+          }; 
+          
+       $.ajax({
+         url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=6%2FljNK6ok3aEAXy70qeiTeq3cPC%2FF9P75ny1k%2F2W3w6eAf9mYAOPohyUQB60NWpRBv%2FH9z85nzxjJgSzwKhYtw%3D%3D",  // serviceKey 값을 xxxxxx에 입력
+         type: "POST",
+         data: JSON.stringify(data), // json 을 string으로 변환하여 전송
+         dataType: "JSON",
+         contentType: "application/json",
+         accept: "application/json",
+         success: function(result) {
+             console.log(result);
+                /* API에서 사업자 등록번호 추출 */
+             if(result.match_cnt) {
+                alert('사업 인증이 확인되었습니다.')
+                
+             } else{
+            	 alert(result.data[0].tax_type)
+             }
+         },
+       })
+   });
+
 	</script>
 </body>
 </html>
