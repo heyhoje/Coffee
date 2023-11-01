@@ -78,7 +78,7 @@
 						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/sales'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">판매정보조회</a></li>
 						<li class="nav-item"><a class="nav-link"
-							style="color: white; font-family: 'BM HANNA Pro', sans-serif; float: right;">${buser.bm_id}</a></li>
+							style="color: white; font-family: 'BM HANNA Pro', sans-serif; float: right;">${buser.bm_manager}</a></li>
 						<li class="form-group" id="logoutButton2"><input
 							style="font-size:20px; type="submit" value="로그아웃" class="btn float-right logout_btn"
 							data-toggle="modal" data-target="#logoutModal2"></li>
