@@ -30,36 +30,42 @@
 					<form action="<c:url value='/member/signup2'/>" method="post">
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="me_name">이름</label> <input type="text"
+								<label for="me_name">이름</label> 
+								<input type="text"
 									class="form-control" id="inputmembername4" placeholder="이름을 입력하세요"
 									name="me_name" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="user_id">아이디</label> <input type="text"
+								<label for="user_id">아이디</label> 
+								<input type="text"
 									class="form-control" id="inputmemberid4"
 									placeholder="아이디를 입력하세요" name="user_id" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="user_phone">전화번호</label> <input type="text"
+								<label for="user_phone">전화번호</label> 
+								<input type="text"
 									class="form-control" id="inputmemberphone4"
 									placeholder="전화번호를 입력하세요" name="user_phone" required="">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="me_email">이메일</label> <input type="email"
+								<label for="me_email">이메일</label> 
+								<input type="email"
 									class="form-control" id="inputEmail4" placeholder="이메일을 입력하세요"
 									name="me_email" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="me_pw">비밀번호</label> <input type="password"
+								<label for="me_pw">비밀번호</label> 
+								<input type="password"
 									class="form-control" id="inputPassword4"
 									placeholder="비밀번호를 입력하세요" name="me_pw" required="">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="me_pw2">비밀번호 확인</label> <input type="password"
+								<label for="me_pw2">비밀번호 확인</label> 
+								<input type="password"
 									class="form-control" id="inputPasswordCheck4"
 									placeholder="동일한 비밀번호를 입력하세요." name="me_pw2" required="">
 							</div>
@@ -97,31 +103,36 @@
 					<form action="<c:url value='/manager/signup2'/>" method="post">
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_manager">매니저</label> <input type="text"
+								<label for="bm_manager">매니저</label> 
+								<input type="text"
 									class="form-control" id="inputmanager4" placeholder="성함을 입력하세요"
 									name="bm_manager" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="bm_id">아이디</label> <input type="text"
+								<label for="bm_id">아이디</label> 
+								<input type="text"
 									class="form-control" id="inputid4"
 									placeholder="아이디를 입력하세요" name="bm_id" required="">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_email">이메일</label> <input type="email"
+								<label for="bm_email">이메일</label> 
+								<input type="email"
 									class="form-control" id="inputEmail4" placeholder="이메일을 입력하세요"
 									name="bm_email" required="">
 							</div>
 							<div class="form-group col-md-12">
-								<label for="bm_pw">비밀번호</label> <input type="password"
+								<label for="bm_pw">비밀번호</label> 
+								<input type="password"
 									class="form-control" id="inputPassword4"
 									placeholder="비밀번호를 입력하세요" name="bm_pw" required="">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_pw2">비밀번호 확인</label> <input type="password"
+								<label for="bm_pw2">비밀번호 확인</label> 
+								<input type="password"
 									class="form-control" id="inputPasswordCheck4"
 									placeholder="동일한 비밀번호를 입력하세요" name="bm_pw2" required="">
 							</div>
@@ -129,7 +140,8 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_num">사업자 등록 번호</label> <input type="text"
+								<label for="bm_num">사업자 등록 번호</label> 
+								<input type="text"
 									class="form-control" id="inputbri4"
 									placeholder="사업자 등록 번호를 입력하세요" name="bm_num" required="">
 									<button class="btn btn-primary" id="bidsearch" style="margin-top:10px;">조회</button>
@@ -138,7 +150,8 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_store_name">매장명</label> <input type="text"
+								<label for="bm_store_name">매장명</label> 
+								<input type="text"
 									class="form-control" id="inputstorename4"
 									placeholder="매장 전화번호를 입력하세요" name="bm_store_name" required="">
 							</div>
@@ -146,7 +159,8 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_phone">매장 전화번호</label> <input type="text"
+								<label for="bm_phone">매장 전화번호</label> 
+								<input type="text"
 									class="form-control" id="inputstorephone4"
 									placeholder="매장 전화번호를 입력하세요" name="bm_phone" required="">
 							</div>
@@ -154,11 +168,12 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label for="bm_address">매장 주소</label> <input type="text"
+								<label for="bm_address">매장 주소</label> 
+								<input type="text"
 									class="form-control" id="inputstoreaddress4"
 									placeholder="매장 주소를 입력하세요" name="bm_address" required="">
 									<button class="btn btn-primary" onclick="sample5_execDaumPostcode()">주소 검색</button><br>
-									<div id="map" style="width:300px; height:300px; margin-top:10px; display:none"></div>
+									<div id="map" style="width:450px; height:300px; margin-top:10px; display:none"></div>
 							</div>
 						<input type="hidden" name="user_aorb" value="매니저">
 						</div>
@@ -239,38 +254,32 @@
             }
         }).open();
     }
-    
-    var button = document.getElementById("bidsearch");
-    
-    button.addEventListener("click", function(){
-       let b_no = document.getElementById("inputbri4").value
-    var data = {
-            "b_no": [b_no] // 사업자번호 "xxxxxxx" 로 조회 시,
-           }; 
-           
-        $.ajax({
-          url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=6%2FljNK6ok3aEAXy70qeiTeq3cPC%2FF9P75ny1k%2F2W3w6eAf9mYAOPohyUQB60NWpRBv%2FH9z85nzxjJgSzwKhYtw%3D%3D",  // serviceKey 값을 xxxxxx에 입력
-          type: "POST",
-          data: JSON.stringify(data), // json 을 string으로 변환하여 전송
-          dataType: "JSON",
-          contentType: "application/json",
-          accept: "application/json",
-          success: function(result) {
-              console.log(result);
-                 /* API에서 사업자 등록번호 추출 */
-              if(result.data.length > 0) {
-                 var businessNumber = result.data[0].b_no;
-                 /* 사업자등록번호 필드에 설정 */
-                 var inputbusinessNumber = document.getElementById("inputbri4");
-                 
-                 inputBusinessNumber.value = businessNumber;
-              } else{
-                 console.error('데이터가 없거나 잘못된 응답입니다.');
-              }
-          },
-        })
-    });
-
+    /* 사업자등록번호 조회 시작 */
+	$(document).ready(function(){
+		$("#bidsearch").click(function(){
+			var b_no = document.getElementById("inputbri4").value;
+			var data = {
+				b_no : [b_no],	
+			};
+			
+			let serviceKey ="6%2FljNK6ok3aEAXy70qeiTeq3cPC%2FF9P75ny1k%2F2W3w6eAf9mYAOPohyUQB60NWpRBv%2FH9z85nzxjJgSzwKhYtw%3D%3D";
+			$.ajax({
+				url:
+					"https://api.odcloud.kr/api/nts-businessman/v1/status?servicekey=" + serviceKey,
+				type: "POST",
+				data: JSON.stringify(data),
+				dataType: "JSON",
+				contentType "application/json",
+				accept: "application/json",
+				success: function (result){
+					console.log("결과: ", result);
+				},
+				error: function (error){
+					console.log("에러: ", error);
+				},
+			});
+		});
+	});
 	</script>
 </body>
 </html>
