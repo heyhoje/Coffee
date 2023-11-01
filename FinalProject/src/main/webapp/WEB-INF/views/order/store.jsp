@@ -47,10 +47,12 @@
             <div class="row height d-flex justify-content-center align-items-center">
 
               <div class="col-md-6">
-
-                  <form onsubmit="searchPlaces(); return false;" id="searchstore">
+                 <form onsubmit="searchPlaces(); return false;">
+                 	<div class="input-group mt-5" id="searchstore">
                   	<div id="searchbox">
-                    <input type="text" class="form-control input-text" value="" id="form-control" size="10px;" aria-describedby="basic-addon2" style="width:100%;">  <button class="btn btn-outline-warning btn-lg" type="submit" style="margin-top: 20px; font-family: 'BM HANNA Pro', sans-serif;">검색하기</button>
+                    <input type="text" class="form-control input-text" value="" id="keyword" size="10px;" aria-describedby="basic-addon2">  
+                   	</div>
+                   	<button class="btn btn-outline-warning btn-lg" type="submit" id="searchbtn" style="font-family: 'BM HANNA Pro', sans-serif; font-size:medium;">검색하기</button>
                    	</div>
                 </form>
                 

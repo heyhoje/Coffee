@@ -15,6 +15,7 @@
 	max-width: 80%;
 	margin-bottom:30px;
 	font-weight: bold;
+	padding:0 0 0 0;
 	
 }
 .search-container .col-md-6 #searchstore{
@@ -27,7 +28,11 @@
 	margin-bottom:30px;
 	height:50px;
 }
-.search-container .col-md-6 #searchstore #searchbox #form-control{
+.search-container .col-md-6 #searchstore #searchbox #keyword{
 	height:100%;
-
+}
+.search-container .col-md-6 #searchstore #searchbtn{
+	width:150px;
+	height:38px;
+	line-height:normal;
 }

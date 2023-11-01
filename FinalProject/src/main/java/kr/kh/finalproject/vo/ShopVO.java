@@ -16,4 +16,5 @@ public class ShopVO {
 	private String bm_num;
 	private String bm_store_name;
 	private String bm_image;
+	private String bm_manager;
 }
