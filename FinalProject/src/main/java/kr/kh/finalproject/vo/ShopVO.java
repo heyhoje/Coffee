@@ -15,4 +15,5 @@ public class ShopVO {
 	private Double bm_geocoding_longi;
 	private String bm_num;
 	private String bm_store_name;
+	private String bm_image;
 }

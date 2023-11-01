@@ -1,1 +1,33 @@
 @charset "EUC-KR";
+
+.btn-outline-warning{
+	color:#28a745;
+	border-color: #28a745;	
+}
+.btn-outline-warning:hover {
+	color:#fff;
+	background-color:#28a745;
+	border-color:#28a745;
+}
+
+.search-container .col-md-6{
+	flex:0 0 70%;
+	max-width: 80%;
+	margin-bottom:30px;
+	font-weight: bold;
+	
+}
+.search-container .col-md-6 #searchstore{
+	width:100%;
+    justify-content:center;
+    display:flex;
+}
+.search-container .col-md-6 #searchstore #searchbox{
+	width:100%;
+	margin-bottom:30px;
+	height:50px;
+}
+.search-container .col-md-6 #searchstore #searchbox #form-control{
+	height:100%;
+
+}

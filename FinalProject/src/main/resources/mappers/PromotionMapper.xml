@@ -13,7 +13,7 @@
 
 <select id="selectPromotionList" resultType="kr.kh.finalproject.vo.PromotionVO">
 	select * from advertisement order by ad_num asc
-	limit #{cri.pageStart}, #{cri.perPageNum}
+	
 </select>
 <select id="selectPromotionTotalCount" resultType="int">
 	select count(*) from advertisement

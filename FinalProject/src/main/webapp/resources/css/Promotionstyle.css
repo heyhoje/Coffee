@@ -1,3 +1,5 @@
+
+
 body{margin-top:20px;}
 
 .col-md-6 {
@@ -59,6 +61,7 @@ margin-top:20px;
 .event-schedule-area .tab-area .tab-content .table {
     margin-bottom: 0;
     width: 80%;
+    
 }
 .event-schedule-area .tab-area .tab-content .table thead td,
 .event-schedule-area .tab-area .tab-content .table thead th {
@@ -190,7 +193,7 @@ margin-top:20px;
 .event-schedule-area-two .tab-content .table tbody tr td .r-no span {
     color: #252525;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap h3 a {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents h3 a {
     font-size: 20px;
     line-height: 20px;
     color: #cf057c;
@@ -198,16 +201,16 @@ margin-top:20px;
     -o-transition: all 0.4s;
     transition: all 0.4s;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap h3 a:hover {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents h3 a:hover {
     color: #4125dd;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap .categories {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents .categories {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
     margin: 10px 0;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap .categories a {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents .categories a {
     color: #252525;
     font-size: 16px;
     margin-left: 10px;
@@ -215,31 +218,31 @@ margin-top:20px;
     -o-transition: all 0.4s;
     transition: all 0.4s;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap .categories a:before {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents .categories a:before {
     content: "\f07b";
     font-family: fontawesome;
     padding-right: 5px;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap .time span {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents .time span {
     color: #252525;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap .organizers {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents .organizers {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
     margin: 10px 0;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap .organizers a {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents .organizers a {
     color: #4125dd;
     font-size: 16px;
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     transition: all 0.4s;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap .organizers a:hover {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents .organizers a:hover {
     color: #4125dd;
 }
-.event-schedule-area-two .tab-content .table tbody tr td .event-wrap .organizers a:before {
+.event-schedule-area-two .tab-content .table tbody tr td .store-contents .organizers a:before {
     content: "\f007";
     font-family: fontawesome;
     padding-right: 5px;
@@ -247,6 +250,7 @@ margin-top:20px;
 .event-schedule-area-two .tab-content .table tbody tr td .primary-btn {
     margin-top: 0;
     text-align: center;
+    background-color:blue;
 }
 .event-schedule-area-two .tab-content .table tbody tr td .event-img img {
     width: 100px;
