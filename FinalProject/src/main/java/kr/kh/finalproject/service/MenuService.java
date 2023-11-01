@@ -17,4 +17,6 @@ public interface MenuService {
 	// cri에 매장정보, 메뉴분류 정보 등이 없기 때문에 같이 매개변수로 추가해줘야함. 
 	int getTotalCount(int st_num, int[] mc_numList, int lc_num, Criteria cri);
 
+	List<MenuVO> getAllMenus();
+
 }

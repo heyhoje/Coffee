@@ -61,6 +61,10 @@
 	 		where mn_mc_num in (select mc_num from medium_category where mc_lc_num = #{lc_num})
 	 	</if>
 	</select>
+	
+	<select id="getAllMenus" resultType="kr.kh.finalproject.vo.MenuVO">
+        SELECT * FROM menu;
+    </select>
 </mapper>
 
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.pagination.PageMaker;
@@ -69,5 +70,10 @@ public class MenuController {
 		return "/store/menu";
 	
 	}
-	
+	 @RequestMapping("/menu")
+	    public String showMenu(Model model) {
+	        List<MenuVO> menuList = menuService.getAllMenus();
+	        model.addAttribute("menuList", menuList);
+	        return "/business/menu"; // JSP 페이지 이름
+	    }
 }

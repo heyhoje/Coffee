@@ -4,13 +4,17 @@ import lombok.Data;
 
 @Data
 public class MenuVO {
-	
-	int mn_num;
-	String mn_name;
-	String mn_contents;
-	int mn_price;
-	
-	int mn_st_num; // 매장 고유번호
-	int mn_mc_num; // 메뉴 중분류번호
-	ImageVO image;
+
+	private int mn_num;
+	private String mn_name;
+	private String mn_contents;
+	private int mn_price;
+	private int mn_mc_num;
+	private int mn_st_num;
+	private int os_num;
+	private int os_num2;
+	private int os_num3;
+	private int os_num4;
+	private int os_num5;
+
 }
