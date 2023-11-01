@@ -18,4 +18,8 @@ public interface MenuDAO {
 	ImageVO selectMenuImage(@Param("mn_num")int mn_num);
 
 	int selectCountMenuList(@Param("st_num")int st_num, @Param("mc_list")int[] mc_numList, @Param("lc_num")int lc_num, @Param("cri")Criteria cri);
+
+	// 메뉴 상세 페이지 
+	MenuVO selectMenu(@Param("mn_num")int mn_num);
+	
 }
