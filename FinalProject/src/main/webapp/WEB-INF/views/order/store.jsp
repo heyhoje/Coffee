@@ -55,13 +55,9 @@
                    	<button class="btn btn-outline-warning btn-lg" type="submit" id="searchbtn" style="font-family: 'BM HANNA Pro', sans-serif; font-size:medium;">검색하기</button>
                    	</div>
                 </form>
-                
               </div>
-              
             </div>
-            
           </div>
-   
 <div class="map_wrap" id="marker">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden; border:solid 2px black;margin-bottom:200px;" ></div>
 
