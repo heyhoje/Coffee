@@ -9,6 +9,8 @@ public interface PromotionService {
 
 	List<PromotionVO> getPromotionList(Criteria cri);
 
-	int getTotalCount(Criteria cri);
+	int getTotalCount();
+
+
 
 }

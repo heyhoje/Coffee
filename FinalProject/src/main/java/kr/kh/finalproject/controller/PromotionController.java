@@ -25,23 +25,19 @@ public class PromotionController {
 	@Autowired
 	PromotionService promotionService;
 	
-	@RequestMapping(value="/main/promotion", method=RequestMethod.GET)
-	public String signup() {
-		
-		return "/main/promotion";
-	}
+
 	
-	@GetMapping("/main/promotionList")
+	@GetMapping("/promotion/list")
 	public String promotionList(Model model, Criteria cri) {
 		cri.setPerPageNum(5);
 		List<PromotionVO> promotionList = promotionService.getPromotionList(cri);
-		int totalCount = promotionService.getTotalCount(cri);
+		int totalCount = promotionService.getTotalCount();
 		PageMaker pm = new PageMaker(2, cri, totalCount);
 		
 		
 		model.addAttribute("pm", pm);
-		model.addAttribute("promotionlist", promotionList);
-		return "/main/promotionList";
+		model.addAttribute("promotionList", promotionList);
+		return "/promotion/list";
 		
 	}
 }

@@ -11,5 +11,6 @@
 			from business_member
 			where bm_store_name like concat('%', #{cri.search}, '%')
 		and 5000 > st_distance_sphere(Point(#{ipLongi}, #{ipLati}), Point(bm_geocoding_longi, bm_geocoding_lati))
+		order by  st_distance_sphere(Point(#{ipLongi}, #{ipLati}), Point(bm_geocoding_longi, bm_geocoding_lati)) asc
 	</select>
  </mapper>

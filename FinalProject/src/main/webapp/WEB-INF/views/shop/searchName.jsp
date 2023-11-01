@@ -6,49 +6,87 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<c:url value='/resources/css/searchName.css'/>">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/static/fonts/font.css'/>">
 </head>
 <body>
-	<h1>이름으로 검색</h1>
-	    
-<p>내 주변 1Km 이내의 가게만 검색합니다.</p>
-<button id=getLcation onclick="getLocation()">위치 정보 동의</button>
 
 
 
 <p id="demo"></p>
+	<div class="nav-searchcategory" style="justify-content:center; text-align:center; display:flex; margin-top:30px; font-size:20px; color:black;">
+	    <a class="nav-link" href="<c:url value='/order/store'/>" style="font-family: 'BM HANNA Pro', sans-serif; color:black;">지역으로 검색하기</a>
+	    <a class="nav-link" href="#" style="font-family: 'BM HANNA Pro', sans-serif; color:black; font-weight:bold;">가게 이름으로 검색하기</a>
+	 </div>	
 
-	<form action="" method="get">
-		<div class="form-check">
-			<label class="form-check-label">
-				<input type="checkbox" class="form-check-input" onclick="getLocation()">위치 정보 동의
-				<input type="hidden" name="ipLati">
-				<input type="hidden" name="ipLongi">
-			</label>
-		</div>
-	  <div class="input-group mt-5" >
-	    <input type="text" class="form-control" name="search" value="${pm.cri.search}">
-	    <button class="btn btn-outline-success">검색</button>
-	  </div>
-	</form>
-	
-	<table border="1">
+ <div class="search-container">
+  		
+
+            <div class="row height d-flex justify-content-center align-items-center">
+
+              <div class="col-md-6-1">
+
+             	<form action="" method="get">
+				  <div class="input-group mt-5" id="searchstore2" >
+				    <div id="searchbox2">
+				    	<input type="text" class="form-control" name="search" value="${pm.cri.search}">
+				    	<label class="form-check-label">
+							<input type="checkbox" class="form-check-input" onclick="getLocation()">위치 정보 동의
+							<input type="hidden" name="ipLati">
+							<input type="hidden" name="ipLongi">
+						</label>
+				    </div>
+				    <button class="btn btn-outline-success" id="searchbtn2" style="font-family: 'BM HANNA Pro', sans-serif;">검색하기</button>
+		 		 </div>
+		  		</form>
+              </div>
+            </div>
+            
+          </div>
+	<table class="table">
 		<thead>
 			<tr>
-				<th>브랜드로고</th>
-				<th>가게명</th>
+				<th class="text-center">매장사진</th>
+				<th>점포명</th>
 				<th>주소</th>
-				<th>상세보기(?)</th>
+				<th>소개</th>
 				<th>링크</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class="bodymenu" style=color:dimgrey;">
 			<c:forEach items="${shopList}" var="shopList" varStatus="index">
-				<tr>
-					<td></td>
-					<td>${shopList.bm_store_name }</td>
-					<td>${shopList.bm_address }</td>
-					<td>${shopList.bm_contents }</td>
-					<td><a href="/shop/${shopList.bm_num }">바로가기</a></td>
+				<tr class="inner-box">
+					<th scope="row">
+						<div class="store-image">
+							<span>${shopList.bm_image}</span>
+						</div>
+					</th>
+					<td>
+						<div class="store-name">
+							<span>${shopList.bm_store_name}</span>
+						</div>
+					</td>
+					<td>
+						<div class="store-address">
+							<span>${shopList.bm_address}</span>						
+						</div>					
+					</td>	
+					<td>
+						<div class="store-contents">
+							<span>${shopList.bm_contents}</span>						
+						</div>					
+					</td>			
+					<td>
+					
+						<div class="store-btn">
+						<a href="/shop/${shopList.bm_num}">바로가기</a>
+					</div>
+					</td>
+					
 				</tr>
 			</c:forEach>
 		</tbody>

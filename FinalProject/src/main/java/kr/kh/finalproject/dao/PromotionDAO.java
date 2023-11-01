@@ -9,4 +9,6 @@ public interface PromotionDAO {
 
 	List<PromotionVO> selectPromotionList(Criteria cri);
 
+	int selectPromotionTotalCount();
+
 }

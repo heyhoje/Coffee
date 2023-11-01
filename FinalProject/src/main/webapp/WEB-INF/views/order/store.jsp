@@ -10,9 +10,12 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<c:url value='/resources/css/store.css'/>">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="<c:url value='/resources/static/fonts/font.css'/>">
+  <link rel="stylesheet" href="<c:url value='/resources/css/searchName.css'/>">
  
 <meta charset="utf-8">
 <title>키워드로 장소검색하기</title>
@@ -34,35 +37,27 @@
     
 </head>
 <body id="storejsp">
-	<div class="nav-searchcategory" style="justify-content:center; text-align:center; display:flex; margin-top:30px; margin-bottom:30px; font-size:20px; color:black;">
+	<div class="nav-searchcategory" style="justify-content:center; text-align:center; display:flex; margin-top:30px; font-size:20px; color:black;">
 	    <a class="nav-link" href="#" style="font-family: 'BM HANNA Pro', sans-serif; font-weight:bold; color:black;">지역으로 검색하기</a>
-	    <a class="nav-link" href="<c:url value='/order/store2'/>" style="font-family: 'BM HANNA Pro', sans-serif; color:black;">가게 이름으로 검색하기</a>
+	    <a class="nav-link" href="<c:url value='/shop/name'/>" style="font-family: 'BM HANNA Pro', sans-serif; color:black;">가게 이름으로 검색하기</a>
 	 </div>
  <div class="search-container">
   		
 
             <div class="row height d-flex justify-content-center align-items-center">
 
-              <div class="col-md-6" style="
-              flex:0 0 70%;
-              max-width: 80%;">
-
-                <form onsubmit="searchPlaces(); return false;" style="
-           		
-           			margin-bottom:50px;
-           			text-align:center;
-           		
-           			">
-                    <input type="text" class="form-control input-text" value="" id="keyword" size="10px;" aria-describedby="basic-addon2" style="width:100%;">  <button class="btn btn-outline-warning btn-lg" type="submit" style="margin-top: 20px; font-family: 'BM HANNA Pro', sans-serif;">검색하기</button>
-                   
+              <div class="col-md-6">
+                 <form onsubmit="searchPlaces(); return false;">
+                 	<div class="input-group mt-5" id="searchstore">
+                  	<div id="searchbox">
+                    <input type="text" class="form-control input-text" value="" id="keyword" size="10px;" aria-describedby="basic-addon2">  
+                   	</div>
+                   	<button class="btn btn-outline-warning btn-lg" type="submit" id="searchbtn" style="font-family: 'BM HANNA Pro', sans-serif; font-size:medium;">검색하기</button>
+                   	</div>
                 </form>
-                
               </div>
-              
             </div>
-            
           </div>
-   
 <div class="map_wrap" id="marker">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden; border:solid 2px black;margin-bottom:200px;" ></div>
 
@@ -91,7 +86,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places(); 
-
+ps.keywordSearch('이태원 맛집', placesSearchCB); 
 
 //키워드 검색을 요청하는 함수입니다
 function searchPlaces() {
@@ -117,7 +112,7 @@ function placesSearchCB (data, status, pagination) {
         // LatLngBounds 객체에 좌표를 추가합니다
         var bounds = new kakao.maps.LatLngBounds();
 
-        for (var i=0; i<1; i++) {
+        for (var i=0; i<data.length; i++) {
             displayMarker(data[0]);    
             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }       
