@@ -32,12 +32,13 @@
 	 		where mn_mc_num in 
 	 		<foreach collection="mc_list" item="mc_num" open="(" close=")" separator=",">
 	 			#{mc_num}
-	 		</foreach>
+	 		</foreach> 
 	 	</if>
 	 	<!-- 중분류리스트가 선택되있지 않다면, 선택된 대분류 음료/푸드/상푸 중 선택된 대분류의 중분류번호들을 가져오고,
 	 		ex) 대분류(음료 - 1) -> x - 중분류 전체(1, 2, 3) -> 음료 (1 - 1,2,3)에 맞는 메뉴들 = 음료전체 -->
 	 	<if test="mc_list == null or mc_list.length == 0">
 	 		where mn_mc_num in (select mc_num from medium_category where mc_lc_num = #{lc_num})
+	 		and mn_st_num = ${st_num}
 	 	</if> 
 	 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
