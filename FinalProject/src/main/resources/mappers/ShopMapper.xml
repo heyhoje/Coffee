@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="kr.kh.finalproject.dao.ShopDAO">
+ 	<select id="selectShopList" resultType="kr.kh.finalproject.vo.ShopVO">
+ 		select * from business_member where bm_store_name like concat('%', #{cri.search}, '%')
+ 	</select>
+	<select id="selectShopListKm" resultType="kr.kh.finalproject.vo.ShopVO">
+		select *
+			from business_member
+			where bm_store_name like concat('%', #{cri.search}, '%')
+		and 5000 > st_distance_sphere(Point(#{ipLongi}, #{ipLati}), Point(bm_geocoding_longi, bm_geocoding_lati))
+	</select>
+ </mapper>

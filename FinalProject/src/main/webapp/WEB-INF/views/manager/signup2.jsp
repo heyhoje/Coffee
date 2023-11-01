@@ -147,6 +147,14 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
+								<label for="bm_store_name">매장명</label> <input type="text"
+									class="form-control" id="inputPassword4"
+									placeholder="매장 전화번호를 입력하세요" name="bm_store_name" required="">
+							</div>
+
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-12">
 								<label for="bm_phone">매장 전화번호</label> <input type="text"
 									class="form-control" id="inputPassword4"
 									placeholder="매장 전화번호를 입력하세요" name="bm_phone" required="">

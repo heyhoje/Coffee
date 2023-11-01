@@ -79,6 +79,10 @@
 	background: #d1062c;
 }
 
+.signup_v4 .nav-tabs{
+	margin-bottom: 20px;
+}
+
 .signup_v4 .nav-tabs .nav-link.active {
 	background: #007bff;
 }
@@ -97,20 +101,21 @@
 }
 
 .signup_v4 .nav-tabs li.nav-item {
-	width: 50%;
+	width: 50%
 }
 
+.signup_v4.card_wrap{
+	width: 500px;
+	margin: 0 auto;
+	margin-top: 20px;
+	
+}
 .signup_v4 .card-body {
 	padding: 0px;
+
 	
 }
 
 .signup_v4 .card-body .tab-content {
 	padding: 0 1.25rem 1.75em;
-}
-.card{
-	height: 850px;
-	width: 500px;
-	margin: 0 auto;
-	
 }

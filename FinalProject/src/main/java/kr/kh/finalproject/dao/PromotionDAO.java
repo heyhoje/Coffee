@@ -7,6 +7,6 @@ import kr.kh.finalproject.vo.PromotionVO;
 
 public interface PromotionDAO {
 
-	List<PromotionVO> selectpromotionList(Criteria cri);
+	List<PromotionVO> selectPromotionList(Criteria cri);
 
 }

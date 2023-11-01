@@ -1,42 +1,65 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="<c:url value='/resources/css/coffee.css'/>">
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>beverages</h1>
-	<div class="container">
-  <h2>Hover Rows</h2>
-  <p>The .table-hover class enables a hover state (grey background on mouse over) on table rows:</p>            
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+	<div class="coffee_list_wrap">
+	  <table class="coffee_list">
+	  	<caption>beverages</caption>
+	    <thead>
+	      <tr>
+	        <th>번호</th>
+	        <th>제목</th>
+	        <th>작성자</th>
+	        <th>작성일</th>
+	        <th>조회수</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+	        <td>3</td>
+	        <td class="title">
+	        	<a href="#">에이드!</a>
+	        </td>
+	        <td>yoo123</td>
+	        <td>2023-10-26</td>
+	        <td>111</td>
+	      </tr>
+	      <tr>
+	        <td>2</td>
+	        <td class="title col-8">
+	        	<a href="#">주스!</a>
+	        </td>
+	        <td>yoo123</td>
+	        <td>2023-10-26</td>
+	        <td>222</td>
+	      </tr>
+	      <tr>
+	        <td>1</td>
+	        <td class="title">
+	        	<a href="#">티!</a>
+	        </td>
+	        <td>yoo123</td>
+	        <td>2023-10-26</td>
+	        <td>333</td>
+	      </tr>
+	    </tbody>
+	  </table>
+	  <div class="paging">
+	  	<a href="#" class="bt">첫 페이지</a>
+	  	<a href="#" class="bt">이전 페이지</a>
+	  	<a href="#" class="num">1</a>
+	  	<a href="#" class="num">2</a>
+	  	<a href="#" class="num">3</a>
+	  	<a href="#" class="bt">다음 페이지</a>
+	  	<a href="#" class="bt">마지막 페이지</a>
+	  </div>
+	</div>
 </body>
 </html>

@@ -7,14 +7,11 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="<c:url value='/resources/css/coffee.css'/>">
 <title>Insert title here</title>
-<style type="text/css">
-
-</style>
 </head>
 <body>
 	<div class="coffee_list_wrap">
 	  <table class="coffee_list">
-	  	<caption>커피</caption>
+	  	<caption>MD</caption>
 	    <thead>
 	      <tr>
 	        <th>번호</th>
@@ -28,7 +25,7 @@
 	      <tr>
 	        <td>3</td>
 	        <td class="title">
-	        	<a href="#">스타벅스 신메뉴 나왔어요!</a>
+	        	<a href="#">키링</a>
 	        </td>
 	        <td>yoo123</td>
 	        <td>2023-10-26</td>
@@ -37,7 +34,7 @@
 	      <tr>
 	        <td>2</td>
 	        <td class="title col-8">
-	        	<a href="#">라떼</a>
+	        	<a href="#">텀블러</a>
 	        </td>
 	        <td>yoo123</td>
 	        <td>2023-10-26</td>
@@ -46,7 +43,7 @@
 	      <tr>
 	        <td>1</td>
 	        <td class="title">
-	        	<a href="#">아아</a>
+	        	<a href="#">머그컵</a>
 	        </td>
 	        <td>yoo123</td>
 	        <td>2023-10-26</td>
@@ -54,10 +51,6 @@
 	      </tr>
 	    </tbody>
 	  </table>
-	  <div>
-	  	<button class="btn btn-success" style="float: right; margin-top:10px;">글쓰기</button>
-	  </div>
-	  <br>
 	  <div class="paging">
 	  	<a href="#" class="bt">첫 페이지</a>
 	  	<a href="#" class="bt">이전 페이지</a>
@@ -67,7 +60,6 @@
 	  	<a href="#" class="bt">다음 페이지</a>
 	  	<a href="#" class="bt">마지막 페이지</a>
 	  </div>
-	  
 	</div>
 </body>
 </html>

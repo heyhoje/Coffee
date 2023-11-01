@@ -6,6 +6,7 @@
 font-size:20px;
 margin-right:20px;
 font-weight:normal;
+font-family:'BM HANNA Pro', sans-serif;
 
 }
 .nav-item #searchlocation{
@@ -38,9 +39,9 @@ margin-top:20px;
 	
 }
 .col-lg-12{
-margin-left:31%;
-max-width:40%;	
-	
+max-width:60%;	
+margin:auto;
+font-family:'BM HANNA Pro', sans-serif;	
 }
 .col-lg-12 .container .dropdown{
 margin-bottom:20px;	

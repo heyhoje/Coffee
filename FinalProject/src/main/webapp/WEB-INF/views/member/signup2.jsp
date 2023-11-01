@@ -7,34 +7,26 @@
 <!-- signup css -->
 <link rel="stylesheet" href="<c:url value='/resources/css/signup.css'/>">
 
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://use.fontawesome.com/releases/v5.8.1/css/all.css"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회원가입 페이지</title>
 
 </head>
 <body>
-	<div class="card signup_v4 mb-30">
+	<div class="signup_v4 mb-30 card card_wrap ">
 		<div class="card-body">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation"><a
 					class="nav-link active" id="login-tab" data-toggle="tab"
-					href="#login" role="tab" aria-controls="login" aria-selected="true">멤버</a>
+					href="#login" role="tab" aria-controls="login" aria-selected="true">멤버 회원가입</a>
 				</li>
 				<li class="nav-item" role="presentation"><a class="nav-link"
 					id="register-tab" data-toggle="tab" href="#register" role="tab"
-					aria-controls="register" aria-selected="false">매니저</a></li>
+					aria-controls="register" aria-selected="false">매니저 회원가입</a></li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="login" role="tabpanel"
 					aria-labelledby="login-tab">
-					<h4 class="text-center mt-4 mb-4"
-						style="text-transform: uppercase;">멤버 회원가입</h4>
 					<form action="<c:url value='/member/signup2'/>" method="post">
 						<div class="form-row">
 							<div class="form-group col-md-12">
@@ -102,8 +94,6 @@
 				</div>
 				<div class="tab-pane fade" id="register" role="tabpanel"
 					aria-labelledby="register-tab">
-					<h4 class="text-center mt-4 mb-4"
-						style="text-transform: uppercase;">매니저 회원가입</h4>
 					<form action="<c:url value='/manager/signup2'/>" method="post">
 						<div class="form-row">
 							<div class="form-group col-md-12">
@@ -142,6 +132,15 @@
 								<label for="bm_num">사업자 등록 번호</label> <input type="text"
 									class="form-control" id="inputPassword4"
 									placeholder="사업자 등록 번호를 입력하세요" name="bm_num" required="">
+									<button class="btn btn-primary" style="margin-top:10px;"><a href="" style="color:#fff">조회</a></button>
+							</div>
+
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<label for="bm_store_name">매장명</label> <input type="text"
+									class="form-control" id="inputPassword4"
+									placeholder="매장 전화번호를 입력하세요" name="bm_store_name" required="">
 							</div>
 
 						</div>
