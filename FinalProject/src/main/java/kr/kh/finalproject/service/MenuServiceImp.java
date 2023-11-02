@@ -41,4 +41,11 @@ public class MenuServiceImp implements MenuService{
 		}
 		return menuDao.selectCountMenuList(st_num, mc_numList, lc_num, cri);
 	}
+	
+	/** 메뉴 상세 */
+	@Override
+	public MenuVO getMenu(int mn_num) {
+
+		return menuDao.selectMenu(mn_num);
+	}
 }

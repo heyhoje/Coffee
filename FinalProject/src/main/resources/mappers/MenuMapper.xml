@@ -61,6 +61,11 @@
 	 		where mn_mc_num in (select mc_num from medium_category where mc_lc_num = #{lc_num})
 	 	</if>
 	</select>
+	
+	<!-- 메뉴 상세 -->
+	<select id="selectMenu" resultMap="MenuVO">
+		select * from menu where mn_num = #{mn_num}
+	</select>
 </mapper>
 
 
