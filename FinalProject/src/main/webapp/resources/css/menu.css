@@ -36,6 +36,7 @@
   	}
   	
   	.image-group {
+  	min-width: 1000px; width: 100%;
   	border: 1px solid black; margin: 20px 0; padding: 20px; 
   	}
   	
@@ -54,5 +55,4 @@
     box-sizing: border-box; /* 너비에 padding과 border를 포함시키기 위해 box-sizing 설정 *//* 패딩과 테두리를 포함한 크기 계산 */
     display: inline-block; /* 가로로 나란히 배치하기 위해 inline-block 설정 */
     vertical-align: middle; 
-    
   	}
