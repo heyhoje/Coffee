@@ -1,5 +1,7 @@
 package kr.kh.finalproject.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.kh.finalproject.pagination.Criteria;
+import kr.kh.finalproject.pagination.PageMaker;
 import kr.kh.finalproject.service.ManagerService;
 import kr.kh.finalproject.vo.ManagerVO;
-import kr.kh.finalproject.vo.MemberVO;
+import kr.kh.finalproject.vo.PromotionVO;
 
 @Controller
 public class ManagerController {
@@ -53,7 +57,7 @@ public class ManagerController {
 		return "/member/forgotpw";
 	}
 
-//	사업자로그인
+	// 사업자로그인
 	@GetMapping("/member/login2")
 	public String login() {
 		return "/member/login";
@@ -93,4 +97,18 @@ public class ManagerController {
 		model.addAttribute("url", "");
 		return "/main/message";
 	}
+
+
+	@GetMapping("/manager/admin")
+	public String adminPage() {
+//		cri.setPerPageNum(5);
+//		List<ManagerVO> managerList = managerService.getManagerList(manager, cri);
+//		int totalCount = managerService.getTotalCount(manager, cri);
+//		PageMaker pm = new PageMaker(2, cri, totalCount);
+//		
+//		model.addAttribute("pm", pm);
+//		model.addAttribute("manager", managerList);
+		return "/manager/admin";
+	}
 }
+

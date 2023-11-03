@@ -22,4 +22,11 @@
 		where
 			bm_id = #{businessmember.bm_id}
 	</update>
+	
+	<!-- <select id="selectManagerList" resultType="kr.kh.finalproject.vo.ManagerVO">
+		select * from business_member where bm_id = #{manager.bm_id}
+	</select>
+	<select id="selectCountManagerList" resultType="int">
+		select count(*) business_member where bm_id = #{manager.bm_id}
+	</select> -->
 </mapper>

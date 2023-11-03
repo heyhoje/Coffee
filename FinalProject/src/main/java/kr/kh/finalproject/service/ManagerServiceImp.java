@@ -1,5 +1,6 @@
 package kr.kh.finalproject.service;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.kh.finalproject.dao.ManagerDAO;
+import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.vo.ManagerVO;
 
 @Service
@@ -86,5 +88,22 @@ public class ManagerServiceImp implements ManagerService{
 	public ManagerVO getMemberBySessionId(String bId) {
 		return managerDao.selectMemberBySessionId(bId);
 	}
+
+//	/** 사이트 관리자 페이지 */
+//	@Override
+//	public List<ManagerVO> getManagerList(ManagerVO manager, Criteria cri) {
+//		if(cri == null) {
+//			cri = new Criteria();
+//		}
+//		return managerDao.selectManagerList(manager, cri);
+//	}
+//
+//	@Override
+//	public int getTotalCount(ManagerVO manager, Criteria cri) {
+//		if(cri == null) {
+//			cri = new Criteria();
+//		}
+//		return managerDao.selectCountManagerList(manager, cri);
+//	}
 
 }
