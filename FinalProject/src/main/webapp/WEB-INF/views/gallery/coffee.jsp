@@ -55,7 +55,7 @@
 	    </tbody>
 	  </table>
 	  <div>
-	  	<button class="btn btn-success" style="float: right; margin-top:10px;">글쓰기</button>
+	  	<a class="btn btn-success" style="float: right; margin-top:10px;" href="<c:url value='/gallery/insert'/>">글쓰기</a>
 	  </div>
 	  <br>
 	  <div class="paging">
