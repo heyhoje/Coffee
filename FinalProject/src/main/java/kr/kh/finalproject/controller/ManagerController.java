@@ -98,17 +98,5 @@ public class ManagerController {
 		return "/main/message";
 	}
 
-
-	@GetMapping("/manager/admin")
-	public String adminPage() {
-//		cri.setPerPageNum(5);
-//		List<ManagerVO> managerList = managerService.getManagerList(manager, cri);
-//		int totalCount = managerService.getTotalCount(manager, cri);
-//		PageMaker pm = new PageMaker(2, cri, totalCount);
-//		
-//		model.addAttribute("pm", pm);
-//		model.addAttribute("manager", managerList);
-		return "/manager/admin";
-	}
 }
 
