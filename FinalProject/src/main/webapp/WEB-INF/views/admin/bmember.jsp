@@ -11,7 +11,7 @@
 <body>
 
 	<div class="container">
-	<h4 class="pt-4">승인 요청 리스트 - 사업자회원 승인 / 매장 등록 승인</h4>
+	<h4 class="pt-4">사업자회원 승인</h4>
 		            
 		<table class="table table-hover">
 			<thead>

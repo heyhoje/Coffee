@@ -7,25 +7,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import kr.kh.finalproject.service.AdminService;
 import kr.kh.finalproject.service.ManagerService;
 import kr.kh.finalproject.service.PromotionService;
 import kr.kh.finalproject.service.ReviewService;
+import kr.kh.finalproject.service.StoreService;
 import kr.kh.finalproject.vo.ManagerVO;
 import kr.kh.finalproject.vo.PromotionVO;
 import kr.kh.finalproject.vo.ReviewVO;
+import kr.kh.finalproject.vo.StoreVO;
 
 @Controller
 public class AdminController2 {
 
-	@Autowired
-	AdminService adminService;
 	@Autowired
 	ManagerService managerService;
 	@Autowired
 	PromotionService promotionService;
 	@Autowired
 	ReviewService reviewService;
+	@Autowired
+	StoreService storeService;
 	
 	@GetMapping("/admin/home")
 	public String adminPage() {
@@ -39,16 +40,28 @@ public class AdminController2 {
 		return "/admin/home";
 	}
 	
-	/** 사업자 승인 */
-	@GetMapping("/admin/shop")
-	public String adminShop(Model model) {
+	/** 사업자 회원가입 승인 */
+	@GetMapping("/admin/bmember")
+	public String adminBMember(Model model) {
 		// 회원가입 승인여부가 '0'인 사업자회원 리스트 가져와
 		List<ManagerVO> bmList = managerService.getBMemberList(0);	
 		System.out.println(bmList);
 		
 		// 화면
 		model.addAttribute("bmList", bmList);
-		return "/admin/shop";
+		return "/admin/bmember";
+	}
+	
+	/** 사업자 매장등록 승인 */
+	@GetMapping("/admin/bstore")
+	public String adminBStore(Model model) {
+		// 매장등록 승인여부가 '0'인 매장 리스트 가져와
+		List<StoreVO> bsList = storeService.getBstoreList(0);	
+		System.out.println(bsList);
+		
+		// 화면
+		model.addAttribute("bsList", bsList);
+		return "/admin/bstore";
 	}
 	
 	/** 프로모션 승인 */

@@ -33,8 +33,6 @@
 						<td><button class="btn btn-outline-primary">승인</button>&nbsp;<button class="btn btn-outline-danger">거절</button></td>
 					</tr>
 				</c:forEach>
-			
-			
 			</tbody>
 		</table>
 		${prList}
