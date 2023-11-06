@@ -25,9 +25,9 @@
 	
 	<div class="container">
 	  <div class="btn-group btn-group-lg">
-	    <a href="<c:url value='/admin/shop'/>" class="btn-outline-important">점주요청 관리</a>
-	    <a href="<c:url value='/admin/promotion'/>" class="btn-outline-important">프로모션 관리</a>
-	    <a href="<c:url value='/admin/review'/>" class="btn-outline-important">리뷰 관리</a>
+	    <a href="<c:url value='/admin/shop'/>" class="btn btn-outline-primary">점주요청 관리</a>
+	    <a href="<c:url value='/admin/promotion'/>" class="btn btn-outline-primary">프로모션 관리</a>
+	    <a href="<c:url value='/admin/review'/>" class="btn btn-outline-primary">리뷰 관리</a>
 	  </div>
 	</div>
 	

@@ -17,10 +17,10 @@ public interface ManagerService {
 
 	ManagerVO getMemberBySessionId(String value);
 
-//	// 사이트 관리자 페이지
-//	List<ManagerVO> getManagerList(ManagerVO manager, Criteria cri);
-//
-//	int getTotalCount(ManagerVO manager, Criteria cri);
+	// 사이트 관리자 페이지
+	List<ManagerVO> getBMemberList(int bm_approval);
+
+	int getTotalCount(ManagerVO manager, Criteria cri);
 
 
 

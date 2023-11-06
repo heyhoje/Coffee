@@ -23,10 +23,11 @@
 			bm_id = #{businessmember.bm_id}
 	</update>
 	
-	<!-- <select id="selectManagerList" resultType="kr.kh.finalproject.vo.ManagerVO">
-		select * from business_member where bm_id = #{manager.bm_id}
+	<!-- 사이트 관리자 페이지 -->
+	<select id="selectBMemberList" resultType="kr.kh.finalproject.vo.ManagerVO">
+		select * from business_member where bm_approval = #{bm_approval}
 	</select>
-	<select id="selectCountManagerList" resultType="int">
+	<!-- <select id="selectCountManagerList" resultType="int">
 		select count(*) business_member where bm_id = #{manager.bm_id}
 	</select> -->
 </mapper>

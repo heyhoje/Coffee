@@ -17,9 +17,9 @@ public interface ManagerDAO {
 
 	ManagerVO selectMemberBySessionId(String bId);
 
-//	// 사이트 관리자 페이지
-//	List<ManagerVO> selectManagerList(@Param("manager") ManagerVO manager, @Param("cri")Criteria cri);
-//
+	// 사이트 관리자 페이지
+	List<ManagerVO> selectBMemberList(@Param("bm_approval")int bm_approval);
+
 //	int selectCountManagerList(@Param("manager") ManagerVO manager, @Param("cri")Criteria cri);
 
 

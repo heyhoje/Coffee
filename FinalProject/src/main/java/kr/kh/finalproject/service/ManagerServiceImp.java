@@ -89,15 +89,19 @@ public class ManagerServiceImp implements ManagerService{
 		return managerDao.selectMemberBySessionId(bId);
 	}
 
-//	/** 사이트 관리자 페이지 */
-//	@Override
-//	public List<ManagerVO> getManagerList(ManagerVO manager, Criteria cri) {
-//		if(cri == null) {
-//			cri = new Criteria();
-//		}
-//		return managerDao.selectManagerList(manager, cri);
-//	}
-//
+	/** 사이트 관리자 페이지 */
+	@Override
+	public List<ManagerVO> getBMemberList(int bm_approval) {
+
+		return managerDao.selectBMemberList(bm_approval);
+	}
+	
+	@Override
+	public int getTotalCount(ManagerVO manager, Criteria cri) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 //	@Override
 //	public int getTotalCount(ManagerVO manager, Criteria cri) {
 //		if(cri == null) {
