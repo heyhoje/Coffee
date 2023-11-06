@@ -25,6 +25,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				<!-- ${bmList} 리스트에서 객체 하나를 꺼내서 bm에 넣는다. 객체.속성명 -->
 				<c:forEach items="${bmList}" var="bm">
 					<tr>
 						<td>${bm.bm_id}</td>

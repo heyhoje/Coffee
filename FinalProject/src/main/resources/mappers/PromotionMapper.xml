@@ -19,6 +19,10 @@
 	select count(*) from advertisement
 </select>
 
+<!-- 사이트 관리자 페이지 -->
+<select id="selectPrList" resultType="kr.kh.finalproject.vo.PromotionVO">
+	select * from promotion where pr_approval = #{pr_approval}
+</select>
 
 </mapper> 
  

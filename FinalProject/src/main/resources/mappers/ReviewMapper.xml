@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="kr.kh.finalproject.dao.ReviewDAO">
+	<!-- 사이트 관리자 페이지 -->
+	<select id="selectReList" resultType="kr.kh.finalproject.vo.ReviewVO">
+	<!-- 화면에서는 vo에 있는 값만 쓸 수 있다. ReviewVO에 ol_user_id 추가 
+	  -> vo에 있는 re_user_id를 쓰는걸로 바꾸고 싶다면 as re_user_id로 사용명?을 바꾸면 된다.  -->
+		select re_num, ol_user_id as re_user_id, re_or_num, re_contents, re_star
+			from review 
+			join order_menu on re_or_num = or_num
+			join order_list on or_num = ol_or_num
+	<!-- join은 자동으로 되기 때문에 #{}안에 넣을 필요 없다.  -->
+	</select>
+ </mapper>

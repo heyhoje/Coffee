@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import kr.kh.finalproject.service.AdminService;
 import kr.kh.finalproject.service.ManagerService;
 import kr.kh.finalproject.service.PromotionService;
+import kr.kh.finalproject.service.ReviewService;
 import kr.kh.finalproject.vo.ManagerVO;
-import kr.kh.finalproject.vo.PromotionVO2;
+import kr.kh.finalproject.vo.PromotionVO;
+import kr.kh.finalproject.vo.ReviewVO;
 
 @Controller
 public class AdminController2 {
@@ -22,6 +24,8 @@ public class AdminController2 {
 	ManagerService managerService;
 	@Autowired
 	PromotionService promotionService;
+	@Autowired
+	ReviewService reviewService;
 	
 	@GetMapping("/admin/home")
 	public String adminPage() {
@@ -51,17 +55,20 @@ public class AdminController2 {
 	@GetMapping("/admin/promotion")
 	public String adminPromotion(Model model) {
 		// 프로모션 승인여부가 '0'인 프로모션 리스트 가져와
-		List<PromotionVO2> prList = promotionService.getPromotionList(0);
+		List<PromotionVO> prList = promotionService.getPromotionList(0);
 		
 		// 화면
 		model.addAttribute("prList", prList);
 		return "/admin/promotion";
 	}
 	
-	/** 리뷰 등 기타 승인 */
+	/** 리뷰 등 기타 승인 
+	 *  전체 리뷰 리스트를 가져오니까 매개변수 보낼 필요 없겠지? */
 	@GetMapping("/admin/review")
-	public String adminReview() {
+	public String adminReview(Model model) {
+		List<ReviewVO> reList = reviewService.getReviewList();
 		
+		model.addAttribute("reList", reList);
 		return "/admin/review";
 	}
 }
