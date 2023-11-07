@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="<c:url value='/resources/css/coffee.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/GalleryList.css'/>">
 <title>Insert title here</title>
 <style type="text/css">
 
