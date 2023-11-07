@@ -31,8 +31,17 @@
 	    <a href="<c:url value='/admin/review'/>" class="btn btn-outline-primary">(일반회원)리뷰 관리</a>
 	  </div>
 	</div>
+		
+		<!-- 홈에 관리자 권한 없이 들어왔을때, 로그인 알람을 띄운다. -->	
+		<%-- if(me_user_id == '' || me_authority != 'admin'){
+		if(confirm('관리자 권한이 필요합니다. 관리자로 로그인 하시겠습니까?')){
+			location.href = '<c:url value="/admin/home"/>'
+			}
+			return;
+		} --%>
 	
-	
+	<textarea>23/11/07 회원가입 승인 페이지에서 승인/거절된 회원 확인 및 취소버튼 구현도 필요할지...
+	이건 하게된다면 나중에 다음 파트까지 하고 다시 돌아오리라</textarea>
 	
 	
 	<p>흠 뭐가 필요하죠</p>

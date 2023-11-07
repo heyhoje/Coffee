@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.vo.ManagerVO;
 
 public interface ManagerDAO {
@@ -19,6 +18,9 @@ public interface ManagerDAO {
 
 	// 사이트 관리자 페이지
 	List<ManagerVO> selectBMemberList(@Param("bm_approval")int bm_approval);
+
+	// 승인&거절
+	boolean updateManager(@Param("manager")ManagerVO manager);
 
 //	int selectCountManagerList(@Param("manager") ManagerVO manager, @Param("cri")Criteria cri);
 

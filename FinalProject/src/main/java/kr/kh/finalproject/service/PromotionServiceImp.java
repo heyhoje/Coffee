@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import kr.kh.finalproject.dao.PromotionDAO;
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.vo.PromotionVO;
-import kr.kh.finalproject.vo.Promotion2VO;
 
 @Service
 public class PromotionServiceImp implements PromotionService{

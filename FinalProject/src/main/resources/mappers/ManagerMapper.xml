@@ -27,6 +27,13 @@
 	<select id="selectBMemberList" resultType="kr.kh.finalproject.vo.ManagerVO">
 		select * from business_member where bm_approval = #{bm_approval}
 	</select>
+	
+	<!-- 승인&거절 버튼 -->
+	<update id="updateManager">
+		update business_member 
+			set bm_approval = #{manager.bm_approval}
+			where bm_id = #{manager.bm_id}
+	</update>
 	<!-- <select id="selectCountManagerList" resultType="int">
 		select count(*) business_member where bm_id = #{manager.bm_id}
 	</select> -->

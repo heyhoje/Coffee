@@ -34,7 +34,7 @@
 						<td>${bm.bm_manager}</td>
 						<td>${bm.bm_num}</td>
 						<td><button class="btn btn-outline-primary pass" data-target="${bm.bm_id}">승인</button>
-						&nbsp;<button class="btn btn-outline-danger reject">거절</button></td>
+						&nbsp;<button class="btn btn-outline-danger reject" data-target="${bm.bm_id}">거절</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -43,14 +43,17 @@
 	</div>
 	
 	<script type="text/javascript">
+		// 승인버튼
 		$('.pass').click(function(){
 			let bm_id = $(this).data('target'); 
 				// $(this).closest('tr').find('td:first').text(); // 해당 행의 첫 번째 열(td)에서 bm_id 값을 가져옴
 			let obj = {
 					// 승인/거절 정보 + 누구에 대한 승인여부인지, bm기본키
+					// 버튼을 클릭하면 승인정보를 1로 바꿔줘라 -> ajax 설정하고 -> controller에서 update시키는 쿼리까지 작업 
 					bm_id : bm_id,
 					bm_approval : 1
 			}
+			
 			$.ajax({
 				async : true, //비동기 : true(비동기), false(동기)
 				url : '<c:url value="/admin/bmember"/>', 
@@ -60,8 +63,38 @@
 				dataType : "json", 
 				success : function (data){
 					console.log(data);
-					// bm_approval = 0을 1로 변경한다? 
-					// 버튼1개 '가입승인'으로 배치한다.  
+						bm_approval = 1;
+						alert('가입을 승인했습니다');
+						location.reload(); // 현재 페이지 새로고침
+				}, 
+				error : function(jqXHR, textStatus, errorThrown){
+
+				}
+			});
+		});
+		
+		// 거절버튼
+		$('.reject').click(function(){
+			let bm_id = $(this).data('target'); 
+				// $(this).closest('tr').find('td:first').text(); // 해당 행의 첫 번째 열(td)에서 bm_id 값을 가져옴
+			let obj = {
+					// 승인/거절 정보 + 누구에 대한 승인여부인지, bm기본키
+					bm_id : bm_id,
+					bm_approval : 2
+			}
+			
+			$.ajax({
+				async : false, //비동기 : true(비동기), false(동기)
+				url : '<c:url value="/admin/bmember"/>', 
+				type : "post", 
+				data : JSON.stringify(obj), 
+				contentType : "application/json; charset=utf-8",
+				dataType : "json", 
+				success : function (data){
+					console.log(data);
+						bm_approval = 2;
+						alert('가입을 거절했습니다');
+						location.reload(); // 현재 페이지 새로고침
 				}, 
 				error : function(jqXHR, textStatus, errorThrown){
 

@@ -21,6 +21,9 @@ public interface ManagerService {
 	List<ManagerVO> getBMemberList(int bm_approval);
 
 	int getTotalCount(ManagerVO manager, Criteria cri);
+	
+	// 승인&거절
+	boolean updateManager(ManagerVO manager);
 
 
 

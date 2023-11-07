@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import kr.kh.finalproject.service.ManagerService;
 import kr.kh.finalproject.service.PromotionService;
@@ -63,10 +62,13 @@ public class AdminController2 {
 	@ResponseBody
 	@PostMapping("/admin/bmember")
 	public Map<String, Object> bmemberPost(@RequestBody ManagerVO manager){
-		Map<String, Object> map = new HashMap();
+		Map<String, Object> map = new HashMap<String, Object>();
 		System.out.println(manager);
 		
-		// map.put("화면에서쓸이름", 데이터);
+		//ManagerVO bmember = new ManagerVO();
+		boolean res = managerService.updateManager(manager);
+				
+		map.put("res", res);
 		return map;
 		
 	}

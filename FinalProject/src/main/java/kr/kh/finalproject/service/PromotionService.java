@@ -4,7 +4,6 @@ import java.util.List;
 
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.vo.PromotionVO;
-import kr.kh.finalproject.vo.Promotion2VO;
 
 public interface PromotionService {
 

@@ -101,6 +101,15 @@ public class ManagerServiceImp implements ManagerService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	/** 승인&거절 버튼 */
+	@Override
+	public boolean updateManager(ManagerVO manager) {
+		if(manager == null || manager.getBm_id() == null) {
+			return false;
+		}
+		return managerDao.updateManager(manager);
+	}
 
 //	@Override
 //	public int getTotalCount(ManagerVO manager, Criteria cri) {
