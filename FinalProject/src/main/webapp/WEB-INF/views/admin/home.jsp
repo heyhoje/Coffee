@@ -54,4 +54,19 @@
 	
 	선택) 고객센터 문의받고 답변
 </body>
+
+	<script type="text/javascript">
+		var me_user_id = 'some_value';
+		var me_authority = 'user';
+		
+		$('a').click(function(){
+			if(me_user_id == '' || me_authority != 'admin'){
+				alert('관리자만 접근 가능합니다.')
+				if(confirm('로그인 화면으로 이동하겠습니까?')){
+					location.href = '<c:url value="/member/login"/>' // 팝업이면 로그인 경로로 어떻게 접근함?
+				}
+				return;
+			}
+		});
+	</script>
 </html>
