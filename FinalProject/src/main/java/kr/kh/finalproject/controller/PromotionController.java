@@ -20,7 +20,6 @@ import kr.kh.finalproject.vo.PromotionVO;
 
 @Controller
 public class PromotionController {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@Autowired
 	PromotionService promotionService;
