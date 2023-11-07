@@ -33,6 +33,7 @@
 						<td>${bm.bm_address}</td>
 						<td>${bm.bm_manager}</td>
 						<td>${bm.bm_num}</td>
+						<!-- id로 pass/reject값을 주면 c:forEach 각각의 버튼에 적용되는게 아니라 1개밖에 안된다. class 안에 넣고 $('.pass')로 써야함 -->
 						<td><button class="btn btn-outline-primary pass" data-target="${bm.bm_id}">승인</button>
 						&nbsp;<button class="btn btn-outline-danger reject" data-target="${bm.bm_id}">거절</button></td>
 					</tr>
@@ -62,7 +63,7 @@
 				contentType : "application/json; charset=utf-8",
 				dataType : "json", 
 				success : function (data){
-					console.log(data);
+					console.log(data.res);
 						bm_approval = 1;
 						alert('가입을 승인했습니다');
 						location.reload(); // 현재 페이지 새로고침

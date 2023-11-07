@@ -85,6 +85,18 @@ public class AdminController2 {
 		return "/admin/bstore";
 	}
 	
+	//ajax - post 승인/거절 버튼 기능
+	@ResponseBody
+	@PostMapping("/admin/bstore")
+	public Map<String, Object> bstorePost(@RequestBody StoreVO store){
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		boolean res = storeService.updateStore(store);
+		
+		map.put("res", res);
+		return map;
+	}
+	
 	/** 프로모션 승인 */
 	@GetMapping("/admin/promotion")
 	public String adminPromotion(Model model) {

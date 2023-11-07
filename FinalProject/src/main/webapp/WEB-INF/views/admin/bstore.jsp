@@ -17,6 +17,7 @@
 			<thead>
 				<tr>
 					<th>매장번호</th>
+					<th>매장명</th>
 					<th>브랜드명</th>
 					<th>사업자아이디</th>
 					<th>영업시작</th>
@@ -29,11 +30,13 @@
 				<c:forEach items="${bsList}" var="bs">
 					<tr>
 						<td>${bs.st_num}</td>
+						<td>${bs.st_store_name}</td>
 						<td>${bs.st_br_name}</td>
 						<td>${bs.st_bm_id}</td>
 						<td>${bs.st_opentime}</td>
 						<td>${bs.st_closetime}</td>
-						<td>승인대기 - 1개만 두고, 클릭하면 1=승인완료/2=승인거절 이런식으로 ajax줘야하는걸까?<br><button class="btn btn-outline-primary">승인</button>&nbsp;<button class="btn btn-outline-danger">거절</button></td>
+						<td><button class="btn btn-outline-primary pass" data-target="${bs.st_num}">승인</button>
+							&nbsp;<button class="btn btn-outline-danger reject" data-target="${bs.st_num}">거절</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -41,6 +44,61 @@
 		${bsList}
 	</div>
 	
+	<script>
+		// 승인버튼
+		$('.pass').click(function(){
+			let st_num = $(this).data('target');
+			// $(this).closest('tr').find('td:first').text(); // 해당 행의 첫 번째 열(td)에서 bs_num 값을 가져옴
+
+			let obj = {
+				st_num : st_num,
+				st_approval : 1
+			}
+			$.ajax({
+				async : true, //비동기 : true(비동기), false(동기)
+				url : '<c:url value="/admin/bstore"/>', 
+				type : "post", 
+				data : JSON.stringify(obj), 
+				contentType : "application/json; charset=utf-8",
+				dataType : "json", 
+				success : function (data){
+					console.log(data);
+					st_approval = 1;
+					alert('매장등록을 승인했습니다');
+					location.reload(); // 현재 페이지 새로고침
+				}, 
+				error : function(jqXHR, textStatus, errorThrown){
+
+				}
+			});
+		});
+		
+		// 거절버튼
+		$('.reject').click(function(){
+			let st_num = $(this).data('target');
+			let obj = {
+				st_num : st_num,
+				st_approval : 2
+			}
+			$.ajax({
+				async : true, //비동기 : true(비동기), false(동기)
+				url : '<c:url value="/admin/bstore"/>', 
+				type : "post", 
+				data : JSON.stringify(obj), 
+				contentType : "application/json; charset=utf-8",
+				dataType : "json", 
+				success : function (data){
+					console.log(data);
+					st_approval = 2;
+					alert('매장등록을 거절했습니다');
+					location.reload(); // 현재 페이지 새로고침
+				}, 
+				error : function(jqXHR, textStatus, errorThrown){
+
+				}
+			});
+		});	
+	</script>
 
 </body>
 </html>

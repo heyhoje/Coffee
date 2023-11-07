@@ -20,4 +20,13 @@ public class StoreServiceImp implements StoreService{
 
 		return storeDao.selectBsList(st_approval);
 	}
+
+	/** 매장등록 승인&거절 */
+	@Override
+	public boolean updateStore(StoreVO store) {
+		if(store == null || store.getSt_num() <= 0) {
+			return false;
+		}
+		return storeDao.updateStore(store);
+	}
 }
