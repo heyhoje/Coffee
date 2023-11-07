@@ -33,7 +33,8 @@
 						<td>${bm.bm_address}</td>
 						<td>${bm.bm_manager}</td>
 						<td>${bm.bm_num}</td>
-						<td>승인대기 - 1개만 두고, 클릭하면 1=승인완료/2=승인거절 이런식으로 ajax줘야하는걸까?<br><button class="btn btn-outline-primary">승인</button>&nbsp;<button class="btn btn-outline-danger">거절</button></td>
+						<td><button class="btn btn-outline-primary pass" data-target="${bm.bm_id}">승인</button>
+						&nbsp;<button class="btn btn-outline-danger reject">거절</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -41,6 +42,33 @@
 		${bmList}
 	</div>
 	
+	<script type="text/javascript">
+		$('.pass').click(function(){
+			let bm_id = $(this).data('target'); 
+				// $(this).closest('tr').find('td:first').text(); // 해당 행의 첫 번째 열(td)에서 bm_id 값을 가져옴
+			let obj = {
+					// 승인/거절 정보 + 누구에 대한 승인여부인지, bm기본키
+					bm_id : bm_id,
+					bm_approval : 1
+			}
+			$.ajax({
+				async : true, //비동기 : true(비동기), false(동기)
+				url : '<c:url value="/admin/bmember"/>', 
+				type : "post", 
+				data : JSON.stringify(obj), 
+				contentType : "application/json; charset=utf-8",
+				dataType : "json", 
+				success : function (data){
+					console.log(data);
+					// bm_approval = 0을 1로 변경한다? 
+					// 버튼1개 '가입승인'으로 배치한다.  
+				}, 
+				error : function(jqXHR, textStatus, errorThrown){
+
+				}
+			});
+		});
+	</script>
 
 </body>
 </html>

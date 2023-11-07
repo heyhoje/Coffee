@@ -1,11 +1,17 @@
 package kr.kh.finalproject.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import kr.kh.finalproject.service.ManagerService;
 import kr.kh.finalproject.service.PromotionService;
@@ -22,11 +28,11 @@ public class AdminController2 {
 	@Autowired
 	ManagerService managerService;
 	@Autowired
+	StoreService storeService;
+	@Autowired
 	PromotionService promotionService;
 	@Autowired
 	ReviewService reviewService;
-	@Autowired
-	StoreService storeService;
 	
 	@GetMapping("/admin/home")
 	public String adminPage() {
@@ -50,6 +56,19 @@ public class AdminController2 {
 		// 화면
 		model.addAttribute("bmList", bmList);
 		return "/admin/bmember";
+	}
+	
+	// ajax - post 승인/거절 버튼 기능
+	// json으로 받으면 Map<String, Object> map / @ResponseBody추가 / @RequestBody추가
+	@ResponseBody
+	@PostMapping("/admin/bmember")
+	public Map<String, Object> bmemberPost(@RequestBody ManagerVO manager){
+		Map<String, Object> map = new HashMap();
+		System.out.println(manager);
+		
+		// map.put("화면에서쓸이름", 데이터);
+		return map;
+		
 	}
 	
 	/** 사업자 매장등록 승인 */
