@@ -13,10 +13,20 @@ public class ReviewServiceImp implements ReviewService{
 
 	@Autowired
 	ReviewDAO reviewDao;
-
+	
+	/** 사이트 관리자*/
 	@Override
 	public List<ReviewVO> getReviewList() {
 
 		return reviewDao.selectReList();
+	}
+	
+	// 리뷰 삭제
+	@Override
+	public boolean deleteReview(ReviewVO review) {
+		if(review == null) {
+			return false;
+		}
+		return reviewDao.deleteReview(review);
 	}
 }

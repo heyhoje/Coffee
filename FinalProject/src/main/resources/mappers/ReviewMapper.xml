@@ -13,4 +13,9 @@
 			join order_list on or_num = ol_or_num
 	<!-- join은 자동으로 되기 때문에 #{}안에 넣을 필요 없다.  -->
 	</select>
+	
+	<!-- 리뷰 삭제 -->
+	<delete id="deleteReview">
+		delete from review where re_num = #{review.re_num}
+	</delete>
  </mapper>

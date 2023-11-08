@@ -85,7 +85,7 @@ public class AdminController2 {
 		return "/admin/bstore";
 	}
 	
-	//ajax - post 승인/거절 버튼 기능
+	// ajax - post 승인/거절 버튼 기능
 	@ResponseBody
 	@PostMapping("/admin/bstore")
 	public Map<String, Object> bstorePost(@RequestBody StoreVO store){
@@ -108,6 +108,7 @@ public class AdminController2 {
 		return "/admin/promotion";
 	}
 	
+	// ajax - post 승인/거절 버튼 기능
 	@ResponseBody
 	@PostMapping("/admin/promotion")
 	public Map<String, Object> promotionPost(@RequestBody PromotionVO promotion){
@@ -127,5 +128,17 @@ public class AdminController2 {
 		
 		model.addAttribute("reList", reList);
 		return "/admin/review";
+	}
+	
+	// ajax - post 삭제 버튼 기능
+	@ResponseBody
+	@PostMapping("/admin/review")
+	public Map<String, Object> deleteReview(@RequestBody ReviewVO review){
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		boolean res = reviewService.deleteReview(review);
+		
+		map.put("res", res);
+		return map;
 	}
 }
