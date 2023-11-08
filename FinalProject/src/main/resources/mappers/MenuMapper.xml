@@ -65,6 +65,11 @@
 	<select id="getAllMenus" resultType="kr.kh.finalproject.vo.MenuVO">
         SELECT * FROM menu;
     </select>
+		
+	<!-- 메뉴 상세 -->
+	<select id="selectMenu" resultMap="MenuVO">
+		select * from menu where mn_num = #{mn_num}
+	</select>
 </mapper>
 
 

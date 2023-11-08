@@ -47,4 +47,10 @@ public class MenuServiceImp implements MenuService{
         return menuDao.getAllMenus();
     }
 
+	/** 메뉴 상세 */
+	@Override
+	public MenuVO getMenu(int mn_num) {
+
+		return menuDao.selectMenu(mn_num);
+	}
 }
