@@ -53,4 +53,6 @@ public class MenuServiceImp implements MenuService{
 
 		return menuDao.selectMenu(mn_num);
 	}
+	
+	
 }

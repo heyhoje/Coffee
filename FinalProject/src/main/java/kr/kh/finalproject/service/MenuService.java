@@ -22,4 +22,5 @@ public interface MenuService {
 	// 메뉴 상세에 메뉴정보 가져오기
 	MenuVO getMenu(int mn_num);
 
+	
 }

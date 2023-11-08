@@ -50,7 +50,7 @@
 					<li>
 						<h2>메뉴 이름</h2>
 						<div class="input_area">
-							<input type="text" name="foodName" autocomplete="off"
+							<input type="text" name="menuName" autocomplete="off"
 								maxlength="30" required>
 						</div>
 					</li>
@@ -59,7 +59,7 @@
 							<label for="food_price">메뉴 가격</label>
 						</h2>
 						<div class="input_area">
-							<input type="number" pattern="\d*" name="foodPrice"
+							<input type="number" pattern="\d*" name="menuPrice"
 								onkeypress="return lenthCheck(this, 8);" required>
 						</div>
 					</li>
@@ -82,9 +82,9 @@
 									<div>가격</div>
 								</div>
 								<div>
-									<input type="text" maxlength="30" name="foodOption"> <input
+									<input type="text" maxlength="30" name="menuOption"> <input
 										type="number" onkeypress="return lenthCheck(this,8);"
-										pattern="\d*" name="foodOptionPrice">
+										pattern="\d*" name="menuOptionPrice">
 								</div>
 								<div>
 									<button type="button" class="add_option_cancle">
@@ -98,9 +98,9 @@
 									<div>가격</div>
 								</div>
 								<div>
-									<input type="text" maxlength="30" name="foodOption"> <input
+									<input type="text" maxlength="30" name="menuOption"> <input
 										type="number" onkeypress="return lenthCheck(this,8);"
-										pattern="\d*" name="foodOptionPrice">
+										pattern="\d*" name="menuOptionPrice">
 								</div>
 							</div>
 							<div class="option" style="padding-right: 31.61px;">
@@ -109,9 +109,9 @@
 									<div>가격</div>
 								</div>
 								<div>
-									<input type="text" maxlength="30" name="foodOption"> <input
+									<input type="text" maxlength="30" name="menuOption"> <input
 										type="number" onkeypress="return lenthCheck(this,8);"
-										pattern="\d*" name="foodOptionPrice">
+										pattern="\d*" name="menuOptionPrice">
 								</div>
 							</div>
 						</div>
@@ -140,7 +140,7 @@
 			</div>
 			<div id="btn_box">
 				<button class="closeB" type="button" id="close">취소</button>
-				<button class="add_btn" type="button">추가</button>
+				<button class="add_btn" type="button" id="addMenuButton">추가</button>
 			</div>
 		</form>
 	</div>
@@ -161,14 +161,14 @@
 					<li>
 						<h2>메뉴 이름</h2>
 						<div class="input_area">
-							<input type="text" name="foodName" autocomplete="off"
+							<input type="text" name="menuName" autocomplete="off"
 								maxlength="30" required>
 						</div>
 					</li>
 					<li>
 						<h2>메뉴 가격</h2>
 						<div class="input_area">
-							<input type="number" pattern="\d*" name="foodPrice"
+							<input type="number" pattern="\d*" name="menuPrice"
 								onkeypress="return lenthCheck(this, 8);" required>
 						</div>
 					</li>
@@ -191,9 +191,9 @@
 									<div>가격</div>
 								</div>
 								<div>
-									<input type="text" maxlength="30" name="foodOption"> <input
+									<input type="text" maxlength="30" name="menuOption"> <input
 										type="number" onkeypress="return lenthCheck(this,8);"
-										pattern="\d*" name="foodOptionPrice">
+										pattern="\d*" name="menuOptionPrice">
 								</div>
 								<div>
 									<button type="button" class="add_option_cancle">
@@ -207,9 +207,9 @@
 									<div>가격</div>
 								</div>
 								<div>
-									<input type="text" maxlength="30" name="foodOption"> <input
+									<input type="text" maxlength="30" name="menuOption"> <input
 										type="number" onkeypress="return lenthCheck(this,8);"
-										pattern="\d*" name="foodOptionPrice">
+										pattern="\d*" name="menuOptionPrice">
 								</div>
 							</div>
 							<div class="option" style="padding-right: 31.61px;">
@@ -218,9 +218,9 @@
 									<div>가격</div>
 								</div>
 								<div>
-									<input type="text" maxlength="30" name="foodOption"> <input
+									<input type="text" maxlength="30" name="menuOption"> <input
 										type="number" onkeypress="return lenthCheck(this,8);"
-										pattern="\d*" name="foodOptionPrice">
+										pattern="\d*" name="menuOptionPrice">
 								</div>
 							</div>
 						</div>
@@ -268,21 +268,23 @@
 		</ul>
 		<!-- 메뉴 탭 -->
 		<ul class="menu">
-				<li><label class="menu_delete_label"> <i
-						class="fas fa-check-square"></i> <input type="checkbox"
-						class="menu_delete_checkbox" name="deleteNumber"
-						value="${menuList}">
-				</label>
-					<div class="menu_box">
+			<li><label class="menu_delete_label"> <i
+					class="fas fa-check-square"></i> <input type="checkbox"
+					class="menu_delete_checkbox" name="deleteNumber"
+					value="${menuList}">
+			</label>
+				<div class="menu_box">
+					<div>
+						<h2>${mn_name}</h2>
+						<input type="text" value="${mn_num }" name="menu_Num"> <input
+							type="text" value="${mn_name }" name="menuName" class="menu_name">
+						<input type="text" value="${mn_price }" name="menuPrice"
+							class="food_price">
 						<div>
-							<h2>${menu.mn_name}</h2>
-							<fm:formatNumber value="${menu.mn_price}" pattern="###,###" />
-							원 <input type="text" value="${menu.mn_num }" name="menu_Num">
-							<input type="text" value="${menu.mn_name }" name="menuName"
-								class="menu_name"> <input type="text"
-								value="${menu.mn_price }" name="foodPrice" class="food_price">
+							<img src="<c:url value='/resources/images/none.png'/>">
 						</div>
-					</div></li>
+					</div>
+				</div></li>
 		</ul>
 		<!-- 메뉴 탭 -->
 
@@ -482,7 +484,6 @@
 			function() {
 				// 최대 옵션 박스 수
 				var maxOptionBoxes = 5;
-
 				// 공통으로 사용할 함수: 옵션 추가
 				function addOption(optionContainer) {
 					// 현재 존재하는 옵션 박스 개수 확인
@@ -497,12 +498,10 @@
 					var optionBoxDiv = optionContainer
 							.querySelector(".option_box_div");
 					var newOptionBoxDiv = optionBoxDiv.cloneNode(true);
-
 					// 분류 숫자 업데이트 및 삽입
 					var nextCategoryNumber = optionBoxDivs.length + 1;
 					newOptionBoxDiv.querySelector("h1").textContent = "분류 "
 							+ nextCategoryNumber;
-
 					// "add_option_cancle" 버튼에 대한 클릭 이벤트 핸들러를 추가합니다.
 					var cancelButtons = newOptionBoxDiv
 							.querySelectorAll(".add_option_cancle");
@@ -516,10 +515,8 @@
 							resetCategoryNumbers(optionContainer);
 						});
 					});
-
 					optionBoxDiv.parentNode.appendChild(newOptionBoxDiv);
 				}
-
 				// 공통으로 사용할 함수: 분류 숫자 업데이트
 				function resetCategoryNumbers(optionContainer) {
 					var categoryElements = optionContainer
@@ -528,7 +525,6 @@
 						categoryElement.textContent = "분류 " + (index + 1);
 					});
 				}
-
 				// 메뉴 추가 모달 창에서 사용할 옵션 번호 변수
 				var addOptionButton = document
 						.querySelector("#addOptionButton");
@@ -537,11 +533,9 @@
 				addOptionButton.addEventListener("click", function() {
 					addOption(document.querySelector("#addModal"));
 				});
-
 				// 메뉴 수정 모달 창에서 사용할 옵션 번호 변수
 				var modifyOptionButton = document
 						.querySelector("#modifyOptionButton");
-
 				// 메뉴 수정 모달 창에서의 옵션 추가
 				modifyOptionButton.addEventListener("click", function() {
 					addOption(document.querySelector("#modifyModal"));
@@ -625,12 +619,11 @@
 															});
 													infowindow
 															.open(map, marker);
-													$(".userPosition")
-															.click(
-																	function() {
-																		map
-																				.panTo(coords);
-																	})
+													(".userPosition")
+															.click(function() {
+																map
+																		.panTo(coords);
+															})
 												}
 											});
 						}

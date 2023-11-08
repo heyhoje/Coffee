@@ -4,15 +4,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.pagination.PageMaker;
 import kr.kh.finalproject.service.MenuService;
@@ -49,7 +49,6 @@ public class MenuController {
 		int totalCount = menuService.getTotalCount(st_num, mc_numList, category, cri);
 		// 6. 페이지네이션 페이지수
 		final int DISPLAY_PAGE_NUM = 8;
-		cri.setPerPageNum(8);
 		PageMaker pm = new PageMaker(DISPLAY_PAGE_NUM, cri, totalCount);
 		
 		// 5. *체크박스 작업 : 정수배열을 정수리스트로 바꿔주는 코드 - (이유)배열은 기능을 제공하지 않기 때문에 리스트로 바꿨다.
@@ -79,15 +78,6 @@ public class MenuController {
 	        model.addAttribute("menuList", menuList);
 	        return "/business/menu"; // JSP 페이지 이름
 	    }
+	 
 	
-	/** 메뉴상세 */
-	@GetMapping("/store/detail/{mn_num}")
-	public String storeDetail(Model model, @PathVariable("mn_num") int mn_num) {
-		MenuVO menu = menuService.getMenu(mn_num);
-		System.out.println(menu);
-		
-		// 화면에 보여줄 데이터
-		model.addAttribute("menu", menu);
-		return "/store/detail";
-	}
 }

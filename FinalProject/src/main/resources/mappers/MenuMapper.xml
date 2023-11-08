@@ -70,6 +70,8 @@
 	<select id="selectMenu" resultMap="MenuVO">
 		select * from menu where mn_num = #{mn_num}
 	</select>
+	
+	
 </mapper>
 
 
