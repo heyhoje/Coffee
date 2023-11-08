@@ -44,7 +44,7 @@
 		${bsList}
 	</div>
 	
-	<script>
+	<script type="text/javascript">
 		// 승인버튼
 		$('.pass').click(function(){
 			let st_num = $(this).data('target');

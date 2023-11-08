@@ -18,12 +18,18 @@
 <select id="selectPromotionTotalCount" resultType="int">
 	select count(*) from advertisement
 </select>
-
-<!-- 사이트 관리자 페이지 -->
-<select id="selectPrList" resultType="kr.kh.finalproject.vo.PromotionVO">
-	select * from promotion where pr_approval = #{pr_approval}
-</select>
-
+	
+	<!-- 사이트 관리자 페이지 -->
+	<select id="selectPrList" resultType="kr.kh.finalproject.vo.PromotionVO">
+		select * from promotion where pr_approval = #{pr_approval}
+	</select>
+	
+	<!-- 프로모션 승인&거절 -->
+	<update id="updatePromotion">
+		update promotion 
+			set pr_approval = #{promotion.pr_approval}
+			where pr_num = #{promotion.pr_num}
+	</update>
 </mapper> 
  
  

@@ -16,4 +16,7 @@ public interface PromotionDAO {
 	// 사이트 관리자 페이지
 	List<PromotionVO> selectPrList(@Param("pr_approval")int pr_approval);
 
+	// 프로모션 승인&거절
+	boolean updatePromotion(@Param("promotion")PromotionVO promotion);
+
 }

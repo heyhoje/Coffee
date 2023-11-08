@@ -108,6 +108,17 @@ public class AdminController2 {
 		return "/admin/promotion";
 	}
 	
+	@ResponseBody
+	@PostMapping("/admin/promotion")
+	public Map<String, Object> promotionPost(@RequestBody PromotionVO promotion){
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		boolean res = promotionService.updatePromotion(promotion);
+		
+		map.put("res", res);
+		return map;
+	}
+	
 	/** 리뷰 등 기타 승인 
 	 *  전체 리뷰 리스트를 가져오니까 매개변수 보낼 필요 없겠지? */
 	@GetMapping("/admin/review")

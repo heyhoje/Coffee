@@ -30,7 +30,8 @@
 						<td>${pr.pr_subject}</td>
 						<td>${pr.pr_contents}</td>
 						<td>${pr.pr_type}</td>
-						<td><button class="btn btn-outline-primary">승인</button>&nbsp;<button class="btn btn-outline-danger">거절</button></td>
+						<td><button class="btn btn-outline-primary pass" data-target="${pr.pr_num}">승인</button>
+						&nbsp;<button class="btn btn-outline-danger reject" data-target="${pr.pr_num}">거절</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -38,4 +39,62 @@
 		${prList}
 	</div>
 </body>
+
+	<script type="text/javascript">
+	// 승인 버튼
+	$('.pass').click(function(){
+		let pr_num = $(this).data('target');
+			// $(this).closest('tr').find('td:first').text(); // 해당 행의 첫 번째 열(td)에서 pr_num 값을 가져옴
+		let obj = {
+				pr_num : pr_num,
+				pr_approval : 1
+		}
+		$.ajax({
+			async : true, //비동기 : true(비동기), false(동기)
+			url : '<c:url value="/admin/promotion"/>', 
+			type : 'post', 
+			data : JSON.stringify(obj), 
+			contentType : "application/json; charset=utf-8",
+			dataType : "json", 
+			success : function (data){
+				console.log(data.res);
+				pr_approval = 1;
+				alert('프로모션 등록을 승인했습니다.')
+				location.reload();
+				
+			}, 
+			error : function(jqXHR, textStatus, errorThrown){
+	
+			}
+		});
+	});
+	
+	// 거절 버튼
+	$('.reject').click(function(){
+		let pr_num = $(this).data('target');
+			// $(this).closest('tr').find('td:first').text(); // 해당 행의 첫 번째 열(td)에서 pr_num 값을 가져옴
+		let obj = {
+				pr_num : pr_num,
+				pr_approval : 2
+		}
+		$.ajax({
+			async : true, //비동기 : true(비동기), false(동기)
+			url : '<c:url value="/admin/promotion"/>', 
+			type : 'post', 
+			data : JSON.stringify(obj), 
+			contentType : "application/json; charset=utf-8",
+			dataType : "json", 
+			success : function (data){
+				console.log(data.res);
+				pr_approval = 2;
+				alert('프로모션 등록을 거절했습니다.')
+				location.reload();
+				
+			}, 
+			error : function(jqXHR, textStatus, errorThrown){
+	
+			}
+		});
+	});
+	</script>
 </html>
