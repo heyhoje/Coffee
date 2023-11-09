@@ -6,6 +6,7 @@
  <resultMap type="kr.kh.finalproject.vo.MeetingroomVO" id="MeetingroomVO">
  <id property="room_num" column="room_num"/>
  <result property="room_st_num" column="room_st_num"/>
+ <result property="room_content" column="room_content"/>
  <result property="room_price" column="room_price"/>
  <result property="room_seat" column="room_seat"/>
  <result property="room_etc" column="room_etc"/>

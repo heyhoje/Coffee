@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html;    charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 
@@ -6,12 +6,12 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     <title>Notification</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    
+ 
 </head>
 <style>
     .navbar{
@@ -37,21 +37,29 @@
 
 
 </style>
+<body>
+
 <script>
+	
+	
+	    
+    
     $(document).ready(function(){
 
         var urlEndPoint = 'http://localhost:8080/Notification';
         var eventsource = new EventSource(urlEndPoint);
         eventsource.addEventListener('INIT', function(event){
-            
+        })        
         
         eventsource.addEventListener("주문리스트",function(event){
         	console.log(event.data);
-            var MenuData = JSON.parse(event.data);
-            addBlock(MenuData.Menu, MenuData.content);
-                })
-            })
+            //var MenuData = JSON.parse(event.data);
+            //addBlock(MenuData.Menu, MenuData.content);
+            $('.box').append(`<h1>\${event.data}</h1>`)
+          	
         })
+	
+	})
         function addBlock(Menu, content){
             var a = document.createElement("Menu");
             //메뉴
@@ -66,9 +74,8 @@
             document.getElementById("pack").appendChild(a);        
     
     }
-    
+           
 </script>
-<body>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -79,8 +86,10 @@
     </nav>
     <div class = "container pstyle text-center" id="pack" style="font-family: 'BM HANNA Pro', sans-serif;">
         <div class="Panel panel-primary">
-            주문리스트
+            <h1>주문리스트</h1>
+            <div class="box"></div>
         </div>
+
 
         
        

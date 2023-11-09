@@ -34,7 +34,7 @@ public class NotificationController {
 	// method for subscription
 	
 	@CrossOrigin
-	@RequestMapping(value="/Notification", consumes = MediaType.ALL_VALUE)
+	@RequestMapping(value="/Notification", produces = MediaType.ALL_VALUE)
 	public SseEmitter subscribe(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		ShopVO shop = (ShopVO)session.getAttribute("bm_num");
@@ -62,8 +62,7 @@ public class NotificationController {
 			model.addAttribute("shopmap", shopmap);
 			System.out.println(shopmap);
 
-		//HashMap 에서 해당 매장 주문리스트를 뽑아 출력? 
-		//HashMap 데이터를 그대로 JSON에 전송, JSON에서 해당 매장 주문리스트를 뽑아 출력?
+			
 		for (Map.Entry<String, String> pair : shopmap.entrySet()) {
 			  System.out.println(String.format("Key (메뉴) is: %s, Value (수량) is : %s", pair.getKey(), pair.getValue()));
 		}

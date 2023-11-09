@@ -26,7 +26,10 @@ public class MeetingroomController {
 		PageMaker pm = new PageMaker(2, cri, totalCount);
 		
 		model.addAttribute("pm", pm);	
-		model.addAttribute("meetingroomlist", meetingroomList);
+		model.addAttribute("meetingroomList", meetingroomList);
 		return "/meetingroom/home";
 	}	
+	
+	
+	
 }
