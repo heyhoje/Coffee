@@ -24,5 +24,6 @@ public interface MenuDAO {
 	// 메뉴 상세 페이지 
 	MenuVO selectMenu(@Param("mn_num")int mn_num);
 	
+	void addMenu(MenuVO menu);
 	
 }

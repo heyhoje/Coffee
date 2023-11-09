@@ -53,6 +53,9 @@ public class MenuServiceImp implements MenuService{
 
 		return menuDao.selectMenu(mn_num);
 	}
-	
-	
+
+	@Override
+    public void addMenu(MenuVO menu) {
+        menuDao.addMenu(menu);
+    }
 }

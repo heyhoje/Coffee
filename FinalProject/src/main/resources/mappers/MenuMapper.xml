@@ -71,7 +71,10 @@
 		select * from menu where mn_num = #{mn_num}
 	</select>
 	
-	
+	<insert id="addMenu" parameterType="kr.kh.finalproject.vo.MenuVO">
+        INSERT INTO menu (mn_name, mn_price, mn_contents, mn_image)
+        VALUES (#{mn_name}, #{mn_price}, #{mn_contents}, #{mn_image})
+    </insert>
 </mapper>
 
 

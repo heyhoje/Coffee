@@ -2,10 +2,13 @@ package kr.kh.finalproject.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.vo.MCategoryVO;
 import kr.kh.finalproject.vo.MenuVO;
 
+@Service
 public interface MenuService {
 	
 	// 대분류에 맞는 중분류 리스트
@@ -22,5 +25,6 @@ public interface MenuService {
 	// 메뉴 상세에 메뉴정보 가져오기
 	MenuVO getMenu(int mn_num);
 
+	void addMenu(MenuVO menu);
 	
 }

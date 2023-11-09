@@ -9,10 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.pagination.PageMaker;
 import kr.kh.finalproject.service.MenuService;
@@ -20,6 +22,7 @@ import kr.kh.finalproject.vo.MCategoryVO;
 import kr.kh.finalproject.vo.MenuVO;
 
 @Controller
+@RequestMapping("/menu")
 public class MenuController {
 
 	@Autowired
@@ -72,12 +75,24 @@ public class MenuController {
 		return "/store/menu";
 	
 	}
-	 @RequestMapping("/menu")
-	    public String showMenu(Model model) {
-	        List<MenuVO> menuList = menuService.getAllMenus();
-	        model.addAttribute("menuList", menuList);
-	        return "/business/menu"; // JSP 페이지 이름
-	    }
 	 
-	
+
+    @RequestMapping(value = "/addMenu", method = RequestMethod.POST)
+    public String addMenu(@RequestParam("mn_name") String mn_name,
+                          @RequestParam("mn_price") int mn_price,
+                          @RequestParam("mn_contents") String mn_contents,
+                          @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+        MenuVO menu = new MenuVO();
+        menu.setMn_name(mn_name);
+        menu.setMn_price(mn_price);
+        menu.setMn_contents(mn_contents);
+
+        // 파일 업로드 및 저장 로직을 추가해야 합니다.
+        // menu.setMn_image("이미지 파일 경로");
+
+        menuService.addMenu(menu);
+
+        redirectAttributes.addFlashAttribute("message", "메뉴가 추가되었습니다.");
+        return "/business/menu"; // 메뉴 목록 페이지로 리다이렉트
+    }
 }

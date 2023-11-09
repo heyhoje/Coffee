@@ -50,7 +50,7 @@
 					<li>
 						<h2>메뉴 이름</h2>
 						<div class="input_area">
-							<input type="text" name="menuName" autocomplete="off"
+							<input type="text" name="mn_name" autocomplete="off"
 								maxlength="30" required>
 						</div>
 					</li>
@@ -59,7 +59,7 @@
 							<label for="food_price">메뉴 가격</label>
 						</h2>
 						<div class="input_area">
-							<input type="number" pattern="\d*" name="menuPrice"
+							<input type="number" pattern="\d*" name="mn_price"
 								onkeypress="return lenthCheck(this, 8);" required>
 						</div>
 					</li>
@@ -161,14 +161,14 @@
 					<li>
 						<h2>메뉴 이름</h2>
 						<div class="input_area">
-							<input type="text" name="menuName" autocomplete="off"
+							<input type="text" name="mn_name" autocomplete="off"
 								maxlength="30" required>
 						</div>
 					</li>
 					<li>
 						<h2>메뉴 가격</h2>
 						<div class="input_area">
-							<input type="number" pattern="\d*" name="menuPrice"
+							<input type="number" pattern="\d*" name="mn_price"
 								onkeypress="return lenthCheck(this, 8);" required>
 						</div>
 					</li>
@@ -277,8 +277,8 @@
 					<div>
 						<h2>${mn_name}</h2>
 						<input type="text" value="${mn_num }" name="menu_Num"> <input
-							type="text" value="${mn_name }" name="menuName" class="menu_name">
-						<input type="text" value="${mn_price }" name="menuPrice"
+							type="text" value="${mn_name }" name="mn_name" class="menu_name">
+						<input type="text" value="${mn_price }" name="mn_price"
 							class="food_price">
 						<div>
 							<img src="<c:url value='/resources/images/none.png'/>">
@@ -628,5 +628,101 @@
 											});
 						}
 					})
+</script>
+<script>
+$(document).ready(function() {
+    // 추가 버튼 클릭 시
+    $("#addMenuButton").click(function() {
+        // 사용자가 입력한 메뉴 정보 가져오기
+        var menuName = $("input[name='mn_name']").val();
+        var menuPrice = $("input[name='mn_price']").val();
+        var foodDec = $("input[name='foodDec']").val();
+        var file = $("input[name='file']")[0].files[0]; // 이미지 파일
+
+        // 옵션 정보를 배열로 저장
+        var menuOptions = [];
+        var menuOptionPrices = [];
+        $("input[name='menuOption']").each(function() {
+            menuOptions.push($(this).val());
+        });
+        $("input[name='menuOptionPrice']").each(function() {
+            menuOptionPrices.push($(this).val());
+        });
+
+        // AJAX를 사용하여 서버로 메뉴 정보 전송
+	    $.ajax({
+		    url: "/addMenu", // 절대 경로로 변경
+		    method: "POST",
+            data: {
+                menuName: menuName,
+                menuPrice: menuPrice,
+                foodDec: foodDec,
+                menuOptions: menuOptions,
+                menuOptionPrices: menuOptionPrices
+            },
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                alert("메뉴가 추가되었습니다.");
+                // 추가 후 다른 작업 수행 (예: 페이지 새로고침)
+                location.reload();
+            },
+            error: function(error) {
+                alert("메뉴 추가 중 오류가 발생했습니다.");
+            }
+        });
+    });
+});
+</script>
+<script>
+$(document).ready(function() {
+    // '추가' 버튼 클릭 시 메뉴 추가 동작
+    $("#addMenuButton").click(function() {
+        // 사용자가 입력한 값 가져오기
+        var mn_name = $("input[name='mn_name']").val();
+        var mn_price = $("input[name='mn_price']").val();
+        var mn_contents = $("input[name='foodDec']").val();
+        var file = $("input[name='file']")[0].files[0];
+
+        // 옵션 정보 수집
+        var options = [];
+        $(".option").each(function() {
+            var option_name = $(this).find("input[name='menuOption']").val();
+            var option_price = $(this).find("input[name='menuOptionPrice']").val();
+            options.push({ name: option_name, price: option_price });
+        });
+
+        // 서버로 데이터를 전송할 FormData 생성
+        var formData = new FormData();
+        formData.append("mn_name", mn_name);
+        formData.append("mn_price", mn_price);
+        formData.append("mn_contents", mn_contents);
+        formData.append("file", file);
+
+        // 옵션 데이터 추가
+        for (var i = 0; i < options.length; i++) {
+            formData.append("menuOptions[" + i + "].name", options[i].name);
+            formData.append("menuOptions[" + i + "].price", options[i].price);
+        }
+
+        // 서버로 데이터 전송 (AJAX를 사용하거나, 페이지 리로드 등으로 구현 가능)
+        // 이 예제에서는 AJAX를 사용하겠습니다.
+        $.ajax({
+            url: "/addMenu",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                // 성공 시 처리 (예: 메뉴 추가 완료 메시지 표시)
+                alert("메뉴가 추가되었습니다.");
+            },
+            error: function(error) {
+                // 실패 시 처리 (예: 오류 메시지 표시)
+                alert("메뉴 추가에 실패했습니다.");
+            }
+        });
+    });
+});
 </script>
 </html>

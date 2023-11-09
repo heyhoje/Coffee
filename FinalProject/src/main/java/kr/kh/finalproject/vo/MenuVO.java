@@ -12,5 +12,5 @@ public class MenuVO {
 	private int mn_mc_num;
 	private int mn_st_num;
     private int mn_quantity;
-
+    private String mn_image;
 }
