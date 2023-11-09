@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.kh.finalproject.dao.OptionDAO">
+	<resultMap type="kr.kh.finalproject.vo.OptionVO" id="OptionVO">
+	    <result property="os_num" column="os_num" />
+	    <result property="os_name" column="os_name" />
+	    <result property="os_mn_num" column="os_mn_num" />
+	    <collection property="optionValueList" ofType="kr.kh.finalproject.vo.Option_ValueVO">
+	        <result property="ov_num" column="ov_num" />
+	        <result property="ov_value" column="ov_value" />
+	        <result property="ov_primary" column="ov_primary" />
+	        <result property="ov_price" column="ov_price" />
+	    </collection>
+	</resultMap>
+	
+	<select id="searchOption" resultMap="OptionVO">
+		select 
+			os.os_num,
+			os.os_name,
+			os.os_mn_num,
+			ov.ov_num,
+			ov.ov_value,
+			ov.ov_primary,
+			ov.ov_os_num,
+			ov.ov_price
+		from 
+			`option` os
+		join
+			`option_value` ov on os.os_num = ov.ov_os_num
+		where 
+			os.os_mn_num = #{mn_num}
+	</select>	
+</mapper>
