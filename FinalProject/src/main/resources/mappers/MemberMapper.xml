@@ -17,6 +17,8 @@
 		select * from member where me_user_id = #{id} 
 	</select>
 
+
+	<!-- 일반회원 - 자동 로그인 기능 : 1. 쿠키 생성 (loginCookie 라는 쿠키) 2. DB 해당 계정에 세션아이디, 세션리밋이 오늘날짜 일주일 뒤로 잡혀야함 -->
 	<update id="updateMemberSession">
 		update
 			member
@@ -27,10 +29,19 @@
 			me_user_id = #{member.me_user_id}
 	</update>
 	
+	<select id="selectMemberBySessionId" resultType="kr.kh.finalproject.vo.MemberVO">
+		select * from member 
+		where
+			me_session_id = #{session_id} and  me_session_limit >= now() 
+	</select>
+	
+	
+	<!-- 카카오 로그인 -->
 	<insert id="insertUserKakaoInfo" parameterType="kr.kh.finalproject.vo.UserVO">
 	    INSERT INTO user (user_id, user_aorb, user_phone)
 	    VALUES (#{user_id}, #{user_aorb}, #{user_phone})
 	</insert>
+	
 	<select id="selectUserKakaoInfo" parameterType="String" resultType="kr.kh.finalproject.vo.UserVO">
 	    SELECT user_id, user_aorb, user_phone
 	    FROM user

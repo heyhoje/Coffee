@@ -56,9 +56,10 @@
 								<label style="color: white;"> <input
 									style="color: white; margin-left: 20px; margin-right: 5px;"
 									type="checkbox"> 아이디 기억
-								</label> <label style="color: white;"for="autoLogin"> <input
+								</label> 
+								<label style="color: white;"> <input
 									style="color: white; margin-left: 15px; margin-right: 5px;"
-									type="checkbox"> 자동 로그인
+									type="checkbox" name="autoLogin" > 자동 로그인
 								</label>
 							</div>
 							<div class="form-group">
