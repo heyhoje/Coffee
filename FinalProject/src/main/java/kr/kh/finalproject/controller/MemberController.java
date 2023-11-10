@@ -68,13 +68,14 @@ public class MemberController {
 	public String loginPost(Model model, MemberVO member) {
 		//입력받은 회원정보와 일치하는 회원 정보가 있으면 가져오라고 요청
 		System.out.println(member);
-		MemberVO user = memberService.login(member);
+		MemberVO user = memberService.login(member); // user 는 내가 입력한 아이디와 비번에 (맞는) db에서 일치하는 회원정보 가져와! 해서 가져온 회원정보 
 		//가져왔으면 => 로그인 성공하면 
 		if(user != null) {
 			model.addAttribute("user", user);
 			model.addAttribute("type", "u");
 			model.addAttribute("msg", "로그인 성공!");
 			model.addAttribute("url", "");
+			
 			//화면에서 보낸 자동 로그인 체크 여부를 user에 적용
 			user.setAutoLogin(member.isAutoLogin());
 		}else {
@@ -86,12 +87,13 @@ public class MemberController {
 	
 	@PostMapping("/member/logout")
 	public String logout(Model model, HttpSession session) {
-		Object user = session.getAttribute("user");
+		Object user = session.getAttribute("user"); // MemberVO user = (MemberVO)session.getAttribute("user"); 
 		session.removeAttribute("user");
 		
 		/*if(user != null) {
 			user.setMe_session_limit(null);
-			memberService.updateMemberSession(user);
+			memberService.updateMemberSession(user); // 여기는 왜 주석처리인지..? 
+			// 리밋에 null값 줘놓고 무엇을 업데이트 할까? = 세션아이디를 지운다. 만료니까? 만료되면 자동으로 지워지나????
 		}*/
 		
 		model.addAttribute("msg", "로그아웃 성공!");

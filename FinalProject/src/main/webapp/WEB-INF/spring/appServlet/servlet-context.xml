@@ -20,6 +20,7 @@
 	<!-- 메뉴페이지 샘플데이터 사진때문에 hoje개인랩탑 경로 임의로 적어놨습니다! -->
 	<resources mapping="/image/menu/**" location="file:///C:/Users/Hoje/Desktop/hoje/파이널-커피의민족/스타벅스/메뉴DB/" />	
 	
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 
@@ -27,9 +28,10 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	<context:component-scan
-		base-package="kr.kh.finalproject.*" />
+	<context:component-scan base-package="kr.kh.finalproject.*" />
 
+
+	<!-- 타일즈 설정. 타일즈뷰리졸버 등록 -->
 	<beans:bean id="tilesViewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass"
@@ -37,16 +39,7 @@
 		<beans:property name="order" value="1" /><!-- 순서를 우선으로 지정 -->
 	</beans:bean>
 	
-	<!-- 첨부파일 업로드 파일 크기 설정 -->
-	<beans:bean id="multipartResolver" 
-			class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-	    <!-- 업로드 최대 크기 10Mb -->
-	    <beans:property name="maxUploadSize" value="10485760"></beans:property>
-	</beans:bean>
-	
-	
-
-
+	<!-- 타일즈 설정 파일을 등록 -->
 	<beans:bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<beans:property name="definitions">
@@ -55,8 +48,13 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
-	<beans:bean id="loginInterceptor"
-		class="kr.kh.finalproject.interceptor.LoginInterceptor" />
+	
+	
+	<!-- 인터셉터 추가될 때마다, beans랑 매핑할 url 추가 -->
+	<beans:bean id="loginInterceptor" class="kr.kh.finalproject.interceptor.LoginInterceptor" />
+	<beans:bean id="autoLoginInterceptor" class="kr.kh.finalproject.interceptor.AutoLoginInterceptor"></beans:bean>
+	<beans:bean id="adminInterceptor" class="kr.kh.finalproject.interceptor.AdminInterceptor"></beans:bean>
+	
 	<interceptors>
 		<interceptor>
 			<!-- 매핑할 url -->
@@ -64,5 +62,29 @@
 			<mapping path="/member/login2" />
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
+		
+		<interceptor>
+			<mapping path="/**"/>
+			<beans:ref bean="autoLoginInterceptor" />
+		</interceptor>
+
 	</interceptors>
+	
+	
+	<!-- 첨부파일 업로드 파일 크기 설정 -->
+	<beans:bean id="multipartResolver" 
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 업로드 최대 크기 10Mb -->
+		<beans:property name="maxUploadSize" value="10485760"></beans:property>
+	</beans:bean>
+	
+	<!-- 업로드 -->
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="D://uploadfiles"/>
+		<!-- <beans:constructor-arg value="D://uploadfiles"/> -->
+	</beans:bean>
+	<beans:bean id="uploadImgPath" class="java.lang.String">
+		<beans:constructor-arg value="D://img"/>
+	</beans:bean>
+	
 </beans:beans> 

@@ -23,18 +23,18 @@ public class AutoLoginInterceptor2 extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		ManagerVO user2 = (ManagerVO)session.getAttribute("user2");
 		
-		//�̹� �α��� �� == �ڵ� �α��� ���ص� ��
+		//이미 로그인 됨 == 자동 로그인 안해도 됨
 		if(user2 != null) {
 			return true;
 		}
-		//��Ű ������ ������
-		Cookie cookie = WebUtils.getCookie(request, "FinalProject");
-		//��Ű ������ ���� == �ڵ� �α��� ���ص� ��
+		//쿠키 정보를 가져옴
+		Cookie cookie = WebUtils.getCookie(request, "bmLoginCookie");
+		//쿠키 정보가 없음 == 자동 로그인 안해도 됨
 		if(cookie == null) {
 			return true;
 		}
 		
-		//��Ű���� ���� ������ ���� ȸ�� ������ ������
+		//쿠키값과 같은 정보를 가진 회원 정보를 가져옴
 		user2 = managerService.getMemberBySessionId(cookie.getValue());
 		if(user2 != null) {
 			session.setAttribute("user2", user2);
