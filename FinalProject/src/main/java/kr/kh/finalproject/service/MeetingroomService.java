@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.vo.MeetingroomVO;
+import kr.kh.finalproject.vo.ReservationVO;
 
 public interface MeetingroomService {
 
@@ -11,7 +12,9 @@ public interface MeetingroomService {
 	
 	int getTotalCount(Criteria cri);
 
-	String getStarttime(String room_num);
+	List<ReservationVO> getReservationList(Criteria cri);
+
+
 
 	
 

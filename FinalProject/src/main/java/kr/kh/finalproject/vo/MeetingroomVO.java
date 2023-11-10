@@ -1,6 +1,6 @@
 package kr.kh.finalproject.vo;
 
-import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -12,8 +12,10 @@ public class MeetingroomVO {
 	int room_price; 
 	int room_seat; 
 	String room_etc; 
-	String room_starttime; 
-	String room_endtime;
+	int room_starttime; 
+	int room_endtime;
 	String room_img;
 	String room_content;
+	
+	private List<ReservationVO> reservationList;
 }

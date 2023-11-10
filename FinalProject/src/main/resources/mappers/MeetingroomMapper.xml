@@ -12,7 +12,17 @@
  <result property="room_etc" column="room_etc"/>
  <result property="room_starttime" column="room_starttime"/>
  <result property="room_endtime" column="room_endtime"/>
+ <collection property="reservationList" resultMap="ReservationVO">
+ </collection>
   </resultMap>
+
+<resultMap type="kr.kh.finalproject.vo.ReservationVO" id="ReservationVO">
+	<result property="rs_num" column="rs_num"/>
+	<result property="rs_start" column="rs_start"/>
+	<result property="rs_room_num" column="rs_room_num"/>
+	<result property="rs_user_id" column="rs_user_id"/>
+</resultMap>
+
 
  <select id="selectMeetingroomList" resultType="kr.kh.finalproject.vo.MeetingroomVO">
  	select * from meetingroom order by room_num asc
@@ -21,8 +31,7 @@
  <select id="selectMeetingroomTotalCount" resultType="int">
  	select count(*) from meetingroom
  </select>
- <select id="selectMeetingroomstart" resultType="String">
- 	select room_starttime from meetingroom 
-	where room_num is #{room_num}
+ <select id="selectReservationList" resultType="kr.kh.finalproject.vo.ReservationVO">
+ 	select * from reservation order by rs_num asc
  </select>
  </mapper>

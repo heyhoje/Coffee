@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.vo.MeetingroomVO;
+import kr.kh.finalproject.vo.ReservationVO;
 
 public interface MeetingroomDAO {
 
@@ -13,6 +14,6 @@ public interface MeetingroomDAO {
 
 	int selectMeetingroomTotalCount();
 
-	String selectMeetingroomstart(@Param("room_num")String room_num);
+	List<ReservationVO> selectReservationList();
 
 }

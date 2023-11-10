@@ -10,9 +10,7 @@ import lombok.Data;
 public class ReservationVO {
 
 	private int rs_num; 
-	@DateTimeFormat(pattern = "yyyy-mm-dd hh-mm-ss")
-	private Date rs_start; 
-	private Date rs_end;
+	private int rs_start; 
 	private int rs_room_num; 
 	private String rs_user_id;
 }

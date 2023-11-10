@@ -10,15 +10,11 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript">
-  	function openPop() {
-	    document.getElementById("popup_layer").style.display = "block";
-	}
-	//팝업 닫기
-	function closePop() {
-	    document.getElementById("popup_layer").style.display = "none";
-	}
-  </script>
+
+	
+	
+	
+	
 <meta charset="UTF-8">
 </head>
 <body>
@@ -53,7 +49,7 @@
 	        </tr>
        </thead>
 		<tbody>
-			<c:forEach items="${meetingroomList}" var="meetingroomList">
+			<c:forEach items="${meetingroomList}" var="meetingroomList" varStatus="mL">
 				<tr class="inner-box">
 					<th scope="row">
 						<div class="meetingroom-number">
@@ -87,7 +83,7 @@
 					</td>
 					<td>
 						<div class="btn btn-primary" id="reservation-btn">
-							<a href="javascript:openPop()" style="width:100%;">예약하기</a>
+							<a href="javascript:openPop()" style="width:100%;" onclick="operationTime(${mL.index})" >예약하기</a>
 						</div>
 <div class="popup_layer" id="popup_layer" style="display: none;">
   <div class="popup_box">
@@ -100,19 +96,13 @@
       <div class="popup_cont">
           <h5> 시간 선택 </h5>
          	<div class="timebox">
-         		<div class="buttonbox"></div>
-         			<button class="timebutton">09:00</button>
-         			<button class="timebutton">10:00</button>
-         			<button class="timebutton">11:00</button>
-         			<button class="timebutton">12:00</button>
-         			<button class="timebutton">13:00</button>
-         			<button class="timebutton">14:00</button>
-         			<button class="timebutton">15:00</button>
-         			<button class="timebutton">16:00</button>
-         			<button class="timebutton">17:00</button>
-         			<button class="timebutton">18:00</button>
-         			<button class="timebutton">19:00</button>
-         			<button class="timebutton">20:00</button>
+         			
+         		
+         		
+         		<div class="buttonbox">
+         			
+         			<input class="timebutton" type="checkbox"/>
+         				
 	         		</div>
 	         	<div class="reservationbutton-box">
 	         		<button class="reservationbutton">예약하기</button>
@@ -144,4 +134,54 @@
 		
 	
 </body>
+	<script type="text/javascript">
+	  	function openPop() {
+		    document.getElementById("popup_layer").style.display = "block";
+		}
+		//팝업 닫기
+		function closePop() {
+		    document.getElementById("popup_layer").style.display = "none";
+		}
+		
+		var starttime = [];
+		var endtime = [];
+		var operationtime=[];
+		
+		<c:forEach items="${meetingroomList}" var="opentime" varStatus="oT">
+			starttime[${oT.index}] = ${opentime.room_starttime};
+			endtime[${oT.index}] = ${opentime.room_endtime};
+			
+		</c:forEach>
+		
+		var reservationtime= [];
+
+		<c:forEach items="${reservationList}" var="rstime" varStatus="rt">
+			reservationtime[${rt.index}] = ${rstime.rs_start};
+			
+			console.log(reservationtime);
+			
+		</c:forEach>
+		function operationTime(num){
+			var open = starttime[num];
+			var close = endtime[num];
+			var operation = [];	
+			var str=''; 
+			for( i=open; i>=open && i<close; i++){
+				operation[i-open] = i;  
+				//let x = operation.filter(i => !reservationtime.includes(i));
+				let disabled = reservationtime.includes(i) ? 'disabled' : ''
+				str += `
+					<label>
+						<input type="checkbox" name="aaa" value="\${i}" class="\${disabled}" \${disabled}>
+						<button class="timebutton" >\${i}:00
+						</button>
+					</label>
+				`
+			}
+			
+			$('.buttonbox').html(str)
+			javascript:openPop()
+			
+		}
+	</script>
 </html>
