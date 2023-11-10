@@ -5,6 +5,7 @@ import java.sql.Date;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
@@ -34,34 +35,46 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		if(type.equals("u")) {
 		
 			MemberVO user = (MemberVO) modelAndView.getModel().get("user");
-			if (user == null) {
-				return;
-			}
-			// 회원 정보가 있으면 세션에 저장
-			request.getSession().setAttribute("user", user); 
 			
-			// 자동 로그인 체크를 했으면
-			if(user.isAutoLogin()) {
-				String sessionId = request.getSession().getId();
-
-				// 쿠키 생성
-				Cookie cookie = new Cookie("loginCookie", sessionId); // new Cookie("쿠키명", "값"). 다른회원과 중복되지 않게 하기 위해서 세션아이디를 씀.
-															// autoLoginInterceptor 쿠키명과 같아야 하는지(맞음) 그렇다면 자동로그인꺼를 loginCookie로 변경!
-				// 쿠키 경로와 만료 시간 설정
-				cookie.setPath("/");
-				int time = 60 * 60 * 24 * 7; // 만료시간 MaxAge를 설정하기 위해
-				cookie.setMaxAge(time);
+			if (user != null) {
 				
-				// 화면으로 쿠키 정보를 전달
-				response.addCookie(cookie);
+				// 회원 정보가 있으면 세션에 저장
+				request.getSession().setAttribute("user", user); 
+					// HttpSession session = request.getSession();
+					// session.setAttribute("user", user);
 				
-				// DB 회원 정보에 쿠키 정보를 추가
-				Date date = new Date(System.currentTimeMillis() + time * 1000); // 만료기간
-				user.setMe_session_id(sessionId);
-				user.setMe_session_limit(date);
-				
-				// 여기까지 쓰고 위에 @Autowired MemberService memberService 추가.
-				memberService.updateMemberSession(user);
+				// 자동 로그인 체크를 했으면
+				if(user.isAutoLogin()) {
+					String sessionId = request.getSession().getId();
+					
+					// 쿠키 생성
+					Cookie cookie = new Cookie("loginCookie", sessionId); // new Cookie("쿠키명", "값"). 다른회원과 중복되지 않게 하기 위해서 세션아이디를 씀.
+																		  // autoLoginInterceptor 쿠키명과 같아야 하는지(맞음) 그렇다면 자동로그인꺼를 loginCookie로 변경!
+					// 쿠키 경로와 만료 시간 설정
+					cookie.setPath("/");
+					int time = 60 * 60 * 24 * 7; // 만료시간 MaxAge를 설정하기 위해
+					cookie.setMaxAge(time);
+					
+					// 화면으로 쿠키 정보를 전달
+					response.addCookie(cookie);
+					
+					// DB 회원 정보에 쿠키 정보를 추가
+					Date date = new Date(System.currentTimeMillis() + time * 1000); // 만료기간
+					user.setMe_session_id(sessionId);
+					user.setMe_session_limit(date);
+					
+					// 여기까지 쓰고 위에 @Autowired MemberService memberService 추가.
+					memberService.updateMemberSession(user);
+					
+				} else {					
+					// 자동로그인no -> 일반로그인 했을 때도 세션에 세션아이디를 업데이트 해줌
+					// (이유) 중복 로그인으로 상품 주문하는 것을 막기 위해
+					String sessionId = request.getSession().getId();
+					user.setMe_session_id(sessionId);
+					memberService.updateMemberSession(user);
+					
+				}
+			
 			}
 			
 		}else if(type.equals("b")) {//사업자 로그인
