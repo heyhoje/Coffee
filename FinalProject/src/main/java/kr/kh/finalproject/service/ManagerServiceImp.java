@@ -14,8 +14,10 @@ import kr.kh.finalproject.vo.ManagerVO;
 @Service
 public class ManagerServiceImp implements ManagerService{
 
-	@Autowired ManagerDAO managerDao;
-	@Autowired BCryptPasswordEncoder passwordEncoder;
+	@Autowired 
+	ManagerDAO managerDao;
+	@Autowired 
+	BCryptPasswordEncoder passwordEncoder;
 	
 	@Override
 	public boolean managerRegister(ManagerVO manager) {
@@ -67,26 +69,27 @@ public class ManagerServiceImp implements ManagerService{
 			return null;
 		}
 
-		ManagerVO user2 = managerDao.selectManager(manager.getBm_id());
-		System.out.println(user2);
+		ManagerVO buser = managerDao.selectManager(manager.getBm_id());
+		System.out.println(buser);
 		
-		if (user2 != null && passwordEncoder.matches(manager.getBm_pw(), user2.getBm_pw())) {
-			return user2;
+		if (buser != null && passwordEncoder.matches(manager.getBm_pw(), buser.getBm_pw())) {
+			return buser;
 		}
 		return null;
 	}
-
+	
+	/** 자동 로그인 */
 	@Override
-	public void updateMemberSession(Object user2) {
-		if(user2 == null) {
+	public void updateBMemberSession(ManagerVO buser) {
+		if(buser == null) {
 			return;
 		}
-		managerDao.updateMemberSession(user2);
+		managerDao.updateBMemberSession(buser);
 	}
 
 	@Override
-	public ManagerVO getMemberBySessionId(String bId) {
-		return managerDao.selectMemberBySessionId(bId);
+	public ManagerVO getBMemberBySessionId(String bId) {
+		return managerDao.selectBMemberBySessionId(bId);
 	}
 
 	/** 사이트 관리자 페이지 */
