@@ -55,7 +55,7 @@
 							<div class="row align-items-center remember">
 								<label style="color: white;"> <input
 									style="color: white; margin-left: 20px; margin-right: 5px;"
-									type="checkbox"> 아이디 기억
+									type="checkbox" name="idSaveCheck"> 아이디 기억
 								</label> 
 								<label style="color: white;"> <input
 									style="color: white; margin-left: 15px; margin-right: 5px;"
@@ -391,6 +391,68 @@
 			}, 1000);
 
 		}
+	</script>
+	<script type="text/javascript">
+		//일반 회원 아이디 입력했을 때
+		$('[name=me_user_id]').keyup(function(){
+			console.log('change')
+			if($('[name=idSaveCheck]').is(':checked')){
+				let id = $('[name=me_user_id]').val();
+				deleteCookie('idSave');
+				setCookie("idSave", id, 7);
+			}
+		})
+	
+		//아이디 저장 클릭
+		$('[name=idSaveCheck]').click(function(){
+			console.log('check')
+			if($(this).is(':checked')){
+				//쿠키에 현재 아이디 추가
+				let id = $('[name=me_user_id]').val();
+				setCookie("idSave", id, 7);
+			}else{
+				//쿠키 삭제
+				deleteCookie('idSave')
+			}
+		})
+		loadIdSaveCheck();
+		//아이디 저장 쿠키가 있으면 아이디 저장을 체크해주고 쿠기에 있는 아이디를 아이디창에 저장
+		function loadIdSaveCheck(){
+			let id = getCookie('idSave');
+			if(id != null){
+				$('[name=me_user_id]').val(id)
+				$('[name=idSaveCheck]').prop('checked', true);
+			}
+		}
+		//쿠키이름, 값, 만료시간(일단위)를 주면 쿠키를 생성해주는 함수
+		function setCookie(cookieName, cookieValue, expirationDays) {
+		    var d = new Date();
+		    d.setTime(d.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
+		    var expires = "expires=" + d.toUTCString();
+		    document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+		}
+
+		// 쿠키를 삭제하는 함수
+		function deleteCookie(cookieName) {
+		    // 현재 날짜 이전의 날짜로 설정하여 쿠키를 만료시킴
+		    document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+		}
+		function getCookie(cookieName) {
+		    var name = cookieName + "=";
+		    var decodedCookie = decodeURIComponent(document.cookie);
+		    var cookieArray = decodedCookie.split(';');
+
+		    for (var i = 0; i < cookieArray.length; i++) {
+		        var cookie = cookieArray[i].trim();
+		        if (cookie.indexOf(name) == 0) {
+		            return cookie.substring(name.length, cookie.length);
+		        }
+		    }
+
+		    // 해당하는 쿠키가 없을 경우 null 반환
+		    return null;
+		}
+
 	</script>
 	
 </body>
