@@ -393,6 +393,7 @@
 		}
 	</script>
 	<script type="text/javascript">
+		/* 회원아이디 저장 기능 */
 		//일반 회원 아이디 입력했을 때
 		$('[name=me_user_id]').keyup(function(){
 			console.log('change')
