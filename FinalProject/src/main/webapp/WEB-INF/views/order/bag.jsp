@@ -1,125 +1,176 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
+<meta charset="UTF-8">
 	<!--  style -->
 	<link rel="stylesheet" href="<c:url value='/resources/css/bag.css'/>">
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
     <!-- iamport.payment.js -->
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-    <script>
-        var IMP = window.IMP; 
-        IMP.init("imp14674302"); 
-      
-        var today = new Date();   
-        var hours = today.getHours(); // 시
-        var minutes = today.getMinutes();  // 분
-        var seconds = today.getSeconds();  // 초
-        var milliseconds = today.getMilliseconds();
-        var makeMerchantUid = hours +  minutes + seconds + milliseconds;
-        
-
-        function requestPay() {
-            IMP.request_pay(
-            	{
-                pg : "danal_tpay",
-                pay_method : 'card',
-                merchant_uid: "IMP"+makeMerchantUid, 
-                name : '당근 10kg',
-                amount : 1004,
-                buyer_email : 'Iamport@chai.finance',
-                buyer_name : '아임포트 기술지원팀',
-                buyer_tel : '010-1234-5678',
-                buyer_addr : '서울특별시 강남구 삼성동',
-                buyer_postcode : '123-456'
-            }, function (rsp) { // callback
-                if (rsp.success) {
-                    console.log(rsp);
-                } else {
-                    console.log(rsp);
-                }
-            });
-        }
-    </script>
-    
+ 
 </head>
 <body>
     <section class="cart">
         <div class="cart__information">
             <ul>
-                <li>장바구니 상품은 최대 30일간 저장됩니다.</li>
-                <li>가격, 옵션 등 정보가 변경된 경우 주문이 불가할 수 있습니다.</li>
-                <li>오늘출발 상품은 판매자 설정 시점에 따라 오늘출발 여부가 변경될 수 있으니 주문 시 꼭 다시 확인해 주시기 바랍니다.</li>
+                <li>장바구니 얼마나 저장되는지는 잘 모릅니다. 아마 아이디에 따라 평생 저장될듯?</li>
+                <li>옵션을 변경하려면 삭제후 처음부터 다시 해야하니 그냥 드세요.</li>
+                <li>픽업 예약후 예정시간에 오지 않으면 제가 먹으니 시간에 늦지 않길 바라실게요</li>
+                <li>한 번에 한 매장에서만 주문 됩니다. 다른 매장 품목 추가하시면 장바구니 리셋!</li>                
             </ul>
         </div>
         <table class="cart__list">
-            <form>
-                <thead>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td colspan="2">상품정보</td>
-                        <td>옵션</td>
-                        <td>상품금액</td>
-                        <td>배송비</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="cart__list__detail">
-                        <td><input type="checkbox"></td>
-                        <td><img src="image/keyboard.jpg" alt="magic keyboard"></td>
-                        <td><a href="#">애플 공식 브랜드스토어</a><span class="cart__list__smartstore"> 스마트스토어</span>
-                            <p>Apple 매직 키보드 - 한국어(MK2A3KH/A)</p>
-                            <sapn class="price">116,62원</sapn><span
-                                style="text-decoration: line-through; color: lightgray;">119,000</span>
-                        </td>
-                        <td class="cart__list__option">
-                            <p>모델명 : 키보드 - 한국어 MK2A3KH/A / 1개</p>
-                            <button class="cart__list__optionbtn">주문조건 추가/변경</button>
-                        </td>
-                        <td><span class="price">116,620원</span><br>
-                            <button class="cart__list__orderbtn">주문하기</button>
-                        </td>
-                        <td>무료</td>
-                    </tr>
-                    <tr class="cart__list__detail">
-                        <td style="width: 2%;"><input type="checkbox"></td>
-                        <td style="width: 13%;">
-                            <img src="image/mouse.jpg" alt="magic mouse">
-                        </td>
-                        <td style="width: 27%;"><a href="#">컴퓨존</a><span class="cart__list__smartstore"> 스마트스토어</span>
-                            <p>[애플] Magic Mouse [MK2E3KH/A]</p>
-                            <span class=" price">88,900원</span>
-                        </td>
-                        <td class="cart__list__option" style="width: 27%;">
-                            <p>상품 주문 수량: 1개</p>
-                            <button class="cart__list__optionbtn">주문조건 추가/변경</button>
-                        </td>
-                        <td style="width: 15%;"><span class="price">88,900원</span><br>
-                            <button class="cart__list__orderbtn">주문하기</button>
-                        </td>
-                        <td style="width: 15%;">무료</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="3"><input type="checkbox"> <button class="cart__list__optionbtn">선택상품 삭제</button>
-                            <button class="cart__list__optionbtn">선택상품 찜</button>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tfoot>
-            </form>
+         	<tr>
+				<td colspan="2">상품정보</td>
+                <td>옵션</td>
+                <td>수량</td>
+                <td>상품금액</td>
+                <td>품목삭제</td>
+            </tr>
+		<c:forEach items="${jangbaguni}" var="optionChoice" varStatus="index">
+		    <c:set var="menuPrice" value="${optionChoice.menu.mn_price}"/>
+		    <c:set var="optionPrice" value="${optionChoice.oc_selected_price}"/>
+		    <c:set var="quantity" value="1" />
+		    <c:set var="sumPrice" value="${menuPrice + optionPrice}"/>
+            <tr>
+                <td><img src="image/keyboard.jpg" alt="magic keyboard"></td>
+                <td>${optionChoice.menu.mn_name}</td>
+                <td>${optionChoice.oc_selected }</td>
+                <td>
+					<button onclick="updateQuantity(${index.index}, 'decrease')">-</button>
+					<span id="quantity_${index.index}">${quantity}</span>
+					<button onclick="updateQuantity(${index.index}, 'increase')">+</button>
+		        </td>
+                <td id="price_${index.index}">${sumPrice}</td>
+                <td><button onclick="deleteThis(${index.index})">삭제</button></td>
+            </tr>
+        </c:forEach>
+		<c:set var="totalPrice" value="0" />
+		<c:forEach items="${jangbaguni}" var="optionChoice" varStatus="index">
+		    <c:set var="menuPrice" value="${optionChoice.menu.mn_price}" />
+		    <c:set var="optionPrice" value="${optionChoice.oc_selected_price}" />
+		    <c:set var="sumPrice" value="${menuPrice + optionPrice}" />
+		    <c:set var="totalPrice" value="${totalPrice + sumPrice}" />
+		</c:forEach>        
+        	<tr>
+        		<td colspan="2"></td>
+            	<td colspan="2">전체 가격</td>
+            	<td id="totalPrice">${totalPrice}</td>
+            </tr>
+        
         </table>
         <div class="cart__mainbtns">
             <button class="cart__bigorderbtn left">쇼핑 계속하기</button>
             <button class="cart__bigorderbtn right" onclick="requestPay()">주문하기</button>
         </div>
     </section>
+    
+<script type="text/javascript">
+
+var menuPrices = [];
+var optionPrices = [];
+var quantities = [];
+var killAme = [];
+
+<c:forEach items="${jangbaguni}" var="optionChoice" varStatus="vss">
+    menuPrices[${vss.index}] = ${optionChoice.menu.mn_price};
+    optionPrices[${vss.index}] = ${optionChoice.oc_selected_price};
+    quantities[${vss.index}] = 1;
+    killAme[${vss.index}] = ${optionChoice.oc_num};
+</c:forEach>
+
+function updateQuantity(num, operation) {
+    var quantityField = document.getElementById('quantity_' + num);
+    var priceField = document.getElementById('price_' + num);
+    var quantity = parseInt(quantityField.textContent);
+    var menuPrice = menuPrices[num];
+    var optionPrice = optionPrices[num];
+
+    if (operation === 'increase') {
+        quantity++;
+    } else if (operation === 'decrease' && quantity > 1) {
+        quantity--;
+    }
+
+    quantityField.textContent = quantity;
+
+    var sumPrice = (menuPrice + optionPrice) * quantity;
+    priceField.textContent = sumPrice;
+
+    // 전체 가격 업데이트
+    updateTotalPrice();
+}
+
+function updateTotalPrice() {
+    var totalPrice = 0;
+    
+    <c:forEach items="${jangbaguni}" var="optionChoice" varStatus="vs">
+        var quantity = parseInt(document.getElementById('quantity_' + ${vs.index}).textContent);
+        var menuPrice = ${optionChoice.menu.mn_price};
+        var optionPrice = ${optionChoice.oc_selected_price};
+        
+        var sumPrice = (menuPrice + optionPrice) * quantity;
+        totalPrice += sumPrice;
+    </c:forEach>
+    
+    document.getElementById('totalPrice').textContent = totalPrice;
+}
+
+function deleteThis(numnum) {
+	var oc_num = killAme[numnum];
+    // Ajax를 이용하여 서버에 삭제 요청을 보냄
+    $.ajax({
+        type: 'POST',
+        url: '<c:url value="/order/bag"/>', 
+        data: { oc_num: oc_num },
+        success: function(response) {
+            updateTotalPrice();
+            alert("물품이 삭제 되었습니다.");
+            location.reload();
+        },
+        error: function(error) {
+            console.error('Error deleting item: ', error);
+        }
+    });
+}
+
+var IMP = window.IMP; 
+IMP.init("imp14674302"); 
+
+var today = new Date();   
+var hours = today.getHours(); // 시
+var minutes = today.getMinutes();  // 분
+var seconds = today.getSeconds();  // 초
+var milliseconds = today.getMilliseconds();
+var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+
+
+function requestPay() {
+    IMP.request_pay(
+    	{
+        pg : "danal_tpay",
+        pay_method : 'card',
+        merchant_uid: "IMP"+makeMerchantUid, 
+        name : '당근 10kg',
+        amount : 1004,
+        buyer_email : 'Iamport@chai.finance',
+        buyer_name : '아임포트 기술지원팀',
+        buyer_tel : '010-1234-5678',
+        buyer_addr : '서울특별시 강남구 삼성동',
+        buyer_postcode : '123-456'
+    }, function (rsp) { // callback
+        if (rsp.success) {
+            console.log(rsp);
+        } else {
+            console.log(rsp);
+        }
+    });
+}
+</script>
+
 </body>
 </html>
