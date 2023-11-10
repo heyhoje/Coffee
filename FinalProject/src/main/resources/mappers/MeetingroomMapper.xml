@@ -21,4 +21,8 @@
  <select id="selectMeetingroomTotalCount" resultType="int">
  	select count(*) from meetingroom
  </select>
+ <select id="selectMeetingroomstart" resultType="String">
+ 	select room_starttime from meetingroom 
+	where room_num is #{room_num}
+ </select>
  </mapper>

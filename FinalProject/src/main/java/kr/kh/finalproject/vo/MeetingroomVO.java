@@ -12,8 +12,8 @@ public class MeetingroomVO {
 	int room_price; 
 	int room_seat; 
 	String room_etc; 
-	Date room_starttime; 
-	Date room_endtime;
+	String room_starttime; 
+	String room_endtime;
 	String room_img;
 	String room_content;
 }

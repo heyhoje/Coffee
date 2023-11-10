@@ -11,5 +11,9 @@ public interface MeetingroomService {
 	
 	int getTotalCount(Criteria cri);
 
+	String getStarttime(String room_num);
+
+	
+
 
 }

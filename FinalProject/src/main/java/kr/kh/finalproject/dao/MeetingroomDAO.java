@@ -13,4 +13,6 @@ public interface MeetingroomDAO {
 
 	int selectMeetingroomTotalCount();
 
+	String selectMeetingroomstart(@Param("room_num")String room_num);
+
 }

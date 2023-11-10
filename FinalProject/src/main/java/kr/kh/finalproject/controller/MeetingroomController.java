@@ -1,5 +1,6 @@
 package kr.kh.finalproject.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,12 @@ import kr.kh.finalproject.vo.MeetingroomVO;
 
 @Controller
 public class MeetingroomController {
-
+	
 	@Autowired
 	MeetingroomService meetingroomService;
+		
+
+
 	
 	@GetMapping("/meetingroom/home")
 	public String meetingroomList(Model model, Criteria cri) {
@@ -28,8 +32,12 @@ public class MeetingroomController {
 		model.addAttribute("pm", pm);	
 		model.addAttribute("meetingroomList", meetingroomList);
 		return "/meetingroom/home";
+		
+	
 	}	
 	
 	
-	
 }
+	
+
+	

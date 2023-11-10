@@ -28,5 +28,10 @@ public class MeetingroomServiceImp implements MeetingroomService{
 		return meetingroomDao.selectMeetingroomTotalCount();
 	}
 
+	@Override
+	public String getStarttime(String room_num) {
+		return meetingroomDao.selectMeetingroomstart(room_num);
+	}
+
 
 }
