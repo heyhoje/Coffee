@@ -13,9 +13,10 @@ public interface ManagerService {
 
 	ManagerVO login(ManagerVO manager);
 
-	void updateMemberSession(Object user2);
+	// 사업자회원 - 자동 로그인 
+	void updateBMemberSession(ManagerVO buser);
 
-	ManagerVO getMemberBySessionId(String value);
+	ManagerVO getBMemberBySessionId(String value);
 
 	// 사이트 관리자 페이지
 	List<ManagerVO> getBMemberList(int bm_approval);
@@ -24,6 +25,7 @@ public interface ManagerService {
 	
 	// 승인&거절
 	boolean updateManager(ManagerVO manager);
+
 
 
 
