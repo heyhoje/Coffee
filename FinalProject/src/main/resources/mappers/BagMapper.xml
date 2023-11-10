@@ -30,14 +30,14 @@
   	</insert>
   	<select id="hasBag" resultType="kr.kh.finalproject.vo.Shop_BasketVO">
   		select * from `shop_basket`
-  		where sb_me_user_id = "carpcarp"
+  		where sb_me_user_id = #{user}
   	</select>
   	<insert id="makeBag">
   		insert into `shop_basket` sb_me_user_id
-  		values "carpcarp"
+  		values #{user}
   	</insert>
   	<select id="bagBunho" resultType="int">
-  		select sb_num from shop_basket where sb_me_user_id = "carpcarp"
+  		select sb_num from shop_basket where sb_me_user_id = #{user}
   	</select>
   	<select id="bagList" resultMap="optionChoice">
 		select 
@@ -51,7 +51,7 @@
 		left join 
 			`image` on oc_mn_num = image.im_tableNum
 		where 
-			sb_me_user_id = "carpcarp"
+			sb_me_user_id = #{user}
   	</select>
   	<delete id="deleteItem" parameterType="int">
   		delete from `option_choice` where oc_num = #{oc_num}
