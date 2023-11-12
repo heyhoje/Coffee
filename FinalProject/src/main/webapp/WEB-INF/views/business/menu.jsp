@@ -16,7 +16,7 @@
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a5737697fa5f3dd128397ef34179de7a&libraries=services,clusterer,drawing"></script>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
@@ -82,9 +82,9 @@
 									<div>가격</div>
 								</div>
 								<div>
-									<input type="text" maxlength="30" name="menuOption"> <input
+									<input type="text" maxlength="30" name="menuOption1"> <input
 										type="number" onkeypress="return lenthCheck(this,8);"
-										pattern="\d*" name="menuOptionPrice">
+										pattern="\d*" name="menuOptionPrice1">
 								</div>
 								<div>
 									<button type="button" class="add_option_cancle">
@@ -98,9 +98,9 @@
 									<div>가격</div>
 								</div>
 								<div>
-									<input type="text" maxlength="30" name="menuOption"> <input
+									<input type="text" maxlength="30" name="menuOption2"> <input
 										type="number" onkeypress="return lenthCheck(this,8);"
-										pattern="\d*" name="menuOptionPrice">
+										pattern="\d*" name="menuOptionPrice2">
 								</div>
 							</div>
 							<div class="option" style="padding-right: 31.61px;">
@@ -109,9 +109,9 @@
 									<div>가격</div>
 								</div>
 								<div>
-									<input type="text" maxlength="30" name="menuOption"> <input
+									<input type="text" maxlength="30" name="menuOption3"> <input
 										type="number" onkeypress="return lenthCheck(this,8);"
-										pattern="\d*" name="menuOptionPrice">
+										pattern="\d*" name="menuOptionPrice3">
 								</div>
 							</div>
 						</div>
@@ -629,96 +629,42 @@
 						}
 					})
 </script>
+
 <script>
 $(document).ready(function() {
-    // 추가 버튼 클릭 시
-    $("#addMenuButton").click(function() {
-        // 사용자가 입력한 메뉴 정보 가져오기
-        var menuName = $("input[name='mn_name']").val();
-        var menuPrice = $("input[name='mn_price']").val();
-        var foodDec = $("input[name='foodDec']").val();
-        var file = $("input[name='file']")[0].files[0]; // 이미지 파일
-
-        // 옵션 정보를 배열로 저장
-        var menuOptions = [];
-        var menuOptionPrices = [];
-        $("input[name='menuOption']").each(function() {
-            menuOptions.push($(this).val());
-        });
-        $("input[name='menuOptionPrice']").each(function() {
-            menuOptionPrices.push($(this).val());
-        });
-
-        // AJAX를 사용하여 서버로 메뉴 정보 전송
-	    $.ajax({
-		    url: "/addMenu", // 절대 경로로 변경
-		    method: "POST",
-            data: {
-                menuName: menuName,
-                menuPrice: menuPrice,
-                foodDec: foodDec,
-                menuOptions: menuOptions,
-                menuOptionPrices: menuOptionPrices
-            },
-            processData: false,
-            contentType: false,
-            success: function(response) {
-                alert("메뉴가 추가되었습니다.");
-                // 추가 후 다른 작업 수행 (예: 페이지 새로고침)
-                location.reload();
-            },
-            error: function(error) {
-                alert("메뉴 추가 중 오류가 발생했습니다.");
-            }
-        });
-    });
-});
-</script>
-<script>
-$(document).ready(function() {
-    // '추가' 버튼 클릭 시 메뉴 추가 동작
-    $("#addMenuButton").click(function() {
-        // 사용자가 입력한 값 가져오기
-        var mn_name = $("input[name='mn_name']").val();
-        var mn_price = $("input[name='mn_price']").val();
-        var mn_contents = $("input[name='foodDec']").val();
-        var file = $("input[name='file']")[0].files[0];
-
-        // 옵션 정보 수집
+    $("#addMenuButton").on("click", function() {
+    	var mn_name = $("input[name='mn_name']").val();
+    	var mn_price = $("input[name='mn_price']").val();
+    	var mn_contents = $("input[name='foodDec']").val();
+    	var file = $("input[name='file']")[0].files[0];
         var options = [];
-        $(".option").each(function() {
-            var option_name = $(this).find("input[name='menuOption']").val();
-            var option_price = $(this).find("input[name='menuOptionPrice']").val();
+        for (var i = 1; i <= 3; i++) {
+            var option_name = $("input[name='menuOption" + i + "']").val();
+            var option_price = $("input[name='menuOptionPrice" + i + "']").val();
             options.push({ name: option_name, price: option_price });
-        });
+        }
 
-        // 서버로 데이터를 전송할 FormData 생성
         var formData = new FormData();
         formData.append("mn_name", mn_name);
         formData.append("mn_price", mn_price);
         formData.append("mn_contents", mn_contents);
         formData.append("file", file);
 
-        // 옵션 데이터 추가
         for (var i = 0; i < options.length; i++) {
             formData.append("menuOptions[" + i + "].name", options[i].name);
             formData.append("menuOptions[" + i + "].price", options[i].price);
         }
 
-        // 서버로 데이터 전송 (AJAX를 사용하거나, 페이지 리로드 등으로 구현 가능)
-        // 이 예제에서는 AJAX를 사용하겠습니다.
         $.ajax({
-            url: "/addMenu",
-            type: "POST",
+            type: 'POST',
+            url: 'addMenu', // 실제 서버의 엔드포인트에 맞게 수정
             data: formData,
             processData: false,
             contentType: false,
             success: function(response) {
-                // 성공 시 처리 (예: 메뉴 추가 완료 메시지 표시)
                 alert("메뉴가 추가되었습니다.");
             },
             error: function(error) {
-                // 실패 시 처리 (예: 오류 메시지 표시)
                 alert("메뉴 추가에 실패했습니다.");
             }
         });

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +25,6 @@ import kr.kh.finalproject.vo.MenuVO;
 import kr.kh.finalproject.vo.OptionVO;
 
 @Controller
-@RequestMapping("/menu")
 public class MenuController {
 
 	@Autowired
@@ -81,26 +81,6 @@ public class MenuController {
 	
 	}
 	 
-    @RequestMapping(value = "/addMenu", method = RequestMethod.POST)
-    public String addMenu(@RequestParam("mn_name") String mn_name,
-                          @RequestParam("mn_price") int mn_price,
-                          @RequestParam("mn_contents") String mn_contents,
-                          @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
-        MenuVO menu = new MenuVO();
-        menu.setMn_name(mn_name);
-        menu.setMn_price(mn_price);
-        menu.setMn_contents(mn_contents);
-
-        // 파일 업로드 및 저장 로직을 추가해야 합니다.
-        // menu.setMn_image("이미지 파일 경로");
-
-        menuService.addMenu(menu);
-
-        redirectAttributes.addFlashAttribute("message", "메뉴가 추가되었습니다.");
-        return "/business/menu"; // 메뉴 목록 페이지로 리다이렉트
-    }
-
-	
 	/** 메뉴상세 */
 	@GetMapping("/store/detail/{mn_num}")
 	public String storeDetail(Model model, @PathVariable("mn_num") int mn_num) {
@@ -116,4 +96,27 @@ public class MenuController {
 
 		return "/store/detail";
 	}
+	
+	@RequestMapping("/addMenu")
+    public String addMenu(@RequestParam("mn_name") String mn_name,
+                          @RequestParam("mn_contents") String mn_contents,
+                          @RequestParam("mn_price") int mn_price,
+                          @RequestParam("mn_st_num") int mn_st_num,
+                          @RequestParam("mn_mc_num") int mn_mc_num,
+                          @RequestParam("mn_quantity") int mn_quantity,
+                          @RequestParam("mn_image") String mn_image) {
+        MenuVO menu = new MenuVO();
+        menu.setMn_name(mn_name);
+        menu.setMn_contents(mn_contents);
+        menu.setMn_price(mn_price);
+        menu.setMn_st_num(mn_st_num);
+        menu.setMn_mc_num(mn_mc_num);
+        menu.setMn_quantity(mn_quantity);
+        menu.setMn_image(mn_image);
+
+        menuService.addMenu(menu);
+
+        // 추가 후 어떤 페이지로 이동할지 리턴
+        return "/business/menu";
+    }
 }
