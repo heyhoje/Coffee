@@ -60,30 +60,67 @@
 			<hr><br><br>
 			<p class="menu-content">${menu.mn_contents}</p>	
 			
-			<h4><옵션></h4>
-			<form action="/HotIceOption" method="post">
-		        <label><input type="radio" name="option" value="hot" checked> 핫</label>
-		        <label><input type="radio" name="option" value="ice"> 아이스</label>
-		        <input type="submit" value="선택">
-			</form>
-			
-			<form action="/SizeOption" method="post">
-		        <label><input type="radio" name="option" value="small" checked> 스몰(기본)</label>
-		        <label><input type="radio" name="option" value="medium"> 미디움</label>
-		        <label><input type="radio" name="option" value="large"> 라지</label>
-		        <input type="submit" value="선택">
-			</form>
-			
-			<form action="/ShotOption" method="post">
-		        <label><input type="radio" name="option" value="zeroShot"> 0샷</label>
-		        <label><input type="radio" name="option" value="oneShot" checked> 1샷(기본)</label>
-		        <label><input type="radio" name="option" value="twoShot"> 2샷</label>
-		        <input type="submit" value="선택">
-			</form>
-		    <br> 
-			<a href="<c:url value='/order/bag'/>" class="btn-outline-warning">장바구니 담기</a>
+			<h4>옵션</h4>
+				<c:forEach items="${option}" var="optionItem" varStatus="index">
+				    <th>
+				        <c:forEach items="${optionItem.optionValueList}" var="optionValue">
+				            <c:choose>
+				                <c:when test="${optionItem.os_num == 1}">
+				                    <label><input type="radio" name="option1" value="${optionValue.ov_value} ${optionValue.ov_price}"  checked> ${optionValue.ov_value}</label>
+				                </c:when>
+				                <c:when test="${optionItem.os_num == 2}">
+				                    <label><input type="radio" name="option2" value="${optionValue.ov_value} ${optionValue.ov_price}" checked> ${optionValue.ov_value}</label>
+				                </c:when>
+				                <c:when test="${optionItem.os_num == 3}">
+				                    <label><input type="radio" name="option3" value="${optionValue.ov_value} ${optionValue.ov_price}" checked> ${optionValue.ov_value} +${optionValue.ov_price }원</label>
+				                </c:when>
+				                <c:when test="${optionItem.os_num == 4}">
+				                    <label><input type="radio" name="option4" value="${optionValue.ov_value} ${optionValue.ov_price}" checked> ${optionValue.ov_value} +${optionValue.ov_price }원</label>
+				                </c:when>
+				            </c:choose>
+				        </c:forEach>
+				    </th>
+				</c:forEach>
+		    <br>
+		    <button id="toTheBag" class="btn-outline-warning">장바구니 담기</button>
+		    <a href="<c:url value='/order/bag'/>" class="btn-outline-warning">장바구니 이동</button> 
 		</div>
 	</div>
-	
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#toTheBag').click(function () {
+          // getter
+          var optionVal1 = $('input[name="option1"]:checked').val();
+          var optionVal2 = $('input[name="option2"]:checked').val();
+          var optionVal3 = $('input[name="option3"]:checked').val();
+          var optionVal4 = $('input[name="option4"]:checked').val();
+          var optionAll = optionVal1 + ", " + optionVal2 + ", " + optionVal3 + ", " + optionVal4;
+          alert(optionAll);
+
+          // Create an object to send via AJAX
+          var data = {
+            optionAll: optionAll,
+            menu_name: "${menu.mn_name}",
+            menu_price: "${menu.mn_price}",
+            menu_num: "${menu.mn_num}"
+          };
+
+          // Send the data to /order/bag using AJAX
+          $.ajax({
+            type: "POST",
+            url: "/order/bag1",
+            data: data,
+            success: function (response) {
+              // Handle the response from the server if needed
+              alert("장바구니에 담겼습니다!");
+            },
+            error: function (error) {
+              // Handle any errors that occur during the AJAX request
+              alert("무언가 잘못 되어 장바구니에 안담겼을지도?");
+            }
+          });
+        });
+      });
+    </script>
 </body>
 </html>

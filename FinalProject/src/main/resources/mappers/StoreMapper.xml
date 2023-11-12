@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.kh.finalproject.dao.StoreDAO">
+	<!-- 사이트 관리자 - 매장등록 리스트 -->
+	<select id="selectBsList" resultType="kr.kh.finalproject.vo.StoreVO">
+		select st_num, bm_store_name as st_store_name, st_br_name, st_opentime, st_closetime, st_approval
+			from store 
+		 	join business_member on st_bm_id = bm_id
+		 	where st_approval = #{st_approval}
+	</select>
+	
+	<!-- 매장등록 승인&거절 버튼 -->
+	<update id="updateStore">
+		update store 
+			set st_approval = #{store.st_approval}
+			where st_num = #{store.st_num}
+	</update>
+</mapper>
+
+

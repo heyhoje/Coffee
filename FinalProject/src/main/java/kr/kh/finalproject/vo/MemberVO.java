@@ -11,14 +11,17 @@ public class MemberVO extends UserVO{
 	private String me_name; 
 	private String me_email; 
 	private String me_authority; 
+	
+	// 자동로그인 속성
 	private String me_session_id; 
 	private Date me_session_limit; 
+	private boolean autoLogin;
 	
+	// 카카오 소셜 로그인
 	private String kakao_user_id;
     private String kakao_email; 
     private String kakao_name; 
 
-	private boolean autoLogin;
 
 	@Override
 	public String toString() {

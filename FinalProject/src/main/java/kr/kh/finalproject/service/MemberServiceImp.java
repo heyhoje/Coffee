@@ -18,6 +18,7 @@ public class MemberServiceImp implements MemberService {
 	@Autowired MemberDAO memberDao;
 	@Autowired BCryptPasswordEncoder passwordEncoder;
 	
+	/** 회원가입, 정규화체크, 중복확인, 로그인 */
 	@Override
 	public boolean signup(MemberVO member) {
 		if(member == null) {
@@ -75,7 +76,8 @@ public class MemberServiceImp implements MemberService {
 		}
 		return null;
 	}
-
+	
+	/** 일반회원 - 자동 로그인 */
 	@Override
 	public void updateMemberSession(MemberVO user) {
 		if(user == null) {
@@ -90,6 +92,7 @@ public class MemberServiceImp implements MemberService {
 		return memberDao.selectMemberBySessionId(sId);
 	}
 	
+	/** 카카오 로그인 */
 	@Override
     public void insertMemberKakao(MemberVO member) {
         memberDao.insertMemberKakao(member);

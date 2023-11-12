@@ -18,8 +18,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.pagination.PageMaker;
 import kr.kh.finalproject.service.MenuService;
+import kr.kh.finalproject.service.OptionService;
 import kr.kh.finalproject.vo.MCategoryVO;
 import kr.kh.finalproject.vo.MenuVO;
+import kr.kh.finalproject.vo.OptionVO;
 
 @Controller
 @RequestMapping("/menu")
@@ -27,6 +29,9 @@ public class MenuController {
 
 	@Autowired
 	MenuService menuService;
+	
+	@Autowired
+	OptionService optionService;
 	
 	/** [ 매장 -> 메뉴 페이지 불러오기 ] 
 	 * List<McategoryVO> list(이제 매장번호st_num가 상관없어진. 중분류도 고정이기 때문)
@@ -46,7 +51,7 @@ public class MenuController {
 		List<MCategoryVO> list = menuService.getMenuList(category);
 		// 4. => 선택한 중분류들의 메뉴를 가져오는 일
 		List<MenuVO> mList = menuService.getMainList(st_num, mc_numList, category, cri);
-		System.out.println(list); // 2. 리스트를 잘 가져왔는지 확인
+		//System.out.println(list); // 2. 리스트를 잘 가져왔는지 확인
 		
 		// 6. 현재 페이지 정보에 맞는 전체 게시글 수를 가져옴
 		int totalCount = menuService.getTotalCount(st_num, mc_numList, category, cri);
@@ -76,7 +81,6 @@ public class MenuController {
 	
 	}
 	 
-
     @RequestMapping(value = "/addMenu", method = RequestMethod.POST)
     public String addMenu(@RequestParam("mn_name") String mn_name,
                           @RequestParam("mn_price") int mn_price,
@@ -95,4 +99,21 @@ public class MenuController {
         redirectAttributes.addFlashAttribute("message", "메뉴가 추가되었습니다.");
         return "/business/menu"; // 메뉴 목록 페이지로 리다이렉트
     }
+
+	
+	/** 메뉴상세 */
+	@GetMapping("/store/detail/{mn_num}")
+	public String storeDetail(Model model, @PathVariable("mn_num") int mn_num) {
+		List<OptionVO> option = optionService.getOption(mn_num);
+		MenuVO menu = menuService.getMenu(mn_num);
+		//System.out.println(menu);
+		//System.out.println(option);
+
+		
+		// 화면에 보여줄 데이터
+		model.addAttribute("menu", menu);
+		model.addAttribute("option", option);
+
+		return "/store/detail";
+	}
 }

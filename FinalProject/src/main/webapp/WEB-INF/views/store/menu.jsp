@@ -103,7 +103,6 @@
 			reloadPage(false)
 		});
 		$("#allCheckbox").click(function(){
-			console.log(1)
 			var state = $(this).is(':checked')
 			$(".medium").prop('checked', state);
 			reloadPage(state);
@@ -113,7 +112,6 @@
 			var urlString = window.location.href;
 			var url = new URL(urlString);
 			var searchParams = new URLSearchParams(url.search);
-			console.log(1);
 			searchParams.delete('mc_numList');
 			searchParams.delete('allCheckbox');
 			//alert(searchParams.toString())

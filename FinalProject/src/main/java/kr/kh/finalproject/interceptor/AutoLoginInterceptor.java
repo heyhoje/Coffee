@@ -28,7 +28,7 @@ public class AutoLoginInterceptor extends HandlerInterceptorAdapter {
 			return true;
 		}
 		//쿠키 정보를 가져옴
-		Cookie cookie = WebUtils.getCookie(request, "FinalProject");
+		Cookie cookie = WebUtils.getCookie(request, "loginCookie"); // 로그인 인터셉터의 '쿠키이름'과 통일
 		//쿠키 정보가 없음 == 자동 로그인 안해도 됨
 		if(cookie == null) {
 			return true;
