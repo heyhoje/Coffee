@@ -21,6 +21,13 @@ public class ReviewServiceImp implements ReviewService{
 		return reviewDao.selectReList();
 	}
 	
+	/** 리뷰게시판 */
+//	@Override
+//	public List<ReviewVO> getRvList() {
+//
+//		return reviewDao.selectRvList();
+//	}
+	
 	// 리뷰 삭제
 	@Override
 	public boolean deleteReview(ReviewVO review) {
@@ -29,4 +36,6 @@ public class ReviewServiceImp implements ReviewService{
 		}
 		return reviewDao.deleteReview(review);
 	}
+
+	
 }
