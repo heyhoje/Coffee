@@ -27,7 +27,7 @@
             </div>
           </div>
 
-      <table class="table" style="font-family: 'BM HANNA Pro', sans-serif;">
+      <table class="table" style="font-family: 'BM HANNA Pro', sans-serif; text-align:center;">
 	 	<thead>
 	        <tr>
 		         <th class="text-center" scope="col">번호</th>
