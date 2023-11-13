@@ -14,7 +14,8 @@
 	<!-- style css -->
 		<link rel="stylesheet" href="<c:url value='/resources/css/review.css'/>">
 	<style>
-		<!-- 개별 css파일로 관리 -->
+		/* 개별 css파일로 관리 */
+		
 	.star-rating {
       unicode-bidi: bidi-override;
       direction: rtl;
@@ -25,12 +26,21 @@
       display: inline-block;
       position: relative;
       width: 1.1em;
+      
+	  vertical-align: middle; /* 추가된 부분 */
+	  line-height: 1; /* 추가된 부분 */
+    }
+    
+    .star-rating .empty-star:before {
+        position: absolute;
+        content: "\2606"; /* 별 모양이 비어있는 유니코드 값 */
+        color: #FFD700; /* 빈 별의 색을 원하는 색으로 변경하세요 */
     }
 
-    .star-rating span:before {
-      content: "\2605";
-      position: absolute;
-      color: #FFD700; /* 별의 색을 원하는 색으로 변경하세요 */
+    .star-rating .filled-star:before {
+        position: absolute;
+        content: "\2605";
+        color: #FFD700; /* 별의 색을 원하는 색으로 변경하세요 */
     }
 	</style>
 </head>
@@ -39,19 +49,18 @@
 	<div>
 <div class="container">
 	<h2 class="mt-4">리뷰를 남겨주세요</h2>
-	<p>이달의 신메뉴는 어땠나요?, 나만 아는 특별한 조합이 있다면 모두에게 공유해주세요!</p><br>
-	<p>주문메뉴번호 필요없을것 같은디...</p>
+	<p>* 이달의 신메뉴는 어땠나요?, 나만 아는 특별한 조합이 있다면 모두에게 공유해주세요!</p><br>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>번호</th>
 					<th>주문번호</th>
 					<th>아이디</th>
-					<th>주문한음료이름리스트?배열?</th>
+					<th>매장이름</th>
+					<th>주문한음료</th>
 					<th>리뷰내용</th>
-					<th>별점</th>
+					<th class="col-2">별점</th>
 					
-					<th>주문메뉴번호 - 는 어디다 쓰게될까?</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -60,10 +69,20 @@
 						<td>${review.re_num}</td>
 			            <td>${review.re_ol_num}</td>
 			            <td>${review.re_user_id}</td>
+			            <td>${review.re_store_name}</td>
 			            <td>${review.re_mn_name}</td>
 			            <td>${review.re_contents}</td>
-			            <td>${review.re_star}</td>
-			            <td>${review.re_or_num}</td>
+			            <td class="star-rating">
+						    <!-- Empty stars -->
+						    <c:forEach begin="${review.re_star + 1}" end="5" varStatus="emptyStarStatus">
+						        <span class="empty-star"></span>
+						    </c:forEach>
+						    <!-- Filled stars -->
+							<c:forEach begin="1" end="${review.re_star}" varStatus="starStatus">
+								<span class="filled-star"></span>
+						    </c:forEach>
+						</td>
+			            
 					</tr>
 				</c:forEach>
 			</tbody>
