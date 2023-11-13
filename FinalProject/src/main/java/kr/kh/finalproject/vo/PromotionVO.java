@@ -5,7 +5,6 @@ import lombok.Data;
 @Data
 public class PromotionVO {
 	
-	
 
 	// 프로모션 테이블 VO
 	int pr_num; // 번호

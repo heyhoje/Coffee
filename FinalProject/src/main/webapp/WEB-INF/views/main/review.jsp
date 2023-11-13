@@ -55,12 +55,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${reList}" var="review" varStatus="reviewStatus">
+				<c:forEach items="${rvList}" var="review" varStatus="reviewStatus">
 					<tr>
 						<td>${review.re_num}</td>
 			            <td>${review.re_ol_num}</td>
 			            <td>${review.re_user_id}</td>
-			            <td>'음료리스트'</td>
+			            <td>${review.re_mn_name}</td>
 			            <td>${review.re_contents}</td>
 			            <td>${review.re_star}</td>
 			            <td>${review.re_or_num}</td>
@@ -69,6 +69,7 @@
 			</tbody>
 		</table>
 		${review}
+		${review.re_mn_name}
 </div>
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

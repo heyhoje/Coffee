@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="kr.kh.finalproject.dao.ReviewDAO">
  
- 	<!-- 리뷰 게시판 -->
 	<!-- 사이트 관리자 페이지 -->
 	<select id="selectReList" resultType="kr.kh.finalproject.vo.ReviewVO">
 	<!-- 화면에서는 vo에 있는 값만 쓸 수 있다. ReviewVO에 ol_user_id 추가 
@@ -16,15 +15,16 @@
 	<!-- join은 자동으로 되기 때문에 #{}안에 넣을 필요 없다.  -->
 	</select>
 	
-	<!-- 리뷰게시판 - 메뉴이름까지 가져오고 싶어서 -->
-	<!-- <select id="selectRvList" resultType="kr.kh.finalproject.vo.ReviewVO">
-		select re_num, ol_user_id as re_user_id, mn_name as re_mn_name, re_or_num, re_contents, re_star, 
+	<!-- 리뷰게시판 - 메뉴이름까지 가져오고 싶어서 (리뷰~메뉴까지 쪼인) -->
+	<select id="selectRvList" resultType="kr.kh.finalproject.vo.ReviewVO">
+		select re_num, ol_num as re_ol_num, ol_user_id as re_user_id, re_or_num, re_contents, re_star, mn_name as re_mn_name
 			from review 
 			join order_menu on re_or_num = or_num
     		join order_list on or_num = ol_or_num
     		join shop_basket on ol_sb_num = sb_num
-    		join option_choice on sb_num = oc_sb_num;
-	</select> -->
+    		join option_choice on sb_num = oc_sb_num
+    		join menu on oc_mn_num = mn_num;
+	</select>
 	
 	<!-- 리뷰 삭제 -->
 	<delete id="deleteReview">
