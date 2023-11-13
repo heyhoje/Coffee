@@ -23,6 +23,11 @@
                 <li>한 번에 한 매장에서만 주문 됩니다. 다른 매장 품목 추가하시면 장바구니 리셋!</li>                
             </ul>
         </div>
+        <div>
+        	<img src="image/keyboard.jpg" alt="magic keyboard">
+        	<div>가게 이름 : ${shop[0].bm_store_name}</div>   
+        	<div>가게 주소 : ${shop[0].bm_address}</div>
+        </div>        
         <table class="cart__list">
          	<tr>
 				<td colspan="2">상품정보</td>
@@ -38,7 +43,7 @@
 		    <c:set var="sumPrice" value="${menuPrice + optionPrice}"/>
             <tr>
                 <td><img src="image/keyboard.jpg" alt="magic keyboard"></td>
-                <td>${optionChoice.menu.mn_name}</td>
+                <td id="menuName">${optionChoice.menu.mn_name}</td>
                 <td>${optionChoice.oc_selected }</td>
                 <td>
 					<button onclick="updateQuantity(${index.index}, 'decrease')">-</button>
@@ -75,6 +80,8 @@ var menuPrices = [];
 var optionPrices = [];
 var quantities = [];
 var killAme = [];
+var user = carpcarp; // ${user} 
+
 
 <c:forEach items="${jangbaguni}" var="optionChoice" varStatus="vss">
     menuPrices[${vss.index}] = ${optionChoice.menu.mn_price};
@@ -149,14 +156,30 @@ var milliseconds = today.getMilliseconds();
 var makeMerchantUid = hours +  minutes + seconds + milliseconds;
 
 
+
 function requestPay() {
+	var totalPrice = 0;
+	var menuName = '';
+	
+    <c:forEach items="${jangbaguni}" var="optionChoice" varStatus="vs">
+	    var quantity = parseInt(document.getElementById('quantity_' + ${vs.index}).textContent);
+	    var menuPrice = ${optionChoice.menu.mn_price};
+	    var optionPrice = ${optionChoice.oc_selected_price};
+	    
+	    var sumPrice = (menuPrice + optionPrice) * quantity;
+	    totalPrice += sumPrice;
+	</c:forEach>
+	
+	document.getElementById('totalPrice').textContent = totalPrice;
+	
+
     IMP.request_pay(
     	{
         pg : "danal_tpay",
         pay_method : 'card',
         merchant_uid: "IMP"+makeMerchantUid, 
-        name : '당근 10kg',
-        amount : 1004,
+        name : '커피의 민족',
+        amount : totalPrice,
         buyer_email : 'Iamport@chai.finance',
         buyer_name : '아임포트 기술지원팀',
         buyer_tel : '010-1234-5678',
@@ -165,11 +188,28 @@ function requestPay() {
     }, function (rsp) { // callback
         if (rsp.success) {
             console.log(rsp);
+            givePoint(user, totalPrice);
         } else {
             console.log(rsp);
         }
     });
 }
+
+function givePoint(user, num) {
+	point = (num / 10);
+	$.ajax({
+        type: 'POST',
+        url: '<c:url value="/order/bag2"/>', 
+        data: { point : point
+        		user : user},
+        success: function(response) {
+        },
+        error: function(error) {
+        }
+    });
+}
+
+
 </script>
 
 </body>

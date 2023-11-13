@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.kh.finalproject.dao.BagDAO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.Option_ChoiceVO;
+import kr.kh.finalproject.vo.ShopVO;
 import kr.kh.finalproject.vo.Shop_BasketVO;
 
 @Service
@@ -51,6 +52,16 @@ public class BagServiceImp implements BagService{
 	@Override
 	public boolean deleteItem(int oc_num) {
 		return bagDao.deleteItem(oc_num);
+	}
+
+	@Override
+	public List<ShopVO> shopInfo(MemberVO user) {	
+		return bagDao.getShopInfo(user);
+	}
+
+	@Override
+	public boolean givePoint(int point, String user) {
+		return bagDao.givePoint(point, user);
 	}
 
 }

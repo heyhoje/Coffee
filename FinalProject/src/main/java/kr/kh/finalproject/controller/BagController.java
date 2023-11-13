@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,8 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.kh.finalproject.service.BagService;
 import kr.kh.finalproject.vo.MemberVO;
-import kr.kh.finalproject.vo.MenuVO;
 import kr.kh.finalproject.vo.Option_ChoiceVO;
+import kr.kh.finalproject.vo.ShopVO;
 
 
 @Controller
@@ -34,12 +33,12 @@ public class BagController {
 	
 	
 	@RequestMapping(value="/order/bag", method=RequestMethod.GET)
-	public String signup(HttpSession session, MenuVO menu, Model model) {
+	public String signup(HttpSession session, Model model) {
     	MemberVO user = (MemberVO)session.getAttribute("user");
     	List<Option_ChoiceVO> jangbaguni = bagService.bagList(user);
-
+    	List<ShopVO> shop = bagService.shopInfo(user);
     	
-    	model.addAttribute("menu", menu);
+    	model.addAttribute("shop", shop);
     	model.addAttribute("user", user);
     	model.addAttribute("jangbaguni", jangbaguni);
 		return "/order/bag";
@@ -98,6 +97,14 @@ public class BagController {
     @ResponseBody
     public String killAme(@RequestParam("oc_num") int oc_num) {
         boolean deleteItem = bagService.deleteItem(oc_num);
+        
+        return "";
+    }
+    
+    @PostMapping("/order/bag2")
+    @ResponseBody
+    public String savePoint(@RequestParam("point") int point, @RequestParam("user") String user) {
+        boolean jugiPoint = bagService.givePoint(point, user);
         
         return "";
     }
