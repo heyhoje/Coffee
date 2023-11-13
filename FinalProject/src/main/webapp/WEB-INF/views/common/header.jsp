@@ -42,7 +42,7 @@
          <div class="container-fluid" style="padding-left:0; padding-right:0;">
             <nav class="navbar navbar-expand-lg navbar-light bg-light"
             style="background-color: #212529!important;">
-               <div class="logo"><a href=""><img src="/resources/images/로고.png"></a></div>
+               <div class="logo"><a href="/"><img src="/resources/images/로고.png"></a></div>
                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"aria-expanded="false" aria-label="Toggle navigation" style="background-color:white;">
                <span class="navbar-toggler-icon"></span>
                </button>
