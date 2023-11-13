@@ -8,10 +8,14 @@ import kr.kh.finalproject.vo.ReviewVO;
 
 public interface ReviewDAO {
 	
+	// 리뷰게시판
+	// List<ReviewVO> selectRvList();
+	
 	// 사이트 관리자
 	List<ReviewVO> selectReList();
 
 	// 리뷰 삭제
 	boolean deleteReview(@Param("review")ReviewVO review);
+
 
 }
