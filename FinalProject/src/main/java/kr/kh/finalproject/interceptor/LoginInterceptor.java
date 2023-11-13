@@ -14,6 +14,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import kr.kh.finalproject.service.ManagerService;
 import kr.kh.finalproject.service.MemberService;
+import kr.kh.finalproject.vo.KakaoVO;
 import kr.kh.finalproject.vo.ManagerVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.UserVO;
@@ -113,12 +114,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			managerService.updateBMemberSession(buser);
 			
 		}else if (type.equals("k")) { // 카카오 로그인인 경우 (카카오로그인은 자동로그인을 지원하지 않는다.라면 자동로그인 작업 안해도됨)
-	        UserVO user = (UserVO) modelAndView.getModel().get("user");
-	        if (user != null) {
-	            request.getSession().setAttribute("user", user);
+	        KakaoVO kuser = (KakaoVO) modelAndView.getModel().get("kuser");
+	        if (kuser != null) {
+	            request.getSession().setAttribute("kuser", kuser);
 	        }
 	    }
-		request.getSession().setAttribute("type", type); // type정보도 세션에 담는다?????? 왜????? 
 		
 		
 		/*

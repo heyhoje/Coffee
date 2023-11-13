@@ -78,14 +78,13 @@
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">채용정보</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif; margin-right:800px;">고객센터</a></li>
+							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">고객센터</a></li>
+						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/main/review'/>"style="font-family: 'BM HANNA Pro', sans-serif;">리뷰게시판</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">고객센터</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/admin/home'/>"style="font-family: 'BM HANNA Pro', sans-serif; margin-right:800px;">관리자 페이지</a></li>	
-						<li class="nav-item"><span>
-							style="color: white; float: right;">${user.me_user_id}</span></li>
 						<c:if test="${user == null && user2 == null}">
 							<li class="form-group" id="loginButton"><input type="submit" 
 								style="margin-right: 10px; background-color: floralwhite;"  value="회원 로그인" class="btn login_btn" data-toggle="modal"

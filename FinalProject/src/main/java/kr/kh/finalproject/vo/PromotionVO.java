@@ -16,3 +16,4 @@ public class PromotionVO {
 	int pr_save; // 적립률
 	String pr_store; // 매장 (프로모션이 적용되는?)
 	int pr_approval; // 프로모션 승인 상태
+}
