@@ -18,8 +18,6 @@ public class AdvertisementController {
 	@Autowired
 	AdvertisementService advertisementService;
 	
-
-	
 	@GetMapping("/promotion/list")
 	public String advertisementList(Model model, Criteria cri) {
 		cri.setPerPageNum(5);

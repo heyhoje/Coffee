@@ -11,12 +11,23 @@
  <result property="ad_st_num" column="ad_st_num"/>
  </resultMap>
 
-<select id="selectAdvertisementList" resultType="kr.kh.finalproject.vo.AdvertisementVO">
-	select * from advertisement order by ad_num asc
-	limit #{cri.pageStart}, #{cri.perPageNum}
-</select>
-<select id="selectAdvertisementTotalCount" resultType="int">
-	select count(*) from advertisement
-</select>
+	<select id="selectAdvertisementList" resultType="kr.kh.finalproject.vo.AdvertisementVO">
+		select * from advertisement order by ad_num asc
+		limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	<select id="selectAdvertisementTotalCount" resultType="int">
+		select count(*) from advertisement
+	</select>
+
+	<!-- 사이트 관리자 페이지 -->
+	<select id="selectAdList" resultType="int">
+		select * from advertisement where ad_approval = ${ad_approval}
+	</select>
+	<!-- 광고 승인/거절 -->
+	<update id="updateAd">
+		update advertisement
+			set ad_approval = #{ad.ad_approval}
+			where ad_num = #{ad.ad_num}
+	</update>
 
 </mapper>

@@ -27,7 +27,7 @@
 	  <div class="btn-group btn-group-lg">
 	    <a href="<c:url value='/admin/bmember'/>" class="btn btn-outline-primary">사업자 회원가입 승인</a>
 	    <a href="<c:url value='/admin/bstore'/>" class="btn btn-outline-primary">매장등록 승인</a>
-	    <a href="<c:url value='/admin/promotion'/>" class="btn btn-outline-primary">프로모션 관리</a>
+	    <a href="<c:url value='/admin/ad'/>" class="btn btn-outline-primary">프로모션 관리</a>
 	    <a href="<c:url value='/admin/review'/>" class="btn btn-outline-primary">(일반회원)리뷰 관리</a>
 	  </div>
 	</div>
@@ -54,7 +54,7 @@
 	
 	선택) 고객센터 문의받고 답변
 </body>
-
+<!-- 
 	<script type="text/javascript">
 		var me_user_id = 'some_value';
 		var me_authority = 'user';
@@ -68,5 +68,5 @@
 				return;
 			}
 		});
-	</script>
+	</script> -->
 </html>
