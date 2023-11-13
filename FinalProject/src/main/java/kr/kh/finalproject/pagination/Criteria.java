@@ -8,7 +8,7 @@ public class Criteria {
 	private int perPageNum; //한 페이지에서 컨텐츠 개수
 	private String type;
 	private String search;
-	private int bt_num;
+	
 	
 	public Criteria() {
 		page = 1;

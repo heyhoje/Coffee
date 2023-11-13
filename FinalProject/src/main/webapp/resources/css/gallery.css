@@ -43,3 +43,39 @@
 	width: 180px;
 	height: 180px;
 }
+
+.button_div{
+	position: absolute;
+	bottom: 20px;right: 20px
+}
+.google-div{
+	box-shadow: 0 -1px 19px 8px #dedee3;
+	height: 69px;width: 250px;
+	border-radius: 4px;
+	position: absolute;
+	bottom: 60px;
+	right: 2px;
+	z-index: 999;
+	background-color: #fff;
+	transition: all 0.5s;
+	cursor: pointer;
+	padding: 10px
+}
+.google-div::after{
+	content: "";
+	position: absolute;
+	height: 12px;
+	width: 12px;
+	right: 10px;
+	background-color: white;
+	transform: rotate(45deg)
+}
+.google-div::nth-child(2){
+	margin-top: 3px
+}
+.btn{
+padding: 8px 12px
+}
+.btn:focus{
+	box-shadow: none;outline: none
+}

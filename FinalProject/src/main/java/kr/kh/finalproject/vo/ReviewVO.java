@@ -12,5 +12,6 @@ public class ReviewVO {
 	
 	// 주문메뉴&주문리스트 JOIN해서 값 가져옴
 	String re_user_id; // 주문리스트에 있는 ol_user_id 를 re_user_id로 vo에 저장
+	int re_ol_num; // 주문리스트에 있는 ol_num을 re_ol_num으로 vo에 저장. 주문리스트번호가 우리가 볼 수 있는 주문번호임. 
 	
 }

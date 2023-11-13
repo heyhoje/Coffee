@@ -13,7 +13,7 @@
 	<form method="post" action="/shop/name">
 		<div>
 			<label for="search_name">가게 이름으로 검색</label>
-			<input type="text" class="form-control" id="search_name" placeholder="상호명을 입력해 주세요."> 
+			<input type="text" class="form-control" id="search_name"  placeholder="상호명을 입력해 주세요."> 
 			<button type="submit" class="btn btn-search_name">검색</button>
 		</div>
 	</form>

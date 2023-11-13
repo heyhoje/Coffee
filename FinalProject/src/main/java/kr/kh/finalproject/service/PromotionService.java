@@ -9,8 +9,8 @@ import kr.kh.finalproject.vo.ReviewVO;
 public interface PromotionService {
 
 	List<PromotionVO> getPromotionList(Criteria cri);
-
-	int getTotalCount();
+	
+	int getTotalCount(Criteria cri);
 
 	// 사이트 관리자 페이지
 	List<PromotionVO> getPromotionList(int pr_approval);
