@@ -38,31 +38,31 @@
 	        </tr>
        </thead>
 		<tbody>
-			<c:forEach items="${promotionList}" var="promotionList">
+			<c:forEach items="${advertisementList}" var="advertisementList">
 				<tr class="inner-box">
 					<th scope="row">
 						<div class="promotion-number">
-							<span>${promotionList.ad_num}</span>
+							<span>${advertisementList.ad_num}</span>
 						</div>
 					</th>
 					<td>
 						<div class="event-img">
-						<img src="${promotionList.ad_image}">
+						<img src="${advertisementList.ad_image}">
 						</div>
 					</td>
 					<td>
 						<div class="event-wrap">
-							<h3><a href="#" style="color:#212529;">${promotionList.ad_contents}</a></h3>
+							<h3><a href="#" style="color:#212529;">${advertisementList.ad_contents}</a></h3>
 							<div class="meta">
 								<div class="organizers">
-									<a href="#" style="color:rosybrown;">${promotionList.ad_date}</a>
+									<a href="#" style="color:rosybrown;">${advertisementList.ad_date}</a>
 								</div>
 							</div>
 						</div>
 					</td>
 					<td>
 						<div class="r-no">
-						<span>${promotionList.ad_st_num}</span>
+						<span>${advertisementList.ad_st_num}</span>
 						</div>
 					</td>
 					<td>

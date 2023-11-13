@@ -53,12 +53,12 @@
 	<!--header section start -->
 	<div class="header_section">
 		<div class="container-fluid">
-			<nav class="navbar navbar-expand-lg navbar">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="logo">
 					<a href="<c:url value='/'/>"><img
 						src="<c:url value='/resources/images/로고.png'/>"></a>
 				</div>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
+				<button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
 					data-target="#navbarNav" aria-controls="navbarNav"
 					aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -82,17 +82,17 @@
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">고객센터</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/admin/home'/>"style="font-family: 'BM HANNA Pro', sans-serif; margin-right:800px;">관리자 페이지</a></li>	
-						<li class="nav-item"><span>
-							style="color: white; float: right;">${user.me_user_id}</span></li>
+							href="<c:url value='/admin/home'/>"style="font-family: 'BM HANNA Pro', sans-serif;">관리자 페이지</a></li>	
+						<li class="nav-item"><span
+							"style="color: white; float: right;">${user.me_user_id}</span></li>
 						<c:if test="${user == null && user2 == null}">
-							<li class="form-group" id="loginButton"><input type="submit" 
-								style="margin-right: 10px; background-color: floralwhite;"  value="회원 로그인" class="btn login_btn" data-toggle="modal"
+							<li class="form-group" id="loginButton" style="justify-content:center; display:flex;"><input type="submit" 
+								style="margin-right: 10px; background-color: floralwhite; margin-left:10px; justify-content:center; display:flex;"  value="회원 로그인" class="btn login_btn" data-toggle="modal"
 								data-target="#loginModal"></li>
 						</c:if>
 						<c:if test="${user2 == null && user == null}">
-							<li class="form-group" id="loginButton2"><input
-								type="submit" style="background-color: floralwhite;"value="사업자 로그인"
+							<li class="form-group" id="loginButton2" style="justify-content:center; display:flex;"><input
+								type="submit" style="background-color: floralwhite; margin-right:10px;"value="사업자 로그인"
 								class="btn login2_btn" data-toggle="modal"
 								data-target="#loginModal2"></li>
 						</c:if>
