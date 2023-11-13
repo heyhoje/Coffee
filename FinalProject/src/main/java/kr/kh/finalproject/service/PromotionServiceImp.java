@@ -24,7 +24,23 @@ public class PromotionServiceImp implements PromotionService{
 	}
 
 	@Override
-	public int getTotalCount() {
+	public int getTotalCount(Criteria cri) {
 		return promotionDao.selectPromotionTotalCount();
+	}
+
+	/** 사이트 관리자 페이지 */
+	@Override
+	public List<PromotionVO> getPromotionList(int pr_approval) {
+		
+		return promotionDao.selectPrList(pr_approval);
+	}
+
+	/** 프로모션 승인&거절 */
+	@Override
+	public boolean updatePromotion(PromotionVO promotion) {
+		if(promotion == null || promotion.getPr_num() <= 0) {
+			return false;
+		}
+		return promotionDao.updatePromotion(promotion);
 	}
 }

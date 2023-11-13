@@ -27,7 +27,7 @@
             </div>
           </div>
 
-      <table class="table">
+      <table class="table" style="font-family: 'BM HANNA Pro', sans-serif;">
 	 	<thead>
 	        <tr>
 		         <th class="text-center" scope="col">번호</th>
@@ -52,10 +52,10 @@
 					</td>
 					<td>
 						<div class="event-wrap">
-							<h3><a href="#">${promotionList.ad_contents}</a></h3>
+							<h3><a href="#" style="color:#212529;">${promotionList.ad_contents}</a></h3>
 							<div class="meta">
 								<div class="organizers">
-									<a href="#">${promotionList.ad_date}</a>
+									<a href="#" style="color:rosybrown;">${promotionList.ad_date}</a>
 								</div>
 							</div>
 						</div>

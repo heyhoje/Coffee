@@ -13,14 +13,16 @@ public interface MemberDAO {
 
 	MemberVO selectMember(@Param("id")String id);
 
-	void updateMemberSession(MemberVO user);
+	// 자동 로그인
+	void updateMemberSession(@Param("member")MemberVO user);
+	
+	MemberVO selectMemberBySessionId(@Param("session_id")String sId);
 
-	MemberVO selectMemberBySessionId(String sId);
-
-	//카카오
+	// 카카오
 	void insertMemberKakao(MemberVO member); // 카카오 로그인 정보 삽입 메서드
     MemberVO selectMemberKakao(String kakaoUserId); // 카카오 로그인 정보 가져오는 메서드
 
 	void insertUserKakaoInfo(UserVO user);
 	UserVO selectUserKakaoInfo(String userId);
+
 }

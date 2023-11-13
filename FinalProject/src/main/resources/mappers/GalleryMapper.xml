@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.kh.finalproject.vo.GalleryDAO">
+	<resultMap type="kr.kh.finalproject.vo.GalleryVO" id="GalleryVO">
+		<id property="gal_num" column="gal_num"/>
+		<result property="gal_title" column="gal_title"/>
+		<result property="gal_me_user_id" column="gal_me_user_id"/>
+		<result property="gal_gc_num" column="gal_gc_num"/>
+	</resultMap>
+	<resultMap type="kr.kh.finalproject.vo.GalleryTypeVO" id="GalleryTypeVO">
+		<id property="gt_num" column="bt_num"/>
+		<result property="gt_title" column="gt_title"/>
+	</resultMap>	
+	<select id="selectGalleryList" resultType="kr.kh.finalproject.vo.GalleryVO">
+		select * from board
+		<choose>
+			<when test='cri.type.equals("0")'>
+				where gal_title like concat('%', #{cri.search}, '%') or
+				where gal_contents like concat('%', #{cri.search}, '%') 
+			</when>
+			<otherwise>
+				where ${cri.type} like concat{'%', #{cri.search}, '%')
+			</otherwise>
+		</choose>
+	
+	
+	
+	</select>
+
+	
+	
+
+
+
+
+
+
+
+
+
+</mapper>
+  

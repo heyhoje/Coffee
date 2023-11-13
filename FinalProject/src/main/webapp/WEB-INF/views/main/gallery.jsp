@@ -7,55 +7,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<c:url value='/resources/css/gallery.css'/>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="/resources/css/jquery-fab-button.css" rel="stylesheet">
+<script src="/resources/js/jquery.min.js"></script>
+<script src="/resources/js/jquery-fab-button.js"></script>
 
 </head>
 <body>
-	<div class="main">
-		<div class="main_bar">
-			<a href="<c:url value='/gallery/coffee'/>">
-			<img class="image" alt="coffee" src="https://cdn-icons-png.flaticon.com/512/5194/5194358.png">
-			</a>
-			<br>
-			커피
-		</div>
-		<div class="main_bar">
-			<a href="<c:url value='/gallery/noncoffee'/>">
-			<img class="image" alt="frappe" src="https://cdn-icons-png.flaticon.com/512/4721/4721225.png">
-			</a>
-			<br>
-			프라페&스무디
-		</div>
-		<div class="main_bar">
-			<a href="<c:url value='/gallery/beverages'/>">
-			<img class="image" alt="beverages" src="https://cdn-icons-png.flaticon.com/512/5848/5848602.png">
-			<br>
-			</a>
-			주스&에이드&티
-		</div>
-		<div class="main_bar">
-			<a href="<c:url value='/gallery/food'/>">
-			<img class="image" alt="food" src="https://cdn-icons-png.flaticon.com/512/6584/6584248.png">
-			<br>
-			</a>
-			푸드
-		</div>
-		<div class="main_bar">
-			<a href="<c:url value='/gallery/cafestore'/>">
-			<img class="image" alt="MD" src="https://cdn-icons-png.flaticon.com/512/6213/6213065.png">
-			<br>
-			</a>
-			MD상품
-		</div>
-		<div class="main_bar">
-			<a href="<c:url value='/gallery/cafestore'/>">
-			<img class="image" alt="store" src="https://cdn-icons-png.flaticon.com/512/1892/1892627.png">
-			<br>
-			</a>
-			카페사진
-		</div>
-	</div>
+
 	<!-- Gallery -->
 	<div class="row" id="gallery">
+		
 		<div class="col-lg-4 col-md-12 mb-4 mb-lg-0" ">
 			<img
 				src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.18169-9/13713_454264621405951_7878769274095452567_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=7f8c78&_nc_ohc=k0XN4EZ00IQAX9wm4RO&_nc_ht=scontent-ssn1-1.xx&oh=00_AfD0eXI9ecm3I8uxllYSpHbhPaQ9sEtKOqVCcD22OYmCMA&oe=65610C7D"
@@ -88,7 +50,14 @@
 				class="w-100 shadow-1-strong rounded mb-4 test"
 				alt="Yosemite National Park" />
 		</div>
-	</div>	
-	
+		
+		<div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+  <a class="btn-floating btn-large red" href="<c:url value='/gallery/GalleryList'/>">
+    <i class="large material-icons">mode_edit</i>
+  </a>
+  
+</div>
+		
+		
 </body>
 </html>
