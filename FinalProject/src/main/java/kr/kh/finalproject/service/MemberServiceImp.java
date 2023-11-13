@@ -6,8 +6,11 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 import kr.kh.finalproject.dao.MemberDAO;
+import kr.kh.finalproject.vo.KakaoVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.UserVO;
 
@@ -111,5 +114,18 @@ public class MemberServiceImp implements MemberService {
 	public UserVO selectUserKakaoInfo(String userId) {
 		return memberDao.selectUserKakaoInfo(userId);
 	}
+	@Override
+	public void updateKakaoMemberSession(KakaoVO kuser) {
+		if(kuser == null) {
+			return;
+		}
+		memberDao.updateKakaoMemberSession(kuser);
+	}
+	
+	@Override
+    public void addInterceptors(InterceptorRegistry registry, HandlerInterceptor kakaoLoginInterceptor) {
+        registry.addInterceptor(kakaoLoginInterceptor)
+                .addPathPatterns("/kakaoLoginCallback"); // 해당 URL에만 인터셉터를 적용하도록 설정
+    }
 
 }

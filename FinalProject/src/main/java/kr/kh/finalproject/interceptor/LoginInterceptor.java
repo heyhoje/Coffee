@@ -117,6 +117,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	        KakaoVO kuser = (KakaoVO) modelAndView.getModel().get("kuser");
 	        if (kuser != null) {
 	            request.getSession().setAttribute("kuser", kuser);
+	            memberService.updateKakaoMemberSession(kuser);
 	        }
 	    }
 		

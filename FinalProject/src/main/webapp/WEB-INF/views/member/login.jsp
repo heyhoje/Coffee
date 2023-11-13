@@ -298,7 +298,7 @@
 							console.log(response);
 							// 로그인 정보를 서버로 보내는 Ajax 요청 추가
 	                        $.ajax({
-	                            url: 'kakaoLoginCallback', // 서버의 콜백 URL로 변경
+	                            url: '/finalproject/kakaoLoginCallback', // 서버의 콜백 URL로 변경
 	                            type: 'POST',
 	                            data: {
 	                                kakaoId: response.id,
