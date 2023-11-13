@@ -26,6 +26,7 @@ public interface BagDAO {
 	List<ShopVO> getShopInfo(@Param("user")MemberVO user);
 
 	boolean givePoint(@Param("point")int point, @Param("user")String user);
+
 	
 
 }

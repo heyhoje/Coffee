@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.kh.finalproject.dao.BagDAO;
+import kr.kh.finalproject.dao.ShopDAO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.Option_ChoiceVO;
 import kr.kh.finalproject.vo.ShopVO;
@@ -16,7 +17,7 @@ public class BagServiceImp implements BagService{
 	
 	@Autowired
 	BagDAO bagDao;
-
+	
 	@Override
 	public boolean selectedOption(String selected, int total, int menu_num, int bagBunho) {
 		bagDao.selectedOption(selected, total, menu_num, bagBunho);
@@ -63,5 +64,6 @@ public class BagServiceImp implements BagService{
 	public boolean givePoint(int point, String user) {
 		return bagDao.givePoint(point, user);
 	}
+
 
 }

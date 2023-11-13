@@ -28,6 +28,7 @@
         	<div>가게 이름 : ${shop[0].bm_store_name}</div>   
         	<div>가게 주소 : ${shop[0].bm_address}</div>
         </div>        
+
         <table class="cart__list">
          	<tr>
 				<td colspan="2">상품정보</td>
