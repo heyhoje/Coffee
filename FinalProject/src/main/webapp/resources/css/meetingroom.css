@@ -93,6 +93,7 @@ float:right;
 	margin-left:10px;
 	margin-top:45px;
 	border-radius:0.25rem;
+	pointer-events:none;
 	
 }
 .popup_box .popup_cont .timebox .timebutton:hover {

@@ -171,7 +171,7 @@
 				//let x = operation.filter(i => !reservationtime.includes(i));
 				let disabled = reservationtime.includes(i) ? 'disabled' : ''
 				str += `
-					<label>
+					<label style="cursor:pointer;">
 						<input type="checkbox" name="aaa" value="\${i}" class="\${disabled}" \${disabled}>
 						<button class="timebutton" >\${i}:00
 						</button>
