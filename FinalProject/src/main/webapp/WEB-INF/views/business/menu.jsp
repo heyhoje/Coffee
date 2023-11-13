@@ -119,7 +119,7 @@
 					<li>
 						<h2>메뉴 소개</h2>
 						<div class="input_area">
-							<input type="text" name="foodDec" autocomplete="off"
+							<input type="text" name="mn_contents" autocomplete="off"
 								maxlength="66">
 						</div>
 					</li>
@@ -633,10 +633,11 @@
 <script>
 $(document).ready(function() {
     $("#addMenuButton").on("click", function() {
-    	var mn_name = $("input[name='mn_name']").val();
-    	var mn_price = $("input[name='mn_price']").val();
-    	var mn_contents = $("input[name='foodDec']").val();
-    	var file = $("input[name='file']")[0].files[0];
+        var mn_name = $("input[name='mn_name']").val();
+        var mn_price = $("input[name='mn_price']").val();
+        var mn_contents = $("input[name='mn_contents']").val();
+        var file = $("input[name='file']")[0].files[0];
+
         var options = [];
         for (var i = 1; i <= 3; i++) {
             var option_name = $("input[name='menuOption" + i + "']").val();
@@ -649,26 +650,24 @@ $(document).ready(function() {
         formData.append("mn_price", mn_price);
         formData.append("mn_contents", mn_contents);
         formData.append("file", file);
-
-        for (var i = 0; i < options.length; i++) {
-            formData.append("menuOptions[" + i + "].name", options[i].name);
-            formData.append("menuOptions[" + i + "].price", options[i].price);
-        }
+        formData.append("options", JSON.stringify(options)); // 옵션 정보를 JSON 문자열로 전송
 
         $.ajax({
             type: 'POST',
-            url: 'addMenu', // 실제 서버의 엔드포인트에 맞게 수정
+            url: '/addMenuAndOptions', // 실제 서버의 엔드포인트에 맞게 수정
             data: formData,
             processData: false,
             contentType: false,
             success: function(response) {
-                alert("메뉴가 추가되었습니다.");
+                console.log(response);
+                alert("메뉴와 옵션이 추가되었습니다.");
             },
             error: function(error) {
-                alert("메뉴 추가에 실패했습니다.");
+                alert("메뉴와 옵션 추가에 실패했습니다.");
             }
         });
     });
 });
+
 </script>
 </html>

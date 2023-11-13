@@ -9,12 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.pagination.PageMaker;
@@ -97,26 +95,16 @@ public class MenuController {
 		return "/store/detail";
 	}
 	
-	@RequestMapping("/addMenu")
-    public String addMenu(@RequestParam("mn_name") String mn_name,
-                          @RequestParam("mn_contents") String mn_contents,
-                          @RequestParam("mn_price") int mn_price,
-                          @RequestParam("mn_st_num") int mn_st_num,
-                          @RequestParam("mn_mc_num") int mn_mc_num,
-                          @RequestParam("mn_quantity") int mn_quantity,
-                          @RequestParam("mn_image") String mn_image) {
+	@RequestMapping(value = "/addMenuAndOptions", method = RequestMethod.POST)
+	public void addMenu(@RequestBody MenuVO menuVO) {
+        // 여기에서 MenuVO를 Menu 엔티티로 변환하여 저장
         MenuVO menu = new MenuVO();
-        menu.setMn_name(mn_name);
-        menu.setMn_contents(mn_contents);
-        menu.setMn_price(mn_price);
-        menu.setMn_st_num(mn_st_num);
-        menu.setMn_mc_num(mn_mc_num);
-        menu.setMn_quantity(mn_quantity);
-        menu.setMn_image(mn_image);
+        menu.setMn_name(menuVO.getMn_name());
+        menu.setMn_price(menuVO.getMn_price());
+        menu.setMn_contents(menuVO.getMn_contents());
+        // 나머지 필드 설정
 
+        // 메뉴 서비스를 통해 저장
         menuService.addMenu(menu);
-
-        // 추가 후 어떤 페이지로 이동할지 리턴
-        return "/business/menu";
     }
 }
