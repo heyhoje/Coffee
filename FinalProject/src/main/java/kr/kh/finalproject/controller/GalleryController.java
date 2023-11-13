@@ -1,35 +1,48 @@
 package kr.kh.finalproject.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+
+import kr.kh.finalproject.pagination.Criteria;
+import kr.kh.finalproject.pagination.PageMaker;
+import kr.kh.finalproject.service.GalleryService;
+import kr.kh.finalproject.util.Message;
+import kr.kh.finalproject.vo.GalleryTypeVO;
+import kr.kh.finalproject.vo.GalleryVO;
+import kr.kh.finalproject.vo.MemberVO;
 
 @Controller
 public class GalleryController {
-	@RequestMapping(value="/gallery/*")
-	@GetMapping(value="coffee")
-	public String coffee() {
+	
+	
+	@Autowired
+	GalleryService galleryService;
+	
+	
+	@GetMapping("/gallery/GalleryList")
+	public String galleryList(Model model, Criteria cri) {
+		cri.setPerPageNum(6);
+		List<GalleryVO> list = galleryService.getGalleryList(cri);
+		int totalCount = galleryService.getTotalCount(cri);
+		PageMaker pm = new PageMaker(2, cri, totalCount);
 		
-		return "/gallery/coffee";
-	}
-	@GetMapping(value="noncoffee")
-	public String noncoffee() {
+		List<GalleryTypeVO> typeList = galleryService.getGalleryTypeList();
 		
-		return "/gallery/noncoffee";
+		model.addAttribute("pm",pm);
+		model.addAttribute("list",list);
+		return "/gallery/GalleryList";
 	}
-	@GetMapping(value="beverages")
-	public String beverages() {
-		
-		return "/gallery/beverages";
-	}
-	@GetMapping(value="food")
-	public String food() {
-		
-		return "/gallery/food";
-	}
-	@GetMapping(value="cafestore")
-	public String cafestore() {
-		
-		return "/gallery/cafestore";
-	}
+	
+	
+	
 }

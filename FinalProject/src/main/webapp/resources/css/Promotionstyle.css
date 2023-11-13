@@ -63,7 +63,7 @@ margin-top:20px;
 .event-schedule-area .tab-area .tab-content .table {
     margin-bottom: 0;
     width: 80%;
-    
+    color: #212529;
 }
 .event-schedule-area .tab-area .tab-content .table thead td,
 .event-schedule-area .tab-area .tab-content .table thead th {

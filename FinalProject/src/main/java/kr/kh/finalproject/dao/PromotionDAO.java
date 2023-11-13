@@ -9,7 +9,7 @@ import kr.kh.finalproject.vo.PromotionVO;
 
 public interface PromotionDAO {
 
-	List<PromotionVO> selectPromotionList(Criteria cri);
+	List<PromotionVO> selectPromotionList(@Param("cri")Criteria cri);
 
 	int selectPromotionTotalCount();
 

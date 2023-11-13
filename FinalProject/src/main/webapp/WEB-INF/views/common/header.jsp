@@ -72,6 +72,8 @@
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/order/store'/>"style="font-family: 'BM HANNA Pro', sans-serif;">주문</a></li>
 						<li class="nav-item"><a class="nav-link"
+							href="<c:url value='/meetingroom/home'/>"style="font-family: 'BM HANNA Pro', sans-serif;">예약</a></li>
+						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">갤러리</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">채용정보</a></li>
