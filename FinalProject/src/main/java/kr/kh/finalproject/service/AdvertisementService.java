@@ -11,4 +11,10 @@ public interface AdvertisementService {
 	
 	int getTotalCount(Criteria cri);
 
+	// 사이트 관리자 사이트
+	List<AdvertisementVO> getAdList(int ad_approval);
+
+	// 광고 승인&거절 기능
+	boolean updateAd(AdvertisementVO ad);
+
 }

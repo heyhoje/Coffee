@@ -55,6 +55,11 @@
 					bm_approval : 1
 			}
 			
+			if(!confirm('정말 승인하시겠습니까?')){
+				alert('승인을 취소했습니다.')
+				return;
+			}
+				
 			$.ajax({
 				async : true, //비동기 : true(비동기), false(동기)
 				url : '<c:url value="/admin/bmember"/>', 
@@ -84,8 +89,13 @@
 					bm_approval : 2
 			}
 			
+			if(!confirm('정말 거절하시겠습니까?')){
+				alert('거절을 취소했습니다.')
+				return;
+			}
+			
 			$.ajax({
-				async : false, //비동기 : true(비동기), false(동기)
+				async : true, //비동기 : true(비동기), false(동기)
 				url : '<c:url value="/admin/bmember"/>', 
 				type : "post", 
 				data : JSON.stringify(obj), 
@@ -93,9 +103,9 @@
 				dataType : "json", 
 				success : function (data){
 					console.log(data);
-						bm_approval = 2;
-						alert('가입을 거절했습니다');
-						location.reload(); // 현재 페이지 새로고침
+					bm_approval = 2;
+					alert('가입을 거절했습니다');
+					location.reload(); // 현재 페이지 새로고침
 				}, 
 				error : function(jqXHR, textStatus, errorThrown){
 

@@ -16,11 +16,12 @@ public class ReviewController {
 	@Autowired
 	ReviewService reviewService;
 	
+	/** 리뷰 게시판 */
 	@GetMapping("/main/review")
 	public String getReview(Model model) {
-		List<ReviewVO> reList = reviewService.getReviewList();
+		List<ReviewVO> rvList = reviewService.getRvList();
 		
-		model.addAttribute("reList", reList);
+		model.addAttribute("rvList", rvList);
 		return "/main/review"; 
 	}
 }
