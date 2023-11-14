@@ -91,6 +91,7 @@
 			alert('거절을 취소했습니다.')
 			return;
 		}
+		
 		$.ajax({
 			async : true, //비동기 : true(비동기), false(동기)
 			url : '<c:url value="/admin/ad"/>', 
