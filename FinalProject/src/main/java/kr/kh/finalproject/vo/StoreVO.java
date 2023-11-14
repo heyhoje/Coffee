@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class StoreVO {
 
+
 	int st_num; // 매장번호
 	String st_br_name; // 브랜드명
 	String st_bm_id; // 사업자아이디

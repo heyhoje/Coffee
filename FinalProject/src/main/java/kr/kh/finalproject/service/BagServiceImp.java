@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.kh.finalproject.dao.BagDAO;
+import kr.kh.finalproject.dao.ShopDAO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.Option_ChoiceVO;
+import kr.kh.finalproject.vo.ShopVO;
 import kr.kh.finalproject.vo.Shop_BasketVO;
 
 @Service
@@ -15,7 +17,7 @@ public class BagServiceImp implements BagService{
 	
 	@Autowired
 	BagDAO bagDao;
-
+	
 	@Override
 	public boolean selectedOption(String selected, int total, int menu_num, int bagBunho) {
 		bagDao.selectedOption(selected, total, menu_num, bagBunho);
@@ -52,5 +54,51 @@ public class BagServiceImp implements BagService{
 	public boolean deleteItem(int oc_num) {
 		return bagDao.deleteItem(oc_num);
 	}
+
+	@Override
+	public List<ShopVO> shopInfo(MemberVO user) {	
+		return bagDao.getShopInfo(user);
+	}
+
+	@Override
+	public boolean givePoint(int givePoint, MemberVO user) {
+		return bagDao.givePoint(givePoint, user);
+	}
+
+	@Override
+	public int getPoint(MemberVO user) {
+		return bagDao.getPoint(user);
+	}
+
+	@Override
+	public boolean steelPoint(int usePoint, MemberVO user) {
+		return bagDao.backPoint(usePoint, user);
+	}
+
+	@Override
+	public boolean killBag(MemberVO user) {
+		return bagDao.killBag(user);
+	}
+
+	@Override
+	public boolean makeOrderMenu(String menuName) {
+		return bagDao.makeOrderMenu(menuName);
+	}
+
+	@Override
+	public int getBasketNum(MemberVO user) {
+		return bagDao.getBasketNum(user);
+	}
+	
+	@Override
+	public int getNumFromOM() {
+		return bagDao.getNumFromOM();
+	}
+
+	@Override
+	public boolean makeOrderList(MemberVO user, int getNumFromOM, int getSbNum) {
+		return bagDao.makeOrderList(user, getNumFromOM, getSbNum);
+	}
+
 
 }

@@ -27,7 +27,7 @@
             </div>
           </div>
 
-      <table class="table" style="font-family: 'BM HANNA Pro', sans-serif;">
+      <table class="table" style="font-family: 'BM HANNA Pro', sans-serif; text-align:center;">
 	 	<thead>
 	        <tr>
 		         <th class="text-center" scope="col">번호</th>
@@ -74,7 +74,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<div>
+	<div class="promotion-pagination">
 		<c:if test="${pm.prev}">
 			<a href="<c:url value='/promotion/list${pm.cri.getUrl(pm.startPage-1) }'/>">이전</a>
 		</c:if>

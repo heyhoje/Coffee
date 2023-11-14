@@ -35,7 +35,7 @@ public class AutoLoginInterceptor2 extends HandlerInterceptorAdapter {
 		}
 		
 		//쿠키값과 같은 정보를 가진 회원 정보를 가져옴
-		user2 = managerService.getMemberBySessionId(cookie.getValue());
+		user2 = managerService.getBMemberBySessionId(cookie.getValue());
 		if(user2 != null) {
 			session.setAttribute("user2", user2);
 		}

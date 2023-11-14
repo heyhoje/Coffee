@@ -23,21 +23,21 @@
 	            <result property="im_tableNum" column="im_tableNum" />
 	        </association>
 	    </association>
-	</resultMap>	
+	 </resultMap>
   	<insert id="selectedOption">
   		insert into `option_choice` (oc_sb_num, oc_mn_num, oc_selected, oc_selected_price)
   		values (#{sb_num}, #{menu_num}, #{selected}, #{total})
   	</insert>
   	<select id="hasBag" resultType="kr.kh.finalproject.vo.Shop_BasketVO">
   		select * from `shop_basket`
-  		where sb_me_user_id = #{user}
+  		where sb_me_user_id = "carpcarp"
   	</select>
   	<insert id="makeBag">
-  		insert into `shop_basket` sb_me_user_id
-  		values #{user}
+  		insert into `shop_basket` (sb_me_user_id)
+  		values ("carpcarp")
   	</insert>
   	<select id="bagBunho" resultType="int">
-  		select sb_num from shop_basket where sb_me_user_id = #{user}
+  		select sb_num from shop_basket where sb_me_user_id = "carpcarp"
   	</select>
   	<select id="bagList" resultMap="optionChoice">
 		select 
@@ -51,9 +51,68 @@
 		left join 
 			`image` on oc_mn_num = image.im_tableNum
 		where 
-			sb_me_user_id = #{user}
+			sb_me_user_id = "carpcarp"
   	</select>
   	<delete id="deleteItem" parameterType="int">
   		delete from `option_choice` where oc_num = #{oc_num}
   	</delete>
+  	<select id="getShopInfo" resultType="kr.kh.finalproject.vo.ShopVO">
+  		select
+  			bm_id, bm_pw, bm_num, bm_phone, bm_contents, bm_address, bm_geocoding_lati, bm_geocoding_longi, bm_manager, bm_store_name, bm_image, bm_approval
+		from 
+			option_choice
+		left join 
+			 `shop_basket` on oc_sb_num = sb_num
+		left join 
+			`menu` on oc_mn_num = mn_num
+		left join 
+			`store` on mn_st_num = st_num
+		left join
+			`business_member` on st_bm_id = bm_id
+		where 
+			sb_me_user_id = "carpcarp"
+	</select>
+  	<update id="givePoint">
+  		update `member`
+  		set me_point = me_point + #{givePoint}
+  		where me_user_id = "carpcarp"
+  	</update>
+  	<select id="getPoint" resultType="int">
+  		select
+  			me_point
+  		from
+  			member
+  		where
+  			me_user_id = "carpcarp"
+  	</select>
+  	<update id="backPoint">
+	  	update member
+	  	set me_point = me_point - #{usePoint}
+	  	where me_user_id = "carpcarp"
+  	</update>
+  	<delete id="killBag">
+  		delete from 
+  			`option_choice`
+  		left join
+  			`shop_basket` on oc_sb_num = sb_num
+  		where
+  			sb_me_user_id = "carpcarp"
+  	</delete>
+  	<insert id="makeOrderMenu">
+  		insert into `oder_menu` (or_time, or_state, or_drinks)
+  			values (now(), "준비중", #{menuName})
+  	</insert>
+  	<select id="getBasketNum" resultType="int">
+  		select sb_num from shop_basket
+  		where sb_me_user_id = "carpcarp"
+  	</select>
+  	<select id="getNumFromOM" resultType="int">
+	    SELECT or_num FROM order_menu
+	    ORDER BY or_time DESC
+	    LIMIT 1
+  	</select>
+  	<insert id="makeOrderList">
+  		insert into oder_list (ol_or_num, ol_sb_num, ol_user_id)
+  			values (#{or_num}, #{sb_num}, "carpcarp")
+  	</insert>
   </mapper>

@@ -22,7 +22,7 @@
 <style>
     .map_wrap, .map_wrap * {margin:0;padding:0;font-family:''BM HANNA Pro'',dotum,'돋움',sans-serif;font-size:12px;}
 	.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-	.map_wrap {position:relative;width:100%;height:500px;}
+	.map_wrap {position:relative;width:100%;height:500px; margin-top:50px;}
 	#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:300px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
 	.bg_white {background:#fff;}
 	#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
@@ -37,9 +37,9 @@
     
 </head>
 <body id="storejsp">
-	<div class="nav-searchcategory" style="justify-content:center; text-align:center; display:flex; margin-top:30px; font-size:20px; color:black;">
+	<div class="nav-searchcategory" style="justify-content:center; text-align:center; display:flex; margin-top:30px; font-size:25px; color:black;">
 	    <a class="nav-link" href="#" style="font-family: 'BM HANNA Pro', sans-serif; font-weight:bold; color:black;">지역으로 검색하기</a>
-	    <a class="nav-link" href="<c:url value='/shop/name'/>" style="font-family: 'BM HANNA Pro', sans-serif; color:black;">가게 이름으로 검색하기</a>
+	    <a class="nav-link" href="<c:url value='/shop/name'/>" style="font-family: 'BM HANNA Pro', sans-serif; color:black; font-weight:100;">가게 이름으로 검색하기</a>
 	 </div>
  <div class="search-container">
   		
@@ -59,7 +59,7 @@
             </div>
           </div>
 <div class="map_wrap" id="marker">
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden; border:solid 2px black;margin-bottom:200px;" ></div>
+    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden; border:solid 2px black;" ></div>
 
  
    
@@ -136,60 +136,36 @@ function displayMarker(place) {
     });
 }
 
+
 //마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
-var positions = [
-    {
-        content:
-        '<div class="wrap">' + 
-        '    <div class="info">' + 
-        '        <div class="title">' + 
-        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-        '        </div>' + 
-        '        <div class="body">' + 
-        '            <div class="img">' +
-        '                <img src="<c:url value='/resources/images/starbucks1.png'/>" width="198" height="120">' + 
-        '           </div>' + 
-        '            <div class="desc">' + 
-        '				 <div class="ellipsis">스타벅스 역삼포스코</div>'+ 
-        '                <div class="ellipsis">서울 강남구 테헤란로 134</div>' + 
-        '                <div class="number ellipsis" id="phoneicon">☎1522-3232	</div>' + 
-        '                <a href="https://www.starbucks.co.kr/index.do" target="_blank" class="link"><button type="button" class="btn btn-primary" onclick="">홈페이지</button></a>' + 
-        '            </div>' + 
-        '        </div>' + 
-        '    </div>' +    
-        '</div>',
-        latlng: new kakao.maps.LatLng(37.4995, 127.0338)
-    },
-    {
-        content:  '<div class="wrap">' + 
-        '    <div class="info">' + 
-        '        <div class="title">' + 
-        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-        '        </div>' + 
-        '        <div class="body">' + 
-        '            <div class="img">' +
-        '                <img src="<c:url value='/resources/images/Mammothcoffee.png'/>" width="198" height="120">' + 
-        '           </div>' + 
-        '            <div class="desc">' + 
-        '				 <div class="ellipsis">매머드 역삼유토빌점</div>'+ 
-        '                <div class="ellipsis">서울 강남구 논현로87길 41 1층 104-1호</div>' + 
-        '                <div class="number ellipsis" id="phoneicon">☎1522-3232	</div>' + 
-        '                <a href="https://www.starbucks.co.kr/index.do" target="_blank" class="link"><button type="button" class="btn btn-primary" onclick="">홈페이지</button></a>' + 
-        '            </div>' + 
-        '        </div>' + 
-        '    </div>' +    
-        '</div>',
-        latlng: new kakao.maps.LatLng(37.4989, 127.0336)
-    },
-    {
-        content: '<div>컴포즈커피 논현85길점</div>', 
-        latlng: new kakao.maps.LatLng(37.4979, 127.0336)
-    },
-    {
-        content: '<div>해머스미스커피 역삼휘트니스점</div>',
-        latlng: new kakao.maps.LatLng(37.4991, 127.0331)
-    }
-];
+	var positions = [
+    	<c:forEach items="${shopList}" var="shopList" varStatus="vs">
+
+	    {
+	        content:
+	        '<div class="wrap">' + 
+	        '    <div class="info">' + 
+	        '        <div class="title">' + 
+	        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+	        '        </div>' + 
+	        '        <div class="body">' + 
+	        '            <div class="img">' +
+	        '                <img src="<c:url value='/resources/images/starbucks1.png'/>" width="198" height="120">' + 
+	        '           </div>' + 
+	        '            <div class="desc">' + 
+	        '				 <div class="ellipsis">${shopList.bm_store_name}</div>'+ 
+	        '                <div class="ellipsis">${shopList.bm_address}</div>' + 
+	        '                <div class="number ellipsis" id="phoneicon">☎${shopList.bm_phone}</div>' + 
+	        '                <a href="/store/menu/${shopList.st_num}/1" target="_blank" class="link"><button type="button" class="btn btn-primary" onclick="">홈페이지</button></a>' + 
+	        '            </div>' + 
+	        '        </div>' + 
+	        '    </div>' +    
+	        '</div>',
+	        latlng: new kakao.maps.LatLng(${shopList.bm_geocoding_lati}, ${shopList.bm_geocoding_longi}),
+	    },
+		</c:forEach>	    	
+	];
+	
 var iwRemoveable = true;
 
 for (var i = 0; i < positions.length; i ++) {

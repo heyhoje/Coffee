@@ -18,8 +18,8 @@
 
 
 <p id="demo"></p>
-	<div class="nav-searchcategory" style="justify-content:center; text-align:center; display:flex; margin-top:30px; font-size:20px; color:black;">
-	    <a class="nav-link" href="<c:url value='/order/store'/>" style="font-family: 'BM HANNA Pro', sans-serif; color:black;">지역으로 검색하기</a>
+	<div class="nav-searchcategory" style="justify-content:center; text-align:center; display:flex; margin-top:30px; font-size:25px; color:black;">
+	    <a class="nav-link" href="<c:url value='/order/store'/>" style="font-family: 'BM HANNA Pro', sans-serif; color:black; font-weight:100">지역으로 검색하기</a>
 	    <a class="nav-link" href="#" style="font-family: 'BM HANNA Pro', sans-serif; color:black; font-weight:bold;">가게 이름으로 검색하기</a>
 	 </div>	
 
@@ -83,7 +83,7 @@
 					<td>
 					
 						<div class="store-btn">
-						<a href="/shop/${shopList.bm_num}">바로가기</a>
+						<a href="/store/menu/${shopList.st_num}/1">바로가기</a>
 					</div>
 					</td>
 					
