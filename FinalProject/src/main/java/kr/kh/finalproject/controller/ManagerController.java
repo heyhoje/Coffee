@@ -83,7 +83,7 @@ public class ManagerController {
 		}
 		return "/main/message";
 	}
-
+	
 	@PostMapping("/member/logout2")
 	public String logout(Model model, HttpSession session) {
 		
