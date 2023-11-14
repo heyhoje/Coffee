@@ -259,3 +259,7 @@ margin-top:20px;
     height: 100px;
     border-radius: 8px;
 }
+.promotion-pagination{
+	justify-content:center;
+	display:flex;
+}

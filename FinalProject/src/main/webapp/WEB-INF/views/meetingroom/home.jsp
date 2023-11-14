@@ -37,7 +37,7 @@
 			    </div>
 			</div>
 			
-	 <table class="table" style="font-family: 'BM HANNA Pro', sans-serif;">
+	 <table class="table" style="font-family: 'BM HANNA Pro', sans-serif; text-align:center;">
 	 	<thead>
 	        <tr>
 		         <th class="text-center" scope="col">번호</th>
@@ -87,7 +87,7 @@
 						</div>
 <div class="popup_layer" id="popup_layer" style="display: none;">
   <div class="popup_box">
-      <div style="height: 10px; width: 100%; float: top;">
+      <div style="height: 20px; width: 100%;">
         <a href="javascript:closePop();" class="m_header-banner-close" width="30px" height="30px">
         	<button class="closebutton">x</button>
         </a>

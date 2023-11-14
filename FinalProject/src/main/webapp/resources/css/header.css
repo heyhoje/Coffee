@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 /* header section start */
 
 .header_section {
@@ -25,7 +23,7 @@
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .show>.nav-link {
-    color: #FFFFFF;
+    color: #f76d37;
 }
 
 .navbar-light .navbar-nav .nav-link:focus,
@@ -33,109 +31,17 @@
     color: #f76d37;
 }
 
+.navbar {
+    padding: 20px 1rem;
+}
+
 .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: .5rem;
     padding-left: .5rem;
-    font-size: 20px;
+    font-size: 18px;
     color: #fff;
-    margin-top: 5px;
 }
 
-#navbarNav #eventmenu{
-	margin-left: 10px;
-}
-
-/* hover flashing */
-.flashing figure:hover img {
-  opacity: 1;
-  -webkit-animation: flash 1.5s;
-  animation: flash 1.5s;
-}
-@-webkit-keyframes flash {
-  0% {
-    opacity: .4;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes flash {
-  0% {
-    opacity: .4;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.login_btn{
-color: black; 
-opacity:0.9;
-background-color: #FFC312;
-
-width: 130px;
-height: 90%;
-background-color:floralwhite;
-margin-top: 5px;
-margin-right:10px;
-float:right;
-font-family:'BM HANNA Pro', sans-serif;
-
-display:block;
-
-}
-
-
-
-.login2_btn{
-color: black; 
-opacity:0.9;
-background-color: #FFC312;
-width: 130px;
-height: 90%;
-margin-top: 5px;
-margin-left:10px;
-font-family:'BM HANNA Pro', sans-serif;
-
-background-color:floralwhite;
-display:block;
-
-}
-
-.login2_btn:hover{
-color: black;
-background-color: white; 
-width
-}
-
-.logout_btn{
-color: black; 
-opacity:0.9;
-background-color: #FFC312;
-width: 130px;
-height: 95%;
-margin-top: 5px;
-margin-left:10px;
-font-size: 20px;
-}
-
-
-.logout_btn:hover{
-color: black;
-background-color: white; 
-width
-}
-
-/* img */
-.nav-link img{
-    width: 80%;
-    height: auto;
-    margin-top:15px;
-}
-.logo img{
-	width: 80%;
-    height: auto;
-    margin-top: 15px;
-}
+.logo {}
 
 /* header section end */

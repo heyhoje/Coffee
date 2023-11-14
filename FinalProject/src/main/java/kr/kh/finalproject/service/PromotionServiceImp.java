@@ -15,19 +15,7 @@ public class PromotionServiceImp implements PromotionService{
 	@Autowired
 	PromotionDAO promotionDao;
 
-	@Override
-	public List<PromotionVO> getPromotionList(Criteria cri) {
-		if(cri == null) {
-			cri = new Criteria(); 
-		}
-		return promotionDao.selectPromotionList(cri);
-	}
-
-	@Override
-	public int getTotalCount(Criteria cri) {
-		return promotionDao.selectPromotionTotalCount();
-	}
-
+	
 	/** 사이트 관리자 페이지 */
 	@Override
 	public List<PromotionVO> getPromotionList(int pr_approval) {
