@@ -18,4 +18,6 @@ public class ShopVO {
 	private String bm_store_name;
 	private String bm_image;
 	private int bm_approval;
+	
+	private int st_num;
 }

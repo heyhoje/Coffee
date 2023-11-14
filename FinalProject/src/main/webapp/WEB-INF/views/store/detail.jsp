@@ -32,16 +32,16 @@
 				    <th><hr>
 				        <c:forEach items="${optionItem.optionValueList}" var="optionValue">
 				            <c:choose>
-				                <c:when test="${optionItem.os_num == 1}">
+				                <c:when test="${optionItem.os_optionNum == 1}">
 				                    <label><input type="radio" name="option1" value="${optionValue.ov_value} ${optionValue.ov_price}"  checked> ${optionValue.ov_value}</label><br>
 				                </c:when>
-				               <c:when test="${optionItem.os_num == 2}">
+				               <c:when test="${optionItem.os_optionNum == 2}">
 				                     <label><input type="radio" name="option2" value="${optionValue.ov_value} ${optionValue.ov_price}" checked> ${optionValue.ov_value}</label><br>
 				                </c:when>
-				                <c:when test="${optionItem.os_num == 3}">
+				                <c:when test="${optionItem.os_optionNum == 3}">
 				                    <label><input type="radio" name="option3" value="${optionValue.ov_value} ${optionValue.ov_price}" checked> ${optionValue.ov_value} +${optionValue.ov_price }원</label><br>
 				                </c:when>
-				                <c:when test="${optionItem.os_num == 4}">
+				                <c:when test="${optionItem.os_optionNum == 4}">
 				                    <label><input type="radio" name="option4" value="${optionValue.ov_value} ${optionValue.ov_price}" checked> ${optionValue.ov_value} +${optionValue.ov_price }원</label><br>
 				                </c:when>
 				            </c:choose>
@@ -51,12 +51,14 @@
 				</div>
 		    <br>
 		    <div class="detailbutton-box">
-		    <button id="intoTheBag" class="btn-outline-warning">장바구니 담기</button>
+		    <button id="toTheBag" class="btn-outline-warning">장바구니 담기</button>
 		    <a href="<c:url value='/order/bag'/>" id="toTheBag" class="btn-outline-warning">장바구니 이동</button> 
 		    </div>
 		</div>
 		</div>
 	</div>
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function () {
         $('#toTheBag').click(function () {
