@@ -223,7 +223,7 @@
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<input
-										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto; margin-left: 134%"
+										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto; margin-left: 144%;"
 										type="submit" value="로그아웃" class="btn logout_btn">
 								</div>
 							</div>

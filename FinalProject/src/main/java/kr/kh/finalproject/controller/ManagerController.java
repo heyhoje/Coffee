@@ -72,7 +72,7 @@ public class ManagerController {
 			model.addAttribute("buser", buser);
 			model.addAttribute("type", "b");
 			model.addAttribute("msg", "로그인 성공!");
-			model.addAttribute("url", "/business/home");
+			model.addAttribute("url", "business/home");
 			
 			// 화면에서 보낸 자동 로그인 체크 여부를 user에 적용
 			buser.setAutoLogin(manager.isAutoLogin());

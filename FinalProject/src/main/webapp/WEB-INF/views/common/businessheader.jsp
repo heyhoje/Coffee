@@ -78,9 +78,9 @@
 						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/sales'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">판매정보조회</a></li>
 						<li class="nav-item"><a class="nav-link"
-							style="color: white; font-family: 'BM HANNA Pro', sans-serif; float: right;">${buser.bm_manager}</a></li>
+							style="border-radius:10px; border: 1px solid white; margin-right: 8px; color: white; font-family: 'BM HANNA Pro', sans-serif; float: right;">${buser.bm_manager}님 어서오세요</a></li>
 						<li class="form-group" id="logoutButton2"><input
-							style="font-size:20px; type="submit" value="로그아웃" class="btn float-right logout_btn"
+							style="font-size:20px;" type="submit" value="로그아웃" class="btn float-right logout_btn"
 							data-toggle="modal" data-target="#logoutModal2"></li>
 					</ul>
 				</div>
@@ -104,7 +104,7 @@
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<input
-										style="font-size:20px; border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto; margin-left: 134%; margin-top: 5%;"
+										style="font-size:20px; border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto; margin-left: 130%;"
 										type="submit" value="로그아웃" class="btn logout_btn">
 								</div>
 							</div>
