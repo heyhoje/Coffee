@@ -47,7 +47,7 @@
 	    FROM user
 	    WHERE user_id = #{user_id}
 	</select>	
-	
+
 	<insert id="insertMemberKakao" parameterType="kr.kh.finalproject.vo.MemberVO">
         INSERT INTO member (me_user_id, me_email, me_name)
         VALUES (#{kakao_user_id}, #{kakao_email}, #{kakao_name})

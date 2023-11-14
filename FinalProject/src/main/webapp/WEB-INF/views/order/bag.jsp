@@ -10,8 +10,7 @@
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
     <!-- iamport.payment.js -->
-    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
- 
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script> 
 </head>
 <body>
     <section class="cart">
@@ -69,6 +68,12 @@
             </tr>
         
         </table>
+        <div>
+        	<div>보유 포인트 : ${point }</div>
+        	<input type="number" id="usePoint" placeholder="사용할 Point를 입력해주세요." value="0"/>
+        </div>
+        
+        
         <div class="cart__mainbtns">
             <button class="cart__bigorderbtn left">쇼핑 계속하기</button>
             <button class="cart__bigorderbtn right" onclick="requestPay()">주문하기</button>
@@ -81,7 +86,17 @@ var menuPrices = [];
 var optionPrices = [];
 var quantities = [];
 var killAme = [];
-var user = carpcarp; // ${user} 
+var user = "carpcarp"; // ${user}
+var menuNameList = [];
+var IMP = window.IMP; 
+IMP.init("imp14674302"); 
+var today = new Date();   
+var hours = today.getHours(); // 시
+var minutes = today.getMinutes();  // 분
+var seconds = today.getSeconds();  // 초
+var milliseconds = today.getMilliseconds();
+var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+
 
 
 <c:forEach items="${jangbaguni}" var="optionChoice" varStatus="vss">
@@ -89,6 +104,7 @@ var user = carpcarp; // ${user}
     optionPrices[${vss.index}] = ${optionChoice.oc_selected_price};
     quantities[${vss.index}] = 1;
     killAme[${vss.index}] = ${optionChoice.oc_num};
+    menuNameList.push('${optionChoice.menu.mn_name}');
 </c:forEach>
 
 function updateQuantity(num, operation) {
@@ -146,19 +162,11 @@ function deleteThis(numnum) {
     });
 }
 
-var IMP = window.IMP; 
-IMP.init("imp14674302"); 
-
-var today = new Date();   
-var hours = today.getHours(); // 시
-var minutes = today.getMinutes();  // 분
-var seconds = today.getSeconds();  // 초
-var milliseconds = today.getMilliseconds();
-var makeMerchantUid = hours +  minutes + seconds + milliseconds;
 
 
 
 function requestPay() {
+	var usePoint = 0;
 	var totalPrice = 0;
 	var menuName = '';
 	
@@ -172,44 +180,51 @@ function requestPay() {
 	</c:forEach>
 	
 	document.getElementById('totalPrice').textContent = totalPrice;
+	usePoint = parseInt(document.getElementById('usePoint').value);
+	var newTotalPrice = totalPrice - usePoint;
 	
-
-    IMP.request_pay(
-    	{
-        pg : "danal_tpay",
-        pay_method : 'card',
-        merchant_uid: "IMP"+makeMerchantUid, 
-        name : '커피의 민족',
-        amount : totalPrice,
-        buyer_email : 'Iamport@chai.finance',
-        buyer_name : '아임포트 기술지원팀',
-        buyer_tel : '010-1234-5678',
-        buyer_addr : '서울특별시 강남구 삼성동',
-        buyer_postcode : '123-456'
-    }, function (rsp) { // callback
-        if (rsp.success) {
-            console.log(rsp);
-            givePoint(user, totalPrice);
-        } else {
-            console.log(rsp);
-        }
-    });
+	
+	if(newTotalPrice == 0) {
+		allInOneAfterPay(newTotalPrice);
+	}else {
+	    IMP.request_pay(
+	    	{
+	        pg : "danal_tpay",
+	        pay_method : 'card',
+	        merchant_uid: "IMP"+makeMerchantUid, 
+	        name : '커피의 민족',
+	        amount : newTotalPrice,
+	        buyer_email : 'Iamport@chai.finance',
+	        buyer_name : '아임포트 기술지원팀',
+	        buyer_tel : '010-1234-5678',
+	        buyer_addr : '서울특별시 강남구 삼성동',
+	        buyer_postcode : '123-456'
+	    }, function (rsp) { // callback
+	        if (rsp.success) {
+	            console.log(rsp);
+	    		allInOneAfterPay(newTotalPrice);
+	        } else {
+	            console.log(rsp);
+	        }
+	    });
+	}
 }
 
-function givePoint(user, num) {
-	point = (num / 10);
+function allInOneAfterPay(num) {
+	var menuName = menuNameList.join(',');
 	$.ajax({
         type: 'POST',
-        url: '<c:url value="/order/bag2"/>', 
-        data: { point : point
-        		user : user},
+        url: '<c:url value="/order/bagend"/>', 
+        data: { point : num,
+        		user : user,
+        		menuName : menuName},
         success: function(response) {
         },
         error: function(error) {
+            alert(error); //오류내용
         }
     });
 }
-
 
 </script>
 

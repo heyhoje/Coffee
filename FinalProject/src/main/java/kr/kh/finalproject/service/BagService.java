@@ -24,7 +24,22 @@ public interface BagService {
 
 	List<ShopVO> shopInfo(MemberVO user);
 
-	boolean givePoint(int point, String user);
+	boolean givePoint(int givePoint, MemberVO user);
+
+	int getPoint(MemberVO user);
+
+	boolean steelPoint(int usePoint, MemberVO user);
+
+	boolean killBag(MemberVO user);
+
+	boolean makeOrderMenu(String menuName);
+
+	int getBasketNum(MemberVO user);
+	
+	int getNumFromOM();
+
+	boolean makeOrderList(MemberVO user, int getNumFromOM, int getSbNum);
+
 
 
 }

@@ -9,8 +9,10 @@ public class MemberVO extends UserVO{
 	private String me_user_id; 
 	private String me_pw; 
 	private String me_name; 
-	private String me_email; 
-	private String me_authority; 
+	private String me_email;
+	private int me_deposit;
+	private int me_point;
+	private String me_authority;
 	
 	// 자동로그인 속성
 	private String me_session_id; 

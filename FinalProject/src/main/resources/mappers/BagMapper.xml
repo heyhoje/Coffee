@@ -33,8 +33,8 @@
   		where sb_me_user_id = "carpcarp"
   	</select>
   	<insert id="makeBag">
-  		insert into `shop_basket` sb_me_user_id
-  		values "carpcarp"
+  		insert into `shop_basket` (sb_me_user_id)
+  		values ("carpcarp")
   	</insert>
   	<select id="bagBunho" resultType="int">
   		select sb_num from shop_basket where sb_me_user_id = "carpcarp"
@@ -74,7 +74,45 @@
 	</select>
   	<update id="givePoint">
   		update `member`
-  		set me_point += #{point}
-  		where me_user_id = #{user}
+  		set me_point = me_point + #{givePoint}
+  		where me_user_id = "carpcarp"
   	</update>
+  	<select id="getPoint" resultType="int">
+  		select
+  			me_point
+  		from
+  			member
+  		where
+  			me_user_id = "carpcarp"
+  	</select>
+  	<update id="backPoint">
+	  	update member
+	  	set me_point = me_point - #{usePoint}
+	  	where me_user_id = "carpcarp"
+  	</update>
+  	<delete id="killBag">
+  		delete from 
+  			`option_choice`
+  		left join
+  			`shop_basket` on oc_sb_num = sb_num
+  		where
+  			sb_me_user_id = "carpcarp"
+  	</delete>
+  	<insert id="makeOrderMenu">
+  		insert into `oder_menu` (or_time, or_state, or_drinks)
+  			values (now(), "준비중", #{menuName})
+  	</insert>
+  	<select id="getBasketNum" resultType="int">
+  		select sb_num from shop_basket
+  		where sb_me_user_id = "carpcarp"
+  	</select>
+  	<select id="getNumFromOM" resultType="int">
+	    SELECT or_num FROM order_menu
+	    ORDER BY or_time DESC
+	    LIMIT 1
+  	</select>
+  	<insert id="makeOrderList">
+  		insert into oder_list (ol_or_num, ol_sb_num, ol_user_id)
+  			values (#{or_num}, #{sb_num}, "carpcarp")
+  	</insert>
   </mapper>

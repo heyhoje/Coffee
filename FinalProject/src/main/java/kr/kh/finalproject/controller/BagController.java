@@ -37,7 +37,11 @@ public class BagController {
     	MemberVO user = (MemberVO)session.getAttribute("user");
     	List<Option_ChoiceVO> jangbaguni = bagService.bagList(user);
     	List<ShopVO> shop = bagService.shopInfo(user);
+    	int point = bagService.getPoint(user);
+    	int basketNum = bagService.getBasketNum(user);
     	
+    	model.addAttribute("basketNum", basketNum);
+    	model.addAttribute("point", point);
     	model.addAttribute("shop", shop);
     	model.addAttribute("user", user);
     	model.addAttribute("jangbaguni", jangbaguni);
@@ -101,14 +105,24 @@ public class BagController {
         return "";
     }
     
-    @PostMapping("/order/bag2")
+    @PostMapping("/order/bagend")
     @ResponseBody
-    public String savePoint(@RequestParam("point") int point, @RequestParam("user") String user) {
-        boolean jugiPoint = bagService.givePoint(point, user);
+    public String savePoint(@RequestParam("Point") int point, @RequestParam("user") MemberVO user, @RequestParam("menuName") String menuName) {
+    	int givePoint = point/10;
+        boolean jugiPoint = bagService.givePoint(givePoint, user);
+        boolean patgiPoint = bagService.steelPoint(point, user);
+        boolean makeOrderMenu_List = bagService.makeOrderMenu(menuName);
+        int getNumFromOM = bagService.getNumFromOM();
+        int getSbNum = bagService.getBasketNum(user);
+        boolean makeOrderList = bagService.makeOrderList(user, getNumFromOM, getSbNum);
+        boolean deleteBag = bagService.killBag(user);
+        System.out.println(point);
+        System.out.println(user);
+        System.out.println(menuName);
+
+        
+        
         
         return "";
-    }
-
-    
-	
+    }	
 }

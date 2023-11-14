@@ -25,8 +25,23 @@ public interface BagDAO {
 
 	List<ShopVO> getShopInfo(@Param("user")MemberVO user);
 
-	boolean givePoint(@Param("point")int point, @Param("user")String user);
+	boolean givePoint(@Param("givePoint")int givdPoint, @Param("user")MemberVO user);
 
+	int getPoint(@Param("user")MemberVO user);
+
+	boolean backPoint(@Param("usePoint")int usePoint, @Param("user")MemberVO user);
+
+	boolean killBag(@Param("user")String user);
+
+	boolean makeOrderMenu(@Param("menuName")String menuName);
+
+	int getBasketNum(@Param("user")MemberVO user);
 	
+	int getNumFromOM();
+
+	boolean makeOrderList(@Param("user")MemberVO user, @Param("or_num")int getNumFromOM, @Param("sb_num")int getSbNum);
+
+	boolean killBag(MemberVO user);
+
 
 }

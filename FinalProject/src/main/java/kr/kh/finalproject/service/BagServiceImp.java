@@ -61,8 +61,43 @@ public class BagServiceImp implements BagService{
 	}
 
 	@Override
-	public boolean givePoint(int point, String user) {
-		return bagDao.givePoint(point, user);
+	public boolean givePoint(int givePoint, MemberVO user) {
+		return bagDao.givePoint(givePoint, user);
+	}
+
+	@Override
+	public int getPoint(MemberVO user) {
+		return bagDao.getPoint(user);
+	}
+
+	@Override
+	public boolean steelPoint(int usePoint, MemberVO user) {
+		return bagDao.backPoint(usePoint, user);
+	}
+
+	@Override
+	public boolean killBag(MemberVO user) {
+		return bagDao.killBag(user);
+	}
+
+	@Override
+	public boolean makeOrderMenu(String menuName) {
+		return bagDao.makeOrderMenu(menuName);
+	}
+
+	@Override
+	public int getBasketNum(MemberVO user) {
+		return bagDao.getBasketNum(user);
+	}
+	
+	@Override
+	public int getNumFromOM() {
+		return bagDao.getNumFromOM();
+	}
+
+	@Override
+	public boolean makeOrderList(MemberVO user, int getNumFromOM, int getSbNum) {
+		return bagDao.makeOrderList(user, getNumFromOM, getSbNum);
 	}
 
 
