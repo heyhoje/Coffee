@@ -28,4 +28,5 @@ public interface MemberDAO {
 
 	void updateKakaoMemberSession(KakaoVO kuser);
 
+	
 }

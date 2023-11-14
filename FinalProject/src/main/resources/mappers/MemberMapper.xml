@@ -58,5 +58,13 @@
         FROM member
         WHERE kakao_user_id = #{kakao_user_id}
     </select>
-    
+    <update id="updateKakaoMemberSession">
+		update
+			member
+		set
+			me_session_id = #{member.me_session_id},
+			me_session_limit = #{member.me_session_limit}
+		where
+			me_user_id = #{member.me_user_id}
+	</update>
 </mapper>

@@ -120,12 +120,7 @@ public class MemberServiceImp implements MemberService {
 			return;
 		}
 		memberDao.updateKakaoMemberSession(kuser);
+		
 	}
 	
-	@Override
-    public void addInterceptors(InterceptorRegistry registry, HandlerInterceptor kakaoLoginInterceptor) {
-        registry.addInterceptor(kakaoLoginInterceptor)
-                .addPathPatterns("/kakaoLoginCallback"); // 해당 URL에만 인터셉터를 적용하도록 설정
-    }
-
 }

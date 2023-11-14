@@ -31,6 +31,4 @@ public interface MemberService {
 	UserVO selectUserKakaoInfo(String userId);
 
 	void updateKakaoMemberSession(KakaoVO kuser);
-
-	void addInterceptors(InterceptorRegistry registry, HandlerInterceptor kakaoLoginInterceptor);
 }
