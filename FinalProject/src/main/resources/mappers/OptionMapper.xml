@@ -7,6 +7,7 @@
 	    <result property="os_num" column="os_num" />
 	    <result property="os_name" column="os_name" />
 	    <result property="os_mn_num" column="os_mn_num" />
+	    <result property="os_optionNum" column="os_optionNum" />
 	    <collection property="optionValueList" ofType="kr.kh.finalproject.vo.Option_ValueVO">
 	        <result property="ov_num" column="ov_num" />
 	        <result property="ov_value" column="ov_value" />
@@ -20,6 +21,7 @@
 			os.os_num,
 			os.os_name,
 			os.os_mn_num,
+			os.os_optionNum,
 			ov.ov_num,
 			ov.ov_value,
 			ov.ov_primary,
