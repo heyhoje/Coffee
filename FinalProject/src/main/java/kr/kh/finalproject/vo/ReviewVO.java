@@ -14,4 +14,8 @@ public class ReviewVO {
 	String re_user_id; // 주문리스트에 있는 ol_user_id 를 re_user_id로 vo에 저장
 	int re_ol_num; // 주문리스트에 있는 ol_num을 re_ol_num으로 vo에 저장. 주문리스트번호가 우리가 볼 수 있는 주문번호임. 
 	
+	// [ 리뷰 = 주문메뉴 - 주문리스트 - 장바구니 - 선택메뉴옵션 = 메뉴 ]
+	String re_mn_name; // 메뉴에 있는 mn_name을 re_mn_name으로 vo에 저장. 주문한 메뉴 이름을 리뷰에 띄울 수 있도록!
+	String re_store_name; // 사업자 회원에 있는 bm_store_name을 re_store_name으로 vo에 저장. 주문한 브랜드&지점명을 알 수 있도록!  
+	
 }

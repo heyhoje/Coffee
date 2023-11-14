@@ -5,7 +5,7 @@
 <mapper namespace="kr.kh.finalproject.dao.StoreDAO">
 	<!-- 사이트 관리자 - 매장등록 리스트 -->
 	<select id="selectBsList" resultType="kr.kh.finalproject.vo.StoreVO">
-		select st_num, bm_store_name as st_store_name, st_br_name, st_opentime, st_closetime, st_approval
+		select st_num, st_bm_id, bm_store_name as st_store_name, st_br_name, st_opentime, st_closetime, st_approval
 			from store 
 		 	join business_member on st_bm_id = bm_id
 		 	where st_approval = #{st_approval}
