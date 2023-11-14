@@ -211,6 +211,7 @@ input.mem[type=checkbox]:not(old) + label{position: absolute; display: inline-bl
 					</form>
 				</div>
 			</div>
+		</div>
 		<!-- 내용 end -->
 
 </body>
