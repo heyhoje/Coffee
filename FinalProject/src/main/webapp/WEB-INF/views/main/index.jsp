@@ -274,12 +274,9 @@
       <div class="footer_section layout_padding">
          <div class="container">
             <div class="row">
+               
                <div class="col-lg-3 col-sm-6">
-                  <h3 class="useful_text" style="font-family: 'BM HANNA Pro', sans-serif;">About</h3>
-                  <p class="footer_text"></p>
-               </div>
-               <div class="col-lg-3 col-sm-6">
-                  <h3 class="useful_text" style="font-family: 'BM HANNA Pro', sans-serif;">Menu</h3>
+                  <h3 class="useful_text" style="font-family: 'BM HANNA Pro', sans-serif;">메뉴</h3>
                   <div class="footer_menu">
                      <ul>
                         <li><a href="resources/index.html">소개</a></li>
