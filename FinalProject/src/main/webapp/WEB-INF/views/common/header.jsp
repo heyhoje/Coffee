@@ -61,8 +61,6 @@
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">채용정보</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif;">고객센터</a></li>
-						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/main/review'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">리뷰게시판</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">고객센터</a></li>
