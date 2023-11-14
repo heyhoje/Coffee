@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.bm-subject{
+	text-align:center;
+	font-weight:bold;
+	font-family: 'BM HANNA Pro', sans-serif;
+}
+
+
+.bm-menu-container{
+	justify-content:center;
+	display:flex;
+	font-family: 'BM HANNA Pro', sans-serif;
+	margin-top:30px;
+	margin-bottom:30px;
+}

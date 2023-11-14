@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.bmember-title-layout{
+	justify-content:center;
+	display:flex;
+	margin-top:50px;
+	margin-bottom:50px;
+
+}
+
+
+.bmember-title{
+	font-family: 'BM HANNA Pro', sans-serif;
+	font-size:20px;
+	font-weight:bold;
+}
+#bmember-table{
+	font-family: 'BM HANNA Pro', sans-serif;
+}
