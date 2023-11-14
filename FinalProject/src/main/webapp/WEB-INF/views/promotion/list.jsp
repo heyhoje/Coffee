@@ -62,7 +62,7 @@
 					</td>
 					<td>
 						<div class="r-no">
-						<span>${advertisementList.ad_st_num}</span>
+						<span>${advertisementList.ad_br_name}</span>
 						</div>
 					</td>
 					<td>

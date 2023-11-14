@@ -17,8 +17,8 @@
 				<tr>
 					<th>번호</th>
 					<th>이미지</th>
-					<th>내용</th>
 					<th>해당매장</th>
+					<th>내용</th>
 					<th>광고기간</th>
 					<th>승인상태</th>
 				</tr>
@@ -29,8 +29,8 @@
 					<tr>
 						<td>${ad.ad_num}</td>
 						<td>${ad.ad_image}</td>
+						<td>${ad.ad_br_name}</td>
 						<td>${ad.ad_contents}</td>
-						<td>해당매장? - 브랜드명/매장명 가져와야할듯</td>
 						<td>${ad.ad_date}</td>
 						<td><button class="btn btn-outline-primary pass" data-target="${ad.ad_num}">승인</button>
 						&nbsp;<button class="btn btn-outline-danger reject" data-target="${ad.ad_num}">거절</button></td>
@@ -66,6 +66,7 @@
 			dataType : "json", 
 			success : function (data){
 				console.log(data.res);
+				
 				ad_approval = 1;
 				alert('프로모션 등록을 승인했습니다.')
 				location.reload();
@@ -99,6 +100,7 @@
 			dataType : "json", 
 			success : function (data){
 				console.log(data.res);
+				
 				ad_approval = 2;
 				alert('프로모션 등록을 거절했습니다.')
 				location.reload();
