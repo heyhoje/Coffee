@@ -17,22 +17,5 @@ import kr.kh.finalproject.vo.PromotionVO;
 @Controller
 public class PromotionController {
 	
-	@Autowired
-	PromotionService promotionService;
-	
 
-	
-	@GetMapping("/promotion/list")
-	public String promotionList(Model model, Criteria cri) {
-		cri.setPerPageNum(5);
-		List<PromotionVO> promotionList = promotionService.getPromotionList(cri);
-		int totalCount = promotionService.getTotalCount(cri);
-		PageMaker pm = new PageMaker(2, cri, totalCount);
-		
-		
-		model.addAttribute("pm", pm);
-		model.addAttribute("promotionList", promotionList);
-		return "/promotion/list";
-		
-	}
 }

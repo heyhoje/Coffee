@@ -104,9 +104,9 @@
             <div class="row">
                <div class="col-md-6">
                   <div class="about_taital_main">
-                     <div class="about_taital">About Us</div>
+                     <div class="about_taital"  style="font-family: 'BM HANNA Pro', sans-serif;">About Us</div>
                      <p class="about_text"></p>
-                     <p class="about_text">저희 사이트는 다양한 브랜드 커피를 편리하고 손쉽게 주문할 수 있습니다.</p>
+                     <p class="about_text"></p>
                      <div class="read_bt"><a href="#">Read More</a></div>
                   </div>
                </div>
@@ -122,8 +122,8 @@
          <div class="container">
             <div class="row">
                <div class="col-sm-12">
-                  <h1 class="gallery_taital">Brands</h1>
-                  <p class="gallery_text">저희 사이트는 다양한 브랜드 커피를 편리하고 손쉽게 주문할 수 있습니다.</p>
+                  <h1 class="gallery_taital"  style="font-family: 'BM HANNA Pro', sans-serif;">Brands</h1>
+                  <p class="gallery_text"  style="font-family: 'BM HANNA Pro', sans-serif;">다양한 브랜드 커피를 편리하고 손쉽게 주문해보세요.</p>
                </div>
             </div>
             <div class="">
@@ -225,8 +225,8 @@
          <div class="container">
             <div class="row">
                <div class="col-sm-12">
-                  <h1 class="services_taital">Services</h1>
-                  <p class="services_text">Typesetting industry lorem Ipsum is simply dummy text of the </p>
+                  <h1 class="services_taital"  style="font-family: 'BM HANNA Pro', sans-serif;">기타서비스</h1>
+                  <p class="services_text"  style="font-family: 'BM HANNA Pro', sans-serif;" >주문 서비스 이외에도 다양한 서비스를 이용해보세요.</p>
                </div>
             </div>
             <div class="services_section_2">
@@ -234,10 +234,10 @@
                   <div class="col-lg-4 col-sm-12 col-md-4">
                      <div class="box_main active">
                         <div class="house_icon">
-                           <img src="resources/images/icon1.png" class="image_1">
-                           <img src="resources/images/icon1.png" class="image_2">
+                           <img src="resources/images/ordericon.png" class="image_1">
+                           <img src="resources/images/ordericon.png" class="image_2">
                         </div>
-                        <h3 class="decorate_text"></h3>
+                        <h3 class="decorate_text"  style="font-family: 'BM HANNA Pro', sans-serif;">주문서비스</h3>
                         <p class="tation_text"> </p>
                         <div class="readmore_bt"><a href="#"></a></div>
                      </div>
@@ -245,10 +245,10 @@
                   <div class="col-lg-4 col-sm-12 col-md-4">
                      <div class="box_main">
                         <div class="house_icon">
-                           <img src="resources/images/icon2.png" class="image_1">
-                           <img src="resources/images/icon2.png" class="image_2">
+                           <img src="resources/images/reservation.png" class="image_1">
+                           <img src="resources/images/reservation.png" class="image_2">
                         </div>
-                        <h3 class="decorate_text"></h3>
+                        <h3 class="decorate_text"  style="font-family: 'BM HANNA Pro', sans-serif;">예약서비스</h3>
                         <p class="tation_text"></p>
                         <div class="readmore_bt"><a href="#"></a></div>
                      </div>
@@ -256,10 +256,10 @@
                   <div class="col-lg-4 col-sm-12 col-md-4">
                      <div class="box_main">
                         <div class="house_icon">
-                           <img src="resources/images/icon3.png" class="image_1">
-                           <img src="resources/images/icon3.png" class="image_2">
+                           <img src="resources/images/communication.png" class="image_1">
+                           <img src="resources/images/communication.png" class="image_2">
                         </div>
-                        <h3 class="decorate_text"></h3>
+                        <h3 class="decorate_text"  style="font-family: 'BM HANNA Pro', sans-serif;">소셜서비스</h3>
                         <p class="tation_text"></p>
                         <div class="readmore_bt"><a href="#"></a></div>
                      </div>
@@ -268,132 +268,33 @@
             </div>
          </div>
       </div>
-      <!-- services section end -->
-      <!-- testimonial section start -->
-      <div class="client_section layout_padding">
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-12">
-                  <h1 class="client_taital"></h1>
-                  <p class="client_text"></p>
-               </div>
-            </div>
-         </div>
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="client_section_2">
-                <div class="container">
-                   <div class="row">
-                      <div class="col-md-12">
-                         <div class="testimonial_section_2">
-                            <p class="customer_text"></p>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="client_section_2">
-                <div class="container">
-                   <div class="row">
-                      <div class="col-md-12">
-                         <div class="testimonial_section_2">
-                            <h4 class="client_name_text">Monila <span class="quick_icon"></span></h4>
-                            <p class="customer_text"></p>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="client_section_2">
-                <div class="container">
-                   <div class="row">
-                      <div class="col-md-12">
-                         <div class="testimonial_section_2">
-                            <h4 class="client_name_text">Monila <span class="quick_icon"></span></h4>
-                            <p class="customer_text"></p>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-     </div>
-      <!-- testimonial section end -->
-      <!-- contact section start -->
-      <div class="contact_section layout_padding">
-         <div class="container">
-            <h1 class="contact_text">매장 검색</h1>
-         </div>
-      </div>
-      <div class="contact_section_2 layout_padding">
-         <div class="container-fluid">
-            <div class="row">
-               <div class="col-md-6 padding_0">
-                  <div class="mail_section">
-                     <div class="email_text">
-                        <div class="form-group">
-                           <input type="text" class="email-bt" placeholder="Name" name="Email">
-                        </div>
-                        <div class="form-group">
-                           <input type="text" class="email-bt" placeholder="Email" name="Email">
-                        </div>
-                        <div class="form-group">
-                           <input type="text" class="email-bt" placeholder="Phone Numbar" name="Email">
-                        </div>
-                        <div class="form-group">
-                           <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
-                        </div>
-                        <div class="send_btn">
-                           <div type="text" class="main_bt"><a href="#">SEND</a></div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6 padding_0">
-                  <div class="map-responsive">
-                     <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=역삼+역+서울+한국" width="600" height="508" frameborder="0" style="border:0; width: 100%;" allowfullscreen></iframe>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
+      <
       <!-- contact section end -->
       <!-- footer section start -->
       <div class="footer_section layout_padding">
          <div class="container">
             <div class="row">
                <div class="col-lg-3 col-sm-6">
-                  <h3 class="useful_text">About</h3>
+                  <h3 class="useful_text" style="font-family: 'BM HANNA Pro', sans-serif;">About</h3>
                   <p class="footer_text"></p>
                </div>
                <div class="col-lg-3 col-sm-6">
-                  <h3 class="useful_text">Menu</h3>
+                  <h3 class="useful_text" style="font-family: 'BM HANNA Pro', sans-serif;">Menu</h3>
                   <div class="footer_menu">
                      <ul>
                         <li><a href="resources/index.html">소개</a></li>
-                        <li><a href="<c:url value='/promotion/list'/>">프로모션</a></li>
+                        <li><a href="<c:url value='/promotion/list'/>">이벤트&프로모션</a></li>
                         <li><a href="<c:url value='/order/store'/>">주문</a></li>
-                        <li><a href="resources/services.html">게시판</a></li>
+                        <li><a href="<c:url value='/meetingroom/home'/>">미팅룸예약</a></li>
                         <li><a href="<c:url value='/main/gallery'/>">갤러리</a></li>
                         <li><a href="resources/contact.html">채용정보</a></li>
+                        <li><a href="<c:url value='/main/review'/>">리뷰게시판</a></li>
                         <li><a href="resources/contact.html">고객센터</a></li>
                      </ul>
                   </div>
                </div>
                <div class="col-lg-3 col-sm-6">
-                  <h1 class="useful_text">제휴 브랜드</h1>
+                  <h1 class="useful_text" style="font-family: 'BM HANNA Pro', sans-serif;">제휴 브랜드</h1>
                    <div class="footer_menu">
                      <ul>
                    		<li><a href="resources/index.html">Starbucks</a></li>
@@ -409,7 +310,7 @@
                		</div>
                	</div>
                <div class="col-lg-3 col-sm-6">
-                  <h1 class="useful_text">Contact Us</h1>
+                  <h1 class="useful_text" style="font-family: 'BM HANNA Pro', sans-serif;">Contact Us</h1>
                   <div class="location_text">
                      <ul>
                         <li>
