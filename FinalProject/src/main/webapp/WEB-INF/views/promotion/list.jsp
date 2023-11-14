@@ -74,7 +74,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<div>
+	<div class="promotion-pagination">
 		<c:if test="${pm.prev}">
 			<a href="<c:url value='/promotion/list${pm.cri.getUrl(pm.startPage-1) }'/>">이전</a>
 		</c:if>
