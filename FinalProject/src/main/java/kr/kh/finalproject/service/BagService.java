@@ -42,6 +42,12 @@ public interface BagService {
 
 	int getBasketNum1(String user);
 
+	int sameShop(MemberVO user);
+
+	int anotherShop(int menu_num);
+
+	boolean flipBag(MemberVO user);
+
 
 
 }
