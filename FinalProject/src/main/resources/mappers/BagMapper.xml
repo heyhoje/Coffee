@@ -87,7 +87,7 @@
   	</select>
   	<update id="backPoint">
 	  	update member
-	  	set me_point = me_point - #{usePoint}
+	  	set me_point = (me_point - #{usePoint})
 	  	where me_user_id = "carpcarp"
   	</update>
   	<delete id="killBag">
@@ -111,8 +111,34 @@
   		insert into order_list (ol_or_num, ol_sb_num, ol_user_id)
   			values (#{or_num}, #{sb_num}, "carpcarp")
   	</insert>
-  	  	<select id="getBasketNum1" resultType="int">
+  	<select id="getBasketNum1" resultType="int">
   		select sb_num from shop_basket
   		where sb_me_user_id = "carpcarp"
   	</select>
+  	<select id="sameShop" resultType="int">
+  		select DISTINCT
+  			mn_st_num
+  		from 
+  			menu
+  		left join
+  			option_choice on mn_num = oc_mn_num
+  		left join
+  			shop_basket on oc_sb_num = sb_num
+  		where
+  			sb_me_user_id = "carpcarp"			 
+  	</select>
+  	<select id="anotherShop" resultType="int">
+  		select distinct
+  			mn_st_num 
+  		from
+  			menu
+  		where
+  			mn_num = #{menu_num}
+  	</select>
+  	<delete id="flipBag">
+  		delete from 
+  			option_choice
+  		where
+  			oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = "carpcarp")
+  	</delete>
   </mapper>

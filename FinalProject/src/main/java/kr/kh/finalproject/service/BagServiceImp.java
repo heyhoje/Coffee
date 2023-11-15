@@ -103,8 +103,22 @@ public class BagServiceImp implements BagService{
 
 	@Override
 	public int getBasketNum1(String user) {
-		// TODO Auto-generated method stub
 		return bagDao.getBasketNum1(user);
+	}
+
+	@Override
+	public int sameShop(MemberVO user) {
+		return bagDao.sameShop(user);
+	}
+
+	@Override
+	public int anotherShop(int menu_num) {
+		return bagDao.anotherShop(menu_num);
+	}
+
+	@Override
+	public boolean flipBag(MemberVO user) {
+		return bagDao.flipBag(user);
 	}
 
 
