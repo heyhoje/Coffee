@@ -186,8 +186,7 @@ function requestPay() {
 	
 	
 	if(newTotalPrice == 0) {
-		allInOneAfterPay(newTotalPrice);
-        location.reload();
+		allInOneAfterPay(totalPrice, usePoint);
 	}else {
 	    IMP.request_pay(
 	    	{
@@ -204,8 +203,7 @@ function requestPay() {
 	    }, function (rsp) { // callback
 	        if (rsp.success) {
 	            console.log(rsp);
-	    		allInOneAfterPay(newTotalPrice);
-	            location.reload();
+	    		allInOneAfterPay(totalPrice, usePoint);
 	        } else {
 	            console.log(rsp);
 	        }
@@ -213,10 +211,13 @@ function requestPay() {
 	}
 }
 
-function allInOneAfterPay(num) {
+function allInOneAfterPay(totalPrice, usePoint) {
+	
+	var point = totalPrice - usePoint;
     var menuName = menuNameList.join(',');
 	console.log({
-        point: num,
+        point: point,
+        usePoint : usePoint,
         user: user,
         menuName: menuName
     });
@@ -224,12 +225,13 @@ function allInOneAfterPay(num) {
         type: 'POST',
         url: '<c:url value="/order/bagend"/>',
         data: {
-            point: num,
+            point: point,
+            usePoint : usePoint,
             user: user,
             menuName: menuName
         },
         success: function (response) {
-            // Handle the success response if needed
+        	alert('주문이 완료되었습니다.');
         },
         error: function (error) {
             console.error('Error in allInOneAfterPay:', error);

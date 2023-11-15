@@ -43,5 +43,11 @@ public interface BagDAO {
 
 	int getBasketNum1(@Param("user")String user);
 
+	int sameShop(@Param("user")MemberVO user);
+
+	int anotherShop(@Param("menu_num")int menu_num);
+
+	boolean flipBag(@Param("user")MemberVO user);
+
 
 }

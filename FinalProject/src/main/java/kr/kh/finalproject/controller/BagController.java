@@ -90,7 +90,12 @@ public class BagController {
         }
         
         int bagBunho = bagService.bagBunho(user);
-
+        
+        int sameShop = bagService.sameShop(user);
+        int anotherShop = bagService.anotherShop(menu_num);
+        if(sameShop != anotherShop) {
+        	boolean flipBag = bagService.flipBag(user);
+        }
         boolean selectedOption = bagService.selectedOption(selected, total, menu_num, bagBunho);
         
 
@@ -107,19 +112,15 @@ public class BagController {
     
     @PostMapping("/order/bagend")
     @ResponseBody
-    public String savePoint(@RequestParam("point") int point, @RequestParam("user") String user, @RequestParam("menuName") String menuName) {
+    public String savePoint(@RequestParam("point") int point, @RequestParam("usePoint") int usePoint, @RequestParam("user") String user, @RequestParam("menuName") String menuName) {
     	int givePoint = point/10;
         boolean jugiPoint = bagService.givePoint(givePoint, user);
-        boolean patgiPoint = bagService.steelPoint(point, user);
+        boolean patgiPoint = bagService.steelPoint(usePoint, user);
         boolean makeOrderMenu_List = bagService.makeOrderMenu(menuName);
         int getNumFromOM = bagService.getNumFromOM();
         int getSbNum = bagService.getBasketNum1(user);
         boolean makeOrderList = bagService.makeOrderList(user, getNumFromOM, getSbNum);
         boolean deleteBag = bagService.killBag(user);
-        System.out.println(point);
-        System.out.println(user);
-        System.out.println(menuName);
-
 
         return "";
     }	
