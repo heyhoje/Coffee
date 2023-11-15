@@ -58,7 +58,7 @@
   	</delete>
   	<select id="getShopInfo" resultType="kr.kh.finalproject.vo.ShopVO">
   		select
-  			bm_id, bm_pw, bm_num, bm_phone, bm_contents, bm_address, bm_geocoding_lati, bm_geocoding_longi, bm_manager, bm_store_name, bm_image, bm_approval
+  			bm_id, bm_pw, bm_num, bm_phone, bm_contents, bm_address, bm_geocoding_lati, bm_geocoding_longi, bm_manager, bm_store_name, bm_image, bm_approval, st_num
 		from 
 			option_choice
 		left join 
@@ -87,19 +87,15 @@
   	</select>
   	<update id="backPoint">
 	  	update member
-	  	set me_point = me_point - #{usePoint}
+	  	set me_point = (me_point - #{usePoint})
 	  	where me_user_id = "carpcarp"
   	</update>
   	<delete id="killBag">
-  		delete from 
-  			`option_choice`
-  		left join
-  			`shop_basket` on oc_sb_num = sb_num
-  		where
-  			sb_me_user_id = "carpcarp"
+		DELETE FROM `option_choice`
+		WHERE oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = "carpcarp")
   	</delete>
   	<insert id="makeOrderMenu">
-  		insert into `oder_menu` (or_time, or_state, or_drinks)
+  		insert into `order_menu` (or_time, or_status, or_drinks)
   			values (now(), "준비중", #{menuName})
   	</insert>
   	<select id="getBasketNum" resultType="int">
@@ -112,7 +108,37 @@
 	    LIMIT 1
   	</select>
   	<insert id="makeOrderList">
-  		insert into oder_list (ol_or_num, ol_sb_num, ol_user_id)
+  		insert into order_list (ol_or_num, ol_sb_num, ol_user_id)
   			values (#{or_num}, #{sb_num}, "carpcarp")
   	</insert>
+  	<select id="getBasketNum1" resultType="int">
+  		select sb_num from shop_basket
+  		where sb_me_user_id = "carpcarp"
+  	</select>
+  	<select id="sameShop" resultType="int">
+  		select DISTINCT
+  			mn_st_num
+  		from 
+  			menu
+  		left join
+  			option_choice on mn_num = oc_mn_num
+  		left join
+  			shop_basket on oc_sb_num = sb_num
+  		where
+  			sb_me_user_id = "carpcarp"			 
+  	</select>
+  	<select id="anotherShop" resultType="int">
+  		select distinct
+  			mn_st_num 
+  		from
+  			menu
+  		where
+  			mn_num = #{menu_num}
+  	</select>
+  	<delete id="flipBag">
+  		delete from 
+  			option_choice
+  		where
+  			oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = "carpcarp")
+  	</delete>
   </mapper>

@@ -52,13 +52,14 @@
 		    <br>
 		    <div class="detailbutton-box">
 		    <button id="toTheBag" class="btn-outline-warning">장바구니 담기</button>
-		    <a href="<c:url value='/order/bag'/>" id="toTheBag" class="btn-outline-warning">장바구니 이동</button> 
+		    <a href="<c:url value='/order/bag'/>" id="toTheBag" class="btn-outline-warning">장바구니 이동</a> 
 		    </div>
 		</div>
 		</div>
 	</div>
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <script type="text/javascript">
       $(document).ready(function () {
         $('#toTheBag').click(function () {

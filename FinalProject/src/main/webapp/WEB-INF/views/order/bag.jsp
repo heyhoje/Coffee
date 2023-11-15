@@ -11,6 +11,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
     <!-- iamport.payment.js -->
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script> 
+    
 </head>
 <body>
     <section class="cart">
@@ -185,7 +186,7 @@ function requestPay() {
 	
 	
 	if(newTotalPrice == 0) {
-		allInOneAfterPay(newTotalPrice);
+		allInOneAfterPay(totalPrice, usePoint);
 	}else {
 	    IMP.request_pay(
 	    	{
@@ -202,7 +203,7 @@ function requestPay() {
 	    }, function (rsp) { // callback
 	        if (rsp.success) {
 	            console.log(rsp);
-	    		allInOneAfterPay(newTotalPrice);
+	    		allInOneAfterPay(totalPrice, usePoint);
 	        } else {
 	            console.log(rsp);
 	        }
@@ -210,22 +211,34 @@ function requestPay() {
 	}
 }
 
-function allInOneAfterPay(num) {
-	var menuName = menuNameList.join(',');
-	$.ajax({
+function allInOneAfterPay(totalPrice, usePoint) {
+	
+	var point = totalPrice - usePoint;
+    var menuName = menuNameList.join(',');
+	console.log({
+        point: point,
+        usePoint : usePoint,
+        user: user,
+        menuName: menuName
+    });
+    $.ajax({
         type: 'POST',
-        url: '<c:url value="/order/bagend"/>', 
-        data: { point : num,
-        		user : user,
-        		menuName : menuName},
-        success: function(response) {
+        url: '<c:url value="/order/bagend"/>',
+        data: {
+            point: point,
+            usePoint : usePoint,
+            user: user,
+            menuName: menuName
         },
-        error: function(error) {
-            alert(error); //오류내용
+        success: function (response) {
+        	alert('주문이 완료되었습니다.');
+        },
+        error: function (error) {
+            console.error('Error in allInOneAfterPay:', error);
+            alert(error.responseText); // Display the error message
         }
     });
 }
-
 </script>
 
 </body>

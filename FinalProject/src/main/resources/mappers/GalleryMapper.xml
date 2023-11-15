@@ -8,6 +8,8 @@
 		<result property="gal_title" column="gal_title"/>
 		<result property="gal_me_user_id" column="gal_me_user_id"/>
 		<result property="gal_gc_num" column="gal_gc_num"/>
+		<result property="gal_contents" column="gal_contents"/>
+		<collection property="fileVoList" ofType="kr.kh.finalproject.vo.FileVO" column="gal_num" select="selectFileList"/>
 	</resultMap>
 	<resultMap type="kr.kh.finalproject.vo.GalleryTypeVO" id="GalleryTypeVO">
 		<id property="gt_num" column="bt_num"/>
@@ -18,7 +20,7 @@
 		<choose>
 			<when test='cri.type.equals("0")'>
 				where gal_title like concat('%', #{cri.search}, '%') or
-				where gal_contents like concat('%', #{cri.search}, '%') 
+						gal_contents like concat('%', #{cri.search}, '%') 
 			</when>
 			<otherwise>
 				where ${cri.type} like concat{'%', #{cri.search}, '%')

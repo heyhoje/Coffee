@@ -10,7 +10,7 @@
 <body>
 	<tiles:insertAttribute name="header"/>
 	<tiles:insertAttribute name="login"/>
-    <div class="container-fluid float-left" style="min-height: calc(100vh - 66px - 184px)">        
+    <div class="container-fluid float-left">        
     	<tiles:insertAttribute name="body" />
     </div>                                                  
     <tiles:insertAttribute name="footer" />

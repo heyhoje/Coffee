@@ -61,7 +61,7 @@ public class BagServiceImp implements BagService{
 	}
 
 	@Override
-	public boolean givePoint(int givePoint, MemberVO user) {
+	public boolean givePoint(int givePoint, String user) {
 		return bagDao.givePoint(givePoint, user);
 	}
 
@@ -71,12 +71,12 @@ public class BagServiceImp implements BagService{
 	}
 
 	@Override
-	public boolean steelPoint(int usePoint, MemberVO user) {
+	public boolean steelPoint(int usePoint, String user) {
 		return bagDao.backPoint(usePoint, user);
 	}
 
 	@Override
-	public boolean killBag(MemberVO user) {
+	public boolean killBag(String user) {
 		return bagDao.killBag(user);
 	}
 
@@ -96,8 +96,29 @@ public class BagServiceImp implements BagService{
 	}
 
 	@Override
-	public boolean makeOrderList(MemberVO user, int getNumFromOM, int getSbNum) {
+	public boolean makeOrderList(String user, int getNumFromOM, int getSbNum) {
 		return bagDao.makeOrderList(user, getNumFromOM, getSbNum);
+	}
+
+
+	@Override
+	public int getBasketNum1(String user) {
+		return bagDao.getBasketNum1(user);
+	}
+
+	@Override
+	public int sameShop(MemberVO user) {
+		return bagDao.sameShop(user);
+	}
+
+	@Override
+	public int anotherShop(int menu_num) {
+		return bagDao.anotherShop(menu_num);
+	}
+
+	@Override
+	public boolean flipBag(MemberVO user) {
+		return bagDao.flipBag(user);
 	}
 
 

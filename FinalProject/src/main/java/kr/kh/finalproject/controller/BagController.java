@@ -35,9 +35,9 @@ public class BagController {
 	@RequestMapping(value="/order/bag", method=RequestMethod.GET)
 	public String signup(HttpSession session, Model model) {
     	MemberVO user = (MemberVO)session.getAttribute("user");
-    	List<Option_ChoiceVO> jangbaguni = bagService.bagList(user);
+    	List<Option_ChoiceVO> jangbaguni = bagService.bagList(user); // 장바구니 목록 표출을 위한 option_choice, shop_basket, menu, image 조인 결과 리스트
     	List<ShopVO> shop = bagService.shopInfo(user);
-    	int point = bagService.getPoint(user);
+    	int point = bagService.getPoint(user);	// 장바구니 페이지에 현재 보유 포인트를 보여주기 위한 메서드
     	int basketNum = bagService.getBasketNum(user);
     	
     	model.addAttribute("basketNum", basketNum);
@@ -83,15 +83,22 @@ public class BagController {
         if (result.length() >= 2) {
             result.setLength(result.length() - 2);
         }
-        String selected = result.toString();
-        boolean hasBag = bagService.hasBag(user);
+        String selected = result.toString(); // 선택된 옵션 값들 중 가격을 제외한 text 부분의 합
+        // 아이디에 따라 장바구니 데이터가 있는지 확인하고 없으면 만들어주는 메서드
+        boolean hasBag = bagService.hasBag(user);	
         if(!hasBag) {
         	boolean makeBag = bagService.makeBag(user);
         }
         
         int bagBunho = bagService.bagBunho(user);
-
-        boolean selectedOption = bagService.selectedOption(selected, total, menu_num, bagBunho);
+        
+        // 한 매장에서 메뉴를 장바구니에 등록하고, 다른 매장에서 메뉴를 장바구니에 등록하려 할 때 이전 매장에서 등록한 메뉴들을 삭제하는 메서드
+        int sameShop = bagService.sameShop(user);
+        int anotherShop = bagService.anotherShop(menu_num);
+        if(sameShop != anotherShop) {
+        	boolean flipBag = bagService.flipBag(user);
+        }
+        boolean selectedOption = bagService.selectedOption(selected, total, menu_num, bagBunho);	// option_choice 테이블에 선택된 옵션과 메뉴 번호 가격 등을 insert 해주는 메서드 
         
 
         return "";
@@ -100,6 +107,7 @@ public class BagController {
     @PostMapping("/order/bag")
     @ResponseBody
     public String killAme(@RequestParam("oc_num") int oc_num) {
+    	// 장바구니에서 삭제 버튼 누를시 선택한 메뉴를 삭제해주는 메서드
         boolean deleteItem = bagService.deleteItem(oc_num);
         
         return "";
@@ -107,22 +115,16 @@ public class BagController {
     
     @PostMapping("/order/bagend")
     @ResponseBody
-    public String savePoint(@RequestParam("Point") int point, @RequestParam("user") MemberVO user, @RequestParam("menuName") String menuName) {
-    	int givePoint = point/10;
-        boolean jugiPoint = bagService.givePoint(givePoint, user);
-        boolean patgiPoint = bagService.steelPoint(point, user);
-        boolean makeOrderMenu_List = bagService.makeOrderMenu(menuName);
-        int getNumFromOM = bagService.getNumFromOM();
-        int getSbNum = bagService.getBasketNum(user);
-        boolean makeOrderList = bagService.makeOrderList(user, getNumFromOM, getSbNum);
-        boolean deleteBag = bagService.killBag(user);
-        System.out.println(point);
-        System.out.println(user);
-        System.out.println(menuName);
+    public String savePoint(@RequestParam("point") int point, @RequestParam("usePoint") int usePoint, @RequestParam("user") String user, @RequestParam("menuName") String menuName) {
+    	int givePoint = point/10; // 적립될 포인트 (총 가격 - 사용된 포인트) / 10 
+        boolean jugiPoint = bagService.givePoint(givePoint, user); 
+        boolean patgiPoint = bagService.steelPoint(usePoint, user); // 포인트로 사용으로 인한 포인트를 삭감 시키는 메서드
+        boolean makeOrderMenu_List = bagService.makeOrderMenu(menuName); // 주문메뉴을 데이터를 insert 하는 메서드
+        int getNumFromOM = bagService.getNumFromOM();	// 주문 목록을 만들기 위해 바로 위에서 만들어진 주문메뉴의 or_num을 가져오는 메서드
+        int getSbNum = bagService.getBasketNum1(user);	// 주문 목록을 만들기 위해 장바구니 번호를 가져오는 메서드
+        boolean makeOrderList = bagService.makeOrderList(user, getNumFromOM, getSbNum);	// 주문 목록을 만드는 메서드
+        boolean deleteBag = bagService.killBag(user);	// 주문 완료 후 장바구니를 비워주는 메서드
 
-        
-        
-        
         return "";
     }	
 }
