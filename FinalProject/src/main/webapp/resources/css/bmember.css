@@ -3,9 +3,9 @@
 .bmember-title-layout{
 	justify-content:center;
 	display:flex;
-	margin-top:50px;
+	margin-top:56px;
 	margin-bottom:50px;
-
+	font-size:20px;
 }
 
 
@@ -16,4 +16,5 @@
 }
 #bmember-table{
 	font-family: 'BM HANNA Pro', sans-serif;
+	text-align:center;
 }
