@@ -11,6 +11,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회원가입 페이지</title>
 
+<!-- jQuery 라이브러리 추가 -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".nav-link").click(function(){
+            // 클릭된 탭의 href 속성 값을 가져옵니다.
+            var targetTab = $(this).attr("href");
+
+            // 모든 탭을 숨김
+            $(".tab-pane").hide();
+
+            // 클릭된 탭을 보여줍니다.
+            $(targetTab).show();
+        });
+    });
+</script>
 </head>
 <body>
 	<div class="signup_v4 mb-30 card card_wrap ">
@@ -18,7 +34,7 @@
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation"><a
 					class="nav-link active" id="login-tab" data-toggle="tab"
-					href="#login" role="tab" aria-controls="login" aria-selected="true">멤버 회원가입</a>
+					href="#login" role="tab" aria-controls="login" aria-selected="ture">멤버 회원가입</a>
 				</li>
 				<li class="nav-item" role="presentation"><a class="nav-link"
 					id="register-tab" data-toggle="tab" href="#register" role="tab"
@@ -92,7 +108,7 @@
 					</form>
 
 				</div>
-				<div class="tab-pane fade" id="register" role="tabpanel"
+				<div class="tab-pane fade show active" id="register" role="tabpanel"
 					aria-labelledby="register-tab">
 					<form action="<c:url value='/manager/signup2'/>" method="post">
 						<div class="form-row">
