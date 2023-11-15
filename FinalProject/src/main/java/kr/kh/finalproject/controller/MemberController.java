@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.kh.finalproject.service.MemberService;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.UserVO;
-import kr.kh.finalproject.service.MemberService;
 
 @Controller
 
@@ -45,6 +44,14 @@ public class MemberController {
 		}
 		return "/main/message";
 	}
+	
+	
+	@RequestMapping(value="/member/mypage", method=RequestMethod.GET)
+	public String mypage() {
+		return "/member/mypage";
+	}
+	
+	
 	@ResponseBody
 	@PostMapping("/member/id/check")
 	public boolean idCheck(@RequestParam("id") String id){
@@ -137,4 +144,6 @@ public class MemberController {
 
         return ""; // 홈 페이지로 리다이렉트
     }
+	
+	
 }

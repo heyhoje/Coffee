@@ -6,6 +6,8 @@
 <head>
 <!-- signup css -->
 <link rel="stylesheet" href="<c:url value='/resources/css/signup.css'/>">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,6 +65,36 @@
 									class="form-control" id="inputPassword4"
 									placeholder="동일한 비밀번호를 입력하세요." name="me_pw2" required="">
 							</div>
+							
+						 <div class="form-row" style="width:100%">
+				                <div class="form-group col-md-12">
+				                    <label for="postcodify_search_button">우편번호</label>
+				                </div><br>
+				                <div class="form-group col-md-12">
+				                    <input type="text" name="me_post" class="form-control postcodify_postcode5" value="${address[0] }">
+				                </div>
+				                <div class="form-group col-md-12">
+				                    <button type="button" class="btn btn-primary" id="postcodify_search_button">검색</button>
+				                </div>
+				            </div>
+				
+				            <div class="form-row" style="width:100%">
+				                <div class="form-group col-md-12">
+				                    <label for="address1">도로명 주소</label>
+				                </div><br>
+				                <div class="form-group col-md-12">
+				                    <input type="text" class="form-control postcodify_address" name="me_address" id="address1"  value="${address[1] }">
+				                </div>
+				            </div>
+				
+				            <div class="form-row" style="width:100%">
+				                <div class="form-group col-md-12">
+				                    <label for="address2">상세주소</label>
+				                </div><br>
+			              	 <div class="form-group col-md-12">	
+				                    <input type="text" class="form-control postcodify_details" name="me_address2" id="address2"  value="${address[2] }">
+				                </div>
+				            </div>
 
 						</div>
 						<input type="hidden" name="user_aorb" value="회원">
@@ -188,6 +220,6 @@
 			</div>
 		</div>
 	</div>
-
+	<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 </body>
 </html>
