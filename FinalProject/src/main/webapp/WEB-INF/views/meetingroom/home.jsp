@@ -83,11 +83,11 @@
 					</td>
 					<td>
 						<div class="btn btn-primary" id="reservation-btn">
-							<a href="javascript:openPop()" style="width:100%;" onclick="operationTime(${mL.index})" >예약하기</a>
+							<a href="javascript:openPop()" style="width:100%;" onclick="operationTime(${mL.index})">예약하기</a>
 						</div>
-<div class="popup_layer" id="popup_layer" style="display: none;">
-  <div class="popup_box">
-      <div style="height: 20px; width: 100%;">
+		<div class="popup_layer" id="popup_layer" style="display: none;">
+  			<div class="popup_box">
+      		<div style="height: 20px; width: 100%;">
         <a href="javascript:closePop();" class="m_header-banner-close" width="30px" height="30px">
         	<button class="closebutton">x</button>
         </a>
@@ -105,7 +105,8 @@
          				
 	         		</div>
 	         	<div class="reservationbutton-box">
-	         		<button class="reservationbutton">예약하기</button>
+	         		<button class="reservationbutton" onclick="reservationThis">예약하기</button>
+	         		
 	         	</div>
          	</div>
       <!--팝업 버튼 영역-->

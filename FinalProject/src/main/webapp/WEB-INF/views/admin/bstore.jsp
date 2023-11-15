@@ -6,14 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입 승인 페이지</title>
-
+ <link rel="stylesheet" type="text/css" href="/resources/css/bstore.css">
 </head>
 <body>
 
 	<div class="container">
-	<h4 class="pt-4">매장 등록 승인</h4>
+	<h4 class="pt-4" id="regi-store">매장 등록 승인</h4>
 		            
-		<table class="table table-hover">
+		<table class="table table-hover" id="regi-table">
 			<thead>
 				<tr>
 					<th>매장번호</th>

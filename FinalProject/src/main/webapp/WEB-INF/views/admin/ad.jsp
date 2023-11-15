@@ -6,13 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>프로모션 승인 페이지</title>
+ <link rel="stylesheet" type="text/css" href="/resources/css/ad.css">
 </head>
 <body>
 
-	<div class="container">
-	<h4 class="pt-4">프로모션/광고 승인</h4>
+	<div class="container" id="ad-container">
+	<h4 class="pt-4" id="ad-title">프로모션/광고 승인</h4>
 		            
-		<table class="table table-hover">
+		<table class="table table-hover" id="ad-table">
 			<thead>
 				<tr>
 					<th>번호</th>

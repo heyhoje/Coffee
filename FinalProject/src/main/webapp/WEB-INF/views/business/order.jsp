@@ -45,7 +45,8 @@
 	    
     
     $(document).ready(function(){
-
+		
+    	var userID = 
         var urlEndPoint = 'http://localhost:8080/Notification';
         var eventsource = new EventSource(urlEndPoint);
         eventsource.addEventListener('INIT', function(event){

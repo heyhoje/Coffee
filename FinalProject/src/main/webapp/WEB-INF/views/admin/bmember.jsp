@@ -6,14 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입 승인 페이지</title>
-
+ <link rel="stylesheet" type="text/css" href="/resources/css/bmember.css">
 </head>
 <body>
 
 	<div class="container">
-	<h4 class="pt-4">사업자회원 승인</h4>
-		            
-		<table class="table table-hover">
+	<div class="bmember-title-layout">
+	<h4 class="bmember-title">사업자회원 승인</h4>	
+	</div>
+		<table class="table table-hover" id="bmember-table">
 			<thead>
 				<tr>
 					<th>아이디</th>

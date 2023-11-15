@@ -14,7 +14,8 @@ public interface GalleryDAO {
 
 	List<GalleryTypeVO> selectGalleryTypeList();
 
-	int selectGalleryCount(@Param("cri")Criteria cri);
+	int selectGalleryCount(Criteria cri);
+
 
 
 }
