@@ -20,6 +20,7 @@ public class AutoLoginInterceptor2 extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		
 		HttpSession session = request.getSession();
 		ManagerVO user2 = (ManagerVO)session.getAttribute("user2");
 		

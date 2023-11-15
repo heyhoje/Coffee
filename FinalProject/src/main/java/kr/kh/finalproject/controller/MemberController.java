@@ -91,19 +91,13 @@ public class MemberController {
 //		Object user = session.getAttribute("user"); // MemberVO user = (MemberVO)session.getAttribute("user"); 
 //		session.removeAttribute("user");
 		
-		MemberVO user = (MemberVO)session.getAttribute("user"); // MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO user = (MemberVO)session.getAttribute("user");
 		
-		// session_limit null값, 없데이트, 세션에서 user정보 제거
+		// session_limit null값, 업데이트, 세션에서 user정보 제거
 		user.setMe_session_limit(null);
 		memberService.updateMemberSession(user); // 자동로그인을 안하기 위해
 		
-		session.removeAttribute("user"); // 일반 로그아웃을 위해(세션에서만 유저정보를 없애면 로그인안한거로 인식됨)메퍼에서 delete 안하고도 리밋값 null된 유저정보가 여기서 삭제되는건가? 세션에서만 삭제하면 되는건가? 
-		
-		/*if(user != null) {
-			user.setMe_session_limit(null);
-			memberService.updateMemberSession(user); // 여기는 왜 주석처리인지..? 
-			// 리밋에 null값 줘놓고 무엇을 업데이트 할까? = 세션아이디를 지운다. 만료니까? 만료되면 자동으로 지워지나????
-		}*/
+		session.removeAttribute("user"); // 일반 로그아웃을 위해(세션에서만 유저정보를 없애면 로그인안한거로 인식됨)
 		
 		model.addAttribute("msg", "로그아웃 성공!");
 		model.addAttribute("url", "");

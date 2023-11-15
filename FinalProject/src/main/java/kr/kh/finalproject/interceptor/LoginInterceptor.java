@@ -5,7 +5,6 @@ import java.sql.Date;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
@@ -79,15 +78,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			
 		}else if(type.equals("b")) {//사업자 로그인
 			// 회원 정보가 있는지 확인 => 컨트롤러가 model에 다음 user2 정보가 있는지 확인
-			ManagerVO buser = (ManagerVO) modelAndView.getModel().get("buser"); // 그냥 user에 담아도 되는건지? 일반회원과 구분이 안되지 않나?
-			if (buser == null) {
+			ManagerVO user = (ManagerVO) modelAndView.getModel().get("buser");
+			if (user == null) {
 				return;
 			}
 			// (!null) 있으면 세션에 저장, 저장한 이름을 잘 기억 => 곳곳에서 사용될 예정
-			request.getSession().setAttribute("buser", buser); //화면에서 buser로 쓸꺼면 변수값도 buser로 통일 요망
+			request.getSession().setAttribute("buser", user);
 			
 			// 자동로그인 체크를 안했으면
-			if(!buser.isAutoLogin()) {
+			if(!user.isAutoLogin()) {
 				return;
 			}
 			// 했으면 세션아이디 저장? 생성?
@@ -106,11 +105,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			
 			// DB 회원 정보에 쿠키 정보를 전달
 			Date date = new Date(System.currentTimeMillis() + time * 1000);
-			buser.setBm_session_id(bmSessionId);
-			buser.setBm_session_limit(date);
+			user.setBm_session_id(bmSessionId);
+			user.setBm_session_limit(date);
 			
 			// 서비스에 업데이트 일시킴
-			managerService.updateBMemberSession(buser);
+			managerService.updateBMemberSession(user);
 			
 		}else if (type.equals("k")) { // 카카오 로그인인 경우 (카카오로그인은 자동로그인을 지원하지 않는다.라면 자동로그인 작업 안해도됨)
 	        UserVO user = (UserVO) modelAndView.getModel().get("user");

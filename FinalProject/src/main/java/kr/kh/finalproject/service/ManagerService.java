@@ -14,7 +14,7 @@ public interface ManagerService {
 	ManagerVO login(ManagerVO manager);
 
 	// 사업자회원 - 자동 로그인 
-	void updateBMemberSession(ManagerVO buser);
+	void updateBMemberSession(ManagerVO user);
 
 	ManagerVO getBMemberBySessionId(String value);
 
