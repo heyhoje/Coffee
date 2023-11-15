@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,8 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.kh.finalproject.service.BagService;
 import kr.kh.finalproject.vo.MemberVO;
-import kr.kh.finalproject.vo.MenuVO;
 import kr.kh.finalproject.vo.Option_ChoiceVO;
+import kr.kh.finalproject.vo.ShopVO;
 
 
 @Controller
@@ -34,12 +33,16 @@ public class BagController {
 	
 	
 	@RequestMapping(value="/order/bag", method=RequestMethod.GET)
-	public String signup(HttpSession session, MenuVO menu, Model model) {
+	public String signup(HttpSession session, Model model) {
     	MemberVO user = (MemberVO)session.getAttribute("user");
     	List<Option_ChoiceVO> jangbaguni = bagService.bagList(user);
-
+    	List<ShopVO> shop = bagService.shopInfo(user);
+    	int point = bagService.getPoint(user);
+    	int basketNum = bagService.getBasketNum(user);
     	
-    	model.addAttribute("menu", menu);
+    	model.addAttribute("basketNum", basketNum);
+    	model.addAttribute("point", point);
+    	model.addAttribute("shop", shop);
     	model.addAttribute("user", user);
     	model.addAttribute("jangbaguni", jangbaguni);
 		return "/order/bag";
@@ -87,7 +90,12 @@ public class BagController {
         }
         
         int bagBunho = bagService.bagBunho(user);
-
+        
+        int sameShop = bagService.sameShop(user);
+        int anotherShop = bagService.anotherShop(menu_num);
+        if(sameShop != anotherShop) {
+        	boolean flipBag = bagService.flipBag(user);
+        }
         boolean selectedOption = bagService.selectedOption(selected, total, menu_num, bagBunho);
         
 
@@ -101,7 +109,19 @@ public class BagController {
         
         return "";
     }
-
     
-	
+    @PostMapping("/order/bagend")
+    @ResponseBody
+    public String savePoint(@RequestParam("point") int point, @RequestParam("usePoint") int usePoint, @RequestParam("user") String user, @RequestParam("menuName") String menuName) {
+    	int givePoint = point/10;
+        boolean jugiPoint = bagService.givePoint(givePoint, user);
+        boolean patgiPoint = bagService.steelPoint(usePoint, user);
+        boolean makeOrderMenu_List = bagService.makeOrderMenu(menuName);
+        int getNumFromOM = bagService.getNumFromOM();
+        int getSbNum = bagService.getBasketNum1(user);
+        boolean makeOrderList = bagService.makeOrderList(user, getNumFromOM, getSbNum);
+        boolean deleteBag = bagService.killBag(user);
+
+        return "";
+    }	
 }

@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.kh.finalproject.service.AdvertisementService;
 import kr.kh.finalproject.service.ManagerService;
-import kr.kh.finalproject.service.PromotionService;
 import kr.kh.finalproject.service.ReviewService;
 import kr.kh.finalproject.service.StoreService;
+import kr.kh.finalproject.vo.AdvertisementVO;
 import kr.kh.finalproject.vo.ManagerVO;
-import kr.kh.finalproject.vo.PromotionVO;
+import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.ReviewVO;
 import kr.kh.finalproject.vo.StoreVO;
 
@@ -29,17 +30,19 @@ public class AdminController2 {
 	@Autowired
 	StoreService storeService;
 	@Autowired
-	PromotionService promotionService;
+	AdvertisementService advertisementService;
 	@Autowired
 	ReviewService reviewService;
 	
 	@GetMapping("/admin/home")
-	public String adminPage() {
+	public String adminPage(Model model, MemberVO member) {
 //		cri.setPerPageNum(5);
 //		List<ManagerVO> managerList = managerService.getManagerList(manager, cri);
 //		int totalCount = managerService.getTotalCount(manager, cri);
 //		PageMaker pm = new PageMaker(2, cri, totalCount);
-//		
+		MemberVO user = new MemberVO();
+		
+		model.addAttribute("user", user);
 //		model.addAttribute("pm", pm);
 //		model.addAttribute("manager", managerList);
 		return "/admin/home";
@@ -97,28 +100,29 @@ public class AdminController2 {
 		return map;
 	}
 	
-	/** 프로모션 승인 */
-	@GetMapping("/admin/promotion")
-	public String adminPromotion(Model model) {
-		// 프로모션 승인여부가 '0'인 프로모션 리스트 가져와
-		List<PromotionVO> prList = promotionService.getPromotionList(0);
+	/** 광고&프로모션 승인 */
+	@GetMapping("/admin/ad")
+	public String adminAdvertisement(Model model) {
+		// 프로모션 승인여부가 '0'인 광고&프로모션 리스트 가져와
+		List<AdvertisementVO> adList = advertisementService.getAdList(0);
+		System.out.println(adList);
 		
 		// 화면
-		model.addAttribute("prList", prList);
-		return "/admin/promotion";
+		model.addAttribute("adList", adList);
+		return "/admin/ad";
 	}
 	
 	// ajax - post 승인/거절 버튼 기능
-	@ResponseBody
-	@PostMapping("/admin/promotion")
-	public Map<String, Object> promotionPost(@RequestBody PromotionVO promotion){
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		boolean res = promotionService.updatePromotion(promotion);
-		
-		map.put("res", res);
-		return map;
-	}
+		@ResponseBody
+		@PostMapping("/admin/ad")
+		public Map<String, Object> advertisementPost(@RequestBody AdvertisementVO ad){
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			boolean res = advertisementService.updateAd(ad);
+			
+			map.put("res", res);
+			return map;
+		}
 	
 	/** 리뷰 등 기타 승인 
 	 *  전체 리뷰 리스트를 가져오니까 매개변수 보낼 필요 없겠지? */

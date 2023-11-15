@@ -47,9 +47,9 @@
                <span class="navbar-toggler-icon"></span>
                </button>
                <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ml-auto">
+              <ul class="navbar-nav ml-auto" style="font-weight:bold;">
 						<li class="nav-item active"><a class="nav-link"
-							href="resources/about.html" style="font-family: 'BM HANNA Pro', sans-serif; color:white;">소개</a></li>
+							href="<c:url value='/main/Introduce'/>" style="font-family: 'BM HANNA Pro', sans-serif; color:white;">소개</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/promotion/list'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">이벤트&프로모션</a></li>
 						<li class="nav-item"><a class="nav-link"

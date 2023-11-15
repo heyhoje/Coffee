@@ -6,20 +6,20 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입 승인 페이지</title>
-
+ <link rel="stylesheet" type="text/css" href="/resources/css/bstore.css">
 </head>
 <body>
 
 	<div class="container">
-	<h4 class="pt-4">매장 등록 승인</h4>
+	<h4 class="pt-4" id="regi-store">매장 등록 승인</h4>
 		            
-		<table class="table table-hover">
+		<table class="table table-hover" id="regi-table">
 			<thead>
 				<tr>
 					<th>매장번호</th>
-					<th>매장명</th>
-					<th>브랜드명</th>
 					<th>사업자아이디</th>
+					<th>브랜드명</th>
+					<th>매장명</th>
 					<th>영업시작</th>
 					<th>영업종료</th>
 					<th>승인상태</th>
@@ -30,9 +30,9 @@
 				<c:forEach items="${bsList}" var="bs">
 					<tr>
 						<td>${bs.st_num}</td>
-						<td>${bs.st_store_name}</td>
-						<td>${bs.st_br_name}</td>
 						<td>${bs.st_bm_id}</td>
+						<td>${bs.st_br_name}</td>
+						<td>${bs.st_store_name}</td>
 						<td>${bs.st_opentime}</td>
 						<td>${bs.st_closetime}</td>
 						<td><button class="btn btn-outline-primary pass" data-target="${bs.st_num}">승인</button>
@@ -54,6 +54,12 @@
 				st_num : st_num,
 				st_approval : 1
 			}
+			
+			if(!confirm('정말 승인하시겠습니까?')){
+				alert('승인을 취소했습니다.')
+				return;
+			}
+			
 			$.ajax({
 				async : true, //비동기 : true(비동기), false(동기)
 				url : '<c:url value="/admin/bstore"/>', 
@@ -80,6 +86,12 @@
 				st_num : st_num,
 				st_approval : 2
 			}
+			
+			if(!confirm('정말 거절하시겠습니까?')){
+				alert('거절을 취소했습니다.')
+				return;
+			}
+			
 			$.ajax({
 				async : true, //비동기 : true(비동기), false(동기)
 				url : '<c:url value="/admin/bstore"/>', 

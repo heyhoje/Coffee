@@ -4,7 +4,9 @@ import java.util.List;
 
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.Option_ChoiceVO;
+import kr.kh.finalproject.vo.ShopVO;
 import kr.kh.finalproject.vo.Shop_BasketVO;
+import kr.kh.finalproject.vo.StoreVO;
 
 public interface BagService {
 
@@ -19,6 +21,33 @@ public interface BagService {
 	List<Option_ChoiceVO> bagList(MemberVO user);
 
 	boolean deleteItem(int oc_num);
+
+	List<ShopVO> shopInfo(MemberVO user);
+
+	boolean givePoint(int givePoint, String user);
+
+	int getPoint(MemberVO user);
+
+	boolean steelPoint(int usePoint, String user);
+
+	boolean killBag(String user);
+
+	boolean makeOrderMenu(String menuName);
+
+	int getBasketNum(MemberVO user);
+	
+	int getNumFromOM();
+
+	boolean makeOrderList(String user, int getNumFromOM, int getSbNum);
+
+	int getBasketNum1(String user);
+
+	int sameShop(MemberVO user);
+
+	int anotherShop(int menu_num);
+
+	boolean flipBag(MemberVO user);
+
 
 
 }

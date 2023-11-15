@@ -14,19 +14,19 @@ public class ReviewServiceImp implements ReviewService{
 	@Autowired
 	ReviewDAO reviewDao;
 	
+	/** 리뷰게시판 */
+	@Override
+	public List<ReviewVO> getRvList() {
+
+		return reviewDao.selectRvList();
+	}
+	
 	/** 사이트 관리자*/
 	@Override
 	public List<ReviewVO> getReviewList() {
 
 		return reviewDao.selectReList();
 	}
-	
-	/** 리뷰게시판 */
-//	@Override
-//	public List<ReviewVO> getRvList() {
-//
-//		return reviewDao.selectRvList();
-//	}
 	
 	// 리뷰 삭제
 	@Override

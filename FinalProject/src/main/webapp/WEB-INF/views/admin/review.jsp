@@ -6,13 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>리뷰관리 페이지</title>
+ <link rel="stylesheet" type="text/css" href="/resources/css/review.css">
 </head>
 <body>
 
-	<div class="container">
-		<h4 class="pt-4">리뷰 관리</h4>
+	<div class="container" id="review-container">
+		<h4 class="pt-4" id="review-title">리뷰 관리</h4>
 		          
-			<table class="table table-hover">
+			<table class="table table-hover" id="review-table">
 				<thead>
 					<tr>
 						<th>번호</th>

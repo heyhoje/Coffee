@@ -10,8 +10,8 @@
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
     <!-- iamport.payment.js -->
-    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
- 
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script> 
+    
 </head>
 <body>
     <section class="cart">
@@ -23,6 +23,12 @@
                 <li>한 번에 한 매장에서만 주문 됩니다. 다른 매장 품목 추가하시면 장바구니 리셋!</li>                
             </ul>
         </div>
+        <div>
+        	<img src="image/keyboard.jpg" alt="magic keyboard">
+        	<div>가게 이름 : ${shop[0].bm_store_name}</div>   
+        	<div>가게 주소 : ${shop[0].bm_address}</div>
+        </div>        
+
         <table class="cart__list">
          	<tr>
 				<td colspan="2">상품정보</td>
@@ -38,7 +44,7 @@
 		    <c:set var="sumPrice" value="${menuPrice + optionPrice}"/>
             <tr>
                 <td><img src="image/keyboard.jpg" alt="magic keyboard"></td>
-                <td>${optionChoice.menu.mn_name}</td>
+                <td id="menuName">${optionChoice.menu.mn_name}</td>
                 <td>${optionChoice.oc_selected }</td>
                 <td>
 					<button onclick="updateQuantity(${index.index}, 'decrease')">-</button>
@@ -63,6 +69,12 @@
             </tr>
         
         </table>
+        <div>
+        	<div>보유 포인트 : ${point }</div>
+        	<input type="number" id="usePoint" placeholder="사용할 Point를 입력해주세요." value="0"/>
+        </div>
+        
+        
         <div class="cart__mainbtns">
             <button class="cart__bigorderbtn left">쇼핑 계속하기</button>
             <button class="cart__bigorderbtn right" onclick="requestPay()">주문하기</button>
@@ -75,12 +87,25 @@ var menuPrices = [];
 var optionPrices = [];
 var quantities = [];
 var killAme = [];
+var user = "carpcarp"; // ${user}
+var menuNameList = [];
+var IMP = window.IMP; 
+IMP.init("imp14674302"); 
+var today = new Date();   
+var hours = today.getHours(); // 시
+var minutes = today.getMinutes();  // 분
+var seconds = today.getSeconds();  // 초
+var milliseconds = today.getMilliseconds();
+var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+
+
 
 <c:forEach items="${jangbaguni}" var="optionChoice" varStatus="vss">
     menuPrices[${vss.index}] = ${optionChoice.menu.mn_price};
     optionPrices[${vss.index}] = ${optionChoice.oc_selected_price};
     quantities[${vss.index}] = 1;
     killAme[${vss.index}] = ${optionChoice.oc_num};
+    menuNameList.push('${optionChoice.menu.mn_name}');
 </c:forEach>
 
 function updateQuantity(num, operation) {
@@ -138,35 +163,79 @@ function deleteThis(numnum) {
     });
 }
 
-var IMP = window.IMP; 
-IMP.init("imp14674302"); 
 
-var today = new Date();   
-var hours = today.getHours(); // 시
-var minutes = today.getMinutes();  // 분
-var seconds = today.getSeconds();  // 초
-var milliseconds = today.getMilliseconds();
-var makeMerchantUid = hours +  minutes + seconds + milliseconds;
 
 
 function requestPay() {
-    IMP.request_pay(
-    	{
-        pg : "danal_tpay",
-        pay_method : 'card',
-        merchant_uid: "IMP"+makeMerchantUid, 
-        name : '당근 10kg',
-        amount : 1004,
-        buyer_email : 'Iamport@chai.finance',
-        buyer_name : '아임포트 기술지원팀',
-        buyer_tel : '010-1234-5678',
-        buyer_addr : '서울특별시 강남구 삼성동',
-        buyer_postcode : '123-456'
-    }, function (rsp) { // callback
-        if (rsp.success) {
-            console.log(rsp);
-        } else {
-            console.log(rsp);
+	var usePoint = 0;
+	var totalPrice = 0;
+	var menuName = '';
+	
+    <c:forEach items="${jangbaguni}" var="optionChoice" varStatus="vs">
+	    var quantity = parseInt(document.getElementById('quantity_' + ${vs.index}).textContent);
+	    var menuPrice = ${optionChoice.menu.mn_price};
+	    var optionPrice = ${optionChoice.oc_selected_price};
+	    
+	    var sumPrice = (menuPrice + optionPrice) * quantity;
+	    totalPrice += sumPrice;
+	</c:forEach>
+	
+	document.getElementById('totalPrice').textContent = totalPrice;
+	usePoint = parseInt(document.getElementById('usePoint').value);
+	var newTotalPrice = totalPrice - usePoint;
+	
+	
+	if(newTotalPrice == 0) {
+		allInOneAfterPay(totalPrice, usePoint);
+	}else {
+	    IMP.request_pay(
+	    	{
+	        pg : "danal_tpay",
+	        pay_method : 'card',
+	        merchant_uid: "IMP"+makeMerchantUid, 
+	        name : '커피의 민족',
+	        amount : newTotalPrice,
+	        buyer_email : 'Iamport@chai.finance',
+	        buyer_name : '아임포트 기술지원팀',
+	        buyer_tel : '010-1234-5678',
+	        buyer_addr : '서울특별시 강남구 삼성동',
+	        buyer_postcode : '123-456'
+	    }, function (rsp) { // callback
+	        if (rsp.success) {
+	            console.log(rsp);
+	    		allInOneAfterPay(totalPrice, usePoint);
+	        } else {
+	            console.log(rsp);
+	        }
+	    });
+	}
+}
+
+function allInOneAfterPay(totalPrice, usePoint) {
+	
+	var point = totalPrice - usePoint;
+    var menuName = menuNameList.join(',');
+	console.log({
+        point: point,
+        usePoint : usePoint,
+        user: user,
+        menuName: menuName
+    });
+    $.ajax({
+        type: 'POST',
+        url: '<c:url value="/order/bagend"/>',
+        data: {
+            point: point,
+            usePoint : usePoint,
+            user: user,
+            menuName: menuName
+        },
+        success: function (response) {
+        	alert('주문이 완료되었습니다.');
+        },
+        error: function (error) {
+            console.error('Error in allInOneAfterPay:', error);
+            alert(error.responseText); // Display the error message
         }
     });
 }

@@ -136,60 +136,36 @@ function displayMarker(place) {
     });
 }
 
+
 //마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
-var positions = [
-    {
-        content:
-        '<div class="wrap">' + 
-        '    <div class="info">' + 
-        '        <div class="title">' + 
-        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-        '        </div>' + 
-        '        <div class="body">' + 
-        '            <div class="img">' +
-        '                <img src="<c:url value='/resources/images/starbucks1.png'/>" width="198" height="120">' + 
-        '           </div>' + 
-        '            <div class="desc">' + 
-        '				 <div class="ellipsis">스타벅스 역삼포스코</div>'+ 
-        '                <div class="ellipsis">서울 강남구 테헤란로 134</div>' + 
-        '                <div class="number ellipsis" id="phoneicon">☎1522-3232	</div>' + 
-        '                <a href="https://www.starbucks.co.kr/index.do" target="_blank" class="link"><button type="button" class="btn btn-primary" onclick="">홈페이지</button></a>' + 
-        '            </div>' + 
-        '        </div>' + 
-        '    </div>' +    
-        '</div>',
-        latlng: new kakao.maps.LatLng(37.4995, 127.0338)
-    },
-    {
-        content:  '<div class="wrap">' + 
-        '    <div class="info">' + 
-        '        <div class="title">' + 
-        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-        '        </div>' + 
-        '        <div class="body">' + 
-        '            <div class="img">' +
-        '                <img src="<c:url value='/resources/images/Mammothcoffee.png'/>" width="198" height="120">' + 
-        '           </div>' + 
-        '            <div class="desc">' + 
-        '				 <div class="ellipsis">매머드 역삼유토빌점</div>'+ 
-        '                <div class="ellipsis">서울 강남구 논현로87길 41 1층 104-1호</div>' + 
-        '                <div class="number ellipsis" id="phoneicon">☎1522-3232	</div>' + 
-        '                <a href="https://www.starbucks.co.kr/index.do" target="_blank" class="link"><button type="button" class="btn btn-primary" onclick="">홈페이지</button></a>' + 
-        '            </div>' + 
-        '        </div>' + 
-        '    </div>' +    
-        '</div>',
-        latlng: new kakao.maps.LatLng(37.4989, 127.0336)
-    },
-    {
-        content: '<div>컴포즈커피 논현85길점</div>', 
-        latlng: new kakao.maps.LatLng(37.4979, 127.0336)
-    },
-    {
-        content: '<div>해머스미스커피 역삼휘트니스점</div>',
-        latlng: new kakao.maps.LatLng(37.4991, 127.0331)
-    }
-];
+	var positions = [
+    	<c:forEach items="${shopList}" var="shopList" varStatus="vs">
+
+	    {
+	        content:
+	        '<div class="wrap">' + 
+	        '    <div class="info">' + 
+	        '        <div class="title">' + 
+	        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+	        '        </div>' + 
+	        '        <div class="body">' + 
+	        '            <div class="img">' +
+	        '                <img src="<c:url value='/resources/images/starbucks1.png'/>" width="198" height="120">' + 
+	        '           </div>' + 
+	        '            <div class="desc">' + 
+	        '				 <div class="ellipsis">${shopList.bm_store_name}</div>'+ 
+	        '                <div class="ellipsis">${shopList.bm_address}</div>' + 
+	        '                <div class="number ellipsis" id="phoneicon">☎${shopList.bm_phone}</div>' + 
+	        '                <a href="/store/menu/${shopList.st_num}/1" target="_blank" class="link"><button type="button" class="btn btn-primary" onclick="">홈페이지</button></a>' + 
+	        '            </div>' + 
+	        '        </div>' + 
+	        '    </div>' +    
+	        '</div>',
+	        latlng: new kakao.maps.LatLng(${shopList.bm_geocoding_lati}, ${shopList.bm_geocoding_longi}),
+	    },
+		</c:forEach>	    	
+	];
+	
 var iwRemoveable = true;
 
 for (var i = 0; i < positions.length; i ++) {
