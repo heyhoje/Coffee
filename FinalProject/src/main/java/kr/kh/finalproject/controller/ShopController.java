@@ -36,6 +36,7 @@ public class ShopController {
 		cri.setPerPageNum(10);
 		//서비스에게 게시글 리스트를 가져오라고 시킴
 		List<ShopVO> shopList = shopService.getShopList(cri);
+		// 위도, 경도의 정보가 둘다 null이 아닐 경우 거리 계산을 실행
 		if(ipLati != null && ipLongi != null) {
 			shopList = shopService.getShopList(cri, ipLati, ipLongi);
 		}

@@ -1,11 +1,20 @@
 package kr.kh.finalproject.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.kh.finalproject.service.BusinessService;
+
 @Controller
 public class BusinessController {
+	
+	@Autowired
+	private BusinessService businessService;
 
 	// 사업자페이지 [홈]
 	@RequestMapping(value = "/business/home", method = RequestMethod.GET)
