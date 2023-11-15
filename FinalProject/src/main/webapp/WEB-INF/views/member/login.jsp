@@ -283,9 +283,11 @@
 			console.log(t);
 		}
 	</script>
-
 	<script>
-	<!-- 카카오 로그인  -->
+	<!-- 카카오 로그인 -->
+		 function saveToDos(token) { //item을 localStorage에 저장합니다. 
+	         typeof(Storage) !== 'undefined' && sessionStorage.setItem('AccessKEY', JSON.stringify(token)); 
+	     };
 		Kakao.init('a5737697fa5f3dd128397ef34179de7a'); //발급받은 키 중 javascript키를 사용해준다.
 		console.log(Kakao.isInitialized()); // sdk초기화여부판단
 		//카카오로그인
@@ -307,8 +309,8 @@
 	                                phone_number : response.kakao_account.phone_number,
 	                            },
 	                            success: function (data) {
-	                            	console.log(data);
-	                            	alert("로그인이 성공했습니다.");
+	                                alert("로그인이 완료되었습니다.");
+	                                window.location.href = '/';
 	                            },
 	                            error: function (xhr, status, error) {
 	                                console.error(error);
@@ -340,7 +342,8 @@
 				Kakao.Auth.setAccessToken(undefined)
 			}
 		}
-	</script>
+	</script> 
+	-->
 	<!-- 네이버 로그인 -->
 	<script type="text/javascript"
 		src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"

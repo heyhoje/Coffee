@@ -30,5 +30,8 @@ public interface MemberService {
 
 	UserVO selectUserKakaoInfo(String userId);
 
-	void updateKakaoMemberSession(KakaoVO kuser);
+	boolean checkUserExists(String kakaoId);
+
+	MemberVO getMemberByKakaoId(String kakaoId);
+
 }

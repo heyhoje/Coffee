@@ -114,13 +114,19 @@ public class MemberServiceImp implements MemberService {
 	public UserVO selectUserKakaoInfo(String userId) {
 		return memberDao.selectUserKakaoInfo(userId);
 	}
-	@Override
-	public void updateKakaoMemberSession(KakaoVO kuser) {
-		if(kuser == null) {
-			return;
-		}
-		memberDao.updateKakaoMemberSession(kuser);
-		
+	@Autowired
+	public MemberServiceImp(MemberDAO memberDao) {
+	    this.memberDao = memberDao;
 	}
-	
+
+	@Override
+	public boolean checkUserExists(String kakaoId) {
+		int count = memberDao.checkUserExists(kakaoId);
+        return count > 0;
+	}
+
+	@Override
+	public MemberVO getMemberByKakaoId(String kakaoId) {
+	    return memberDao.getMemberByKakaoId(kakaoId);
+	}
 }

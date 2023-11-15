@@ -1,6 +1,7 @@
 package kr.kh.finalproject.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,6 @@ import kr.kh.finalproject.vo.UserVO;
 import kr.kh.finalproject.service.MemberService;
 
 @Controller
-
 public class MemberController {
 
 	@Autowired
@@ -118,13 +118,21 @@ public class MemberController {
 
 	// 카카오
 	@RequestMapping("/kakaoLoginCallback")
-	public String kakaoLoginCallback(Model model, HttpServletRequest request) {
-		try {
+	public String kakaoLoginCallback(Model model, HttpServletRequest request, HttpServletResponse response) {
 			String kakaoId = request.getParameter("kakaoId");
 			String email = request.getParameter("email");
 			String name = request.getParameter("name");
 			String phone_number = request.getParameter("phone_number");
 
+		    boolean isUserExisting = memberService.checkUserExists(kakaoId);
+
+		    if (isUserExisting) {
+		        MemberVO existingUser = memberService.getMemberByKakaoId(kakaoId);
+		        if (existingUser != null) {
+		            HttpSession session = request.getSession();
+		            session.setAttribute("user", existingUser);
+		        }
+		    } else {
 			// 카카오 로그인 정보를 User 테이블에 삽입
 			UserVO user = new UserVO();
 			user.setUser_id(kakaoId);
@@ -136,22 +144,16 @@ public class MemberController {
 
 			// 카카오 로그인 정보를 Member 테이블에 삽입
 			MemberVO member = new MemberVO();
-			member.setKakao_user_id(kakaoId);
-			member.setKakao_email(email);
-			member.setKakao_name(name);
+			member.setMe_user_id(kakaoId);
+			member.setMe_email(email);
+			member.setMe_name(name);
 			memberService.insertMemberKakao(member);
 			System.out.println(member);
-
-			return "/"; // 홈 페이지로 리다이렉트
-		} catch (DuplicateKeyException e) {
-			// 중복 키 예외 처리
-			model.addAttribute("error", "이미 가입된 사용자입니다.");
-			return "/"; // 에러 페이지로 리다이렉트 또는 해당 메시지를 화면에 표시
-		} catch (Exception e) {
-			// 기타 예외 처리
-			model.addAttribute("error", "알 수 없는 오류가 발생했습니다.");
-			return "/"; // 에러 페이지로 리다이렉트 또는 해당 메시지를 화면에 표시
+			
+			
+	        HttpSession session = request.getSession();
+	        session.setAttribute("user", member);
 		}
+		    return "/main/message";
 	}
-
 }

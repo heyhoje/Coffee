@@ -26,7 +26,9 @@ public interface MemberDAO {
 	void insertUserKakaoInfo(UserVO user);
 	UserVO selectUserKakaoInfo(String userId);
 
-	void updateKakaoMemberSession(KakaoVO kuser);
+	int checkUserExists(String kakaoId);
+
+	MemberVO getMemberByKakaoId(String kakaoId);
 
 	
 }

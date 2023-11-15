@@ -114,30 +114,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			managerService.updateBMemberSession(buser);
 			
 		}else if (type.equals("k")) { // 카카오 로그인인 경우 (카카오로그인은 자동로그인을 지원하지 않는다.라면 자동로그인 작업 안해도됨)
-	        KakaoVO kuser = (KakaoVO) modelAndView.getModel().get("kuser");
-	        if (kuser != null) {
-	            request.getSession().setAttribute("kuser", kuser);
-	            memberService.updateKakaoMemberSession(kuser);
+			MemberVO user = (MemberVO) modelAndView.getModel().get("user");
+	        if (user != null) {
+	            request.getSession().setAttribute("kuser", user);
 	        }
 	    }
-		
-		
-		/*
-		 * MemberVO user = (MemberVO) modelAndView.getModel().get("user"); 
-		 * if(!user.isAutoLogin()) { 
-		 * 		return; 
-		 * }
-		 * 
-		 * String sessionId = request.getSession().getId(); 
-		 * Cookie cookie = new Cookie("FinalProject", sessionId); 
-		 * cookie.setPath("/"); 
-		 * int time = 60 * 60 * 24 * 7; cookie.setMaxAge(time); 
-		 * response.addCookie(cookie);
-		 * 
-		 * Date date = new Date(System.currentTimeMillis() + time * 1000);
-		 * user.setMe_session_id(sessionId); 
-		 * user.setMe_session_limit(date);
-		 * memberService.updateMemberSession(user);
-		 */		
 	}
 }
