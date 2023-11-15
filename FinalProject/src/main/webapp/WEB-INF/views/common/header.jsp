@@ -67,7 +67,7 @@
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/admin/home'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">관리자 </a></li>	
 						<li class="nav-item"><span
-							style="color: white; float: right;">${user.me_user_id}</span></li>
+							style="color: white; float: right;"></span></li>
 						<c:if test="${user == null && user2 == null}">
 							<li class="form-group" id="loginButton" style="justify-content:center; display:flex;"><input type="submit" 
 								style="margin-right: 10px; background-color: floralwhite; margin-left:10px; justify-content:center; display:flex;  font-family: 'BM HANNA Pro', sans-serif;"  value="회원 로그인" class="btn login_btn" data-toggle="modal"
@@ -81,7 +81,7 @@
 						</c:if>
 						<c:if test="${user != null}">
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/member/mypage'/>" style="color: white; font-family: 'BM HANNA Pro', sans-serif; float: right;">${user.me_name}</a></li>
+							href="<c:url value='/member/mypage'/>" style="color: beige; font-family: 'BM HANNA Pro', sans-serif; float: right;">${user.me_user_id}</a></li>
 							<li class="form-group" id="logoutButton"><input
 								style="margin-right: 10px;" type="submit" value="로그아웃"
 								class="btn float-right logout_btn" data-toggle="modal"
