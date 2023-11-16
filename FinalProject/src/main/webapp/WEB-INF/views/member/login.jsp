@@ -10,7 +10,7 @@
 
 		<!-- style css -->
 		<link rel="stylesheet" href="<c:url value='/resources/css/login.css'/>">
-      
+      	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
       <!--Fontawesome CDN-->
 	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
       <!-- 카카오 로그인 -->
@@ -223,7 +223,7 @@
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<input
-										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto; margin-left: 134%"
+										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto; margin-left: 144%;"
 										type="submit" value="로그아웃" class="btn logout_btn">
 								</div>
 							</div>
@@ -283,9 +283,11 @@
 			console.log(t);
 		}
 	</script>
-
 	<script>
-	<!-- 카카오 로그인  -->
+	<!-- 카카오 로그인 -->
+		 function saveToDos(token) { //item을 localStorage에 저장합니다. 
+	         typeof(Storage) !== 'undefined' && sessionStorage.setItem('AccessKEY', JSON.stringify(token)); 
+	     };
 		Kakao.init('a5737697fa5f3dd128397ef34179de7a'); //발급받은 키 중 javascript키를 사용해준다.
 		console.log(Kakao.isInitialized()); // sdk초기화여부판단
 		//카카오로그인
@@ -298,7 +300,7 @@
 							console.log(response);
 							// 로그인 정보를 서버로 보내는 Ajax 요청 추가
 	                        $.ajax({
-	                            url: 'kakaoLoginCallback', // 서버의 콜백 URL로 변경
+	                            url: '/kakaoLoginCallback', // 서버의 콜백 URL로 변경
 	                            type: 'POST',
 	                            data: {
 	                                kakaoId: response.id,
@@ -307,8 +309,8 @@
 	                                phone_number : response.kakao_account.phone_number,
 	                            },
 	                            success: function (data) {
-	                            	console.log(data);
-	                            	alert("로그인이 성공했습니다.");
+	                                alert("로그인이 완료되었습니다.");
+	                                window.location.href = '/';
 	                            },
 	                            error: function (xhr, status, error) {
 	                                console.error(error);
@@ -340,7 +342,8 @@
 				Kakao.Auth.setAccessToken(undefined)
 			}
 		}
-	</script>
+	</script> 
+	-->
 	<!-- 네이버 로그인 -->
 	<script type="text/javascript"
 		src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"

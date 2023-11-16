@@ -7,23 +7,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>사이트관리자 페이지</title>
-
-	<style>
-		.container {
-		margin: 0 auto; max-width: 1000px;
-		}
-		.btn-group {
-	    display: flex;
-	    justify-content: center;
-	  	}
-	  	
-	</style>
+ <link rel="stylesheet" type="text/css" href="/resources/css/adminhome.css">
+	
 </head>
 <body>
-	<h2 style="text-align: center;" class="mt-3 mb-3">사이트 관리자 페이지 입니다.</h2>
+	<h2 class="bm-subject">사이트 관리자 페이지 입니다.</h2>
 	
 	
-	<div class="container">
+	<div class="bm-menu-container">
 	  <div class="btn-group btn-group-lg">
 	    <a href="<c:url value='/admin/bmember'/>" class="btn btn-outline-primary">사업자 회원가입 승인</a>
 	    <a href="<c:url value='/admin/bstore'/>" class="btn btn-outline-primary">매장등록 승인</a>

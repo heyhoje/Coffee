@@ -9,8 +9,8 @@
 	</insert>
 	
 	<insert id="insertMember">
-		insert into member(me_user_id, me_pw, me_name, me_email)
-		values (#{member.user_id}, #{member.me_pw}, #{member.me_name}, #{member.me_email})
+		insert into member(me_user_id, me_pw, me_name, me_email, me_address, me_post, me_address2)
+		values (#{member.user_id}, #{member.me_pw}, #{member.me_name}, #{member.me_email}, #{member.me_address}, #{member.me_post}, #{member.me_address2})
 	</insert>
 	
 	<select id="selectMember" resultType="kr.kh.finalproject.vo.MemberVO">
@@ -37,6 +37,14 @@
 	
 	
 	<!-- 카카오 로그인 -->
+	<select id="checkUserExists" resultType="int" parameterType="String">
+	    SELECT COUNT(*) FROM user WHERE user_id = #{kakaoId}
+	</select>
+	
+	<select id="getMemberByKakaoId" resultType="kr.kh.finalproject.vo.MemberVO" parameterType="String">
+	    SELECT * FROM user WHERE user_id = #{kakaoId}
+	</select>
+	
 	<insert id="insertUserKakaoInfo" parameterType="kr.kh.finalproject.vo.UserVO">
 	    INSERT INTO user (user_id, user_aorb, user_phone)
 	    VALUES (#{user_id}, #{user_aorb}, #{user_phone})
@@ -50,13 +58,12 @@
 
 	<insert id="insertMemberKakao" parameterType="kr.kh.finalproject.vo.MemberVO">
         INSERT INTO member (me_user_id, me_email, me_name)
-        VALUES (#{kakao_user_id}, #{kakao_email}, #{kakao_name})
+        VALUES (#{me_user_id}, #{me_email}, #{me_name})
     </insert>
     
     <select id="selectMemberKakao" parameterType="String" resultType="kr.kh.finalproject.vo.MemberVO">
         SELECT me_user_id, me_email, me_name
         FROM member
-        WHERE kakao_user_id = #{kakao_user_id}
+        WHERE me_user_id = #{me_user_id}
     </select>
-    
 </mapper>

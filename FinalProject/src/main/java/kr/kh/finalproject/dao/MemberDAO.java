@@ -2,6 +2,7 @@ package kr.kh.finalproject.dao;
 
 import org.apache.ibatis.annotations.Param;
 
+import kr.kh.finalproject.vo.KakaoVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.UserVO;
 
@@ -25,4 +26,9 @@ public interface MemberDAO {
 	void insertUserKakaoInfo(UserVO user);
 	UserVO selectUserKakaoInfo(String userId);
 
+	int checkUserExists(String kakaoId);
+
+	MemberVO getMemberByKakaoId(String kakaoId);
+
+	
 }
