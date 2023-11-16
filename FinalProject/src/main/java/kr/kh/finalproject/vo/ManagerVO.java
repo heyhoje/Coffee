@@ -13,16 +13,19 @@ public class ManagerVO {
    private String bm_num; //사업자 번호
    private String bm_phone; //매장 전화번호
    
+   private String bm_manager; //담당자
    private String bm_store_name; //매장명
    private String bm_contents; // 매장정보
+   
    private String bm_address; // 매장 주소
    private Double bm_geocoding_lati;
    private Double bm_geocoding_longi;
    
-   private String bm_manager; //담당자
+   // bm_contents에 쓰도록 유도
    private int bm_seat; // 매장 내 좌석
    private String bm_parking; // 주차 가능 여부;
    private String bm_drive; // 드라이브 쓰루 여부;
+   
    
    // 자동로그인
    private boolean autoLogin;

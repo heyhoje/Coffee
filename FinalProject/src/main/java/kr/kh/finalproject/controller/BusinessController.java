@@ -4,17 +4,28 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.kh.finalproject.service.BusinessService;
+import kr.kh.finalproject.service.ManagerService;
+import kr.kh.finalproject.service.StoreService;
+import kr.kh.finalproject.vo.ManagerVO;
 
 @Controller
 public class BusinessController {
 	
 	@Autowired
 	private BusinessService businessService;
+	
+	// 매장등록( bmember + bstore ) 
+	@Autowired
+	private ManagerService managerService;
+	@Autowired
+	private StoreService storeService;
 
 	// 사업자페이지 [홈]
 	@RequestMapping(value = "/business/home", method = RequestMethod.GET)
@@ -49,5 +60,25 @@ public class BusinessController {
 	public String sales() {
 
 		return "/business/sales";
+	}
+	
+	/** 매장 등록 */
+	@GetMapping("/business/plusinfo")
+	public String plusInfo(HttpSession session, Model model) {
+		// ManagerVO buser = managerService.getBMember();
+		
+		ManagerVO buser = (ManagerVO)session.getAttribute("buser");
+		System.out.println(buser);
+		
+		model.addAttribute("buser", buser);
+		return "/business/plusinfo";
+	}
+	
+	@PostMapping("/business/plusinfo")
+	public String plusInfoPost() {
+		
+		
+		return "/business/plusinfo";
+		
 	}
 }
