@@ -98,7 +98,7 @@
             <hr class="mb-4">
             <div class="row">
                 <div class="col-md-3">
-                    <label>관심 분야</label>
+                    <label>관심 브랜드</label>
                 </div>
                 
                 <div class="col-md-9 custom-control custom-checkbox">
@@ -106,19 +106,19 @@
                     <div class="form-check form-check-inline">
                         <input type="checkbox" class="form-check-input custom-control-input"
                             name="memberInterest" id="sports" value="운동">
-                        <label class="form-check-label custom-control-label" for="sports">운동</label>
+                        <label class="form-check-label custom-control-label" for="starbucks">스타벅스</label>
                     </div>
                     
                     <div class="form-check form-check-inline">
                         <input type="checkbox" class="form-check-input custom-control-input"
                             name="memberInterest" id="movie" value="영화">
-                        <label class="form-check-label custom-control-label" for="movie">영화</label>
+                        <label class="form-check-label custom-control-label" for="megacoffee">메가커피</label>
                     </div>
                     
                     <div class="form-check form-check-inline">
                         <input type="checkbox" class="form-check-input custom-control-input" 
                             name="memberInterest" id="music" value="음악">
-                        <label class="form-check-label custom-control-label" for="music">음악</label>
+                        <label class="form-check-label custom-control-label" for="twosome">투썸플레이스</label>
                     </div>
                     <br>
                     
@@ -126,13 +126,13 @@
                         <input type="checkbox" name="memberInterest" id="cooking"
                             value="요리" class="form-check-input custom-control-input">
                         <label class="form-check-label custom-control-label"
-                            for="cooking">요리</label>
+                            for="hollyscoffee">할리스커피</label>
                     </div>
                     
                     <div class="form-check form-check-inline">
                         <input type="checkbox"  class="form-check-input custom-control-input" 
                             name="memberInterest" id="game" value="게임">
-                        <label class="form-check-label custom-control-label" for="game">게임</label>
+                        <label class="form-check-label custom-control-label" for="paik's coffee">빽다방</label>
                     </div>
                     
                     <div class="form-check form-check-inline">
