@@ -108,7 +108,7 @@
 					</form>
 
 				</div>
-				<div class="tab-pane fade show active" id="register" role="tabpanel"
+				<div class="tab-pane fade" id="register" role="tabpanel"
 					aria-labelledby="register-tab">
 					<form action="<c:url value='/manager/signup2'/>" method="post">
 						<div class="form-row">

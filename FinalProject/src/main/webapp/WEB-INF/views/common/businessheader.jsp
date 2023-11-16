@@ -73,9 +73,9 @@
 						<li class="nav-item"><a class="nav-link"
 							 href="<c:url value='/business/order'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">주문확인</a></li>
-						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/store'/>"
+						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/1/store'/>" 
 							style="font-family: 'BM HANNA Pro', sans-serif;">매장관리</a></li>
-						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/sales'/>"
+						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/1/sales'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">판매정보조회</a></li>
 						<li class="nav-item"><a class="nav-link"
 							style="color: white; font-family: 'BM HANNA Pro', sans-serif; float: right;">${buser.bm_id}</a></li>

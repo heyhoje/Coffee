@@ -212,31 +212,7 @@
 			<li data-tab="comment">리뷰</li>
 		</ul>
 		<!-- 메뉴 탭 -->
-		<ul class="menu tab-content" data-tab="menu">
-			<c:forEach items="" var="foodList">
-				<li><c:if test="">
-						<label class="menu_delete_label"> <i
-							class="fas fa-check-square"></i> <input type="checkbox"
-							class="menu_delete_checkbox" name="deleteNumber" value="">
-						</label>
-					</c:if>
-					<div class="menu_box">
-						<div>
-							<h2>11</h2>
-							원 <input value="1" name="storeId"> <input value="2"
-								name="foodId" class="food_id"> <input value="3"
-								name="foodName" class="food_name"> <input value="4"
-								name="foodPrice" class="food_price"> <input value="5"
-								name="foodDec" class="food_dec"> <input value="6"
-								name="foodImg" class="food_img"> <input value="7"
-								name="foodThumb" class="food_thumb">
-						</div>
-						<div>
-							<img src="" alt="이미지">
-						</div>
-					</div></li>
-			</c:forEach>
-		</ul>
+
 		<!-- 메뉴 탭 -->
 
 		<!-- 정보 탭 -->

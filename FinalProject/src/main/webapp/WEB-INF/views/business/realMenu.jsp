@@ -36,7 +36,7 @@
 				<ul class="list-image">
 					<c:forEach items="${menuList}" var="menu">
 						<li class="item-image">
-							<a href="<c:url value='/store/detail/${menu.mn_num}'/>" class="link-image">
+							<a href="<c:url value='/business/realCRUD/${menu.mn_num}'/>" class="link-image">
 								<span class="box-image-menu">
 									<image class="image-menu" src="<c:url value='/image/menu/${menu.image.im_name}'/>" width="200px" height="200px" alt="">
 								</span>
@@ -55,16 +55,16 @@
 		<ul class="pagination justify-content-center">
 			<c:if test="${pm.prev}">
 			    <li class="page-item">
-			    	<a class="page-link" href="<c:url value='/store/menu/${st_num}/${ca_num}${pm.cri.getUrl(pm.startPage-1)}'/>">이전</a>
+			    	<a class="page-link" href="<c:url value='/image/menu//${st_num}/${ca_num}${pm.cri.getUrl(pm.startPage-1)}'/>">이전</a>
 		    	</li>
 			</c:if>
 			<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
 			    <li class="page-item <c:if test='${pm.cri.page == i}'>active</c:if>" >
-			    	<a class="page-link" href="<c:url value='/store/menu/${st_num}/${ca_num}${pm.cri.getUrl(i)}'/>">${i}</a>
+			    	<a class="page-link" href="<c:url value='/image/menu//${st_num}/${ca_num}${pm.cri.getUrl(i)}'/>">${i}</a>
 		    	</li>
 			</c:forEach>
 		    <c:if test="${pm.next}">
-			    <li class="page-item"><a class="page-link" href="<c:url value='/store/menu/${st_num}/${ca_num}${pm.cri.getUrl(pm.endPage+1)}'/>">다음</a></li>
+			    <li class="page-item"><a class="page-link" href="<c:url value='/image/menu//${st_num}/${ca_num}${pm.cri.getUrl(pm.endPage+1)}'/>">다음</a></li>
 			</c:if>
 		</ul>
 	</div>
