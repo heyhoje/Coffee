@@ -142,10 +142,6 @@
 							</div>
 						</div>
 					</form>
-
-				
-
-
 				</div>
 				<div class="tab-pane fade show active" id="register" role="tabpanel"
 
@@ -269,8 +265,6 @@
             $("#register").hide();
             $("#login").show();
           
-
-            
         });
     });
     
@@ -281,7 +275,6 @@
             $("#login").hide();
             $("#register").show();
 
-            
         });
     });
 </script>

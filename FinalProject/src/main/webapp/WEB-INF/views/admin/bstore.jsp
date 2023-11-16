@@ -41,7 +41,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		${bsList}
+		<%-- ${bsList} --%>
 	</div>
 	
 	<script type="text/javascript">

@@ -41,12 +41,13 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		${bmList}
+		<%-- ${bmList} --%>
 	</div>
 	
 	<script type="text/javascript">
 		// 승인버튼
 		$('.pass').click(function(){
+			console.log("확인");
 			let bm_id = $(this).data('target'); 
 				// $(this).closest('tr').find('td:first').text(); // 해당 행의 첫 번째 열(td)에서 bm_id 값을 가져옴
 			let obj = {

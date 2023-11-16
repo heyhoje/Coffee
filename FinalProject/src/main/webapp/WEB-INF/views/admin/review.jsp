@@ -41,7 +41,7 @@
 				
 				</tbody>
 			</table>
-			${reList}
+			<%-- ${reList} --%>
 		</div>
 </body>
 	<script type="text/javascript">
