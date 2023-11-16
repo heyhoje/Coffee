@@ -1,20 +1,27 @@
 package kr.kh.finalproject.controller;
 
 
+
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.kh.finalproject.service.MemberService;
+import kr.kh.finalproject.util.Message;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.UserVO;
 
@@ -144,6 +151,28 @@ public class MemberController {
 
         return ""; // 홈 페이지로 리다이렉트
     }
+	@RequestMapping(value="/member/pwchange")
+	public String pwUpdateView() throws Exception{
+		return "/member/pwchange";
+	}
+
+	@RequestMapping(value="/pwCheck")
+	@ResponseBody
+	public int pwCheck(MemberVO memberVO) throws Exception{
+		String me_pw = memberService.pwCheck(memberVO.getMe_user_id());
+		if( memberVO == null || !BCrypt.checkpw(memberVO.getMe_pw(), me_pw)) {
+			return 0;
+		}
+		return 1;
+	}
 	
-	
+	@RequestMapping(value="/pwUpdate" , method=RequestMethod.POST)
+	public String pwUpdate(String me_user_id,String me_pw1,RedirectAttributes rttr,HttpSession session)throws Exception{
+		String hashedPw = BCrypt.hashpw(me_pw1, BCrypt.gensalt());
+		memberService.pwUpdate(me_user_id, hashedPw);
+		session.invalidate();
+		rttr.addFlashAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
+		
+		return "redirect:/member/mypage";
+	}
 }

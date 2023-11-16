@@ -83,7 +83,7 @@
 						<li class="nav-item" style="justify-content:center; display:flex;"><a class="nav-link"
 							href="<c:url value='/member/mypage'/>" style="color: beige; font-family: 'BM HANNA Pro', sans-serif; float: right;">${user.me_user_id}</a></li>
 							<li class="form-group" id="logoutButton" style="justify-content:center; display:flex;"><input
-								style="margin-right: 10px;" type="submit" value="로그아웃"
+								style="margin-right: 10px; background-color: #F0F0F0;"type="submit" value="로그아웃"
 								class="btn float-right logout_btn" data-toggle="modal"
 								data-target="#logoutModal"></li>
 						</c:if>

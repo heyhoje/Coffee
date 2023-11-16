@@ -25,4 +25,10 @@ public interface MemberService {
 	void insertUserKakaoInfo(UserVO user);
 
 	UserVO selectUserKakaoInfo(String userId);
+
+	String pwCheck(String me_user_id);
+
+	void pwUpdate(String me_user_id, String hashedPw);
+
+
 }

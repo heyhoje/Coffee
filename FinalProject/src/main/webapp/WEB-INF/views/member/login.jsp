@@ -93,10 +93,10 @@
 							<div class="card-footer" style="margin-top: 120px;">
 								<div style="color: white;"
 									class="d-flex justify-content-center links" id="signupbtn">
-									회원이 아니신가요?<a href="<c:url value='/member/signup2'/>">  회원가입</a>
+									회원이 아니신가요?<a class="loginpop-btn"href="<c:url value='/member/signup2'/>">  회원가입</a>
 								</div>
 								<div class="d-flex justify-content-center" id="Id/pw">
-									<a href="<c:url value='/member/forgotpw'/>">아이디/비밀번호찾기</a>
+									<a class="loginpop-btn" href="<c:url value='/member/forgotpw'/>">아이디/비밀번호찾기</a>
 								</div>
 							</div>
 						</form>

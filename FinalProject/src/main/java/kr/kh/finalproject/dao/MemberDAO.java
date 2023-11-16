@@ -25,4 +25,12 @@ public interface MemberDAO {
 	void insertUserKakaoInfo(UserVO user);
 	UserVO selectUserKakaoInfo(String userId);
 
+	static void pwCheck(@Param("me_user_id")String me_user_id) {
+	}
+
+	static void pwUpdate(@Param("me_user_id")String me_user_id, String hashedPw) {
+	}
+
+
+
 }

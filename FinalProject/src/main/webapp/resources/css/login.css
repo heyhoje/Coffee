@@ -7,7 +7,7 @@ margin-top: auto;
 margin-bottom: auto;
 width: 400px;
 background-color: rgba(0,0,0,0.5) !important;
-
+font-family: 'BM HANNA Pro', sans-serif;
 }
 
 .modal-container .card .card-body .card-footer #signupbtn{
@@ -26,3 +26,6 @@ background-color: rgba(0,0,0,0.5) !important;
 	color:cyan;
 }
 
+.loginpop-btn{
+	color: burlywood;
+}

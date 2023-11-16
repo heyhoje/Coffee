@@ -3,6 +3,8 @@ package kr.kh.finalproject.service;
 
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -111,5 +113,14 @@ public class MemberServiceImp implements MemberService {
 	public UserVO selectUserKakaoInfo(String userId) {
 		return memberDao.selectUserKakaoInfo(userId);
 	}
-
+	@Override
+	public String pwCheck(String me_user_id){
+		return me_user_id;
+	}
+	@Override
+	public void pwUpdate(String me_user_id, String hashedPw){
+		return;
+	}
+	
+	
 }
