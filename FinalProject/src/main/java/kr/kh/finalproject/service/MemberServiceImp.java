@@ -113,14 +113,7 @@ public class MemberServiceImp implements MemberService {
 	public UserVO selectUserKakaoInfo(String userId) {
 		return memberDao.selectUserKakaoInfo(userId);
 	}
-	@Override
-	public String pwCheck(String me_user_id){
-		return me_user_id;
-	}
-	@Override
-	public void pwUpdate(String me_user_id, String hashedPw){
-		return;
-	}
+
 	
 	
 }

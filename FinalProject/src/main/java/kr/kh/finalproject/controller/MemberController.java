@@ -151,28 +151,5 @@ public class MemberController {
 
         return ""; // 홈 페이지로 리다이렉트
     }
-	@RequestMapping(value="/member/pwchange")
-	public String pwUpdateView() throws Exception{
-		return "/member/pwchange";
-	}
-
-	@RequestMapping(value="/pwCheck")
-	@ResponseBody
-	public int pwCheck(MemberVO memberVO) throws Exception{
-		String me_pw = memberService.pwCheck(memberVO.getMe_user_id());
-		if( memberVO == null || !BCrypt.checkpw(memberVO.getMe_pw(), me_pw)) {
-			return 0;
-		}
-		return 1;
-	}
 	
-	@RequestMapping(value="/pwUpdate" , method=RequestMethod.POST)
-	public String pwUpdate(String me_user_id,String me_pw1,RedirectAttributes rttr,HttpSession session)throws Exception{
-		String hashedPw = BCrypt.hashpw(me_pw1, BCrypt.gensalt());
-		memberService.pwUpdate(me_user_id, hashedPw);
-		session.invalidate();
-		rttr.addFlashAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
-		
-		return "redirect:/member/mypage";
-	}
 }
