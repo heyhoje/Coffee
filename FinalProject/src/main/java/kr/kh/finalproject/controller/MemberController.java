@@ -1,11 +1,18 @@
 package kr.kh.finalproject.controller;
 
+import java.security.MessageDigest;
+import java.util.Base64;
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -55,13 +62,81 @@ public class MemberController {
 		return memberService.checkId(id);
 	}
 
-	// 아이디 비밀번호 찾기 페이지
-	@RequestMapping(value = "/member/forgotpw", method = RequestMethod.GET)
-	public String forgotpw() {
+	//아이디 찾기 페이지
+	@RequestMapping(value = "/member/search_id", method = RequestMethod.GET)
+	public String search_id(HttpServletRequest request, Model model,
+	        MemberVO member) {
 
-		return "/member/forgotpw";
+		return "/member/search_id";
 	}
+	//비밀번호 찾기 페이지
+	@RequestMapping(value = "/member/search_pw", method = RequestMethod.GET)
+	public String search_pw(HttpServletRequest request, Model model,
+	        MemberVO member) {
 
+		return "/member/search_pw";
+	}
+	//아이디 찾기 완료 후 페이지
+	@RequestMapping(value = "/member/search_result_id")
+	public String search_result_id(HttpServletRequest request, Model model,
+	    @RequestParam(required = true, value = "me_name") String me_name, 
+	    @RequestParam(required = true, value = "me_email") String me_email,
+	    MemberVO member) {
+	 
+	 
+	try {
+	    
+		member.setMe_name(me_name);
+		member.setMe_email(me_email);
+	    MemberVO memberSearch = memberService.memberIdSearch(member);
+	    
+	    model.addAttribute("member", memberSearch);
+	 
+	} catch (Exception e) {
+	    System.out.println(e.toString());
+	    model.addAttribute("msg", "오류가 발생되었습니다.");
+	}
+	 
+	return "/member/search_result_id";
+	}
+	//비밀번호 찾기 완료 후 페이지
+	@RequestMapping(value = "/member/search_result_pw", method = RequestMethod.POST)
+	public String search_result_pw(HttpServletRequest request, Model model,
+		@RequestParam(required = true, value = "me_user_id") String me_user_id, 
+	    @RequestParam(required = true, value = "me_name") String me_name, 
+	    @RequestParam(required = true, value = "me_email") String me_email, 
+	    MemberVO member) {
+	try {
+	    
+		member.setMe_user_id(me_user_id);
+		member.setMe_name(me_name);
+		member.setMe_email(me_email);
+	    int memberSearch = memberService.memberPwdCheck(member);
+	    
+	    if(memberSearch == 0) {
+	        model.addAttribute("msg", "기입된 정보가 잘못되었습니다. 다시 입력해주세요.");
+	        return "/member/search_pw";
+	    }
+	    
+	    String newPw = RandomStringUtils.randomAlphanumeric(10);
+	    String enpassword = encryptPassword(newPw);
+	    member.setMe_pw(enpassword);
+        
+	    memberService.passwordUpdate(member);
+	    
+	    model.addAttribute("newPw", newPw);
+	    
+	} catch (Exception e) {
+	    System.out.println(e.toString());
+	    model.addAttribute("msg", "오류가 발생되었습니다.");
+	}
+	return "/member/search_result_pw";
+	}
+	
+	private String encryptPassword(String password) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.encode(password);
+    }
 	// 회원 로그인
 	@GetMapping("/member/login")
 	public String login() {
@@ -155,5 +230,10 @@ public class MemberController {
 	        session.setAttribute("user", member);
 		}
 		    return "/main/message";
+	}
+	
+	@RequestMapping(value = "/member/mypage", method = RequestMethod.GET)
+	public String mypage() {
+		return "/member/mypage";
 	}
 }
