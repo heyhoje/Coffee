@@ -66,8 +66,6 @@
 							href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">고객센터</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/admin/home'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">관리자 </a></li>	
-						<li class="nav-item"><span
-							style="color: white; float: right;"></span></li>
 						<c:if test="${user == null && user2 == null}">
 							<li class="form-group" id="loginButton" style="justify-content:center; display:flex;"><input type="submit" 
 								style="margin-right: 10px; background-color: floralwhite; margin-left:10px; justify-content:center; display:flex;  font-family: 'BM HANNA Pro', sans-serif;"  value="회원 로그인" class="btn login_btn" data-toggle="modal"
@@ -80,10 +78,16 @@
 								data-target="#loginModal2"></li>
 						</c:if>
 						<c:if test="${user != null}">
+
 						<li class="nav-item" style="justify-content:center; display:flex;"><a class="nav-link"
 							href="<c:url value='/member/mypage'/>" style="color: beige; font-family: 'BM HANNA Pro', sans-serif; float: right;">${user.me_user_id}</a></li>
 							<li class="form-group" id="logoutButton" style="justify-content:center; display:flex;"><input
+
 								style="margin-right: 10px; background-color: #F0F0F0;"type="submit" value="로그아웃"
+
+
+								style="margin-right: 10px;" type="submit" value="로그아웃"
+
 								class="btn float-right logout_btn" data-toggle="modal"
 								data-target="#logoutModal"></li>
 						</c:if>

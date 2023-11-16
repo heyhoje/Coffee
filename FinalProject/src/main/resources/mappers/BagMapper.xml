@@ -95,8 +95,8 @@
 		WHERE oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = "carpcarp")
   	</delete>
   	<insert id="makeOrderMenu">
-  		insert into `order_menu` (or_time, or_status, or_drinks)
-  			values (now(), "준비중", #{menuName})
+  		insert into `order_menu` (or_time, or_status, or_drinks, or_menuNum)
+  			values (now(), "준비중", #{menuName}, #{menuNum})
   	</insert>
   	<select id="getBasketNum" resultType="int">
   		select sb_num from shop_basket

@@ -8,8 +8,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 import kr.kh.finalproject.dao.MemberDAO;
+import kr.kh.finalproject.vo.KakaoVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.UserVO;
 
@@ -113,7 +116,22 @@ public class MemberServiceImp implements MemberService {
 	public UserVO selectUserKakaoInfo(String userId) {
 		return memberDao.selectUserKakaoInfo(userId);
 	}
+	@Autowired
+	public MemberServiceImp(MemberDAO memberDao) {
+	    this.memberDao = memberDao;
+	}
 
-	
-	
+
+
+	@Override
+	public boolean checkUserExists(String kakaoId) {
+		int count = memberDao.checkUserExists(kakaoId);
+        return count > 0;
+	}
+
+	@Override
+	public MemberVO getMemberByKakaoId(String kakaoId) {
+	    return memberDao.getMemberByKakaoId(kakaoId);
+	}
+
 }

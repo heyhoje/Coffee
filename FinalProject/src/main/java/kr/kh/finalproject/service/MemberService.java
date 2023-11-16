@@ -1,5 +1,9 @@
 package kr.kh.finalproject.service;
 
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+
+import kr.kh.finalproject.vo.KakaoVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.UserVO;
 
@@ -26,6 +30,10 @@ public interface MemberService {
 
 	UserVO selectUserKakaoInfo(String userId);
 
+
+	boolean checkUserExists(String kakaoId);
+
+	MemberVO getMemberByKakaoId(String kakaoId);
 
 
 }

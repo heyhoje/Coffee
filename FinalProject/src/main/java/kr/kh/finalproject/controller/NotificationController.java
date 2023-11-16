@@ -23,8 +23,8 @@ import kr.kh.finalproject.vo.ShopVO;
 @RestController
 public class NotificationController {
 
-	private final Map<String, SseEmitter> emitters = new ConcurrentHashMap<>();
-	private final Map<String, Object> eventCache = new ConcurrentHashMap<>();
+	private final Map<String, SseEmitter> emitters = new ConcurrentHashMap<String, SseEmitter>();
+	private final Map<String, Object> eventCache = new ConcurrentHashMap<String, Object>();
 	//Object 형변환 Int로 바꿀
 	//리스트 말고 맵으로 해서 매장번호, emitter
 	//매장용 emitter 필요
@@ -38,14 +38,19 @@ public class NotificationController {
 	public SseEmitter subscribe(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		ShopVO shop = (ShopVO)session.getAttribute("bm_num");
-		SseEmitter sseEmitter = new SseEmitter(Long.MAX_VALUE);
+		final SseEmitter sseEmitter = new SseEmitter(Long.MAX_VALUE);
 		try {
 			sseEmitter.send(SseEmitter.event().name("INIT").data("connected"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			
 		}
-		sseEmitter.onCompletion(() ->emitters.remove(sseEmitter));
+		sseEmitter.onCompletion(new Runnable() {
+			@Override
+			public void run() {
+				emitters.remove(sseEmitter);
+			}
+		});
 		emitters.put("bm_num", sseEmitter);
 		return sseEmitter;
 	}

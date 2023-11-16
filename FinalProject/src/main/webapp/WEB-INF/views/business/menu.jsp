@@ -12,23 +12,28 @@
 	href="<c:url value='/resources/css/business.css'/>">
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/bootstrap.min.css'/>">
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a5737697fa5f3dd128397ef34179de7a&libraries=services,clusterer,drawing"></script>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
-<body style="text-align: center; box-sizing: border-box;">
-	<h1 style="margin-top: 30px; font-family: 'BM HANNA Pro', sans-serif;">스타벅스</h1>
+<body
+	style="text-align: center; box-sizing: border-box; font-family: 'BM HANNA Pro', sans-serif;">
+	<h1 style="margin-top: 30px; font-family: 'BM HANNA Pro', sans-serif;">${buser.bm_store_name}</h1>
 	<div>
 		<input class="add_menu" type="button" value="메뉴 추가"
 			data-toggle="modal" data-target="#addModal"
-			style="background-color: white; font-size: 20px; width: 150px; height: 40px; border: 1px solid; margin-right: 5px;">
+			style="font-family: 'BM HANNA Pro', sans-serif; background-color: white; font-size: 20px; width: 150px; height: 40px; border: 1px solid; margin-right: 5px;">
 		<input class="inf_modify" type="button" value="메뉴 수정"
 			data-toggle="modal" data-target="#modifyModal"
-			style="background-color: white; font-size: 20px; width: 150px; height: 40px; border: 1px solid;">
+			style="font-family: 'BM HANNA Pro', sans-serif; background-color: white; font-size: 20px; width: 150px; height: 40px; border: 1px solid;">
 		<input class="delete_menu" type="button" value="메뉴 삭제"
 			data-toggle="modal" data-target="#addModal"
-			style="background-color: white; font-size: 20px; width: 150px; height: 40px; border: 1px solid; margin-left: 5px;">
+			style="font-family: 'BM HANNA Pro', sans-serif; background-color: white; font-size: 20px; width: 150px; height: 40px; border: 1px solid; margin-left: 5px;">
 	</div>
 	<!-- 메뉴 추가하기  -->
 	<div class="add_menu_modal menu_add modal" id="addModal"
@@ -45,7 +50,7 @@
 					<li>
 						<h2>메뉴 이름</h2>
 						<div class="input_area">
-							<input type="text" name="foodName" autocomplete="off"
+							<input type="text" name="mn_name" autocomplete="off"
 								maxlength="30" required>
 						</div>
 					</li>
@@ -54,7 +59,7 @@
 							<label for="food_price">메뉴 가격</label>
 						</h2>
 						<div class="input_area">
-							<input type="number" pattern="\d*" name="foodPrice"
+							<input type="number" pattern="\d*" name="mn_price"
 								onkeypress="return lenthCheck(this, 8);" required>
 						</div>
 					</li>
@@ -62,21 +67,24 @@
 						<div>
 							<h2>
 								<span>메뉴 옵션</span>
-								<button type="button" class="add_option"
+								<button type="button" class="add_option" id="addOptionButton"
 									style="border-radius: 10px; border: solid 1px; background: #fff; padding: 3px; font-size: 1.2rem; position: absolute; right: 0; top: 0">+
 									옵션 추가</button>
 							</h2>
 						</div>
-						<div class="option_box_div">
+						<div class="option_box_div"
+							style="border: solid 1px; border-radius: 10px; width: 70%; margin: 0 auto;">
+							<h1
+								style="color: black; font-size: 15px; margin: 0 auto; max-height: 30px;">분류1</h1>
 							<div class="option">
 								<div>
 									<div>옵션 1</div>
 									<div>가격</div>
 								</div>
 								<div>
-									<input type="text" maxlength="30" name="foodOption"> <input
+									<input type="text" maxlength="30" name="menuOption1"> <input
 										type="number" onkeypress="return lenthCheck(this,8);"
-										pattern="\d*" name="foodOptionPrice">
+										pattern="\d*" name="menuOptionPrice1">
 								</div>
 								<div>
 									<button type="button" class="add_option_cancle">
@@ -84,12 +92,34 @@
 									</button>
 								</div>
 							</div>
+							<div class="option" style="padding-right: 31.61px;">
+								<div>
+									<div>옵션 2</div>
+									<div>가격</div>
+								</div>
+								<div>
+									<input type="text" maxlength="30" name="menuOption2"> <input
+										type="number" onkeypress="return lenthCheck(this,8);"
+										pattern="\d*" name="menuOptionPrice2">
+								</div>
+							</div>
+							<div class="option" style="padding-right: 31.61px;">
+								<div>
+									<div>옵션 3</div>
+									<div>가격</div>
+								</div>
+								<div>
+									<input type="text" maxlength="30" name="menuOption3"> <input
+										type="number" onkeypress="return lenthCheck(this,8);"
+										pattern="\d*" name="menuOptionPrice3">
+								</div>
+							</div>
 						</div>
 					</li>
 					<li>
 						<h2>메뉴 소개</h2>
 						<div class="input_area">
-							<input type="text" name="foodDec" autocomplete="off"
+							<input type="text" name="mn_contents" autocomplete="off"
 								maxlength="66">
 						</div>
 					</li>
@@ -109,8 +139,8 @@
 				</ul>
 			</div>
 			<div id="btn_box">
-				<button class="closeB" type="button">취소</button>
-				<button class="add_btn" type="button">추가</button>
+				<button class="closeB" type="button" id="close">취소</button>
+				<button class="add_btn" type="button" id="addMenuButton">추가</button>
 			</div>
 		</form>
 	</div>
@@ -131,14 +161,14 @@
 					<li>
 						<h2>메뉴 이름</h2>
 						<div class="input_area">
-							<input type="text" name="foodName" autocomplete="off"
+							<input type="text" name="mn_name" autocomplete="off"
 								maxlength="30" required>
 						</div>
 					</li>
 					<li>
 						<h2>메뉴 가격</h2>
 						<div class="input_area">
-							<input type="number" pattern="\d*" name="foodPrice"
+							<input type="number" pattern="\d*" name="mn_price"
 								onkeypress="return lenthCheck(this, 8);" required>
 						</div>
 					</li>
@@ -146,26 +176,51 @@
 						<div>
 							<h2>
 								<span>메뉴 옵션</span>
-								<button type="button" class="add_option"
+								<button type="button" class="add_option" id="modifyOptionButton"
 									style="border-radius: 10px; border: solid 1px; background: #fff; padding: 3px; font-size: 1.2rem; position: absolute; right: 0; top: 0">+
 									옵션 추가</button>
 							</h2>
 						</div>
-						<div class="option_box_div">
+						<div class="option_box_div"
+							style="border: solid 1px; border-radius: 10px; width: 70%; margin: 0 auto;">
+							<h1
+								style="color: black; font-size: 15px; margin: 0 auto; max-height: 30px;">분류1</h1>
 							<div class="option">
 								<div>
 									<div>옵션 1</div>
 									<div>가격</div>
 								</div>
 								<div>
-									<input type="text" maxlength="30" name="foodOption"> <input
+									<input type="text" maxlength="30" name="menuOption"> <input
 										type="number" onkeypress="return lenthCheck(this,8);"
-										pattern="\d*" name="foodOptionPrice">
+										pattern="\d*" name="menuOptionPrice">
 								</div>
 								<div>
 									<button type="button" class="add_option_cancle">
 										<i class="fas fa-times"></i>
 									</button>
+								</div>
+							</div>
+							<div class="option" style="padding-right: 31.61px;">
+								<div>
+									<div>옵션 2</div>
+									<div>가격</div>
+								</div>
+								<div>
+									<input type="text" maxlength="30" name="menuOption"> <input
+										type="number" onkeypress="return lenthCheck(this,8);"
+										pattern="\d*" name="menuOptionPrice">
+								</div>
+							</div>
+							<div class="option" style="padding-right: 31.61px;">
+								<div>
+									<div>옵션 3</div>
+									<div>가격</div>
+								</div>
+								<div>
+									<input type="text" maxlength="30" name="menuOption"> <input
+										type="number" onkeypress="return lenthCheck(this,8);"
+										pattern="\d*" name="menuOptionPrice">
 								</div>
 							</div>
 						</div>
@@ -212,31 +267,7 @@
 			<li data-tab="comment">리뷰</li>
 		</ul>
 		<!-- 메뉴 탭 -->
-		<ul class="menu tab-content" data-tab="menu">
-			<c:forEach items="" var="foodList">
-				<li><c:if test="">
-						<label class="menu_delete_label"> <i
-							class="fas fa-check-square"></i> <input type="checkbox"
-							class="menu_delete_checkbox" name="deleteNumber" value="">
-						</label>
-					</c:if>
-					<div class="menu_box">
-						<div>
-							<h2>11</h2>
-							원 <input value="1" name="storeId"> <input value="2"
-								name="foodId" class="food_id"> <input value="3"
-								name="foodName" class="food_name"> <input value="4"
-								name="foodPrice" class="food_price"> <input value="5"
-								name="foodDec" class="food_dec"> <input value="6"
-								name="foodImg" class="food_img"> <input value="7"
-								name="foodThumb" class="food_thumb">
-						</div>
-						<div>
-							<img src="" alt="이미지">
-						</div>
-					</div></li>
-			</c:forEach>
-		</ul>
+
 		<!-- 메뉴 탭 -->
 
 		<!-- 정보 탭 -->
@@ -314,7 +345,7 @@
 				</div>
 			</li>
 		</ul>
-		<!-- 메뉴 탭 -->
+		<!-- 정보 탭 -->
 		<!-- 리뷰 탭 -->
 		<ul class="comment tab-content" data-tab="comment">
 			<li>
@@ -431,87 +462,194 @@
 	});
 </script>
 <script>
-	//바깥 부분 클릭 시 모달 닫기
-	window.addEventListener('click', function(event) {
-		var modal = document.getElementById('addModal');
-		if (event.target == modal) {
-			closeModal();
-		}
-	});
+	document.addEventListener("DOMContentLoaded",
+			function() {
+				// 최대 옵션 박스 수
+				var maxOptionBoxes = 5;
+				// 공통으로 사용할 함수: 옵션 추가
+				function addOption(optionContainer) {
+					// 현재 존재하는 옵션 박스 개수 확인
+					var optionBoxDivs = optionContainer
+							.querySelectorAll(".option_box_div");
+					if (optionBoxDivs.length >= maxOptionBoxes) {
+						// 최대 개수를 초과하면 더 이상 옵션 추가를 허용하지 않음
+						alert("최대 5개까지만 옵션을 추가할 수 있습니다.");
+						return;
+					}
 
-	// ESC 키 누를 시 모달 닫기
-	document.addEventListener('keydown', function(event) {
-		var modal = document.getElementById('addModal');
-		if (event.key === 'Escape' && modal.style.display === 'block') {
-			closeModal();
-		}
-	});
-
-	function closeModal() {
-		var modal = document.getElementById('addModal');
-		modal.style.display = 'none';
-	}
-</script>
-
-<script>
-	// JavaScript 코드
-	document.addEventListener("DOMContentLoaded", function() {
-		var addOptionButton = document.querySelector(".add_option");
-		var optionCount = 1;
-
-		addOptionButton.addEventListener("click",
-				function() {
-					var optionBoxDiv = document
+					var optionBoxDiv = optionContainer
 							.querySelector(".option_box_div");
 					var newOptionBoxDiv = optionBoxDiv.cloneNode(true);
-					var optionNumber = newOptionBoxDiv
-							.querySelector(".option div div");
-					var optionNumberText = "옵션 " + (optionCount + 1);
-					optionNumber.textContent = optionNumberText;
-					optionBoxDiv.parentNode.appendChild(newOptionBoxDiv);
-					optionCount++;
-
+					// 분류 숫자 업데이트 및 삽입
+					var nextCategoryNumber = optionBoxDivs.length + 1;
+					newOptionBoxDiv.querySelector("h1").textContent = "분류 "
+							+ nextCategoryNumber;
 					// "add_option_cancle" 버튼에 대한 클릭 이벤트 핸들러를 추가합니다.
 					var cancelButtons = newOptionBoxDiv
 							.querySelectorAll(".add_option_cancle");
-					cancelButtons.forEach(function(cancelButton) {
+					cancelButtons.forEach(function(cancelButton, index) {
 						cancelButton.addEventListener("click", function() {
-							// 삭제할 박스의 부모 요소를 찾아 삭제합니다.
 							var boxToDelete = cancelButton
 									.closest(".option_box_div");
 							boxToDelete.parentNode.removeChild(boxToDelete);
 
-							// 남은 박스의 옵션 번호를 업데이트합니다.
-							var remainingBoxes = document
-									.querySelectorAll(".option_box_div");
-							for (var i = 0; i < remainingBoxes.length; i++) {
-								var optionNumber = remainingBoxes[i]
-										.querySelector(".option div div");
-								optionNumber.textContent = "옵션 " + (i + 1);
-							}
-							optionCount = remainingBoxes.length; // 현재 옵션 번호를 업데이트합니다.
+							// 삭제한 옵션 이후의 옵션 숫자 재설정
+							resetCategoryNumbers(optionContainer);
 						});
 					});
-				});
-
-		// 기본으로 존재하는 1번 옵션 박스의 삭제 버튼에 대한 이벤트 핸들러를 추가합니다.
-		var cancelButtons = document.querySelectorAll(".add_option_cancle");
-		cancelButtons.forEach(function(cancelButton) {
-			cancelButton.addEventListener("click", function() {
-				var boxToDelete = cancelButton.closest(".option_box_div");
-				boxToDelete.parentNode.removeChild(boxToDelete);
-
-				// 남은 박스의 옵션 번호를 업데이트합니다.
-				var remainingBoxes = document
-						.querySelectorAll(".option_box_div");
-				for (var i = 0; i < remainingBoxes.length; i++) {
-					var optionNumber = remainingBoxes[i]
-							.querySelector(".option div div");
-					optionNumber.textContent = "옵션 " + (i + 1);
+					optionBoxDiv.parentNode.appendChild(newOptionBoxDiv);
 				}
-				optionCount = remainingBoxes.length; // 현재 옵션 번호를 업데이트합니다.
+				// 공통으로 사용할 함수: 분류 숫자 업데이트
+				function resetCategoryNumbers(optionContainer) {
+					var categoryElements = optionContainer
+							.querySelectorAll(".option_box_div h1");
+					categoryElements.forEach(function(categoryElement, index) {
+						categoryElement.textContent = "분류 " + (index + 1);
+					});
+				}
+				// 메뉴 추가 모달 창에서 사용할 옵션 번호 변수
+				var addOptionButton = document
+						.querySelector("#addOptionButton");
+
+				// 메뉴 추가 모달 창에서의 옵션 추가
+				addOptionButton.addEventListener("click", function() {
+					addOption(document.querySelector("#addModal"));
+				});
+				// 메뉴 수정 모달 창에서 사용할 옵션 번호 변수
+				var modifyOptionButton = document
+						.querySelector("#modifyOptionButton");
+				// 메뉴 수정 모달 창에서의 옵션 추가
+				modifyOptionButton.addEventListener("click", function() {
+					addOption(document.querySelector("#modifyModal"));
+				});
 			});
-		});
-	});
+</script>
+<script>
+	$(document)
+			.ready(
+					function() {
+						var storeAddress = $("#store_address").data("address");
+						var storeName = $("#store_name").data("store_name");
+						var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+						mapOption = {
+							center : new kakao.maps.LatLng(33.25110701,
+									126.570667), // 지도의 중심좌표
+							level : 3
+						// 지도의 확대 레벨
+						};
+						// 지도를 생성합니다    
+						var map = new kakao.maps.Map(mapContainer, mapOption);
+						// 주소-좌표 변환 객체를 생성합니다	
+						var geocoder = new kakao.maps.services.Geocoder();
+						// 주소로 좌표를 검색합니다
+						geocoder
+								.addressSearch(
+										storeAddress,
+										function(result, status) {
+											// 정상적으로 검색이 완료됐으면 
+											if (status === kakao.maps.services.Status.OK) {
+												var coords = new kakao.maps.LatLng(
+														result[0].y,
+														result[0].x);
+												// 결과값으로 받은 위치를 마커로 표시합니다
+												var marker = new kakao.maps.Marker(
+														{
+															map : map,
+															position : coords
+														});
+												// 인포윈도우로 장소에 대한 설명을 표시합니다
+												var infowindow = new kakao.maps.InfoWindow(
+														{
+															content : '<div style="width:150px;text-align:center;padding:3px 0;">'
+																	+ storeName
+																	+ '</div>'
+														});
+												infowindow.open(map, marker);
+												// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+												map.setCenter(coords);
+												$(".storePosition").click(
+														function() {
+															map.panTo(coords);
+														})
+											}
+										});
+						var userAddress = $("#delevery_address").val();
+						if (userAddress != "") {
+							$(".userPosition").css("display", "inline");
+							// 주소로 좌표를 검색합니다
+							geocoder
+									.addressSearch(
+											userAddress,
+											function(result, status) {
+												// 정상적으로 검색이 완료됐으면 
+												if (status === kakao.maps.services.Status.OK) {
+													coords = new kakao.maps.LatLng(
+															result[0].y,
+															result[0].x);
+													// 결과값으로 받은 위치를 마커로 표시합니다
+													var marker = new kakao.maps.Marker(
+															{
+																map : map,
+																position : coords
+															});
+													// 인포윈도우로 장소에 대한 설명을 표시합니다
+													var infowindow = new kakao.maps.InfoWindow(
+															{
+																content : '<div style="width:150px;text-align:center;padding:3px 0;">'
+																		+ "배달받을위치"
+																		+ '</div>'
+															});
+													infowindow
+															.open(map, marker);
+													(".userPosition")
+															.click(function() {
+																map
+																		.panTo(coords);
+															})
+												}
+											});
+						}
+					})
+</script>
+
+<script>
+$(document).ready(function() {
+    $("#addMenuButton").on("click", function() {
+        var mn_name = $("input[name='mn_name']").val();
+        var mn_price = $("input[name='mn_price']").val();
+        var mn_contents = $("input[name='mn_contents']").val();
+        var file = $("input[name='file']")[0].files[0];
+
+        var options = [];
+        for (var i = 1; i <= 3; i++) {
+            var option_name = $("input[name='menuOption" + i + "']").val();
+            var option_price = $("input[name='menuOptionPrice" + i + "']").val();
+            options.push({ name: option_name, price: option_price });
+        }
+
+        var formData = new FormData();
+        formData.append("mn_name", mn_name);
+        formData.append("mn_price", mn_price);
+        formData.append("mn_contents", mn_contents);
+        formData.append("file", file);
+        formData.append("options", JSON.stringify(options)); // 옵션 정보를 JSON 문자열로 전송
+
+        $.ajax({
+            type: 'POST',
+            url: '/addMenuAndOptions', // 실제 서버의 엔드포인트에 맞게 수정
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                console.log(response);
+                alert("메뉴와 옵션이 추가되었습니다.");
+            },
+            error: function(error) {
+                alert("메뉴와 옵션 추가에 실패했습니다.");
+            }
+        });
+    });
+});
+
 </script>
 </html>
