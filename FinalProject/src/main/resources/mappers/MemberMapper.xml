@@ -9,8 +9,8 @@
 	</insert>
 	
 	<insert id="insertMember">
-		insert into member(me_user_id, me_pw, me_name, me_email)
-		values (#{member.user_id}, #{member.me_pw}, #{member.me_name}, #{member.me_email})
+		insert into member(me_user_id, me_pw, me_name, me_email, me_address, me_post, me_address2)
+		values (#{member.user_id}, #{member.me_pw}, #{member.me_name}, #{member.me_email}, #{member.me_address}, #{member.me_post}, #{member.me_address2})
 	</insert>
 	
 	<select id="selectMember" resultType="kr.kh.finalproject.vo.MemberVO">

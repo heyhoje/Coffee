@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.kh.finalproject.service.MemberService;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.UserVO;
-import kr.kh.finalproject.service.MemberService;
 
 @Controller
 public class MemberController {
@@ -49,6 +48,14 @@ public class MemberController {
 		return "/main/message";
 	}
 
+
+	
+	
+	@RequestMapping(value="/member/mypage", method=RequestMethod.GET)
+	public String mypage() {
+		return "/member/mypage";
+	}
+	
 	@ResponseBody
 	@PostMapping("/member/id/check")
 	public boolean idCheck(@RequestParam("id") String id) {
@@ -142,6 +149,7 @@ public class MemberController {
 			// User 정보를 추가하는 메서드를 호출
 			memberService.insertUserKakaoInfo(user);
 
+
 			// 카카오 로그인 정보를 Member 테이블에 삽입
 			MemberVO member = new MemberVO();
 			member.setMe_user_id(kakaoId);
@@ -156,4 +164,9 @@ public class MemberController {
 		}
 		    return "/main/message";
 	}
-}
+
+        return ""; // 홈 페이지로 리다이렉트
+    }
+	
+	
+
