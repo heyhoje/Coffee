@@ -81,8 +81,8 @@ public class BagServiceImp implements BagService{
 	}
 
 	@Override
-	public boolean makeOrderMenu(String menuName) {
-		return bagDao.makeOrderMenu(menuName);
+	public boolean makeOrderMenu(String menuName, String menuNum) {
+		return bagDao.makeOrderMenu(menuName, menuNum);
 	}
 
 	@Override

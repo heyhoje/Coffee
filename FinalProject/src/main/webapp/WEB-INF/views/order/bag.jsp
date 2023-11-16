@@ -89,6 +89,7 @@ var quantities = [];
 var killAme = [];
 var user = "carpcarp"; // ${user}
 var menuNameList = [];
+var menuNumList = [];
 var IMP = window.IMP; 
 IMP.init("imp14674302"); 
 var today = new Date();   
@@ -106,6 +107,7 @@ var makeMerchantUid = hours +  minutes + seconds + milliseconds;
     quantities[${vss.index}] = 1;
     killAme[${vss.index}] = ${optionChoice.oc_num};
     menuNameList.push('${optionChoice.menu.mn_name}');
+    menuNumList.push('${optionChoice.menu.mn_num}')
 </c:forEach>
 
 function updateQuantity(num, operation) {
@@ -215,11 +217,13 @@ function allInOneAfterPay(totalPrice, usePoint) {
 	
 	var point = totalPrice - usePoint;
     var menuName = menuNameList.join(',');
+    var menuNum = menuNumList.join(',');
 	console.log({
         point: point,
         usePoint : usePoint,
         user: user,
-        menuName: menuName
+        menuName: menuName,
+        menuNum: menuNum
     });
     $.ajax({
         type: 'POST',
@@ -228,7 +232,8 @@ function allInOneAfterPay(totalPrice, usePoint) {
             point: point,
             usePoint : usePoint,
             user: user,
-            menuName: menuName
+            menuName: menuName,
+            menuNum: menuNum
         },
         success: function (response) {
         	alert('주문이 완료되었습니다.');

@@ -33,7 +33,7 @@ public interface BagDAO {
 
 	boolean killBag(@Param("user")String user);
 
-	boolean makeOrderMenu(@Param("menuName")String menuName);
+	boolean makeOrderMenu(@Param("menuName")String menuName, @Param("menuNum")String menuNum);
 
 	int getBasketNum(@Param("user")MemberVO user);
 	

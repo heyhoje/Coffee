@@ -32,7 +32,7 @@ public interface BagService {
 
 	boolean killBag(String user);
 
-	boolean makeOrderMenu(String menuName);
+	boolean makeOrderMenu(String menuName, String menuNum);
 
 	int getBasketNum(MemberVO user);
 	
