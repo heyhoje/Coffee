@@ -39,11 +39,11 @@ public class MemberController {
 
 		boolean res = memberService.signup(member);
 		if (res) {
-			model.addAttribute("msg", "회원가입 성공!");
+			model.addAttribute("msg", "회원가입 성공했습니다. \n 오늘 커피 한잔 어떠실까요?");
 			model.addAttribute("url", "");
 		} else {
-			model.addAttribute("msg", "회원가입 실패!");
-			model.addAttribute("url", "/member/signup2");
+			model.addAttribute("msg", "회원가입 실패했습니다. \n다시 시도 부탁드립니다.");
+			model.addAttribute("url", "member/signup2");
 		}
 		return "/main/message";
 	}
@@ -84,14 +84,14 @@ public class MemberController {
 		if (user != null) {
 			model.addAttribute("user", user);
 			model.addAttribute("type", "u");
-			model.addAttribute("msg", "로그인 성공!");
+			model.addAttribute("msg", "로그인 성공했습니다. 맛있는 커피와 함께 좋은하루 되세요:)");
 			model.addAttribute("url", "");
 
 			// 화면에서 보낸 자동 로그인 체크 여부를 user에 적용
 			user.setAutoLogin(member.isAutoLogin());
 		} else {
 			model.addAttribute("msg", "아이디 또는 비밀번호가 잘못되었습니다.");
-			model.addAttribute("url", "/member/login");
+			model.addAttribute("url", "member/login");
 		}
 		return "/main/message";
 	}
@@ -111,7 +111,7 @@ public class MemberController {
 		session.removeAttribute("user"); // 일반 로그아웃을 위해(세션에서만 유저정보를 없애면 로그인안한거로 인식됨)
 		
 
-		model.addAttribute("msg", "로그아웃 성공!");
+		model.addAttribute("msg", "로그아웃 성공했습니다. 즐거운 하루 보내세요!");
 		model.addAttribute("url", "");
 		return "/main/message";
 	}
