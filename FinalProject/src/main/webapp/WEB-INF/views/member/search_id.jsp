@@ -38,13 +38,13 @@
 					<hr>
 					<a class="btn btn-primary btn-user btn-block"
 						style="border: 1px solid black; background-color: floralwhite; color: black;"
-						href="/member/search_pw">비밀번호 찾기</a> <a
+						href="/member/search_pw">비밀번호 찾기 바로가기</a> <a
 						class="btn btn-primary btn-user btn-block"
 						style="border: 1px solid black; background-color: floralwhite; color: black;"
-						href="/member/signup2">회원가입</a> <a
+						href="/member/signup2">회원가입 바로가기</a> <a
 						class="btn btn-primary btn-user btn-block"
 						style="border: 1px solid black; background-color: floralwhite; color: black;"
-						href="/">로그인</a>
+						href="/">로그인 바로가기</a>
 				</div>
 			</div>
 		</div>

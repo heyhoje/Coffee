@@ -1,5 +1,11 @@
 package kr.kh.finalproject.controller;
 
-public class MypageController {
 
+import org.springframework.stereotype.Controller;
+
+
+@Controller
+public class MypageController {
+	
+	
 }

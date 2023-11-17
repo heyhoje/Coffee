@@ -134,11 +134,12 @@ public class MemberServiceImp implements MemberService {
 	    return memberDao.getMemberByKakaoId(kakaoId);
 	}
 
-
+	//아이디찾기
 	@Override
 	public MemberVO memberIdSearch(MemberVO memberSearch) {
 		return memberDao.memberIdSearch(memberSearch);
 	}
+	//비밀번호찾기
 	@Override
 	public int memberPwdCheck(MemberVO member) {
 		return memberDao.memberPwdCheck(member);
@@ -147,5 +148,16 @@ public class MemberServiceImp implements MemberService {
 	public void passwordUpdate(MemberVO member) {
 		memberDao.passwordUpdate(member);
 	}
+	@Override
+	public String pwCheck(String me_user_id)throws Exception {
+		return memberDao.pwCheck(me_user_id);
+	}
+	@Override
+	public void pwUpdate(String me_user_id, String hashedPw)throws Exception {
+		memberDao.pwUpdate(me_user_id, hashedPw);
+		
+	}
+	
+	//비밀번호변경
 
 }

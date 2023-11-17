@@ -109,4 +109,12 @@
 	    and
 	        me_user_id = #{me_user_id}
 	</update>
+	
+	<select id="pwCheck" resultType="String">
+		select me_pw from member where me_user_id = #{me_user_id}
+	</select>
+	
+	<update id="pwUpdate">
+		update member set me_pw = #{me_pw} where me_user_id = #{me_user_id}
+	</update>
 </mapper>

@@ -1,13 +1,10 @@
 package kr.kh.finalproject.controller;
 
-
-
 import java.util.Map;
 
 import java.security.MessageDigest;
 import java.util.Base64;
 import java.util.UUID;
-
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -62,7 +60,7 @@ public class MemberController {
 		}
 		return "/main/message";
 	}
-	
+
 	@ResponseBody
 	@PostMapping("/member/id/check")
 	public boolean idCheck(@RequestParam("id") String id) {
@@ -108,36 +106,36 @@ public class MemberController {
 	// 비밀번호 찾기 완료 후 페이지
 	@RequestMapping(value = "/member/search_result_pw", method = RequestMethod.POST)
 	public String search_result_pw(HttpServletRequest request, Model model,
-			@RequestParam(required = true, value = "me_user_id") String me_user_id, 
-		    @RequestParam(required = true, value = "me_name") String me_name, 
-		    @RequestParam(required = true, value = "me_email") String me_email, 
-		    MemberVO member) {
+			@RequestParam(required = true, value = "me_user_id") String me_user_id,
+			@RequestParam(required = true, value = "me_name") String me_name,
+			@RequestParam(required = true, value = "mail") String me_email, MemberVO member) {
 		try {
-		    
+
 			member.setMe_user_id(me_user_id);
 			member.setMe_name(me_name);
 			member.setMe_email(me_email);
-		    int memberSearch = memberService.memberPwdCheck(member);
-		    
-		    if(memberSearch == 0) {
-		        model.addAttribute("msg", "기입된 정보가 잘못되었습니다. 다시 입력해주세요.");
-		        return "/member/search_pw";
-		    }
-		    
-		    String newPw = RandomStringUtils.randomAlphanumeric(10);
-		    String enpassword = encryptPassword(newPw);
-		    member.setMe_pw(enpassword);
-	        
-		    memberService.passwordUpdate(member);
-		    
-		    model.addAttribute("newPw", newPw);
-		    
+			int memberSearch = memberService.memberPwdCheck(member);
+
+			if (memberSearch == 0) {
+				model.addAttribute("msg", "기입된 정보가 잘못되었습니다. 다시 입력해주세요.");
+				return "/member/search_pw";
+			}
+
+			String newPw = RandomStringUtils.randomAlphanumeric(10);
+			String enpassword = encryptPassword(newPw);
+			member.setMe_pw(enpassword);
+
+			memberService.passwordUpdate(member);
+
+			model.addAttribute("newPw", newPw);
+
 		} catch (Exception e) {
-		    System.out.println(e.toString());
-		    model.addAttribute("msg", "오류가 발생되었습니다.");
+			System.out.println(e.toString());
+			model.addAttribute("msg", "오류가 발생되었습니다.");
 		}
 		return "/member/search_result_pw";
 	}
+
 	private String encryptPassword(String password) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		return passwordEncoder.encode(password);
@@ -175,15 +173,14 @@ public class MemberController {
 
 //		Object user = session.getAttribute("user"); // MemberVO user = (MemberVO)session.getAttribute("user"); 
 //		session.removeAttribute("user");
-		
-		MemberVO user = (MemberVO)session.getAttribute("user");
-		
+
+		MemberVO user = (MemberVO) session.getAttribute("user");
+
 		// session_limit null값, 업데이트, 세션에서 user정보 제거
 		user.setMe_session_limit(null);
 		memberService.updateMemberSession(user); // 자동로그인을 안하기 위해
-		
+
 		session.removeAttribute("user"); // 일반 로그아웃을 위해(세션에서만 유저정보를 없애면 로그인안한거로 인식됨)
-		
 
 		model.addAttribute("msg", "로그아웃 성공했습니다. 즐거운 하루 보내세요!");
 		model.addAttribute("url", "");
@@ -229,14 +226,36 @@ public class MemberController {
 		}
 		return "/main/message";
 	}
+
 	@RequestMapping(value = "/member/mypage", method = RequestMethod.GET)
 	public String mypage() {
 		return "/member/mypage";
 	}
+
+	// 비밀번호 변경
+	@RequestMapping(value = "/member/pwchange", method = RequestMethod.GET)
+	public String pwUpdateView() throws Exception {
+		return "/member/pwchange";
+	}
+
+	@RequestMapping(value = "/member/pwCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public int pwCheck(MemberVO member) throws Exception {
+		String me_pw = memberService.pwCheck(member.getMe_user_id());
+		if (member == null || !BCrypt.checkpw(member.getMe_pw(), me_pw)) {
+			return 0;
+		}
+		return 1;
+	}
+
+	@RequestMapping(value = "/pwUpdate", method = RequestMethod.POST)
+	public String pwUpdate(String me_user_id, String me_pw1, RedirectAttributes rttr, HttpSession session)
+			throws Exception {
+		String hashedPw = BCrypt.hashpw(me_pw1, BCrypt.gensalt());
+		memberService.pwUpdate(me_user_id, hashedPw);
+		session.invalidate();
+		rttr.addFlashAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
+
+		return "redirect:/member/loginView";
+	}
 }
-
-
-	
-
-
-

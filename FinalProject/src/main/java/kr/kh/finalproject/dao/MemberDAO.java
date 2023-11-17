@@ -37,6 +37,9 @@ public interface MemberDAO {
 
 	void passwordUpdate(MemberVO member);
 
+
+	public String pwCheck(String me_user_id)throws Exception;
 	
+	public void pwUpdate(String me_user_id, String hashedPw) throws Exception;
 
 }

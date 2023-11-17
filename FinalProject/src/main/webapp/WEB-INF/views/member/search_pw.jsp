@@ -35,18 +35,15 @@
 					</div>
 					<div class="form-group">
 						<input type="email" class="form-control form-control-user"
-							id="me_email" name="me_email" placeholder="가입된 계정의 이메일을 입력하세요.">
+							name="mail" id="mail" placeholder="가입된 계정의 이메일을 입력하세요.">
+						<button type="button" id="sendBtn" name="sendBtn" class="btn btn-primary btn-user btn-block"
+						style="border: 1px solid black; background-color: floralwhite; color: black;"
+							onclick="sendNumber()">인증번호 받기</button>
 					</div>
-					
-					<div id="mail_input" name="mail_input">
-						<input type="text" name="mail" id="mail" placeholder="이메일 입력">
-						<button type="button" id="sendBtn" name="sendBtn"
-							onclick="sendNumber()">인증번호</button>
-					</div>
-					<br>
-					<div id="mail_number" name="mail_number" style="display: none">
-						<input type="text" name="number" id="number" placeholder="인증번호 입력">
-						<button type="button" name="confirmBtn" id="confirmBtn"
+					<div class="form-group" id="mail_number" name="mail_number" style="display: none">
+						<input class="form-control form-control-user" type="text" name="number" id="number" placeholder="잠시만기다려주세요. 알림창이 뜨면 전송된 인증번호를 입력하세요.">
+						<button type="button" name="confirmBtn" id="confirmBtn" class="btn btn-primary btn-user btn-block"
+						style="border: 1px solid black; background-color: floralwhite; color: black;"
 							onclick="confirmNumber()">이메일 인증</button>
 					</div>
 					<br> <input type="text" id="Confirm" name="Confirm"
@@ -59,13 +56,13 @@
 					<hr>
 					<a class="btn btn-primary btn-user btn-block"
 						style="border: 1px solid black; background-color: floralwhite; color: black;"
-						href="/member/search_id">아이디 찾기</a> <a
+						href="/member/search_id">아이디 찾기 바로가기</a> <a
 						class="btn btn-primary btn-user btn-block"
 						style="border: 1px solid black; background-color: floralwhite; color: black;"
-						href="/member/signup2">회원가입</a> <a
+						href="/member/signup2">회원가입 바로가기</a> <a
 						class="btn btn-primary btn-user btn-block"
 						style="margin-bottom: 15px; border: 1px solid black; background-color: floralwhite; color: black;"
-						href="/">로그인</a>
+						href="/">로그인 바로가기</a>
 				</div>
 			</div>
 		</div>
@@ -85,6 +82,7 @@
 <!-- 이메일 인증  -->
 	function sendNumber() {
 		$("#mail_number").css("display", "block");
+				alert("잠시만 기다려주세요. 곧 인증번호가 발송됩니다.");
 		$.ajax({
 			url : "/mail",
 			type : "post",
@@ -141,17 +139,22 @@
 			return false;
 		}
 
-		if ($("#me_email").val() == null || $("#me_email").val() == "") {
+		if ($("#mail").val() == null || $("#mail").val() == "") {
 			alert("이메일을 입력해주세요.");
-			$("#me_email").focus();
+			$("#mail").focus();
 
 			return false;
 		}
 
-		if (!email_rule.test($("#me_email").val())) {
+		if (!email_rule.test($("#mail").val())) {
 			alert("이메일 형식에 맞게 입력해주세요.");
 			return false;
 		}
+		
+		if ($("#Confirm").val() == null || $("#Confirm").val() === "") {
+	        alert("이메일 인증이 필요합니다.");
+	        return false;
+	    }
 
 		if (confirm("비밀번호를 찾으시겠습니까?")) {
 

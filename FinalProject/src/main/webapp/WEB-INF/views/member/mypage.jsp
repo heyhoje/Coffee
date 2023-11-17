@@ -10,12 +10,10 @@
  <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 </head>
 <body>
-
-	
-    <div class="col-sm-8" id="mypage-container">
+    <div class="col-sm-8" id="mypage-container" style="margin: 0 auto;">
         <h3 id="Mypage-title">My Page</h3>
         <hr>
-        <div class="bg-white rounded shadow-sm container p-3">
+        <div class="bg-white rounded shadow-sm container p-3" >
             <form method="POST" action="updateMember.do" onsubmit="return memberUpdateValidate();" class="form-horizontal" role="form">
             <!-- 아이디 -->
             <div class="row mb-3 form-row">
@@ -24,9 +22,8 @@
                 </div>
                 <div class="col-md-6" style="display:flex; align-items:flex-end;">
                     <h5 id="id">${user.me_user_id}</h5>
-                    <button type="button" class="btn btn-primary" onclick="location.href='/member/pwchange'" id="pwchange" style="margin-left:30px;">비밀번호변경</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='/member/pwchange'" id="pwchange" style="margin-left:30px; border: 1px solid black; background-color: floralwhite; color: black;">비밀번호변경</button>
                 </div>
-                
             </div>
 		
 			 <!-- 포인트 -->
@@ -73,7 +70,7 @@
                     <input type="text" name="post" class="form-control postcodify_postcode5" value="${user.me_post}">
                 </div>
                 <div class="col-md-3">
-                    <button type="button" class="btn btn-primary" id="postcodify_search_button">검색</button>
+                    <button type="button" class="btn btn-primary" id="postcodify_search_button" style="border: 1px solid black; background-color: floralwhite; color: black;">검색</button>
                 </div>
             </div>
 
@@ -147,7 +144,7 @@
             </div>
 
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">수정</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" style="border: 1px solid black; background-color: floralwhite; color: black;">수정</button>
                 </form>
             </div>
         </div>

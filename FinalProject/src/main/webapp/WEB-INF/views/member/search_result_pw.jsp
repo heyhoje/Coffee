@@ -24,22 +24,22 @@
 					<h1 style="margin-top: 10px" class="h4 text-gray-900 mb-2">비밀번호 확인</h1>
 					<br>
 					<p class="mb-4">${newPw}</p>
-					<h3>마이페이지에서 비밀번호를 변경해주세요.</h3>
+					<h3>로그인 후 마이페이지에서 비밀번호를 변경해주세요.</h3>
 					<br>
 				</div>
 				<hr>
 				<a class="btn btn-primary btn-user btn-block"
 					style="border: 1px solid black; background-color: floralwhite; color: black;"
-					href="/member/search_id">아이디 찾기</a> <a
+					href="/member/search_id">아이디 찾기 바로가기</a> <a
 					class="btn btn-primary btn-user btn-block"
 					style="border: 1px solid black; background-color: floralwhite; color: black;"
-					href="/member/search_pw">비밀번호 찾기</a> <a
+					href="/member/search_pw">비밀번호 찾기 바로가기</a> <a
 					class="btn btn-primary btn-user btn-block"
 					style="border: 1px solid black; background-color: floralwhite; color: black;"
-					href="/member/signup2">회원가입</a> <a
+					href="/member/signup2">회원가입 바로가기</a> <a
 					class="btn btn-primary btn-user btn-block"
 					style="border: 1px solid black; background-color: floralwhite; color: black;"
-					href="/">로그인</a>
+					href="/">로그인 바로가기</a>
 			</div>
 		</div>
 	</div>
