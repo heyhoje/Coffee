@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -15,13 +15,14 @@
 <meta name="author" content="">
 <title>비밀번호 찾기</title>
 </head>
-<form commandName="member" id="createForm" action="${path}/member/search_result_pw" method="post">
-<input type="hidden" id="me_user_id_yn" name="me_user_id_yn" value="N"/>
+<form commandName="member" id="createForm"
+	action="${path}/member/search_result_pw" method="post">
+	<input type="hidden" id="me_user_id_yn" name="me_user_id_yn" value="N" />
 	<body>
 		<div class="container mt-5">
 			<div class="row justify-content-center">
 				<div class="col-md-6"
-					style="height: 490px; border: 1px solid black; border-radius: 10px;">
+					style="border: 1px solid black; border-radius: 10px;">
 					<h2 class="text-center mb-4">비밀번호 찾기</h2>
 					<div class="form-group">
 						<input type="text" class="form-control form-control-user"
@@ -36,7 +37,22 @@
 						<input type="email" class="form-control form-control-user"
 							id="me_email" name="me_email" placeholder="가입된 계정의 이메일을 입력하세요.">
 					</div>
-					<a href="javascript:void(0)" onclick="fnSubmit(); return false;"
+					
+					<div id="mail_input" name="mail_input">
+						<input type="text" name="mail" id="mail" placeholder="이메일 입력">
+						<button type="button" id="sendBtn" name="sendBtn"
+							onclick="sendNumber()">인증번호</button>
+					</div>
+					<br>
+					<div id="mail_number" name="mail_number" style="display: none">
+						<input type="text" name="number" id="number" placeholder="인증번호 입력">
+						<button type="button" name="confirmBtn" id="confirmBtn"
+							onclick="confirmNumber()">이메일 인증</button>
+					</div>
+					<br> <input type="text" id="Confirm" name="Confirm"
+						style="display: none" value="">
+						
+						<a href="javascript:void(0)" onclick="fnSubmit(); return false;"
 						class="btn btn-primary btn-user btn-block"
 						style="border: 1px solid black; background-color: floralwhite; color: black;">
 						비밀번호 찾기</a>
@@ -48,7 +64,7 @@
 						style="border: 1px solid black; background-color: floralwhite; color: black;"
 						href="/member/signup2">회원가입</a> <a
 						class="btn btn-primary btn-user btn-block"
-						style="border: 1px solid black; background-color: floralwhite; color: black;"
+						style="margin-bottom: 15px; border: 1px solid black; background-color: floralwhite; color: black;"
 						href="/">로그인</a>
 				</div>
 			</div>
@@ -64,7 +80,39 @@
 
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
+
+<script type="text/javascript">
+<!-- 이메일 인증  -->
+	function sendNumber() {
+		$("#mail_number").css("display", "block");
+		$.ajax({
+			url : "/mail",
+			type : "post",
+			dataType : "json",
+			data : {
+				"mail" : $("#mail").val()
+			},
+			success : function(data) {
+				alert("인증번호 발송");
+				$("#Confirm").attr("value", data);
+			}
+		});
+	}
+
+	function confirmNumber() {
+		var number1 = $("#number").val();
+		var number2 = $("#Confirm").val();
+
+		if (number1 == number2) {
+			alert("인증되었습니다.");
+		} else {
+			alert("번호가 다릅니다.");
+		}
+	}
+</script>
+
 <script>
+<!-- 비밀번호 찾기 -->
 	var path = "${pageContext.request.contextPath }";
 
 	$(document).ready(function() {

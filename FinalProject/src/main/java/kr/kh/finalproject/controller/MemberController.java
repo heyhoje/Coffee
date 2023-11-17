@@ -62,81 +62,80 @@ public class MemberController {
 		return memberService.checkId(id);
 	}
 
-	//아이디 찾기 페이지
+	// 아이디 찾기 페이지
 	@RequestMapping(value = "/member/search_id", method = RequestMethod.GET)
-	public String search_id(HttpServletRequest request, Model model,
-	        MemberVO member) {
+	public String search_id(HttpServletRequest request, Model model, MemberVO member) {
 
 		return "/member/search_id";
 	}
-	//비밀번호 찾기 페이지
+
+	// 비밀번호 찾기 페이지
 	@RequestMapping(value = "/member/search_pw", method = RequestMethod.GET)
-	public String search_pw(HttpServletRequest request, Model model,
-	        MemberVO member) {
+	public String search_pw(HttpServletRequest request, Model model, MemberVO member) {
 
 		return "/member/search_pw";
 	}
-	//아이디 찾기 완료 후 페이지
+
+	// 아이디 찾기 완료 후 페이지
 	@RequestMapping(value = "/member/search_result_id")
 	public String search_result_id(HttpServletRequest request, Model model,
-	    @RequestParam(required = true, value = "me_name") String me_name, 
-	    @RequestParam(required = true, value = "me_email") String me_email,
-	    MemberVO member) {
-	 
-	 
-	try {
-	    
-		member.setMe_name(me_name);
-		member.setMe_email(me_email);
-	    MemberVO memberSearch = memberService.memberIdSearch(member);
-	    
-	    model.addAttribute("member", memberSearch);
-	 
-	} catch (Exception e) {
-	    System.out.println(e.toString());
-	    model.addAttribute("msg", "오류가 발생되었습니다.");
+			@RequestParam(required = true, value = "me_name") String me_name,
+			@RequestParam(required = true, value = "me_email") String me_email, MemberVO member) {
+
+		try {
+
+			member.setMe_name(me_name);
+			member.setMe_email(me_email);
+			MemberVO memberSearch = memberService.memberIdSearch(member);
+
+			model.addAttribute("member", memberSearch);
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			model.addAttribute("msg", "오류가 발생되었습니다.");
+		}
+
+		return "/member/search_result_id";
 	}
-	 
-	return "/member/search_result_id";
-	}
-	//비밀번호 찾기 완료 후 페이지
+
+	// 비밀번호 찾기 완료 후 페이지
 	@RequestMapping(value = "/member/search_result_pw", method = RequestMethod.POST)
 	public String search_result_pw(HttpServletRequest request, Model model,
-		@RequestParam(required = true, value = "me_user_id") String me_user_id, 
-	    @RequestParam(required = true, value = "me_name") String me_name, 
-	    @RequestParam(required = true, value = "me_email") String me_email, 
-	    MemberVO member) {
-	try {
-	    
-		member.setMe_user_id(me_user_id);
-		member.setMe_name(me_name);
-		member.setMe_email(me_email);
-	    int memberSearch = memberService.memberPwdCheck(member);
-	    
-	    if(memberSearch == 0) {
-	        model.addAttribute("msg", "기입된 정보가 잘못되었습니다. 다시 입력해주세요.");
-	        return "/member/search_pw";
-	    }
-	    
-	    String newPw = RandomStringUtils.randomAlphanumeric(10);
-	    String enpassword = encryptPassword(newPw);
-	    member.setMe_pw(enpassword);
-        
-	    memberService.passwordUpdate(member);
-	    
-	    model.addAttribute("newPw", newPw);
-	    
-	} catch (Exception e) {
-	    System.out.println(e.toString());
-	    model.addAttribute("msg", "오류가 발생되었습니다.");
+			@RequestParam(required = true, value = "me_user_id") String me_user_id, 
+		    @RequestParam(required = true, value = "me_name") String me_name, 
+		    @RequestParam(required = true, value = "me_email") String me_email, 
+		    MemberVO member) {
+		try {
+		    
+			member.setMe_user_id(me_user_id);
+			member.setMe_name(me_name);
+			member.setMe_email(me_email);
+		    int memberSearch = memberService.memberPwdCheck(member);
+		    
+		    if(memberSearch == 0) {
+		        model.addAttribute("msg", "기입된 정보가 잘못되었습니다. 다시 입력해주세요.");
+		        return "/member/search_pw";
+		    }
+		    
+		    String newPw = RandomStringUtils.randomAlphanumeric(10);
+		    String enpassword = encryptPassword(newPw);
+		    member.setMe_pw(enpassword);
+	        
+		    memberService.passwordUpdate(member);
+		    
+		    model.addAttribute("newPw", newPw);
+		    
+		} catch (Exception e) {
+		    System.out.println(e.toString());
+		    model.addAttribute("msg", "오류가 발생되었습니다.");
+		}
+		return "/member/search_result_pw";
 	}
-	return "/member/search_result_pw";
-	}
-	
 	private String encryptPassword(String password) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        return passwordEncoder.encode(password);
-    }
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		return passwordEncoder.encode(password);
+	}
+
 	// 회원 로그인
 	@GetMapping("/member/login")
 	public String login() {
@@ -194,20 +193,20 @@ public class MemberController {
 	// 카카오
 	@RequestMapping("/kakaoLoginCallback")
 	public String kakaoLoginCallback(Model model, HttpServletRequest request, HttpServletResponse response) {
-			String kakaoId = request.getParameter("kakaoId");
-			String email = request.getParameter("email");
-			String name = request.getParameter("name");
-			String phone_number = request.getParameter("phone_number");
+		String kakaoId = request.getParameter("kakaoId");
+		String email = request.getParameter("email");
+		String name = request.getParameter("name");
+		String phone_number = request.getParameter("phone_number");
 
-		    boolean isUserExisting = memberService.checkUserExists(kakaoId);
+		boolean isUserExisting = memberService.checkUserExists(kakaoId);
 
-		    if (isUserExisting) {
-		        MemberVO existingUser = memberService.getMemberByKakaoId(kakaoId);
-		        if (existingUser != null) {
-		            HttpSession session = request.getSession();
-		            session.setAttribute("user", existingUser);
-		        }
-		    } else {
+		if (isUserExisting) {
+			MemberVO existingUser = memberService.getMemberByKakaoId(kakaoId);
+			if (existingUser != null) {
+				HttpSession session = request.getSession();
+				session.setAttribute("user", existingUser);
+			}
+		} else {
 			// 카카오 로그인 정보를 User 테이블에 삽입
 			UserVO user = new UserVO();
 			user.setUser_id(kakaoId);
@@ -224,14 +223,13 @@ public class MemberController {
 			member.setMe_name(name);
 			memberService.insertMemberKakao(member);
 			System.out.println(member);
-			
-			
-	        HttpSession session = request.getSession();
-	        session.setAttribute("user", member);
+
+			HttpSession session = request.getSession();
+			session.setAttribute("user", member);
 		}
-		    return "/main/message";
+		return "/main/message";
 	}
-	
+
 	@RequestMapping(value = "/member/mypage", method = RequestMethod.GET)
 	public String mypage() {
 		return "/member/mypage";

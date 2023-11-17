@@ -19,11 +19,12 @@
 	<div class="container mt-5">
 		<div class="row justify-content-center">
 			<div class="col-md-6"
-				style="height: 400px; border: 1px solid black; border-radius: 10px;">
+				style="height: 440px; border: 1px solid black; border-radius: 10px;">
 				<div class="text-center">
 					<h1 style="margin-top: 10px" class="h4 text-gray-900 mb-2">비밀번호 확인</h1>
 					<br>
 					<p class="mb-4">${newPw}</p>
+					<h3>마이페이지에서 비밀번호를 변경해주세요.</h3>
 					<br>
 				</div>
 				<hr>

@@ -7,6 +7,6 @@
 <title>마이페이지</title>
 </head>
 <body>
-
+	<button>비밀번호 변경</button>
 </body>
 </html>
