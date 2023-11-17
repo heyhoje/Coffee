@@ -90,9 +90,8 @@
 										type="submit" value="로그인" class="btn login_btn">
 								</div>
 							</div>
-							<div class="card-footer" style="margin-top: 120px;">
-								<div style="color: white;"
-									class="d-flex justify-content-center links" id="signupbtn">
+							<div class="card-footer" style="margin-top: 70px;">
+								<div class="d-flex justify-content-center links" id="signupbtn">
 
 									<a href="<c:url value='/member/signup2'/>">  회원가입</a>
 								</div>
@@ -175,7 +174,7 @@
 										type="submit" value="로그인" class="btn login_btn">
 								</div>
 							</div>
-							<div class="card-footer" style="margin-top: 120px;">
+							<div class="card-footer" style="margin-top: 70px;">
 								<div style="color: white;"
 									class="d-flex justify-content-center links">
 									<a href="<c:url value='/member/signup2'/>">회원가입</a>
