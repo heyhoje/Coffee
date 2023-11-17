@@ -17,10 +17,9 @@
     <section class="cart">
         <div class="cart__information">
             <ul>
-                <li>장바구니 얼마나 저장되는지는 잘 모릅니다. 아마 아이디에 따라 평생 저장될듯?</li>
-                <li>옵션을 변경하려면 삭제후 처음부터 다시 해야하니 그냥 드세요.</li>
-                <li>픽업 예약후 예정시간에 오지 않으면 제가 먹으니 시간에 늦지 않길 바라실게요</li>
-                <li>한 번에 한 매장에서만 주문 됩니다. 다른 매장 품목 추가하시면 장바구니 리셋!</li>                
+                <li>한 번에 한 매장에서만 주문 됩니다. 다른 매장 품목 추가하시면 장바구니가 초기화됩니다.</li>
+                <li>주문을 잘못했거나 옵션을 수정하려면 카운터에 문의하세요.</li>
+                <li>주문 후 예정 시간에 늦지 않게 오시는걸 권장합니다.</li>
             </ul>
         </div>
         <div>
@@ -47,14 +46,30 @@
                 <td id="menuName">${optionChoice.menu.mn_name}</td>
                 <td>${optionChoice.oc_selected }</td>
                 <td>
-					<button onclick="updateQuantity(${index.index}, 'decrease')">-</button>
+					<button class="plusbtn" onclick="updateQuantity(${index.index}, 'decrease')">-</button>
 					<span id="quantity_${index.index}">${quantity}</span>
-					<button onclick="updateQuantity(${index.index}, 'increase')">+</button>
+					<button class="minusbtn" onclick="updateQuantity(${index.index}, 'increase')">+</button>
 		        </td>
                 <td id="price_${index.index}">${sumPrice}</td>
-                <td><button onclick="deleteThis(${index.index})">삭제</button></td>
-            </tr>
+                <td><button class="deletepopbtn" onclick="openPopup(${index.index})">삭제</button>
+                <td>
+            	</tr>
+            	<div id="overlay">
+					  <div id="popup">
+					    <p>정말 삭제하시겠습니까?</p>
+					    <button id="btnYes" onclick="deleteThis(${index.index})">예</button>
+					    <button id="btnNo" onclick="handleResponse('아니오')">아니오</button>
+					  </div>
+				</div>
+				<div id="overlay2">
+					  <div id="popup2">
+					    <p>정말 주문하시겠습니까?</p>
+					    <button id="btnYes" onclick="requestPay()">예</button>
+					    <button id="btnNo" onclick="handleResponse('아니오')">아니오</button>
+					  </div>
+				</div>
         </c:forEach>
+        		
 		<c:set var="totalPrice" value="0" />
 		<c:forEach items="${jangbaguni}" var="optionChoice" varStatus="index">
 		    <c:set var="menuPrice" value="${optionChoice.menu.mn_price}" />
@@ -76,10 +91,13 @@
         
         
         <div class="cart__mainbtns">
-            <button class="cart__bigorderbtn left">쇼핑 계속하기</button>
-            <button class="cart__bigorderbtn right" onclick="requestPay()">주문하기</button>
+        	<div class="cart-bigorder-leftbox">
+            	<a class="cart-bigorder-left" href="<c:url value='/store/menu/1/1'/>">쇼핑 계속하기</a>
+            </div>
+            <button class="cart__bigorderbtn right" onclick="openPopup2()">주문하기</button>
         </div>
-    </section>
+     
+    
     
 <script type="text/javascript">
 
@@ -116,7 +134,7 @@ function updateQuantity(num, operation) {
     var quantity = parseInt(quantityField.textContent);
     var menuPrice = menuPrices[num];
     var optionPrice = optionPrices[num];
-
+	
     if (operation === 'increase') {
         quantity++;
     } else if (operation === 'decrease' && quantity > 1) {
@@ -164,7 +182,27 @@ function deleteThis(numnum) {
         }
     });
 }
+function openPopup(${index.index}) {
+    document.getElementById('overlay').style.display = 'flex';
+	}
+function openPopup2() {
+    document.getElementById('overlay2').style.display = 'flex';
+	}
 
+function closePopup() {
+    document.getElementById('overlay').style.display = 'none';
+}
+
+function closePopup2() {
+    document.getElementById('overlay2').style.display = 'none';
+}
+
+function handleResponse(response) {
+    closePopup();
+}
+function handleResponse(response) {
+    closePopup2();
+}
 
 
 
@@ -246,6 +284,7 @@ function allInOneAfterPay(totalPrice, usePoint) {
         }
     });
 }
+
 </script>
 
 </body>
