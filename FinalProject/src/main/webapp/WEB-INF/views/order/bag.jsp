@@ -65,7 +65,7 @@
 					  <div id="popup2">
 					    <p>정말 주문하시겠습니까?</p>
 					    <button id="btnYes" onclick="requestPay()">예</button>
-					    <button id="btnNo" onclick="handleResponse('아니오')">아니오</button>
+					    <button id="btnNo" onclick="handleResponse2('아니오')">아니오</button>
 					  </div>
 				</div>
         </c:forEach>
@@ -200,7 +200,7 @@ function closePopup2() {
 function handleResponse(response) {
     closePopup();
 }
-function handleResponse(response) {
+function handleResponse2(response) {
     closePopup2();
 }
 
