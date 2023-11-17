@@ -21,9 +21,9 @@ public class MemberVO extends UserVO{
 	
 	
 	// 자동로그인 속성
+	private boolean autoLogin;
 	private String me_session_id; 
 	private Date me_session_limit; 
-	private boolean autoLogin;
 	
 	// 카카오 소셜 로그인
 	private String kakao_user_id;

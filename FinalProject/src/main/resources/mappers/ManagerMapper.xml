@@ -18,10 +18,10 @@
 		update
 			business_member
 		set
-			bm_session_id = #{bmember.bm_session_id},
-			bm_session_limit = #{bmember.bm_session_limit}
+			bm_session_id = #{manager.bm_session_id},
+			bm_session_limit = #{manager.bm_session_limit}
 		where
-			bm_id = #{bmember.bm_id}
+			bm_id = #{manager.bm_id}
 	</update>
 	
 	<select id="selectBMemberBySessionId" resultType="kr.kh.finalproject.vo.ManagerVO">

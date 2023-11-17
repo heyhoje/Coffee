@@ -30,5 +30,11 @@ public interface MemberDAO {
 
 	MemberVO getMemberByKakaoId(String kakaoId);
 
+	MemberVO memberIdSearch(MemberVO memberSearch);
+
+	int memberPwdCheck(MemberVO member);
+
+	void passwordUpdate(MemberVO member);
+
 	
 }

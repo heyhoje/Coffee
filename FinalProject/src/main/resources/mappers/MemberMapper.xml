@@ -66,4 +66,47 @@
         FROM member
         WHERE me_user_id = #{me_user_id}
     </select>
+    
+    <!-- 아이디 찾기 -->
+    <select id="memberIdSearch" parameterType="kr.kh.finalproject.vo.MemberVO" resultType="kr.kh.finalproject.vo.MemberVO">
+	<![CDATA[
+	    select
+	        *
+	    from
+	        member
+	    where
+	        me_name = #{me_name}
+	    and
+	        me_email = #{me_email}
+	]]>    
+	</select>
+	<!-- 비밀번호 찾기 -->
+	<select id="memberPwdCheck" parameterType="kr.kh.finalproject.vo.MemberVO" resultType="java.lang.Integer">
+	<![CDATA[
+	    select
+	        count(*)
+	    from
+	        member
+	    where
+	        me_name = #{me_name}
+	    and
+	        me_email = #{me_email}
+	    and
+	        me_user_id = #{me_user_id}
+	]]>    
+	</select>
+	 
+	    
+	<update id="passwordUpdate" parameterType="kr.kh.finalproject.vo.MemberVO" >
+	    UPDATE 
+	        member 
+	    SET 
+	        me_pw = #{me_pw}
+	    where
+	        me_name = #{me_name}
+	    and
+	        me_email = #{me_email}
+	    and
+	        me_user_id = #{me_user_id}
+	</update>
 </mapper>

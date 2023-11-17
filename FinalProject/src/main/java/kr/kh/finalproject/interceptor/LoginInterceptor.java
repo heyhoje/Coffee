@@ -92,7 +92,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			}
 			// 했으면 세션아이디 저장? 생성?
 			String bmSessionId = request.getSession().getId();
-			
+			System.out.println(bmSessionId);
 			// 쿠키 생성
 			Cookie cookie = new Cookie("bmLoginCookie", bmSessionId);
 			
