@@ -90,13 +90,16 @@
 										type="submit" value="로그인" class="btn login_btn">
 								</div>
 							</div>
-							<div class="card-footer" style="margin-top: 120px;">
-								<div style="color: white;"
-									class="d-flex justify-content-center links" id="signupbtn">
-									회원이 아니신가요?<a href="<c:url value='/member/signup2'/>">  회원가입</a>
+							<div class="card-footer" style="margin-top: 70px;">
+								<div class="d-flex justify-content-center links" id="signupbtn">
+
+									<a href="<c:url value='/member/signup2'/>">  회원가입</a>
 								</div>
-								<div class="d-flex justify-content-center" id="Id/pw">
-									<a href="<c:url value='/member/forgotpw'/>">아이디/비밀번호찾기</a>
+								<div class="d-flex justify-content-center" id="Id">
+									<a href="<c:url value='/member/search_id'/>">아이디찾기</a>
+								</div>
+								<div class="d-flex justify-content-center" id="pw">
+									<a href="<c:url value='/member/search_pw'/>">비밀번호찾기</a>
 								</div>
 							</div>
 						</form>
@@ -134,8 +137,14 @@
 									class="form-control" placeholder="비밀번호">
 							</div>
 							<div class="row align-items-center remember">
-								<input style="margin-left: 20px;" type="checkbox">로그인
-								기억하기
+								<label style="color: white;"> <input
+									style="color: white; margin-left: 20px; margin-right: 5px;"
+									type="checkbox" name="idSaveCheck"> 아이디 기억
+								</label> 
+								<label style="color: white;"> <input
+									style="color: white; margin-left: 15px; margin-right: 5px;"
+									type="checkbox" name="autoLogin" > 자동 로그인
+								</label>
 							</div>
 							<div class="form-group">
 								<div class="flashing column">
@@ -165,13 +174,16 @@
 										type="submit" value="로그인" class="btn login_btn">
 								</div>
 							</div>
-							<div class="card-footer" style="margin-top: 120px;">
+							<div class="card-footer" style="margin-top: 70px;">
 								<div style="color: white;"
 									class="d-flex justify-content-center links">
-									회원이 아니신가요?<a href="<c:url value='/member/signup2'/>">회원가입</a>
+									<a href="<c:url value='/member/signup2'/>">회원가입</a>
 								</div>
 								<div class="d-flex justify-content-center">
-									<a href="<c:url value='/member/forgotpw2'/>">아이디/비밀번호찾기</a>
+									<a href="<c:url value='/member/search_id'/>">아이디찾기</a>
+								</div>
+								<div class="d-flex justify-content-center">
+									<a href="<c:url value='/member/search_pw'/>">비밀번호찾기</a>
 								</div>
 							</div>
 						</form>

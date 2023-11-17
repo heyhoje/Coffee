@@ -1,1 +1,12 @@
 @charset "UTF-8";
+
+#mypage-container{
+	font-family: 'BM HANNA Pro', sans-serif;
+}
+#Mypage-title{
+	font-family: 'BM HANNA Pro', sans-serif;
+	display:flex;
+	margin-top:30px;
+	justify-content:center;
+	
+}

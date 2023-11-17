@@ -91,7 +91,7 @@ h4 {
 }
 
 h5 {
-    font-size: 14px
+    font-size: 18px
 }
 
 h6 {
@@ -154,7 +154,7 @@ p {
 }
 
 a {
-    color: burlywood;
+    color: #ffffff;
     text-decoration: none;
     outline: none !important;
 }

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-a, a:hover, a:visited{color:#fff; text-decoration:none;}
+
 
 .search-mr{
 	width: 100%;
@@ -126,3 +126,4 @@ width:30px;
 .disabled+button{
 	background: gray !important;
 }
+a, a:hover, a:visited{ text-decoration:none;}

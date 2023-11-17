@@ -46,8 +46,8 @@
     
     $(document).ready(function(){
 		
-    	var userID = 
-        var urlEndPoint = 'http://localhost:8080/Notification';
+    	var userID = "";
+        var urlEndPoint = 'http://localhost:8080/business/order/${st_num}';
         var eventsource = new EventSource(urlEndPoint);
         eventsource.addEventListener('INIT', function(event){
         })        
@@ -64,7 +64,7 @@
         function addBlock(Menu, content){
             var a = document.createElement("Menu");
             //메뉴
-            var h = document.createElement("H3")
+            var h = document.createElement("content")
             var t = document.createElement(Menu);
             h.appendChild(t);
             //메뉴정보
