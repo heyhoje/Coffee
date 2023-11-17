@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.kh.finalproject.dao.StoreDAO;
+import kr.kh.finalproject.vo.ManagerVO;
 import kr.kh.finalproject.vo.StoreVO;
 
 @Service
@@ -28,5 +29,16 @@ public class StoreServiceImp implements StoreService{
 			return false;
 		}
 		return storeDao.updateStore(store);
+	}
+
+	/** 매장등록 추가정보 입력 */
+	@Override
+	public boolean plusInfo(StoreVO store, ManagerVO buser) {
+		if(store == null || buser == null || buser.getBm_id() == null ) {
+			return false;
+		}
+
+		store.setSt_bm_id(buser.getBm_id()); // bm_id값은 set으로 st_bm_id에 값 넣으면, buser 안넘겨도됨..ㅜㅠㅠ
+		return storeDao.insertPlusInfo(store);
 	}
 }

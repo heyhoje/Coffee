@@ -134,4 +134,10 @@ public class MemberServiceImp implements MemberService {
 	    return memberDao.getMemberByKakaoId(kakaoId);
 	}
 
+
+	@Override
+	public MemberVO memberIdSearch(MemberVO memberSearch) {
+		return memberDao.memberIdSearch(memberSearch);
+	}
+
 }

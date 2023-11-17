@@ -4,12 +4,20 @@ package kr.kh.finalproject.controller;
 
 import java.util.Map;
 
+import java.security.MessageDigest;
+import java.util.Base64;
+import java.util.UUID;
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,11 +54,11 @@ public class MemberController {
 
 		boolean res = memberService.signup(member);
 		if (res) {
-			model.addAttribute("msg", "회원가입 성공!");
+			model.addAttribute("msg", "회원가입 성공했습니다. \n 오늘 커피 한잔 어떠실까요?");
 			model.addAttribute("url", "");
 		} else {
-			model.addAttribute("msg", "회원가입 실패!");
-			model.addAttribute("url", "/member/signup2");
+			model.addAttribute("msg", "회원가입 실패했습니다. \n다시 시도 부탁드립니다.");
+			model.addAttribute("url", "member/signup2");
 		}
 		return "/main/message";
 	}
@@ -69,11 +77,78 @@ public class MemberController {
 		return memberService.checkId(id);
 	}
 
-	// 아이디 비밀번호 찾기 페이지
-	@RequestMapping(value = "/member/forgotpw", method = RequestMethod.GET)
-	public String forgotpw() {
+	// 아이디 찾기 페이지
+	@RequestMapping(value = "/member/search_id", method = RequestMethod.GET)
+	public String search_id(HttpServletRequest request, Model model, MemberVO member) {
 
-		return "/member/forgotpw";
+		return "/member/search_id";
+	}
+
+	// 비밀번호 찾기 페이지
+	@RequestMapping(value = "/member/search_pw", method = RequestMethod.GET)
+	public String search_pw(HttpServletRequest request, Model model, MemberVO member) {
+
+		return "/member/search_pw";
+	}
+
+	// 아이디 찾기 완료 후 페이지
+	@RequestMapping(value = "/member/search_result_id")
+	public String search_result_id(HttpServletRequest request, Model model,
+			@RequestParam(required = true, value = "me_name") String me_name,
+			@RequestParam(required = true, value = "me_email") String me_email, MemberVO member) {
+
+		try {
+
+			member.setMe_name(me_name);
+			member.setMe_email(me_email);
+			MemberVO memberSearch = memberService.memberIdSearch(member);
+
+			model.addAttribute("member", memberSearch);
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			model.addAttribute("msg", "오류가 발생되었습니다.");
+		}
+
+		return "/member/search_result_id";
+	}
+
+	// 비밀번호 찾기 완료 후 페이지
+	@RequestMapping(value = "/member/search_result_pw", method = RequestMethod.POST)
+	public String search_result_pw(HttpServletRequest request, Model model,
+			@RequestParam(required = true, value = "me_user_id") String me_user_id, 
+		    @RequestParam(required = true, value = "me_name") String me_name, 
+		    @RequestParam(required = true, value = "me_email") String me_email, 
+		    MemberVO member) {
+		try {
+		    
+			member.setMe_user_id(me_user_id);
+			member.setMe_name(me_name);
+			member.setMe_email(me_email);
+		    int memberSearch = memberService.memberPwdCheck(member);
+		    
+		    if(memberSearch == 0) {
+		        model.addAttribute("msg", "기입된 정보가 잘못되었습니다. 다시 입력해주세요.");
+		        return "/member/search_pw";
+		    }
+		    
+		    String newPw = RandomStringUtils.randomAlphanumeric(10);
+		    String enpassword = encryptPassword(newPw);
+		    member.setMe_pw(enpassword);
+	        
+		    memberService.passwordUpdate(member);
+		    
+		    model.addAttribute("newPw", newPw);
+		    
+		} catch (Exception e) {
+		    System.out.println(e.toString());
+		    model.addAttribute("msg", "오류가 발생되었습니다.");
+		}
+		return "/member/search_result_pw";
+	}
+	private String encryptPassword(String password) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		return passwordEncoder.encode(password);
 	}
 
 	// 회원 로그인
@@ -91,14 +166,14 @@ public class MemberController {
 		if (user != null) {
 			model.addAttribute("user", user);
 			model.addAttribute("type", "u");
-			model.addAttribute("msg", "로그인 성공!");
+			model.addAttribute("msg", "로그인 성공했습니다. 맛있는 커피와 함께 좋은하루 되세요:)");
 			model.addAttribute("url", "");
 
 			// 화면에서 보낸 자동 로그인 체크 여부를 user에 적용
 			user.setAutoLogin(member.isAutoLogin());
 		} else {
 			model.addAttribute("msg", "아이디 또는 비밀번호가 잘못되었습니다.");
-			model.addAttribute("url", "/member/login");
+			model.addAttribute("url", "member/login");
 		}
 		return "/main/message";
 	}
@@ -108,24 +183,17 @@ public class MemberController {
 
 //		Object user = session.getAttribute("user"); // MemberVO user = (MemberVO)session.getAttribute("user"); 
 //		session.removeAttribute("user");
-
-		MemberVO user = (MemberVO) session.getAttribute("user"); // MemberVO user =
-																	// (MemberVO)session.getAttribute("user");
-
-		// session_limit null값, 없데이트, 세션에서 user정보 제거
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		// session_limit null값, 업데이트, 세션에서 user정보 제거
 		user.setMe_session_limit(null);
 		memberService.updateMemberSession(user); // 자동로그인을 안하기 위해
+		
+		session.removeAttribute("user"); // 일반 로그아웃을 위해(세션에서만 유저정보를 없애면 로그인안한거로 인식됨)
+		
 
-		session.removeAttribute("user"); // 일반 로그아웃을 위해(세션에서만 유저정보를 없애면 로그인안한거로 인식됨)메퍼에서 delete 안하고도 리밋값 null된 유저정보가 여기서
-											// 삭제되는건가? 세션에서만 삭제하면 되는건가?
-
-		/*
-		 * if(user != null) { user.setMe_session_limit(null);
-		 * memberService.updateMemberSession(user); // 여기는 왜 주석처리인지..? // 리밋에 null값 줘놓고
-		 * 무엇을 업데이트 할까? = 세션아이디를 지운다. 만료니까? 만료되면 자동으로 지워지나???? }
-		 */
-
-		model.addAttribute("msg", "로그아웃 성공!");
+		model.addAttribute("msg", "로그아웃 성공했습니다. 즐거운 하루 보내세요!");
 		model.addAttribute("url", "");
 		return "/main/message";
 	}
@@ -133,20 +201,20 @@ public class MemberController {
 	// 카카오
 	@RequestMapping("/kakaoLoginCallback")
 	public String kakaoLoginCallback(Model model, HttpServletRequest request, HttpServletResponse response) {
-			String kakaoId = request.getParameter("kakaoId");
-			String email = request.getParameter("email");
-			String name = request.getParameter("name");
-			String phone_number = request.getParameter("phone_number");
+		String kakaoId = request.getParameter("kakaoId");
+		String email = request.getParameter("email");
+		String name = request.getParameter("name");
+		String phone_number = request.getParameter("phone_number");
 
-		    boolean isUserExisting = memberService.checkUserExists(kakaoId);
+		boolean isUserExisting = memberService.checkUserExists(kakaoId);
 
-		    if (isUserExisting) {
-		        MemberVO existingUser = memberService.getMemberByKakaoId(kakaoId);
-		        if (existingUser != null) {
-		            HttpSession session = request.getSession();
-		            session.setAttribute("user", existingUser);
-		        }
-		    } else {
+		if (isUserExisting) {
+			MemberVO existingUser = memberService.getMemberByKakaoId(kakaoId);
+			if (existingUser != null) {
+				HttpSession session = request.getSession();
+				session.setAttribute("user", existingUser);
+			}
+		} else {
 			// 카카오 로그인 정보를 User 테이블에 삽입
 			UserVO user = new UserVO();
 			user.setUser_id(kakaoId);
@@ -156,7 +224,6 @@ public class MemberController {
 			// User 정보를 추가하는 메서드를 호출
 			memberService.insertUserKakaoInfo(user);
 
-
 			// 카카오 로그인 정보를 Member 테이블에 삽입
 			MemberVO member = new MemberVO();
 			member.setMe_user_id(kakaoId);
@@ -164,13 +231,16 @@ public class MemberController {
 			member.setMe_name(name);
 			memberService.insertMemberKakao(member);
 			System.out.println(member);
-			
-			
-	        HttpSession session = request.getSession();
-	        session.setAttribute("user", member);
+
+			HttpSession session = request.getSession();
+			session.setAttribute("user", member);
 		}
-		    return "/main/message";
+		return "/main/message";
 	}
 }
+
+
+	
+
 
 

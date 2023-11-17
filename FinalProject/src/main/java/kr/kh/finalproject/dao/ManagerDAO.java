@@ -13,7 +13,9 @@ public interface ManagerDAO {
 	boolean insertManager(@Param("manager") ManagerVO manager);
 
 	// 사업자회원 - 자동로그인 
-	void updateBMemberSession(@Param("bmember")ManagerVO buser); // ManagerVO아니고 Object맞는건가????? 
+
+	void updateBMemberSession(@Param("manager")ManagerVO buser); // ManagerVO아니고 Object맞는건가????? 
+
 
 	ManagerVO selectBMemberBySessionId(@Param("bm_session_id")String bId);
 

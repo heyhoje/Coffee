@@ -80,11 +80,11 @@ public class ManagerServiceImp implements ManagerService{
 	
 	/** 자동 로그인 */
 	@Override
-	public void updateBMemberSession(ManagerVO buser) {
-		if(buser == null) {
+	public void updateBMemberSession(ManagerVO user) {
+		if(user == null) {
 			return;
 		}
-		managerDao.updateBMemberSession(buser);
+		managerDao.updateBMemberSession(user);
 	}
 
 	@Override

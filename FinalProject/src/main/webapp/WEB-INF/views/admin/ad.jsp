@@ -39,7 +39,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		${adList}
+		<%-- ${adList} --%>
 	</div>
 </body>
 

@@ -20,11 +20,12 @@ public class AutoLoginInterceptor2 extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		
 		HttpSession session = request.getSession();
-		ManagerVO user2 = (ManagerVO)session.getAttribute("user2");
+		ManagerVO buser = (ManagerVO)session.getAttribute("buser");
 		
 		//이미 로그인 됨 == 자동 로그인 안해도 됨
-		if(user2 != null) {
+		if(buser != null) {
 			return true;
 		}
 		//쿠키 정보를 가져옴
@@ -35,9 +36,9 @@ public class AutoLoginInterceptor2 extends HandlerInterceptorAdapter {
 		}
 		
 		//쿠키값과 같은 정보를 가진 회원 정보를 가져옴
-		user2 = managerService.getBMemberBySessionId(cookie.getValue());
-		if(user2 != null) {
-			session.setAttribute("user2", user2);
+		buser = managerService.getBMemberBySessionId(cookie.getValue());
+		if(buser != null) {
+			session.setAttribute("buser", buser);
 		}
 		return true;
 	}

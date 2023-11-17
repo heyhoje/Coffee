@@ -18,6 +18,21 @@
 <!-- jQuery 라이브러리 추가 -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+<script>
+    $(document).ready(function(){
+        $(".nav-link").click(function(){
+            // 클릭된 탭의 href 속성 값을 가져옵니다.
+            var targetTab = $(this).attr("href");
+
+            // 모든 탭을 숨김
+            $(".tab-pane").hide();
+
+            // 클릭된 탭을 보여줍니다.
+            $(targetTab).show();
+        });
+    });
+</script>
+
 </head>
 <body>
 	<div class="signup_v4 mb-30 card card_wrap ">
@@ -127,13 +142,8 @@
 							</div>
 						</div>
 					</form>
-
-				
-
-
 				</div>
-
-				<div class="tab-pane fade" id="register" role="tabpanel"
+				<div class="tab-pane fade show active" id="register" role="tabpanel"
 					aria-labelledby="register-tab">
 					<form action="<c:url value='/manager/signup2'/>" method="post">
 						<div class="form-row">
@@ -254,8 +264,6 @@
             $("#register").hide();
             $("#login").show();
           
-
-            
         });
     });
     
@@ -266,7 +274,6 @@
             $("#login").hide();
             $("#register").show();
 
-            
         });
     });
 </script>

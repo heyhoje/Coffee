@@ -35,11 +35,11 @@ public class ManagerController {
 	public String managerRegister(ManagerVO manager, Model model) {
 		boolean res = managerService.managerRegister(manager);
 		if (res) {
-			model.addAttribute("msg", "회원가입 성공!");
+			model.addAttribute("msg", "회원가입이 제출되었습니다. \n관리자 승인은 운영시간내 13시, 17시에 일괄 진행며 승인확인까지 로그인이 제한될 수 있습니다.");
 			model.addAttribute("url", "");
 		} else {
-			model.addAttribute("msg", "회원가입 실패!");
-			model.addAttribute("url", "/manager/signup2");
+			model.addAttribute("msg", "회원가입에 실패하였습니다. 다시 시도 부탁드립니다.");
+			model.addAttribute("url", "manager/signup2");
 		}
 		return "/main/message";
 	}
@@ -50,7 +50,7 @@ public class ManagerController {
 		return managerService.manageridCheck(id);
 	}
 
-	@RequestMapping(value = "/member/forgotpw2", method = RequestMethod.GET) // 왜 멤버/비번2 로 경로설정되있는지?
+	@RequestMapping(value = "/member/forgotpw2", method = RequestMethod.GET)
 	public String forgotpw2() {
 
 		return "/member/forgotpw";
@@ -67,19 +67,29 @@ public class ManagerController {
 		// 입력받은 회원정보와 일치하는 회원 정보가 있으면 가져오라고 요청
 		System.out.println(manager);
 		ManagerVO buser = managerService.login(manager);
-		// 가져왔으면 => 로그인 성공하면
-		if (buser != null) {
+		
+		/* /main/message를 통해 msg, url을 보내는 경우, 
+		 *  이미 location.href = '<c:url value="/"/>' + url;
+		 *  로 '/'가 추가되있기 때문에 앞에있는 슬러쉬를 지워줘야한다!!  */
+		
+		if (buser != null && buser.getBm_approval() == 0) {
 			model.addAttribute("buser", buser);
 			model.addAttribute("type", "b");
-			model.addAttribute("msg", "로그인 성공!");
-			model.addAttribute("url", "business/home");
+			model.addAttribute("msg", "회원가입 승인이 대기중입니다. 조금만 기다려주세요. \n (추후 관리자에게 문의하는 기능이 추가될 예정입니다.");
+			model.addAttribute("url", ""); // 홈으로 이동을 안하네..... 
+		
+		} else if(buser != null && buser.getBm_approval() == 1) {
+			model.addAttribute("buser", buser);
+			model.addAttribute("type", "b");
+			model.addAttribute("msg", "로그인 정보가 확인되었습니다. 즐거운 하루 되세요!");
+			model.addAttribute("url", "business/home"); // 사이트연결안됨. 오타확인하라고함.
 			
 			// 화면에서 보낸 자동 로그인 체크 여부를 user에 적용
 			buser.setAutoLogin(manager.isAutoLogin());
 			
-		} else {
+		} else{ // 잘못입력했을때, 메세지가 안뜨고 NullPointException 화면이 뜸
 			model.addAttribute("msg", "아이디 또는 비밀번호가 잘못되었습니다.");
-			model.addAttribute("url", "/member/login");
+			model.addAttribute("url", "member/login2");
 		}
 		return "/main/message";
 	}
@@ -103,7 +113,7 @@ public class ManagerController {
 		 * managerService.updateMemberSession(user2); }
 		 */
 
-		model.addAttribute("msg", "로그아웃 성공!");
+		model.addAttribute("msg", "로그아웃되었습니다. 좋은 하루 되세요!");
 		model.addAttribute("url", "");
 		return "/main/message";
 	}

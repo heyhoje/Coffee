@@ -68,6 +68,9 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link"
+							href="<c:url value='/business/plusinfo'/>" 
+							style="font-family: 'BM HANNA Pro', sans-serif; color:white;">매장등록</a></li>
+						<li class="nav-item active"><a class="nav-link"
 							 href="<c:url value='/business/menu'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">메뉴관리</a></li>
 						<li class="nav-item"><a class="nav-link"

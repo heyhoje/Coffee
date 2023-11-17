@@ -36,4 +36,9 @@ public interface MemberService {
 	MemberVO getMemberByKakaoId(String kakaoId);
 
 
+	MemberVO memberIdSearch(MemberVO memberSearch);
+
+
+
+
 }

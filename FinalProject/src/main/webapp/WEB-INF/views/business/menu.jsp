@@ -267,7 +267,25 @@
 			<li data-tab="comment">리뷰</li>
 		</ul>
 		<!-- 메뉴 탭 -->
-
+		<ul class="menu">
+			<li><label class="menu_delete_label"> <i
+					class="fas fa-check-square"></i> <input type="checkbox"
+					class="menu_delete_checkbox" name="deleteNumber"
+					value="${menuList}">
+			</label>
+				<div class="menu_box">
+					<div>
+						<h2>${mn_name}</h2>
+						<input type="text" value="${mn_num }" name="menu_Num"> <input
+							type="text" value="${mn_name }" name="mn_name" class="menu_name">
+						<input type="text" value="${mn_price }" name="mn_price"
+							class="food_price">
+						<div>
+							<img src="<c:url value='/resources/images/none.png'/>">
+						</div>
+					</div>
+				</div></li>
+		</ul>
 		<!-- 메뉴 탭 -->
 
 		<!-- 정보 탭 -->

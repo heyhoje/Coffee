@@ -218,6 +218,7 @@ function allInOneAfterPay(totalPrice, usePoint) {
 	var point = totalPrice - usePoint;
     var menuName = menuNameList.join(',');
     var menuNum = menuNumList.join(',');
+
 	console.log({
         point: point,
         usePoint : usePoint,
@@ -225,6 +226,7 @@ function allInOneAfterPay(totalPrice, usePoint) {
         menuName: menuName,
         menuNum: menuNum
     });
+	
     $.ajax({
         type: 'POST',
         url: '<c:url value="/order/bagend"/>',

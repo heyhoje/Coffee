@@ -1,7 +1,8 @@
 package kr.kh.finalproject.service;
 
-public interface BusinessService {
+import kr.kh.finalproject.vo.ShopVO;
 
+public interface BusinessService {
 
 
 }

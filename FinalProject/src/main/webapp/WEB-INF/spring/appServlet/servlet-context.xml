@@ -53,6 +53,7 @@
 	<!-- 인터셉터 추가될 때마다, beans랑 매핑할 url 추가 -->
 	<beans:bean id="loginInterceptor" class="kr.kh.finalproject.interceptor.LoginInterceptor" />
 	<beans:bean id="autoLoginInterceptor" class="kr.kh.finalproject.interceptor.AutoLoginInterceptor"></beans:bean>
+	<beans:bean id="adminInterceptor" class="kr.kh.finalproject.interceptor.AdminInterceptor"></beans:bean>
 	
 	<interceptors>
 		<interceptor>
@@ -63,8 +64,8 @@
 		</interceptor>
 		
 		<interceptor>
-			<mapping path="/**"/>
-			<beans:ref bean="autoLoginInterceptor" />
+			<mapping path="/admin/**"/>
+			<beans:ref bean="adminInterceptor" />
 		</interceptor>
 
 	</interceptors>
