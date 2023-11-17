@@ -139,5 +139,13 @@ public class MemberServiceImp implements MemberService {
 	public MemberVO memberIdSearch(MemberVO memberSearch) {
 		return memberDao.memberIdSearch(memberSearch);
 	}
+	@Override
+	public int memberPwdCheck(MemberVO member) {
+		return memberDao.memberPwdCheck(member);
+	}
+	@Override
+	public void passwordUpdate(MemberVO member) {
+		memberDao.passwordUpdate(member);
+	}
 
 }

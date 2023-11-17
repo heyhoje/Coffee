@@ -37,8 +37,10 @@ public interface MemberService {
 
 
 	MemberVO memberIdSearch(MemberVO memberSearch);
-
-
+	
+	int memberPwdCheck(MemberVO member);
+	
+	void passwordUpdate(MemberVO member);
 
 
 }
