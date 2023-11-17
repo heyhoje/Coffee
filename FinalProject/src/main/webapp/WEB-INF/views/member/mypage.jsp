@@ -13,37 +13,39 @@
 
 	
     <div class="col-sm-8" id="mypage-container">
-        <h3>My Page</h3>
+        <h3 id="Mypage-title">My Page</h3>
         <hr>
         <div class="bg-white rounded shadow-sm container p-3">
             <form method="POST" action="updateMember.do" onsubmit="return memberUpdateValidate();" class="form-horizontal" role="form">
             <!-- 아이디 -->
             <div class="row mb-3 form-row">
                 <div class="col-md-3">
-                    <h6>아이디</h6>
+                    <label for="memberId">아이디</label>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="display:flex; align-items:flex-end;">
                     <h5 id="id">${user.me_user_id}</h5>
+                    <button type="button" class="btn btn-primary" onclick="location.href='/member/pwchange'" id="pwchange" style="margin-left:30px;">비밀번호변경</button>
                 </div>
+                
             </div>
-
+		
 			 <!-- 포인트 -->
             <div class="row mb-3 form-row">
                 <div class="col-md-3">
-                    <h6>포인트</h6>
+                    <label for="memberPoint">포인트</label>
                 </div>
                 <div class="col-md-6">
-                    <h5 id="id">${user.me_point}</h5>
+                    <h5 id="point">${user.me_point}</h5>
                 </div>
             </div>
             
             <!-- 이름 -->
             <div class="row mb-3 form-row">
                 <div class="col-md-3">
-                    <h6>이름</h6>
+                    <label for="memberName">이름</label>
                 </div>
                 <div class="col-md-6">
-                    <h5 id="name">${user.me_name} </h5>
+                    <input type="text" class="form-control" id="name" name="name" value="${user.me_name}">
                 </div>
             </div>
 

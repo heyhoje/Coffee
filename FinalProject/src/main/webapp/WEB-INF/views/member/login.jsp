@@ -93,6 +93,7 @@
 							<div class="card-footer" style="margin-top: 120px;">
 								<div style="color: white;"
 									class="d-flex justify-content-center links" id="signupbtn">
+
 									<a href="<c:url value='/member/signup2'/>">  회원가입</a>
 								</div>
 								<div class="d-flex justify-content-center" id="Id">
@@ -355,7 +356,7 @@
 			}
 		}
 	</script> 
-	-->
+
 	<!-- 네이버 로그인 -->
 	<script type="text/javascript"
 		src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"

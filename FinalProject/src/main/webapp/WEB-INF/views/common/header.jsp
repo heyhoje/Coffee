@@ -3,6 +3,7 @@
 	pageEncoding="utf-8"%>
 <!doctype html>
 <html lang="ko">
+  
 	<head>
 	<!-- 폰트 -->
 	<link rel="stylesheet" type="text/css" href="<c:url value='/resources/static/fonts/font.css'/>">

@@ -26,6 +26,7 @@ public interface MemberDAO {
 	void insertUserKakaoInfo(UserVO user);
 	UserVO selectUserKakaoInfo(String userId);
 
+
 	int checkUserExists(String kakaoId);
 
 	MemberVO getMemberByKakaoId(String kakaoId);
@@ -37,4 +38,5 @@ public interface MemberDAO {
 	void passwordUpdate(MemberVO member);
 
 	
+
 }

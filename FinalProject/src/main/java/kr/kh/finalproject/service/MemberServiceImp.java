@@ -3,6 +3,8 @@ package kr.kh.finalproject.service;
 
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -119,6 +121,8 @@ public class MemberServiceImp implements MemberService {
 	    this.memberDao = memberDao;
 	}
 
+
+
 	@Override
 	public boolean checkUserExists(String kakaoId) {
 		int count = memberDao.checkUserExists(kakaoId);
@@ -129,6 +133,8 @@ public class MemberServiceImp implements MemberService {
 	public MemberVO getMemberByKakaoId(String kakaoId) {
 	    return memberDao.getMemberByKakaoId(kakaoId);
 	}
+
+
 	@Override
 	public MemberVO memberIdSearch(MemberVO memberSearch) {
 		return memberDao.memberIdSearch(memberSearch);
@@ -141,4 +147,5 @@ public class MemberServiceImp implements MemberService {
 	public void passwordUpdate(MemberVO member) {
 		memberDao.passwordUpdate(member);
 	}
+
 }
