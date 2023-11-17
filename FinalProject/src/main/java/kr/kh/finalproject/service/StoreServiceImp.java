@@ -38,6 +38,7 @@ public class StoreServiceImp implements StoreService{
 			return false;
 		}
 
-		return storeDao.insertPlusInfo(store, buser);
+		store.setSt_bm_id(buser.getBm_id()); // bm_id값은 set으로 st_bm_id에 값 넣으면, buser 안넘겨도됨..ㅜㅠㅠ
+		return storeDao.insertPlusInfo(store);
 	}
 }
