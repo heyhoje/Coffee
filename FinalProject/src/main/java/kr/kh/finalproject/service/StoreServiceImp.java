@@ -29,4 +29,13 @@ public class StoreServiceImp implements StoreService{
 		}
 		return storeDao.updateStore(store);
 	}
+
+	/** 매장등록 추가정보 입력 */
+	@Override
+	public StoreVO plusInfo(StoreVO store) {
+		if(store != null) {
+			return null;
+		}
+		return storeDao.insertPlusInfo(store);
+	}
 }

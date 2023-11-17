@@ -17,6 +17,21 @@
 			set st_approval = #{store.st_approval}
 			where st_num = #{store.st_num}
 	</update>
+	
+	<!-- 매장등록 추가정보 입력 -->
+	<!-- 이건... bm_contents가 이미 bm테이블에 데이터값 저장되있고, 그것을 불러와서 store테이블에 insert한다는 뜻 같은데../ 
+	<insert id="insertPlusInfo">
+		insert into store(st_br_name, st_opentime, st_closetime, bm_contents)
+			select (#{plus.st_br_name}, #{plus.st_opentime}, #{plus.st_closetime}, bm_contents)
+			from business_member
+			where business_member.bm_contents = #{bm_contents}
+	</insert> -->
+	<insert id="insertPlusInfo">
+		insert into 
+			store(st_br_name, st_opentime, st_closetime, st_contents)
+			values (#{plus.st_br_name}, #{plus.st_opentime}, #{plus.st_closetime}, #{plus.st_contents}
+	</insert>
+	
 </mapper>
 
 

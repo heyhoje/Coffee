@@ -12,4 +12,7 @@ public interface StoreService {
 	// 매장등록 승인&거절
 	boolean updateStore(StoreVO store);
 
+	// 매장등록 추가정보 입력
+	StoreVO plusInfo(StoreVO store);
+
 }

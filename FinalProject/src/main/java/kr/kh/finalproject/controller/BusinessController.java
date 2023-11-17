@@ -14,6 +14,7 @@ import kr.kh.finalproject.service.BusinessService;
 import kr.kh.finalproject.service.ManagerService;
 import kr.kh.finalproject.service.StoreService;
 import kr.kh.finalproject.vo.ManagerVO;
+import kr.kh.finalproject.vo.StoreVO;
 
 @Controller
 public class BusinessController {
@@ -66,17 +67,21 @@ public class BusinessController {
 	@GetMapping("/business/plusinfo")
 	public String plusInfo(HttpSession session, Model model) {
 		// ManagerVO buser = managerService.getBMember();
-		
+		// 세션값을 불러오고 화면에 보내주기만 하면됨ㅇㅇ! 서비스한테 멤버정보 가져다달라고 일시킬 필요도 없음.
 		ManagerVO buser = (ManagerVO)session.getAttribute("buser");
-		System.out.println(buser);
+		System.out.println(buser); // 세션값이 있는지 확인하기 위에 sout!
 		
+		// 화면
 		model.addAttribute("buser", buser);
 		return "/business/plusinfo";
 	}
 	
 	@PostMapping("/business/plusinfo")
-	public String plusInfoPost() {
-		
+	public String plusInfoPost(StoreVO store, Model model, HttpSession session) {
+		// 서비스에게 서버에 데이터 저장하라고 => 스토어 정보를 주면서 => 여부..는 아니고 저기서 끝인가?
+		System.out.println(store);
+		ManagerVO buser = (ManagerVO)session.getAttribute("buser");
+		StoreVO plus = storeService.plusInfo(store, buser);
 		
 		return "/business/plusinfo";
 		

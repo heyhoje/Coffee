@@ -13,4 +13,7 @@ public interface StoreDAO {
 
 	// 매장등록 승인&거절
 	boolean updateStore(@Param("store")StoreVO store);
+
+	// 매장등록 추가정보 입력
+	StoreVO insertPlusInfo(@Param("plus")StoreVO store);
 }
