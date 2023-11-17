@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.kh.finalproject.dao.StoreDAO;
+import kr.kh.finalproject.vo.ManagerVO;
 import kr.kh.finalproject.vo.StoreVO;
 
 @Service
@@ -32,10 +33,11 @@ public class StoreServiceImp implements StoreService{
 
 	/** 매장등록 추가정보 입력 */
 	@Override
-	public StoreVO plusInfo(StoreVO store) {
-		if(store != null) {
-			return null;
+	public boolean plusInfo(StoreVO store, ManagerVO buser) {
+		if(store == null || buser == null || buser.getBm_id() == null ) {
+			return false;
 		}
-		return storeDao.insertPlusInfo(store);
+
+		return storeDao.insertPlusInfo(store, buser);
 	}
 }

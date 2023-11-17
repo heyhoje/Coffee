@@ -26,10 +26,15 @@
 			from business_member
 			where business_member.bm_contents = #{bm_contents}
 	</insert> -->
-	<insert id="insertPlusInfo">
+	<!-- <insert id="insertPlusInfo">
 		insert into 
 			store(st_br_name, st_opentime, st_closetime, st_contents)
-			values (#{plus.st_br_name}, #{plus.st_opentime}, #{plus.st_closetime}, #{plus.st_contents}
+			values (#{plus.st_br_name}, #{plus.st_opentime}, #{plus.st_closetime}, #{plus.st_contents})
+	</insert> -->
+	<insert id="insertPlusInfo">
+		insert into store(st_br_name, st_opentime, st_closetime, st_contents, bm_id)
+			select (#{plus.st_br_name}, #{plus.st_opentime}, #{plus.st_closetime}, #{plus.st_contents}, buser.bm_id)
+			where bm_id = #{buser.bm_id} 
 	</insert>
 	
 </mapper>

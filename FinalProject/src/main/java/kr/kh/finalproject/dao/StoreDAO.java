@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import kr.kh.finalproject.vo.ManagerVO;
 import kr.kh.finalproject.vo.StoreVO;
 
 public interface StoreDAO {
@@ -15,5 +16,5 @@ public interface StoreDAO {
 	boolean updateStore(@Param("store")StoreVO store);
 
 	// 매장등록 추가정보 입력
-	StoreVO insertPlusInfo(@Param("plus")StoreVO store);
+	boolean insertPlusInfo(@Param("plus")StoreVO store, @Param("busesr")ManagerVO buser);
 }
