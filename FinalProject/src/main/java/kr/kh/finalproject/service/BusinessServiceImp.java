@@ -9,6 +9,8 @@ import kr.kh.finalproject.dao.BusinessDAO;
 public class BusinessServiceImp implements BusinessService {
 	
 	@Autowired
+	
 	private BusinessDAO businessDao; 
+
 
 }

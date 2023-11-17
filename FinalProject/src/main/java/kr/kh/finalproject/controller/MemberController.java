@@ -142,7 +142,6 @@ public class MemberController {
 			// User 정보를 추가하는 메서드를 호출
 			memberService.insertUserKakaoInfo(user);
 
-
 			// 카카오 로그인 정보를 Member 테이블에 삽입
 			MemberVO member = new MemberVO();
 			member.setMe_user_id(kakaoId);
@@ -162,3 +161,4 @@ public class MemberController {
 
 	}
 }
+

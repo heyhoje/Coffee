@@ -1,7 +1,5 @@
 package kr.kh.finalproject.controller;
 
-
-
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -21,7 +19,6 @@ import kr.kh.finalproject.service.BagService;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.Option_ChoiceVO;
 import kr.kh.finalproject.vo.ShopVO;
-
 
 @Controller
 public class BagController {
@@ -115,11 +112,13 @@ public class BagController {
     
     @PostMapping("/order/bagend")
     @ResponseBody
-    public String savePoint(@RequestParam("point") int point, @RequestParam("usePoint") int usePoint, @RequestParam("user") String user, @RequestParam("menuName") String menuName) {
+    public String savePoint(@RequestParam("point") int point, @RequestParam("usePoint") int usePoint, 
+    		@RequestParam("user") String user, @RequestParam("menuName") String menuName, @RequestParam("menuNum") String menuNum) {
     	int givePoint = point/10; // 적립될 포인트 (총 가격 - 사용된 포인트) / 10 
         boolean jugiPoint = bagService.givePoint(givePoint, user); 
         boolean patgiPoint = bagService.steelPoint(usePoint, user); // 포인트로 사용으로 인한 포인트를 삭감 시키는 메서드
-        boolean makeOrderMenu_List = bagService.makeOrderMenu(menuName); // 주문메뉴을 데이터를 insert 하는 메서드
+        boolean makeOrderMenu_List = bagService.makeOrderMenu(menuName, menuNum); // 주문메뉴을 데이터를 insert 하는 메서드
+
         int getNumFromOM = bagService.getNumFromOM();	// 주문 목록을 만들기 위해 바로 위에서 만들어진 주문메뉴의 or_num을 가져오는 메서드
         int getSbNum = bagService.getBasketNum1(user);	// 주문 목록을 만들기 위해 장바구니 번호를 가져오는 메서드
         boolean makeOrderList = bagService.makeOrderList(user, getNumFromOM, getSbNum);	// 주문 목록을 만드는 메서드

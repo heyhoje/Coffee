@@ -4,4 +4,5 @@ import kr.kh.finalproject.vo.ShopVO;
 
 public interface BusinessService {
 
+
 }
