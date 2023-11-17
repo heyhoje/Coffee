@@ -126,6 +126,7 @@ public class BusinessController {
 	 public String updateMenu(@PathVariable("a") int st_num, Model model, @PathVariable("mn_num") int mn_num) {
 		 List<OptionVO> option = optionService.getOption(mn_num);
 		 MenuVO menu = menuService.getMenu(mn_num);
+
 		
 		 model.addAttribute("menu", menu);
 		 model.addAttribute("option", option);
@@ -138,36 +139,15 @@ public class BusinessController {
 	 @ResponseBody
 	 public String updateMenu(HttpSession session, @RequestParam("mn_num") int mn_num,
 			 @RequestParam("mn_name") String mn_name, @RequestParam("mn_price") int mn_price, @RequestParam("mn_contents") String mn_contents,
-			 @RequestParam("option1") String option1, @RequestParam("optionprice1") String optionprice1, @RequestParam("option2") String option2,
-			 @RequestParam("optionprice2") String optionprice2, @RequestParam("option3") String option3, @RequestParam("optionprice3") String optionprice3,
-			 @RequestParam("option4") String option4,  @RequestParam("optionprice4") String optionprice4) {
-		 
-		 System.out.println(mn_num);
-		 System.out.println(mn_name);
-		 System.out.println(mn_price);
-		 System.out.println(mn_contents);
-		 System.out.println(option1);
-		 System.out.println(optionprice1);
-		 System.out.println(option2);
-		 System.out.println(optionprice2);
-		 System.out.println(option3);
-		 System.out.println(optionprice3);
-		 System.out.println(option4);
-		 System.out.println(optionprice4);
-		 
-        List<String> option1List = Arrays.asList(option1.split(","));
-        List<String> optionprice1List = Arrays.asList(optionprice1.split(","));
-        List<String> option2List = Arrays.asList(option2.split(","));
-        List<String> optionprice2List = Arrays.asList(optionprice2.split(","));
-        List<String> option3List = Arrays.asList(option3.split(","));
-        List<String> optionprice3List = Arrays.asList(optionprice3.split(","));
-        List<String> option4List = Arrays.asList(option4.split(","));
-        List<String> optionprice4List = Arrays.asList(optionprice4.split(","));
-
-        System.out.println(option1List);
-        System.out.println(optionprice1List);
-
-		 
+			 @RequestParam("os_name") String os_name, @RequestParam("optionLists") List<String> optionLists,
+			 @RequestParam("optionPriceLists") List<String> optionPriceList) {
+		System.out.println(mn_num);
+		System.out.println(mn_name); 
+		System.out.println(mn_price); 
+		System.out.println(mn_contents); 
+		System.out.println(os_name); 
+		System.out.println(optionLists); 
+		System.out.println(optionPriceList); 
 		 
 		boolean updateMenu = businessService.updateMenu(mn_num, mn_name, mn_price, mn_contents);
 		 
@@ -180,6 +160,48 @@ public class BusinessController {
 		 
 		 return "/business/realCRUD";
 	 }
+	 
+	 // 메뉴 수정 옵션추가 Post
+	 @PostMapping("/business/realUI")
+	 @ResponseBody
+	 public String updateInsertOption(@RequestParam("ov_os_num") String ov_os_num) {
+		 System.out.println(ov_os_num);
+		 
+		 boolean uInsertOption = businessService.uInsertOption(ov_os_num);
+		 return "";
+	 }
+	 
+	 // 메뉴 수정 옵션뭉치추가 Post
+	 @PostMapping("/business/realUII")
+	 @ResponseBody
+	 public String updateInsertOptionMoongchi(@RequestParam("mn_num") String mn_num) {
+		 int maxOptionNum = businessService.getOptionNum(mn_num);
+		 maxOptionNum += 1;
+		 boolean uInsertOptionMoongchi = businessService.uInsertOptionMoongchi(mn_num, maxOptionNum);
+		 int newOs_Num = businessService.getNewOs_Num();
+		 boolean uInsertOptionMoongchi2 = businessService.uInsertOptionMoongchi2(newOs_Num);
+
+		 return "";
+	 }
+	 
+	 // 메뉴 수정 옵션뭉치삭제 Post
+	 @PostMapping("/business/realUD")
+	 @ResponseBody
+	 public String deleteOptionMoongchi(@RequestParam("mn_num") String mn_num, @RequestParam("os_optionNum") String os_optionNum) {
+		 int getOs_Num = businessService.getOs_Num(mn_num, os_optionNum);
+		 boolean deleteOptionMoongchi = businessService.deleteOptionMoongchi(mn_num, os_optionNum);
+		 boolean deleteOptionMoongchi2 = businessService.deleteOptionMoongchi2(getOs_Num);
+		 return "";
+	 }
+	 
+	 // 메뉴 수정 옵션벨류삭제 Post
+	 @PostMapping("/business/realUDV")
+	 @ResponseBody
+	 public String deleteOptionValue(@RequestParam("ov_num") String ov_num) {
+		 boolean deleteOptionValue = businessService.deleteOptionValue(ov_num);
+		 return "";
+	 }
+	 
 	 
 	 
 	 
