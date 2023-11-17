@@ -229,6 +229,10 @@ public class MemberController {
 		}
 		return "/main/message";
 	}
+	@RequestMapping(value = "/member/mypage", method = RequestMethod.GET)
+	public String mypage() {
+		return "/member/mypage";
+	}
 }
 
 

@@ -71,7 +71,6 @@ public class ManagerController {
 		/* /main/message를 통해 msg, url을 보내는 경우, 
 		 *  이미 location.href = '<c:url value="/"/>' + url;
 		 *  로 '/'가 추가되있기 때문에 앞에있는 슬러쉬를 지워줘야한다!!  */
-		
 		if (buser != null && buser.getBm_approval() == 0) {
 			model.addAttribute("buser", buser);
 			model.addAttribute("type", "b");
@@ -82,7 +81,7 @@ public class ManagerController {
 			model.addAttribute("buser", buser);
 			model.addAttribute("type", "b");
 			model.addAttribute("msg", "로그인 정보가 확인되었습니다. 즐거운 하루 되세요!");
-			model.addAttribute("url", "/business/home"); // 사이트연결안됨. 오타확인하라고함.
+			model.addAttribute("url", "business/home"); // 사이트연결안됨. 오타확인하라고함.
 			
 			// 화면에서 보낸 자동 로그인 체크 여부를 user에 적용
 			buser.setAutoLogin(manager.isAutoLogin());
@@ -107,11 +106,6 @@ public class ManagerController {
 		managerService.updateBMemberSession(buser); // 자동로그인을 안하기 위해
 		
 		session.removeAttribute("buser"); // 일반 로그아웃을 위해
-
-		/*
-		 * if(user2 != null) { user2.setMe_session_limit(null);
-		 * managerService.updateMemberSession(user2); }
-		 */
 
 		model.addAttribute("msg", "로그아웃되었습니다. 좋은 하루 되세요!");
 		model.addAttribute("url", "");
