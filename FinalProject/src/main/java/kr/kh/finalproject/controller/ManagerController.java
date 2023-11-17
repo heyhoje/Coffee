@@ -82,7 +82,7 @@ public class ManagerController {
 			model.addAttribute("buser", buser);
 			model.addAttribute("type", "b");
 			model.addAttribute("msg", "로그인 정보가 확인되었습니다. 즐거운 하루 되세요!");
-			model.addAttribute("url", "business/home"); // 사이트연결안됨. 오타확인하라고함.
+			model.addAttribute("url", "/business/home"); // 사이트연결안됨. 오타확인하라고함.
 			
 			// 화면에서 보낸 자동 로그인 체크 여부를 user에 적용
 			buser.setAutoLogin(manager.isAutoLogin());
