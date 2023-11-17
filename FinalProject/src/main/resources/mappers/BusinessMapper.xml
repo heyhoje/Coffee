@@ -3,5 +3,22 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.finalproject.dao.BusinessDAO">
-
+	<delete id="deleteMenu">
+		delete from menu where mn_num = #{menu_num}
+	</delete>
+	<delete id="deleteOption">
+		delete from `option` where os_mn_num = #{menu_num}
+	</delete>
+	<select id="getSt_num" resultType="int">
+		select mn_st_num from menu where mn_num = #{mn_num}
+	</select>
+	<update id="updateMenu">
+		update menu
+		set 
+			mn_name = #{mn_name},
+			mn_price = #{mn_price}, 
+			mn_contents = #{mn_contents}
+		where
+			mn_num = #{mn_num}
+	</update>
 </mapper>

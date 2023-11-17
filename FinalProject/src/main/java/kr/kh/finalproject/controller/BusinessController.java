@@ -4,16 +4,22 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.pagination.PageMaker;
+import kr.kh.finalproject.service.BusinessService;
 import kr.kh.finalproject.service.MenuService;
 import kr.kh.finalproject.service.OptionService;
 import kr.kh.finalproject.vo.MCategoryVO;
@@ -27,6 +33,8 @@ public class BusinessController {
 	private MenuService menuService;
 	@Autowired
 	private OptionService optionService;
+	@Autowired
+	private BusinessService businessService;
 
 	// 사업자페이지 [홈]
 	@RequestMapping(value = "/business/home/{a}", method = RequestMethod.GET)
@@ -81,13 +89,101 @@ public class BusinessController {
 	public String realCRUD(Model model, @PathVariable("mn_num") int mn_num) {
 		List<OptionVO> option = optionService.getOption(mn_num);
 		MenuVO menu = menuService.getMenu(mn_num);
+		int st_num = businessService.getSt_num(mn_num);
 		
 		// 화면에 보여줄 데이터
+		model.addAttribute("st_num", st_num);
 		model.addAttribute("menu", menu);
 		model.addAttribute("option", option);
 
 		return "/business/realCRUD";
 	}
+	
+	
+	
+	 // 메뉴 삭제 Post
+	 @PostMapping("/business/realD")
+	 @ResponseBody
+	 public String deleteMenu(HttpSession session, @RequestParam("menu_num") String menu_num) {
+		 boolean deleteMenu = businessService.deleteMenu(menu_num);
+		 boolean deleteOptio = businessService.deleteOption(menu_num);
+		 
+		 return "/business/realCRUD";
+	 }
+	 
+	 
+	 
+	 // 메뉴 등록 
+	 @RequestMapping(value = "/business/realC/{a}", method = RequestMethod.GET)
+	 public String createMenu(@PathVariable("a") int st_num) {
+		 
+		 
+		 return "/business/realC";
+	 }
+	 
+	 // 메뉴 수정 
+	 @RequestMapping(value = "/business/realU/{a}/{mn_num}", method = RequestMethod.GET)
+	 public String updateMenu(@PathVariable("a") int st_num, Model model, @PathVariable("mn_num") int mn_num) {
+		 List<OptionVO> option = optionService.getOption(mn_num);
+		 MenuVO menu = menuService.getMenu(mn_num);
+		
+		 model.addAttribute("menu", menu);
+		 model.addAttribute("option", option);
+	 
+		 return "/business/realU";
+	 }
+	 
+	 // 메뉴 수정 Post
+	 @PostMapping("/business/realU")
+	 @ResponseBody
+	 public String updateMenu(HttpSession session, @RequestParam("mn_num") int mn_num,
+			 @RequestParam("mn_name") String mn_name, @RequestParam("mn_price") int mn_price, @RequestParam("mn_contents") String mn_contents,
+			 @RequestParam("option1") String option1, @RequestParam("optionprice1") String optionprice1, @RequestParam("option2") String option2,
+			 @RequestParam("optionprice2") String optionprice2, @RequestParam("option3") String option3, @RequestParam("optionprice3") String optionprice3,
+			 @RequestParam("option4") String option4,  @RequestParam("optionprice4") String optionprice4) {
+		 
+		 System.out.println(mn_num);
+		 System.out.println(mn_name);
+		 System.out.println(mn_price);
+		 System.out.println(mn_contents);
+		 System.out.println(option1);
+		 System.out.println(optionprice1);
+		 System.out.println(option2);
+		 System.out.println(optionprice2);
+		 System.out.println(option3);
+		 System.out.println(optionprice3);
+		 System.out.println(option4);
+		 System.out.println(optionprice4);
+		 
+        List<String> option1List = Arrays.asList(option1.split(","));
+        List<String> optionprice1List = Arrays.asList(optionprice1.split(","));
+        List<String> option2List = Arrays.asList(option2.split(","));
+        List<String> optionprice2List = Arrays.asList(optionprice2.split(","));
+        List<String> option3List = Arrays.asList(option3.split(","));
+        List<String> optionprice3List = Arrays.asList(optionprice3.split(","));
+        List<String> option4List = Arrays.asList(option4.split(","));
+        List<String> optionprice4List = Arrays.asList(optionprice4.split(","));
+
+        System.out.println(option1List);
+        System.out.println(optionprice1List);
+
+		 
+		 
+		boolean updateMenu = businessService.updateMenu(mn_num, mn_name, mn_price, mn_contents);
+		 
+		 
+		 
+
+
+		 
+
+		 
+		 return "/business/realCRUD";
+	 }
+	 
+	 
+	 
+	 
 	
 
 	// 사업자페이지 [주문확인]

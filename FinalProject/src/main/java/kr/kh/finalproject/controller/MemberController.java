@@ -162,11 +162,10 @@ public class MemberController {
 	        HttpSession session = request.getSession();
 	        session.setAttribute("user", member);
 		}
-		    return "/main/message";
-	}
 
         return ""; // 홈 페이지로 리다이렉트
     }
+}
 	
 	
 

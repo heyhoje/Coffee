@@ -107,7 +107,7 @@ var makeMerchantUid = hours +  minutes + seconds + milliseconds;
     quantities[${vss.index}] = 1;
     killAme[${vss.index}] = ${optionChoice.oc_num};
     menuNameList.push('${optionChoice.menu.mn_name}');
-    menuNumList.push('${optionChoice.menu.mn_num}')
+    menuNumList.push('${optionChoice.menu.mn_num}');
 </c:forEach>
 
 function updateQuantity(num, operation) {
