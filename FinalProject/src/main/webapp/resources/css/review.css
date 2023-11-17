@@ -19,3 +19,12 @@
 #review-table{
 	text-align:center;
 }
+a{
+	color:burlywood;
+	text-decoration:none;
+	outline: none !important;
+	
+}
+a:hover{
+	color:#f76d37;
+}
