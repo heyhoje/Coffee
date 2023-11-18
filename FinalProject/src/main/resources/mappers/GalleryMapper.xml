@@ -78,7 +78,7 @@
 		where
 			gal_num = #{gallery.gal_num}
 		</update>
-		<select id="selectFile" resultType="kr.kh.fianlproject.vo.FileVO">
+		<select id="selectFile" resultType="kr.kh.finalproject.vo.FileVO">
 		select * from file where fi_num = #{fi_num}
 		</select>
 		<delete id="deleteFile">
