@@ -7,13 +7,14 @@ import org.apache.ibatis.annotations.Param;
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.vo.MeetingroomVO;
 import kr.kh.finalproject.vo.ReservationVO;
+import kr.kh.finalproject.vo.RoomBasketVO;
 
 public interface MeetingroomDAO {
 
-	List<MeetingroomVO> selectMeetingroomList(@Param("cri")Criteria cri);
+	List<MeetingroomVO> selectMrList(@Param("cri")Criteria cri);
 
-	int selectMeetingroomTotalCount();
+	int selectMrTotalCount();
 
-	List<ReservationVO> selectReservationList();
+	List<ReservationVO> selectRsList();
 
 }
