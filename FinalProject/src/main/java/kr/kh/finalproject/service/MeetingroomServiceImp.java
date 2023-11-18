@@ -39,5 +39,12 @@ public class MeetingroomServiceImp implements MeetingroomService{
 			}
 		return meetingroomDao.selectRsList();
 	}
+	
+	// 룸예약 정보를 장바구니에 담기
+	/*
+	 * @Override public boolean addToRoomBasket(RoomBasketVO roomBasket) {
+	 * 
+	 * return meetingroomDao.insertRoomBasket(roomBasket); }
+	 */
 
 }

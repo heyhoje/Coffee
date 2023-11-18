@@ -170,6 +170,7 @@
 			console.log(rstime);
 			
 		</c:forEach>
+		/* 시간선택한 정보를 배열arr로 받아가기 때문에, name변경 -> css도 수정, vo에 int[] 추가 */
 		function operationTime(num){
 			var open = starttime[num];
 			var close = endtime[num];
@@ -181,7 +182,7 @@
 				let disabled = reservationtime.includes(i) ? 'disabled' : ''
 				str += `
 					<label style="cursor:pointer;">
-						<input type="checkbox" name="aaa" value="\${i}" class="\${disabled}" \${disabled}>
+						<input type="checkbox" name="arr_room_starttime" value="\${i}" class="\${disabled}" \${disabled}>
 						<button class="timebutton" >\${i}:00
 						</button>
 					</label>

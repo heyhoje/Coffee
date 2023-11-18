@@ -16,5 +16,8 @@ public interface MeetingroomService {
 
 	// 예약자 리스트 - 를 왜 같이 작업해야하지? 선택된 시간을 disabled 처리해서?
 	List<ReservationVO> getRsList(Criteria cri);
+	
+	// 룸예약 정보를 장바구니로 넘겨주는 작업
+	// boolean addToRoomBasket(RoomBasketVO roomBasket);
 
 }
