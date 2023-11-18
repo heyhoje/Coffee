@@ -12,18 +12,18 @@ import kr.kh.finalproject.vo.GalleryVO;
 public interface GalleryDAO {
 
 	List<GalleryVO> selectGalleryList(@Param("cri")Criteria cri);
-
-	List<GalleryTypeVO> selectGalleryTypeList();
+	
+	boolean insertGallery(@Param("gallery")GalleryVO gallery);
+	
+	void updateGalleryhits(@Param("gal_num")Integer gal_num);
+	
+	void insertFile(@Param("file")FileVO fileVo);
+	
+	GalleryVO selectGallery(@Param("gal_num")Integer gal_num);
 
 	int selectGalleryCount(@Param("cri")Criteria cri);
-
-	boolean insertGallery(@Param("gallery")GalleryVO gallery);
-
-	void insertFile(@Param("file")FileVO fileVo);
-
-	void updateGalleryhits(@Param("gal_num")Integer gal_num);
-
-	GalleryVO selectGallery(@Param("gal_num")Integer gal_num);
+	
+	List<GalleryTypeVO> selectGalleryTypeList();
 
 	boolean updateGallery(@Param("gallery")GalleryVO gallery);
 

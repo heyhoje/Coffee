@@ -54,7 +54,7 @@
 		</select>
 		<select id="selectGalleryCount" resultType="int">
 		select count(*) from gallery
-		<choose>
+			<choose>
 			<when test='cri.type.equals("0")'>
 				where (gal_title like concat('%', #{cri.search}, '%') or 
 					gal_contents like concat('%', #{cri.search}, '%'))
@@ -87,6 +87,6 @@
 		<delete id="deleteGallery">
 		delete from gallery where gal_num = #{gal_num}
 		</delete>
-
+		
 </mapper>
   
