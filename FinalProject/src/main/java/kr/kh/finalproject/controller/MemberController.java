@@ -40,24 +40,24 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 
-	// 회원가입 페이지
+	// �쉶�썝媛��엯 �럹�씠吏�
 	@RequestMapping(value = "/member/signup2", method = RequestMethod.GET)
 	public String signup() {
 
 		return "/member/signup2";
 	}
 
-	// 회원가입 기능구현 시작
+	// �쉶�썝媛��엯 湲곕뒫援ы쁽 �떆�옉
 	@RequestMapping(value = "/member/signup2", method = RequestMethod.POST)
 	public String signupPost(MemberVO member, Model model) {
 		System.out.println(member);
 
 		boolean res = memberService.signup(member);
 		if (res) {
-			model.addAttribute("msg", "회원가입 성공했습니다. \n 오늘 커피 한잔 어떠실까요?");
+			model.addAttribute("msg", "�쉶�썝媛��엯 �꽦怨듯뻽�뒿�땲�떎. \n �삤�뒛 而ㅽ뵾 �븳�옍 �뼱�뼚�떎源뚯슂?");
 			model.addAttribute("url", "");
 		} else {
-			model.addAttribute("msg", "회원가입 실패했습니다. \n다시 시도 부탁드립니다.");
+			model.addAttribute("msg", "�쉶�썝媛��엯 �떎�뙣�뻽�뒿�땲�떎. \n�떎�떆 �떆�룄 遺��긽�뱶由쎈땲�떎.");
 			model.addAttribute("url", "member/signup2");
 		}
 		return "/main/message";
@@ -77,21 +77,21 @@ public class MemberController {
 		return memberService.checkId(id);
 	}
 
-	// 아이디 찾기 페이지
+	// �븘�씠�뵒 李얘린 �럹�씠吏�
 	@RequestMapping(value = "/member/search_id", method = RequestMethod.GET)
 	public String search_id(HttpServletRequest request, Model model, MemberVO member) {
 
 		return "/member/search_id";
 	}
 
-	// 비밀번호 찾기 페이지
+	// 鍮꾨�踰덊샇 李얘린 �럹�씠吏�
 	@RequestMapping(value = "/member/search_pw", method = RequestMethod.GET)
 	public String search_pw(HttpServletRequest request, Model model, MemberVO member) {
 
 		return "/member/search_pw";
 	}
 
-	// 아이디 찾기 완료 후 페이지
+	// �븘�씠�뵒 李얘린 �셿猷� �썑 �럹�씠吏�
 	@RequestMapping(value = "/member/search_result_id")
 	public String search_result_id(HttpServletRequest request, Model model,
 			@RequestParam(required = true, value = "me_name") String me_name,
@@ -107,13 +107,13 @@ public class MemberController {
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			model.addAttribute("msg", "오류가 발생되었습니다.");
+			model.addAttribute("msg", "�삤瑜섍� 諛쒖깮�릺�뿀�뒿�땲�떎.");
 		}
 
 		return "/member/search_result_id";
 	}
 
-	// 비밀번호 찾기 완료 후 페이지
+	// 鍮꾨�踰덊샇 李얘린 �셿猷� �썑 �럹�씠吏�
 	@RequestMapping(value = "/member/search_result_pw", method = RequestMethod.POST)
 	public String search_result_pw(HttpServletRequest request, Model model,
 			@RequestParam(required = true, value = "me_user_id") String me_user_id, 
@@ -128,7 +128,7 @@ public class MemberController {
 		    int memberSearch = memberService.memberPwdCheck(member);
 		    
 		    if(memberSearch == 0) {
-		        model.addAttribute("msg", "기입된 정보가 잘못되었습니다. 다시 입력해주세요.");
+		        model.addAttribute("msg", "湲곗엯�맂 �젙蹂닿� �옒紐삳릺�뿀�뒿�땲�떎. �떎�떆 �엯�젰�빐二쇱꽭�슂.");
 		        return "/member/search_pw";
 		    }
 		    
@@ -142,7 +142,7 @@ public class MemberController {
 		    
 		} catch (Exception e) {
 		    System.out.println(e.toString());
-		    model.addAttribute("msg", "오류가 발생되었습니다.");
+		    model.addAttribute("msg", "�삤瑜섍� 諛쒖깮�릺�뿀�뒿�땲�떎.");
 		}
 		return "/member/search_result_pw";
 	}
@@ -151,7 +151,7 @@ public class MemberController {
 		return passwordEncoder.encode(password);
 	}
 
-	// 회원 로그인
+	// �쉶�썝 濡쒓렇�씤
 	@GetMapping("/member/login")
 	public String login() {
 		return "/member/login";
@@ -159,20 +159,20 @@ public class MemberController {
 
 	@PostMapping("/member/login")
 	public String loginPost(Model model, MemberVO member) {
-		// 입력받은 회원정보와 일치하는 회원 정보가 있으면 가져오라고 요청
+		// �엯�젰諛쏆� �쉶�썝�젙蹂댁� �씪移섑븯�뒗 �쉶�썝 �젙蹂닿� �엳�쑝硫� 媛��졇�삤�씪怨� �슂泥�
 		System.out.println(member);
-		MemberVO user = memberService.login(member); // user 는 내가 입력한 아이디와 비번에 (맞는) db에서 일치하는 회원정보 가져와! 해서 가져온 회원정보
-		// 가져왔으면 => 로그인 성공하면
+		MemberVO user = memberService.login(member); // user �뒗 �궡媛� �엯�젰�븳 �븘�씠�뵒�� 鍮꾨쾲�뿉 (留욌뒗) db�뿉�꽌 �씪移섑븯�뒗 �쉶�썝�젙蹂� 媛��졇��! �빐�꽌 媛��졇�삩 �쉶�썝�젙蹂�
+		// 媛��졇�솕�쑝硫� => 濡쒓렇�씤 �꽦怨듯븯硫�
 		if (user != null) {
 			model.addAttribute("user", user);
 			model.addAttribute("type", "u");
-			model.addAttribute("msg", "로그인 성공했습니다. 맛있는 커피와 함께 좋은하루 되세요:)");
+			model.addAttribute("msg", "濡쒓렇�씤 �꽦怨듯뻽�뒿�땲�떎. 留쏆엳�뒗 而ㅽ뵾�� �븿猿� 醫뗭��븯猷� �릺�꽭�슂:)");
 			model.addAttribute("url", "");
 
-			// 화면에서 보낸 자동 로그인 체크 여부를 user에 적용
+			// �솕硫댁뿉�꽌 蹂대궦 �옄�룞 濡쒓렇�씤 泥댄겕 �뿬遺�瑜� user�뿉 �쟻�슜
 			user.setAutoLogin(member.isAutoLogin());
 		} else {
-			model.addAttribute("msg", "아이디 또는 비밀번호가 잘못되었습니다.");
+			model.addAttribute("msg", "�븘�씠�뵒 �삉�뒗 鍮꾨�踰덊샇媛� �옒紐삳릺�뿀�뒿�땲�떎.");
 			model.addAttribute("url", "member/login");
 		}
 		return "/main/message";
@@ -186,19 +186,19 @@ public class MemberController {
 		
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
-		// session_limit null값, 업데이트, 세션에서 user정보 제거
+		// session_limit null媛�, �뾽�뜲�씠�듃, �꽭�뀡�뿉�꽌 user�젙蹂� �젣嫄�
 		user.setMe_session_limit(null);
-		memberService.updateMemberSession(user); // 자동로그인을 안하기 위해
+		memberService.updateMemberSession(user); // �옄�룞濡쒓렇�씤�쓣 �븞�븯湲� �쐞�빐
 		
-		session.removeAttribute("user"); // 일반 로그아웃을 위해(세션에서만 유저정보를 없애면 로그인안한거로 인식됨)
+		session.removeAttribute("user"); // �씪諛� 濡쒓렇�븘�썐�쓣 �쐞�빐(�꽭�뀡�뿉�꽌留� �쑀���젙蹂대�� �뾾�븷硫� 濡쒓렇�씤�븞�븳嫄곕줈 �씤�떇�맖)
 		
 
-		model.addAttribute("msg", "로그아웃 성공했습니다. 즐거운 하루 보내세요!");
+		model.addAttribute("msg", "濡쒓렇�븘�썐 �꽦怨듯뻽�뒿�땲�떎. 利먭굅�슫 �븯猷� 蹂대궡�꽭�슂!");
 		model.addAttribute("url", "");
 		return "/main/message";
 	}
 
-	// 카카오
+	// 移댁뭅�삤
 	@RequestMapping("/kakaoLoginCallback")
 	public String kakaoLoginCallback(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String kakaoId = request.getParameter("kakaoId");
@@ -215,16 +215,16 @@ public class MemberController {
 				session.setAttribute("user", existingUser);
 			}
 		} else {
-			// 카카오 로그인 정보를 User 테이블에 삽입
+			// 移댁뭅�삤 濡쒓렇�씤 �젙蹂대�� User �뀒�씠釉붿뿉 �궫�엯
 			UserVO user = new UserVO();
 			user.setUser_id(kakaoId);
 			user.setUser_phone(phone_number);
-			user.setUser_aorb("회원"); // user_aorb 값을 설정
+			user.setUser_aorb("�쉶�썝"); // user_aorb 媛믪쓣 �꽕�젙
 			System.out.println(user);
-			// User 정보를 추가하는 메서드를 호출
+			// User �젙蹂대�� 異붽��븯�뒗 硫붿꽌�뱶瑜� �샇異�
 			memberService.insertUserKakaoInfo(user);
 
-			// 카카오 로그인 정보를 Member 테이블에 삽입
+			// 移댁뭅�삤 濡쒓렇�씤 �젙蹂대�� Member �뀒�씠釉붿뿉 �궫�엯
 			MemberVO member = new MemberVO();
 			member.setMe_user_id(kakaoId);
 			member.setMe_email(email);
