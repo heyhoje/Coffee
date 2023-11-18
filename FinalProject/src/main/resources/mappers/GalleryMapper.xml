@@ -13,11 +13,11 @@
 		<collection property="fileVoList" ofType="kr.kh.finalproject.vo.FileVO" column="gal_num" select="selectFileList"/>
 	</resultMap>
 	<resultMap type="kr.kh.finalproject.vo.GalleryTypeVO" id="GalleryTypeVO">
-		<id property="gt_num" column="bt_num"/>
+		<id property="gt_num" column="gt_num"/>
 		<result property="gt_title" column="gt_title"/>
 	</resultMap>	
 	<select id="selectGalleryList" resultType="kr.kh.finalproject.vo.GalleryVO">
-		select * from board
+		select * from gallery
 		<choose>
 			<when test='cri.type.equals("0")'>
 				where gal_title like concat('%', #{cri.search}, '%') or
@@ -66,9 +66,9 @@
 		<if test="cri.gt_num != 0">
 			and gal_gt_num = #{cri.gt_num}
 		</if>
-	</select>
-		<select id="selectBoardTypeList" resultMap="BoardTypeVO">
-		select * from board_type
+		</select>
+		<select id="selectGalleryTypeList" resultMap="GalleryTypeVO">
+		select * from gallery_type
 		</select>
 		<update id="updateGallery">
 		update gallery
@@ -78,7 +78,7 @@
 		where
 			gal_num = #{gallery.gal_num}
 		</update>
-		<select id="selectFile" resultType="kr.kh.wordgame.vo.FileVO">
+		<select id="selectFile" resultType="kr.kh.fianlproject.vo.FileVO">
 		select * from file where fi_num = #{fi_num}
 		</select>
 		<delete id="deleteFile">
