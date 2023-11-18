@@ -42,8 +42,11 @@ public interface MemberService {
 	
 	void passwordUpdate(MemberVO member);
 
-	String pwCheck(String me_user_id) throws Exception;
 
-	void pwUpdate(String me_user_id, String hashedPw) throws Exception;
+	void pwUpdate(String me_user_id, String enpassword) throws Exception;
+
+	String pwCheck(String me_pw)throws Exception;
+
+
 
 }

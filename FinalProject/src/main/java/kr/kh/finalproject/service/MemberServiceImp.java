@@ -148,16 +148,16 @@ public class MemberServiceImp implements MemberService {
 	public void passwordUpdate(MemberVO member) {
 		memberDao.passwordUpdate(member);
 	}
+	//비밀번호변경
 	@Override
-	public String pwCheck(String me_user_id)throws Exception {
-		return memberDao.pwCheck(me_user_id);
-	}
-	@Override
-	public void pwUpdate(String me_user_id, String hashedPw)throws Exception {
-		memberDao.pwUpdate(me_user_id, hashedPw);
+	public void pwUpdate(String me_user_id, String enpassword)throws Exception {
+		memberDao.pwUpdate(me_user_id, enpassword);
 		
 	}
+	@Override
+	public String pwCheck(String me_pw) throws Exception {
+		return memberDao.pwCheck(me_pw);
+	}
 	
-	//비밀번호변경
-
+	
 }

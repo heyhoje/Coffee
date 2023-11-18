@@ -1,10 +1,5 @@
 package kr.kh.finalproject.controller;
 
-import java.util.Map;
-
-import java.security.MessageDigest;
-import java.util.Base64;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,14 +7,11 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,7 +20,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.kh.finalproject.service.MemberService;
-import kr.kh.finalproject.util.Message;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.UserVO;
 
@@ -241,21 +232,30 @@ public class MemberController {
 	@RequestMapping(value = "/member/pwCheck", method = RequestMethod.POST)
 	@ResponseBody
 	public int pwCheck(MemberVO member) throws Exception {
-		String me_pw = memberService.pwCheck(member.getMe_user_id());
-		if (member == null || !BCrypt.checkpw(member.getMe_pw(), me_pw)) {
-			return 0;
-		}
-		return 1;
+	    // DB에서 해당 사용자의 해시된 비밀번호 가져오기
+		System.out.println(member);
+	    String me_pw = memberService.pwCheck(member.getMe_pw());
+	    System.out.println(me_pw);
+	    // 만약 DB에서 가져온 비밀번호가 null이거나 비밀번호가 일치하지 않으면 0을 반환
+	    if (me_pw == null || !BCrypt.checkpw(member.getMe_pw(), me_pw)) {
+	        return 0;
+	    }
+	    
+	    // 비밀번호가 일치하면 1을 반환
+	    return 1;
 	}
 
-	@RequestMapping(value = "/pwUpdate", method = RequestMethod.POST)
-	public String pwUpdate(String me_user_id, String me_pw1, RedirectAttributes rttr, HttpSession session)
+	@RequestMapping(value = "/member/pwUpdate", method = RequestMethod.POST)
+	public String pwUpdate(String me_user_id, String me_pw1, Model model, HttpSession session)
 			throws Exception {
-		String hashedPw = BCrypt.hashpw(me_pw1, BCrypt.gensalt());
-		memberService.pwUpdate(me_user_id, hashedPw);
+		String enpassword = encryptPassword(me_pw1);
+		memberService.pwUpdate(me_user_id, enpassword);
+		System.out.println(me_user_id);
+		System.out.println(me_pw1);
+		System.out.println(enpassword);
 		session.invalidate();
-		rttr.addFlashAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
+		model.addAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
 
-		return "redirect:/member/loginView";
+		return "/main/message";
 	}
 }
