@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.pagination.PageMaker;
 import kr.kh.finalproject.service.BusinessService;
+import kr.kh.finalproject.service.ManagerService;
 import kr.kh.finalproject.service.MenuService;
 import kr.kh.finalproject.service.OptionService;
 import kr.kh.finalproject.service.StoreService;
@@ -47,8 +48,6 @@ public class BusinessController {
 	private MenuService menuService;
 	@Autowired
 	private OptionService optionService;
-	@Autowired
-	private BusinessService businessService;
 
 
 	// 사업자페이지 [홈]

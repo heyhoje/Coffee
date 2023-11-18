@@ -17,6 +17,16 @@ public interface GalleryService {
 
 	List<GalleryTypeVO> getGalleryTypeList();
 
+	boolean insertGallery(GalleryVO gallery, MemberVO user, MultipartFile[] files2);
+
+	void updatehits(Integer gal_num);
+
+	GalleryVO getGallery(Integer gal_num);
+
+	boolean updateGallery(GalleryVO gallery, MultipartFile[] files, Integer[] delFiles, MemberVO user);
+
+	boolean deleteBoard(Integer gal_num, MemberVO user);
+	
 
 }
 

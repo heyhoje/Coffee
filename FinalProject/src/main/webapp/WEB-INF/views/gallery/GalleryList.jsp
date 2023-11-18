@@ -1,73 +1,76 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<%@ page language="java" contentType="text/html; charset=utf-8" 
+	pageEncoding="utf-8" %>
+<!doctype html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="<c:url value='/resources/css/GalleryList.css'/>">
-<title>Insert title here</title>
-<style type="text/css">
-
-</style>
 </head>
 <body>
-	<div class="coffee_list_wrap">
-	  <table class="coffee_list">
-	  	<caption>커피</caption>
-	    <thead>
-	      <tr>
-	        <th>번호</th>
-	        <th>제목</th>
-	        <th>작성자</th>
-	        <th>작성일</th>
-	        <th>조회수</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr>
-	        <td>3</td>
-	        <td class="title">
-	        	<a href="#">스타벅스 신메뉴 나왔어요!</a>
-	        </td>
-	        <td>yoo123</td>
-	        <td>2023-10-26</td>
-	        <td>111</td>
-	      </tr>
-	      <tr>
-	        <td>2</td>
-	        <td class="title col-8">
-	        	<a href="#">라떼</a>
-	        </td>
-	        <td>yoo123</td>
-	        <td>2023-10-26</td>
-	        <td>222</td>
-	      </tr>
-	      <tr>
-	        <td>1</td>
-	        <td class="title">
-	        	<a href="#">아아</a>
-	        </td>
-	        <td>yoo123</td>
-	        <td>2023-10-26</td>
-	        <td>333</td>
-	      </tr>
-	    </tbody>
-	  </table>
-	  <div>
-	  	<button class="btn btn-success" style="float: right; margin-top:10px;">글쓰기</button>
+	<br>
+	<h1>게시판</h1>
+	<form action="" method="get">
+	  <div class="input-group mt-5" >
+	  	<div class="input-group-prepend">
+		    <select class="form-control" name="type">
+		      <option value="0" <c:if test="${pm.cri.type == '0' }">selected</c:if>>전체</option>
+		      <option value="gal_title" <c:if test="${pm.cri.type == 'gal_title' }">selected</c:if>>제목</option>
+		      <option value="gal_contents" <c:if test="${pm.cri.type == 'gal_contents' }">selected</c:if>>내용</option>
+		    </select>
+	    </div>
+	    <input type="text" class="form-control" name="search" value="${pm.cri.search}">
+	    <button class="btn btn-outline-success">검색</button>
 	  </div>
 	  <br>
-	  <div class="paging">
-	  	<a href="#" class="bt">첫 페이지</a>
-	  	<a href="#" class="bt">이전 페이지</a>
-	  	<a href="#" class="num">1</a>
-	  	<a href="#" class="num">2</a>
-	  	<a href="#" class="num">3</a>
-	  	<a href="#" class="bt">다음 페이지</a>
-	  	<a href="#" class="bt">마지막 페이지</a>
-	  </div>
-	  
-	</div>
+	</form>
+	<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>조회수</th>
+      </tr>
+    </thead>
+    <tbody>
+      <c:forEach items="${list }" var="gallery">
+	      <tr>
+	        <td>${gallery.gal_num}</td>
+	        <td>
+	        	<a href="<c:url value='/gallery/GalleryDetail${pm.cri.currentUrl}&gal_num=${gallery.gal_num}'/>">
+	        	${gallery.gal_title}
+	        	</a>
+	        </td>
+	        <td>${gallery.gal_me_user_id }</td>
+	        <td>${gallery.gal_hits }</td>
+	        <td>
+	        	<c:if test="${user.me_authority == 'ADMIN'}">
+					<a href="<c:url value='/gallery/GalleryUpdate?gal_num=${gallery.gal_num}'/>" class="btn btn-outline-info">수정</a>
+					<a href="<c:url value='/gallery/GalleryDelete?gal_num=${gallery.gal_num}'/>" class="btn btn-outline-danger">삭제</a>
+				</c:if>
+			</td>
+
+	      </tr>
+      </c:forEach>
+    </tbody>
+  </table>
+  <ul class="pagination justify-content-center">
+  	<c:if test="${pm.prev}">
+	    <li class="page-item">
+	    	<a class="page-link" href="<c:url value='/gallery/GalleryList${pm.cri.getUrl(pm.startPage-1)}'/>">이전</a>
+	    </li>
+    </c:if>
+    
+    <c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
+	    <li class="page-item <c:if test='${pm.cri.page == i}'>active</c:if>">
+	    	<a class="page-link" href="<c:url value='/gallery/GalleryList${pm.cri.getUrl(i)}'/>">${i}</a>
+	    </li>
+    </c:forEach>
+    <c:if test="${pm.next}">
+	    <li class="page-item">
+	    	<a class="page-link" href="<c:url value='/gallery/GalleryList${pm.cri.getUrl(pm.endPage+1)}'/>">다음</a>
+	    </li>
+    </c:if>
+  </ul>
+  <a class="btn btn-outline-danger" href="<c:url value='/gallery/GalleryInsert'/>">글쓰기</a>
 </body>
 </html>
