@@ -9,7 +9,6 @@ body {
 p,
 span {
   margin: 0;
-  margin-top:15px;
 }
 
 a {
@@ -202,9 +201,6 @@ td {
       background-color: white;
       padding: 20px;
       text-align: center;
-      width:20%;
-      height:20%;
-      line-height:normal;
     }
 #overlay2 {
       display: none;
@@ -223,14 +219,9 @@ td {
       background-color: white;
       padding: 20px;
       text-align: center;
-      width:20%;
-      height:20%;
-      line-height:normal;
     }
 #btnYes, #btnNo {
       margin: 0 10px;
       padding: 10px;
       cursor: pointer;
-      margin-top:50px;
 }
-
