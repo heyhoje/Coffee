@@ -2,6 +2,7 @@ package kr.kh.finalproject.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,12 @@ public class GalleryController {
 	
 	@Autowired
 	GalleryService galleryService;
+	
+	@RequestMapping(value = "/main/gallery", method = RequestMethod.GET)
+	public String galleryMain(HttpSession session, HttpServletRequest request) throws Exception {
+	
+		return "/main/gallery";
+	}
 	
 	@GetMapping("/gallery/GalleryList")
 	public String galleryList(Model model, Criteria cri) {

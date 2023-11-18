@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.kh.finalproject.vo.GalleryDAO">
+<mapper namespace="kr.kh.finalproject.dao.GalleryDAO">
 	<resultMap type="kr.kh.finalproject.vo.GalleryVO" id="GalleryVO">
 		<id property="gal_num" column="gal_num"/>
 		<result property="gal_title" column="gal_title"/>
