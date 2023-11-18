@@ -1,7 +1,8 @@
 package kr.kh.finalproject.service;
 
-import kr.kh.finalproject.vo.ShopVO;
+import org.springframework.stereotype.Service;
 
+@Service
 public interface BusinessService {
 
 	boolean deleteMenu(String menu_num);
