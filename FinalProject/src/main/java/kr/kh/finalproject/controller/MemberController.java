@@ -217,7 +217,7 @@ public class MemberController {
 		}
 		return "/main/message";
 	}
-
+	
 	@RequestMapping(value = "/member/mypage", method = RequestMethod.GET)
 	public String mypage() {
 		return "/member/mypage";
@@ -228,7 +228,22 @@ public class MemberController {
 	public String pwUpdateView() throws Exception {
 		return "/member/pwchange";
 	}
-
+	
+	// 회원탈퇴
+	@RequestMapping(value = "/member/deleteMember", method = RequestMethod.GET)
+	public String deleteMember() throws Exception {
+		return "/member/deleteMember";
+	}
+	
+	@RequestMapping(value="/member/delete", method=RequestMethod.POST)
+	public String delete(String me_user_id, Model model, HttpSession session)throws Exception{
+		memberService.deleteMember(me_user_id);
+		memberService.deleteUser(me_user_id);
+		session.invalidate();
+		model.addAttribute("msg", "이용해주셔서 감사합니다.");
+		return "/main/message";
+	}
+	
 	@RequestMapping(value = "/member/pwCheck", method = RequestMethod.POST)
 	@ResponseBody
 	public int pwCheck(MemberVO member) throws Exception {

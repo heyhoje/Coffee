@@ -47,6 +47,10 @@ public interface MemberService {
 
 	String pwCheck(String me_pw)throws Exception;
 
+	void deleteMember(String me_user_id)throws Exception;
+
+	void deleteUser(String me_user_id)throws Exception;
+
 
 
 }

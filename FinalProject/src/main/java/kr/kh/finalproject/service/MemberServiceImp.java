@@ -158,6 +158,13 @@ public class MemberServiceImp implements MemberService {
 	public String pwCheck(String me_pw) throws Exception {
 		return memberDao.pwCheck(me_pw);
 	}
-	
+	@Override
+	public void deleteMember(String me_user_id) throws Exception {
+		memberDao.deleteMember(me_user_id);
+	}
+	@Override
+	public void deleteUser(String me_user_id) throws Exception {
+		memberDao.deleteUser(me_user_id);
+	}
 	
 }
