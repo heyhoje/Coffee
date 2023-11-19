@@ -19,10 +19,10 @@
 				<!-- 아이디 -->
 				<div class="row mb-3 form-row">
 					<div class="col-md-3">
-						<label for="memberId">아이디</label>
+						<label for="me_user_id">아이디</label>
 					</div>
 					<div class="col-md-6" style="display: flex; align-items: flex-end;">
-						<h5 id="id">${user.me_user_id}</h5>
+						<input type="text" name="me_user_id" class="form-control" value="${user.me_user_id}" id="me_user_id" readonly>
 					</div>
 				</div>
 
@@ -32,7 +32,7 @@
 						<label for="memberPoint">포인트</label>
 					</div>
 					<div class="col-md-6">
-						<h5 id="point">${user.me_point}</h5>
+						<h5 id="me_point">${user.me_point}</h5>
 					</div>
 				</div>
 
