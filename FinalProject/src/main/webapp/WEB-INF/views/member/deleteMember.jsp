@@ -46,12 +46,12 @@
 			<hr>
 
 			<button type="button" id="delete" name="delete"
-				class="btn btn-primary"
+				class="btn btn-primary btn-lg btn-block"
 				style="margin-bottom: 10px; width: 100%; border: 1px solid black; background-color: floralwhite; color: black;">회원탈퇴</button>
 
-			<a type="button" class="btn btn-primary"
+			<a type="button" class="btn btn-primary btn-lg btn-block"
 				style="width: 100%; border: 1px solid black; background-color: floralwhite; color: black;"
-				href="/member/mypage" class="btn btn-default">취소</a>
+				href="/member/mypageHome" class="btn btn-default">취소</a>
 		</div>
 	</form>
 </body>

@@ -49,12 +49,12 @@
 				<div class="col-md-6"></div>
 				<hr>
 				<button type="button" id="pwUpdate" name="pwUpdate"
-					class="btn btn-primary"
+					class="btn btn-primary btn-lg btn-block"
 					style="margin-bottom: 10px; width: 100%; border: 1px solid black; background-color: floralwhite; color: black;">비밀번호
 					변경</button>
-				<a type="button" class="btn btn-primary"
+				<a type="button" class="btn btn-primary btn-lg btn-block"
 					style="width: 100%; border: 1px solid black; background-color: floralwhite; color: black;"
-					href="/member/mypage" class="btn btn-default">취소</a>
+					href="/member/mypageHome" class="btn btn-default">취소</a>
 			</div>
 		</div>
 	</form>
