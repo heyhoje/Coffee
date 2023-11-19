@@ -59,7 +59,7 @@ public class GalleryController {
 		if(user == null) {
 			Message msg = new Message("", "로그인이 필요합니다.");
 			model.addAttribute("msg", msg);
-			return "/main/message2";
+			return "/main/message";
 		}
 		model.addAttribute("gal_num", gal_num == null ? 0 : gal_num);
 		return "/gallery/GalleyInsert";
@@ -76,7 +76,7 @@ public class GalleryController {
 			msg = new Message("/gallery/GalleryInsert", "게시글을 등록하지 못했습니다.");
 		}
 		model.addAttribute("msg", msg);
-		return "/main/message2";
+		return "/main/message";
 	}
 	@GetMapping("/gallery/GalleryDetail")
 	public String galleryDetail(Model model, Integer gal_num , Criteria cri, HttpSession session) {
@@ -102,7 +102,7 @@ public class GalleryController {
 		if(user == null || gallery == null || !user.getMe_user_id().equals(gallery.getGal_me_user_id()) || !user.getMe_authority().equals("ADMIN")) {
 			Message msg = new Message("/gallery/GalleryList", "잘못된 접근입니다.");
 			model.addAttribute("msg", msg);
-			return "/main/message2";
+			return "/main/message";
 		}
 		model.addAttribute("gallery", gallery);
 		return "/gallery/galleryUpdate";
@@ -118,7 +118,7 @@ public class GalleryController {
 			msg = new Message("/gallery/GalleryUpdate?gal_num="+gallery.getGal_num(), "게시글을 수정하지 못했습니다."); 
 		}
 		model.addAttribute("msg", msg);
-		return "/main/message2";
+		return "/main/message";
 	}
 	@GetMapping("/gallery/GalleryDelete")
 	public String galleryDelete(Model model, HttpSession session, Integer gal_num) {
@@ -130,7 +130,7 @@ public class GalleryController {
 			msg = new Message("/gallery/GalleryList", "잘못된 접근입니다.");
 		}
 		model.addAttribute("msg", msg);
-		return "/main/message2";
+		return "/main/message";
 	}
 }
 	

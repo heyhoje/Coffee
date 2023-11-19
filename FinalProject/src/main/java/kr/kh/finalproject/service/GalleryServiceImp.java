@@ -1,13 +1,10 @@
 package kr.kh.finalproject.service;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.finalproject.dao.GalleryDAO;
@@ -24,7 +21,6 @@ public class GalleryServiceImp implements GalleryService{
 	@Autowired
 	GalleryDAO galleryDao;
 	String uploadPath = "D:\\uploadfiles";
-
 
 	@Override
 	public List<GalleryVO> getGalleryList(Criteria cri) {
@@ -62,32 +58,19 @@ public class GalleryServiceImp implements GalleryService{
 		if(files == null || files.length == 0) {
 			return true;
 		}
-	    // Existing logic
+		
+		
+				
+		uploadFileAndInsert(files, gallery.getGal_num());
+				
+		return true;
+	}
 
-		// Existing logic
-
-        for (MultipartFile file : files) {
-		    String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		    // Save the file or process it as needed
-
-		    // Assuming 'insertImage' is the id of the new SQL statement in your mapper
-		    Map<String, Object> Galimage = new HashMap<>();
-		    Galimage.put("gal_num", gallery.getGal_num());
-		    Galimage.put("gal_imagePath", fileName);
-		    galleryDao.insertImage(Galimage);
-		}
-
-        // Continue with your existing logic for gallery insertion
-        // ...
-
-        return true;
-    }
-
-	private void uploadFileAndInsert(MultipartFile[] files2, int fi_gal_num) {
-		if(files2 == null || files2.length == 0) {
+	private void uploadFileAndInsert(MultipartFile[] files, int fi_gal_num) {
+		if(files == null || files.length == 0) {
 			return;
 		}
-		for(MultipartFile file : files2) {
+		for(MultipartFile file : files) {
 			if(file == null || file.getOriginalFilename().length() == 0) {
 				continue;
 			}
