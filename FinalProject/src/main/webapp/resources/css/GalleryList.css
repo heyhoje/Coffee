@@ -1,6 +1,78 @@
 @charset "UTF-8";
 
-.GalleryBoard-title{
-	font-family: 'BM HANNA Pro', sans-serif;
+* {
+	margin: 0;
+	padding: 0;
+}
+table {
+	border-collapse: collapse;
+}
+caption{
+	display: none;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+.coffee_list_wrap {
+	padding: 50px;
+	margin-top: 150px;
+	font-family: sans-serif;
+}
+.coffee_list {
+	width: 100%;
+	border-top: 2px solid #03c75a;
+}
+
+.coffee_list tr{
+	border-bottom: 1px solid #ccc;
+}
+
+.coffee_list th,
+.coffee_list td {
+	padding: 10px;
+	font-size: 14px;
+}
+
+.coffee_list {
 	text-align: center;
+}
+
+.coffee_list .title {
+	text-align: left;
+}
+.coffee_list .title:hover {
+	text-decoration: underline;
+	background: lemonchiffon;
+}
+
+.coffee_list_wrap .paging {
+	margin-top: 20px;
+	text-align: center;
+	font-size: 0;
+}
+
+.coffee_list_wrap .paging a {
+	display: inline-block;
+	margin-left: 10px;
+	padding: 5px 10px;
+	border-radius: 27px;
+	font-size: 12px;
+}
+
+.coffee_list_wrap .paging a:first-child {
+	margin-left: 0;
+}
+
+.coffee_list_wrap .paging a.bt {
+	border: 1px solid #03c75a;
+}
+.coffee_list_wrap .paging a.bt:hover {
+	background: #03c75a;
+	color: #fff;
+}
+
+.coffee_list_wrap .paging a.num {
+	border: 1px solid #03c75a;
+	font-weight: 600;
 }

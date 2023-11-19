@@ -75,7 +75,7 @@
 				</c:if>
 				<c:if test="${user != null}">
 				<li class="nav-item"><a class="nav-link"
-					href="<c:url value='/member/mypage'/>" style="color: khaki; font-family: 'BM HANNA Pro', sans-serif; float: right;">${user.me_name}</a></li>
+					href="<c:url value='/member/mypage'/>" style="color: white; font-family: 'BM HANNA Pro', sans-serif; float: right;">${user.me_name}</a></li>
 					<li class="form-group" id="logoutButton"><input
 						style="margin-right: 10px;" type="submit" value="로그아웃"
 						class="btn float-right logout_btn" data-toggle="modal"

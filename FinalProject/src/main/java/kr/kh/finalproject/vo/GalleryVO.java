@@ -10,12 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GalleryVO {
-	private int gal_num;
-	private String gal_title;
-	private String gal_me_user_id;
-	private int gal_gc_num;
-	private String gal_contents;
-	private int gal_hits;
+	int gal_num;
+	String gal_title;
+	String gal_me_user_id;
+	int gal_gc_num;
 	
 	private List<FileVO> fileVoList;
 	

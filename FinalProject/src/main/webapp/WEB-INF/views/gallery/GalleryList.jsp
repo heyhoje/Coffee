@@ -4,11 +4,10 @@
 <!doctype html>
 <html lang="ko">
 <head>
-	<link rel="stylesheet" type="text/css" href="/resources/css/GalleryList.css">
 </head>
 <body>
 	<br>
-	<h1 class="GalleryBoard-title">갤러리게시판</h1>
+	<h1>게시판</h1>
 	<form action="" method="get">
 	  <div class="input-group mt-5" >
 	  	<div class="input-group-prepend">
