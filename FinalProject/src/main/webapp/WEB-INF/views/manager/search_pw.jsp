@@ -23,7 +23,7 @@
 			<div class="row justify-content-center">
 				<div class="col-md-6"
 					style="border: 1px solid black; border-radius: 10px;">
-					<h2 class="text-center mb-4">일반회원 비밀번호찾기</h2>
+					<h2 class="text-center mb-4">사업자회원 비밀번호찾기</h2>
 					<div class="form-group">
 						<input type="text" class="form-control form-control-user"
 							id="me_user_id" name="me_user_id"
@@ -56,7 +56,7 @@
 					<hr>
 					<a class="btn btn-primary btn-user btn-block"
 						style="border: 1px solid black; background-color: floralwhite; color: black;"
-						href="/member/search_id">아이디 찾기 바로가기</a> <a
+						href="/manager/search_id">아이디 찾기 바로가기</a> <a
 						class="btn btn-primary btn-user btn-block"
 						style="border: 1px solid black; background-color: floralwhite; color: black;"
 						href="/member/signup2">회원가입 바로가기</a> <a

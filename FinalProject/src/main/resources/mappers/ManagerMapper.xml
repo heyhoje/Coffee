@@ -44,4 +44,18 @@
 	<!-- <select id="selectCountManagerList" resultType="int">
 		select count(*) business_member where bm_id = #{manager.bm_id}
 	</select> -->
+	
+	<!-- 아이디 찾기 -->
+    <select id="managerIdSearch" parameterType="kr.kh.finalproject.vo.ManagerVO" resultType="kr.kh.finalproject.vo.ManagerVO">
+	<![CDATA[
+	    select
+	        *
+	    from
+	        business_member
+	    where
+	        bm_manager = #{bm_manager}
+	    and
+	        bm_num = #{bm_num}
+	]]>    
+	</select>
 </mapper>

@@ -25,6 +25,8 @@ public interface ManagerDAO {
 	// 승인&거절
 	boolean updateManager(@Param("manager")ManagerVO manager);
 
+	ManagerVO managerIdSearch(ManagerVO manager);
+
 //	int selectCountManagerList(@Param("manager") ManagerVO manager, @Param("cri")Criteria cri);
 
 

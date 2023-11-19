@@ -114,6 +114,11 @@ public class ManagerServiceImp implements ManagerService{
 		return managerDao.updateManager(manager);
 	}
 
+	@Override
+	public ManagerVO managerIdSearch(ManagerVO manager) {
+		return managerDao.managerIdSearch(manager);
+	}
+
 //	@Override
 //	public int getTotalCount(ManagerVO manager, Criteria cri) {
 //		if(cri == null) {

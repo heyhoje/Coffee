@@ -26,6 +26,8 @@ public interface ManagerService {
 	// 승인&거절
 	boolean updateManager(ManagerVO manager);
 
+	ManagerVO managerIdSearch(ManagerVO manager);
+
 
 
 

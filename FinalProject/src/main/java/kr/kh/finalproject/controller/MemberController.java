@@ -12,12 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.kh.finalproject.service.MemberService;
 import kr.kh.finalproject.vo.MemberVO;
@@ -85,7 +83,7 @@ public class MemberController {
 			MemberVO memberSearch = memberService.memberIdSearch(member);
 
 			model.addAttribute("member", memberSearch);
-
+			System.out.println(member);
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			model.addAttribute("msg", "오류가 발생되었습니다.");
@@ -112,13 +110,13 @@ public class MemberController {
 				return "/member/search_pw";
 			}
 
-			String newPw = RandomStringUtils.randomAlphanumeric(10);
-			String enpassword = encryptPassword(newPw);
+			String me_pw = RandomStringUtils.randomAlphanumeric(10);
+			String enpassword = encryptPassword(me_pw);
 			member.setMe_pw(enpassword);
 
 			memberService.passwordUpdate(member);
 
-			model.addAttribute("newPw", newPw);
+			model.addAttribute("me_pw", me_pw);
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
@@ -225,7 +223,7 @@ public class MemberController {
 
 	// 비밀번호 변경
 	@RequestMapping(value = "/member/pwchange", method = RequestMethod.GET)
-	public String pwUpdateView() throws Exception {
+	public String pwchange() throws Exception {
 		return "/member/pwchange";
 	}
 
