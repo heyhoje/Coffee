@@ -117,6 +117,7 @@
 	<update id="pwUpdate">
 		update member set me_pw = #{me_pw1} where me_user_id = #{me_user_id}
 	</update>
+	
 	<!-- 회원탈퇴 -->
 	<delete id="deleteMember">
 		delete from member WHERE me_user_id = #{me_user_id};
@@ -124,4 +125,14 @@
 	<delete id="deleteUser">
 		delete from user WHERE user_id = #{me_user_id};
 	</delete>
+	
+	<!-- 회원정보 수정 -->
+	<update id="infoUpdate">
+		update member set me_name = #{me_name},
+						  me_email = #{me_email}, 
+						  me_post = #{me_post}, 
+						  me_address = #{me_address}, 
+						  me_address2 = #{me_address2} 
+		where me_user_id = #{me_user_id}
+	</update>
 </mapper>

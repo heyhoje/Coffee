@@ -14,9 +14,8 @@
 		<h3 id="Mypage-title">회원정보 수정</h3>
 		<hr>
 		<div class="bg-white rounded shadow-sm container p-3">
-			<form method="POST" action="updateMember.do"
-				onsubmit="return memberUpdateValidate();" class="form-horizontal"
-				role="form">
+			<form id="infoView" action="/member/infoUpdate" method="POST"
+				autocomplete="off" class="form-horizontal" role="form">
 				<!-- 아이디 -->
 				<div class="row mb-3 form-row">
 					<div class="col-md-3">
@@ -40,24 +39,23 @@
 				<!-- 이름 -->
 				<div class="row mb-3 form-row">
 					<div class="col-md-3">
-						<label for="memberName">이름</label>
+						<label for="me_name">이름</label>
 					</div>
 					<div class="col-md-6">
-						<input type="text" class="form-control" id="name" name="name"
-							value="${user.me_name}">
+						<input type="text" class="form-control" id="me_name"
+							name="me_name" value="${user.me_name}">
 					</div>
 				</div>
-
 
 
 				<!-- 이메일 -->
 				<div class="row mb-3 form-row">
 					<div class="col-md-3">
-						<label for="memberEmail">Email</label>
+						<label for="me_email">Email</label>
 					</div>
 					<div class="col-md-6">
-						<input type="email" class="form-control" id="email" name="email"
-							value="${user.me_email}">
+						<input type="email" class="form-control" id="me_email"
+							name="me_email" value="${user.me_email}">
 					</div>
 				</div>
 				<br>
@@ -70,7 +68,7 @@
 						<label for="postcodify_search_button">우편번호</label>
 					</div>
 					<div class="col-md-3">
-						<input type="text" name="post"
+						<input type="text" name="me_post" id="me_post"
 							class="form-control postcodify_postcode5" value="${user.me_post}">
 					</div>
 					<div class="col-md-3">
@@ -86,7 +84,7 @@
 					</div>
 					<div class="col-md-9">
 						<input type="text" class="form-control postcodify_address"
-							name="address1" id="address1" value="${user.me_address}">
+							name="me_address" id="me_address" value="${user.me_address}">
 					</div>
 				</div>
 
@@ -96,7 +94,7 @@
 					</div>
 					<div class="col-md-9">
 						<input type="text" class="form-control postcodify_details"
-							name="address2" id="address2" value="${user.me_address2}">
+							name="me_address2" id="me_address2" value="${user.me_address2}">
 					</div>
 				</div>
 
@@ -159,8 +157,8 @@
 
 				<hr class="mb-4">
 				<button class="btn btn-primary btn-lg btn-block" type="submit"
-					style="border: 1px solid black; background-color: floralwhite; color: black;">회원정보
-					수정</button>
+					style="border: 1px solid black; background-color: floralwhite; color: black;"
+					onclick="fnSubmit(); return false;">회원정보 수정</button>
 				<a type="button" class="btn btn-primary btn-lg btn-block"
 					style="width: 100%; border: 1px solid black; background-color: floralwhite; color: black;"
 					href="/member/mypageHome" class="btn btn-default">취소</a>
@@ -173,6 +171,54 @@
 		$(function() {
 			$("#postcodify_search_button").postcodifyPopUp();
 		});
+	</script>
+	<script>
+		function fnSubmit() {
+			var email_rule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+			if ($("#me_name").val() == null || $("#me_name").val() == "") {
+				alert("이름을 입력해주세요.");
+				$("#me_name").focus();
+				return false;
+			}
+
+			if ($("#me_email").val() == null || $("#me_email").val() == "") {
+				alert("이메일을 입력해주세요.");
+				$("#me_email").focus();
+				return false;
+			}
+
+			if (!email_rule.test($("#me_email").val())) {
+				alert("이메일을 형식에 맞게 입력해주세요. ex) 1234@naver.com");
+				$("#me_email").focus();
+				return false;
+			}
+
+			if ($("#me_post").val() == null || $("#me_post").val() == "") {
+				alert("우편번호를 입력해주세요.");
+				$("#me_post").focus();
+				return false;
+			}
+
+			if ($("#me_address").val() == null || $("#me_address").val() == "") {
+				alert("도로명 주소를 입력해주세요.");
+				$("#me_address").focus();
+				return false;
+			}
+
+			if ($("#me_address2").val() == null
+					|| $("#me_address2").val() == "") {
+				alert("상세주소를 입력해주세요.");
+				$("#me_address2").focus();
+				return false;
+			}
+
+			if (confirm("수정하시겠습니까?")) {
+
+				$("#infoView").submit();
+				return false;
+			}
+		}
 	</script>
 </body>
 </html>

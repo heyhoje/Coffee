@@ -1,6 +1,5 @@
 package kr.kh.finalproject.controller;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -217,7 +217,7 @@ public class MemberController {
 		}
 		return "/main/message";
 	}
-	
+
 	@RequestMapping(value = "/member/mypage", method = RequestMethod.GET)
 	public String mypage() {
 		return "/member/mypage";
@@ -228,41 +228,40 @@ public class MemberController {
 	public String pwUpdateView() throws Exception {
 		return "/member/pwchange";
 	}
-	
+
 	// 회원탈퇴
 	@RequestMapping(value = "/member/deleteMember", method = RequestMethod.GET)
 	public String deleteMember() throws Exception {
 		return "/member/deleteMember";
 	}
-	
-	@RequestMapping(value="/member/delete", method=RequestMethod.POST)
-	public String delete(String me_user_id, Model model, HttpSession session)throws Exception{
+
+	@RequestMapping(value = "/member/delete", method = RequestMethod.POST)
+	public String delete(String me_user_id, Model model, HttpSession session) throws Exception {
 		memberService.deleteMember(me_user_id);
 		memberService.deleteUser(me_user_id);
 		session.invalidate();
 		model.addAttribute("msg", "이용해주셔서 감사합니다.");
 		return "/main/message";
 	}
-	
+
 	@RequestMapping(value = "/member/pwCheck", method = RequestMethod.POST)
 	@ResponseBody
 	public int pwCheck(MemberVO member) throws Exception {
-	    // DB에서 해당 사용자의 해시된 비밀번호 가져오기
+		// DB에서 해당 사용자의 해시된 비밀번호 가져오기
 		System.out.println(member);
-	    String me_pw = memberService.pwCheck(member.getMe_pw());
-	    System.out.println(me_pw);
-	    // 만약 DB에서 가져온 비밀번호가 null이거나 비밀번호가 일치하지 않으면 0을 반환
-	    if (me_pw == null || !BCrypt.checkpw(member.getMe_pw(), me_pw)) {
-	        return 0;
-	    }
-	    
-	    // 비밀번호가 일치하면 1을 반환
-	    return 1;
+		String me_pw = memberService.pwCheck(member.getMe_pw());
+		System.out.println(me_pw);
+		// 만약 DB에서 가져온 비밀번호가 null이거나 비밀번호가 일치하지 않으면 0을 반환
+		if (me_pw == null || !BCrypt.checkpw(member.getMe_pw(), me_pw)) {
+			return 0;
+		}
+
+		// 비밀번호가 일치하면 1을 반환
+		return 1;
 	}
 
 	@RequestMapping(value = "/member/pwUpdate", method = RequestMethod.POST)
-	public String pwUpdate(String me_user_id, String me_pw1, Model model, HttpSession session)
-			throws Exception {
+	public String pwUpdate(String me_user_id, String me_pw1, Model model, HttpSession session) throws Exception {
 		String enpassword = encryptPassword(me_pw1);
 		memberService.pwUpdate(me_user_id, enpassword);
 		System.out.println(me_user_id);
@@ -273,4 +272,15 @@ public class MemberController {
 
 		return "/main/message";
 	}
+
+	// 회원정보수정로직
+	@RequestMapping(value = "/member/infoUpdate", method = RequestMethod.POST)
+	public String infoUpdate(HttpServletRequest request, HttpSession session, MemberVO member, Model model) throws Exception {
+		memberService.infoUpdate(member);
+		System.out.println(member);
+		session.invalidate();
+		model.addAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
+		return "/main/message";
+	}
+	
 }

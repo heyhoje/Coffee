@@ -51,6 +51,8 @@ public interface MemberService {
 
 	void deleteUser(String me_user_id)throws Exception;
 
+	void infoUpdate(MemberVO member)throws Exception;
+
 
 
 }

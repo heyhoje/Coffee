@@ -166,5 +166,9 @@ public class MemberServiceImp implements MemberService {
 	public void deleteUser(String me_user_id) throws Exception {
 		memberDao.deleteUser(me_user_id);
 	}
+	@Override
+	public void infoUpdate(MemberVO member) throws Exception {
+		memberDao.infoUpdate(member);
+	}
 	
 }
