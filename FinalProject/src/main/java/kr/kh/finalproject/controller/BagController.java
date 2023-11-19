@@ -104,7 +104,7 @@ public class BagController {
     @PostMapping("/order/bag")
     @ResponseBody
     public String killAme(@RequestParam("oc_num") int oc_num) {
-    	// �옣諛붽뎄�땲�뿉�꽌 �궘�젣 踰꾪듉 �늻瑜쇱떆 �꽑�깮�븳 硫붾돱瑜� �궘�젣�빐二쇰뒗 硫붿꽌�뱶
+    	// �옣諛붽뎄�땲�뿉�꽌 �궘�젣 踰꾪듉 �늻瑜쇱떆 �꽑�깮�븳 硫붾돱瑜� �궘�젣�빐二쇰뒗 硫붿꽌�뱶.
         boolean deleteItem = bagService.deleteItem(oc_num);
         
         return "";

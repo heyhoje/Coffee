@@ -16,8 +16,8 @@
 		<id property="gt_num" column="gt_num"/>
 		<result property="gt_title" column="gt_title"/>
 	</resultMap>	
-		<select id="selectGalleryList" resultType="kr.kh.finalproject.vo.GalleryVO">
-			select * from gallery
+	<select id="selectGalleryList" resultType="kr.kh.finalproject.vo.GalleryVO">
+		select * from gallery
 		<choose>
 			<when test='cri.type.equals("0")'>
 				where gal_title like concat('%', #{cri.search}, '%') or
@@ -30,44 +30,63 @@
 			<if test = "cri.gt_num != 0">
 				and gt_num = #{cri.gt_num}
 			</if>
-		</select>
-	   	<select id="selectGalleryCount" resultType="int">
-		   		select count(*) from gallery
-			<choose>
-				<when test='cri.type.equals("0")'>
-					where (gal_title like concat('%', #{cri.search}, '%') or 
-						gal_contents like concat('%', #{cri.search}, '%'))
-				</when>
-				<otherwise>
-					where ${cri.type} like concat('%', #{cri.search}, '%')
-				</otherwise>
-			</choose>
-			<if test="cri.gt_num != 0">
-				and gal_gt_num = #{cri.gt_num}
-			</if>
-	 	</select>
-	   	
-	   	<insert id="insertGallery" useGeneratedKeys="true" keyProperty="gallery.gal_num" >
-		insert into gallery(gal_num, gal_title, gal_contents, gal_me_user_id)
-		select 
-			ifnull(max(gal_num),0)+1, 	
-			
-			#{gallery.gal_title}, #{gallery.gal_contents}
-			,#{gallery.gal_me_user_id}
-		from 
-			gallery
+	</select>
+	   
+		<insert id="insertGallery" useGeneratedKeys="true" keyProperty="gallery.gal_num" >
+			insert into gallery(gal_num, gal_title, gal_me_user_id, gal_contents)
+			select 
+				ifnull(max(gal_num),0)+1, 	
+				
+				#{gallery.gal_title}, #{gallery.gal_contents}
+				,#{gallery.gal_me_user_id}
+			from 
+				gallery
 		</insert>
-	   	
-		<select id="selectGalleryTypeList" resultMap="GalleryTypeVO">
-			select * from gallery_type
-		</select>
-		
-		
-		
-		
+		<update id="updateGalleryhits">
+		update gallery set gal_hits = gal_hits+1 where gal_num = #{gal_num}
+		</update>
 		<insert id="insertFile">
-			insert file(fi_gal_num, fi_name, fi_ori_name) 
-			values(#{file.fi_gal_num}, #{file.fi_name},#{file.fi_ori_name})
+		insert file(fi_name, fi_ori_name, fi_gal_num) 
+		values(#{file.fi_name},#{file.fi_ori_name},#{file.fi_gal_num})
 		</insert>
+		<select id="selectGallery" resultMap="GalleryVO">
+		select * from gallery where gal_num = #{gal_num}
+		</select>
+		<select id="selectGalleryCount" resultType="int">
+		select count(*) from gallery
+			<choose>
+			<when test='cri.type.equals("0")'>
+				where (gal_title like concat('%', #{cri.search}, '%') or 
+					gal_contents like concat('%', #{cri.search}, '%'))
+			</when>
+			<otherwise>
+				where ${cri.type} like concat('%', #{cri.search}, '%')
+			</otherwise>
+		</choose>
+		<if test="cri.gt_num != 0">
+			and gal_gt_num = #{cri.gt_num}
+		</if>
+		</select>
+		<select id="selectGalleryTypeList" resultMap="GalleryTypeVO">
+		select * from gallery_type
+		</select>
+		<update id="updateGallery">
+		update gallery
+		set
+			gal_title = #{gallery.gal_title},
+			gal_contents = #{gallery.gal_contents}
+		where
+			gal_num = #{gallery.gal_num}
+		</update>
+		<select id="selectFile" resultType="kr.kh.finalproject.vo.FileVO">
+		select * from file where fi_num = #{fi_num}
+		</select>
+		<delete id="deleteFile">
+		delete from file where fi_num = #{fi_num}
+		</delete>
+		<delete id="deleteGallery">
+		delete from gallery where gal_num = #{gal_num}
+		</delete>
+		
 </mapper>
   

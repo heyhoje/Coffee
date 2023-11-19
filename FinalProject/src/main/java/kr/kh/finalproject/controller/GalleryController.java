@@ -1,7 +1,4 @@
 package kr.kh.finalproject.controller;
-
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,18 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.pagination.PageMaker;
 import kr.kh.finalproject.service.GalleryService;
-import kr.kh.finalproject.util.Message;
 import kr.kh.finalproject.vo.GalleryTypeVO;
 import kr.kh.finalproject.vo.GalleryVO;
 import kr.kh.finalproject.vo.MemberVO;
-
 @Controller
 public class GalleryController {
 	
@@ -57,7 +50,7 @@ public class GalleryController {
 	public String boardInsert(Model model, Integer gal_num,HttpSession session) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		if(user == null) {
-			model.addAttribute("msg", "·Î±×ÀÎÀÌ ÇÊ¿äÇÕ´Ï´Ù.");
+			model.addAttribute("msg", "ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½Õ´Ï´ï¿½.");
 			return "/main/message";
 		}
 		model.addAttribute("gal_num", gal_num == null ? 0 : gal_num);
@@ -68,12 +61,11 @@ public class GalleryController {
 	public String boardInsertPost(GalleryVO gallery, HttpSession session, Model model, MultipartFile[] files) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		if(galleryService.insertGallery(gallery, user, files)) {
-			model.addAttribute("msg", "°Ô½Ã±ÛÀ» µî·ÏÇß½À´Ï´Ù.");
+			model.addAttribute("msg", "ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
 		}else {
-			model.addAttribute("msg", "°Ô½Ã±ÛÀ» µî·ÏÇÏÁö ¸øÇß½À´Ï´Ù.");
+			model.addAttribute("msg", "ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
 		}
 		return "/main/message";
 	}
 }
 	
-

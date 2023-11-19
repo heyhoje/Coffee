@@ -12,9 +12,9 @@
 	  <div class="input-group mt-5" >
 	  	<div class="input-group-prepend">
 		    <select class="form-control" name="type">
-		      <option value="0" <c:if test="${pm.cri.type == '0' }">selected</c:if>>전체</option>
-		      <option value="gal_title" <c:if test="${pm.cri.type == 'gal_title' }">selected</c:if>>제목</option>
-		      <option value="gal_contents" <c:if test="${pm.cri.type == 'gal_contents' }">selected</c:if>>내용</option>
+		      <option value="0" <c:if test="${pm.cri.type == '0'}">selected</c:if>>전체</option>
+		      <option value="gal_title" <c:if test="${pm.cri.type == 'gal_title'}">selected</c:if>>제목</option>
+		      <option value="gal_contents" <c:if test="${pm.cri.type == 'gal_contents'}">selected</c:if>>내용</option>
 		    </select>
 	    </div>
 	    <input type="text" class="form-control" name="search" value="${pm.cri.search}">
@@ -32,7 +32,7 @@
       </tr>
     </thead>
     <tbody>
-      <c:forEach items="${list }" var="gallery">
+      <c:forEach items="${list}" var="gallery">
 	      <tr>
 	        <td>${gallery.gal_num}</td>
 	        <td>
@@ -40,8 +40,8 @@
 	        	${gallery.gal_title}
 	        	</a>
 	        </td>
-	        <td>${gallery.gal_me_user_id }</td>
-	        <td>${gallery.gal_hits }</td>
+	        <td>${gallery.gal_me_user_id}</td>
+	        <td>${gallery.gal_hits}</td>
 	        <td>
 	        	<c:if test="${user.me_authority == 'ADMIN'}">
 					<a href="<c:url value='/gallery/GalleryUpdate?gal_num=${gallery.gal_num}'/>" class="btn btn-outline-info">수정</a>
