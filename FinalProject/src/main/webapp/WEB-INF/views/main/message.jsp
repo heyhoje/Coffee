@@ -7,13 +7,13 @@
 	<title>스프링</title>
 </head>
 <body>
-	<script type="text/javascript">
-	let msg = ${msg};
-
-	if(msg != null | msg.msg != null){
-		alert(msg.msg);
-	}
-	location.href = '<c:url value="/"/>' + msg.url;
+		<script type="text/javascript">
+	let msg = '${msg}';
+	let url = '${url}';
+	msg = msg == '' ? '잘못된 접근입니다.' : msg;
+	alert(msg,url);
+	location.href = '<c:url value="/"/>' + url;
+	
 	</script>
 </body>
 </html>

@@ -34,7 +34,7 @@ public class NotificationController {
 	// method for subscription
 	
 	@CrossOrigin
-	@RequestMapping(value="/Notification", produces = MediaType.ALL_VALUE)
+	@RequestMapping(value="/Notification", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
 	public SseEmitter subscribe(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		ShopVO shop = (ShopVO)session.getAttribute("bm_num");

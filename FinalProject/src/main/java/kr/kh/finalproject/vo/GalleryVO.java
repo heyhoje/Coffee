@@ -14,6 +14,8 @@ public class GalleryVO {
 	String gal_title;
 	String gal_me_user_id;
 	int gal_gt_num;
+	String gal_contents;
+	
 	
 	private List<FileVO> fileVoList;
 	

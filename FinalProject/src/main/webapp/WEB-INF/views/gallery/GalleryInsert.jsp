@@ -12,7 +12,7 @@
         <h2 class="GalleryInsert-title">갤러리 게시글 작성</h2>
 
         <!-- 게시글 작성 폼 -->
-        <form action="<c:url value='/gallery/galleryInsert'/>" method="post" enctype="multipart/form-data">
+        <form action="<c:url value='/gallery/GalleryInsert'/>" method="post" enctype="multipart/form-data">
         	<input type="hidden" name="gal_num" value="${gal_num}">
             <div class="mb-3">
                 <label for="title" class="form-label">제목</label>
@@ -21,7 +21,7 @@
             
              <div class="mb-3">
                 <label for="writer" class="form-label">작성자</label>
-                <input type="text" class="form-control" name="gal_me_user_id" value="${user.me_user_id }" readonly>
+                <input type="text" class="form-control" name="gal_me_user_id" value="${user.me_user_id}" readonly>
             </div>
 
             <div class="mb-3">

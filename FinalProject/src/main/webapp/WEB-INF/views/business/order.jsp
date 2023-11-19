@@ -47,15 +47,13 @@
     $(document).ready(function(){
 		
     	var userID = "";
-        var urlEndPoint = 'http://localhost:8080/business/order/${st_num}';
+        var urlEndPoint = 'http://localhost:8080/business/order/1';
         var eventsource = new EventSource(urlEndPoint);
-        eventsource.addEventListener('INIT', function(event){
-        })        
         
         eventsource.addEventListener("주문리스트",function(event){
         	console.log(event.data);
-            //var MenuData = JSON.parse(event.data);
-            //addBlock(MenuData.Menu, MenuData.content);
+            var MenuData = JSON.parse(event.data);
+            addBlock(MenuData.Menu, MenuData.content);
             $('.box').append(`<h1>\${event.data}</h1>`)
           	
         })
