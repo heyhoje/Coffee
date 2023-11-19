@@ -18,5 +18,7 @@ public class GalleryVO {
 	private int gal_hits;
 	
 	private List<FileVO> fileVoList;
+	
+	
 }
 	

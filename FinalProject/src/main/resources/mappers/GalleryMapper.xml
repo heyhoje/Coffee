@@ -33,7 +33,7 @@
 	</select>
 	   
 		<insert id="insertGallery" useGeneratedKeys="true" keyProperty="gallery.gal_num" >
-			insert into gallery(gal_num, gal_title, gal_contents, gal_me_user_id)
+			insert into gallery(gal_num, gal_title, gal_me_user_id, gal_contents)
 			select 
 				ifnull(max(gal_num),0)+1, 	
 				

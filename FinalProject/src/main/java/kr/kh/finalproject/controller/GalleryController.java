@@ -62,18 +62,18 @@ public class GalleryController {
 			return "/main/message2";
 		}
 		model.addAttribute("gal_num", gal_num == null ? 0 : gal_num);
-		return "/gallery/GalleryInsert";
+		return "/gallery/GalleyInsert";
 	}
 	
 	
 	@PostMapping("/gallery/GalleryInsert")
-	public String galleryInsertPost(GalleryVO gallery, HttpSession session, Model model, @RequestParam("file2") MultipartFile[] files2) {
+	public String galleryInsertPost(GalleryVO gallery, HttpSession session, Model model, @RequestParam("file") MultipartFile[] files){
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		Message msg;
-		if(galleryService.insertGallery(gallery, user, files2)) {
+		if(galleryService.insertGallery(gallery, user, files)) {
 			msg = new Message("/gallery/GalleryList", "게시글을 등록했습니다.");
 		}else {
-			msg = new Message("/gallery/GalleryList", "게시글을 등록하지 못했습니다.");
+			msg = new Message("/gallery/GalleryInsert", "게시글을 등록하지 못했습니다.");
 		}
 		model.addAttribute("msg", msg);
 		return "/main/message2";
@@ -90,7 +90,7 @@ public class GalleryController {
 		return "/gallery/GalleryDetail";
 	}
 	
-	@GetMapping("/gallery/galleryUpdate")
+	@GetMapping("/gallery/GalleryUpdate")
 	public String galleryUpdate(Model model,Integer gal_num, HttpSession session) {
 		GalleryVO gallery = galleryService.getGallery(gal_num);
 		MemberVO user = (MemberVO)session.getAttribute("user");
@@ -100,14 +100,14 @@ public class GalleryController {
 		}
 	
 		if(user == null || gallery == null || !user.getMe_user_id().equals(gallery.getGal_me_user_id()) || !user.getMe_authority().equals("ADMIN")) {
-			Message msg = new Message("board/boardList", "잘못된 접근입니다.");
+			Message msg = new Message("/gallery/GalleryList", "잘못된 접근입니다.");
 			model.addAttribute("msg", msg);
 			return "/main/message2";
 		}
 		model.addAttribute("gallery", gallery);
 		return "/gallery/galleryUpdate";
 	}
-	@PostMapping("/gallery/galleryUpdate")
+	@PostMapping("/gallery/GalleryUpdate")
 	public String galleryUpdatePost(Model model, GalleryVO gallery, 
 			MultipartFile[] files, Integer[] delFiles, HttpSession session) {
 		Message msg;
@@ -120,14 +120,14 @@ public class GalleryController {
 		model.addAttribute("msg", msg);
 		return "/main/message2";
 	}
-	@GetMapping("/gallery/galleryDelete")
+	@GetMapping("/gallery/GalleryDelete")
 	public String galleryDelete(Model model, HttpSession session, Integer gal_num) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		Message msg;
 		if(galleryService.deleteBoard(gal_num, user)) {
-			msg = new Message("/gallery/galleryList", "게시글을 삭제했습니다.");
+			msg = new Message("/gallery/GalleryList", "게시글을 삭제했습니다.");
 		}else {
-			msg = new Message("/gallery/galleryList", "잘못된 접근입니다.");
+			msg = new Message("/gallery/GalleryList", "잘못된 접근입니다.");
 		}
 		model.addAttribute("msg", msg);
 		return "/main/message2";

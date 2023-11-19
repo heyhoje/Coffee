@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" 
 	pageEncoding="utf-8" %>
 <!doctype html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -35,20 +35,15 @@
                 <label for="content" class="form-label">내용</label>
                 <textarea class="form-control" id="content" name="gal_contents" rows="10" placeholder="내용을 입력하세요" required></textarea>
             </div>
-		</form>
-		<form th:action="@{/uploadImage}" method="post" enctype="multipart/form-data">
-            <div class="mb-3">
-                <label for="imageFile" class="form-label">이미지 업로드</label>
-                <input type="file" class="form-control" id="imageFile" name="imageFile" accept="image/*" required>
+           <div class="form-group">
+			<label>첨부파일</label>
+			<input type="file" class="form-control" name="files" required>
             </div>
-
             <button type="submit" class="btn btn-primary">게시글 작성</button>
         </form>
     </div>
 
  
-    <!-- 부트스트랩 JS (필요에 따라 추가) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

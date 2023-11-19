@@ -1,6 +1,7 @@
 package kr.kh.finalproject.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -32,6 +33,8 @@ public interface GalleryDAO {
 	void deleteFile(@Param("fi_num")Integer num);
 
 	void deleteGallery(@Param("gal_num")Integer gal_num);
+
+	void insertImage(@Param("image")Map<String, Object> Galimage);
 
 	
 

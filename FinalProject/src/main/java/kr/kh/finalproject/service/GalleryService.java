@@ -1,5 +1,6 @@
 package kr.kh.finalproject.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -17,7 +18,7 @@ public interface GalleryService {
 
 	List<GalleryTypeVO> getGalleryTypeList();
 
-	boolean insertGallery(GalleryVO gallery, MemberVO user, MultipartFile[] files2);
+	boolean insertGallery(GalleryVO gallery, MemberVO user, MultipartFile[] files);
 
 	void updatehits(Integer gal_num);
 
