@@ -146,7 +146,7 @@ public class BusinessController {
 		// 서비스에게 서버에 데이터 저장하라고 => 스토어 정보(+로그인한 아이디 buser에 있음)를 주면서 
 		// => 여부..는 아니고 저기서 끝인가? -> (여부였음ㅇㅇ..)
 		
-		// 2. 일을 하려면무엇이 필요한지
+		// 2. 일을 하려면 무엇이 필요한지
 		// 3. 끝났을때 알고싶은 정보가 무엇인지 = 정보를 추가했는지 못했는지만 알면 됨. 
 		ManagerVO buser = (ManagerVO)session.getAttribute("buser"); // 현재 로그인 중인 사업자 아이디가 storeDB에 필요함!!!
 		boolean res = storeService.plusInfo(store, buser); // 추가했다 못했다만 알면됨.
