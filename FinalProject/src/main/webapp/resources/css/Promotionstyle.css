@@ -3,7 +3,11 @@
 body{
 	
 }
-
+a{
+    color: burlywood;
+    text-decoration: none;
+    outline: none !important;
+}
 .col-md-6 {
 flex: 0 0 70%;
 max-width: 80%;

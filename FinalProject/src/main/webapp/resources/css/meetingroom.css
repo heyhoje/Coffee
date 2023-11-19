@@ -40,6 +40,10 @@
 	display:flex;
 	background-color:white;
 }
+#reservation-btn:hover{
+	transition-duration:0.5s;
+	background-color:skyblue;
+}
 .popup_box .m_header-banner-close .closebutton{
 border:0px;
 background: border-box;
@@ -47,7 +51,7 @@ float:right;
 width:30px;
 
 
-}	
+}
 
 
 }
@@ -134,4 +138,5 @@ width:30px;
 .disabled+button{
 	background: gray !important;
 }
+
 a, a:hover, a:visited{ text-decoration:none;}

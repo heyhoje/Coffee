@@ -9,7 +9,7 @@
     <result property="bm_num" column="bm_num" />
     <result property="bm_phone" column="bm_phone" />
     <result property="bm_contents" column="bm_contents" />
-    <result property="bm_address" column="bm_iaddress" />
+    <result property="bm_address" column="bm_address" />
     <result property="bm_geocoding_lati" column="bm_geocoding_lati" />
     <result property="bm_geocoding_longi" column="bm_geocoding_longi" />
     <result property="bm_manager" column="bm_manager" />

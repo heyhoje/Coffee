@@ -9,6 +9,7 @@ body {
 p,
 span {
   margin: 0;
+  margin-top:15px;
 }
 
 a {
@@ -26,6 +27,8 @@ a {
   width: 80%;
   margin: auto;
   padding: 30px;
+  font-family:'BM HANNA Pro', sans-serif;
+  font-size:18px;
 }
 
 .cart ul {
@@ -34,7 +37,7 @@ a {
   margin-bottom: 50px;
   border: whitesmoke solid 1px;
   border-radius: 5px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 300;
 }
 
@@ -42,12 +45,11 @@ a {
 .cart ul :first-child {
   color: limegreen;
 }
-
 table {
   border-top: solid 1.5px black;
   border-collapse: collapse;
   width: 100%;
-  font-size: 14px;
+  text-align:center;
 }
 
 thead {
@@ -56,7 +58,7 @@ thead {
 }
 
 tbody {
-  font-size: 12px;
+  font-size: 18px;
 }
 
 td {
@@ -101,14 +103,24 @@ td {
   top: 25px;
   position: absolute;
 }
-
+.plusbtn{
+	width:20px;
+	background-color:beige;
+}
+.minusbtn{
+	width:20px;
+	background-color:beige;
+}
 .cart__list__optionbtn {
   background-color: white;
   font-size: 10px;
   border: lightgrey solid 1px;
   padding: 7px;
 }
-
+.deletepopbtn{
+	background-color:white;
+	color:brown;
+}
 .cart__list__detail :nth-child(4),
 .cart__list__detail :nth-child(5),
 .cart__list__detail :nth-child(6) {
@@ -138,8 +150,9 @@ td {
   width: 420px;
   height: 200px;
   padding-top: 40px;
-  display: block;
+  display: flex;
   margin: auto;
+  align-items:center;
 }
 
 .cart__bigorderbtn {
@@ -149,10 +162,22 @@ td {
   margin: auto;
   border-radius: 5px;
 }
-
-.cart__bigorderbtn.left {
-  background-color: white;
-  border: 1px lightgray solid;
+.cart-bigorder-leftbox{
+	width: 200px;
+    height: 50px;
+    font-size: 16px;
+    border-radius: 5px;
+    border:none;
+    background-color:dimgrey;
+    text-align:center;
+    display:inline-grid;
+}
+.cart-bigorder-leftbox .cart-bigorder-left {
+    color: white;
+    border: none;
+    font-size: 16px;
+	margin: auto;
+	border-radius: 5px;
 }
 
 .cart__bigorderbtn.right {
@@ -160,3 +185,52 @@ td {
   color: white;
   border: none;
 }
+#overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+}
+#popup{
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      text-align: center;
+      width:20%;
+      height:20%;
+      line-height:normal;
+    }
+#overlay2 {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+}
+#popup2{
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      text-align: center;
+      width:20%;
+      height:20%;
+      line-height:normal;
+    }
+#btnYes, #btnNo {
+      margin: 0 10px;
+      padding: 10px;
+      cursor: pointer;
+      margin-top:50px;
+}
+
