@@ -1,5 +1,6 @@
 package kr.kh.finalproject.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,17 +34,13 @@ import kr.kh.finalproject.vo.StoreVO;
 @Controller
 public class BusinessController {
 	
-	@Autowired
-
-	private BusinessService businessService;
 	
 	/** 매장등록( bmember + bstore ) */ 
-	@Autowired
-	private ManagerService managerService;
 	@Autowired
 	private StoreService storeService;
 
 	/** 메뉴/옵션 */
+	@Autowired
 	private MenuService menuService;
 	@Autowired
 	private OptionService optionService;
@@ -145,28 +142,67 @@ public class BusinessController {
 	 // 메뉴 수정 Post
 	 @PostMapping("/business/realU")
 	 @ResponseBody
-	 public String updateMenu(HttpSession session, @RequestParam("mn_num") int mn_num,
-			 @RequestParam("mn_name") String mn_name, @RequestParam("mn_price") int mn_price, @RequestParam("mn_contents") String mn_contents,
-			 @RequestParam("os_name") String os_name, @RequestParam("optionLists") List<String> optionLists,
-			 @RequestParam("optionPriceLists") List<String> optionPriceList) {
+	 public String updateMenu(HttpSession session, @RequestParam("mn_num") String mn_num,
+	         @RequestParam("mn_name") String mn_name, @RequestParam("mn_price") String mn_price, @RequestParam("mn_contents") String mn_contents,
+	         @RequestParam("osNameList") String osNameList, @RequestParam("osNumList") String osNumList,
+	         @RequestParam("ovNumList") String ovNumList, @RequestParam("optionValueList") String optionValueList, 
+	         @RequestParam("optionPriceList") String optionPriceList) {
 		System.out.println(mn_num);
 		System.out.println(mn_name); 
 		System.out.println(mn_price); 
 		System.out.println(mn_contents); 
-		System.out.println(os_name); 
-		System.out.println(optionLists); 
-		System.out.println(optionPriceList); 
-		 
-		boolean updateMenu = businessService.updateMenu(mn_num, mn_name, mn_price, mn_contents);
-		 
-		 
-		 
+		System.out.println(osNameList); 
+		System.out.println(optionValueList); 
+		System.out.println(optionPriceList);
+		System.out.println(osNumList);
+		System.out.println(ovNumList);
+		
+        // 문자열을 ','를 기준으로 나누어 리스트로 저장
+        List<String> os_name = splitAndToList(osNameList);
+        List<String> ov_value = splitAndToList(optionValueList);
+        List<String> ov_price = splitAndToList(optionPriceList);
+        List<String> os_num = splitAndToList(osNumList);
+        List<String> ov_num = splitAndToList(ovNumList);
 
+        // 각 리스트의 내용을 출력해보기
+        System.out.println("os_name: " + os_name);
+        System.out.println("ov_value: " + ov_value);
+        System.out.println("ov_price: " + ov_price);
+        System.out.println("os_num: " + os_num);
+        System.out.println("ov_num: " + ov_num);
+
+		boolean updateMenu = businessService.updateMenu(mn_num, mn_name, mn_price, mn_contents);
+
+	    // os_num을 기준으로 updateOption을 반복
+	    for (int i = 0; i < os_num.size(); i++) {
+	        // 해당 인덱스의 값을 가져와서 updateOption 호출
+	        String os_name_for_index = os_name.get(i);
+
+	        boolean updateOption = businessService.updateOption(os_num.get(i), os_name_for_index, mn_num);
+	    }
+	    // ov_num을 기준으로 updateOptionValue을 반복
+	    for (int i = 0; i < ov_num.size(); i++) {
+	    	// 해당 인덱스 값을 가져와서 updateOptionValue 호출
+	    	String ov_value_for_index = ov_value.get(i);
+	    	String ov_price_for_index = ov_price.get(i);
+	    	
+	    	boolean updateOptionValue = businessService.updateOptionValue(ov_num.get(i), ov_value_for_index, ov_price_for_index);
+	    }
 
 		 
 
 		 
 		 return "/business/realCRUD";
+	 }
+
+	 // 문자열을 ','를 기준으로 나누어 리스트로 저장하는 메소드
+	 private static List<String> splitAndToList(String input) {
+		 String[] array = input.split(",");
+		 List<String> list = new ArrayList<>();
+		 for (String value : array) {
+			 list.add(value);
+		 }
+		 return list;
 	 }
 	 
 	 // 메뉴 수정 옵션추가 Post
