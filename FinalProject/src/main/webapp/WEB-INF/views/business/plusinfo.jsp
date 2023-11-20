@@ -25,7 +25,7 @@
 		<h3>매장 추가정보 입력</h3>
 		<hr>
 		<div class="bg-white rounded shadow-sm container p-3">
-			<form action="<c:url value='/business/plusinfo'/>" method="post">
+			<form action="<c:url value='/business/plusinfo'/>" method="post" enctype="multipart/form-data">
 			<!-- <form method="POST" action="updateBMember.do" onsubmit="return memberUpdateValidate();" class="form-horizontal" role="form"> -->
 			<!-- 마이페이지 한 사람한테 안에 내용 물어보기. onsubmit -->
 	         
@@ -69,7 +69,7 @@
 				</div>
 				<div class="row mb-3 form-row">
 					<div class="col-md-3">
-						<h6>브랜드로고 첨부파일란(없으면 기본이미지)</h6>
+						<input type="file" name="files">
 					</div>
 				</div>
 				
