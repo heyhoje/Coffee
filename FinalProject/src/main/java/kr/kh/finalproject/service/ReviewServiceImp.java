@@ -40,11 +40,11 @@ public class ReviewServiceImp implements ReviewService{
 		return reviewDao.deleteReview(review);
 	}
 
-	/** 리뷰 등록 페이지 */
+	/** 주문메뉴 리스트 + 리뷰 등록 페이지 */
 	@Override
-	public List<OrderMenuVO> getOrderList() {
+	public List<OrderMenuVO> getOrderList(MemberVO user) {
 		
-		return reviewDao.selectOrderList();
+		return reviewDao.selectOrderList(user);
 	}
 
 	@Override

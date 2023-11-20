@@ -34,12 +34,15 @@ public class ReviewController {
 		return "/review/list"; 
 	}
 	
-	/** 주문내역 리스트 order_menu */
 	/** 리뷰 등록 */
 	@GetMapping("/review/insert")
 	public String insertReview(Model model, HttpSession session) {
 		
-		List<OrderMenuVO> orderList = reviewService.getOrderList();
+		// 본인아이디로 주문한 내역만 확인해야 하기 때문에 user 정보가 필요함..!
+		MemberVO user = (MemberVO)session.getAttribute("user"); 
+
+		/** 주문내역 리스트 order_menu */
+		List<OrderMenuVO> orderList = reviewService.getOrderList(user);
 		System.out.println(orderList);
 		// 주문메뉴번호 주문시간 주문상태(완료가 된 음료만 리뷰를 남길 수 있겠지...) 주문메뉴이름 주문메뉴번호
 
@@ -48,11 +51,12 @@ public class ReviewController {
 	}
 	
 	@ResponseBody
-	@PostMapping("/review/insert")
+	@PostMapping("/review/insert") // ajax 형식대로 가져올 것! jsonTOjson
 	public Map<String, Object> insertReviewPost(@RequestBody ReviewVO review, 
 			Model model, HttpSession session){
+		
 		Map<String, Object> map = new HashMap();
-		MemberVO user = (MemberVO)session.getAttribute("user"); // 현재 로그인 중인 회원아이디가 storeDB에 필요함!!!
+		MemberVO user = (MemberVO)session.getAttribute("user");
 		
 		boolean res = reviewService.insertReview(review, user);
 		

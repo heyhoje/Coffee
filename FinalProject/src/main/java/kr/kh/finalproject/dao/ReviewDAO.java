@@ -19,8 +19,9 @@ public interface ReviewDAO {
 	// 리뷰 삭제
 	boolean deleteReview(@Param("review")ReviewVO review);
 
-	// 리뷰 등록
-	List<OrderMenuVO> selectOrderList();
+	// 주문메뉴 리스트 + 리뷰 등록
+	// 뒤에 #{user.me_user_id} 로 입력값 불러오면서 @Param 붙이는거 까먹음. 혼자 순서대로 했으면 안까먹었을텐데....
+	List<OrderMenuVO> selectOrderList(@Param("user")MemberVO user);
 
 	boolean insertReview(@Param("review")ReviewVO review, @Param("user")MemberVO member);
 
