@@ -28,26 +28,19 @@
 			
 			<h4>옵션</h4>
 				<div class="option-box">
-				<c:forEach items="${option}" var="optionItem" varStatus="index">
-				    <th><hr>
-				        <c:forEach items="${optionItem.optionValueList}" var="optionValue">
-				            <c:choose>
-				                <c:when test="${optionItem.os_optionNum == 1}">
-				                    <label><input type="radio" name="option1" value="${optionValue.ov_value} ${optionValue.ov_price}"  checked> ${optionValue.ov_value}</label><br>
-				                </c:when>
-				               <c:when test="${optionItem.os_optionNum == 2}">
-				                     <label><input type="radio" name="option2" value="${optionValue.ov_value} ${optionValue.ov_price}" checked> ${optionValue.ov_value}</label><br>
-				                </c:when>
-				                <c:when test="${optionItem.os_optionNum == 3}">
-				                    <label><input type="radio" name="option3" value="${optionValue.ov_value} ${optionValue.ov_price}" checked> ${optionValue.ov_value} +${optionValue.ov_price }원</label><br>
-				                </c:when>
-				                <c:when test="${optionItem.os_optionNum == 4}">
-				                    <label><input type="radio" name="option4" value="${optionValue.ov_value} ${optionValue.ov_price}" checked> ${optionValue.ov_value} +${optionValue.ov_price }원</label><br>
-				                </c:when>
-				            </c:choose>
-				        </c:forEach>
-				    </th>
-				</c:forEach>
+				    <c:forEach items="${option}" var="optionItem" varStatus="index">
+				        <th><hr>
+				            <c:forEach items="${optionItem.optionValueList}" var="optionValue">
+				                <c:forEach begin="1" end="${optionItem.os_optionNum}" var="i">
+				                    <c:choose>
+				                        <c:when test="${optionItem.os_optionNum == i}">
+				                            <label><input type="radio" name="option${i}" value="${optionValue.ov_value} ${optionValue.ov_price}" checked> ${optionValue.ov_value} ${optionValue.ov_price}</label><br>
+				                        </c:when>
+				                    </c:choose>
+				                </c:forEach>
+				            </c:forEach>
+				        </th>
+				    </c:forEach>
 				</div>
 		    <br>
 		    <div class="detailbutton-box">

@@ -36,7 +36,7 @@
 						<h3 style="color: white;">회원 로그인</h3>
 					</div>
 					<div class="card-body">
-						<form action="<c:url value='/member/login'/>" method="post">
+						<form action="<c:url value='/member/login'/>" style="font-size:18px;" method="post">
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -86,21 +86,19 @@
 								</div>
 								<div>
 									<input
-										style="max-height: 44px; max-width: 100px; margin: auto; float: right;"
+										style="max-height: 44px; max-width: 100px; margin: auto; float: right; background-color: #F0F0F0;"
 										type="submit" value="로그인" class="btn login_btn">
 								</div>
 							</div>
-							<div class="card-footer" style="margin-top: 120px;">
-								<div style="color: white;"
-									class="d-flex justify-content-center links" id="signupbtn">
-
-									<a href="<c:url value='/member/signup2'/>">  회원가입</a>
+							<div class="card-footer" style="margin-top: 70px;">
+								<div class="d-flex justify-content-center links" id="signupbtn">
+									<a id="fotgotid-button" href="<c:url value='/member/signup2'/>">  회원가입</a>
 								</div>
 								<div class="d-flex justify-content-center" id="Id">
-									<a href="<c:url value='/member/search_id'/>">아이디찾기</a>
+									<a id="fotgotid-button" href="<c:url value='/member/search_id'/>">아이디찾기</a>
 								</div>
 								<div class="d-flex justify-content-center" id="pw">
-									<a href="<c:url value='/member/search_pw'/>">비밀번호찾기</a>
+									<a id="fotgotpw-button" href="<c:url value='/member/search_pw'/>">비밀번호찾기</a>
 								</div>
 							</div>
 						</form>
@@ -121,7 +119,7 @@
 						<h3 style="color: white;">사업자 로그인</h3>
 					</div>
 					<div class="card-body">
-						<form action="<c:url value='/member/login2'/>" method="post">
+						<form action="<c:url value='/member/login2'/>" style="font-size:18px;" method="post">
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -171,11 +169,11 @@
 								</div>
 								<div>
 									<input
-										style="max-height: 44px; max-width: 100px; margin: auto; float: right;"
+										style="max-height: 44px; max-width: 100px; margin: auto; float: right; background-color: #F0F0F0;"
 										type="submit" value="로그인" class="btn login_btn">
 								</div>
 							</div>
-							<div class="card-footer" style="margin-top: 120px;">
+							<div class="card-footer" style="margin-top: 70px;">
 								<div style="color: white;"
 									class="d-flex justify-content-center links">
 									<a href="<c:url value='/member/signup2'/>">회원가입</a>

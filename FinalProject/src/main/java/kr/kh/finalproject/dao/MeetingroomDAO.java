@@ -7,13 +7,18 @@ import org.apache.ibatis.annotations.Param;
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.vo.MeetingroomVO;
 import kr.kh.finalproject.vo.ReservationVO;
+import kr.kh.finalproject.vo.RoomBasketVO;
 
 public interface MeetingroomDAO {
 
-	List<MeetingroomVO> selectMeetingroomList(@Param("cri")Criteria cri);
+	// 미팅룸 리스트 & 예약자 리스트
+	List<MeetingroomVO> selectMrList(@Param("cri")Criteria cri);
 
-	int selectMeetingroomTotalCount();
+	int selectMrTotalCount();
 
-	List<ReservationVO> selectReservationList();
+	List<ReservationVO> selectRsList();
+	
+	// 룸예약 정보를 장바구니에 담기
+	// boolean insertRoomBasket(@Param("roomBasket")RoomBasketVO roomBasket);
 
 }

@@ -40,6 +40,10 @@
 	display:flex;
 	background-color:white;
 }
+#reservation-btn:hover{
+	transition-duration:0.5s;
+	background-color:skyblue;
+}
 .popup_box .m_header-banner-close .closebutton{
 border:0px;
 background: border-box;
@@ -47,7 +51,7 @@ float:right;
 width:30px;
 
 
-}	
+}
 
 
 }
@@ -123,7 +127,25 @@ width:30px;
 [name=aaa]:checked+button{
 	background: lightblue !important;
 }
+
+[name=arr_room_starttime]{
+	display: none;
+}
+
+[name=arr_room_starttime]:checked+button{
+	background: lightblue !important;
+}
 .disabled+button{
 	background: gray !important;
 }
+
+a {
+    color: burlywood;
+    text-decoration: none;
+    outline: none !important;
+}	
+a:hover{
+	color:#f76d37;
+}
+
 a, a:hover, a:visited{ text-decoration:none;}

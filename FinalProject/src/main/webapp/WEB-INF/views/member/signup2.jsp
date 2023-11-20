@@ -18,20 +18,6 @@
 <!-- jQuery 라이브러리 추가 -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-<script>
-    $(document).ready(function(){
-        $(".nav-link").click(function(){
-            // 클릭된 탭의 href 속성 값을 가져옵니다.
-            var targetTab = $(this).attr("href");
-
-            // 모든 탭을 숨김
-            $(".tab-pane").hide();
-
-            // 클릭된 탭을 보여줍니다.
-            $(targetTab).show();
-        });
-    });
-</script>
 
 </head>
 <body>
@@ -47,7 +33,7 @@
 					aria-controls="register" aria-selected="false">매니저 회원가입</a></li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane fade show active" id="login" role="tabpanel"
+				<div class="tab-pane" id="login" role="tabpanel"
 					aria-labelledby="login-tab" >
 					<form action="<c:url value='/member/signup2'/>" method="post">
 						<div class="form-row">

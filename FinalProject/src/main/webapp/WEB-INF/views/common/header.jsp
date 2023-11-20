@@ -55,7 +55,7 @@
 				<li class="nav-item"><a class="nav-link"
 					href="<c:url value='/meetingroom/home'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">예약</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="<c:url value='/main/review'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">리뷰</a></li>
+					href="<c:url value='/review/list'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">리뷰</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">갤러리</a></li>
 				<li class="nav-item"><a class="nav-link"
