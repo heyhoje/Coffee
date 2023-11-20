@@ -10,6 +10,6 @@ public class OrderMenuVO {
 	private Date or_time;
 	private String or_state;
 	private String or_drinks;
-	
-	private String or_manuNum; // 주문된 메뉴들 번호을 모아놓은것. ex)아메, 아메, 아메 = 4, 4, 4 
+
+	private String or_manuNum; // 주문된 메뉴들 번호을 모아놓은것. ex)아메, 아메, 아메 = 4, 4, 4
 }

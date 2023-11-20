@@ -127,9 +127,18 @@ width:30px;
 [name=aaa]:checked+button{
 	background: lightblue !important;
 }
+
+[name=arr_room_starttime]{
+	display: none;
+}
+
+[name=arr_room_starttime]:checked+button{
+	background: lightblue !important;
+}
 .disabled+button{
 	background: gray !important;
 }
+
 a {
     color: burlywood;
     text-decoration: none;
