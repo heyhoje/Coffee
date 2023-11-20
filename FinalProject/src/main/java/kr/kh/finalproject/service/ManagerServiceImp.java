@@ -113,11 +113,43 @@ public class ManagerServiceImp implements ManagerService{
 		}
 		return managerDao.updateManager(manager);
 	}
-
+	//아이디 찾기
 	@Override
 	public ManagerVO managerIdSearch(ManagerVO manager) {
 		return managerDao.managerIdSearch(manager);
 	}
+	//비밀번호 찾기
+	@Override
+	public int managerPwdCheck(ManagerVO manager) throws Exception {
+		return managerDao.managerPwdCheck(manager);
+	}
+	
+	@Override
+	public void passwordUpdate(ManagerVO manager) throws Exception {
+		managerDao.passwordUpdate(manager);
+	}
+	//비밀번호 변경
+	@Override
+	public String pwCheck(String bm_pw) throws Exception {
+		return managerDao.pwCheck(bm_pw);
+	}
+
+	@Override
+	public void pwUpdate(String bm_id, String enpassword) throws Exception {
+		managerDao.pwUpdate(bm_id, enpassword);
+		
+	}
+
+	@Override
+	public void deleteManager(String bm_id) throws Exception {
+		managerDao.deleteManager(bm_id);
+	}
+
+	@Override
+	public void infoUpdate(ManagerVO manager) throws Exception {
+		managerDao.infoUpdate(manager);
+	}
+
 
 //	@Override
 //	public int getTotalCount(ManagerVO manager, Criteria cri) {

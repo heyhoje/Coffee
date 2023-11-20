@@ -10,10 +10,10 @@
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 </head>
 <body>
-	<form action="/member/delete" method="post" id="deleteForm"
+	<form action="/manager/delete" method="post" id="deleteForm"
 		name="deleteForm">
-		<input type="hidden" id="me_user_id" name="me_user_id"
-			value="${user.me_user_id}">
+		<input type="hidden" id="bm_id" name="bm_id"
+			value="${buser.bm_id}">
 		<h3 id="Mypage-title">회원 탈퇴</h3>
 		<hr style="width: 900px;">
 		<div class="bg-white rounded shadow-sm container p-3"
@@ -23,21 +23,21 @@
 			<br>
 			<div class="row mb-3 form-row">
 				<div class="col-md-3" style="margin-top: 10px;">
-					<label for="me_pw">비밀번호</label>
+					<label for="bm_pw">비밀번호</label>
 				</div>
 				<div class="col-md-6">
 					<input style="width: 653px;" class="form-control" type="password"
-						id="me_pw" name="me_pw" placeholder="비밀번호">
+						id="bm_pw" name="bm_pw" placeholder="비밀번호">
 				</div>
 			</div>
 
 			<div class="row mb-3 form-row">
 				<div class="col-md-3">
-					<label for="me_pw1">비밀번호 확인</label>
+					<label for="bm_pw1">비밀번호 확인</label>
 				</div>
 				<div class="col-md-6">
 					<input style="width: 653px;" class="form-control" type="password"
-						id="me_pw1" name="me_pw1" placeholder="비밀번호 확인">
+						id="bm_pw1" name="bm_pw1" placeholder="비밀번호 확인">
 				</div>
 			</div>
 
@@ -58,23 +58,23 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#delete").on("click", function() {
-			if ($("#me_pw").val() == "") {
+			if ($("#bm_pw").val() == "") {
 				alert("비밀번호를 입력해주세요");
-				$("#me_pw").focus();
+				$("#bm_pw").focus();
 				return false
 			}
-			if ($("#me_pw1").val() == "") {
+			if ($("#bm_pw1").val() == "") {
 				alert("비밀번호 확인을 입력해주세요");
-				$("#me_pw1").focus();
+				$("#bm_pw1").focus();
 				return false
 			}
-			if ($("#me_pw").val() != $("#me_pw1").val()) {
+			if ($("#bm_pw").val() != $("#bm_pw1").val()) {
 				alert("비밀번호가 일치하지 않습니다.");
-				$("#me_pw").focus();
+				$("#bm_pw").focus();
 				return false;
 			}
 			$.ajax({
-				url : "/member/pwCheck",
+				url : "/manager/pwCheck",
 				type : "POST",
 				dataType : "json",
 				data : $("#deleteForm").serializeArray(),

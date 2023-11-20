@@ -23,7 +23,7 @@
 				<div class="text-center">
 					<h1 style="margin-top: 10px" class="h4 text-gray-900 mb-2">비밀번호 확인</h1>
 					<br>
-					<p class="mb-4">${me_pw}</p>
+					<p class="mb-4">${bm_pw}</p>
 					<h3>로그인 후 마이페이지에서 비밀번호를 변경해주세요.</h3>
 					<br>
 				</div>

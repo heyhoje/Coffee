@@ -5,8 +5,8 @@
   
 <mapper namespace="kr.kh.finalproject.dao.ManagerDAO">
 	<insert id="insertManager" parameterType="kr.kh.finalproject.vo.ManagerVO">
-		insert into business_member(bm_id, bm_pw, bm_num, bm_phone, bm_address, bm_manager, bm_store_name)
-		values(#{manager.bm_id},#{manager.bm_pw},#{manager.bm_num},#{manager.bm_phone},#{manager.bm_address}, #{manager.bm_manager}, #{manager.bm_store_name})
+		insert into business_member(bm_id, bm_pw, bm_num, bm_phone, bm_post, bm_address, bm_address2, bm_manager, bm_store_name)
+		values(#{manager.bm_id},#{manager.bm_pw},#{manager.bm_num},#{manager.bm_phone},#{manager.bm_post},#{manager.bm_address},#{manager.bm_address2}, #{manager.bm_manager}, #{manager.bm_store_name})
 	</insert>
 	
 	<select id="selectManager" resultType="kr.kh.finalproject.vo.ManagerVO">
@@ -58,4 +58,56 @@
 	        bm_num = #{bm_num}
 	]]>    
 	</select>
+	<!-- 비밀번호 찾기 -->
+	<select id="managerPwdCheck" parameterType="kr.kh.finalproject.vo.ManagerVO" resultType="java.lang.Integer">
+	<![CDATA[
+	    select
+	        count(*)
+	    from
+	        business_member
+	    where
+	        bm_manager = #{bm_manager}
+	    and
+	        bm_num = #{bm_num}
+	    and
+	        bm_id = #{bm_id}
+	]]>    
+	</select>
+	
+	<update id="passwordUpdate" parameterType="kr.kh.finalproject.vo.ManagerVO" >
+	    UPDATE 
+	        business_member 
+	    SET 
+	        bm_pw = #{bm_pw}
+	    where
+	        bm_manager = #{bm_manager}
+	    and
+	        bm_num = #{bm_num}
+	    and
+	        bm_id = #{bm_id}
+	</update>
+	
+	<!-- 비밀번호 변경 -->
+	<select id="pwCheck" resultType="String">
+		select bm_pw from business_member where bm_id = #{bm_id}
+	</select>
+	<update id="pwUpdate">
+		update business_member set bm_pw = #{bm_pw1} where bm_id = #{bm_id}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="deleteManager">
+		delete from business_member WHERE bm_id = #{bm_id};
+	</delete>
+	
+	<!-- 사업자정보 수정 -->
+	<update id="infoUpdate">
+		update business_member set bm_manager = #{bm_manager},
+						  bm_num = #{bm_num}, 
+						  bm_store_name = #{bm_store_name},
+						  bm_post = #{bm_post}, 
+						  bm_address = #{bm_address}, 
+						  bm_address2 = #{bm_address2} 
+		where bm_id = #{bm_id}
+	</update>
 </mapper>

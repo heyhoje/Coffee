@@ -37,7 +37,6 @@
 					</div>
 				</div>
 
-				<!-- 이메일 -->
 				<div class="row mb-3 form-row">
 					<div class="col-md-3">
 						<label for="memberEmail">매장명</label>
@@ -52,10 +51,28 @@
 				<!-- https://www.poesis.org/postcodify/ -->
 				<div class="row mb-3 form-row">
 					<div class="col-md-3">
-						<label for="postcodify_search_button">매장주소</label>
+						<label for="postcodify_search_button">우편번호</label>
+					</div>
+					<div class="col-md-6">
+						<h5 id="point">${buser.bm_post}</h5>
+					</div>
+				</div>
+
+				<div class="row mb-3 form-row">
+					<div class="col-md-3">
+						<label for="address1">도로명 주소</label>
 					</div>
 					<div class="col-md-6">
 						<h5 id="point">${buser.bm_address}</h5>
+					</div>
+				</div>
+
+				<div class="row mb-3 form-row">
+					<div class="col-md-3">
+						<label for="address2">상세주소</label>
+					</div>
+					<div class="col-md-6">
+						<h5 id="point">${buser.bm_address2}</h5>
 					</div>
 				</div>
 

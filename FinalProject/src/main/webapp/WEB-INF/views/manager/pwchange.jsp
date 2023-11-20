@@ -8,33 +8,30 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/mypage.css">
 </head>
 <body>
-	<form action="/member/pwUpdate" method="post" id="pwUpdateForm"
+	<form action="/manager/pwUpdate" method="post" id="pwUpdateForm"
 		name="pwUpdateForm">
-		<input type="hidden" id="me_user_id" name="me_user_id" value="${user.me_user_id}">
+		<input type="hidden" id="bm_id" name="bm_id" value="${buser.bm_id}">
 		<h3 id="Mypage-title">비밀번호 변경</h3>
 		<hr style="width: 900px;">
 		<div class="bg-white rounded shadow-sm container p-3"
 			id="mypage-container" style="margin: 0 auto; width: 900px;">
-			<input type="hidden" id="memberId" name="memberId"
-				value="${login.me_user_id}">
 			<div class="row mb-3 form-row">
 				<div class="col-md-3" style="margin-top: 10px;">
 					<label for="newpw">현재 비밀번호</label>
 				</div>
 				<div class="col-md-6">
-					<input style="width: 653px;" type="email" class="form-control"
-						id="me_pw" name="me_pw" value="" placeholder="현재 비밀번호">
+					<input style="width: 653px;" type="text" class="form-control"
+						id="bm_pw" name="bm_pw" value="" placeholder="현재 비밀번호">
 				</div>
 			</div>
-
 
 			<div class="row mb-3 form-row">
 				<div class="col-md-3">
 					<label for="newpw1">새 비밀번호</label>
 				</div>
 				<div class="col-md-6">
-					<input style="width: 653px;" type="email" class="form-control"
-						id="me_pw1" name="me_pw1" value="" placeholder="새 비밀번호">
+					<input style="width: 653px;" type="text" class="form-control"
+						id="bm_pw1" name="bm_pw1" value="" placeholder="새 비밀번호">
 				</div>
 			</div>
 			<div class="row mb-3 form-row">
@@ -42,8 +39,8 @@
 					<label for="newpw2">새 비밀번호 확인</label>
 				</div>
 				<div class="col-md-6">
-					<input style="width: 653px;" type="email" class="form-control"
-						id="me_pw2" name="me_pw2" value="" placeholder="새 비밀번호 확인">
+					<input style="width: 653px;" type="text" class="form-control"
+						id="bm_pw2" name="bm_pw2" value="" placeholder="새 비밀번호 확인">
 				</div>
 				<br>
 				<div class="col-md-6"></div>
@@ -61,28 +58,28 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#pwUpdate").on("click", function() {
-				if ($("#me_pw").val() == "") {
+				if ($("#bm_pw").val() == "") {
 					alert("현재 비밀번호를 입력해주세요");
-					$("#me_pw").focus();
+					$("#bm_pw").focus();
 					return false;
 				}
-				if ($("#me_pw1").val() == "") {
+				if ($("#bm_pw1").val() == "") {
 					alert("변경할 비밀번호를 입력해주세요");
-					$("#me_pw1").focus();
+					$("#bm_pw1").focus();
 					return false;
 				}
-				if ($("#me_pw2").val() == "") {
+				if ($("#bm_pw2").val() == "") {
 					alert("변경할 비밀번호를 다시 입력해주세요");
-					$("#me_pw2").focus();
+					$("#bm_pw2").focus();
 					return false;
 				}
-				if ($("#me_pw1").val() != $("#me_pw2").val()) {
+				if ($("#bm_pw1").val() != $("#bm_pw2").val()) {
 					alert("변경 비밀번호가 일치하지 않습니다.");
-					$("#me_pw2").focus();
+					$("#bm_pw2").focus();
 				}				
 				// 여기서부터 수정
 				$.ajax({
-					url : "/member/pwCheck",
+					url : "/manager/pwCheck",
 					type : "POST",
 					dataType : "json",
 					data : $("#pwUpdateForm").serializeArray(),

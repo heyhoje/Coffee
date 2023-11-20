@@ -5,7 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -171,5 +174,94 @@ public class ManagerController {
 		}
 
 		return "/manager/search_result_id";
+	}
+
+	// 비밀번호 찾기 완료 후 페이지
+	@RequestMapping(value = "/manager/search_result_pw", method = RequestMethod.POST)
+	public String search_result_pw(HttpServletRequest request, Model model,
+			@RequestParam(required = true, value = "bm_id") String bm_id,
+			@RequestParam(required = true, value = "bm_manager") String bm_manager,
+			@RequestParam(required = true, value = "bm_num") String bm_num, ManagerVO manager) {
+		try {
+
+			manager.setBm_id(bm_id);
+			manager.setBm_manager(bm_manager);
+			manager.setBm_num(bm_num);
+			int managerSearch = managerService.managerPwdCheck(manager);
+
+			if (managerSearch == 0) {
+				model.addAttribute("msg", "기입된 정보가 잘못되었습니다. 다시 입력해주세요.");
+				return "/member/search_pw";
+			}
+
+			String bm_pw = RandomStringUtils.randomAlphanumeric(10);
+			String enpassword = encryptPassword(bm_pw);
+			manager.setBm_pw(enpassword);
+
+			managerService.passwordUpdate(manager);
+
+			model.addAttribute("bm_pw", bm_pw);
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			model.addAttribute("msg", "오류가 발생되었습니다.");
+		}
+		return "/manager/search_result_pw";
+	}
+
+	// 비밀번호 변경
+	@RequestMapping(value = "/manager/pwCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public int pwCheck(ManagerVO manager) throws Exception {
+		// DB에서 해당 사용자의 해시된 비밀번호 가져오기
+		System.out.println(manager);
+		String bm_pw = managerService.pwCheck(manager.getBm_id());
+		System.out.println(bm_pw);
+		// 만약 DB에서 가져온 비밀번호가 null이거나 비밀번호가 일치하지 않으면 0을 반환
+		if (bm_pw == null || !BCrypt.checkpw(manager.getBm_pw(), bm_pw)) {
+			return 0;
+		}
+
+		// 비밀번호가 일치하면 1을 반환
+		return 1;
+	}
+
+	@RequestMapping(value = "/manager/pwUpdate", method = RequestMethod.POST)
+	public String pwUpdate(String bm_id, String bm_pw1, Model model, HttpSession session) throws Exception {
+		String enpassword = encryptPassword(bm_pw1);
+		managerService.pwUpdate(bm_id, enpassword);
+		System.out.println(bm_id);
+		System.out.println(bm_pw1);
+		System.out.println(enpassword);
+		session.invalidate();
+		model.addAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
+
+		return "/main/message";
+	}
+
+	// 회원탈퇴
+	@RequestMapping(value = "/manager/delete", method = RequestMethod.POST)
+	public String delete(String bm_id, Model model, HttpSession session) throws Exception {
+		managerService.deleteManager(bm_id);
+		session.invalidate();
+		model.addAttribute("msg", "이용해주셔서 감사합니다.");
+		return "/main/message";
+	}
+
+	// 사업자정보수정
+	@RequestMapping(value = "/manager/infoUpdate", method = RequestMethod.POST)
+	public String infoUpdate(HttpServletRequest request, HttpSession session, ManagerVO manager, Model model)
+			throws Exception {
+		managerService.infoUpdate(manager);
+		System.out.println(manager);
+		session.invalidate();
+		model.addAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
+		return "/main/message";
+	}
+
+	// 암호화
+	private String encryptPassword(String password) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		return passwordEncoder.encode(password);
 	}
 }

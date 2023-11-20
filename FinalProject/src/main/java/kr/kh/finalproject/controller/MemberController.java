@@ -38,11 +38,10 @@ public class MemberController {
 	@RequestMapping(value = "/member/signup2", method = RequestMethod.POST)
 	public String signupPost(MemberVO member, Model model) {
 		System.out.println(member);
-
 		boolean res = memberService.signup(member);
 		if (res) {
 			model.addAttribute("msg", "회원가입 성공했습니다. \n 오늘 커피 한잔 어떠실까요?");
-			model.addAttribute("url", "");
+			model.addAttribute("url", "/");
 		} else {
 			model.addAttribute("msg", "회원가입 실패했습니다. \n다시 시도 부탁드립니다.");
 			model.addAttribute("url", "member/signup2");
@@ -247,7 +246,7 @@ public class MemberController {
 	public int pwCheck(MemberVO member) throws Exception {
 		// DB에서 해당 사용자의 해시된 비밀번호 가져오기
 		System.out.println(member);
-		String me_pw = memberService.pwCheck(member.getMe_pw());
+		String me_pw = memberService.pwCheck(member.getMe_user_id());
 		System.out.println(me_pw);
 		// 만약 DB에서 가져온 비밀번호가 null이거나 비밀번호가 일치하지 않으면 0을 반환
 		if (me_pw == null || !BCrypt.checkpw(member.getMe_pw(), me_pw)) {
@@ -271,7 +270,7 @@ public class MemberController {
 		return "/main/message";
 	}
 
-	// 회원정보수정로직
+	// 회원정보수정
 	@RequestMapping(value = "/member/infoUpdate", method = RequestMethod.POST)
 	public String infoUpdate(HttpServletRequest request, HttpSession session, MemberVO member, Model model) throws Exception {
 		memberService.infoUpdate(member);

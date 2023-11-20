@@ -28,6 +28,18 @@ public interface ManagerService {
 
 	ManagerVO managerIdSearch(ManagerVO manager);
 
+	String pwCheck(String bm_pw)throws Exception;
+
+	void pwUpdate(String bm_id, String enpassword)throws Exception;
+
+	int managerPwdCheck(ManagerVO manager)throws Exception;
+
+	void passwordUpdate(ManagerVO manager)throws Exception;
+
+	void deleteManager(String bm_id)throws Exception;
+
+	void infoUpdate(ManagerVO manager)throws Exception;
+
 
 
 
