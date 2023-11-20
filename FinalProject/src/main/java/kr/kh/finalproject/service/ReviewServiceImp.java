@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.kh.finalproject.dao.ReviewDAO;
+import kr.kh.finalproject.vo.MemberVO;
+import kr.kh.finalproject.vo.OrderMenuVO;
 import kr.kh.finalproject.vo.ReviewVO;
 
 @Service
@@ -35,6 +37,23 @@ public class ReviewServiceImp implements ReviewService{
 			return false;
 		}
 		return reviewDao.deleteReview(review);
+	}
+
+	/** 리뷰 등록 페이지 */
+	@Override
+	public List<OrderMenuVO> getOrderList() {
+		
+		return reviewDao.selectOrderList();
+	}
+
+	@Override
+	public boolean insertReview(ReviewVO review, OrderMenuVO order) {
+		if(review == null || order == null) {
+			return false;
+		}
+		
+		review.setRe_or_num(order.getOr_num()); 
+		return reviewDao.insertReview(review);
 	}
 
 	

@@ -15,7 +15,7 @@
 	<!-- join은 자동으로 되기 때문에 #{}안에 넣을 필요 없다.  -->
 	</select>
 	
-	<!-- 리뷰게시판 - 메뉴이름까지 가져오고 싶어서 (리뷰~메뉴까지 쪼인) -->
+	<!-- 리뷰게시판 - 메뉴이름까지 가져오고 싶어서 (리뷰~메뉴까지 쪼인) + 브랜드 매장명 가져오려고 멀리까지도 감 -->
 	<select id="selectRvList" resultType="kr.kh.finalproject.vo.ReviewVO">
 		select re_num, ol_num as re_ol_num, ol_user_id as re_user_id, re_or_num, re_contents, re_star, mn_name as re_mn_name, bm_store_name as re_store_name
 			from review 
@@ -32,4 +32,20 @@
 	<delete id="deleteReview">
 		delete from review where re_num = #{review.re_num}
 	</delete>
+	
+	<!-- 리뷰 등록 - 주문리스트 -->
+	<select id="selectOrderList" resultType="kr.kh.finalproject.vo.OrderMenuVO">
+		select *
+			from order_menu
+    		join order_list on or_num = ol_or_num
+    		join shop_basket on ol_sb_num = sb_num
+    		join option_choice on sb_num = oc_sb_num
+    		join menu on oc_mn_num = mn_num
+    		join store on mn_st_num = st_num
+    		join business_member on st_bm_id = bm_id
+	</select>
+	<insert id="insertReview">
+		insert into review(re_contents, re_star, re_or_num)
+		values(#{review.re_contents}, #{review.re_star}, #{review.re_or_num})
+	</insert>
  </mapper>
