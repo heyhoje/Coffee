@@ -30,14 +30,14 @@
   	</insert>
   	<select id="hasBag" resultType="kr.kh.finalproject.vo.Shop_BasketVO">
   		select * from `shop_basket`
-  		where sb_me_user_id = "carpcarp"
+  		where sb_me_user_id = #{user}
   	</select>
   	<insert id="makeBag">
   		insert into `shop_basket` (sb_me_user_id)
-  		values ("carpcarp")
+  		values (#{user})
   	</insert>
   	<select id="bagBunho" resultType="int">
-  		select sb_num from shop_basket where sb_me_user_id = "carpcarp"
+  		select sb_num from shop_basket where sb_me_user_id = #{user}
   	</select>
   	<select id="bagList" resultMap="optionChoice">
 		select 
@@ -51,7 +51,7 @@
 		left join 
 			`image` on oc_mn_num = image.im_tableNum
 		where 
-			sb_me_user_id = "carpcarp"
+			sb_me_user_id = #{user}
   	</select>
   	<delete id="deleteItem" parameterType="int">
   		delete from `option_choice` where oc_num = #{oc_num}
@@ -70,12 +70,12 @@
 		left join
 			`manager` on st_bm_num = bm_num
 		where 
-			sb_me_user_id = "carpcarp"
+			sb_me_user_id = #{user}
 	</select>
   	<update id="givePoint">
   		update `member`
   		set me_point = me_point + #{givePoint}
-  		where me_user_id = "carpcarp"
+  		where me_user_id = #{user}
   	</update>
   	<select id="getPoint" resultType="int">
   		select
@@ -83,16 +83,16 @@
   		from
   			member
   		where
-  			me_user_id = "carpcarp"
+  			me_user_id = #{user}
   	</select>
   	<update id="backPoint">
 	  	update member
 	  	set me_point = (me_point - #{usePoint})
-	  	where me_user_id = "carpcarp"
+	  	where me_user_id = #{user}
   	</update>
   	<delete id="killBag">
 		DELETE FROM `option_choice`
-		WHERE oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = "carpcarp")
+		WHERE oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = #{user})
   	</delete>
   	<insert id="makeOrderMenu">
   		insert into `order_menu` (or_time, or_status, or_drinks, or_menuNum)
@@ -100,7 +100,7 @@
   	</insert>
   	<select id="getBasketNum" resultType="int">
   		select sb_num from shop_basket
-  		where sb_me_user_id = "carpcarp"
+  		where sb_me_user_id = #{user}
   	</select>
   	<select id="getNumFromOM" resultType="int">
 	    SELECT or_num FROM order_menu
@@ -109,11 +109,11 @@
   	</select>
   	<insert id="makeOrderList">
   		insert into order_list (ol_or_num, ol_sb_num, ol_user_id)
-  			values (#{or_num}, #{sb_num}, "carpcarp")
+  			values (#{or_num}, #{sb_num}, #{user})
   	</insert>
   	<select id="getBasketNum1" resultType="int">
   		select sb_num from shop_basket
-  		where sb_me_user_id = "carpcarp"
+  		where sb_me_user_id = #{user}
   	</select>
   	<select id="sameShop" resultType="int">
   		select DISTINCT
@@ -125,7 +125,7 @@
   		left join
   			shop_basket on oc_sb_num = sb_num
   		where
-  			sb_me_user_id = "carpcarp"			 
+  			sb_me_user_id = #{user}			 
   	</select>
   	<select id="anotherShop" resultType="int">
   		select distinct
@@ -139,6 +139,6 @@
   		delete from 
   			option_choice
   		where
-  			oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = "carpcarp")
+  			oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = #{user})
   	</delete>
   </mapper>
