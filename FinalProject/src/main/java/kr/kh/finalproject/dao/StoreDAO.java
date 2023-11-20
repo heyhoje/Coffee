@@ -17,4 +17,6 @@ public interface StoreDAO {
 
 	// 매장등록 추가정보 입력
 	boolean insertPlusInfo(@Param("plus")StoreVO store);
+
+	StoreVO selectStore(@Param("bm_num")String bm_num);
 }

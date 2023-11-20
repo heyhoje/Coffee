@@ -39,9 +39,9 @@
     
     $(document).ready(function(){
 		
-        var urlEndPoint = 'http://localhost:8080/Notification';
+        var urlEndPoint = 'http://localhost:8080/Notification/business';
         var eventSource = new EventSource(urlEndPoint);
-        eventSource.addEventListener("latestNews", function(event){
+        eventSource.addEventListener("주문리스트", function(event){
 			var articleData = JSON.parse(event.data);
 			addBlock(articleData.title, articleData.text);
         })
@@ -50,11 +50,11 @@
     	var a = document.createElement("article");
     	//title
     	var h = document.createElement("H3")
-    	var t = document.createTextNode(title);
+    	var t = document.createTextNode(menuName);
     	h.appendChild(t);
     	//paragraph
     	var para = document.createElement("p");
-    	para.innerHTML = text;
+    	para.innerHTML = shopmap;
     	a.appendChild(h);
     	a.appendChild(para);
     	document.getElementById("pack").appendChild(a);
@@ -65,13 +65,13 @@
 	<nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <div class="navbar-brand" style="font-family: 'BM HANNA Pro', sans-serif;">주문목록이 보여집니다.</div>
+                <div class="navbar-brand" style="font-family: 'BM HANNA Pro', sans-serif;">주문 리스트</div>
             </div>
         </div>
     </nav>
     <div class = "container pstyle text-center" id="pack" style="font-family: 'BM HANNA Pro', sans-serif;">
         <div class="Panel panel-primary">
-            <h1>주문리스트</h1>
+            <h1>ì£¼ë¬¸ë¦¬ì¤í¸</h1>
             <div class="box"></div>
       	</div>
     	</div>

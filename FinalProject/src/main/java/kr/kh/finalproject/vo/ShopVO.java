@@ -11,7 +11,7 @@ public class ShopVO {
 	private String bm_num;
 	private String bm_phone;
 	private String bm_contents;
-	private String bm_address;
+	private String bm_address;	
 	private Double bm_geocoding_lati;
 	private Double bm_geocoding_longi;
 	private String bm_manager;

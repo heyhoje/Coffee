@@ -108,6 +108,7 @@ var killAme = [];
 var user = "carpcarp"; // ${user}
 var menuNameList = [];
 var menuNumList = [];
+var selectOptionList = [];
 var IMP = window.IMP; 
 IMP.init("imp14674302"); 
 var today = new Date();   
@@ -205,7 +206,7 @@ function handleResponse2(response) {
 }
 function redirectToMainPage(){
 	window.location.href = "/order/confirm";
-
+}
 
 function requestPay() {
 	var usePoint = 0;
@@ -279,6 +280,7 @@ function allInOneAfterPay(totalPrice, usePoint) {
         success: function (response) {
         	alert('주문이 완료되었습니다.');
         		 handleResponse2(response);
+        		 PrintAfterPay();
         		 redirectToMainPage();
         },
         error: function (error) {
@@ -287,6 +289,27 @@ function allInOneAfterPay(totalPrice, usePoint) {
         }
     });
 }
+function PrintAfterPay() {
+	
+	var selectOption = selectOptionList.join(',');
+    var menuName = menuNameList.join(',');
+
+	console.log({
+        selectOption: selectOption,
+        menuName: menuName,
+    });
+	
+    $.ajax({
+        type: 'POST',
+        url: '<c:url value="ispatchEvent"/>',
+        data: {/d
+        	  selectOption: selectOption,
+              menuName: menuName,
+        },
+        
+    });
+}
+
 
 </script>
 

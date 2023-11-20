@@ -3,16 +3,11 @@ package kr.kh.finalproject.service;
 
 import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 import kr.kh.finalproject.dao.MemberDAO;
-import kr.kh.finalproject.vo.KakaoVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.UserVO;
 

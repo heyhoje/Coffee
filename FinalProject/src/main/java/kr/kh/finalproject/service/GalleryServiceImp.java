@@ -13,7 +13,6 @@ import kr.kh.finalproject.util.uploadFileUtils;
 import kr.kh.finalproject.vo.FileVO;
 import kr.kh.finalproject.vo.GalleryTypeVO;
 import kr.kh.finalproject.vo.GalleryVO;
-import kr.kh.finalproject.vo.ImageVO;
 import kr.kh.finalproject.vo.MemberVO;
 
 @Service

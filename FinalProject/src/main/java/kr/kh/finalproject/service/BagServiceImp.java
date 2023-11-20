@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.kh.finalproject.dao.BagDAO;
-import kr.kh.finalproject.dao.ShopDAO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.Option_ChoiceVO;
 import kr.kh.finalproject.vo.ShopVO;

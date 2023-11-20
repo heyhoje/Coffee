@@ -51,7 +51,7 @@ public class BagController {
     	MemberVO user = (MemberVO)session.getAttribute("user");
 
         
-        String[] parts = optionAll.split(", "); // �돹�몴�� 怨듬갚�쑝濡� 臾몄옄�뿴�쓣 遺꾪븷
+        String[] parts = optionAll.split(", "); // �돹�몴�� 怨듬갚�쑝濡� 臾몄옄�뿴�쓣 遺꾪븷.
 
         int total = 0; // 怨꾩궛 寃곌낵瑜� ���옣�븷 蹂��닔
         StringBuilder result = new StringBuilder(); // 蹂��솚�맂 臾몄옄�뿴�쓣 ���옣�븷 StringBuilder

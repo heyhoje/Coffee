@@ -50,7 +50,7 @@ public class GalleryController {
 	public String boardInsert(Model model, Integer gal_num,HttpSession session) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		if(user == null) {
-			model.addAttribute("msg", "�α����� �ʿ��մϴ�.");
+			model.addAttribute("msg", "로그인이 필요합니다.");
 			return "/main/message";
 		}
 		model.addAttribute("gal_num", gal_num == null ? 0 : gal_num);
@@ -61,9 +61,9 @@ public class GalleryController {
 	public String boardInsertPost(GalleryVO gallery, HttpSession session, Model model, MultipartFile[] files) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		if(galleryService.insertGallery(gallery, user, files)) {
-			model.addAttribute("msg", "�Խñ��� ����߽��ϴ�.");
+			model.addAttribute("msg", "게시글을 등록하였습니다.");
 		}else {
-			model.addAttribute("msg", "�Խñ��� ������� ���߽��ϴ�.");
+			model.addAttribute("msg", "게시글을 등록하지 못했습니다.");
 		}
 		return "/main/message";
 	}

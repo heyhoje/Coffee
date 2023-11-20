@@ -2,7 +2,9 @@ package kr.kh.finalproject.service;
 
 
 import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
+
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.vo.GalleryTypeVO;
 import kr.kh.finalproject.vo.GalleryVO;
