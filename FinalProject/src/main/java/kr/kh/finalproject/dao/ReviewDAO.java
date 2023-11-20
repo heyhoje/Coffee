@@ -25,7 +25,5 @@ public interface ReviewDAO {
 
 	boolean insertReview(@Param("review")ReviewVO review, @Param("user")MemberVO member);
 
-	boolean isReviewExists(@Param("orderNum")int orderNum);
-
 
 }

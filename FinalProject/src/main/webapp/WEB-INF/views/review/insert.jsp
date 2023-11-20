@@ -20,46 +20,34 @@
 <body>	
 	<div class="review-container">
 		<h2 class="mt-4">주문내역</h2>
-		<p>주문내역 리스트? 최근 주문내역 불러오기?</p>
 		<form action="<c:url value='/review/insert'/>" method="post">
 			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th></th>
+						<th>아이디</th>
 						<th>주문번호</th>
 						<th>매장이름</th>
+						<th>주문날짜</th>
 						<th>주문한음료</th>
 					</tr>
 				</thead>
-				// 주문메뉴번호 주문시간 주문상태(완료가 된 음료만 리뷰를 남길 수 있겠지...) 주문메뉴이름 주문메뉴번호
 				<tbody>
-					<tr>
-						<td><input type="checkbox" name="reviewcheck"></td>
-			            <td>(내가 주문한) (제조 완료된 음료) 주문내역 불러주세요ㅠ</td>
-					</tr>
-					<c:forEach items="${orderList}" var="order" varStatus="reviewStatus">
-						<tr>
-							<td><input type="checkbox" name="reviewcheck"></td>
-				            <td>얜 무슨 데이터를 받고 5개를 출력하고 있는걸까?</td>
-				            
-						</tr>
-					</c:forEach>
-					<c:forEach items="${orderList}" var="order" varStatus="reviewStatus">
+					<c:forEach items="${orderList}" var="order" varStatus="orderStatus">
 			            <tr>
-			            	<td>${review.re_or_num}</td>
-			                <!-- <td><input type="checkbox" class="reviewcheck" type="hidden" name="re_or_num" id="re_or_num"></td> -->
+			            	<td><input type= "radio" name="reviewCheck"  class="re_or_num" 
+			            			value="${order.or_num}"></td>
+			            	<td>${order.or_user_id}</td>
 			                <td>${order.or_num}</td>
+			                <td>${order.or_store_name}</td>
+			                <td>${order.or_time}</td>
 			                <td>${order.or_drinks}</td>
-			                <td>${order.or_manuNum}</td>
 			            </tr>
 			        </c:forEach>
 				</tbody>
 			</table>
 			
-			
-			<!-- 추가된 부분: 리뷰 관련 정보를 담을 hidden input -->
-    		<input type="hidden" name="re_or_num" id="re_or_num">
-    		${orderList}
+    		<%-- ${orderList} --%>
     	
 			<h2> 리뷰내용</h2>
 			<textarea name="re_contents" rows="2" cols="50"></textarea>
@@ -71,61 +59,101 @@
 			        <option value="2">2점</option>
 			        <option value="1">1점</option>
 			    </select>
-			<button class="btn btn-primary" type="submit">등록</button>
+			<button  class="btn btn-primary btn-review" type="button">등록</button>
 		</form>
-		${review}
-		${review.re_mn_name}
-	</div>
 
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
-	/* $(document).ready(function () {
-		console.log("제발요");
-        $('.reviewcheck').click(function () {
-        	var orderNumber = $(this).val();
-
-            // hidden input에 주문번호 설정
-            $('#re_or_num').val(orderNumber);
+	 $(document).ready(function () { 
+        $('.btn-review').click(function () { // 라디오를 눌렀을때가 아니라, '등록버튼'을 눌렀을때 이벤트가 발생해야한다.  
+        	// 체크된 라디오박스의 값을 가져온다. (리뷰내용/별점 가져온다. 그다음에 ajax로 할 걸 생각한다.) 
+        	// 가져와서 콘솔창이 나오면 다시 설명... 
+			// $('[name=reviewcheck]').not(this).prop('checked', false);
+        	
+        	// 2. re_or_num 예외처리하고, 체크되었을때의 value를 let re_or_num에 담는다. 
+        	let re_or_num = $('[name=reviewCheck]:checked').val();
+        	if(re_or_num == undefined){
+        		alert('리뷰를 남길 주문내역을 선택해주세요')
+        		return;
+        	}
+        	// 1. 각각의 변수들의 value값을 묶은 obj 작성
+        	let obj = {
+        			re_contents : $('[name=re_contents]').val(),
+					re_star : $('[name=re_star]').val(),
+					re_or_num : $('[name=reviewCheck]:checked').val()
+        	} // 1-2. 콘솔 찍어보기(확인)
+        	console.log(obj)
+        	
+        	// 3. 그리고 ajax..
+        	$.ajax({
+				async : false, //비동기 : true(비동기), false(동기)
+				url : '<c:url value="/review/insert"/>', 
+				type : 'post', 
+				data : JSON.stringify(obj),
+				contentType : "application/json; charset=utf-8",
+				dataType : "json", 
+				success : function (data){
+					if(data.res){
+						alert("리뷰등록에 성공했습니다! 감사합니다")
+					} else {
+						alert("리뷰등록에 실패했습니다. 다시 남겨주실래요?")
+					}
+				}, 
+				error : function(jqXHR, textStatus, errorThrown){
+					alert("안된다 짜샤")
+				}
+			});
+        	//   console.log($('input[name="reviewCheck"]:checked').val());
+        	/* var c = $('input[name="reviewCheck"]').is(':checked'); // 체크박스 체크 여부(checked)
+        	var cv = $('input[name="reviewCheck"]:checked').val(); // 라디오 버튼 체크된 값(checked value)
+        	console.log(cv) */
+        	/* $("input[name='reviewCheck']").change(function(){
+        		var test = $("input[name='reviewCheck']:checked").val();
+        		alert(test);
+        	}); */
+        	/* var selectElement = document.getElementsByName("reviewCheck")[0];	
+        	selectElement.addEventListener("change", function(){
+        		var selectedValue = this.value;
+        		console.log(selectedValue);
+        	}) */
+        	/* if((this).prop('checked')){
+        		let check = $('[name=reviewcheck]').(':checked').val();
+        		console.log("check");
+        	} */
+        	
+        	// 아직 리뷰등록 전, re_or_num은 없다. 라디오박스의 value = or_num
+        	
+        		// let or_num = ${'[name=reviewcheck]'}.(':checked').val();
+            	// if ($(this).is(':checked')) {
+                /* let re_or_num = $(this).val();
+                let re_contents = $('[name=re_contents]').val(); // 리뷰 내용 가져오기
+				let re_star = $('[name=re_star]').val(); // 별점 가져오기
+				
+                $.ajax({
+					async : false, //비동기 : true(비동기), false(동기)
+					url : '<c:url value="/review/insert"/>', 
+					type : post, 
+					data : JSON.stringify({
+							re_contents : re_contents,
+							re_star : re_star,
+							re_or_num : re_or_num
+					}),
+					contentType : "application/json; charset=utf-8",
+					dataType : "json", 
+					success : function (data){
+						if(data.res){
+							alert("리뷰등록에 성공했습니다! 감사합니다")
+						} else {
+							alert("리뷰등록에 실패했습니다. 다시 남겨주실래요?")
+						}
+					}, 
+					error : function(jqXHR, textStatus, errorThrown){
+				
+					}
+				});
+            } */
         });
-    }); */
-	var lastChecked;
+    });
 	
-	function sendDataToServer(checkbox) {
-	       if (checkbox.checked) {
-	    	   console.log("checked")
-	       	  // 이전에 선택된 체크박스를 해제합니다.
-	          /*  if (lastChecked && lastChecked !== checkbox) {
-	               lastChecked.checked = false;
-	           }
-	           lastChecked = checkbox;
-	       		
-	           var row = checkbox.closest('tr'); // 현재 체크박스가 포함된 행 가져오기
-	           // 행에서 각 셀의 데이터 가져오기
-	           var or_num = row.cells[1].innerText;
-	
-	           // 서버로 데이터 전송 (Ajax를 사용하는 경우)
-	           // 아래는 jQuery를 사용한 Ajax 호출 예시입니다.
-	           obj = {
-	        	   
-	           }
-	           $.ajax({
-	        	   async : false
-	               url: '/review/insert', // 실제 서버 엔드포인트로 수정해야 합니다.
-	               type: 'POST',
-	               data: JSON.stringify(obj),
-	               success: function (response) {
-	            	   
-	                   console.log('Data successfully sent to server:', response);
-	               },
-	               error: function (error) {
-	                   console.error('Error sending data to server:', error);
-	               }
-	           });
-	       } else {
-	            // 체크박스가 해제된 경우, lastChecked 변수를 초기화합니다.
-	            lastChecked = null;
-	       } */
-	   }
 	</script>
 	
 </body>

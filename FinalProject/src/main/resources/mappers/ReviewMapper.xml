@@ -25,7 +25,7 @@
     		join option_choice on sb_num = oc_sb_num
     		join menu on oc_mn_num = mn_num
     		join store on mn_st_num = st_num
-    		join business_member on st_bm_id = bm_id;
+    		join business_member on st_bm_id = bm_id;    	
 	</select>
 	
 	<!-- 리뷰 삭제 -->
@@ -44,13 +44,10 @@
 	    		join store on mn_st_num = st_num
 	    		join business_member on st_bm_id = bm_id
     		where ol_user_id =  #{user.me_user_id}
+    		<!-- 최신순이 국룰이지만 order by desc 했는데 에러뜨니까 지레질려서 주석하기 -->
 	</select>
 	<insert id="insertReview">
 		insert into review(re_contents, re_star, re_or_num)
-		values(#{review.re_contents}, #{review.re_star}, #{review.re_or_num})
+		values(#{review.re_contents}, #{review.re_star}, #{review.re_or_num})	
 	</insert>
-	<select id="isReviewExists" resultType="kr.kh.finalproject.vo.ReviewVO">
-		select * from review
-			where re_or_num = #{orderNum}
-	</select>
  </mapper>

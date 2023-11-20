@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import kr.kh.finalproject.dao.ReviewDAO;
 import kr.kh.finalproject.vo.MemberVO;
@@ -53,7 +52,7 @@ public class ReviewServiceImp implements ReviewService{
 			return false;
 		}
 		
-		int orderNum = review.getRe_or_num();
+		// int orderNum = review.getRe_or_num();
 		
 		// re_or_num 에 대한 리뷰가 이미 존재하는 경우
 //		if(review != null || review.getRe_or_num() ) {
