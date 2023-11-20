@@ -20,6 +20,6 @@ public interface ReviewService {
 	// 리뷰 등록 페이지
 	List<OrderMenuVO> getOrderList();
 
-	boolean insertReview(ReviewVO review, OrderMenuVO order);
+	boolean insertReview(ReviewVO review, MemberVO user);
 
 }

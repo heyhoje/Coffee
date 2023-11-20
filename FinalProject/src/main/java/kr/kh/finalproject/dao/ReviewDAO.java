@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.OrderMenuVO;
 import kr.kh.finalproject.vo.ReviewVO;
 
@@ -21,7 +22,9 @@ public interface ReviewDAO {
 	// 리뷰 등록
 	List<OrderMenuVO> selectOrderList();
 
-	boolean insertReview(@Param("review")ReviewVO review);
+	boolean insertReview(@Param("review")ReviewVO review, @Param("user")MemberVO member);
+
+	boolean isReviewExists(@Param("orderNum")int orderNum);
 
 
 }

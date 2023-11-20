@@ -35,17 +35,22 @@
 	
 	<!-- 리뷰 등록 - 주문리스트 -->
 	<select id="selectOrderList" resultType="kr.kh.finalproject.vo.OrderMenuVO">
-		select *
+		select or_num, bm_store_name as or_store_name, or_time, or_drinks, ol_user_id as or_user_id
 			from order_menu
-    		join order_list on or_num = ol_or_num
-    		join shop_basket on ol_sb_num = sb_num
-    		join option_choice on sb_num = oc_sb_num
-    		join menu on oc_mn_num = mn_num
-    		join store on mn_st_num = st_num
-    		join business_member on st_bm_id = bm_id
+	    		join order_list on or_num = ol_or_num
+	    		join shop_basket on ol_sb_num = sb_num
+	    		join option_choice on sb_num = oc_sb_num
+	    		join menu on oc_mn_num = mn_num
+	    		join store on mn_st_num = st_num
+	    		join business_member on st_bm_id = bm_id
+    		where ol_user_id = #{user.me_user_id}
 	</select>
 	<insert id="insertReview">
 		insert into review(re_contents, re_star, re_or_num)
 		values(#{review.re_contents}, #{review.re_star}, #{review.re_or_num})
 	</insert>
+	<select id="isReviewExists" resultType="kr.kh.finalproject.vo.ReviewVO">
+		select * from review
+			where re_or_num = #{orderNum}
+	</select>
  </mapper>
