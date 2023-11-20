@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.kh.finalproject.dao.ShopDAO;
 import kr.kh.finalproject.pagination.Criteria;
-import kr.kh.finalproject.vo.ShopVO;
+import kr.kh.finalproject.vo.ManagerVO;
 
 @Service
 public class ShopServiceImp implements ShopService{
@@ -22,7 +22,7 @@ public class ShopServiceImp implements ShopService{
 	}
 
 	@Override
-	public List<ShopVO> getShopList(Criteria cri) {
+	public List<ManagerVO> getShopList(Criteria cri) {
 		if(cri == null) {
 			cri = new Criteria();
 		}
@@ -30,7 +30,7 @@ public class ShopServiceImp implements ShopService{
 	}
 
 	@Override
-	public List<ShopVO> getShopList(Criteria cri, Double ipLati, Double ipLongi) {
+	public List<ManagerVO> getShopList(Criteria cri, Double ipLati, Double ipLongi) {
 		if(cri == null) {
 			cri = new Criteria();
 		}

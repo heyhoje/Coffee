@@ -2,32 +2,21 @@ package kr.kh.finalproject.controller;
 
 
 
-import java.util.Map;
-
-import java.security.MessageDigest;
-import java.util.Base64;
-import java.util.UUID;
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.kh.finalproject.service.MemberService;
 import kr.kh.finalproject.util.Message;
@@ -51,7 +40,6 @@ public class MemberController {
 	@RequestMapping(value = "/member/signup2", method = RequestMethod.POST)
 	public String signupPost(MemberVO member, Model model) {
 		System.out.println(member);
-
 		boolean res = memberService.signup(member);
 		if (res) {
 			model.addAttribute("msg", "회원가입 성공했습니다. \n 오늘 커피 한잔 어떠실까요?");
@@ -62,9 +50,6 @@ public class MemberController {
 		}
 		return "/main/message";
 	}
-
-
-	
 	
 	@RequestMapping(value="/member/mypage", method=RequestMethod.GET)
 	public String mypage() {

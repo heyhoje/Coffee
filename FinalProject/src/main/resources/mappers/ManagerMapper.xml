@@ -5,18 +5,18 @@
   
 <mapper namespace="kr.kh.finalproject.dao.ManagerDAO">
 	<insert id="insertManager" parameterType="kr.kh.finalproject.vo.ManagerVO">
-		insert into business_member(bm_id, bm_pw, bm_num, bm_phone, bm_address, bm_manager, bm_store_name)
+		insert into manager(bm_id, bm_pw, bm_num, bm_phone, bm_address, bm_manager, bm_store_name)
 		values(#{manager.bm_id},#{manager.bm_pw},#{manager.bm_num},#{manager.bm_phone},#{manager.bm_address}, #{manager.bm_manager}, #{manager.bm_store_name})
 	</insert>
 	
 	<select id="selectManager" resultType="kr.kh.finalproject.vo.ManagerVO">
-		select * from business_member where bm_id = #{bm_id}
+		select * from manager where bm_id = #{bm_id}
 	</select>
 	
 	<!-- 사업자회원 - 자동 로그인 -->
 	<update id="updateBMemberSession">
 		update
-			business_member
+			manager
 		set
 			bm_session_id = #{manager.bm_session_id},
 			bm_session_limit = #{manager.bm_session_limit}
@@ -25,23 +25,23 @@
 	</update>
 	
 	<select id="selectBMemberBySessionId" resultType="kr.kh.finalproject.vo.ManagerVO">
-		select * from business_member 
+		select * from manager 
 		where
 			bm_session_id = #{bm_session_id} and  bm_session_limit >= now() 
 	</select>
 	
 	<!-- 사이트 관리자 페이지 -->
 	<select id="selectBMemberList" resultType="kr.kh.finalproject.vo.ManagerVO">
-		select * from business_member where bm_approval = #{bm_approval}
+		select * from manager where bm_approval = #{bm_approval}
 	</select>
 	
 	<!-- 승인&거절 버튼 -->
 	<update id="updateManager">
-		update business_member 
+		update manager 
 			set bm_approval = #{manager.bm_approval}
 			where bm_id = #{manager.bm_id}
 	</update>
 	<!-- <select id="selectCountManagerList" resultType="int">
-		select count(*) business_member where bm_id = #{manager.bm_id}
+		select count(*) manager where bm_id = #{manager.bm_id}
 	</select> -->
 </mapper>

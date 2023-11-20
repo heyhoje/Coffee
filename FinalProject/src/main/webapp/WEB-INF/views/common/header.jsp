@@ -49,7 +49,7 @@
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item active"><a class="nav-link"
-					href="resources/about.html" style="font-family: 'BM HANNA Pro', sans-serif; color:white;">소개</a></li>
+					href="<c:url value='/main/Introduce'/>" style="font-family: 'BM HANNA Pro', sans-serif; color:white;">소개</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="<c:url value='/order/store'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">주문</a></li>
 				<li class="nav-item"><a class="nav-link"

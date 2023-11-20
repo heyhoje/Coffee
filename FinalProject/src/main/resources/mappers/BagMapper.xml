@@ -56,7 +56,7 @@
   	<delete id="deleteItem" parameterType="int">
   		delete from `option_choice` where oc_num = #{oc_num}
   	</delete>
-  	<select id="getShopInfo" resultType="kr.kh.finalproject.vo.ShopVO">
+  	<select id="getShopInfo" resultType="kr.kh.finalproject.vo.ManagerVO">
   		select
   			bm_id, bm_pw, bm_num, bm_phone, bm_contents, bm_address, bm_geocoding_lati, bm_geocoding_longi, bm_manager, bm_store_name, bm_image, bm_approval, st_num
 		from 
@@ -68,7 +68,7 @@
 		left join 
 			`store` on mn_st_num = st_num
 		left join
-			`business_member` on st_bm_id = bm_id
+			`manager` on st_bm_num = bm_num
 		where 
 			sb_me_user_id = "carpcarp"
 	</select>

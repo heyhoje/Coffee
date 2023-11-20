@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import kr.kh.finalproject.vo.ImageVO;
-import kr.kh.finalproject.vo.ManagerVO;
 import kr.kh.finalproject.vo.StoreVO;
 
 public interface StoreDAO {
@@ -21,4 +20,6 @@ public interface StoreDAO {
 
 	// 첨부파일 등록
 	void insertImage(@Param("image")ImageVO imageVo);
+	
+	StoreVO selectStore(@Param("bm_num")String bm_num);
 }

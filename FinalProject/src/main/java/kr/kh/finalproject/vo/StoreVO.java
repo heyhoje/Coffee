@@ -12,7 +12,7 @@ public class StoreVO {
 
 	int st_num; // 매장번호
 	String st_br_name; // 브랜드명
-	String st_bm_id; // 사업자아이디
+	String st_bm_num; // 사업자아이디
 	
 	String st_open; // 매장오픈여부. 아마 안쓸듯.
 	
