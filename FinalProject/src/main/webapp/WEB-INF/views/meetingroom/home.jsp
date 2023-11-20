@@ -95,7 +95,7 @@
 						</div>
 						
 						<!-- 시간 선택하는 팝업div 위에 form태그로 싸악 감싸준다. -->
-						<form type="hidden" action="<c:url value='/meetingroom/booking'/>" method="post">
+						<form type="hidden" id="cartform" action="<c:url value='/meetingroom/booking'/>" method="post">
 							<div class="popup_layer" id="popup_layer" style="display: none;">
 					 			<div class="popup_box">
 						      		<div style="height: 20px; width: 100%;">
@@ -113,7 +113,7 @@
 												<input class="timebutton" type="checkbox"/>
 											</div>
 											<div class="reservationbutton-box">
-												<button class="reservationbutton" onclick="reservationThis">예약하기</button>
+												<button class="reservationbutton" onclick="reservationThis()">예약하기</button>
 											</div>
 										</div>
 								    <!--팝업 버튼 영역-->
@@ -192,6 +192,18 @@
 			$('.buttonbox').html(str)
 			javascript:openPop()
 			
+		}
+		function reservationThis(){
+			var reservationtime= [];
+			$('input[name="arr_meetingroom_starttime"]:checked').each(function(){
+				selectedTimes.push($(this).val());
+			});
+			$('#reservationtime').val(selectedTimes.join(','));
+			
+			$('#cartform').submit();
+			closePop();
+			
+		
 		}
 	</script>
 </html>

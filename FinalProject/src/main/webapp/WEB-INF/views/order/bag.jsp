@@ -94,10 +94,10 @@
         	<div class="cart-bigorder-leftbox">
             	<a class="cart-bigorder-left" href="<c:url value='/store/menu/1/1'/>">쇼핑 계속하기</a>
             </div>
-            <button class="cart__bigorderbtn right" onclick="openPopup2()">주문하기</button>
+            <button class="cart__bigorderbtn right" onclick="PrintAfterPay()">주문하기</button>
+            <!--onclick="openPopup2()"-->
         </div>
-     
-    
+     </section>
     
 <script type="text/javascript">
 
@@ -253,7 +253,7 @@ function requestPay() {
 	}
 }
 
-function allInOneAfterPay(totalPrice, usePoint) {
+function allInOneAfterPay(totalPrice, usePoint, user) {
 	
 	var point = totalPrice - usePoint;
     var menuName = menuNameList.join(',');
@@ -280,8 +280,8 @@ function allInOneAfterPay(totalPrice, usePoint) {
         success: function (response) {
         	alert('주문이 완료되었습니다.');
         		 handleResponse2(response);
-        		 PrintAfterPay();
         		 redirectToMainPage();
+        		 PrintAfterPay();
         },
         error: function (error) {
             console.error('Error in allInOneAfterPay:', error);
@@ -301,12 +301,18 @@ function PrintAfterPay() {
 	
     $.ajax({
         type: 'POST',
-        url: '<c:url value="ispatchEvent"/>',
-        data: {/d
+        url: '<c:url value="/call/order"/>',
+        data: {
         	  selectOption: selectOption,
-              menuName: menuName,
+              menuName: menuName
+              
         },
-        
+        success : function(data){
+        	
+        },
+        error : function(a){
+        	console.log(a)
+        }
     });
 }
 

@@ -36,10 +36,10 @@ public class ManagerController {
 		boolean res = managerService.managerRegister(manager);
 		if (res) {
 			model.addAttribute("msg", "회원가입이 제출되었습니다. \n관리자 승인은 운영시간내 13시, 17시에 일괄 진행며 승인확인까지 로그인이 제한될 수 있습니다.");
-			model.addAttribute("url", "/");
+			model.addAttribute("url", "");
 		} else {
 			model.addAttribute("msg", "회원가입에 실패하였습니다. 다시 시도 부탁드립니다.");
-			model.addAttribute("url", "/manager/signup2");
+			model.addAttribute("url", "manager/signup2");
 		}
 		return "/main/message";
 	}
@@ -82,14 +82,14 @@ public class ManagerController {
 			model.addAttribute("buser", buser);
 			model.addAttribute("type", "b");
 			model.addAttribute("msg", "로그인 정보가 확인되었습니다. 즐거운 하루 되세요!");
-			model.addAttribute("url", "/business/home"); // 사이트연결안됨. 오타확인하라고함.
+			model.addAttribute("url", "business/home"); // 사이트연결안됨. 오타확인하라고함.
 			
 			// 화면에서 보낸 자동 로그인 체크 여부를 user에 적용
 			buser.setAutoLogin(manager.isAutoLogin());
 			
 		} else{ // 잘못입력했을때, 메세지가 안뜨고 NullPointException 화면이 뜸
 			model.addAttribute("msg", "아이디 또는 비밀번호가 잘못되었습니다.");
-			model.addAttribute("url", "/member/login2");
+			model.addAttribute("url", "member/login2");
 		}
 		return "/main/message";
 	}

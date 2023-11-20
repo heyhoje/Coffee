@@ -20,7 +20,7 @@ public class ManagerVO {
    private String bm_address; // 매장 주소
    private Double bm_geocoding_lati;
    private Double bm_geocoding_longi;
-   
+   private String bm_image;
    // bm_contents에 쓰도록 유도
    private int bm_seat; // 매장 내 좌석
    private String bm_parking; // 주차 가능 여부;

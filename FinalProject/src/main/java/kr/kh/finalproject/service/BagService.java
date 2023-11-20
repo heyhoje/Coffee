@@ -2,9 +2,9 @@ package kr.kh.finalproject.service;
 
 import java.util.List;
 
+import kr.kh.finalproject.vo.ManagerVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.Option_ChoiceVO;
-import kr.kh.finalproject.vo.ShopVO;
 
 public interface BagService {
 
@@ -20,7 +20,7 @@ public interface BagService {
 
 	boolean deleteItem(int oc_num);
 
-	List<ShopVO> shopInfo(MemberVO user);
+	List<ManagerVO> shopInfo(MemberVO user);
 
 	boolean givePoint(int givePoint, String user);
 

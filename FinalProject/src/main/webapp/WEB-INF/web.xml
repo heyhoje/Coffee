@@ -50,6 +50,8 @@
         <param-name>encoding</param-name>
         <param-value>UTF-8</param-value>
     </init-param>
+    <!-- ASYNC -->
+    <async-supported>true</async-supported>
 	</filter>
     
 	<filter-mapping>

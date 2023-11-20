@@ -217,8 +217,8 @@ public class BusinessController {
 
 	// 사업자페이지 [주문확인]
 	@RequestMapping(value = "/business/order/{a}", method = RequestMethod.GET)
-	public String order(@PathVariable("a") int st_num) {
-
+	public String order(@PathVariable("a") int st_num, Model model) {
+		model.addAttribute("st_num", st_num);
 		return "/business/order";
 	}
 

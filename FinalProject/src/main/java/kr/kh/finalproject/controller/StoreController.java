@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.service.ShopService;
-import kr.kh.finalproject.vo.ShopVO;
+import kr.kh.finalproject.vo.ManagerVO;
 
 @Controller
 public class StoreController {
@@ -25,7 +25,7 @@ public class StoreController {
 		
 	@RequestMapping(value="/order/store", method=RequestMethod.GET)
 	public String store(Model model, Criteria cri) {
-		List<ShopVO> shopList = shopService.getShopList(cri);
+		List<ManagerVO> shopList = shopService.getShopList(cri);
 		
 
 		model.addAttribute("shopList", shopList);

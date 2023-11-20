@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -37,16 +39,23 @@
 
 <script>
 	
-	
+var urlEndPoint = 'http://localhost:8080/business/order/${st_num}';
+console.log(urlEndPoint);
 	    
     
     $(document).ready(function(){
 		
     	var userID = "";
-        var urlEndPoint = 'http://localhost:8080/business/order/1';
+        var urlEndPoint = 'http://localhost:8080/business/order/${st_num}';
+        console.log(urlEndPoint);
         var eventsource = new EventSource(urlEndPoint);
-        
-        eventsource.addEventListener("주문리스트",function(event){
+        eventsource.addEventListener("INIT",function(event){
+        	console.log(event.data);
+           
+            console.log(124);
+          	
+        })
+        eventsource.addEventListener("order",function(event){
         	console.log(event.data);
             var MenuData = JSON.parse(event.data);
             addBlock(MenuData.Menu, MenuData.content);

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,8 +36,8 @@ public class NotificationController {
 	private StoreService storeService;
 	
 	@CrossOrigin
-	@RequestMapping(value="/Notification/business", produces = MediaType.ALL_VALUE)
-	public SseEmitter subscribe(HttpServletRequest request) {
+	@RequestMapping(value="/business/order/{a}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+	public SseEmitter subscribe(HttpServletRequest request, @PathVariable("a") int st_num) {
 			HttpSession session = request.getSession();
 			ManagerVO user = (ManagerVO)session.getAttribute("buser");
 			StoreVO store = storeService.getStore(user.getBm_num());
@@ -59,11 +60,11 @@ public class NotificationController {
 
 //method for dispatching events to all clients
 	@PostMapping(value="/call/order")
-	public void dispatchEventToClient(@RequestParam String menuName, @RequestParam String selectOption, int st_num) {
+	public void dispatchEventToClient(@RequestParam String menuName, @RequestParam String selectOption, Integer st_num) {
 		System.out.println(menuName);
 		System.out.println(selectOption);
 		try {
-			storesEmitters.get(st_num).send(SseEmitter.event().name("order").data("connected"));
+			storesEmitters.get(2).send(SseEmitter.event().name("order").data("connected"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			}

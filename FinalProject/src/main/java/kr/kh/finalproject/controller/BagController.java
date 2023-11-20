@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.kh.finalproject.service.BagService;
+import kr.kh.finalproject.vo.ManagerVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.Option_ChoiceVO;
-import kr.kh.finalproject.vo.ShopVO;
 
 @Controller
 public class BagController {
@@ -33,7 +33,7 @@ public class BagController {
 	public String signup(HttpSession session, Model model) {
     	MemberVO user = (MemberVO)session.getAttribute("user");
     	List<Option_ChoiceVO> jangbaguni = bagService.bagList(user); // �옣諛붽뎄�땲 紐⑸줉 �몴異쒖쓣 �쐞�븳 option_choice, shop_basket, menu, image 議곗씤 寃곌낵 由ъ뒪�듃
-    	List<ShopVO> shop = bagService.shopInfo(user);
+    	List<ManagerVO> shop = bagService.shopInfo(user);
     	int point = bagService.getPoint(user);	// �옣諛붽뎄�땲 �럹�씠吏��뿉 �쁽�옱 蹂댁쑀 �룷�씤�듃瑜� 蹂댁뿬二쇨린 �쐞�븳 硫붿꽌�뱶
     	int basketNum = bagService.getBasketNum(user);
     	
