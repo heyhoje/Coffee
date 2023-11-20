@@ -14,4 +14,12 @@ public class ImageVO {
 	String im_tableName;
 	int im_tableNum;
 	
+	// 첨부파일
+	public ImageVO(String im_name, String im_ori_name, String im_tableName, int im_tableNum) {
+		this.im_name = im_name;
+		this.im_ori_name = im_ori_name;
+		this.im_tableName = im_tableName;
+		this.im_tableNum = im_tableNum;
+		
+	}
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.pagination.PageMaker;
@@ -252,7 +253,7 @@ public class BusinessController {
 	
 	// * edu 회원가입폼 제출 참고함.
 	@PostMapping("/business/plusinfo")
-	public String plusInfoPost(StoreVO store, Model model, HttpSession session) {
+	public String plusInfoPost(StoreVO store, MultipartFile[] files, Model model, HttpSession session) {
 		System.out.println(store); // 1. 내가 보내준 정보가 잘 넘어왔지 꼭! 먼저 확인! / 알려줘야하는지
 		
 		// 서비스에게 서버에 데이터 저장하라고 => 스토어 정보(+로그인한 아이디 buser에 있음)를 주면서 
@@ -261,7 +262,7 @@ public class BusinessController {
 		// 2. 일을 하려면 무엇이 필요한지
 		// 3. 끝났을때 알고싶은 정보가 무엇인지 = 정보를 추가했는지 못했는지만 알면 됨. 
 		ManagerVO buser = (ManagerVO)session.getAttribute("buser"); // 현재 로그인 중인 사업자 아이디가 storeDB에 필요함!!!
-		boolean res = storeService.plusInfo(store, buser); // 추가했다 못했다만 알면됨.
+		boolean res = storeService.plusInfo(store, buser, files); // 추가했다 못했다만 알면됨.
 		
 		if(res) {
 			model.addAttribute("msg", "매장등록이 신청되었습니다! 승인확인까지 기다려주세요.");
