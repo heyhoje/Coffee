@@ -83,6 +83,9 @@
 					<div class="col-md-3">
 						<label>관심 브랜드</label>
 					</div>
+					<div>
+						<h5 id="point">${me_interest_name}</h5>
+					</div>
 				</div>
 
 				<hr class="mb-4">

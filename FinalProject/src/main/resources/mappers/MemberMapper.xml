@@ -4,71 +4,86 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.finalproject.dao.MemberDAO">
 	<insert id="insertUser" parameterType="string">
-		insert into user (user_id, user_aorb, user_phone) 
+		insert into user (user_id,
+		user_aorb, user_phone)
 		values (#{member.user_id}, #{member.user_aorb}, #{member.user_phone})
 	</insert>
-	
+
 	<insert id="insertMember">
-		insert into member(me_user_id, me_pw, me_name, me_email, me_address, me_post, me_address2)
-		values (#{member.user_id}, #{member.me_pw}, #{member.me_name}, #{member.me_email}, #{member.me_address}, #{member.me_post}, #{member.me_address2})
+		insert into member(me_user_id, me_pw, me_name,
+		me_email, me_address, me_post, me_address2)
+		values (#{member.user_id},
+		#{member.me_pw}, #{member.me_name}, #{member.me_email},
+		#{member.me_address}, #{member.me_post}, #{member.me_address2})
 	</insert>
-	
-	<select id="selectMember" resultType="kr.kh.finalproject.vo.MemberVO">
-		select * from member where me_user_id = #{id} 
+
+	<select id="selectMember"
+		resultType="kr.kh.finalproject.vo.MemberVO">
+		select * from member where me_user_id = #{id}
 	</select>
 
 
-	<!-- 일반회원 - 자동 로그인 기능 : 1. 쿠키 생성 (loginCookie 라는 쿠키) 2. DB 해당 계정에 세션아이디, 세션리밋이 오늘날짜 일주일 뒤로 잡혀야함 -->
+	<!-- 일반회원 - 자동 로그인 기능 : 1. 쿠키 생성 (loginCookie 라는 쿠키) 2. DB 해당 계정에 세션아이디, 
+		세션리밋이 오늘날짜 일주일 뒤로 잡혀야함 -->
 	<update id="updateMemberSession">
 		update
-			member
+		member
 		set
-			me_session_id = #{member.me_session_id},
-			me_session_limit = #{member.me_session_limit}
+		me_session_id = #{member.me_session_id},
+		me_session_limit = #{member.me_session_limit}
 		where
-			me_user_id = #{member.me_user_id}
+		me_user_id = #{member.me_user_id}
 	</update>
-	
-	<select id="selectMemberBySessionId" resultType="kr.kh.finalproject.vo.MemberVO">
-		select * from member 
-		where
-			me_session_id = #{session_id} and  me_session_limit >= now() 
-	</select>
-	
-	
-	<!-- 카카오 로그인 -->
-	<select id="checkUserExists" resultType="int" parameterType="String">
-	    SELECT COUNT(*) FROM user WHERE user_id = #{kakaoId}
-	</select>
-	
-	<select id="getMemberByKakaoId" resultType="kr.kh.finalproject.vo.MemberVO" parameterType="String">
-	    SELECT * FROM user WHERE user_id = #{kakaoId}
-	</select>
-	
-	<insert id="insertUserKakaoInfo" parameterType="kr.kh.finalproject.vo.UserVO">
-	    INSERT INTO user (user_id, user_aorb, user_phone)
-	    VALUES (#{user_id}, #{user_aorb}, #{user_phone})
-	</insert>
-	
-	<select id="selectUserKakaoInfo" parameterType="String" resultType="kr.kh.finalproject.vo.UserVO">
-	    SELECT user_id, user_aorb, user_phone
-	    FROM user
-	    WHERE user_id = #{user_id}
-	</select>	
 
-	<insert id="insertMemberKakao" parameterType="kr.kh.finalproject.vo.MemberVO">
-        INSERT INTO member (me_user_id, me_email, me_name)
-        VALUES (#{me_user_id}, #{me_email}, #{me_name})
-    </insert>
-    
-    <select id="selectMemberKakao" parameterType="String" resultType="kr.kh.finalproject.vo.MemberVO">
-        SELECT me_user_id, me_email, me_name
-        FROM member
-        WHERE me_user_id = #{me_user_id}
-    </select>
-    
-    <!-- 아이디 찾기 -->
-    <select id="memberIdSearch" parameterType="kr.kh.finalproject.vo.MemberVO" resultType="kr.kh.finalproject.vo.MemberVO">
+	<select id="selectMemberBySessionId"
+		resultType="kr.kh.finalproject.vo.MemberVO">
+		select * from member
+		where
+		me_session_id = #{session_id} and me_session_limit >= now()
+	</select>
+
+
+	<!-- 카카오 로그인 -->
+	<select id="checkUserExists" resultType="int"
+		parameterType="String">
+		SELECT COUNT(*) FROM user WHERE user_id = #{kakaoId}
+	</select>
+
+	<select id="getMemberByKakaoId"
+		resultType="kr.kh.finalproject.vo.MemberVO" parameterType="String">
+		SELECT * FROM user WHERE user_id = #{kakaoId}
+	</select>
+
+	<insert id="insertUserKakaoInfo"
+		parameterType="kr.kh.finalproject.vo.UserVO">
+		INSERT INTO user (user_id, user_aorb, user_phone)
+		VALUES (#{user_id}, #{user_aorb}, #{user_phone})
+	</insert>
+
+	<select id="selectUserKakaoInfo" parameterType="String"
+		resultType="kr.kh.finalproject.vo.UserVO">
+		SELECT user_id, user_aorb, user_phone
+		FROM user
+		WHERE user_id = #{user_id}
+	</select>
+
+	<insert id="insertMemberKakao"
+		parameterType="kr.kh.finalproject.vo.MemberVO">
+		INSERT INTO member (me_user_id, me_email, me_name)
+		VALUES (#{me_user_id}, #{me_email}, #{me_name})
+	</insert>
+
+	<select id="selectMemberKakao" parameterType="String"
+		resultType="kr.kh.finalproject.vo.MemberVO">
+		SELECT me_user_id, me_email, me_name
+		FROM member
+		WHERE me_user_id = #{me_user_id}
+	</select>
+
+	<!-- 아이디 찾기 -->
+	<select id="memberIdSearch"
+		parameterType="kr.kh.finalproject.vo.MemberVO"
+		resultType="kr.kh.finalproject.vo.MemberVO">
 	<![CDATA[
 	    select
 	        *
@@ -78,10 +93,12 @@
 	        me_name = #{me_name}
 	    and
 	        me_email = #{me_email}
-	]]>    
+	]]>
 	</select>
 	<!-- 비밀번호 찾기 -->
-	<select id="memberPwdCheck" parameterType="kr.kh.finalproject.vo.MemberVO" resultType="java.lang.Integer">
+	<select id="memberPwdCheck"
+		parameterType="kr.kh.finalproject.vo.MemberVO"
+		resultType="java.lang.Integer">
 	<![CDATA[
 	    select
 	        count(*)
@@ -93,31 +110,34 @@
 	        me_email = #{me_email}
 	    and
 	        me_user_id = #{me_user_id}
-	]]>    
+	]]>
 	</select>
-	 
-	    
-	<update id="passwordUpdate" parameterType="kr.kh.finalproject.vo.MemberVO" >
-	    UPDATE 
-	        member 
-	    SET 
-	        me_pw = #{me_pw}
-	    where
-	        me_name = #{me_name}
-	    and
-	        me_email = #{me_email}
-	    and
-	        me_user_id = #{me_user_id}
+
+
+	<update id="passwordUpdate"
+		parameterType="kr.kh.finalproject.vo.MemberVO">
+		UPDATE
+		member
+		SET
+		me_pw = #{me_pw}
+		where
+		me_name = #{me_name}
+		and
+		me_email = #{me_email}
+		and
+		me_user_id = #{me_user_id}
 	</update>
-	
+
 	<!-- 비밀번호 변경 -->
 	<select id="pwCheck" resultType="String">
-		select me_pw from member where me_user_id = #{me_user_id}
+		select me_pw from member where
+		me_user_id = #{me_user_id}
 	</select>
 	<update id="pwUpdate">
-		update member set me_pw = #{me_pw1} where me_user_id = #{me_user_id}
+		update member set me_pw = #{me_pw1} where me_user_id
+		= #{me_user_id}
 	</update>
-	
+
 	<!-- 회원탈퇴 -->
 	<delete id="deleteMember">
 		delete from member WHERE me_user_id = #{me_user_id};
@@ -125,14 +145,15 @@
 	<delete id="deleteUser">
 		delete from user WHERE user_id = #{me_user_id};
 	</delete>
-	
+
 	<!-- 회원정보 수정 -->
 	<update id="infoUpdate">
 		update member set me_name = #{me_name},
-						  me_email = #{me_email}, 
-						  me_post = #{me_post}, 
-						  me_address = #{me_address}, 
-						  me_address2 = #{me_address2} 
+		me_email = #{me_email},
+		me_post = #{me_post},
+		me_address = #{me_address},
+		me_address2 = #{me_address2}
 		where me_user_id = #{me_user_id}
 	</update>
+
 </mapper>

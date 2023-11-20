@@ -1,5 +1,8 @@
 package kr.kh.finalproject.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.kh.finalproject.service.InterestService;
 import kr.kh.finalproject.service.MemberService;
+import kr.kh.finalproject.vo.InterestVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.UserVO;
 
@@ -27,6 +32,9 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 
+	@Autowired
+    private InterestService interestService;
+	
 	// 회원가입 페이지
 	@RequestMapping(value = "/member/signup2", method = RequestMethod.GET)
 	public String signup() {
@@ -273,12 +281,19 @@ public class MemberController {
 
 	// 회원정보수정
 	@RequestMapping(value = "/member/infoUpdate", method = RequestMethod.POST)
-	public String infoUpdate(HttpServletRequest request, HttpSession session, MemberVO member, Model model) throws Exception {
+	public String infoUpdate(HttpServletRequest request, HttpSession session,@RequestParam(value = "memberInterests", required = false) String[] memberInterests, MemberVO member, Model model) throws Exception {
+		if (memberInterests != null && memberInterests.length > 0) {
+	        // 관심사를 회원 정보에 추가 또는 업데이트하는 작업
+			interestService.deleteMemberInterests(member.getMe_user_id());
+	        List<String> interestsList = Arrays.asList(memberInterests);
+	        interestService.updateMemberInterests(member.getMe_user_id(), interestsList);
+	        
+	    }
 		memberService.infoUpdate(member);
+		System.out.println(memberInterests);
 		System.out.println(member);
 		session.invalidate();
 		model.addAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
 		return "/main/message";
 	}
-	
 }

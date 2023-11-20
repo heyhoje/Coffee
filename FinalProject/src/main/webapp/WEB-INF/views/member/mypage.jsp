@@ -4,6 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style>
+.form-check {
+	width: 15%;
+	margin-right: 5px;
+}
+</style>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/resources/css/mypage.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -16,13 +22,15 @@
 		<div class="bg-white rounded shadow-sm container p-3">
 			<form id="infoView" action="/member/infoUpdate" method="POST"
 				autocomplete="off" class="form-horizontal" role="form">
+				
 				<!-- 아이디 -->
 				<div class="row mb-3 form-row">
 					<div class="col-md-3">
 						<label for="me_user_id">아이디</label>
 					</div>
-					<div class="col-md-6" style="display: flex; align-items: flex-end;">
-						<input type="text" name="me_user_id" class="form-control" value="${user.me_user_id}" id="me_user_id" readonly>
+					<div class="col-md-9" style="display: flex; align-items: flex-end;">
+						<input type="text" name="me_user_id" class="form-control"
+							value="${user.me_user_id}" id="me_user_id" readonly>
 					</div>
 				</div>
 
@@ -31,8 +39,10 @@
 					<div class="col-md-3">
 						<label for="memberPoint">포인트</label>
 					</div>
-					<div class="col-md-6">
-						<h5 id="me_point">${user.me_point}</h5>
+					<div class="col-md-9">
+						<input type="text" id="me_point" name="me_point"
+							class="form-control" value="${user.me_point}" id="me_point"
+							readonly>
 					</div>
 				</div>
 
@@ -41,7 +51,7 @@
 					<div class="col-md-3">
 						<label for="me_name">이름</label>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-9">
 						<input type="text" class="form-control" id="me_name"
 							name="me_name" value="${user.me_name}">
 					</div>
@@ -53,7 +63,7 @@
 					<div class="col-md-3">
 						<label for="me_email">Email</label>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-9">
 						<input type="email" class="form-control" id="me_email"
 							name="me_email" value="${user.me_email}">
 					</div>
@@ -107,32 +117,23 @@
 					</div>
 
 					<div class="col-md-9 custom-control custom-checkbox">
-
 						<div class="form-check form-check-inline">
 							<input type="checkbox"
 								class="form-check-input custom-control-input"
-								name="memberInterest" id="sports" value="운동"> <label
-								class="form-check-label custom-control-label" for="starbucks">스타벅스</label>
-						</div>
-
-						<div class="form-check form-check-inline">
-							<input type="checkbox"
-								class="form-check-input custom-control-input"
-								name="memberInterest" id="movie" value="영화"> <label
-								class="form-check-label custom-control-label" for="megacoffee">메가커피</label>
-						</div>
-
-						<div class="form-check form-check-inline">
-							<input type="checkbox"
-								class="form-check-input custom-control-input"
-								name="memberInterest" id="music" value="음악"> <label
+								name="memberInterest" id="twosome" value="투썸플레이스"> <label
 								class="form-check-label custom-control-label" for="twosome">투썸플레이스</label>
 						</div>
-						<br>
 
 						<div class="form-check form-check-inline">
-							<input type="checkbox" name="memberInterest" id="cooking"
-								value="요리" class="form-check-input custom-control-input">
+							<input type="checkbox"
+								class="form-check-input custom-control-input"
+								name="memberInterest" id="ANGELINUS" value="엔제리너스"> <label
+								class="form-check-label custom-control-label" for="ANGELINUS">엔제리너스</label>
+						</div>
+
+						<div class="form-check form-check-inline">
+							<input type="checkbox" name="memberInterest" id="hollyscoffee"
+								value="할리스커피" class="form-check-input custom-control-input">
 							<label class="form-check-label custom-control-label"
 								for="hollyscoffee">할리스커피</label>
 						</div>
@@ -140,9 +141,65 @@
 						<div class="form-check form-check-inline">
 							<input type="checkbox"
 								class="form-check-input custom-control-input"
-								name="memberInterest" id="game" value="게임"> <label
+								name="memberInterest" id="starbucks" value="스타벅스"> <label
+								class="form-check-label custom-control-label" for="starbucks">스타벅스</label>
+						</div>
+
+						<div class="form-check form-check-inline">
+							<input type="checkbox"
+								class="form-check-input custom-control-input"
+								name="memberInterest" id="megacoffee" value="메가커피"> <label
+								class="form-check-label custom-control-label" for="megacoffee">메가커피</label>
+						</div>
+
+						<div class="form-check form-check-inline">
+							<input type="checkbox"
+								class="form-check-input custom-control-input"
+								name="memberInterest" id="Caffe Bene" value="카페베네"> <label
+								class="form-check-label custom-control-label" for="Caffe Bene">카페베네</label>
+						</div>
+
+						<div class="form-check form-check-inline">
+							<input type="checkbox"
+								class="form-check-input custom-control-input"
+								name="memberInterest" id="paik's coffee" value="빽다방"> <label
 								class="form-check-label custom-control-label"
 								for="paik's coffee">빽다방</label>
+						</div>
+
+						<div class="form-check form-check-inline">
+							<input type="checkbox"
+								class="form-check-input custom-control-input"
+								name="memberInterest" id="ediya" value="이디야"> <label
+								class="form-check-label custom-control-label" for="ediya">이디야</label>
+						</div>
+
+						<div class="form-check form-check-inline">
+							<input type="checkbox"
+								class="form-check-input custom-control-input"
+								name="memberInterest" id="compose" value="컴포즈"> <label
+								class="form-check-label custom-control-label" for="compose">컴포즈</label>
+						</div>
+
+						<div class="form-check form-check-inline">
+							<input type="checkbox"
+								class="form-check-input custom-control-input"
+								name="memberInterest" id="coffeebean" value="커피빈"> <label
+								class="form-check-label custom-control-label" for="coffeebean">커피빈</label>
+						</div>
+
+						<div class="form-check form-check-inline">
+							<input type="checkbox"
+								class="form-check-input custom-control-input"
+								name="memberInterest" id="PaulBassett" value="폴바셋"> <label
+								class="form-check-label custom-control-label" for="PaulBassett">폴바셋</label>
+						</div>
+
+						<div class="form-check form-check-inline">
+							<input type="checkbox"
+								class="form-check-input custom-control-input"
+								name="memberInterest" id="tomntom" value="탐탐"> <label
+								class="form-check-label custom-control-label" for="tomntom">탐탐</label>
 						</div>
 
 						<div class="form-check form-check-inline">
@@ -167,6 +224,7 @@
 	</div>
 	<br>
 	<br>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		$(function() {
 			$("#postcodify_search_button").postcodifyPopUp();
@@ -212,12 +270,25 @@
 				$("#me_address2").focus();
 				return false;
 			}
+			
+			var selectedInterests = [];
+	        $("input[name='memberInterest']:checked").each(function() {
+	            selectedInterests.push($(this).val());
+	        });
 
-			if (confirm("수정하시겠습니까?")) {
+	        // 기존 관심사를 Hidden input에서 제거
+	        $("input[name='memberInterests']").remove();
 
-				$("#infoView").submit();
-				return false;
-			}
+	        // 새로운 관심사를 Hidden input에 추가
+	        $('#infoView').append('<input type="hidden" name="memberInterests" value="' + selectedInterests.join(',') + '">');
+
+	        // 선택된 관심사 확인 (콘솔 출력)
+	        console.log(selectedInterests);
+
+	        if (confirm("수정하시겠습니까?")) {
+	            $('#infoView').submit();
+	            return false;
+	        }
 		}
 	</script>
 </body>

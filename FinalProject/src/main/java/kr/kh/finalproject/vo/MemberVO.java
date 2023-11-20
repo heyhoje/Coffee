@@ -19,6 +19,7 @@ public class MemberVO extends UserVO{
 	private String me_address;
 	private String me_address2;
 	
+	private String me_interest_name; //관심사
 	
 	// 자동로그인 속성
 	private boolean autoLogin;

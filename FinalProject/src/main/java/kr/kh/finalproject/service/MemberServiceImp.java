@@ -12,6 +12,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 import kr.kh.finalproject.dao.MemberDAO;
+import kr.kh.finalproject.vo.InterestVO;
 import kr.kh.finalproject.vo.KakaoVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.UserVO;
@@ -169,6 +170,10 @@ public class MemberServiceImp implements MemberService {
 	@Override
 	public void infoUpdate(MemberVO member) throws Exception {
 		memberDao.infoUpdate(member);
+	}
+	@Override
+	public void interestUpdate(InterestVO interest) throws Exception {
+		memberDao.interestUpdate(interest);
 	}
 	
 }

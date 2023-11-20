@@ -2,6 +2,7 @@ package kr.kh.finalproject.dao;
 
 import org.apache.ibatis.annotations.Param;
 
+import kr.kh.finalproject.vo.InterestVO;
 import kr.kh.finalproject.vo.KakaoVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.UserVO;
@@ -48,6 +49,9 @@ public interface MemberDAO {
 	void deleteUser(String me_user_id) throws Exception;
 
 	void infoUpdate(MemberVO member)throws Exception;
+
+	void interestUpdate(InterestVO interest)throws Exception;
+
 
 
 }
