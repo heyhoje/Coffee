@@ -70,6 +70,10 @@ $(document).ready(function() {
         var osNameList = [];
         var osNumList = [];
         var ovNumList = [];
+        var mn_num = ${menu.mn_num};
+        var mn_name = $('input[name="mn_name"]').val();
+        var mn_price = $('input[name="mn_price"]').val();
+        var mn_contents = $('input[name="mn_contents"]').val();
 
 
         // Iterate over option elements
@@ -96,10 +100,10 @@ $(document).ready(function() {
 
         
         var data = {
-                mn_num: "${menu.mn_num}",
-                mn_name: "${menu.mn_name}",
-                mn_price: "${menu.mn_price}",
-                mn_contents: "${menu.mn_contents}",
+                mn_num: mn_num,
+                mn_name: mn_name,
+                mn_price: mn_price,
+                mn_contents: mn_contents,
                 osNameList: osNameList.join(','), // 배열을 쉼표로 구분된 문자열로 변환
                 osNumList: osNumList.join(','),
                 ovNumList: ovNumList.join(','),
@@ -199,7 +203,6 @@ function killOptionValue(num) {
         }
     });
 }
-
 
 </script>
 </body>

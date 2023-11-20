@@ -89,6 +89,31 @@ public class BusinessServiceImp implements BusinessService {
 		return businessDao.updateOptionValue(ov_num, ov_value, ov_price);
 	}
 
+	@Override
+	public boolean makeMenuMijung(String st_num) {
+		return businessDao.makeMenuMijung(st_num);
+	}
+
+	@Override
+	public int getMijungMn_num() {
+		return businessDao.getMijungMn_num();
+	}
+
+	@Override
+	public boolean makeOptionMijung(int mn_num) {
+		return businessDao.makeOptionMijung(mn_num);
+	}
+
+	@Override
+	public boolean makeOptionValueMijung(int os_num) {
+		return businessDao.makeOptionValueMijung(os_num);
+	}
+
+	@Override
+	public int getMn_num() {
+		return businessDao.getMn_num();
+	}
+
 
 
 }

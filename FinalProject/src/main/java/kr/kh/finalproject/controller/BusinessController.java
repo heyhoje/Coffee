@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.pagination.PageMaker;
 import kr.kh.finalproject.service.BusinessService;
-import kr.kh.finalproject.service.ManagerService;
 import kr.kh.finalproject.service.MenuService;
 import kr.kh.finalproject.service.OptionService;
 import kr.kh.finalproject.service.StoreService;
@@ -45,6 +44,8 @@ public class BusinessController {
 	private MenuService menuService;
 	@Autowired
 	private OptionService optionService;
+	@Autowired
+	private BusinessService businessService;
 
 
 	// 사업자페이지 [홈]
@@ -119,11 +120,33 @@ public class BusinessController {
 	 
 	 // 메뉴 등록 
 	 @RequestMapping(value = "/business/realC/{a}", method = RequestMethod.GET)
-	 public String createMenu(@PathVariable("a") int st_num) {
-		 
-		 
+	 public String createMenu(@PathVariable("a") int st_num, Model model) {
+		 int mn_num = businessService.getMn_num();
+		 List<OptionVO> option = optionService.getOption(mn_num);
+		 MenuVO menu = menuService.getMenu(mn_num);
+
+		 model.addAttribute("menu", menu);
+		 model.addAttribute("option", option);
+
 		 return "/business/realC";
 	 }
+	 
+	 // 메뉴 삭제 Post
+	 @PostMapping("/business/realC")
+	 @ResponseBody
+	 public String makeMenu(@RequestParam("st_num") String st_num) {
+		 System.out.println(st_num);
+		 boolean makeMenuMijung = businessService.makeMenuMijung(st_num);
+		 int mn_num = businessService.getMijungMn_num();
+		 boolean makeOptionMijung = businessService.makeOptionMijung(mn_num);
+		 int os_num = businessService.getNewOs_Num();
+		 boolean makeOptionValueMijung = businessService.makeOptionValueMijung(os_num);
+		 
+		 return "/business/realCRUD";
+	 }
+	 
+	 
+	 
 	 
 	 // 메뉴 수정 
 	 @RequestMapping(value = "/business/realU/{a}/{mn_num}", method = RequestMethod.GET)
@@ -137,6 +160,10 @@ public class BusinessController {
 	 
 		 return "/business/realU";
 	 }
+	 
+	 
+	 
+	 
 	 
 	 // 메뉴 수정 Post
 	 @PostMapping("/business/realU")
@@ -188,9 +215,6 @@ public class BusinessController {
 	    	boolean updateOptionValue = businessService.updateOptionValue(ov_num.get(i), ov_value_for_index, ov_price_for_index);
 	    }
 
-		 
-
-		 
 		 return "/business/realCRUD";
 	 }
 

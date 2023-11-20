@@ -32,6 +32,16 @@ public interface BusinessService {
 
 	boolean updateOptionValue(String ov_num, String ov_value, String ov_price);
 
+	boolean makeMenuMijung(String st_num);
+
+	int getMijungMn_num();
+
+	boolean makeOptionMijung(int mn_num);
+
+	boolean makeOptionValueMijung(int os_num);
+
+	int getMn_num();
+
 
 
 }
