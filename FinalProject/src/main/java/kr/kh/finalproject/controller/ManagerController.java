@@ -92,9 +92,10 @@ public class ManagerController {
 			// 화면에서 보낸 자동 로그인 체크 여부를 user에 적용
 			buser.setAutoLogin(manager.isAutoLogin());
 
-		} else { // 잘못입력했을때, 메세지가 안뜨고 NullPointException 화면이 뜸
+		} else {
+			model.addAttribute("type", "b");
 			model.addAttribute("msg", "아이디 또는 비밀번호가 잘못되었습니다.");
-			model.addAttribute("url", "member/login2");
+			model.addAttribute("url", "");
 		}
 		return "/main/message";
 	}

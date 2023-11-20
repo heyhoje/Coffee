@@ -44,7 +44,7 @@ public class MemberController {
 			model.addAttribute("url", "/");
 		} else {
 			model.addAttribute("msg", "회원가입 실패했습니다. \n다시 시도 부탁드립니다.");
-			model.addAttribute("url", "member/signup2");
+			model.addAttribute("url", "/");
 		}
 		return "/main/message";
 	}
@@ -150,8 +150,9 @@ public class MemberController {
 			// 화면에서 보낸 자동 로그인 체크 여부를 user에 적용
 			user.setAutoLogin(member.isAutoLogin());
 		} else {
+			model.addAttribute("type", "u");
 			model.addAttribute("msg", "아이디 또는 비밀번호가 잘못되었습니다.");
-			model.addAttribute("url", "member/login");
+			model.addAttribute("url", "");
 		}
 		return "/main/message";
 	}
