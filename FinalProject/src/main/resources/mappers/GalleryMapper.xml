@@ -2,21 +2,22 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.kh.finalproject.vo.GalleryDAO">
+<mapper namespace="kr.kh.finalproject.dao.GalleryDAO">
 	<resultMap type="kr.kh.finalproject.vo.GalleryVO" id="GalleryVO">
 		<id property="gal_num" column="gal_num"/>
 		<result property="gal_title" column="gal_title"/>
 		<result property="gal_me_user_id" column="gal_me_user_id"/>
 		<result property="gal_gc_num" column="gal_gc_num"/>
 		<result property="gal_contents" column="gal_contents"/>
+		<result property="gal_hits" column="gal_hits"/>
 		<collection property="fileVoList" ofType="kr.kh.finalproject.vo.FileVO" column="gal_num" select="selectFileList"/>
 	</resultMap>
 	<resultMap type="kr.kh.finalproject.vo.GalleryTypeVO" id="GalleryTypeVO">
-		<id property="gt_num" column="bt_num"/>
+		<id property="gt_num" column="gt_num"/>
 		<result property="gt_title" column="gt_title"/>
 	</resultMap>	
 	<select id="selectGalleryList" resultType="kr.kh.finalproject.vo.GalleryVO">
-		select * from board
+		select * from gallery
 		<choose>
 			<when test='cri.type.equals("0")'>
 				where gal_title like concat('%', #{cri.search}, '%') or
@@ -26,21 +27,66 @@
 				where ${cri.type} like concat{'%', #{cri.search}, '%')
 			</otherwise>
 		</choose>
-	
-	
-	
+			<if test = "cri.gt_num != 0">
+				and gt_num = #{cri.gt_num}
+			</if>
 	</select>
-
-	
-	
-
-
-
-
-
-
-
-
-
+	   
+		<insert id="insertGallery" useGeneratedKeys="true" keyProperty="gallery.gal_num" >
+			insert into gallery(gal_num, gal_title, gal_me_user_id, gal_contents)
+			select 
+				ifnull(max(gal_num),0)+1, 	
+				
+				#{gallery.gal_title}, #{gallery.gal_contents}
+				,#{gallery.gal_me_user_id}
+			from 
+				gallery
+		</insert>
+		<update id="updateGalleryhits">
+		update gallery set gal_hits = gal_hits+1 where gal_num = #{gal_num}
+		</update>
+		<insert id="insertFile">
+		insert file(fi_name, fi_ori_name, fi_gal_num) 
+		values(#{file.fi_name},#{file.fi_ori_name},#{file.fi_gal_num})
+		</insert>
+		<select id="selectGallery" resultMap="GalleryVO">
+		select * from gallery where gal_num = #{gal_num}
+		</select>
+		<select id="selectGalleryCount" resultType="int">
+		select count(*) from gallery
+			<choose>
+			<when test='cri.type.equals("0")'>
+				where (gal_title like concat('%', #{cri.search}, '%') or 
+					gal_contents like concat('%', #{cri.search}, '%'))
+			</when>
+			<otherwise>
+				where ${cri.type} like concat('%', #{cri.search}, '%')
+			</otherwise>
+		</choose>
+		<if test="cri.gt_num != 0">
+			and gal_gt_num = #{cri.gt_num}
+		</if>
+		</select>
+		<select id="selectGalleryTypeList" resultMap="GalleryTypeVO">
+		select * from gallery_type
+		</select>
+		<update id="updateGallery">
+		update gallery
+		set
+			gal_title = #{gallery.gal_title},
+			gal_contents = #{gallery.gal_contents}
+		where
+			gal_num = #{gallery.gal_num}
+		</update>
+		<select id="selectFile" resultType="kr.kh.finalproject.vo.FileVO">
+		select * from file where fi_num = #{fi_num}
+		</select>
+		<delete id="deleteFile">
+		delete from file where fi_num = #{fi_num}
+		</delete>
+		<delete id="deleteGallery">
+		delete from gallery where gal_num = #{gal_num}
+		</delete>
+		
 </mapper>
   

@@ -28,34 +28,55 @@
 			
 			<h4>옵션</h4>
 				<div class="option-box">
-				<c:forEach items="${option}" var="optionItem" varStatus="index">
-				    <th><hr>
-				        <c:forEach items="${optionItem.optionValueList}" var="optionValue">
-				            <c:choose>
-				                <c:when test="${optionItem.os_optionNum == 1}">
-				                    <label><input type="radio" name="option1" value="${optionValue.ov_value} ${optionValue.ov_price}"  checked> ${optionValue.ov_value}</label><br>
-				                </c:when>
-				               <c:when test="${optionItem.os_optionNum == 2}">
-				                     <label><input type="radio" name="option2" value="${optionValue.ov_value} ${optionValue.ov_price}" checked> ${optionValue.ov_value}</label><br>
-				                </c:when>
-				                <c:when test="${optionItem.os_optionNum == 3}">
-				                    <label><input type="radio" name="option3" value="${optionValue.ov_value} ${optionValue.ov_price}" checked> ${optionValue.ov_value} +${optionValue.ov_price }원</label><br>
-				                </c:when>
-				                <c:when test="${optionItem.os_optionNum == 4}">
-				                    <label><input type="radio" name="option4" value="${optionValue.ov_value} ${optionValue.ov_price}" checked> ${optionValue.ov_value} +${optionValue.ov_price }원</label><br>
-				                </c:when>
-				            </c:choose>
-				        </c:forEach>
-				    </th>
-				</c:forEach>
+				    <c:forEach items="${option}" var="optionItem" varStatus="index">
+				        <th><hr>
+				            <c:forEach items="${optionItem.optionValueList}" var="optionValue">
+				                <c:forEach begin="1" end="${optionItem.os_optionNum}" var="i">
+				                    <c:choose>
+				                        <c:when test="${optionItem.os_optionNum == i}">
+				                            <label><input type="radio" name="option${i}" value="${optionValue.ov_value} ${optionValue.ov_price}" checked> ${optionValue.ov_value} ${optionValue.ov_price}</label><br>
+				                        </c:when>
+				                    </c:choose>
+				                </c:forEach>
+				            </c:forEach>
+				        </th>
+				    </c:forEach>
 				</div>
 		    <br>
 		    <div class="detailbutton-box">
 		    <button id="deleteMenu" class="btn-outline-warning">메뉴 삭제하기</button>
-		    <a href="<c:url value=''/>" id="updateMenu" class="btn-outline-warning">메뉴 수정하기</a> 
+		    <a href="<c:url value='/business/realU/${st_num}/${menu.mn_num}'/>" id="updateMenu" class="btn-outline-warning">메뉴 수정하기</a> 
 		    </div>
 		</div>
 		</div>
 	</div>
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>	
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#deleteMenu').click(function() {
+		var data = {
+			menu_num : "${menu.mn_num}"
+		};
+         $.ajax({
+             type: "POST",
+             url: "/business/realD",
+             data: data,
+             success: function (response) {
+               // Handle the response from the server if needed
+               alert("삭제되었습니다!.");
+             },
+             error: function (error) {
+               // Handle any errors that occur during the AJAX request
+               alert("이미 삭제 되었거나 잘못된 접근입니다.");
+             }
+		});
+	});
+});
+
+
+
+
+</script>
 </body>
 </html>

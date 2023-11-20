@@ -27,10 +27,8 @@ public class HomeController {
 	
 		return "/main/index";
 	}
-	@RequestMapping(value="/main/gallery", method=RequestMethod.GET)
-	public String gallery() {
-		
-		return "/main/gallery";
-	}
+	
+
+
 	
 }

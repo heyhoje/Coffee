@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.pagination.PageMaker;
@@ -94,13 +96,123 @@ public class BusinessController {
 	public String realCRUD(Model model, @PathVariable("mn_num") int mn_num) {
 		List<OptionVO> option = optionService.getOption(mn_num);
 		MenuVO menu = menuService.getMenu(mn_num);
+		int st_num = businessService.getSt_num(mn_num);
 		
 		// 화면에 보여줄 데이터
+		model.addAttribute("st_num", st_num);
 		model.addAttribute("menu", menu);
 		model.addAttribute("option", option);
 
 		return "/business/realCRUD";
 	}
+	
+	
+	
+	 // 메뉴 삭제 Post
+	 @PostMapping("/business/realD")
+	 @ResponseBody
+	 public String deleteMenu(HttpSession session, @RequestParam("menu_num") String menu_num) {
+		 boolean deleteMenu = businessService.deleteMenu(menu_num);
+		 boolean deleteOptio = businessService.deleteOption(menu_num);
+		 
+		 return "/business/realCRUD";
+	 }
+	 
+	 
+	 
+	 // 메뉴 등록 
+	 @RequestMapping(value = "/business/realC/{a}", method = RequestMethod.GET)
+	 public String createMenu(@PathVariable("a") int st_num) {
+		 
+		 
+		 return "/business/realC";
+	 }
+	 
+	 // 메뉴 수정 
+	 @RequestMapping(value = "/business/realU/{a}/{mn_num}", method = RequestMethod.GET)
+	 public String updateMenu(@PathVariable("a") int st_num, Model model, @PathVariable("mn_num") int mn_num) {
+		 List<OptionVO> option = optionService.getOption(mn_num);
+		 MenuVO menu = menuService.getMenu(mn_num);
+
+		
+		 model.addAttribute("menu", menu);
+		 model.addAttribute("option", option);
+	 
+		 return "/business/realU";
+	 }
+	 
+	 // 메뉴 수정 Post
+	 @PostMapping("/business/realU")
+	 @ResponseBody
+	 public String updateMenu(HttpSession session, @RequestParam("mn_num") int mn_num,
+			 @RequestParam("mn_name") String mn_name, @RequestParam("mn_price") int mn_price, @RequestParam("mn_contents") String mn_contents,
+			 @RequestParam("os_name") String os_name, @RequestParam("optionLists") List<String> optionLists,
+			 @RequestParam("optionPriceLists") List<String> optionPriceList) {
+		System.out.println(mn_num);
+		System.out.println(mn_name); 
+		System.out.println(mn_price); 
+		System.out.println(mn_contents); 
+		System.out.println(os_name); 
+		System.out.println(optionLists); 
+		System.out.println(optionPriceList); 
+		 
+		boolean updateMenu = businessService.updateMenu(mn_num, mn_name, mn_price, mn_contents);
+		 
+		 
+		 
+
+
+		 
+
+		 
+		 return "/business/realCRUD";
+	 }
+	 
+	 // 메뉴 수정 옵션추가 Post
+	 @PostMapping("/business/realUI")
+	 @ResponseBody
+	 public String updateInsertOption(@RequestParam("ov_os_num") String ov_os_num) {
+		 System.out.println(ov_os_num);
+		 
+		 boolean uInsertOption = businessService.uInsertOption(ov_os_num);
+		 return "";
+	 }
+	 
+	 // 메뉴 수정 옵션뭉치추가 Post
+	 @PostMapping("/business/realUII")
+	 @ResponseBody
+	 public String updateInsertOptionMoongchi(@RequestParam("mn_num") String mn_num) {
+		 int maxOptionNum = businessService.getOptionNum(mn_num);
+		 maxOptionNum += 1;
+		 boolean uInsertOptionMoongchi = businessService.uInsertOptionMoongchi(mn_num, maxOptionNum);
+		 int newOs_Num = businessService.getNewOs_Num();
+		 boolean uInsertOptionMoongchi2 = businessService.uInsertOptionMoongchi2(newOs_Num);
+
+		 return "";
+	 }
+	 
+	 // 메뉴 수정 옵션뭉치삭제 Post
+	 @PostMapping("/business/realUD")
+	 @ResponseBody
+	 public String deleteOptionMoongchi(@RequestParam("mn_num") String mn_num, @RequestParam("os_optionNum") String os_optionNum) {
+		 int getOs_Num = businessService.getOs_Num(mn_num, os_optionNum);
+		 boolean deleteOptionMoongchi = businessService.deleteOptionMoongchi(mn_num, os_optionNum);
+		 boolean deleteOptionMoongchi2 = businessService.deleteOptionMoongchi2(getOs_Num);
+		 return "";
+	 }
+	 
+	 // 메뉴 수정 옵션벨류삭제 Post
+	 @PostMapping("/business/realUDV")
+	 @ResponseBody
+	 public String deleteOptionValue(@RequestParam("ov_num") String ov_num) {
+		 boolean deleteOptionValue = businessService.deleteOptionValue(ov_num);
+		 return "";
+	 }
+	 
+	 
+	 
+	 
+	 
 	
 
 	// 사업자페이지 [주문확인]

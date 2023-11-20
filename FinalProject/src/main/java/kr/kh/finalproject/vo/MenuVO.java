@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class MenuVO {
 
+
 	private int mn_num;
     private String mn_name;
     private String mn_contents;
@@ -18,5 +19,6 @@ public class MenuVO {
     ImageVO image;
 
     private String mn_image;
+
     
 }

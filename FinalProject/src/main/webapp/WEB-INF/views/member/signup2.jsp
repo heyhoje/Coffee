@@ -33,7 +33,7 @@
 					aria-controls="register" aria-selected="false">매니저 회원가입</a></li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane" id="login" role="tabpanel"
+				<div class="tab-pane show active" id="login" role="tabpanel"
 					aria-labelledby="login-tab" >
 					<form action="<c:url value='/member/signup2'/>" method="post">
 						<div class="form-row">
@@ -129,7 +129,7 @@
 						</div>
 					</form>
 				</div>
-				<div class="tab-pane fade show active" id="register" role="tabpanel"
+				<div class="tab-pane hide" id="register" role="tabpanel"
 					aria-labelledby="register-tab">
 					<form action="<c:url value='/manager/signup2'/>" method="post">
 						<div class="form-row">
@@ -247,8 +247,8 @@
         $("#login-tab").click(function(){
         	
             // 모든 탭을 숨김
-            $("#register").hide();
             $("#login").show();
+            $("#register").hide();
           
         });
     });
