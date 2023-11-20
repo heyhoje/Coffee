@@ -1,7 +1,5 @@
 package kr.kh.finalproject.service;
 
-import kr.kh.finalproject.vo.ShopVO;
-
 public interface BusinessService {
 
 	boolean deleteMenu(String menu_num);
@@ -10,7 +8,7 @@ public interface BusinessService {
 
 	int getSt_num(int mn_num);
 
-	boolean updateMenu(int mn_num, String mn_name, int mn_price, String mn_contents);
+	boolean updateMenu(String mn_num, String mn_name, String mn_price, String mn_contents);
 
 	boolean uInsertOption(String ov_os_num);
 
@@ -29,6 +27,11 @@ public interface BusinessService {
 	boolean deleteOptionMoongchi2(int getOs_Num);
 
 	boolean deleteOptionValue(String ov_num);
+
+	boolean updateOption(String os_num, String os_name, String mn_num);
+
+	boolean updateOptionValue(String ov_num, String ov_value, String ov_price);
+
 
 
 }

@@ -237,4 +237,6 @@ public class MemberController {
 		}
 		return "/main/message";
 	}
+
 }
+

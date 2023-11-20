@@ -10,7 +10,7 @@ public interface BusinessDAO {
 
 	int getSt_num(@Param("mn_num")int mn_num);
 
-	boolean updateMenu(@Param("mn_num")int mn_num, @Param("mn_name")String mn_name, @Param("mn_price")int mn_price, @Param("mn_contents")String mn_contents);
+	boolean updateMenu(@Param("mn_num")String mn_num, @Param("mn_name")String mn_name, @Param("mn_price")String mn_price, @Param("mn_contents")String mn_contents);
 
 	boolean uInsertOption(@Param("ov_os_num")String ov_os_num);
 
@@ -29,6 +29,11 @@ public interface BusinessDAO {
 	boolean deleteOptionMoongchi2(@Param("os_num")int getOs_Num);
 
 	boolean deleteOptionValue(@Param("ov_num")String ov_num);
+
+	boolean updateOption(@Param("os_num")String os_num, @Param("os_name")String os_name, @Param("mn_num")String mn_num);
+
+	boolean updateOptionValue(@Param("ov_num")String ov_num, @Param("ov_value")String ov_value, @Param("ov_price")String ov_price);
+
 
 
 }

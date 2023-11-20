@@ -139,4 +139,13 @@ width:30px;
 	background: gray !important;
 }
 
+a {
+    color: burlywood;
+    text-decoration: none;
+    outline: none !important;
+}	
+a:hover{
+	color:#f76d37;
+}
+
 a, a:hover, a:visited{ text-decoration:none;}

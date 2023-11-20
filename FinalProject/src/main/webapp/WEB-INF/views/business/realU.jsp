@@ -37,7 +37,7 @@
 				                   <c:choose>
 				                       <c:when test="${optionItem.os_optionNum == i}">
 				                           <label>
-				                           <input type="text" name="option${optionItem.os_num}" value="${optionValue.ov_value}">
+				                           <input type="text" name="optionvalue${optionItem.os_num}" value="${optionValue.ov_value}">
 				                               <input type="number" name="optionprice${optionItem.os_num}" value="${optionValue.ov_price}"></label>
 				                               <button class="btn-outline-warning" onclick="killOptionValue(${optionValue.ov_num})">해당 옵션 삭제</button>
 				                               <br>
@@ -64,51 +64,54 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('#updateMenu').click(function() {
-        var optionLists = [];
-        var optionPriceLists = [];
-        var osNameList = []; // 새로운 리스트 추가
+        // Initialize arrays
+        var optionValueList = [];
+        var optionPriceList = [];
+        var osNameList = [];
+        var osNumList = [];
+        var ovNumList = [];
 
-        // 옵션 값들을 배열에 수집
-        <c:forEach items="${option}" var="optionItem">
-            var optionList = [];
-            var optionPriceList = [];
 
-            <c:forEach items="${optionItem.optionValueList}" var="optionValue">
-                <c:forEach begin="1" end="${optionItem.os_optionNum}" var="i">
-                    <c:choose>
-                        <c:when test="${optionItem.os_optionNum == i}">
-                            optionList.push('${optionValue.ov_value}');
-                            optionPriceList.push('${optionValue.ov_price}');
-                        </c:when>
-                    </c:choose>
-                </c:forEach>
-            </c:forEach>
+        // Iterate over option elements
+        $('.option-box input[name^="optionname"]').each(function(index) {
+            osNameList.push($(this).val());
+        });
 
-            optionLists.push(optionList);
-            optionPriceLists.push(optionPriceList);
+        // Iterate over option value elements
+        $('.option-box input[name^="optionvalue"]').each(function(index) {
+            optionValueList.push($(this).val());
+        });
 
-            // 각 input 태그의 value에 해당하는 값 추가
-            $("input[name='optionname${optionItem.os_num}']").val('${optionItem.os_name}');
-            
-            // 새로운 리스트에 os_name 값 추가
-            osNameList.push('${optionItem.os_name}');
-        </c:forEach>
+        // Iterate over option price elements
+        $('.option-box input[name^="optionprice"]').each(function(index) {
+            optionPriceList.push($(this).val());
+        });
+        
+	    <c:forEach items="${option}" var="optionItem" varStatus="opIndex">
+	  		osNumList.push('${optionItem.os_num}');
+      		<c:forEach items="${optionItem.optionValueList}" var="optionValue">
+				ovNumList.push('${optionValue.ov_num}');
+			</c:forEach>
+		</c:forEach>
 
+        
         var data = {
-            mn_num: ${menu.mn_num},
-            mn_name: $("input[name='mn_name']").val(),
-            mn_price: $("input[name='mn_price']").val(),
-            mn_contents: $("input[name='mn_contents']").val(),
-            os_name: osNameList, // 수정된 부분
-            optionLists: optionLists,
-            optionPriceLists: optionPriceLists
-        };
+                mn_num: "${menu.mn_num}",
+                mn_name: "${menu.mn_name}",
+                mn_price: "${menu.mn_price}",
+                mn_contents: "${menu.mn_contents}",
+                osNameList: osNameList.join(','), // 배열을 쉼표로 구분된 문자열로 변환
+                osNumList: osNumList.join(','),
+                ovNumList: ovNumList.join(','),
+                optionValueList: optionValueList.join(','),
+                optionPriceList: optionPriceList.join(','),
+            };
 
+        
         $.ajax({
             type: "POST",
             url: "/business/realU",
             data: data,
-            traditional: true,
             success: function(response) {
                 alert("수정되었습니다.");
             },
