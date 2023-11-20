@@ -14,4 +14,15 @@ public class RoomBasketVO {
 	private int rs_room_num; // 미팅룸번호
 	private Date rs_date; // 예약 날짜
 	private int rs_start; // 예약 시작시간
+	
+	public void setRs_room_st_num(int room_st_num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setRs_room_starttime(int start) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

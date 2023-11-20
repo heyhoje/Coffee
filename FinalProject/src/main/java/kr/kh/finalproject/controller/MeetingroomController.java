@@ -61,8 +61,8 @@ public class MeetingroomController {
 		for (int i = 0; i < arrStart.length; i++) { 
 			int start = arrStart[i];
 			RoomBasketVO roomBasket = new RoomBasketVO();
-			roomBasket.setRs_room_num(room_num); roomBasket.setRs_Room_st_num(room_st_num);
-			roomBasket.setRs_Room_starttime(start);
+			roomBasket.setRs_room_num(room_num); roomBasket.setRs_room_st_num(room_st_num);
+			roomBasket.setRs_room_starttime(start);
 		}
 
 		 // 서비스한테 장바구니 정보를 전달하면서 RoomBasket DB에 저장하라고 한다. => 결제 완료 시, reservation 으로 넘어가는 것.
