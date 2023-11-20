@@ -203,7 +203,8 @@ function handleResponse(response) {
 function handleResponse2(response) {
     closePopup2();
 }
-
+function redirectToMainPage(){
+	window.location.href = "/order/confirm";
 
 
 function requestPay() {
@@ -277,6 +278,8 @@ function allInOneAfterPay(totalPrice, usePoint) {
         },
         success: function (response) {
         	alert('주문이 완료되었습니다.');
+        		 handleResponse2(response);
+        		 redirectToMainPage();
         },
         error: function (error) {
             console.error('Error in allInOneAfterPay:', error);

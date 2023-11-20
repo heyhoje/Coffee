@@ -126,4 +126,9 @@ public class BagController {
 
         return "";
     }	
+	@RequestMapping(value = "/order/confirm")
+	public String orderconfirm() {
+	
+		return "/order/confirm";
+	}
 }
