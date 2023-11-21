@@ -125,7 +125,7 @@
   		left join
   			shop_basket on oc_sb_num = sb_num
   		where
-  			sb_me_user_id = "carpcarp"			 
+  			sb_me_user_id = "carpcarp"
   	</select>
   	<select id="anotherShop" resultType="int">
   		select distinct

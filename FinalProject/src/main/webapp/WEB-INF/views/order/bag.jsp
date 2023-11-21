@@ -94,7 +94,7 @@
         	<div class="cart-bigorder-leftbox">
             	<a class="cart-bigorder-left" href="<c:url value='/store/menu/1/1'/>">쇼핑 계속하기</a>
             </div>
-            <button class="cart__bigorderbtn right" onclick="PrintAfterPay()">주문하기</button>
+            <button class="cart__bigorderbtn right" onclick="requestPay()">주문하기</button>
             <!--onclick="openPopup2()"-->
         </div>
      </section>
@@ -105,7 +105,7 @@ var menuPrices = [];
 var optionPrices = [];
 var quantities = [];
 var killAme = [];
-var user = "${user}";
+var user = "";
 var menuNameList = [];
 var menuNumList = [];
 var selectOptionList = [];
@@ -273,13 +273,12 @@ function allInOneAfterPay(totalPrice, usePoint, user) {
         data: {
             point: point,
             usePoint : usePoint,
-            user: user,
+            user: "carpcarp",
             menuName: menuName,
             menuNum: menuNum
         },
         success: function (response) {
         	alert('주문이 완료되었습니다.');
-        		 handleResponse2(response);
         		 redirectToMainPage();
         		 PrintAfterPay();
         },

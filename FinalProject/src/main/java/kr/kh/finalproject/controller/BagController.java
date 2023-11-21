@@ -33,9 +33,7 @@ public class BagController {
 	public String signup(HttpSession session, Model model) {
     	MemberVO user = (MemberVO)session.getAttribute("user");
     	List<Option_ChoiceVO> jangbaguni = bagService.bagList(user);
-    	System.out.println(jangbaguni);
     	List<ManagerVO> shop = bagService.shopInfo(user);
-    	System.out.println(shop);
     	int point = bagService.getPoint(user);
     	int basketNum = bagService.getBasketNum(user);
     	
@@ -63,9 +61,6 @@ public class BagController {
             if (keyValue.length == 2) {
                 String key = keyValue[0];
                 String value = keyValue[1];
-                System.out.println(key);
-                System.out.println(value);
-
                 
                 result.append(key);
                 result.append(", ");
@@ -89,11 +84,11 @@ public class BagController {
         
         int bagBunho = bagService.bagBunho(user);
         
-        int sameShop = bagService.sameShop(user);
-        int anotherShop = bagService.anotherShop(menu_num);
-        if(sameShop != anotherShop) {
-        	boolean flipBag = bagService.flipBag(user);
-        }
+//        int sameShop = bagService.sameShop(user);
+//        int anotherShop = bagService.anotherShop(menu_num);
+//        if(sameShop != anotherShop) {
+//        	boolean flipBag = bagService.flipBag(user);
+//        }
         boolean selectedOption = bagService.selectedOption(selected, total, menu_num, bagBunho);	
         
 
