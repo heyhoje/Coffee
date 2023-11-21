@@ -29,7 +29,7 @@ public class BusinessServiceImp implements BusinessService {
 	}
 
 	@Override
-	public boolean updateMenu(int mn_num, String mn_name, int mn_price, String mn_contents) {
+	public boolean updateMenu(String mn_num, String mn_name, String mn_price, String mn_contents) {
 		return businessDao.updateMenu(mn_num, mn_name, mn_price, mn_contents);
 	}
 
@@ -77,5 +77,43 @@ public class BusinessServiceImp implements BusinessService {
 	public boolean deleteOptionValue(String ov_num) {
 		return businessDao.deleteOptionValue(ov_num);
 	}
+
+	@Override
+	public boolean updateOption(String os_num, String os_name, String mn_num) {
+		return businessDao.updateOption(os_num, os_name, mn_num);
+	}
+
+	@Override
+	public boolean updateOptionValue(String ov_num, String ov_value, String ov_price) {
+		
+		return businessDao.updateOptionValue(ov_num, ov_value, ov_price);
+	}
+
+	@Override
+	public boolean makeMenuMijung(String st_num) {
+		return businessDao.makeMenuMijung(st_num);
+	}
+
+	@Override
+	public int getMijungMn_num() {
+		return businessDao.getMijungMn_num();
+	}
+
+	@Override
+	public boolean makeOptionMijung(int mn_num) {
+		return businessDao.makeOptionMijung(mn_num);
+	}
+
+	@Override
+	public boolean makeOptionValueMijung(int os_num) {
+		return businessDao.makeOptionValueMijung(os_num);
+	}
+
+	@Override
+	public int getMn_num() {
+		return businessDao.getMn_num();
+	}
+
+
 
 }

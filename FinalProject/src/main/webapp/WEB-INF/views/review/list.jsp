@@ -90,19 +90,13 @@
 									<span class="filled-star"></span>
 							    </c:forEach>
 							</td>
-				            
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-			${review}
-			${review.re_mn_name}
+			<%-- ${review}
+			${review.re_mn_name} --%>
 	</div>
-
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script>
-		
-	</script>
 	
 </body>
 </html>

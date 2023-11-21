@@ -6,10 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.kh.finalproject.dao.BagDAO;
-import kr.kh.finalproject.dao.ShopDAO;
+import kr.kh.finalproject.vo.ManagerVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.Option_ChoiceVO;
-import kr.kh.finalproject.vo.ShopVO;
 import kr.kh.finalproject.vo.Shop_BasketVO;
 
 @Service
@@ -56,7 +55,7 @@ public class BagServiceImp implements BagService{
 	}
 
 	@Override
-	public List<ShopVO> shopInfo(MemberVO user) {	
+	public List<ManagerVO> shopInfo(MemberVO user) {	
 		return bagDao.getShopInfo(user);
 	}
 

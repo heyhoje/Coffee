@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.kh.finalproject.dao.MeetingroomDAO;
-import kr.kh.finalproject.dao.ReservationDAO;
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.vo.MeetingroomVO;
 import kr.kh.finalproject.vo.ReservationVO;

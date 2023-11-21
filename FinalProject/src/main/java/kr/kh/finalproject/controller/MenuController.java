@@ -43,7 +43,6 @@ public class MenuController {
 	@GetMapping("/store/menu/{a}/{b}")
 	public String storeMenu(Model model, int[] mc_numList, Criteria cri,
 			@PathVariable("a") int st_num, @PathVariable("b") int category, Boolean allCheckbox) {
-		// 0. @PathVariable로 a, b가 무엇인지 설정~?		
 		// 1. 서비스한테 일을 시켰을 때 어떤일을 시켜야할까 고민해야함
 		// => 대분류에 맞는 중분류 리스트를 가져오는 일
 		List<MCategoryVO> list = menuService.getMenuList(category);

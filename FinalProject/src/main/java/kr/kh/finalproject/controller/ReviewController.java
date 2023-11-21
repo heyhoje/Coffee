@@ -1,6 +1,8 @@
 package kr.kh.finalproject.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.kh.finalproject.service.ReviewService;
 import kr.kh.finalproject.vo.MemberVO;
@@ -30,47 +34,58 @@ public class ReviewController {
 		return "/review/list"; 
 	}
 	
-	/** 주문내역 리스트 order_menu */
 	/** 리뷰 등록 */
 	@GetMapping("/review/insert")
 	public String insertReview(Model model, HttpSession session) {
-		List<OrderMenuVO> orderList = reviewService.getOrderList();
+		
+		// 본인아이디로 주문한 내역만 확인해야 하기 때문에 user 정보가 필요함..!
+		MemberVO user = (MemberVO)session.getAttribute("user"); 
+
+		/** 주문내역 리스트 order_menu */
+		List<OrderMenuVO> orderList = reviewService.getOrderList(user);
 		System.out.println(orderList);
 		// 주문메뉴번호 주문시간 주문상태(완료가 된 음료만 리뷰를 남길 수 있겠지...) 주문메뉴이름 주문메뉴번호
-		// 어떡하냐.... 연계된게 또 생겨버렸다리?????
-		
-		// HttpSession에 orderList를 "orderList"라는 이름으로 저장
-	    session.setAttribute("order", orderList);
-	    
+
 		model.addAttribute("orderList", orderList);
 		return "/review/insert";
 	}
 	
-	@PostMapping("/review/insert")
-	public String insertReviewPost(Model model, ReviewVO review, HttpSession session) {
+	@ResponseBody
+	@PostMapping("/review/insert") // ajax 형식대로 가져올 것! jsonTOjson
+	public Map<String, Object> insertReviewPost(@RequestBody ReviewVO review, 
+			Model model, HttpSession session){
 		
-		// MemberVO user = (MemberVO)session.getAttribute("user"); // 리뷰를 남기는 사용자... 필요없나...?
-		OrderMenuVO order = (OrderMenuVO) session.getAttribute("order"); // 이렇게 하면 지금. 저장 된건가??? 그치????아닌가....
-		// System.out.println(order); order를 확인해볼 방법 어디 없나, 사람이 찾으려다 끊임없이 덧나
-		// 세션에 없어서인줄알고, GetMapping에 세션저장도 해보았지만.. 여기는 내 손을 떠나고 있는듯하다...
+		Map<String, Object> map = new HashMap();
+		MemberVO user = (MemberVO)session.getAttribute("user");
 		
-		// List<OrderMenuVO> orderList = (List<OrderMenuVO>) session.getAttribute("order");
-		// 리스트로 불러오는것도 아닌가봐.....
-		if(order == null) {
-			model.addAttribute("msg", "주문 정보를 찾을 수 없습니다. 다시 주문해주세요.");
-		    model.addAttribute("url", "/review/list"); // 적절한 URL로 변경
-		    return "main/message";
-		}
+		boolean res = reviewService.insertReview(review, user);
 		
-		boolean res = reviewService.insertReview(review, order);
-		
-		if(res) {
-			model.addAttribute("msg", "리뷰등록에 성공했습니다! 감사합니다");
-			model.addAttribute("url", "review/list");
-		}else {
-			model.addAttribute("msg", "리뷰등록에 실패했습니다. 다시 남겨주실래요?");
-			model.addAttribute("url", "review/insert");
-		}
-		return "/main/message";
+		map.put("res", res);
+		return map;
 	}
+	/*
+	 * @PostMapping("/review/insert") public String insertReviewPost(Model model,
+	 * ReviewVO review, HttpSession session) {
+	 * 
+	 * // MemberVO user = (MemberVO)session.getAttribute("user"); // 리뷰를 남기는 사용자...
+	 * 필요없나...? OrderMenuVO order = (OrderMenuVO) session.getAttribute("order"); //
+	 * 이렇게 하면 지금. 저장 된건가??? 그치????아닌가.... // System.out.println(order); order를 확인해볼
+	 * 방법 어디 없나, 사람이 찾으려다 끊임없이 덧나 // 세션에 없어서인줄알고, GetMapping에 세션저장도 해보았지만.. 여기는 내 손을
+	 * 떠나고 있는듯하다...
+	 * 
+	 * // List<OrderMenuVO> orderList = (List<OrderMenuVO>)
+	 * session.getAttribute("order"); // 리스트로 불러오는것도 아닌가봐..... if(order == null) {
+	 * model.addAttribute("msg", "주문 정보를 찾을 수 없습니다. 다시 주문해주세요.");
+	 * model.addAttribute("url", "/review/list"); // 적절한 URL로 변경 return
+	 * "main/message"; }
+	 * 
+	 * int re_or_num = order.getOr_num();
+	 * 
+	 * boolean res = reviewService.insertReview(review);
+	 * 
+	 * if(res) { model.addAttribute("msg", "리뷰등록에 성공했습니다! 감사합니다");
+	 * model.addAttribute("url", "review/list"); }else { model.addAttribute("msg",
+	 * "리뷰등록에 실패했습니다. 다시 남겨주실래요?"); model.addAttribute("url", "review/insert"); }
+	 * return "/main/message"; }
+	 */
 }

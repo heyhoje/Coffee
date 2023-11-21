@@ -22,8 +22,8 @@
 			mn_num = #{mn_num}
 	</update>
 	<insert id="uInsertOption">
-		insert into option_value (ov_os_num)
-			values (#{ov_os_num})
+		insert into option_value (ov_value, ov_os_num)
+			values ("미정", #{ov_os_num})
 	</insert>
 	<select id="getOptionNum" resultType="int">
 		select os_optionNum from `option`
@@ -31,16 +31,16 @@
 		order by os_optionNum DESC limit 1
 	</select>
 	<insert id="uInsertOptionMoongchi">
-		insert into `option` (os_mn_num, os_optionNum)
-			values (#{mn_num}, #{os_optionNum})
+		insert into `option` (os_name, os_mn_num, os_optionNum)
+			values ("미정", #{mn_num}, #{os_optionNum})
 	</insert>
 	<select id="getNewOs_Num" resultType="int">
 		select os_num from `option`
 		order by os_num desc limit 1
 	</select>
 	<insert id="uInsertOptionMoongchi2">
-		insert into option_value (ov_os_num)
-			values (#{os_num})
+		insert into option_value (ov_value, ov_os_num)
+			values ("미정", #{os_num})
 	</insert>
 	<delete id="deleteOptionMoongchi">
 		delete from `option`
@@ -58,4 +58,39 @@
 		delete from option_value
 		where ov_num = #{ov_num}
 	</delete>
+	<update id="updateOption">
+		update `option`
+		set
+			os_name = #{os_name}
+		where
+			os_num = #{os_num} and os_mn_num = #{mn_num}
+	</update>
+	<update id="updateOptionValue">
+		update option_value
+		set
+			ov_value = #{ov_value},
+			ov_price = #{ov_price}
+		where
+			ov_num = #{ov_num}
+	</update>
+	<insert id="makeMenuMijung">
+		insert into `menu` (mn_name, mn_contents, mn_price, mn_st_num, mn_mc_num, mn_image)
+			values ("미정", "미정", "0", #{st_num}, "1", "0")
+	</insert>
+	<select id="getMijungMn_num" resultType="int">
+		select mn_num from `menu`
+		order by mn_num desc limit 1		
+	</select>
+	<insert id="makeOptionMijung">
+		insert into `option` (os_name, os_mn_num, os_optionNum)
+			values ("미정", #{mn_num}, 1)
+	</insert>
+	<insert id="makeOptionValueMijung">
+		insert into option_value (ov_value, ov_os_num, ov_price)
+			values ("미정", #{st_num}, 0)
+	</insert>
+	<select id="getMn_num" resultType="int">
+		select mn_num from `menu`
+		order by mn_num desc limit 1
+	</select>
 </mapper>

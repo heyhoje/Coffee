@@ -1,5 +1,6 @@
 package kr.kh.finalproject.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.pagination.PageMaker;
 import kr.kh.finalproject.service.BusinessService;
-import kr.kh.finalproject.service.ManagerService;
 import kr.kh.finalproject.service.MenuService;
 import kr.kh.finalproject.service.OptionService;
 import kr.kh.finalproject.service.StoreService;
@@ -34,20 +35,19 @@ import kr.kh.finalproject.vo.StoreVO;
 @Controller
 public class BusinessController {
 	
-	@Autowired
-
-	private BusinessService businessService;
 	
 	/** 매장등록( bmember + bstore ) */ 
-	@Autowired
-	private ManagerService managerService;
 	@Autowired
 	private StoreService storeService;
 
 	/** 메뉴/옵션 */
+	@Autowired
 	private MenuService menuService;
 	@Autowired
 	private OptionService optionService;
+
+	@Autowired
+	private BusinessService businessService;
 
 
 	// 사업자페이지 [홈]
@@ -122,11 +122,33 @@ public class BusinessController {
 	 
 	 // 메뉴 등록 
 	 @RequestMapping(value = "/business/realC/{a}", method = RequestMethod.GET)
-	 public String createMenu(@PathVariable("a") int st_num) {
-		 
-		 
+	 public String createMenu(@PathVariable("a") int st_num, Model model) {
+		 int mn_num = businessService.getMn_num();
+		 List<OptionVO> option = optionService.getOption(mn_num);
+		 MenuVO menu = menuService.getMenu(mn_num);
+
+		 model.addAttribute("menu", menu);
+		 model.addAttribute("option", option);
+
 		 return "/business/realC";
 	 }
+	 
+	 // 메뉴 삭제 Post
+	 @PostMapping("/business/realC")
+	 @ResponseBody
+	 public String makeMenu(@RequestParam("st_num") String st_num) {
+		 System.out.println(st_num);
+		 boolean makeMenuMijung = businessService.makeMenuMijung(st_num);
+		 int mn_num = businessService.getMijungMn_num();
+		 boolean makeOptionMijung = businessService.makeOptionMijung(mn_num);
+		 int os_num = businessService.getNewOs_Num();
+		 boolean makeOptionValueMijung = businessService.makeOptionValueMijung(os_num);
+		 
+		 return "/business/realCRUD";
+	 }
+	 
+	 
+	 
 	 
 	 // 메뉴 수정 
 	 @RequestMapping(value = "/business/realU/{a}/{mn_num}", method = RequestMethod.GET)
@@ -141,31 +163,71 @@ public class BusinessController {
 		 return "/business/realU";
 	 }
 	 
+	 
+	 
+	 
+	 
 	 // 메뉴 수정 Post
 	 @PostMapping("/business/realU")
 	 @ResponseBody
-	 public String updateMenu(HttpSession session, @RequestParam("mn_num") int mn_num,
-			 @RequestParam("mn_name") String mn_name, @RequestParam("mn_price") int mn_price, @RequestParam("mn_contents") String mn_contents,
-			 @RequestParam("os_name") String os_name, @RequestParam("optionLists") List<String> optionLists,
-			 @RequestParam("optionPriceLists") List<String> optionPriceList) {
+	 public String updateMenu(HttpSession session, @RequestParam("mn_num") String mn_num,
+	         @RequestParam("mn_name") String mn_name, @RequestParam("mn_price") String mn_price, @RequestParam("mn_contents") String mn_contents,
+	         @RequestParam("osNameList") String osNameList, @RequestParam("osNumList") String osNumList,
+	         @RequestParam("ovNumList") String ovNumList, @RequestParam("optionValueList") String optionValueList, 
+	         @RequestParam("optionPriceList") String optionPriceList) {
 		System.out.println(mn_num);
 		System.out.println(mn_name); 
 		System.out.println(mn_price); 
 		System.out.println(mn_contents); 
-		System.out.println(os_name); 
-		System.out.println(optionLists); 
-		System.out.println(optionPriceList); 
-		 
+		System.out.println(osNameList); 
+		System.out.println(optionValueList); 
+		System.out.println(optionPriceList);
+		System.out.println(osNumList);
+		System.out.println(ovNumList);
+		
+        // 문자열을 ','를 기준으로 나누어 리스트로 저장
+        List<String> os_name = splitAndToList(osNameList);
+        List<String> ov_value = splitAndToList(optionValueList);
+        List<String> ov_price = splitAndToList(optionPriceList);
+        List<String> os_num = splitAndToList(osNumList);
+        List<String> ov_num = splitAndToList(ovNumList);
+
+        // 각 리스트의 내용을 출력해보기
+        System.out.println("os_name: " + os_name);
+        System.out.println("ov_value: " + ov_value);
+        System.out.println("ov_price: " + ov_price);
+        System.out.println("os_num: " + os_num);
+        System.out.println("ov_num: " + ov_num);
+
 		boolean updateMenu = businessService.updateMenu(mn_num, mn_name, mn_price, mn_contents);
-		 
-		 
-		 
 
+	    // os_num을 기준으로 updateOption을 반복
+	    for (int i = 0; i < os_num.size(); i++) {
+	        // 해당 인덱스의 값을 가져와서 updateOption 호출
+	        String os_name_for_index = os_name.get(i);
 
-		 
+	        boolean updateOption = businessService.updateOption(os_num.get(i), os_name_for_index, mn_num);
+	    }
+	    // ov_num을 기준으로 updateOptionValue을 반복
+	    for (int i = 0; i < ov_num.size(); i++) {
+	    	// 해당 인덱스 값을 가져와서 updateOptionValue 호출
+	    	String ov_value_for_index = ov_value.get(i);
+	    	String ov_price_for_index = ov_price.get(i);
+	    	
+	    	boolean updateOptionValue = businessService.updateOptionValue(ov_num.get(i), ov_value_for_index, ov_price_for_index);
+	    }
 
-		 
 		 return "/business/realCRUD";
+	 }
+
+	 // 문자열을 ','를 기준으로 나누어 리스트로 저장하는 메소드
+	 private static List<String> splitAndToList(String input) {
+		 String[] array = input.split(",");
+		 List<String> list = new ArrayList<>();
+		 for (String value : array) {
+			 list.add(value);
+		 }
+		 return list;
 	 }
 	 
 	 // 메뉴 수정 옵션추가 Post
@@ -217,8 +279,8 @@ public class BusinessController {
 
 	// 사업자페이지 [주문확인]
 	@RequestMapping(value = "/business/order/{a}", method = RequestMethod.GET)
-	public String order(@PathVariable("a") int st_num) {
-
+	public String order(@PathVariable("a") int st_num, Model model) {
+		model.addAttribute("st_num", st_num);
 		return "/business/order";
 	}
 
@@ -252,7 +314,7 @@ public class BusinessController {
 	
 	// * edu 회원가입폼 제출 참고함.
 	@PostMapping("/business/plusinfo")
-	public String plusInfoPost(StoreVO store, Model model, HttpSession session) {
+	public String plusInfoPost(StoreVO store, MultipartFile[] files, Model model, HttpSession session) {
 		System.out.println(store); // 1. 내가 보내준 정보가 잘 넘어왔지 꼭! 먼저 확인! / 알려줘야하는지
 		
 		// 서비스에게 서버에 데이터 저장하라고 => 스토어 정보(+로그인한 아이디 buser에 있음)를 주면서 
@@ -261,7 +323,7 @@ public class BusinessController {
 		// 2. 일을 하려면 무엇이 필요한지
 		// 3. 끝났을때 알고싶은 정보가 무엇인지 = 정보를 추가했는지 못했는지만 알면 됨. 
 		ManagerVO buser = (ManagerVO)session.getAttribute("buser"); // 현재 로그인 중인 사업자 아이디가 storeDB에 필요함!!!
-		boolean res = storeService.plusInfo(store, buser); // 추가했다 못했다만 알면됨.
+		boolean res = storeService.plusInfo(store, buser, files); // 추가했다 못했다만 알면됨.
 		
 		if(res) {
 			model.addAttribute("msg", "매장등록이 신청되었습니다! 승인확인까지 기다려주세요.");

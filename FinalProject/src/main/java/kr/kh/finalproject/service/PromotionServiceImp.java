@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.kh.finalproject.dao.PromotionDAO;
-import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.vo.PromotionVO;
 
 @Service

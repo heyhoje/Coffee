@@ -1,5 +1,6 @@
 package kr.kh.finalproject.controller;
 
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.crypto.bcrypt.BCrypt;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,6 +60,11 @@ public class MemberController {
 		return "/main/message";
 	}
 
+	@RequestMapping(value="/member/mypage", method=RequestMethod.GET)
+	public String mypage() {
+		return "/member/mypage";
+	}
+	
 	@ResponseBody
 	@PostMapping("/member/id/check")
 	public boolean idCheck(@RequestParam("id") String id) {
@@ -222,11 +230,6 @@ public class MemberController {
 			session.setAttribute("user", member);
 		}
 		return "/main/message";
-	}
-
-	@RequestMapping(value = "/member/mypage", method = RequestMethod.GET)
-	public String mypage() {
-		return "/member/mypage";
 	}
 
 	// 비밀번호 변경
