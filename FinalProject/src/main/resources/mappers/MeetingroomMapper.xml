@@ -56,9 +56,8 @@
 			from meetingroom 
 				join store on room_st_num = st_num
 				join manager on st_bm_id = bm_id
-		<!-- where re_date = ${re_date} -->
-		order by room_num asc
-		limit #{cri.pageStart}, #{cri.perPageNum}
+			order by room_num asc
+			limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	<select id="selectMrTotalCount" resultType="int">
 		select count(*)

@@ -8,7 +8,7 @@ public interface BusinessDAO {
 
 	boolean deleteOption(@Param("menu_num")String menu_num);
 
-	int getSt_num(@Param("mn_num")int mn_num);
+	Integer getSt_num(@Param("mn_num")Integer mn_num);
 
 	boolean updateMenu(@Param("mn_num")String mn_num, @Param("mn_name")String mn_name, @Param("mn_price")String mn_price, @Param("mn_contents")String mn_contents);
 
