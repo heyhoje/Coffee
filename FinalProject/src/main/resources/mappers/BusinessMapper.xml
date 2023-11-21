@@ -73,4 +73,24 @@
 		where
 			ov_num = #{ov_num}
 	</update>
+	<insert id="makeMenuMijung">
+		insert into `menu` (mn_name, mn_contents, mn_price, mn_st_num, mn_mc_num, mn_image)
+			values ("미정", "미정", "0", #{st_num}, "1", "0")
+	</insert>
+	<select id="getMijungMn_num" resultType="int">
+		select mn_num from `menu`
+		order by mn_num desc limit 1		
+	</select>
+	<insert id="makeOptionMijung">
+		insert into `option` (os_name, os_mn_num, os_optionNum)
+			values ("미정", #{mn_num}, 1)
+	</insert>
+	<insert id="makeOptionValueMijung">
+		insert into option_value (ov_value, ov_os_num, ov_price)
+			values ("미정", #{st_num}, 0)
+	</insert>
+	<select id="getMn_num" resultType="int">
+		select mn_num from `menu`
+		order by mn_num desc limit 1
+	</select>
 </mapper>

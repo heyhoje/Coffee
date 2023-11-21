@@ -17,10 +17,12 @@ public class ManagerVO {
    private String bm_store_name; //매장명
    private String bm_contents; // 매장정보
    
+   private String bm_post; //우편번호
    private String bm_address; // 매장 주소
+   private String bm_address2;// 매장 상세주소
    private Double bm_geocoding_lati;
    private Double bm_geocoding_longi;
-   
+   private String bm_image;
    // bm_contents에 쓰도록 유도
    private int bm_seat; // 매장 내 좌석
    private String bm_parking; // 주차 가능 여부;
@@ -34,5 +36,6 @@ public class ManagerVO {
    
    // 회원 승인 상태
    private int bm_approval;
-   
+   private int st_num;
+
 }

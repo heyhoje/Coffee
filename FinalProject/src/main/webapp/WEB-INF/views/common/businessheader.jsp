@@ -57,7 +57,7 @@
 		<div class="container-fluid">
 			<nav class="navbar navbar-expand-lg navbar">
 				<div class="logo">
-					<a href="<c:url value='/business/home'/>"><img
+					<a href="<c:url value='/'/>"><img
 						src="<c:url value='/resources/images/로고.png'/>"></a>
 				</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -76,12 +76,12 @@
 							 href="<c:url value='/business/menu'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">메뉴관리</a></li>
 						<li class="nav-item"><a class="nav-link"
-							 href="<c:url value='/business/order'/>"
+							 href="<c:url value='/business/order/${st_num}'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">주문확인</a></li>
 						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/1/sales'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">판매정보조회</a></li>
 						<li class="nav-item"><a class="nav-link"
-							style="border-radius:10px; border: 1px solid white; margin-right: 8px; color: white; font-family: 'BM HANNA Pro', sans-serif; float: right;">${buser.bm_manager}님 어서오세요</a></li>
+							href="<c:url value='/manager/mypageHome'/>"style="border-radius:10px; border: 1px solid white; margin-right: 8px; color: white; font-family: 'BM HANNA Pro', sans-serif; float: right;">${buser.bm_manager}님 어서오세요</a></li>
 						<li class="form-group" id="logoutButton2"><input
 							style="font-size:20px;" type="submit" value="로그아웃" class="btn float-right logout_btn"
 							data-toggle="modal" data-target="#logoutModal2"></li>

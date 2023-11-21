@@ -3,15 +3,12 @@ package kr.kh.finalproject.service;
 
 import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 import kr.kh.finalproject.dao.MemberDAO;
+import kr.kh.finalproject.vo.InterestVO;
 import kr.kh.finalproject.vo.KakaoVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.UserVO;
@@ -134,11 +131,12 @@ public class MemberServiceImp implements MemberService {
 	    return memberDao.getMemberByKakaoId(kakaoId);
 	}
 
-
+	//아이디찾기
 	@Override
 	public MemberVO memberIdSearch(MemberVO memberSearch) {
 		return memberDao.memberIdSearch(memberSearch);
 	}
+	//비밀번호찾기
 	@Override
 	public int memberPwdCheck(MemberVO member) {
 		return memberDao.memberPwdCheck(member);
@@ -147,5 +145,31 @@ public class MemberServiceImp implements MemberService {
 	public void passwordUpdate(MemberVO member) {
 		memberDao.passwordUpdate(member);
 	}
-
+	//비밀번호변경
+	@Override
+	public void pwUpdate(String me_user_id, String enpassword)throws Exception {
+		memberDao.pwUpdate(me_user_id, enpassword);
+		
+	}
+	@Override
+	public String pwCheck(String me_pw) throws Exception {
+		return memberDao.pwCheck(me_pw);
+	}
+	@Override
+	public void deleteMember(String me_user_id) throws Exception {
+		memberDao.deleteMember(me_user_id);
+	}
+	@Override
+	public void deleteUser(String me_user_id) throws Exception {
+		memberDao.deleteUser(me_user_id);
+	}
+	@Override
+	public void infoUpdate(MemberVO member) throws Exception {
+		memberDao.infoUpdate(member);
+	}
+	@Override
+	public void interestUpdate(InterestVO interest) throws Exception {
+		memberDao.interestUpdate(interest);
+	}
+	
 }

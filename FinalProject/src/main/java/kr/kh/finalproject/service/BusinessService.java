@@ -1,5 +1,9 @@
 package kr.kh.finalproject.service;
 
+
+import org.springframework.stereotype.Service;
+
+
 public interface BusinessService {
 
 	boolean deleteMenu(String menu_num);
@@ -31,6 +35,16 @@ public interface BusinessService {
 	boolean updateOption(String os_num, String os_name, String mn_num);
 
 	boolean updateOptionValue(String ov_num, String ov_value, String ov_price);
+
+	boolean makeMenuMijung(String st_num);
+
+	int getMijungMn_num();
+
+	boolean makeOptionMijung(int mn_num);
+
+	boolean makeOptionValueMijung(int os_num);
+
+	int getMn_num();
 
 
 

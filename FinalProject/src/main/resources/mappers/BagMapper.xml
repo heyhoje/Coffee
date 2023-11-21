@@ -7,14 +7,14 @@
 	    <id property="oc_num" column="oc_num" />
 	    <result property="oc_selected" column="oc_selected" />
 	    <result property="oc_selected_price" column="oc_selected_price" />
-	    <association property="menu" javaType="kr.kh.finalproject.vo.MenuVO">
+	    <association property="menu" javaType="kr.kh.finalproject.vo.Menu2VO">
 	        <result property="mn_num" column="mn_num" />
 	        <result property="mn_name" column="mn_name" />
 	        <result property="mn_contents" column="mn_contents" />
 	        <result property="mn_price" column="mn_price" />
 	        <result property="mn_st_num" column="mn_st_num" />
 	        <result property="mn_mc_num" column="mn_mc_num" />
-	        <association property="image" javaType="kr.kh.finalproject.vo.ImageVO">
+	        <association property="image" javaType="kr.kh.finalproject.vo.Image2VO">
 	            <result property="im_num" column="im_num" />
 	            <result property="im_name" column="im_name" />
 	            <result property="im_ori_name" column="im_ori_name" />
@@ -56,7 +56,7 @@
   	<delete id="deleteItem" parameterType="int">
   		delete from `option_choice` where oc_num = #{oc_num}
   	</delete>
-  	<select id="getShopInfo" resultType="kr.kh.finalproject.vo.ShopVO">
+  	<select id="getShopInfo" resultType="kr.kh.finalproject.vo.ManagerVO">
   		select
   			bm_id, bm_pw, bm_num, bm_phone, bm_contents, bm_address, bm_geocoding_lati, bm_geocoding_longi, bm_manager, bm_store_name, bm_image, bm_approval, st_num
 		from 
@@ -68,7 +68,7 @@
 		left join 
 			`store` on mn_st_num = st_num
 		left join
-			`business_member` on st_bm_id = bm_id
+			`manager`on st_bm_id = bm_id
 		where 
 			sb_me_user_id = "carpcarp"
 	</select>
@@ -125,7 +125,7 @@
   		left join
   			shop_basket on oc_sb_num = sb_num
   		where
-  			sb_me_user_id = "carpcarp"			 
+  			sb_me_user_id = "carpcarp"
   	</select>
   	<select id="anotherShop" resultType="int">
   		select distinct

@@ -22,7 +22,7 @@
 			<div class="row justify-content-center">
 				<div class="col-md-6"
 					style="height: 440px; border: 1px solid black; border-radius: 10px;">
-					<h2 class="text-center mb-4">아이디 찾기</h2>
+					<h2 class="text-center mb-4">일반회원 아이디찾기</h2>
 					<div class="form-group">
 						<input type="text" class="form-control form-control-user"
 							id="me_name" name="me_name" placeholder="가입된 계정의 이름을 입력하세요.">
@@ -38,13 +38,13 @@
 					<hr>
 					<a class="btn btn-primary btn-user btn-block"
 						style="border: 1px solid black; background-color: floralwhite; color: black;"
-						href="/member/search_pw">비밀번호 찾기</a> <a
+						href="/member/search_pw">비밀번호 찾기 바로가기</a> <a
 						class="btn btn-primary btn-user btn-block"
 						style="border: 1px solid black; background-color: floralwhite; color: black;"
-						href="/member/signup2">회원가입</a> <a
+						href="/member/signup2">회원가입 바로가기</a> <a
 						class="btn btn-primary btn-user btn-block"
 						style="border: 1px solid black; background-color: floralwhite; color: black;"
-						href="/">로그인</a>
+						href="/">로그인 바로가기</a>
 				</div>
 			</div>
 		</div>

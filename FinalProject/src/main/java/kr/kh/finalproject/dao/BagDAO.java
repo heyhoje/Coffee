@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import kr.kh.finalproject.vo.ManagerVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.Option_ChoiceVO;
-import kr.kh.finalproject.vo.ShopVO;
 import kr.kh.finalproject.vo.Shop_BasketVO;
 
 public interface BagDAO {
@@ -23,7 +23,7 @@ public interface BagDAO {
 
 	boolean deleteItem(@Param("oc_num")int oc_num);
 
-	List<ShopVO> getShopInfo(@Param("user")MemberVO user);
+	List<ManagerVO> getShopInfo(@Param("user")MemberVO user);
 
 	boolean givePoint(@Param("givePoint")int givdPoint, @Param("user")String user);
 

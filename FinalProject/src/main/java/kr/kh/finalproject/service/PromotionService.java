@@ -2,9 +2,7 @@ package kr.kh.finalproject.service;
 
 import java.util.List;
 
-import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.vo.PromotionVO;
-import kr.kh.finalproject.vo.ReviewVO;
 
 public interface PromotionService {
 

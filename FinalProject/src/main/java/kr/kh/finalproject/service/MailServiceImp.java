@@ -1,12 +1,13 @@
 package kr.kh.finalproject.service;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Service;
-
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -16,13 +17,13 @@ public class MailServiceImp implements MailService{
     private static final String senderEmail= "2hae9999@gmail.com";
     private static int number;
     
-	private MimeMessage CreateMail(String mail) {
+	private MimeMessage CreateMail(String me_email) {
 		createNumber();
         MimeMessage message = javaMailSender.createMimeMessage();
 
         try {
             message.setFrom(new InternetAddress(senderEmail));
-            message.setRecipients(MimeMessage.RecipientType.TO, mail);
+            message.setRecipients(MimeMessage.RecipientType.TO, me_email);
             message.setSubject("이메일 인증");
             String body = "";
             body += "<h3>" + "요청하신 인증 번호입니다." + "</h3>";
@@ -44,9 +45,9 @@ public class MailServiceImp implements MailService{
 
 
 	@Override
-	public int sendMail(String mail){
+	public int sendMail(String me_email){
 		
-		MimeMessage message = CreateMail(mail);
+		MimeMessage message = CreateMail(me_email);
 		
 		javaMailSender.send(message);
 		

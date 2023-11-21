@@ -7,12 +7,13 @@
 	<meta charset="UTF-8">
 	<title>메뉴상세 주문</title>
 	<!-- style css -->
-    <link rel="stylesheet" href="<c:url value='/resources/css/detail.css'/>">
+    <link rel="stylesheet" href="<c:url value='/resources/css/realU.css'/>">
 
 </head>
 
 <body>
 	<h2 class="menudetail">메뉴상세</h2>
+	
 	<div class="container-box">
 		<div class="image-layout">
 		<div class="image-box">
@@ -39,14 +40,14 @@
 				                           <label>
 				                           <input type="text" name="optionvalue${optionItem.os_num}" value="${optionValue.ov_value}">
 				                               <input type="number" name="optionprice${optionItem.os_num}" value="${optionValue.ov_price}"></label>
-				                               <button class="btn-outline-warning" onclick="killOptionValue(${optionValue.ov_num})">해당 옵션 삭제</button>
+				                               <button class="btn-outline-warning" onclick="openPopup(${optionValue.ov_num})">해당 옵션 삭제</button>
 				                               <br>
 				                       </c:when>
 				                   </c:choose>
 				               </c:forEach>
 				            </c:forEach>
 				            <button class="btn-outline-warning" onclick="optionChooga(${optionItem.os_num})">옵션값 추가</button>
-				            <button class="btn-outline-warning" onclick="killOption(${optionItem.os_optionNum})">해당 옵션 삭제</button>
+				            <button class="btn-outline-warning" onclick="openPopup2(${optionValue.ov_num})">해당 옵션 삭제</button>
 				            <br><br>
 				        </th>
 				    </c:forEach>
@@ -59,6 +60,20 @@
 		</div>
 		</div>
 	</div>
+				<div id="overlay">
+					  <div id="popup">
+					    <p>정말 삭제하시겠습니까?</p>
+					    <button id="btnYes" onclick="killOptionValue(${optionValue.ov_num})">예</button>
+					    <button id="btnNo" onclick="handleResponse('아니오')">아니오</button>
+					  </div>
+				</div>
+				<div id="overlay2">
+					  <div id="popup2">
+					    <p>정말 삭제하시겠습니까?</p>
+					    <button id="btnYes" onclick="killOption(${optionItem.os_optionNum})">예</button>
+					    <button id="btnNo" onclick="handleResponse2('아니오')">아니오</button>
+					  </div>
+				</div>
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>	
 <script type="text/javascript">
@@ -70,6 +85,10 @@ $(document).ready(function() {
         var osNameList = [];
         var osNumList = [];
         var ovNumList = [];
+        var mn_num = ${menu.mn_num};
+        var mn_name = $('input[name="mn_name"]').val();
+        var mn_price = $('input[name="mn_price"]').val();
+        var mn_contents = $('input[name="mn_contents"]').val();
 
 
         // Iterate over option elements
@@ -96,10 +115,10 @@ $(document).ready(function() {
 
         
         var data = {
-                mn_num: "${menu.mn_num}",
-                mn_name: "${menu.mn_name}",
-                mn_price: "${menu.mn_price}",
-                mn_contents: "${menu.mn_contents}",
+                mn_num: mn_num,
+                mn_name: mn_name,
+                mn_price: mn_price,
+                mn_contents: mn_contents,
                 osNameList: osNameList.join(','), // 배열을 쉼표로 구분된 문자열로 변환
                 osNumList: osNumList.join(','),
                 ovNumList: ovNumList.join(','),
@@ -199,7 +218,27 @@ function killOptionValue(num) {
         }
     });
 }
+function openPopup(${optionValue.ov_num}) {
+    document.getElementById('overlay').style.display = 'flex';
+	}
+function openPopup2(${optionValue.ov_price}) {
+    document.getElementById('overlay2').style.display = 'flex';
+	}
 
+function closePopup() {
+    document.getElementById('overlay').style.display = 'none';
+}
+
+function closePopup2() {
+    document.getElementById('overlay2').style.display = 'none';
+}
+
+function handleResponse(response) {
+    closePopup();
+}
+function handleResponse2(response) {
+    closePopup2();
+}
 
 </script>
 </body>

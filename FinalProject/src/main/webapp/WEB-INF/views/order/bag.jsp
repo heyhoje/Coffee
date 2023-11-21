@@ -94,10 +94,10 @@
         	<div class="cart-bigorder-leftbox">
             	<a class="cart-bigorder-left" href="<c:url value='/store/menu/1/1'/>">쇼핑 계속하기</a>
             </div>
-            <button class="cart__bigorderbtn right" onclick="openPopup2()">주문하기</button>
+            <button class="cart__bigorderbtn right" onclick="requestPay()">주문하기</button>
+            <!--onclick="openPopup2()"-->
         </div>
-     
-    
+     </section>
     
 <script type="text/javascript">
 
@@ -105,9 +105,10 @@ var menuPrices = [];
 var optionPrices = [];
 var quantities = [];
 var killAme = [];
-var user = "carpcarp"; // ${user}
+var user = "";
 var menuNameList = [];
 var menuNumList = [];
+var selectOptionList = [];
 var IMP = window.IMP; 
 IMP.init("imp14674302"); 
 var today = new Date();   
@@ -203,8 +204,9 @@ function handleResponse(response) {
 function handleResponse2(response) {
     closePopup2();
 }
-
-
+function redirectToMainPage(){
+	window.location.href = "/order/confirm";
+}
 
 function requestPay() {
 	var usePoint = 0;
@@ -251,7 +253,7 @@ function requestPay() {
 	}
 }
 
-function allInOneAfterPay(totalPrice, usePoint) {
+function allInOneAfterPay(totalPrice, usePoint, user) {
 	
 	var point = totalPrice - usePoint;
     var menuName = menuNameList.join(',');
@@ -271,12 +273,14 @@ function allInOneAfterPay(totalPrice, usePoint) {
         data: {
             point: point,
             usePoint : usePoint,
-            user: user,
+            user: "carpcarp",
             menuName: menuName,
             menuNum: menuNum
         },
         success: function (response) {
         	alert('주문이 완료되었습니다.');
+        		 redirectToMainPage();
+        		 PrintAfterPay();
         },
         error: function (error) {
             console.error('Error in allInOneAfterPay:', error);
@@ -284,6 +288,33 @@ function allInOneAfterPay(totalPrice, usePoint) {
         }
     });
 }
+function PrintAfterPay() {
+	
+	var selectOption = selectOptionList.join(',');
+    var menuName = menuNameList.join(',');
+
+	console.log({
+        selectOption: selectOption,
+        menuName: menuName,
+    });
+	
+    $.ajax({
+        type: 'POST',
+        url: '<c:url value="/call/order"/>',
+        data: {
+        	  selectOption: selectOption,
+              menuName: menuName
+              
+        },
+        success : function(data){
+        	
+        },
+        error : function(a){
+        	console.log(a)
+        }
+    });
+}
+
 
 </script>
 

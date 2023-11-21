@@ -179,10 +179,10 @@
 									<a href="<c:url value='/member/signup2'/>">회원가입</a>
 								</div>
 								<div class="d-flex justify-content-center">
-									<a href="<c:url value='/member/search_id'/>">아이디찾기</a>
+									<a href="<c:url value='/manager/search_id'/>">아이디찾기</a>
 								</div>
 								<div class="d-flex justify-content-center">
-									<a href="<c:url value='/member/search_pw'/>">비밀번호찾기</a>
+									<a href="<c:url value='/manager/search_pw'/>">비밀번호찾기</a>
 								</div>
 							</div>
 						</form>

@@ -53,41 +53,48 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $('#toTheBag').click(function () {
-          // getter
-          var optionVal1 = $('input[name="option1"]:checked').val();
-          var optionVal2 = $('input[name="option2"]:checked').val();
-          var optionVal3 = $('input[name="option3"]:checked').val();
-          var optionVal4 = $('input[name="option4"]:checked').val();
-          var optionAll = optionVal1 + ", " + optionVal2 + ", " + optionVal3 + ", " + optionVal4;
-          alert(optionAll);
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#toTheBag').click(function () {
+      var optionVal = [];
+      var optionALL = '';
 
-          // Create an object to send via AJAX
-          var data = {
-            optionAll: optionAll,
-            menu_name: "${menu.mn_name}",
-            menu_price: "${menu.mn_price}",
-            menu_num: "${menu.mn_num}"
-          };
-
-          // Send the data to /order/bag using AJAX
-          $.ajax({
-            type: "POST",
-            url: "/order/bag1",
-            data: data,
-            success: function (response) {
-              // Handle the response from the server if needed
-              alert("장바구니에 담겼습니다!");
-            },
-            error: function (error) {
-              // Handle any errors that occur during the AJAX request
-              alert("무언가 잘못 되어 장바구니에 안담겼을지도?");
-            }
-          });
-        });
+      // Loop through each radio button with name starting with "option"
+      $('input[type=radio][name^="option"]').each(function () {
+        // Check if the radio button is checked
+        if ($(this).prop('checked')) {
+          // Get the value and add it to the optionVal array
+          optionVal.push($(this).val());
+        }
       });
-    </script>
+
+      // Concatenate the selected values with ","
+      optionALL = optionVal.join(',');
+
+      // Create an object to send via AJAX
+      var data = {
+        optionAll: optionALL,
+        menu_name: "${menu.mn_name}",
+        menu_price: "${menu.mn_price}",
+        menu_num: "${menu.mn_num}"
+      };
+
+      // Send the data to /order/bag using AJAX
+      $.ajax({
+        type: "POST",
+        url: "/order/bag1",
+        data: data,
+        success: function (response) {
+          // Handle the response from the server if needed
+          alert("장바구니에 담겼습니다!");
+        },
+        error: function (error) {
+          // Handle any errors that occur during the AJAX request
+          alert("무언가 잘못 되어 장바구니에 안담겼을지도?");
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>

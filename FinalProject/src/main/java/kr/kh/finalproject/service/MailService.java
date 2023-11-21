@@ -5,6 +5,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface MailService {
 
-	int sendMail(String mail);
+	int sendMail(String me_email);
 
 }

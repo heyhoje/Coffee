@@ -17,6 +17,7 @@
 
 <!-- jQuery 라이브러리 추가 -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c4efc38a6ad2e481f05e226066782e8c&libraries=services"></script>
 
 
 </head>
@@ -33,7 +34,7 @@
 					aria-controls="register" aria-selected="false">매니저 회원가입</a></li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane" id="login" role="tabpanel"
+				<div class="tab-pane show active" id="login" role="tabpanel"
 					aria-labelledby="login-tab" >
 					<form action="<c:url value='/member/signup2'/>" method="post">
 						<div class="form-row">
@@ -129,7 +130,7 @@
 						</div>
 					</form>
 				</div>
-				<div class="tab-pane fade show active" id="register" role="tabpanel"
+				<div class="tab-pane hide" id="register" role="tabpanel"
 					aria-labelledby="register-tab">
 					<form action="<c:url value='/manager/signup2'/>" method="post">
 						<div class="form-row">
@@ -189,7 +190,7 @@
 				                    <label for="postcodify_search_button">우편번호</label>
 				                </div><br>
 				                <div class="form-group col-md-12">
-				                    <input type="text" name="" class="form-control postcodify_postcode5" value="${address[0] }">
+				                    <input type="text" name="bm_post" class="form-control postcodify_postcode5" value="${address[0] }">
 				                </div>
 				                <div class="form-group col-md-12">
 				                    <button type="button" class="btn btn-primary" id="postcodify_search_button2">검색</button>
@@ -198,10 +199,10 @@
 				
 				            <div class="form-row" style="width:100%">
 				                <div class="form-group col-md-12">
-				                    <label for="address1">도로명 주소</label>
+				                    <label  for="address1">도로명 주소</label>
 				                </div><br>
 				                <div class="form-group col-md-12">
-				                    <input type="text" class="form-control postcodify_address" name="bm_address" id="address1"  value="${address[1] }">
+				                    <input type="text" onchange="searchPlaces()" class="form-control postcodify_address" name="bm_address" id="address1"  value="${address[1] }">
 				                </div>
 				            </div>
 				
@@ -213,7 +214,11 @@
 				                    <input type="text" class="form-control postcodify_details" name="bm_address2" id="address2"  value="${address[2] }">
 				                </div>
 				            </div>
-						
+				            
+				        <!-- 매니저 등록 양식 내부에 -->
+						<input type="hidden" id="manager_latitude" name="bm_geocoding_lati" value="">
+						<input type="hidden" id="manager_longitude" name="bm_geocoding_longi" value="">
+
 						<input type="hidden" name="user_aorb" value="매니저">
 						<div class="form-group form-row">
 							<div class="col-md-12">
@@ -242,13 +247,14 @@
 					</div>
 				</div>
 			</div>
-	<script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c4efc38a6ad2e481f05e226066782e8c&libraries=services"></script>		
+<script>
     $(document).ready(function(){
         $("#login-tab").click(function(){
         	
             // 모든 탭을 숨김
-            $("#register").hide();
             $("#login").show();
+            $("#register").hide();
           
         });
     });
@@ -262,6 +268,59 @@
 
         });
     });
+
+
+    // 장소 검색 객체를 생성합니다
+    var ps = new kakao.maps.services.Places(); 
+    ps.keywordSearch('이태원 맛집', placesSearchCB); 
+
+    //키워드 검색을 요청하는 함수입니다
+    function searchPlaces() {
+
+        var keyword = document.getElementById('address1').value;
+
+        if (!keyword.replace(/^\s+|\s+$/g, '')) {
+            alert('키워드를 입력해주세요!');
+            return false;
+        }
+
+        // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+        ps.keywordSearch( keyword, placesSearchCB); 
+    }
+
+
+
+    // 키워드 검색 완료 시 호출되는 콜백함수 입니다
+    function placesSearchCB (data, status, pagination) {
+        if (status === kakao.maps.services.Status.OK) {
+
+            // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+            // LatLngBounds 객체에 좌표를 추가합니다
+            var bounds = new kakao.maps.LatLngBounds();
+
+            for (var i=0; i<data.length; i++) {
+                displayMarker(data[0]);    
+            }       
+         
+        } 
+       
+        	
+    }
+
+    // 지도에 마커를 표시하는 함수입니다
+    function displayMarker(place) {
+        
+        // 마커를 생성하고 지도에 표시합니다
+        var marker = new kakao.maps.Marker({
+            position: new kakao.maps.LatLng(place.y, place.x)
+        });
+        document.getElementById('manager_latitude').value = marker.getPosition().getLat();
+        document.getElementById('manager_longitude').value = marker.getPosition().getLng();
+    }
+    
+    
+    
+    
 </script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>

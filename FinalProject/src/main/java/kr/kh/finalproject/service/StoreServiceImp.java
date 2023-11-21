@@ -47,7 +47,7 @@ public class StoreServiceImp implements StoreService{
 		// 첨부파일 추가
 		uploadFiles(files, store.getSt_num());
 		
-		store.setSt_bm_id(buser.getBm_id()); // bm_id값은 set으로 st_bm_id에 값 넣으면, buser 안넘겨도됨..ㅜㅠㅠ
+		store.setSt_bm_num(buser.getBm_id()); // bm_id값은 set으로 st_bm_id에 값 넣으면, buser 안넘겨도됨..ㅜㅠㅠ
 		return storeDao.insertPlusInfo(store);
 	}
 
@@ -72,9 +72,13 @@ public class StoreServiceImp implements StoreService{
 				storeDao.insertImage(imageVo);
 				
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public StoreVO getStore(String bm_num) {
+		return null;
 	}
 }

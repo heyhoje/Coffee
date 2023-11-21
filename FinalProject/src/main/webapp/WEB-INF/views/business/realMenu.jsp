@@ -68,7 +68,7 @@
 			</c:if>
 		</ul>
 		<ul>
-			<a class="page-link" href="<c:url value='/business/realC/${st_num}'/>">메뉴 등록하기</a>
+			<a class="page-link" onclick="makeMenu()" href="<c:url value='/business/realC/${st_num}'/>">메뉴 등록하기</a>
 		</ul>
 	</div>
 
@@ -110,6 +110,28 @@
 			location.href = url.pathname + '?' + searchParams.toString();
 			//window.history.pushState({}, '', newUrl);
 		}
+		
+		function makeMenu() {
+			var data = {
+					st_num : ${st_num},
+			};
+
+			$.ajax({
+		        type: "POST",
+		        url: "/business/realC",
+		        data: data,
+		        success: function (response) {
+		            // 서버 응답에 대한 처리가 필요하면 여기에서 수행
+		            alert("메뉴 칸이 생성되었습니다 데이터를 입력해주세요");
+		        },
+		        error: function (error) {
+		            // AJAX 요청 중에 발생한 오류를 처리
+		            alert("아무튼 오류입니다.");
+		        }
+		    });
+		}
+		
+		
 	</script>
 	
 </body>
