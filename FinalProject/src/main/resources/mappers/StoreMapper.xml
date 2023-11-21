@@ -53,7 +53,7 @@
         FROM 
         	store
         join
-        	manager on store.st_bm_num = manager.bm_num
+        	manager on store.st_bm_id = manager.bm_id
         	 
 	</select>
 </mapper>
