@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+.menudetail{
+	margin: 40px 0; text-align: center;
+	font-family:'BM HANNA Pro', sans-serif;
+	
+	}
+.container-box{
+	max-width: 100%; margin: 0 auto;
+	display:block; flex-direction:row; flex-wrap: wrap; justify-content:center; 
+}
+.image-layout{
+	justify-content:center;
+	display:flex;
+}
+.image-box{
+	justify-content:center;
+	display:flex;
+	width:60%;
+	
+}
+.image-box .content-box{
+	padding: 20px;
+}
+@media (max-width: 600px) {
+   .box {
+        width: 100%;
+	    }
+	}
+hr{
+	width:100%%;	
+}
+.content-layout{
+	width:100%;
+	justify-content:center;
+	display:flex;
+}
+.content-box{
+	width:60%;
+	padding-bottom:100px;
+	
+}
+.content-box .menu-title{
+	text-align:center;
+	margin-top:20px;	
+	font-family:'BM HANNA Pro', sans-serif;
+	
+}
+.content-box .menu-price{
+	text-align:center;
+	font-family:'BM HANNA Pro', sans-serif;
+}
+.content-box .menucontent{
+	text-align:center;
+	font-family:'BM HANNA Pro', sans-serif;
+	color:slategrey;
+	margin-bottom:30px;
+}
+h4{
+	font-family:'BM HANNA Pro', sans-serif;
+}
+.detailbutton-box{
+	justify-content:center;
+	display:inline-flex;
+	
+}
+.detailbutton-box #intoTheBag{
+	font-weight:400;
+	text-align:center;
+	border:1px solid #ffc107;
+	font-family:'BM HANNA Pro', sans-serif;
+	border-radius:0.3rem;
+	margin-right:30px;
+	font-size:15px;
+	padding:5px;
+}
+.detailbutton-box #toTheBag{
+	font-weight:400;
+	text-align:center;
+	border:1px solid #ffc107;
+	font-family:'BM HANNA Pro', sans-serif;
+	border-radius:0.3rem;
+	font-size:15px;
+	padding:5px;
+	margin-left:15px;
+}
+
+
+#overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+}
+#popup{
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      text-align: center;
+      width:20%;
+      height:20%;
+      line-height:normal;
+    }
+#overlay2 {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+}
+#popup2{
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      text-align: center;
+      width:20%;
+      height:20%;
+      line-height:normal;
+    }
+#btnYes, #btnNo {
+      margin: 0 10px;
+      padding: 10px;
+      cursor: pointer;
+      margin-top:50px;
+}	

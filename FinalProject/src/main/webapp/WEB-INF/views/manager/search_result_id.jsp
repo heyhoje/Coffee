@@ -24,11 +24,11 @@
 						<h1 style="margin-top: 10px" class="h4 text-gray-900 mb-2">아이디 확인</h1>
 						<br>
 						<c:choose>
-							<c:when test="${empty member}">
+							<c:when test="${empty manager}">
 								<p class="mb-4">조회결과가 없습니다.</p>
 							</c:when>
 							<c:otherwise>
-								<p class="mb-4">${member.me_user_id}</p>
+								<p class="mb-4">${buser.bm_id}</p>
 							</c:otherwise>
 						</c:choose>
 						<br>
@@ -36,10 +36,10 @@
 					<hr>
 					<a class="btn btn-primary btn-user btn-block"
 						style="border: 1px solid black; background-color: floralwhite; color: black;"
-						href="/member/search_id">아이디 찾기 바로가기</a>
+						href="/manager/search_id">아이디 찾기 바로가기</a>
 						<a class="btn btn-primary btn-user btn-block"
 						style="border: 1px solid black; background-color: floralwhite; color: black;"
-						href="/member/search_pw">비밀번호 찾기 바로가기</a>
+						href="/manager/search_pw">비밀번호 찾기 바로가기</a>
 					<a class="btn btn-primary btn-user btn-block"
 						style="border: 1px solid black; background-color: floralwhite; color: black;"
 						href="/member/signup2">회원가입 바로가기</a> <a

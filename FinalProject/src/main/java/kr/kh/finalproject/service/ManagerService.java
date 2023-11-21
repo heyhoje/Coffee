@@ -14,7 +14,7 @@ public interface ManagerService {
 	ManagerVO login(ManagerVO manager);
 
 	// 사업자회원 - 자동 로그인 
-	void updateBMemberSession(ManagerVO user);
+	void updateBMemberSession(ManagerVO buser);
 
 	ManagerVO getBMemberBySessionId(String value);
 
@@ -25,6 +25,20 @@ public interface ManagerService {
 	
 	// 승인&거절
 	boolean updateManager(ManagerVO manager);
+
+	ManagerVO managerIdSearch(ManagerVO manager);
+
+	String pwCheck(String bm_pw)throws Exception;
+
+	void pwUpdate(String bm_id, String enpassword)throws Exception;
+
+	int managerPwdCheck(ManagerVO manager)throws Exception;
+
+	void passwordUpdate(ManagerVO manager)throws Exception;
+
+	void deleteManager(String bm_id)throws Exception;
+
+	void infoUpdate(ManagerVO manager)throws Exception;
 
 
 

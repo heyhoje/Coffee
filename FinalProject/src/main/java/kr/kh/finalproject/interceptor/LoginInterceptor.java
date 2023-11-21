@@ -79,15 +79,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			
 		}else if(type.equals("b")) {//사업자 로그인
 			// 회원 정보가 있는지 확인 => 컨트롤러가 model에 다음 user2 정보가 있는지 확인
-			ManagerVO user = (ManagerVO) modelAndView.getModel().get("buser");
-			if (user == null) {
+			ManagerVO buser = (ManagerVO) modelAndView.getModel().get("buser");
+			if (buser == null) {
 				return;
 			}
 			// (!null) 있으면 세션에 저장, 저장한 이름을 잘 기억 => 곳곳에서 사용될 예정
-			request.getSession().setAttribute("buser", user);
+			request.getSession().setAttribute("buser", buser);
 			
 			// 자동로그인 체크를 안했으면
-			if(!user.isAutoLogin()) {
+			if(!buser.isAutoLogin()) {
 				return;
 			}
 			// 했으면 세션아이디 저장? 생성?
@@ -106,11 +106,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			
 			// DB 회원 정보에 쿠키 정보를 전달
 			Date date = new Date(System.currentTimeMillis() + time * 1000);
-			user.setBm_session_id(bmSessionId);
-			user.setBm_session_limit(date);
+			buser.setBm_session_id(bmSessionId);
+			buser.setBm_session_limit(date);
 			
 			// 서비스에 업데이트 일시킴
-			managerService.updateBMemberSession(user);
+			managerService.updateBMemberSession(buser);
 			
 		}else if (type.equals("k")) { // 카카오 로그인인 경우 (카카오로그인은 자동로그인을 지원하지 않는다.라면 자동로그인 작업 안해도됨)
 			MemberVO user = (MemberVO) modelAndView.getModel().get("user");

@@ -190,7 +190,7 @@
 				                    <label for="postcodify_search_button">우편번호</label>
 				                </div><br>
 				                <div class="form-group col-md-12">
-				                    <input type="text" name="" class="form-control postcodify_postcode5" value="${address[0] }">
+				                    <input type="text" name="bm_post" class="form-control postcodify_postcode5" value="${address[0] }">
 				                </div>
 				                <div class="form-group col-md-12">
 				                    <button type="button" class="btn btn-primary" id="postcodify_search_button2">검색</button>
