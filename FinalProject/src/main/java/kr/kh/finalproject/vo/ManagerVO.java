@@ -36,5 +36,6 @@ public class ManagerVO {
    
    // 회원 승인 상태
    private int bm_approval;
+   private int st_num;
    
 }

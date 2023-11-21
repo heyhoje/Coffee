@@ -16,7 +16,7 @@
     <result property="bm_store_name" column="bm_store_name" />
     <result property="bm_image" column="bm_image" />
     <result property="bm_approval" column="bm_approval" />
-    <result property="st_num" column="store.st_num" />
+    <result property="st_num" column="st_num" />
 </resultMap>
  	<select id="selectShopList" resultMap="ForSearch">
  		select

@@ -1,9 +1,7 @@
 package kr.kh.finalproject.vo;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
-@AllArgsConstructor
 @Data
 public class ImageVO {
 
