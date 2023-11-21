@@ -9,7 +9,7 @@
  <link rel="stylesheet" type="text/css" href="/resources/css/bstore.css">
 </head>
 <body>
-
+	
 	<div class="container">
 	<h4 class="pt-4" id="regi-store">매장 등록 승인</h4>
 		            
@@ -18,6 +18,7 @@
 				<tr>
 					<th>매장번호</th>
 					<th>사업자아이디</th>
+					<th>사업자번호</th>
 					<th>브랜드명</th>
 					<th>매장명</th>
 					<th>영업시작</th>
@@ -31,10 +32,11 @@
 					<tr>
 						<td>${bs.st_num}</td>
 						<td>${bs.st_bm_id}</td>
+						<td>${bs.st_bm_num}</td>
 						<td>${bs.st_br_name}</td>
 						<td>${bs.st_store_name}</td>
-						<td>${bs.st_opentime}</td>
-						<td>${bs.st_closetime}</td>
+						<td>${bs.st_opentime_str}</td>
+						<td>${bs.st_closetime_str}</td>
 						<td><button class="btn btn-outline-primary pass" data-target="${bs.st_num}">승인</button>
 							&nbsp;<button class="btn btn-outline-danger reject" data-target="${bs.st_num}">거절</button></td>
 					</tr>

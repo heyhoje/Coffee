@@ -42,6 +42,7 @@ public class ReviewController {
 		MemberVO user = (MemberVO)session.getAttribute("user"); 
 
 		/** 주문내역 리스트 order_menu */
+		// * 특정 사용자의 주문내역을 확인하기 위해 user매개변수로 넘겨주기
 		List<OrderMenuVO> orderList = reviewService.getOrderList(user);
 		System.out.println(orderList);
 		// 주문메뉴번호 주문시간 주문상태(완료가 된 음료만 리뷰를 남길 수 있겠지...) 주문메뉴이름 주문메뉴번호
