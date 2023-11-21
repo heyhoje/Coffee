@@ -8,21 +8,10 @@
 <title>사업자 추가정보 입력</title>
 </head>
 <body>
-	<h2>매장정보 추가입력</h2>
-	<h3>기본 정보</h3>
-	아이디 / 비밀번호(점주페이지 수정) / 사업자등록번호 (readonly) <br>
-	매장명 / 전화번호 / 주소 (수정가능) <br>
-	<h3>추가 정보</h3>
-	영업시작 / 영업종료 / 오픈여부(open/closed)(정기휴무일 있는지 - varchar50 정도로 바꾸면 좋지 않을까?) <br>
-	브랜드명 / 브랜드로고(첨부파일 등록)
-	<br>
-	<br>
-	${buser}
-
 	<!-- form태그안에 div태그 vs div태그안에 form태그 어떤것이 맞는 방법인가? = 2번  -->
 	<!-- 그렇다면 mypage에서 div-div-form 으로 박스안에 박스를 또 넣은 이유는? 레이아웃 지정 및 css처리 때문이겠지? -->
 	<div class="col-sm-8" id="plusInfo-container">
-		<h3>매장 추가정보 입력</h3>
+		<h3 class="mt-5">매장 추가정보 입력</h3>
 		<hr>
 		<div class="bg-white rounded shadow-sm container p-3">
 			<form action="<c:url value='/business/plusinfo'/>" method="post" enctype="multipart/form-data">
@@ -113,10 +102,11 @@
 				</div>
 				<div class="row mb-3 form-row">
 					<div class="col-md-3">
-						<h6>기타정보(정기휴무일, 매장내좌석수, 주차 및 드라이브쓰루 여부 등 자유롭게 입력)</h6>
+						<h6>기타정보</h6>
 					</div>
 					<div class="col-md-6">
-						<textarea id="st_contents" name="st_contents" rows="2" cols="50" placeholder="예시) 매주 2,4째 일요일 정기휴무 / 주차 5대 가능 / 드라이브쓰루 가능 (추가 정보가 없을 경우 '.'을 입력해주세요.)"></textarea>
+						<textarea id="st_contents" name="st_contents" rows="2" cols="50" 
+							placeholder="예시) 매주 2,4째 일요일 정기휴무 / 콘센트 좌석 있음 / 어린이환영, 강아지환영 / 주차 5대 가능 / 드라이브쓰루"></textarea>
 					</div>
 				</div>
 				

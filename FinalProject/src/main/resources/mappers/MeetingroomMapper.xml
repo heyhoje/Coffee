@@ -44,20 +44,20 @@
 
 	<!-- 미팅룸리스트 -->
 	<select id="selectMrList" resultType="kr.kh.finalproject.vo.MeetingroomVO">
-		 select room_num, 
-         bm_store_name as room_store_name,
-         room_price,
-         room_seat,
-         room_content,
-         room_starttime,
-         room_endtime,
-         room_etc,
-         room_st_num
-         from meetingroom 
-            join store on room_st_num = st_num
-            join manager on st_bm_id = bm_id
-         order by room_num asc
-         limit #{cri.pageStart}, #{cri.perPageNum}
+			select room_num, 
+				bm_store_name as room_store_name,
+				room_price,
+				room_seat,
+				room_content,
+				room_starttime,
+				room_endtime,
+				room_etc,
+				room_st_num
+				from meetingroom 
+					join store on room_st_num = st_num
+					join manager on st_bm_id = bm_id
+				order by room_num asc
+			limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	<select id="selectMrTotalCount" resultType="int">
 		select count(*)

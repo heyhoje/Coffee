@@ -1,5 +1,7 @@
 package kr.kh.finalproject.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +43,7 @@ public class AdminController2 {
 //		int totalCount = managerService.getTotalCount(manager, cri);
 //		PageMaker pm = new PageMaker(2, cri, totalCount);
 		MemberVO user = new MemberVO();
-		
+        
 		model.addAttribute("user", user);
 //		model.addAttribute("pm", pm);
 //		model.addAttribute("manager", managerList);
@@ -83,6 +85,23 @@ public class AdminController2 {
 		List<StoreVO> bsList = storeService.getBstoreList(0);	
 		System.out.println(bsList);
 		
+		// 시간정보 HH:mm 으로 화면에 보내기 위해 코드 추가
+	    // 예시로 사용할 영업 시간 데이터
+	    Date st_opentime = new Date(); // 영업 시작 시간
+	    Date st_closetime = new Date(); // 영업 종료 시간
+
+	    // 시간 형식을 "HH:mm"으로 지정
+	    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+
+	    // 각각의 시간을 형식화
+//	    String formattedOpenTime = sdf.format(st_opentime);
+//	    String formattedCloseTime = sdf.format(st_closetime);
+
+	    
+	 // 각각의 시간을 형식화하여 모델에 추가
+        model.addAttribute("formattedOpenTime", sdf.format(st_opentime));
+        model.addAttribute("formattedCloseTime", sdf.format(st_closetime));
+        
 		// 화면
 		model.addAttribute("bsList", bsList);
 		return "/admin/bstore";

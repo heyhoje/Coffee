@@ -38,6 +38,8 @@ public class BusinessController {
 	
 	/** 매장등록( bmember + bstore ) */ 
 	@Autowired
+	private BusinessService businessService;
+	@Autowired
 	private StoreService storeService;
 
 	/** 메뉴/옵션 */
@@ -45,14 +47,11 @@ public class BusinessController {
 	private MenuService menuService;
 	@Autowired
 	private OptionService optionService;
-
-	@Autowired
-	private BusinessService businessService;
-
+	
 
 	// 사업자페이지 [홈]
-	@RequestMapping(value = "/business/home/{a}", method = RequestMethod.GET)
-	public String businesspage(@PathVariable("a") int st_num) {
+	@RequestMapping(value = "/business/home", method = RequestMethod.GET)
+	public String businesspage() {
 
 		return "/business/home";
 	}

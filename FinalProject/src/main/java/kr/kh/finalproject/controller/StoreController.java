@@ -29,6 +29,7 @@ public class StoreController {
 		
 
 		model.addAttribute("shopList", shopList);
+	
 		return "/order/store";
 	}
 		

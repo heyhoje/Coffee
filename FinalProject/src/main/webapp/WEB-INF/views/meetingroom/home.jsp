@@ -15,12 +15,7 @@
 </head>
 <body>
 	<h1 style="text-align: center; margin-top: 50px; margin-bottom:50px; font-family:'BM HANNA Pro', sans-serif;">미팅룸 예약</h1>
-	
-	<p> [검색 위] 게시판 검색 할때처럼 하는데, 1. 위치(그냥 검색어(내용))로 검색 2. 날짜가 일치하는 날에 빈자리/시간대가 있는지(o) 3. 수용인원수보다 원하는 인원수가 작거나 같은곳</p><br>
-	<p> [아래 예약표] 예약시간이 나오는 팝업이 뜨면 시간을 선택하고, 선택한 시간(과 필요한 파람값이)으로 결제가 넘어가고, 
-		검색한 날짜 / 시작시간? 선택된 시간 / 예약num / 미팅룸num / 아이디 = 회원 로그인한 아이디 세션에서 가져오기!!!! / 예약date -도 datetime 값을 가져오나.....?</p><br>
-	<p> 내가 이 아이들을 안전하게 reservation DB 까지 보내줄 수 있을까...?</p>
-	
+
 	
 		
 	<div class="booking-form" style="font-family:'BM HANNA Pro', sans-serif;">
