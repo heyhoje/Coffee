@@ -68,7 +68,8 @@
 		left join 
 			`store` on mn_st_num = st_num
 		left join
-			`manager` on st_bm_num = bm_num
+			`manager`on st_bm_id = bm_id
+
 		where 
 			sb_me_user_id = #{user}
 	</select>
