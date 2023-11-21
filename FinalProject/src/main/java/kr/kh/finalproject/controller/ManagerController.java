@@ -235,7 +235,7 @@ public class ManagerController {
 		System.out.println(bm_pw1);
 		System.out.println(enpassword);
 		session.invalidate();
-		model.addAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
+		model.addAttribute("msg", "비밀번호 변경이 완료되었습니다. 다시 로그인해주세요.");
 
 		return "/main/message";
 	}
@@ -256,7 +256,8 @@ public class ManagerController {
 		managerService.infoUpdate(manager);
 		System.out.println(manager);
 		session.invalidate();
-		model.addAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
+		model.addAttribute("msg", "정보 수정이 완료되었습니다.");
+		model.addAttribute("url", "/manager/mypageHome");
 		return "/main/message";
 	}
 

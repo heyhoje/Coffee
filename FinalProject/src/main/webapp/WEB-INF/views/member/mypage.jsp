@@ -83,7 +83,7 @@
 					</div>
 					<div class="col-md-3">
 						<button type="button" class="btn btn-primary"
-							id="postcodify_search_button"
+							id="postcodify_search_button" name="postcodify_search_button"
 							style="border: 1px solid black; background-color: floralwhite; color: black;">검색</button>
 					</div>
 				</div>
@@ -224,7 +224,6 @@
 	</div>
 	<br>
 	<br>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		$(function() {
 			$("#postcodify_search_button").postcodifyPopUp();
