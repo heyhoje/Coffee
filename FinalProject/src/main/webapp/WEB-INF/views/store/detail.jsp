@@ -23,7 +23,6 @@
 		<div class="content-box">
 			<h4 class="menu-title">${menu.mn_name}</h4>
 			<p class="menu-price">${menu.mn_price} 원</p>
-			<hr><br><br>
 			<p class="menucontent">${menu.mn_contents}</p>	
 			
 			<h4>옵션</h4>
