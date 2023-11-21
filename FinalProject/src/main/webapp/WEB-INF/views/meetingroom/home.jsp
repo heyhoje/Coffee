@@ -101,22 +101,24 @@
 									<div class="popup_cont">
 									<input type="hidden" name="room_num" value="${mr.room_num}">
 									<input type="hidden" name="room_st_num" value="${mr.room_st_num}">
-									<h5> 시간 선택 </h5>
+										<h5> 시간 선택 </h5>
+										<hr>
 										<div class="form-group" style="display:flex; margin-left: 10px; margin-right: 10px;">
-											<input class="form-control" type="date" placeholder="예약할 날짜를 입력하세요.">
-											<input class="form-control" type="text" style="width:30%; margin-left:20px;" placeholder="인원수">
+											<input id="reservationDate" name="reservationDate" class="form-control" type="date" placeholder="예약할 날짜를 입력하세요.">
+											<input id="numberOfPeople" name="numberOfPeople" class="form-control" type="text" style="width:30%; margin-left:20px;" placeholder="인원수">
 										</div>
 										<hr>
 										<div class="timebox">
 											<div class="buttonbox">
 												<input class="timebutton" type="checkbox"/>
 											</div>
+											<hr>
 											<div class="reservationbutton-box">
-												<button class="reservationbutton" onclick="reservationThis()">예약하기</button>
+												<button class="reservationbutton" href="javascript:void(0)" onclick="reservationThis()">예약하기</button>
 											</div>
 										</div>
 								    <!--팝업 버튼 영역-->
-									<div class=popup-btn-box" style="height:100%;"></div>
+									<div class="popup-btn-box" style="height:100%;"></div>
 									<div class="popup_btn">
 										<a href="javascript:closePop();" style="color:black;">닫기</a>
 									</div>
@@ -151,7 +153,9 @@
 		function closePop() {
 		    document.getElementById("popup_layer").style.display = "none";
 		}
-		
+	</script>
+	
+	<script>
 		var starttime = [];
 		var endtime = [];
 		var operationtime=[];
@@ -159,16 +163,13 @@
 		<c:forEach items="${mrList}" var="opentime" varStatus="oT">
 			starttime[${oT.index}] = ${opentime.room_starttime};
 			endtime[${oT.index}] = ${opentime.room_endtime};
-			
 		</c:forEach>
 		
 		var reservationtime= [];
 
 		<c:forEach items="${rsList}" var="rstime" varStatus="rt">
 			reservationtime[${rt.index}] = ${rstime.rs_start};
-			
 			console.log(rstime);
-			
 		</c:forEach>
 		/* 시간선택한 정보를 배열arr로 받아가기 때문에, name변경 -> css도 수정, vo에 int[] 추가 */
 		function operationTime(num){
@@ -188,22 +189,43 @@
 					</label>
 				`
 			}
-			
 			$('.buttonbox').html(str)
 			javascript:openPop()
-			
 		}
-		function reservationThis(){
-			var reservationtime= [];
-			$('input[name="arr_meetingroom_starttime"]:checked').each(function(){
-				selectedTimes.push($(this).val());
-			});
-			$('#reservationtime').val(selectedTimes.join(','));
-			
-			$('#cartform').submit();
-			closePop();
-			
-		
-		}
+	</script>
+	
+	<script>
+	function reservationThis() {
+	    var roomNum = document.getElementById('rs_room_num').value;
+	    var reservationDate = document.getElementById('reservation_date').value;
+	    var numberOfPeople = document.getElementById('number_of_people').value;
+
+	    var selectedTimes = [];
+	    var checkedTimeInputs = document.querySelectorAll('input[name="arr_room_starttime"]:checked');
+	    checkedTimeInputs.forEach(function (input) {
+	        selectedTimes.push(input.value);
+	    });
+	    $.ajax({
+	        url: '/rsadd',
+	        type: 'POST',
+	        data: {
+	            rsRoomNum: room_num,
+	            reservationDate: reservationDate,
+	            numberOfPeople: numberOfPeople,
+	            selectedTimes: selectedTimes
+	        },
+	        console.log(data);
+	        success: function (response) {
+	            console.log('서버 응답:', response);
+	            $('#cartform').submit();
+				closePop();
+	        },
+	        error: function (error) {
+	            console.error('서버 요청 실패:', error);
+	            $('#cartform').submit();
+				closePop();
+	        }
+	    });
+	}
 	</script>
 </html>
