@@ -17,8 +17,5 @@ public class ReviewVO {
 	// [ 리뷰 = 주문메뉴 - 주문리스트 - 장바구니 - 선택메뉴옵션 = 메뉴 ]
 	String re_mn_name; // 메뉴에 있는 mn_name을 re_mn_name으로 vo에 저장. 주문한 메뉴 이름을 리뷰에 띄울 수 있도록!
 	String re_store_name; // 사업자 회원에 있는 bm_store_name을 re_store_name으로 vo에 저장. 주문한 브랜드&지점명을 알 수 있도록!  
-	
-//	public String getRe_contents() {
-//	    return re_contents;
-//	}
+
 }

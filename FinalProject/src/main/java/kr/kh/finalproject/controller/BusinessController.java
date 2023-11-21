@@ -38,6 +38,8 @@ public class BusinessController {
 	
 	/** 매장등록( bmember + bstore ) */ 
 	@Autowired
+	private BusinessService businessService;
+	@Autowired
 	private StoreService storeService;
 
 	/** 메뉴/옵션 */

@@ -51,11 +51,11 @@ public class MemberController {
 		System.out.println(member);
 		boolean res = memberService.signup(member);
 		if (res) {
-			model.addAttribute("msg", "회원가입 성공했습니다. \\n오늘 커피 한잔 어떠실까요?");
+			model.addAttribute("msg", "회원가입 성공했습니다. \\n 오늘 커피 한잔 어떠실까요?");
 			model.addAttribute("url", "");
 		} else {
 			model.addAttribute("msg", "회원가입 실패했습니다. \\n다시 시도 부탁드립니다.");
-			model.addAttribute("url", "");
+			model.addAttribute("url", "member/signup2");
 		}
 		return "/main/message";
 	}
