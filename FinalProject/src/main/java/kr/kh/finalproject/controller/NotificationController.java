@@ -40,7 +40,7 @@ public class NotificationController {
 	public SseEmitter subscribe(HttpServletRequest request, @PathVariable("a") int st_num) {
 			HttpSession session = request.getSession();
 			ManagerVO user = (ManagerVO)session.getAttribute("buser");
-			StoreVO store = storeService.getStore(user.getBm_num());
+			final StoreVO store = storeService.getStore(user.getBm_num());
 			final SseEmitter sseEmitter = new SseEmitter(Long.MAX_VALUE);
 			try {
 				sseEmitter.send(SseEmitter.event().name("INIT").data("connected"));

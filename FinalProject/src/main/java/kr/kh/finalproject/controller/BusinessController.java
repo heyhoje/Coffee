@@ -223,7 +223,7 @@ public class BusinessController {
 	 // 문자열을 ','를 기준으로 나누어 리스트로 저장하는 메소드
 	 private static List<String> splitAndToList(String input) {
 		 String[] array = input.split(",");
-		 List<String> list = new ArrayList<>();
+		 List<String> list = new ArrayList<String>();
 		 for (String value : array) {
 			 list.add(value);
 		 }
