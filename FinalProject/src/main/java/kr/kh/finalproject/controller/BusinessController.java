@@ -22,7 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.pagination.PageMaker;
 import kr.kh.finalproject.service.BusinessService;
-import kr.kh.finalproject.service.ManagerService;
 import kr.kh.finalproject.service.MenuService;
 import kr.kh.finalproject.service.OptionService;
 import kr.kh.finalproject.service.StoreService;

@@ -72,7 +72,6 @@ public class StoreServiceImp implements StoreService{
 				storeDao.insertImage(imageVo);
 				
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

@@ -37,8 +37,10 @@ public class MeetingroomController {
 		model.addAttribute("pm", pm);
 		model.addAttribute("mrList", mrList);
 		model.addAttribute("rsList", rsList);
+		System.out.println(mrList);
+		System.out.println(rsList);
 		return "/meetingroom/home";
-
+		
 	}
 
 	@PostMapping("/meetingroom/booking")
