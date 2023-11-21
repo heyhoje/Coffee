@@ -28,12 +28,6 @@
 			<span class="form-label"></span>
 			<input class="form-control" type="text" placeholder="찾고자 하는 위치를 입력하세요" value="${pm.cri.search}">
 		</div>
-		<div class="form-group" style="display:flex">
-				<span class="form-label"></span>
-				<input class="form-control" type="date" placeholder="예약할 날짜를 입력하세요.">
-				<span class="form-label"></span>
-				<input class="form-control" type="text" style="width:30%; margin-left:20px;" placeholder="인원수">
-		</div>
 		<div style="justify-content:center; display:flex; margin-bottom: 30px;">
 			    <button class="btn btn-outline-success" id="searchbtn2" style="font-family: 'BM HANNA Pro', sans-serif;">검색하기</button>
 		</div>
@@ -66,7 +60,7 @@
 					</td>
 					<td>
 						<div class="meetingroom-store">
-							<span>"${mr.room_st_num}"</span>
+							<span>"${mr.room_store_name}"</span>
 						</div>
 					</td>
 					<td>
@@ -99,8 +93,8 @@
 							<div class="popup_layer" id="popup_layer" style="display: none;">
 					 			<div class="popup_box">
 						      		<div style="height: 20px; width: 100%;">
-										<a href="javascript:closePop();" class="m_header-banner-close" width="30px" height="30px">
-											<button class="closebutton">x</button>
+										<a href="javascript:closePop();" class="m_header-banner-close" style="width: 50px; height: 50px;">
+											<a type="button" href="javascript:closePop();" class="closebutton" style="float: right; margin-right: 10px;">x</a>
 										</a>
 									</div>
 									<!--팝업 컨텐츠 영역-->
@@ -108,6 +102,11 @@
 									<input type="hidden" name="room_num" value="${mr.room_num}">
 									<input type="hidden" name="room_st_num" value="${mr.room_st_num}">
 									<h5> 시간 선택 </h5>
+										<div class="form-group" style="display:flex; margin-left: 10px; margin-right: 10px;">
+											<input class="form-control" type="date" placeholder="예약할 날짜를 입력하세요.">
+											<input class="form-control" type="text" style="width:30%; margin-left:20px;" placeholder="인원수">
+										</div>
+										<hr>
 										<div class="timebox">
 											<div class="buttonbox">
 												<input class="timebutton" type="checkbox"/>
@@ -123,6 +122,7 @@
 									</div>
 								</div>
 							</div>
+						</div>
 						</form>
 					</td>
 				</tr>
