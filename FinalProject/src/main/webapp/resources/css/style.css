@@ -43,6 +43,7 @@ body {
     line-height: 1.80857;
     font-weight: normal;
     overflow-x: hidden !important;
+    background-color:antiquewhite;
 }
 
 a {
@@ -323,6 +324,7 @@ button {
     width: 100%;
     float: left;
     padding-bottom: 90px;
+    background-color:white;
 }
 
 .gallery_taital {
