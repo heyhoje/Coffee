@@ -7,12 +7,26 @@
 	<meta charset="UTF-8">
 	<title>메뉴상세 주문</title>
 	<!-- style css -->
-    <link rel="stylesheet" href="<c:url value='/resources/css/detail.css'/>">
+    <link rel="stylesheet" href="<c:url value='/resources/css/realCRUD.css'/>">
 
 </head>
 
 <body>
 	<h2 class="menudetail">메뉴상세</h2>
+	  <div id="overlay">
+					  <div id="popup">
+					    <p>정말 삭제하시겠습니까?</p>
+					    <button id="deleteMenu">예</button>
+					    <button id="btnNo" onclick="handleResponse('아니오')">아니오</button>
+				  </div>
+			</div>
+			<div id="overlay2">
+					  <div id="popup2">
+					    <p>정말 수정하시겠습니까?</p>
+					    <button id= btnYes><a href="<c:url value='/business/realU/${st_num}/${menu.mn_num}'/>" id="updateMenu" class="btn-outline-warning">예</a></button>
+					    <button id="btnNo" onclick="handleResponse2('아니오')">아니오</button>
+				  </div>
+			</div>
 	<div class="container-box">
 		<div class="image-layout">
 		<div class="image-box">
@@ -41,11 +55,11 @@
 				            </c:forEach>
 				        </th>
 				    </c:forEach>
-				</div>
+				</div> 
 		    <br>
 		    <div class="detailbutton-box">
-		    <button id="deleteMenu" class="btn-outline-warning">메뉴 삭제하기</button>
-		    <a href="<c:url value='/business/realU/${st_num}/${menu.mn_num}'/>" id="updateMenu" class="btn-outline-warning">메뉴 수정하기</a> 
+		    <button id="toTheBag" class="btn-outline-warning" onclick="openPopup()">메뉴 삭제하기</button>
+		    <button id="toTheBag" class="btn-outline-warning" onclick="openPopup2()">메뉴 수정하기</button> 
 		    </div>
 		</div>
 		</div>
@@ -74,7 +88,27 @@ $(document).ready(function() {
 	});
 });
 
+function openPopup() {
+    document.getElementById('overlay').style.display = 'flex';
+	}
+function openPopup2() {
+    document.getElementById('overlay2').style.display = 'flex';
+	}
 
+function closePopup() {
+    document.getElementById('overlay').style.display = 'none';
+}
+
+function closePopup2() {
+    document.getElementById('overlay2').style.display = 'none';
+}
+
+function handleResponse(response) {
+    closePopup();
+}
+function handleResponse2(response) {
+    closePopup2();
+}
 
 
 </script>
