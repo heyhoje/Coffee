@@ -20,6 +20,29 @@
 <body>
 
 <div class="menu-container">
+	<!-- 대분류 이름 및 버튼박스 -->
+	<c:forEach var="category" begin="1" end="3" varStatus="loop">
+	    <c:if test="${loop.index == ca_num}">
+	        <h2 class="lc">
+	        	<%-- <h2 class="lc">${category.lc_name}</h2> 한줄로 줄이기는 대분류VO가 없어서 안되는거지? 그런듯ㅇㅇ--%>
+	            <c:choose>
+	                <c:when test="${category == 1}">음료</c:when>
+	                <c:when test="${category == 2}">푸드</c:when>
+	                <c:when test="${category == 3}">상품</c:when>
+	            </c:choose>
+	        </h2>
+	    </c:if>
+	</c:forEach>
+	
+	<div class="btn-group-box">
+		<div class="btn-group">
+			<a href="<c:url value='/store/menu/${st_num}/1'/>" class="btn btn-success">음료</a>
+			<a href="<c:url value='/store/menu/${st_num}/2'/>" class="btn btn-success">푸드</a>
+			<a href="<c:url value='/store/menu/${st_num}/3'/>" class="btn btn-success">상품</a>
+		</div>
+	</div>
+	<br>
+	
 	<div class="menu-group">
 		<!-- 중분류 체크박스 -->
 		<div class="checkbox-group" >
