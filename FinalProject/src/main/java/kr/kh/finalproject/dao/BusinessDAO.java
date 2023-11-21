@@ -34,6 +34,16 @@ public interface BusinessDAO {
 
 	boolean updateOptionValue(@Param("ov_num")String ov_num, @Param("ov_value")String ov_value, @Param("ov_price")String ov_price);
 
+	boolean makeMenuMijung(@Param("st_num")String st_num);
+
+	int getMijungMn_num();
+
+	boolean makeOptionMijung(@Param("mn_num")int mn_num);
+
+	boolean makeOptionValueMijung(@Param("st_num")int os_num);
+
+	int getMn_num();
+
 
 
 }
