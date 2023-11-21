@@ -22,7 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.pagination.PageMaker;
 import kr.kh.finalproject.service.BusinessService;
-import kr.kh.finalproject.service.ManagerService;
 import kr.kh.finalproject.service.MenuService;
 import kr.kh.finalproject.service.OptionService;
 import kr.kh.finalproject.service.StoreService;
@@ -39,6 +38,8 @@ public class BusinessController {
 	
 	/** 매장등록( bmember + bstore ) */ 
 	@Autowired
+	private BusinessService businessService;
+	@Autowired
 	private StoreService storeService;
 
 	/** 메뉴/옵션 */
@@ -49,8 +50,8 @@ public class BusinessController {
 
 
 	// 사업자페이지 [홈]
-	@RequestMapping(value = "/business/home/{a}", method = RequestMethod.GET)
-	public String businesspage(@PathVariable("a") int st_num) {
+	@RequestMapping(value = "/business/home", method = RequestMethod.GET)
+	public String businesspage() {
 
 		return "/business/home";
 	}
@@ -198,7 +199,7 @@ public class BusinessController {
 	 // 문자열을 ','를 기준으로 나누어 리스트로 저장하는 메소드
 	 private static List<String> splitAndToList(String input) {
 		 String[] array = input.split(",");
-		 List<String> list = new ArrayList<>();
+		 List<String> list = new ArrayList<String>();
 		 for (String value : array) {
 			 list.add(value);
 		 }

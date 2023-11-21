@@ -35,7 +35,7 @@ public class ManagerController {
 	public String managerRegister(ManagerVO manager, Model model) {
 		boolean res = managerService.managerRegister(manager);
 		if (res) {
-			model.addAttribute("msg", "회원가입이 제출되었습니다. \n관리자 승인은 운영시간내 13시, 17시에 일괄 진행며 승인확인까지 로그인이 제한될 수 있습니다.");
+			model.addAttribute("msg", "회원가입이 제출되었습니다. \\n관리자 승인은 운영시간내 13시, 17시에 일괄 진행며 승인확인까지 로그인이 제한될 수 있습니다.");
 			model.addAttribute("url", "");
 		} else {
 			model.addAttribute("msg", "회원가입에 실패하였습니다. 다시 시도 부탁드립니다.");
@@ -75,14 +75,15 @@ public class ManagerController {
 		if (buser != null && buser.getBm_approval() == 0) {
 			model.addAttribute("buser", buser);
 			model.addAttribute("type", "b");
-			model.addAttribute("msg", "회원가입 승인이 대기중입니다. 조금만 기다려주세요. \n (추후 관리자에게 문의하는 기능이 추가될 예정입니다.");
+			model.addAttribute("msg", "회원가입 승인이 대기중입니다. 조금만 기다려주세요. \\n (추후 관리자에게 문의하는 페이지가 추가될 예정입니다.");
 			model.addAttribute("url", ""); // 홈으로 이동을 안하네..... 
 		
 		} else if(buser != null && buser.getBm_approval() == 1) {
 			model.addAttribute("buser", buser);
 			model.addAttribute("type", "b");
 			model.addAttribute("msg", "로그인 정보가 확인되었습니다. 즐거운 하루 되세요!");
-			model.addAttribute("url", "business/home"); // 사이트연결안됨. 오타확인하라고함.
+			model.addAttribute("url", "business/home/"); // 사이트연결안됨. 오타확인하라고함. 
+														// +buser.getBm_st_num() <- 나중에 매장승인하고, 매장번호 발급되면 해당 방식으로 url변경..ok?
 			
 			// 화면에서 보낸 자동 로그인 체크 여부를 user에 적용
 			buser.setAutoLogin(manager.isAutoLogin());
