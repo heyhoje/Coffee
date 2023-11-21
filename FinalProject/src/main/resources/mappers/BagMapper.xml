@@ -7,14 +7,14 @@
 	    <id property="oc_num" column="oc_num" />
 	    <result property="oc_selected" column="oc_selected" />
 	    <result property="oc_selected_price" column="oc_selected_price" />
-	    <association property="menu" javaType="kr.kh.finalproject.vo.MenuVO">
+	    <association property="menu" javaType="kr.kh.finalproject.vo.Menu2VO">
 	        <result property="mn_num" column="mn_num" />
 	        <result property="mn_name" column="mn_name" />
 	        <result property="mn_contents" column="mn_contents" />
 	        <result property="mn_price" column="mn_price" />
 	        <result property="mn_st_num" column="mn_st_num" />
 	        <result property="mn_mc_num" column="mn_mc_num" />
-	        <association property="image" javaType="kr.kh.finalproject.vo.ImageVO">
+	        <association property="image" javaType="kr.kh.finalproject.vo.Image2VO">
 	            <result property="im_num" column="im_num" />
 	            <result property="im_name" column="im_name" />
 	            <result property="im_ori_name" column="im_ori_name" />
@@ -30,14 +30,14 @@
   	</insert>
   	<select id="hasBag" resultType="kr.kh.finalproject.vo.Shop_BasketVO">
   		select * from `shop_basket`
-  		where sb_me_user_id = #{user}
+  		where sb_me_user_id = "carpcarp"
   	</select>
   	<insert id="makeBag">
   		insert into `shop_basket` (sb_me_user_id)
-  		values (#{user})
+  		values ("carpcarp")
   	</insert>
   	<select id="bagBunho" resultType="int">
-  		select sb_num from shop_basket where sb_me_user_id = #{user}
+  		select sb_num from shop_basket where sb_me_user_id = "carpcarp"
   	</select>
   	<select id="bagList" resultMap="optionChoice">
 		select 
@@ -51,7 +51,7 @@
 		left join 
 			`image` on oc_mn_num = image.im_tableNum
 		where 
-			sb_me_user_id = #{user}
+			sb_me_user_id = "carpcarp"
   	</select>
   	<delete id="deleteItem" parameterType="int">
   		delete from `option_choice` where oc_num = #{oc_num}
@@ -69,14 +69,13 @@
 			`store` on mn_st_num = st_num
 		left join
 			`manager`on st_bm_id = bm_id
-
 		where 
-			sb_me_user_id = #{user}
+			sb_me_user_id = "carpcarp"
 	</select>
   	<update id="givePoint">
   		update `member`
   		set me_point = me_point + #{givePoint}
-  		where me_user_id = #{user}
+  		where me_user_id = "carpcarp"
   	</update>
   	<select id="getPoint" resultType="int">
   		select
@@ -84,16 +83,16 @@
   		from
   			member
   		where
-  			me_user_id = #{user}
+  			me_user_id = "carpcarp"
   	</select>
   	<update id="backPoint">
 	  	update member
 	  	set me_point = (me_point - #{usePoint})
-	  	where me_user_id = #{user}
+	  	where me_user_id = "carpcarp"
   	</update>
   	<delete id="killBag">
 		DELETE FROM `option_choice`
-		WHERE oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = #{user})
+		WHERE oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = "carpcarp")
   	</delete>
   	<insert id="makeOrderMenu">
   		insert into `order_menu` (or_time, or_status, or_drinks, or_menuNum)
@@ -101,7 +100,7 @@
   	</insert>
   	<select id="getBasketNum" resultType="int">
   		select sb_num from shop_basket
-  		where sb_me_user_id = #{user}
+  		where sb_me_user_id = "carpcarp"
   	</select>
   	<select id="getNumFromOM" resultType="int">
 	    SELECT or_num FROM order_menu
@@ -110,11 +109,11 @@
   	</select>
   	<insert id="makeOrderList">
   		insert into order_list (ol_or_num, ol_sb_num, ol_user_id)
-  			values (#{or_num}, #{sb_num}, #{user})
+  			values (#{or_num}, #{sb_num}, "carpcarp")
   	</insert>
   	<select id="getBasketNum1" resultType="int">
   		select sb_num from shop_basket
-  		where sb_me_user_id = #{user}
+  		where sb_me_user_id = "carpcarp"
   	</select>
   	<select id="sameShop" resultType="int">
   		select DISTINCT
@@ -126,7 +125,7 @@
   		left join
   			shop_basket on oc_sb_num = sb_num
   		where
-  			sb_me_user_id = #{user}			 
+  			sb_me_user_id = "carpcarp"
   	</select>
   	<select id="anotherShop" resultType="int">
   		select distinct
@@ -140,6 +139,6 @@
   		delete from 
   			option_choice
   		where
-  			oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = #{user})
+  			oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = "carpcarp")
   	</delete>
   </mapper>
