@@ -29,7 +29,6 @@ public class StoreVO {
 	int st_approval;
 	// 매장명 - 사업자회원 테이블과 JOIN해서 가져옴
 	String st_store_name; // 사업자회원에 있는 bm_store_name을 st_store_name으로 vo에 저장
-	String st_bm_num; // 사업자번호 bm - bm_num
 	
 	// rngdate
 	// 게터를 바꿔줘야함

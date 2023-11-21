@@ -48,9 +48,6 @@ public class BusinessController {
 	@Autowired
 	private OptionService optionService;
 
-	@Autowired
-	private BusinessService businessService;
-
 
 	// 사업자페이지 [홈]
 	@RequestMapping(value = "/business/home", method = RequestMethod.GET)

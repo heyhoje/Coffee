@@ -15,53 +15,60 @@
 		<link rel="stylesheet" href="<c:url value='/resources/css/review.css'/>">
 	<style>
 	/* 개별 css파일로 관리 */
+	.review-container{
+		width: 1000px;
+		margin: 0 auto; /* 이 부분이 컨테이너를 가운데 정렬합니다. */
+	 }
 	</style>
 </head>
 <body>	
 	<div class="review-container">
-		<h2 class="mt-4">주문내역</h2>
 		<form action="<c:url value='/review/insert'/>" method="post">
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th></th>
-						<th>아이디</th>
-						<th>주문번호</th>
-						<th>매장이름</th>
-						<th>주문날짜</th>
-						<th>주문한음료</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${orderList}" var="order" varStatus="orderStatus">
-			            <tr>
-			            	<td><input type= "radio" name="reviewCheck"  class="re_or_num" 
-			            			value="${order.or_num}"></td>
-			            	<td>${order.or_user_id}</td>
-			                <td>${order.or_num}</td>
-			                <td>${order.or_store_name}</td>
-			                <td>${order.or_time}</td>
-			                <td>${order.or_drinks}</td>
-			            </tr>
-			        </c:forEach>
-				</tbody>
-			</table>
-			
-    		<%-- ${orderList} --%>
-    	
-			<h2> 리뷰내용</h2>
-			<textarea name="re_contents" rows="2" cols="50"></textarea>
-			<label for="rating">별점:</label>
-			    <select name="re_star" id="rating">
-			        <option value="5">5점</option>
-			        <option value="4">4점</option>
-			        <option value="3">3점</option>
-			        <option value="2">2점</option>
-			        <option value="1">1점</option>
-			    </select>
-			<button  class="btn btn-primary btn-review" type="button">등록</button>
+			<div class="orderList-box">
+				<h2 class="mt-4">${user.me_user_id}님의 주문내역</h2>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th></th>
+							<th>아이디</th>
+							<th>주문번호</th>
+							<th>매장이름</th>
+							<th>주문날짜</th>
+							<th>주문한음료</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${orderList}" var="order" varStatus="orderStatus">
+				            <tr>
+				            	<td><input type= "radio" name="reviewCheck"  class="re_or_num" 
+				            			value="${order.or_num}"></td>
+				            	<td>${order.or_user_id}</td>
+				                <td>${order.or_num}</td>
+				                <td>${order.or_store_name}</td>
+				                <td>${order.or_time}</td>
+				                <td>${order.or_drinks}</td>
+				            </tr>
+				        </c:forEach>
+					</tbody>
+				</table>
+			</div>
+	   		<%-- ${orderList} --%>
+    		<div class="review-insert-box">
+				<h2> 리뷰내용</h2>
+				<textarea name="re_contents" rows="2" cols="50"></textarea>
+				<label for="rating">별점:</label>
+				    <select name="re_star" id="rating">
+				        <option value="5">5점</option>
+				        <option value="4">4점</option>
+				        <option value="3">3점</option>
+				        <option value="2">2점</option>
+				        <option value="1">1점</option>
+				    </select>
+				<button  class="btn btn-primary btn-review" type="button">등록</button>
+			</div>
 		</form>
-
+	</div>
+	
 	<script>
 	 $(document).ready(function () { 
         $('.btn-review').click(function () { // 라디오를 눌렀을때가 아니라, '등록버튼'을 눌렀을때 이벤트가 발생해야한다.  
@@ -76,6 +83,10 @@
         		return;
         	}
         	// 1. 각각의 변수들의 value값을 묶은 obj 작성
+        	// 내 방식에서 $([name]).value();를 쓴 이유는, 
+        	// menu-detail은 그 값 그대로 화면에 보여주고 있지만,
+        	// review-insert에서는 모두 입력 받거나 데이터 값이 아닌 다른 방식으로 정보를 받아오고 있기 때문에 
+        	// 그것이 담고있는 value를 데려와야 해서
         	let obj = {
         			re_contents : $('[name=re_contents]').val(),
 					re_star : $('[name=re_star]').val(),
