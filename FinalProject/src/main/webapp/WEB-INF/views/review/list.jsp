@@ -15,14 +15,24 @@
 		<link rel="stylesheet" href="<c:url value='/resources/css/review.css'/>">
 	<style>
 	/* 개별 css파일로 관리 */
+	h2 {
+	text-align: center;
+    margin-top: 50px;
+   
+    font-family: 'BM HANNA Pro', sans-serif;
+    }
+	
 	.review-container{
-	position : absolute; 
+	position : absolute;
 	top: 50%; left: 50%; width: 1000px;
     transform: translate(-50%, -50%);
 	}
-	.btn-review {
-	position : relative; float: right;
+	
+	.btn-insert {
+	position: relative; float: right; 
+	margin-bottom: 10px;
 	}
+	
 	
 	/* 별점 */
 	.star-rating {
@@ -35,9 +45,9 @@
       display: inline-block;
       position: relative;
       width: 1.1em;
-      
-	  vertical-align: middle; /* 추가된 부분 */
-	  line-height: 1; /* 추가된 부분 */
+      /* 칸 중앙으로 배치 */
+	  vertical-align: middle; 
+	  line-height: 1;
     }
     
     .star-rating .empty-star:before {
@@ -57,7 +67,7 @@
 	<div class="review-container">
 		<h2 class="mt-4">리뷰를 남겨주세요</h2>
 		<p>* 이달의 신메뉴는 어땠나요?, 나만 아는 특별한 조합이 있다면 모두에게 공유해주세요!</p>
-		<a href="<c:url value='/review/insert'/>" class="btn btn-outline-warning">리뷰등록</a>
+		<a href="<c:url value='/review/insert'/>" class="btn btn-insert btn-outline-warning">리뷰등록</a>
 			<table class="table table-bordered">
 				<thead>
 					<tr>

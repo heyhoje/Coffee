@@ -30,18 +30,30 @@
 			where st_num = #{store.st_num}
 	</update>
 	
-	<!-- 매장등록 추가정보 입력 -->
-	<!-- * 
-	<insert id="insertPlusInfo">
-		insert into store(st_br_name, st_opentime, st_closetime, st_contents, st_bm_id)
+	
+	<!-- (회원가입) + 매장번호 선등록 -->
+	<insert id="makeStore">
+		insert into store(st_bm_id) values(#{makeStore.bm_id})
+	</insert>
+	
+	<!-- 매장등록 추가정보 입력 // 업데이트문으로 변경 --> 
+	<!-- 첨부파일 추가를 위해 useGeneratedKeys, keyProperty 추가 -->
+	<update id="updatePlusInfo" useGeneratedKeys="true" keyProperty="store.st_num">
+		update store
+			set 
+				st_br_name = #{plus.st_br_name},
+		        st_opentime = #{plus.st_opentime},
+		        st_closetime = #{plus.st_closetime},
+		        st_contents = #{plus.st_contents}
+		    where st_bm_id = #{buser.bm_id}
+	</update>
+	<!-- * <insert id="insertPlusInfo">
+			insert into store(st_br_name, st_opentime, st_closetime, st_contents, st_bm_id)
 			select (#{plus.st_br_name}, #{plus.st_opentime}, #{plus.st_closetime}, #{plus.st_contents}, 
 					#{buser.bm_id} - buser를 넘겨줄거면 이렇게 id값 넣어도 됨)
 			where st_bm_id = #{buser.bm_id} 
-	</insert> -->
-	<insert id="insertPlusInfo" useGeneratedKeys="true" keyProperty="store.st_num">
-		insert into store(st_br_name, st_opentime, st_closetime, st_contents, st_bm_id)
-			values (#{plus.st_br_name}, #{plus.st_opentime}, #{plus.st_closetime}, #{plus.st_contents}, #{plus.st_bm_id})
-	</insert>
+		</insert> -->
+		
 	<!-- 첨부파일 등록 -->
 	<insert id="insertImage">
 		insert into image(im_name, im_ori_name, im_tableName, im_tableNum)
@@ -55,7 +67,6 @@
         	store
         join
         	manager on store.st_bm_id = manager.bm_id
-        	 
 	</select>
 </mapper>
 
