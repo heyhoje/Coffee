@@ -68,7 +68,7 @@ public class ManagerController {
 	}
 
 	@PostMapping("/member/login2")
-	public String loginPost(Model model, ManagerVO manager) {
+	public String loginPost(Model model, ManagerVO manager, HttpServletRequest request) {
 		System.out.println(manager);
 		ManagerVO buser = managerService.login(manager);
 
