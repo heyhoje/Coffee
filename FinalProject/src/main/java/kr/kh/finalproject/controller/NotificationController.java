@@ -40,7 +40,7 @@ public class NotificationController {
 	public SseEmitter subscribe(HttpServletRequest request, @PathVariable("a") int st_num) {
 			HttpSession session = request.getSession();
 			ManagerVO user = (ManagerVO)session.getAttribute("buser");
-			final StoreVO store = storeService.getStore(user.getBm_id());
+			
 			final SseEmitter sseEmitter = new SseEmitter(Long.MAX_VALUE);
 			try {
 				sseEmitter.send(SseEmitter.event().name("INIT").data("connected"));
@@ -51,10 +51,11 @@ public class NotificationController {
 			sseEmitter.onCompletion(new Runnable() {
 				@Override
 				public void run() {
-					storesEmitters.remove(store.getSt_num());
+					storesEmitters.remove(st_num);
 					}
 			});
-			storesEmitters.put(store.getSt_num(), sseEmitter);
+			storesEmitters.put(st_num, sseEmitter);
+			System.out.println(st_num);
 			return sseEmitter;
 		}
 
@@ -65,7 +66,8 @@ public class NotificationController {
 		System.out.println(selectOption);
 		
 		try {
-			storesEmitters.get(6).send(SseEmitter.event().name("order").data("connected"));
+			storesEmitters.get(st_num).send(SseEmitter.event().name("order").data(menuName));
+			storesEmitters.get(st_num).send(SseEmitter.event().name("order").data(selectOption));
 		} catch (IOException e) {
 			e.printStackTrace();
 			}
