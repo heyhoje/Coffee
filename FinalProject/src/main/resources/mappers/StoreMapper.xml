@@ -50,11 +50,13 @@
 	
 	<select id="selectStore"  parameterType="int" resultType="kr.kh.finalproject.vo.StoreVO">
         SELECT 
-        	* 
+        	st_num
         FROM 
         	store
         join
         	manager on store.st_bm_id = manager.bm_id
+        where
+        	bm_num = #{buser.bm_num}
         	 
 	</select>
 </mapper>

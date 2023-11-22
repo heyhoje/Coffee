@@ -18,6 +18,6 @@ public interface StoreService {
 	// 매장등록 추가정보 입력
 	boolean plusInfo(StoreVO store, ManagerVO buser, MultipartFile[] files);
 
-	StoreVO getStore(String bm_num);
+	int getStore(ManagerVO user);
 
 }

@@ -57,8 +57,6 @@
 				<li class="nav-item"><a class="nav-link"
 					href="<c:url value='/review/list'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">리뷰</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">갤러리</a></li>
-				<li class="nav-item"><a class="nav-link"
 					href="<c:url value='/promotion/list'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">이벤트</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="<c:url value='/admin/home'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">관리자 </a></li>	

@@ -78,7 +78,7 @@ public class StoreServiceImp implements StoreService{
 	}
 
 	@Override
-	public StoreVO getStore(String bm_num) {
-		return null;
+	public int getStore(ManagerVO buser) {
+		return storeDao.getStore(buser);
 	}
 }
