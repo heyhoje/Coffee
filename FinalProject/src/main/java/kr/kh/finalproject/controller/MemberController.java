@@ -56,7 +56,6 @@ public class MemberController {
 		} else {
 			model.addAttribute("msg", "회원가입 실패했습니다. \\n다시 시도 부탁드립니다.");
 			model.addAttribute("url", "member/signup2");
-
 		}
 		return "/main/message";
 	}

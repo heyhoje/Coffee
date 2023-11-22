@@ -55,9 +55,8 @@
         FROM 
         	store
         join
-        	manager on store.st_bm_num = manager.bm_num
+        	manager on store.st_bm_id = manager.bm_id
 	</select>
-		<!-- 이건... (store./ manager.) 해아하는 경우가 있었는데 어느 경우지...? -->
 </mapper>
 
 

@@ -22,8 +22,15 @@
 
 </head>
 <body>
-	<div class="signup_v4 mb-30 card card_wrap ">
-		<div class="card-body">
+	<div class="bg-video">
+	  <video class="bg-video__content" autoplay muted loop>
+	    <source src="/resources/images/barista2.mp4" type="video/mp4" />
+	    <source src="img/video.webm" type="video/webm" />
+	  </video>
+	</div>
+
+	<div class="signup_v4 mb-30 card card_wrap" style="display:inline-flex; opacity:0.9; margin-left:400px; margin-top:50px;">
+		<div class="card-body" style=" font-family: 'BM HANNA Pro', sans-serif;">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation"><a
 					class="nav-link active" id="login-tab" data-toggle="tab"

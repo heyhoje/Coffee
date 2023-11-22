@@ -76,14 +76,13 @@ public class ManagerController {
 			model.addAttribute("buser", buser);
 			model.addAttribute("type", "b");
 			model.addAttribute("msg", "회원가입 승인이 대기중입니다. 조금만 기다려주세요. \\n (추후 관리자에게 문의하는 페이지가 추가될 예정입니다.");
-			model.addAttribute("url", ""); // 홈으로 이동을 안하네..... 
+			model.addAttribute("url", "");
 		
 		} else if(buser != null && buser.getBm_approval() == 1) {
 			model.addAttribute("buser", buser);
 			model.addAttribute("type", "b");
 			model.addAttribute("msg", "로그인 정보가 확인되었습니다. 즐거운 하루 되세요!");
 			model.addAttribute("url", "business/home/"); // +buser.getBm_st_num() <- 나중에 매장승인하고, 매장번호 발급되면 해당 방식으로 url변경..ok?
-
 			
 			buser.setAutoLogin(manager.isAutoLogin());
 
