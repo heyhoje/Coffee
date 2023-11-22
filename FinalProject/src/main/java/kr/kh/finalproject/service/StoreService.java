@@ -16,7 +16,8 @@ public interface StoreService {
 	// boolean updateStore(StoreVO store);
 
 	/** 일단 회원가입과 동시에 st_num을 발급해주기 위한 메소드 추가 */
-	StoreVO makeStore(ManagerVO manager);
+	boolean makeStore(ManagerVO manager); // insert, delete, update는 검색(select)가 아니기 때문에 
+										  //int 또는 true/flase값만 보내준다. StoreVO로 시작해서 무한증식이 시작되었다. 
 	
 	/** 매장등록 추가정보 입력 및 업데이트(수정/관리로 변경인거지) */
 	boolean plusInfo(StoreVO store, ManagerVO buser, MultipartFile[] files);

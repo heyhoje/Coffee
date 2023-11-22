@@ -38,9 +38,9 @@ public class StoreServiceImp implements StoreService{
 //	}
 
 	@Override
-	public StoreVO makeStore(ManagerVO manager) {
+	public boolean makeStore(ManagerVO manager) {
 		if(manager == null || manager.getBm_id() == null) {
-			return null;
+			return false;
 		}
 		// alert가 안뜨고, st_bm_id가 중복으로 저장됨..... 
 		// 예외처리가 덜 된걸까? 왜..중복..?ㅠ 

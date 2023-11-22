@@ -21,7 +21,7 @@ public interface StoreDAO {
 	
 
 	/** 회원가입과 동시에 매장번호 먼저 발급 */
-	StoreVO makeStore(@Param("makeStore")ManagerVO manager);
+	boolean makeStore(@Param("makeStore")ManagerVO manager);
 	
 	/** 매장등록 추가정보 입력 및 업데이트  */
 	boolean updatePlusInfo(@Param("plus")StoreVO store, @Param("buser")ManagerVO buser);

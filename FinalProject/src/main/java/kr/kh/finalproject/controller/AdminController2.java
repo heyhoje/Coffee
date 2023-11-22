@@ -73,7 +73,7 @@ public class AdminController2 {
 		//ManagerVO bmember = new ManagerVO();
 		boolean res = managerService.updateManager(manager); // 승인 -> 업데이트 -> bm_approval( 0 -> 1 )
 		// 동시에 getMakeStore 를 하면서 st_num을 만들고, bm_id값만 넘겨주고, st_approval default값 0이 주어짐 -> storeVO 데이터 저장! 
-		StoreVO store = storeService.makeStore(manager); // 상점등록 - (st_num) st_bm_id를 이용해서 insert
+		boolean store = storeService.makeStore(manager); // 상점등록 - (st_num) st_bm_id를 이용해서 insert
 		
 		// => 매장등록 (plusinfo) insert -> update 로 변경. 
 		
