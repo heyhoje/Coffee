@@ -19,7 +19,7 @@
 </resultMap>
  	<select id="selectShopList" resultMap="ForSearch">
  		select
- 			 bm.bm_id, bm.bm_pw, bm.bm_num, bm.bm_phone,
+ 			 bm.bm_id, bm.bm_pw, bm.bm_num, bm.bm_phone,  
  			 bm.bm_address, bm.bm_geocoding_lati, bm.bm_geocoding_longi, 
  			 bm.bm_manager, bm.bm_store_name, bm.bm_image, bm.bm_approval, st.st_num
  		from 

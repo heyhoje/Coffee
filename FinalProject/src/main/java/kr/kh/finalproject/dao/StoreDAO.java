@@ -20,6 +20,7 @@ public interface StoreDAO {
 	void insertImage(@Param("image")ImageVO imageVo);
 	
 
+
 	/** 회원가입과 동시에 매장번호 먼저 발급 */
 	boolean makeStore(@Param("makeStore")ManagerVO manager);
 	
@@ -28,4 +29,7 @@ public interface StoreDAO {
 
 	
 	StoreVO selectStore(@Param("bm_num")String bm_num);
+
+	int getStore(@Param("buser")ManagerVO buser);
+
 }
