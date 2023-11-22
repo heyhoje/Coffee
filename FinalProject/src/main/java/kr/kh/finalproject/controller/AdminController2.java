@@ -77,7 +77,7 @@ public class AdminController2 {
 		
 		// => 매장등록 (plusinfo) insert -> update 로 변경. 
 		
-		// map.put("store", store);
+		// map.put("store", store); // 화면단에 store정보를 보낼 필요는 없음. 그냥 일만하러 왔다.
 		map.put("res", res);
 		return map;
 		
@@ -110,17 +110,19 @@ public class AdminController2 {
 		return "/admin/bstore";
 	}
 	
-	// ajax - post 승인/거절 버튼 기능
-	@ResponseBody
-	@PostMapping("/admin/bstore")
-	public Map<String, Object> bstorePost(@RequestBody StoreVO store){
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		boolean res = storeService.updateStore(store);
-		
-		map.put("res", res);
-		return map;
-	}
+	/*
+	 * // ajax - post 승인/거절 버튼 기능
+	 * 
+	 * @ResponseBody
+	 * 
+	 * @PostMapping("/admin/bstore") public Map<String, Object>
+	 * bstorePost(@RequestBody StoreVO store){ Map<String, Object> map = new
+	 * HashMap<String, Object>();
+	 * 
+	 * // boolean res = storeService.updateStore(store);
+	 * 
+	 * // map.put("res", res); return map; }
+	 */
 	
 	
 	/** 광고&프로모션 승인 */

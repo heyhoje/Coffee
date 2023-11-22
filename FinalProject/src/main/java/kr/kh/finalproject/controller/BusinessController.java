@@ -322,13 +322,14 @@ public class BusinessController {
 		// 2. 일을 하려면 무엇이 필요한지
 		// 3. 끝났을때 알고싶은 정보가 무엇인지 = 정보를 추가했는지 못했는지만 알면 됨. 
 		ManagerVO buser = (ManagerVO)session.getAttribute("buser"); // 현재 로그인 중인 사업자 아이디가 storeDB에 필요함!!!
-		boolean res = storeService.plusInfo(store, buser, files); // 추가했다 못했다만 알면됨.
+		boolean res = storeService.plusInfo(store, buser, files); // 추가했다 못했다만 알면됨 
+			// -> 4. 수정UPDATE로 바꿔야됨. boolean은 냅둬도 되는지, 업데이트 여부만 알려주면 되는지 한번 확인해보자고
 		
 		if(res) {
-			model.addAttribute("msg", "매장등록이 신청되었습니다! 승인확인까지 기다려주세요.");
+			model.addAttribute("msg", "매장 정보를 추가했습니다!");
 			model.addAttribute("url", "business/home");
 		} else {
-			model.addAttribute("msg", "매장등록에 실패했습니다. 입력해야할 정보를 모두 입력하였는지 확인해주세요.");
+			model.addAttribute("msg", "정보를 수정하는데 실패했습니다.");
 			model.addAttribute("url", "business/plusinfo");
 		}
 		

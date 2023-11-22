@@ -28,16 +28,28 @@ public class StoreServiceImp implements StoreService{
 		return storeDao.selectBsList(st_approval);
 	}
 
-	/** 매장등록 승인&거절 */
-	@Override
-	public boolean updateStore(StoreVO store) {
-		if(store == null) {
-			return false;
-		}
-		return storeDao.updateStore(store);
-	}
+//	/** 매장등록 승인&거절 */
+//	@Override
+//	public boolean updateStore(StoreVO store) {
+//		if(store == null) {
+//			return false;
+//		}
+//		return storeDao.updateStore(store);
+//	}
 
-	/** 매장등록 추가정보 입력 */
+	@Override
+	public StoreVO makeStore(ManagerVO manager) {
+		if(manager == null || manager.getBm_id() == null) {
+			return null;
+		}
+		// alert가 안뜨고, st_bm_id가 중복으로 저장됨..... 
+		// 예외처리가 덜 된걸까? 왜..중복..?ㅠ 
+		
+		// 아니면 만들어 줘!
+		return storeDao.makeStore(manager);
+	}
+	
+	/** 매장등록 추가정보 입력 및 업데이트 */
 	@Override
 	public boolean plusInfo(StoreVO store, ManagerVO buser, MultipartFile[] files) {
 		if(store == null || buser == null || buser.getBm_id() == null ) {
@@ -47,8 +59,9 @@ public class StoreServiceImp implements StoreService{
 		// 첨부파일 추가
 		uploadFiles(files, store.getSt_num());
 		
-		store.setSt_bm_id(buser.getBm_id()); // bm_id값은 set으로 st_bm_id에 값 넣으면, buser 안넘겨도됨..ㅜㅠㅠ
-		return storeDao.insertPlusInfo(store);
+		// 이미 st_num발급되면서 아이디와 승인정보 넘어가있음
+		// store.setSt_bm_id(buser.getBm_id()); // bm_id값은 set으로 st_bm_id에 값 넣으면, buser 안넘겨도됨..ㅜㅠㅠ
+		return storeDao.updatePlusInfo(store, buser);
 	}
 
 	private void uploadFiles(MultipartFile[] files, int st_num) {
@@ -77,20 +90,9 @@ public class StoreServiceImp implements StoreService{
 		}
 	}
 
+	
 	@Override
 	public StoreVO getStore(String bm_num) {
 		return null;
-	}
-
-	@Override
-	public StoreVO makeStore(ManagerVO manager) {
-		if(manager == null || manager.getBm_id() == null) {
-			return null;
-		}
-		// alert가 안뜨고, st_bm_id가 중복으로 저장됨..... 
-		// 예외처리가 덜 된걸까? 왜..중복..?ㅠ 
-		
-		// 아니면 만들어 줘!
-		return storeDao.makeStore(manager);
 	}
 }
