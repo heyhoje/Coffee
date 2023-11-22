@@ -15,9 +15,14 @@ public interface StoreService {
 	// 매장등록 승인&거절
 	boolean updateStore(StoreVO store);
 
+	/** 일단 회원가입과 동시에 st_num을 발급해주기 위한 메소드 추가 */
+	StoreVO makeStore(ManagerVO manager);
+	
 	// 매장등록 추가정보 입력
 	boolean plusInfo(StoreVO store, ManagerVO buser, MultipartFile[] files);
 
 	StoreVO getStore(String bm_num);
+
+	
 
 }

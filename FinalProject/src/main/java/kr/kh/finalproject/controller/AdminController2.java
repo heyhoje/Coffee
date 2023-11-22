@@ -63,7 +63,7 @@ public class AdminController2 {
 	}
 	
 	// ajax - post 승인/거절 버튼 기능
-	// json으로 받으면 Map<String, Object> map / @ResponseBody추가 / @RequestBody추가
+	// json으로 받으면 Map<String, Object> map / 어노테이션 @ResponseBody추가 // 매개변수 @RequestBody추가
 	@ResponseBody
 	@PostMapping("/admin/bmember")
 	public Map<String, Object> bmemberPost(@RequestBody ManagerVO manager){
@@ -71,8 +71,13 @@ public class AdminController2 {
 		System.out.println(manager);
 		
 		//ManagerVO bmember = new ManagerVO();
-		boolean res = managerService.updateManager(manager);
-				
+		boolean res = managerService.updateManager(manager); // 승인 -> 업데이트 -> bm_approval( 0 -> 1 )
+		// 동시에 getMakeStore 를 하면서 st_num을 만들고, bm_id값만 넘겨주고, st_approval default값 0이 주어짐 -> storeVO 데이터 저장! 
+		StoreVO store = storeService.makeStore(manager); // 상점등록 - (st_num) st_bm_id를 이용해서 insert
+		
+		// => 매장등록 (plusinfo) insert -> update 로 변경. 
+		
+		// map.put("store", store);
 		map.put("res", res);
 		return map;
 		

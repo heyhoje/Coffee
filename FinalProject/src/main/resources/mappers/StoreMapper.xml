@@ -30,7 +30,13 @@
 			where st_num = #{store.st_num}
 	</update>
 	
-	<!-- 매장등록 추가정보 입력 -->
+	
+	<!-- (회원가입) + 매장번호 선등록 -->
+	<insert id="makeStore">
+		insert into store(st_bm_id) values(#{makeStore.bm_id})
+	</insert>
+	
+	<!-- 매장등록 추가정보 입력 // 업데이트문으로 변경 --> 
 	<!-- 첨부파일 추가를 위해 useGeneratedKeys, keyProperty 추가 -->
 	<insert id="insertPlusInfo" useGeneratedKeys="true" keyProperty="store.st_num">
 		insert into store(st_br_name, st_opentime, st_closetime, st_contents, st_bm_id)
