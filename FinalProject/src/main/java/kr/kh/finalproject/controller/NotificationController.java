@@ -37,7 +37,7 @@ public class NotificationController {
 	
 	@CrossOrigin
 	@RequestMapping(value="/business/order/{a}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-	public SseEmitter subscribe(HttpServletRequest request, @PathVariable("a") int st_num) {
+	public SseEmitter subscribe(HttpServletRequest request, @PathVariable("a") final int st_num) {
 			HttpSession session = request.getSession();
 			ManagerVO user = (ManagerVO)session.getAttribute("buser");
 			
