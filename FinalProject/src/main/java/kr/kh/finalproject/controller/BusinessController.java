@@ -174,15 +174,15 @@ public class BusinessController {
 	         @RequestParam("osNameList") String osNameList, @RequestParam("osNumList") String osNumList,
 	         @RequestParam("ovNumList") String ovNumList, @RequestParam("optionValueList") String optionValueList, 
 	         @RequestParam("optionPriceList") String optionPriceList) {
-		System.out.println(mn_num);
-		System.out.println(mn_name); 
-		System.out.println(mn_price); 
-		System.out.println(mn_contents); 
-		System.out.println(osNameList); 
-		System.out.println(optionValueList); 
-		System.out.println(optionPriceList);
-		System.out.println(osNumList);
-		System.out.println(ovNumList);
+//		System.out.println(mn_num);
+//		System.out.println(mn_name); 
+//		System.out.println(mn_price); 
+//		System.out.println(mn_contents); 
+//		System.out.println(osNameList); 
+//		System.out.println(optionValueList); 
+//		System.out.println(optionPriceList);
+//		System.out.println(osNumList);
+//		System.out.println(ovNumList);
 		
         // 문자열을 ','를 기준으로 나누어 리스트로 저장
         List<String> os_name = splitAndToList(osNameList);
@@ -192,11 +192,11 @@ public class BusinessController {
         List<String> ov_num = splitAndToList(ovNumList);
 
         // 각 리스트의 내용을 출력해보기
-        System.out.println("os_name: " + os_name);
-        System.out.println("ov_value: " + ov_value);
-        System.out.println("ov_price: " + ov_price);
-        System.out.println("os_num: " + os_num);
-        System.out.println("ov_num: " + ov_num);
+//        System.out.println("os_name: " + os_name);
+//        System.out.println("ov_value: " + ov_value);
+//        System.out.println("ov_price: " + ov_price);
+//        System.out.println("os_num: " + os_num);
+//        System.out.println("ov_num: " + ov_num);
 
 		boolean updateMenu = businessService.updateMenu(mn_num, mn_name, mn_price, mn_contents);
 
