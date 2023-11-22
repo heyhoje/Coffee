@@ -78,6 +78,7 @@ public class AdminController2 {
 		
 	}
 	
+	
 	/** 사업자 매장등록 승인 */
 	@GetMapping("/admin/bstore")
 	public String adminBStore(Model model) {
@@ -85,22 +86,19 @@ public class AdminController2 {
 		List<StoreVO> bsList = storeService.getBstoreList(0);	
 		System.out.println(bsList);
 		
-		// 시간정보 HH:mm 으로 화면에 보내기 위해 코드 추가
-	    // 예시로 사용할 영업 시간 데이터
-	    Date st_opentime = new Date(); // 영업 시작 시간
-	    Date st_closetime = new Date(); // 영업 종료 시간
-
-	    // 시간 형식을 "HH:mm"으로 지정
-	    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-
-	    // 각각의 시간을 형식화
-//	    String formattedOpenTime = sdf.format(st_opentime);
-//	    String formattedCloseTime = sdf.format(st_closetime);
-
-	    
-	 // 각각의 시간을 형식화하여 모델에 추가
-        model.addAttribute("formattedOpenTime", sdf.format(st_opentime));
-        model.addAttribute("formattedCloseTime", sdf.format(st_closetime));
+		/* 이 부분은 Controller가 아니라 StoreVO에서 getter설정 해야한다!!!!
+		 * // 시간정보 HH:mm 으로 화면에 보내기 위해 코드 추가 // 예시로 사용할 영업 시간 데이터 Date st_opentime = new
+		 * Date(); // 영업 시작 시간 Date st_closetime = new Date(); // 영업 종료 시간
+		 * 
+		 * // 시간 형식을 "HH:mm"으로 지정 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		 * 
+		 * // 각각의 시간을 형식화 String formattedOpenTime = sdf.format(st_opentime); String
+		 * formattedCloseTime = sdf.format(st_closetime);
+		 * 
+		 * 
+		 * // 각각의 시간을 형식화하여 모델에 추가 model.addAttribute("formattedOpenTime", sdf.format(st_opentime)); 
+		 * model.addAttribute("formattedCloseTime", sdf.format(st_closetime));
+		 */
         
 		// 화면
 		model.addAttribute("bsList", bsList);
@@ -118,6 +116,7 @@ public class AdminController2 {
 		map.put("res", res);
 		return map;
 	}
+	
 	
 	/** 광고&프로모션 승인 */
 	@GetMapping("/admin/ad")
@@ -142,6 +141,8 @@ public class AdminController2 {
 			map.put("res", res);
 			return map;
 		}
+	
+	
 	
 	/** 리뷰 등 기타 승인 
 	 *  전체 리뷰 리스트를 가져오니까 매개변수 보낼 필요 없겠지? */
