@@ -60,8 +60,10 @@
 					href="<c:url value='/main/gallery'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">갤러리</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="<c:url value='/promotion/list'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">이벤트</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="<c:url value='/admin/home'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">관리자 </a></li>	
+				<c:if test="${user.me_authority == 'admin'}">
+					<li class="nav-item"><a class="nav-link"
+						href="<c:url value='/admin/home'/>"style="font-family: 'BM HANNA Pro', sans-serif; color:white;">//   (관리자)</a></li>
+				</c:if>	
 				<c:if test="${user == null && user2 == null}">
 					<li class="form-group" id="loginButton" style="justify-content:center; display:flex;"><input type="submit" 
 						style="margin-right: 10px; background-color: floralwhite; margin-left:10px; justify-content:center; display:flex;  font-family: 'BM HANNA Pro', sans-serif;"  value="회원 로그인" class="btn login_btn" data-toggle="modal"

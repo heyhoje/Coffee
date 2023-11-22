@@ -75,7 +75,7 @@ public class ManagerController {
 		if (buser != null && buser.getBm_approval() == 0) {
 			model.addAttribute("buser", buser);
 			model.addAttribute("type", "b");
-			model.addAttribute("msg", "회원가입 승인이 대기중입니다. 조금만 기다려주세요. \\n (추후 관리자에게 문의하는 페이지가 추가될 예정입니다.");
+			model.addAttribute("msg", "회원가입 승인이 대기중입니다. 조금만 기다려주세요. \\n (추후 관리자에게 문의하는 페이지가 추가될 예정입니다.)");
 			model.addAttribute("url", "");
 		
 		} else if(buser != null && buser.getBm_approval() == 1) {
