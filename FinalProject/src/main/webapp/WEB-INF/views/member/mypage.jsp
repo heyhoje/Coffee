@@ -208,6 +208,13 @@
 								name="memberInterest" id="etc" value="기타"> <label
 								class="form-check-label custom-control-label" for="etc">기타</label>
 						</div>
+						
+						<div class="form-check form-check-inline" style="width: 150px;">
+							<input type="checkbox"
+								class="form-check-input custom-control-input"
+								name="memberInterest" id="not" value="관심 브랜드가 없습니다."> <label
+								class="form-check-label custom-control-label" for="not">관심 브랜드가 없습니다.</label>
+						</div>
 
 					</div>
 				</div>

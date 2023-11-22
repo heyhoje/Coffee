@@ -10,4 +10,6 @@ public interface InterestDAO {
 
 	void deleteMemberInterests(String me_user_id) throws Exception;
 
+	List<String> getMemberInterests(String me_user_id)throws Exception;
+
 }

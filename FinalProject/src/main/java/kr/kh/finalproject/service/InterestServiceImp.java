@@ -25,4 +25,9 @@ public class InterestServiceImp implements InterestService{
 		
 	}
 
+	@Override
+	public List<String> getMemberInterests(String me_user_id) throws Exception {
+		return interestDao.getMemberInterests(me_user_id);
+	}
+
 }
