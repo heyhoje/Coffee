@@ -40,7 +40,7 @@ public class ManagerController {
 	public String managerRegister(ManagerVO manager, Model model) {
 		boolean res = managerService.managerRegister(manager);
 		if (res) {
-			model.addAttribute("msg", "회원가입이 제출되었습니다. \\n관리자 승인은 운영시간내 13시, 17시에 일괄 진행며 승인확인까지 로그인이 제한될 수 있습니다.");
+			model.addAttribute("msg", "회원가입이 제출되었습니다. \\n관리자 승인은 운영시간내 13시, 17시에 일괄 진행되며 승인확인까지 로그인이 제한될 수 있습니다.");
 			model.addAttribute("url", "");
 		} else {
 			model.addAttribute("msg", "회원가입에 실패하였습니다. 다시 시도 부탁드립니다.");
@@ -68,7 +68,7 @@ public class ManagerController {
 	}
 
 	@PostMapping("/member/login2")
-	public String loginPost(Model model, ManagerVO manager) {
+	public String loginPost(Model model, ManagerVO manager, HttpServletRequest request) {
 		System.out.println(manager);
 		ManagerVO buser = managerService.login(manager);
 
