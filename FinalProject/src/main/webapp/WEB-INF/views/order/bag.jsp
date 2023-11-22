@@ -105,7 +105,7 @@ var menuPrices = [];
 var optionPrices = [];
 var quantities = [];
 var killAme = [];
-var user = "";
+var user = '${user.me_user_id}';
 var menuNameList = [];
 var menuNumList = [];
 var selectOptionList = [];
@@ -254,8 +254,7 @@ function requestPay() {
 	}
 }
 
-function allInOneAfterPay(totalPrice, usePoint, user) {
-	
+function allInOneAfterPay(totalPrice, usePoint) {
 	var point = totalPrice - usePoint;
     var menuName = menuNameList.join(',');
     var menuNum = menuNumList.join(',');
@@ -274,14 +273,14 @@ function allInOneAfterPay(totalPrice, usePoint, user) {
         data: {
             point: point,
             usePoint : usePoint,
-            user: "carpcarp",
+            user: user,
             menuName: menuName,
             menuNum: menuNum
         },
         success: function (response) {
         	alert('주문이 완료되었습니다.');
         	 	PrintAfterPay();	 
-        		//redirectToMainPage();
+        		redirectToMainPage();
         },
         error: function (error) {
             console.error('Error in allInOneAfterPay:', error);
