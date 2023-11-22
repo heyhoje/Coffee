@@ -74,4 +74,31 @@
 			from reservation 
 			order by rs_num asc
 	</select>
+	<insert id="insertRBasket">
+		insert into roombasket (rs_user_id, rs_room_num, rs_start)
+			values (#{id}, #{room_num}, #{startTime})
+	</insert>
+	<select id="rBasketList" resultType="kr.kh.finalproject.vo.RoomBasketVO">
+		select 
+			rs_rbNum, rs_user_id, rs_date, rs_room_num, rs_start,
+			bm_store_name, bm_address, bm_address2, room_price
+		from 
+			roombasket
+		join
+			meetingroom on rs_room_num = room_num
+		join
+			store on room_st_num = st_num
+		join
+			manager on st_bm_id = bm_id
+		where rs_user_id = #{id}
+		order by rs_start asc
+	</select>
+	<insert id="insertRV">
+		insert into `reservation` (rs_start, rs_room_num, rs_me_user_id)
+		values (#{rs_start}, #{rs_room_num}, #{id}) 
+	</insert>
+	<delete id="killBaguni">
+		delete from roombasket
+		where rs_user_id = #{id}
+	</delete>
  </mapper>

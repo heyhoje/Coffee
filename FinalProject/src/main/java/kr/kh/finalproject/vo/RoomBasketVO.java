@@ -15,6 +15,13 @@ public class RoomBasketVO {
 	private Date rs_date; // 예약 날짜
 	private int rs_start; // 예약 시작시간
 	
+	private String bm_store_name;
+	private String bm_address;
+	private String bm_address2;
+	
+	private int room_price;
+	
+	
 	public void setRs_room_st_num(int room_st_num) {
 		// TODO Auto-generated method stub
 		
