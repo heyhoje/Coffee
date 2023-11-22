@@ -10,35 +10,35 @@ public interface BagService {
 
 	boolean selectedOption(String selected, int total, int menu_num, int bagBunho);
 
-	boolean hasBag(MemberVO user);
+	boolean hasBag(String id);
 
-	boolean makeBag(MemberVO user);
+	boolean makeBag(String id);
 
-	int bagBunho(MemberVO user);
+	int bagBunho(String id);
 
-	List<Option_ChoiceVO> bagList(MemberVO user);
+	List<Option_ChoiceVO> bagList(String id);
 
 	boolean deleteItem(int oc_num);
 
-	List<ManagerVO> shopInfo(MemberVO user);
+	List<ManagerVO> shopInfo(String id);
 
-	boolean givePoint(int givePoint, String user);
+	boolean givePoint(int givePoint, String id);
 
-	int getPoint(MemberVO user);
+	int getPoint(String id);
 
-	boolean steelPoint(int usePoint, String user);
+	boolean steelPoint(int usePoint, String id);
 
-	boolean killBag(String user);
+	boolean killBag(String id);
 
 	boolean makeOrderMenu(String menuName, String menuNum);
 
-	int getBasketNum(MemberVO user);
+	int getBasketNum(String id);
 	
 	int getNumFromOM();
 
-	boolean makeOrderList(String user, int getNumFromOM, int getSbNum);
+	boolean makeOrderList(String id, int getNumFromOM, int getSbNum);
 
-	int getBasketNum1(String user);
+	int getBasketNum1(String id);
 
 	int sameShop(MemberVO user);
 
