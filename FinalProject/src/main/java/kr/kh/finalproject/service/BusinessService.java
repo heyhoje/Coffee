@@ -1,9 +1,5 @@
 package kr.kh.finalproject.service;
 
-
-import org.springframework.stereotype.Service;
-
-
 public interface BusinessService {
 
 	boolean deleteMenu(String menu_num);

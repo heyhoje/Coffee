@@ -127,6 +127,7 @@ var makeMerchantUid = hours +  minutes + seconds + milliseconds;
     killAme[${vss.index}] = ${optionChoice.oc_num};
     menuNameList.push('${optionChoice.menu.mn_name}');
     menuNumList.push('${optionChoice.menu.mn_num}');
+	selectOptionList.push('${optionChoice.oc_selected}');
 </c:forEach>
 
 function updateQuantity(num, operation) {
@@ -279,8 +280,8 @@ function allInOneAfterPay(totalPrice, usePoint, user) {
         },
         success: function (response) {
         	alert('주문이 완료되었습니다.');
-        		 redirectToMainPage();
-        		 PrintAfterPay();
+        	 	PrintAfterPay();	 
+        		//redirectToMainPage();
         },
         error: function (error) {
             console.error('Error in allInOneAfterPay:', error);
@@ -303,7 +304,8 @@ function PrintAfterPay() {
         url: '<c:url value="/call/order"/>',
         data: {
         	  selectOption: selectOption,
-              menuName: menuName
+              menuName: menuName,
+              st_num: ${shop[0].st_num}
               
         },
         success : function(data){

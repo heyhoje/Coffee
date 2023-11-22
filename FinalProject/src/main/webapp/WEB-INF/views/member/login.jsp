@@ -41,7 +41,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
 								</div>
-								<input type="text" name="me_user_id" required class="form-control"
+								<input type="text" name="me_user_id" style=" font-family: 'inherit';" required class="form-control"
 									placeholder="회원 아이디">
 
 							</div>
@@ -49,7 +49,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
-								<input type="password" name="me_pw" required
+								<input type="password" style=" font-family: 'inherit';" name="me_pw" required
 									class="form-control" placeholder="비밀번호">
 							</div>
 							<div class="row align-items-center remember">
@@ -124,7 +124,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
 								</div>
-								<input type="text" name="bm_id" required class="form-control"
+								<input type="text" name="bm_id" style=" font-family: 'inherit';" required class="form-control"
 									placeholder="사업자 아이디">
 
 							</div>
@@ -132,7 +132,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
-								<input type="password" name="bm_pw" required
+								<input type="password" style=" font-family: 'inherit';" name="bm_pw" required
 									class="form-control" placeholder="비밀번호">
 							</div>
 							<div class="row align-items-center remember">

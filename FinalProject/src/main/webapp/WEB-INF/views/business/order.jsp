@@ -52,27 +52,26 @@ console.log(urlEndPoint);
         eventsource.addEventListener("INIT",function(event){
         	console.log(event.data);
            
-            console.log(124);
           	
         })
         eventsource.addEventListener("order",function(event){
         	console.log(event.data);
-            var MenuData = JSON.parse(event.data);
-            addBlock(MenuData.Menu, MenuData.content);
+            //var MenuData = JSON.parse(event.data);
+            //addBlock(MenuData.menuName, MenuData.selectOption);
             $('.box').append(`<h1>\${event.data}</h1>`)
           	
         })
 	
 	})
         function addBlock(Menu, content){
-            var a = document.createElement("Menu");
+            var a = document.createElement("menuName");
             //메뉴
-            var h = document.createElement("content")
-            var t = document.createElement(Menu);
+            var h = document.createElement("selectOption")
+            var t = document.createElement(menuName);
             h.appendChild(t);
             //메뉴정보
             var para = document.createElement("P");
-            para.innerHTML = content;
+            para.innerHTML = "";
             a.appendChild(h);
             a.appendChild(para);
             document.getElementById("pack").appendChild(a);        
@@ -123,9 +122,9 @@ console.log(urlEndPoint);
     	});
 </script>
     <nav class="navbar navbar-default">
-        <div class="container-fluid">
+        <div class="container-fluid" style="justify-content: center;">
             <div class="navbar-header">
-                <div class="navbar-brand" style="font-family: 'BM HANNA Pro', sans-serif;">주문목록이 보여집니다.</div>
+                <div class="navbar-brand" style="font-family: 'BM HANNA Pro', sans-serif;"></div>
             </div>
         </div>
         
@@ -133,7 +132,8 @@ console.log(urlEndPoint);
     <div class = "container pstyle text-center" id="pack" style="font-family: 'BM HANNA Pro', sans-serif;">
         <div class="Panel panel-primary">
             <h1>주문리스트</h1>
-            <div class="box"></div>
+            <hr style="background-color: black; height:2px;">
+            <div class="box" style="color: firebrick; margin-top: 50px;"></div>
         </div>
 
 

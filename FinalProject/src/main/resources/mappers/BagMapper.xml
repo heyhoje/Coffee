@@ -10,7 +10,6 @@
 	    <association property="menu" javaType="kr.kh.finalproject.vo.Menu2VO">
 	        <result property="mn_num" column="mn_num" />
 	        <result property="mn_name" column="mn_name" />
-	        <result property="mn_contents" column="mn_contents" />
 	        <result property="mn_price" column="mn_price" />
 	        <result property="mn_st_num" column="mn_st_num" />
 	        <result property="mn_mc_num" column="mn_mc_num" />
@@ -58,7 +57,7 @@
   	</delete>
   	<select id="getShopInfo" resultType="kr.kh.finalproject.vo.ManagerVO">
   		select
-  			bm_id, bm_pw, bm_num, bm_phone, bm_contents, bm_address, bm_geocoding_lati, bm_geocoding_longi, bm_manager, bm_store_name, bm_image, bm_approval, st_num
+  			bm_id, bm_pw, bm_num, bm_phone, bm_address, bm_geocoding_lati, bm_geocoding_longi, bm_manager, bm_store_name, bm_image, bm_approval, st_num
 		from 
 			option_choice
 		left join 

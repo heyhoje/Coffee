@@ -17,6 +17,14 @@ public interface MeetingroomDAO {
 	int selectMrTotalCount();
 
 	List<ReservationVO> selectRsList();
+
+	boolean insertRBasket(@Param("room_num")int room_num, @Param("id")String id, @Param("startTime")int startTime);
+
+	List<RoomBasketVO> rBasketList(@Param("id")String id);
+
+	boolean insertRV(@Param("id")String id, @Param("rs_start")String rs_start, @Param("rs_room_num")String rs_room_num);
+
+	boolean killBaguni(@Param("id")String id);
 	
 	// 룸예약 정보를 장바구니에 담기
 	// boolean insertRoomBasket(@Param("roomBasket")RoomBasketVO roomBasket);
