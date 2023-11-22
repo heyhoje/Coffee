@@ -77,7 +77,7 @@
 					</td>	
 					<td>
 						<div class="store-contents">
-							<span>${shopList.bm_contents}</span>						
+							<span>${shopList.st_contents}</span>						
 						</div>					
 					</td>			
 					<td>

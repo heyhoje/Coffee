@@ -24,8 +24,8 @@ public class BagServiceImp implements BagService{
 	}
 
 	@Override
-	public boolean hasBag(MemberVO user) {
-		Shop_BasketVO hasBag = bagDao.hasBag(user);
+	public boolean hasBag(String id) {
+		Shop_BasketVO hasBag = bagDao.hasBag(id);
 		if(hasBag == null) {
 			return false;
 		}
@@ -33,20 +33,20 @@ public class BagServiceImp implements BagService{
 	}
 
 	@Override
-	public boolean makeBag(MemberVO user) {
-		bagDao.makeBag(user);
+	public boolean makeBag(String id) {
+		bagDao.makeBag(id);
 		return true;
 	}
 
 	@Override
-	public int bagBunho(MemberVO user) {
-		int sb_num = bagDao.bagBunho(user);
+	public int bagBunho(String id) {
+		int sb_num = bagDao.bagBunho(id);
 		return sb_num;
 	}
 
 	@Override
-	public List<Option_ChoiceVO> bagList(MemberVO user) {
-		return bagDao.bagList(user);
+	public List<Option_ChoiceVO> bagList(String id) {
+		return bagDao.bagList(id);
 	}
 
 	@Override
@@ -55,28 +55,28 @@ public class BagServiceImp implements BagService{
 	}
 
 	@Override
-	public List<ManagerVO> shopInfo(MemberVO user) {	
-		return bagDao.getShopInfo(user);
+	public List<ManagerVO> shopInfo(String id) {	
+		return bagDao.getShopInfo(id);
 	}
 
 	@Override
-	public boolean givePoint(int givePoint, String user) {
-		return bagDao.givePoint(givePoint, user);
+	public boolean givePoint(int givePoint, String id) {
+		return bagDao.givePoint(givePoint, id);
 	}
 
 	@Override
-	public int getPoint(MemberVO user) {
-		return bagDao.getPoint(user);
+	public int getPoint(String id) {
+		return bagDao.getPoint(id);
 	}
 
 	@Override
-	public boolean steelPoint(int usePoint, String user) {
-		return bagDao.backPoint(usePoint, user);
+	public boolean steelPoint(int usePoint, String id) {
+		return bagDao.backPoint(usePoint, id);
 	}
 
 	@Override
-	public boolean killBag(String user) {
-		return bagDao.killBag(user);
+	public boolean killBag(String id) {
+		return bagDao.killBag(id);
 	}
 
 	@Override
@@ -85,8 +85,8 @@ public class BagServiceImp implements BagService{
 	}
 
 	@Override
-	public int getBasketNum(MemberVO user) {
-		return bagDao.getBasketNum(user);
+	public int getBasketNum(String id) {
+		return bagDao.getBasketNum(id);
 	}
 	
 	@Override
@@ -95,14 +95,14 @@ public class BagServiceImp implements BagService{
 	}
 
 	@Override
-	public boolean makeOrderList(String user, int getNumFromOM, int getSbNum) {
-		return bagDao.makeOrderList(user, getNumFromOM, getSbNum);
+	public boolean makeOrderList(String id, int getNumFromOM, int getSbNum) {
+		return bagDao.makeOrderList(id, getNumFromOM, getSbNum);
 	}
 
 
 	@Override
-	public int getBasketNum1(String user) {
-		return bagDao.getBasketNum1(user);
+	public int getBasketNum1(String id) {
+		return bagDao.getBasketNum1(id);
 	}
 
 	@Override

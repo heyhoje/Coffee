@@ -30,8 +30,13 @@
  			bm_store_name like concat('%', #{cri.search}, '%')
  	</select>
 	<select id="selectShopListKm" resultType="kr.kh.finalproject.vo.ManagerVO">
-		select *
-			from manager
+		select 
+		 	 bm.bm_id, bm.bm_pw, bm.bm_num, bm.bm_phone,  
+ 			 bm.bm_address, bm.bm_geocoding_lati, bm.bm_geocoding_longi, 
+ 			 bm.bm_manager, bm.bm_store_name, bm.bm_image, bm.bm_approval, st.st_num, st_st_contents
+		from manager bm
+		join
+			store st on bm_id = st_bm_id
 			where bm_store_name like concat('%', #{cri.search}, '%')
 		and 5000 > st_distance_sphere(Point(#{ipLongi}, #{ipLati}), Point(bm_geocoding_longi, bm_geocoding_lati))
 		order by  st_distance_sphere(Point(#{ipLongi}, #{ipLati}), Point(bm_geocoding_longi, bm_geocoding_lati)) asc
