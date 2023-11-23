@@ -11,4 +11,6 @@ public interface ReservationDAO {
 
 	List<ReservationVO> selectReservationList(@Param("cri")Criteria cri);
 
+	void save(ReservationVO reservation);
+
 }
