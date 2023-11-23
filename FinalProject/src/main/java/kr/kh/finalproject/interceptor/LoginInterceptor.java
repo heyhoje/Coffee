@@ -40,6 +40,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 				
 				// 회원 정보가 있으면 세션에 저장
 				request.getSession().setAttribute("user", user); 
+				
 					// HttpSession session = request.getSession();
 					// session.setAttribute("user", user);
 				
@@ -83,6 +84,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			if (buser == null) {
 				return;
 			}
+			
 			// (!null) 있으면 세션에 저장, 저장한 이름을 잘 기억 => 곳곳에서 사용될 예정
 			request.getSession().setAttribute("buser", buser);
 			// 자동로그인 체크를 안했으면

@@ -206,9 +206,9 @@
 					<div class="card-body" style="height: 300px">
 						<form action="<c:url value='/member/logout'/>" method="post">
 							<div class="input-group form-group">
-								<div class="input-group-prepend">
+								<div class="input-group-prepend" style="width:100%; justify-content:center; display:flex;">
 									<input
-										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto; margin-left: 134%"
+										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto;"
 										type="submit" value="로그아웃" class="btn logout_btn">
 								</div>
 							</div>

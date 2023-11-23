@@ -15,7 +15,6 @@
 </head>
 <body>
     <section class="cart">
-       
       	<div class="cart-layout">
         <table class="cart__list">
                 <thead>
@@ -27,6 +26,8 @@
                 </thead>
                 <c:forEach items="${rBasketList}" var="rBasket" varStatus="rvs">
 				    <c:set var="roomPrice" value="${rBasket.room_price}"/>
+
+
 				    <c:set var="roomStartTime" value="${rBasket.rs_start}"/>
 				    <c:set var="roomEndTime" value="${roomStartTime + 1}"/>
 				
@@ -36,6 +37,7 @@
 				        <td>${rBasket.bm_address} ${rBasket.bm_address2}</td>
 				        <td>${roomPrice}</td>
 				    </tr>
+
 				</c:forEach>
                  <c:set var="totalPrice" value="0"/>
                  <c:forEach items="${rBasketList}" var="rBasketList" varStatus="rvs">
