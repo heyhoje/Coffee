@@ -69,8 +69,11 @@ public class BusinessController {
 		}else if(stApproval == 1) {
 			model.addAttribute("msg", "승인 완료되었습니다.");
 			model.addAttribute("url", "business/home");
-		}else {
+		}else if(stApproval == 2){
 			model.addAttribute("msg", "승인 거절되었습니다.");
+			model.addAttribute("url", "business/home");
+		}else {
+			model.addAttribute("msg", "잘못된 접근입니다.(ex : 정보가 없을경우");
 			model.addAttribute("url", "business/home");
 		}
 		

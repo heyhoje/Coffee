@@ -125,7 +125,10 @@
 					href="/member/pwchange">비밀번호 변경</a> <a type="button"
 					class="btn btn-primary btn-lg btn-block"
 					style="width: 100%; border: 1px solid black; background-color: floralwhite; color: black;"
-					href="/member/deleteMember">회원탈퇴</a>
+					href="/member/deleteMember">회원탈퇴</a> <a type="button"
+					class="btn btn-primary btn-lg btn-block"
+					style="width: 100%; border: 1px solid black; background-color: floralwhite; color: black;"
+					href="/member/mypageHome">홈으로</a>
 			</form>
 		</div>
 	</div>
