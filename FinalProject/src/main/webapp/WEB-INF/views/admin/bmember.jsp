@@ -85,33 +85,32 @@
 		
 		
 		/* function makeStore() {
-			let bm_id = 
-			let store = {
-					// 넘겨줄 매개변수는 id만. st_approval = 0 으로 초기값.
-					st_bm_id : bm_id,
-					st_approval : 0
+		let bm_id = 
+		let store = {
+				// 넘겨줄 매개변수는 id만. st_approval = 0 으로 초기값.
+				st_bm_id : bm_id,
+				st_approval : 0
+		}
+		
+		$.ajax({
+			async : true, //비동기 : true(비동기), false(동기)
+			url : '<c:url value="/admin/bmember"/>', 
+			type : "post", 
+			data : JSON.stringify(store), 
+			contentType : "application/json; charset=utf-8",
+			dataType : "json", 
+			success : function (data){
+				console.log(data.store);
+					// insert 해줘라 bm_id를 st_bm_id에게. 조건은... 없다...?없을 수 있나???? 있다. 
+					alert('매장 번호가 발급되었습니다. 로그인 후, 매장정보를 수정해주세요'); 
+					// 그 매장번호는 어떻게 알려줄 것인가, 사업자 로그인하고 첫 페이지에서? 대기중0/승인1 정보를 보여준...다....?
+			}, 
+			error : function(jqXHR, textStatus, errorThrown){
 			}
-			
-			$.ajax({
-				async : true, //비동기 : true(비동기), false(동기)
-				url : '<c:url value="/admin/bmember"/>', 
-				type : "post", 
-				data : JSON.stringify(store), 
-				contentType : "application/json; charset=utf-8",
-				dataType : "json", 
-				success : function (data){
-					console.log(data.store);
-						// insert 해줘라 bm_id를 st_bm_id에게. 조건은... 없다...?없을 수 있나???? 있다. 
-						alert('매장 번호가 발급되었습니다. 로그인 후, 매장정보를 수정해주세요'); 
-						// 그 매장번호는 어떻게 알려줄 것인가, 사업자 로그인하고 첫 페이지에서? 대기중0/승인1 정보를 보여준...다....?
-				}, 
-				error : function(jqXHR, textStatus, errorThrown){
-
-				}
-			});
-		} */
-		
-		
+		});
+	} */
+	
+	
 		// 거절버튼
 		$('.reject').click(function(){
 			let bm_id = $(this).data('target'); 

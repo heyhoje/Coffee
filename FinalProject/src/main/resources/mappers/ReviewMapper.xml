@@ -26,6 +26,7 @@
 		from review 
 			join order_menu on re_or_num = or_num
     		join order_list on or_num = ol_or_num
+    		order by re_num desc;
 	</select>
 	
 	<!-- 리뷰 삭제 -->

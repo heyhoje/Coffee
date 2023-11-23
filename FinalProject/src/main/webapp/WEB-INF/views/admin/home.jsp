@@ -11,7 +11,6 @@
 	
 </head>
 <body>
-	
 	<h2 class="bm-subject">사이트 관리자 페이지 입니다.</h2>
 	<div class="bm-menu-container">
 	    <div class="btn-group btn-group-lg">
@@ -22,9 +21,9 @@
 	</div>
 	<div class="update-table-container" style="margin-top:50px; text-align: center;">
 		<div class="update-table-box width" style="width: 1000px; margin: 0 auto;">
-	        
+		
         </div>
-	</div>	
+	</div>
 		<!-- 홈에 관리자 권한 없이 들어왔을때, 로그인 알람을 띄운다. -->	
 		<%-- if(me_user_id == '' || me_authority != 'admin'){
 		if(confirm('관리자 권한이 필요합니다. 관리자로 로그인 하시겠습니까?')){

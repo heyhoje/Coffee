@@ -52,5 +52,4 @@ public interface BagDAO {
 
 	OrderMenuVO getOrderMenu(@Param("id")String id);
 
-
 }
