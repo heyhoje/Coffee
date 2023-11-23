@@ -40,4 +40,5 @@ public class ReservationController {
 		model.addAttribute("msg", "ㅎㅎ");
 		return "/main/message";
 	}
+
 }

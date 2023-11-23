@@ -41,7 +41,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
 								</div>
-								<input type="text" name="me_user_id" required class="form-control"
+								<input type="text" name="me_user_id" style=" font-family: 'inherit';" required class="form-control"
 									placeholder="회원 아이디">
 
 							</div>
@@ -49,7 +49,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
-								<input type="password" name="me_pw" required
+								<input type="password" style=" font-family: 'inherit';" name="me_pw" required
 									class="form-control" placeholder="비밀번호">
 							</div>
 							<div class="row align-items-center remember">
@@ -124,7 +124,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
 								</div>
-								<input type="text" name="bm_id" required class="form-control"
+								<input type="text" name="bm_id" style=" font-family: 'inherit';" required class="form-control"
 									placeholder="사업자 아이디">
 
 							</div>
@@ -132,7 +132,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
-								<input type="password" name="bm_pw" required
+								<input type="password" style=" font-family: 'inherit';" name="bm_pw" required
 									class="form-control" placeholder="비밀번호">
 							</div>
 							<div class="row align-items-center remember">
@@ -206,9 +206,9 @@
 					<div class="card-body" style="height: 300px">
 						<form action="<c:url value='/member/logout'/>" method="post">
 							<div class="input-group form-group">
-								<div class="input-group-prepend">
+								<div class="input-group-prepend" style="width:100%; justify-content:center; display:flex;">
 									<input
-										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto; margin-left: 134%"
+										style="border-top-right-radius: 7%; border-bottom-right-radius: 7%; max-height: 44px; max-width: 100px; margin: auto;"
 										type="submit" value="로그아웃" class="btn logout_btn">
 								</div>
 							</div>

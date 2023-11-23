@@ -1,7 +1,5 @@
 package kr.kh.finalproject.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,7 +66,7 @@ public class AdminController2 {
 	@PostMapping("/admin/bmember")
 	public Map<String, Object> bmemberPost(@RequestBody ManagerVO manager){
 		Map<String, Object> map = new HashMap<String, Object>();
-		System.out.println(manager);
+//		System.out.println(manager);
 		
 		//ManagerVO bmember = new ManagerVO();
 		boolean res = managerService.updateManager(manager); // 승인 -> 업데이트 -> bm_approval( 0 -> 1 )
@@ -89,7 +87,7 @@ public class AdminController2 {
 	public String adminBStore(Model model) {
 		// 매장등록 승인여부가 '0'인 매장 리스트 가져와
 		List<StoreVO> bsList = storeService.getBstoreList(0);	
-		System.out.println(bsList);
+//		System.out.println(bsList);
 		
 		/* 이 부분은 Controller가 아니라 StoreVO에서 getter설정 해야한다!!!!
 		 * // 시간정보 HH:mm 으로 화면에 보내기 위해 코드 추가 // 예시로 사용할 영업 시간 데이터 Date st_opentime = new
@@ -130,7 +128,7 @@ public class AdminController2 {
 	public String adminAdvertisement(Model model) {
 		// 프로모션 승인여부가 '0'인 광고&프로모션 리스트 가져와
 		List<AdvertisementVO> adList = advertisementService.getAdList(0);
-		System.out.println(adList);
+//		System.out.println(adList);
 		
 		// 화면
 		model.addAttribute("adList", adList);

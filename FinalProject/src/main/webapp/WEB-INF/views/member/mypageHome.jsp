@@ -84,14 +84,10 @@
 					<div class="col-md-3">
 						<label>관심 브랜드</label>
 					</div>
-					<div>
-						<h5 id="point">${me_interest_name}</h5>
-						<h2>Interest List:</h2>
-						<ul>
-							<c:forEach items="${interestsList}" var="interest">
-								<li><c:out value="${interest}" /></li>
-							</c:forEach>
-						</ul>
+					<div style="margin-left: 10px; font-size: 18px;">
+						<c:forEach items="${memberInterests}" var="interest">
+							<c:out value="${interest}" />
+						</c:forEach>
 					</div>
 				</div>
 

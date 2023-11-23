@@ -8,26 +8,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <link rel="stylesheet"
-	href="<c:url value='/resources/css/meetingroom.css'/>">
+  <link rel="stylesheet" href="<c:url value='/resources/css/meetingroom.css'/>">
 
 <meta charset="UTF-8">
 </head>
 <body>
 	<h1 style="text-align: center; margin-top: 50px; margin-bottom:50px; font-family:'BM HANNA Pro', sans-serif;">미팅룸 예약</h1>
-
+		<div class="mr-rule-rayout">
+	 <div class="mr-rule-box">
+	 	<div class="mr-rule-textbox">
+	 		<ul>
+		 		<li>당일 예약 취소는 불가합니다.</li>
+		 		<li>취객은 입실이 불가합니다.</li>
+		 		<li>외부음료와 음식물은 반입이 불가능합니다.</li>
+		 		<li>시설 및 물품 파손시 사전 상의 후에 퇴실 해주시기 바랍니다.</li>
+	 		</ul>
+	 	</div>
+	 </div>
+		</div>
 	
 		
 	<div class="booking-form" style="font-family:'BM HANNA Pro', sans-serif;">
 		<div class="form-group">
 			<span class="form-label"></span>
 			<input class="form-control" type="text" placeholder="찾고자 하는 위치를 입력하세요" value="${pm.cri.search}">
-		</div>
-		<div class="form-group" style="display:flex">
-				<span class="form-label"></span>
-				<input class="form-control" type="date" placeholder="예약할 날짜를 입력하세요.">
-				<span class="form-label"></span>
-				<input class="form-control" type="text" style="width:30%; margin-left:20px;" placeholder="인원수">
 		</div>
 		<div style="justify-content:center; display:flex; margin-bottom: 30px;">
 			    <button class="btn btn-outline-success" id="searchbtn2" style="font-family: 'BM HANNA Pro', sans-serif;">검색하기</button>
@@ -94,30 +98,38 @@
 							<div class="popup_layer" id="popup_layer" style="display: none;">
 					 			<div class="popup_box">
 						      		<div style="height: 20px; width: 100%;">
-										<a href="javascript:closePop();" class="m_header-banner-close" width="30px" height="30px">
-											<button class="closebutton">x</button>
+										<a href="javascript:closePop();" class="m_header-banner-close" style="width: 50px; height: 50px;">
+											<a type="button" href="javascript:closePop();" class="closebutton" style="float: right; margin-right: 10px;">x</a>
 										</a>
 									</div>
 									<!--팝업 컨텐츠 영역-->
 									<div class="popup_cont">
 									<input type="hidden" name="room_num" value="${mr.room_num}">
 									<input type="hidden" name="room_st_num" value="${mr.room_st_num}">
-									<h5> 시간 선택 </h5>
+										<h5> 시간 선택 </h5>
+										<hr>
+										<div class="form-group" style="display:flex; margin-left: 10px; margin-right: 10px;">
+											<input id="reservationDate" name="reservationDate" class="form-control" type="date" placeholder="예약할 날짜를 입력하세요.">
+											<input id="numberOfPeople" name="numberOfPeople" class="form-control" type="text" style="width:30%; margin-left:20px;" placeholder="인원수">
+										</div>
+										<hr>
 										<div class="timebox">
 											<div class="buttonbox">
 												<input class="timebutton" type="checkbox"/>
 											</div>
+											<hr>
 											<div class="reservationbutton-box">
-												<button class="reservationbutton" onclick="reservationThis()">예약하기</button>
+												<button class="reservationbutton" href="javascript:void(0)" onclick="reservationThis()">예약하기</button>
 											</div>
 										</div>
 								    <!--팝업 버튼 영역-->
-									<div class=popup-btn-box" style="height:100%;"></div>
+									<div class="popup-btn-box" style="height:100%;"></div>
 									<div class="popup_btn">
 										<a href="javascript:closePop();" style="color:black;">닫기</a>
 									</div>
 								</div>
 							</div>
+						</div>
 						</form>
 					</td>
 				</tr>
@@ -125,12 +137,12 @@
 		</tbody>
 	</table>
 	
-	<div>
+	<div class="mr-pagination-box">
 		<c:if test="${pm.prev}">
 			<a href="<c:url value='/meetingroom/home${pm.cri.getUrl(pm.startPage-1) }'/>">이전</a>
 		</c:if>
 		<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
-			<a href="<c:url value='/meetingroom/home${pm.cri.getUrl(i) }'/>">${i}</a>
+			<a class="mr-pagination" href="<c:url value='/meetingroom/home${pm.cri.getUrl(i) }'/>">${i}</a>
 		</c:forEach>
 		<c:if test="${pm.next}">
 			<a href="<c:url value='/meetingroom/home${pm.cri.getUrl(pm.endPage+1) }'/>">다음</a>
@@ -146,7 +158,9 @@
 		function closePop() {
 		    document.getElementById("popup_layer").style.display = "none";
 		}
-		
+	</script>
+	
+	<script>
 		var starttime = [];
 		var endtime = [];
 		var operationtime=[];
@@ -154,16 +168,13 @@
 		<c:forEach items="${mrList}" var="opentime" varStatus="oT">
 			starttime[${oT.index}] = ${opentime.room_starttime};
 			endtime[${oT.index}] = ${opentime.room_endtime};
-			
 		</c:forEach>
 		
 		var reservationtime= [];
 
 		<c:forEach items="${rsList}" var="rstime" varStatus="rt">
 			reservationtime[${rt.index}] = ${rstime.rs_start};
-			
 			console.log(rstime);
-			
 		</c:forEach>
 		/* 시간선택한 정보를 배열arr로 받아가기 때문에, name변경 -> css도 수정, vo에 int[] 추가 */
 		function operationTime(num){
@@ -183,22 +194,43 @@
 					</label>
 				`
 			}
-			
 			$('.buttonbox').html(str)
 			javascript:openPop()
-			
 		}
-		function reservationThis(){
-			var reservationtime= [];
-			$('input[name="arr_meetingroom_starttime"]:checked').each(function(){
-				selectedTimes.push($(this).val());
-			});
-			$('#reservationtime').val(selectedTimes.join(','));
-			
-			$('#cartform').submit();
-			closePop();
-			
-		
-		}
+	</script>
+	
+	<script>
+	function reservationThis() {
+	    var roomNum = document.getElementById('rs_room_num').value;
+	    var reservationDate = document.getElementById('reservation_date').value;
+	    var numberOfPeople = document.getElementById('number_of_people').value;
+
+	    var selectedTimes = [];
+	    var checkedTimeInputs = document.querySelectorAll('input[name="arr_room_starttime"]:checked');
+	    checkedTimeInputs.forEach(function (input) {
+	        selectedTimes.push(input.value);
+	    });
+	    $.ajax({
+	        url: '/rsadd',
+	        type: 'POST',
+	        data: {
+	            rsRoomNum: room_num,
+	            reservationDate: reservationDate,
+	            numberOfPeople: numberOfPeople,
+	            selectedTimes: selectedTimes
+	        },
+	        console.log(data);
+	        success: function (response) {
+	            console.log('서버 응답:', response);
+	            $('#cartform').submit();
+				closePop();
+	        },
+	        error: function (error) {
+	            console.error('서버 요청 실패:', error);
+	            $('#cartform').submit();
+				closePop();
+	        }
+	    });
+	}
 	</script>
 </html>

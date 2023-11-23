@@ -15,7 +15,6 @@ public class ManagerVO {
    
    private String bm_manager; //담당자
    private String bm_store_name; //매장명
-   private String bm_contents; // 매장정보
    
    private String bm_post; //우편번호
    private String bm_address; // 매장 주소
@@ -33,9 +32,11 @@ public class ManagerVO {
    private boolean autoLogin;
    private String bm_session_id;
    private Date bm_session_limit;
+   private String bm_session_st_num;
    
    // 회원 승인 상태
    private int bm_approval;
    private int st_num;
+   private String st_contents;
 
 }

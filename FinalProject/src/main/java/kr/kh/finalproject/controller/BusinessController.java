@@ -136,7 +136,7 @@ public class BusinessController {
 	 @PostMapping("/business/realC")
 	 @ResponseBody
 	 public String makeMenu(@RequestParam("st_num") String st_num) {
-		 System.out.println(st_num);
+//		 System.out.println(st_num);
 		 boolean makeMenuMijung = businessService.makeMenuMijung(st_num);
 		 int mn_num = businessService.getMijungMn_num();
 		 boolean makeOptionMijung = businessService.makeOptionMijung(mn_num);
@@ -174,15 +174,15 @@ public class BusinessController {
 	         @RequestParam("osNameList") String osNameList, @RequestParam("osNumList") String osNumList,
 	         @RequestParam("ovNumList") String ovNumList, @RequestParam("optionValueList") String optionValueList, 
 	         @RequestParam("optionPriceList") String optionPriceList) {
-		System.out.println(mn_num);
-		System.out.println(mn_name); 
-		System.out.println(mn_price); 
-		System.out.println(mn_contents); 
-		System.out.println(osNameList); 
-		System.out.println(optionValueList); 
-		System.out.println(optionPriceList);
-		System.out.println(osNumList);
-		System.out.println(ovNumList);
+//		System.out.println(mn_num);
+//		System.out.println(mn_name); 
+//		System.out.println(mn_price); 
+//		System.out.println(mn_contents); 
+//		System.out.println(osNameList); 
+//		System.out.println(optionValueList); 
+//		System.out.println(optionPriceList);
+//		System.out.println(osNumList);
+//		System.out.println(ovNumList);
 		
         // 문자열을 ','를 기준으로 나누어 리스트로 저장
         List<String> os_name = splitAndToList(osNameList);
@@ -192,11 +192,11 @@ public class BusinessController {
         List<String> ov_num = splitAndToList(ovNumList);
 
         // 각 리스트의 내용을 출력해보기
-        System.out.println("os_name: " + os_name);
-        System.out.println("ov_value: " + ov_value);
-        System.out.println("ov_price: " + ov_price);
-        System.out.println("os_num: " + os_num);
-        System.out.println("ov_num: " + ov_num);
+//        System.out.println("os_name: " + os_name);
+//        System.out.println("ov_value: " + ov_value);
+//        System.out.println("ov_price: " + ov_price);
+//        System.out.println("os_num: " + os_num);
+//        System.out.println("ov_num: " + ov_num);
 
 		boolean updateMenu = businessService.updateMenu(mn_num, mn_name, mn_price, mn_contents);
 
@@ -233,7 +233,7 @@ public class BusinessController {
 	 @PostMapping("/business/realUI")
 	 @ResponseBody
 	 public String updateInsertOption(@RequestParam("ov_os_num") String ov_os_num) {
-		 System.out.println(ov_os_num);
+//		 System.out.println(ov_os_num);
 		 
 		 boolean uInsertOption = businessService.uInsertOption(ov_os_num);
 		 return "";
@@ -304,7 +304,7 @@ public class BusinessController {
 		
 		// 세션값을 불러오고 화면에 보내주기만 하면됨ㅇㅇ! 서비스한테 멤버정보 가져다달라고 일시킬 필요도 없음.
 		ManagerVO buser = (ManagerVO)session.getAttribute("buser");
-		System.out.println(buser); // 1. 세션값이 있는지 확인하기 위에 sout!
+//		System.out.println(buser); // 1. 세션값이 있는지 확인하기 위에 sout!
 		
 		// 2. 화면
 		model.addAttribute("buser", buser);
@@ -314,7 +314,7 @@ public class BusinessController {
 	// * edu 회원가입폼 제출 참고함.
 	@PostMapping("/business/plusinfo")
 	public String plusInfoPost(StoreVO store, MultipartFile[] files, Model model, HttpSession session) {
-		System.out.println(store); // 1. 내가 보내준 정보가 잘 넘어왔지 꼭! 먼저 확인! / 알려줘야하는지
+//		System.out.println(store); // 1. 내가 보내준 정보가 잘 넘어왔지 꼭! 먼저 확인! / 알려줘야하는지
 		
 		// 서비스에게 서버에 데이터 저장하라고 => 스토어 정보(+로그인한 아이디 buser에 있음)를 주면서 
 		// => 여부..는 아니고 저기서 끝인가? -> (여부였음ㅇㅇ..)

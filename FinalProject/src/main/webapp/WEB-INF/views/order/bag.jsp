@@ -22,8 +22,12 @@
                 <li>주문 후 예정 시간에 늦지 않게 오시는걸 권장합니다.</li>
             </ul>
         </div>
+
         <div>
-        	<img src="image/keyboard.jpg" alt="magic keyboard">
+        	<image class="image-menu" src="<c:url value='/image/menu/${shop[0].bm_image}'/>" width="200px" height="200px" alt="">
+
+        <div class="bagst_info">
+
         	<div>가게 이름 : ${shop[0].bm_store_name}</div>   
         	<div>가게 주소 : ${shop[0].bm_address}</div>
         </div>        
@@ -42,8 +46,12 @@
 		    <c:set var="quantity" value="1" />
 		    <c:set var="sumPrice" value="${menuPrice + optionPrice}"/>
             <tr>
-                <td><img src="image/keyboard.jpg" alt="magic keyboard"></td>
+
+                <td><image class="image-menu" src="<c:url value='/image/menu/${optionChoice.menu.image.im_name}'/>" width="200px" height="200px" alt=""></td>
+
+
                 <td id="menuName">${optionChoice.menu.mn_name}</td>
+                <td>
                 <td>${optionChoice.oc_selected }</td>
                 <td>
 					<button class="plusbtn" onclick="updateQuantity(${index.index}, 'decrease')">-</button>
@@ -79,12 +87,12 @@
 		</c:forEach>        
         	<tr>
         		<td colspan="2"></td>
-            	<td colspan="2">전체 가격</td>
-            	<td id="totalPrice">${totalPrice}</td>
+            	<td colspan="2" style="color:black; font-weight:bold;">전체 가격</td>
+            	<td id="totalPrice">${totalPrice}원</td>
             </tr>
         
         </table>
-        <div>
+        <div class="bagpoint-box">
         	<div>보유 포인트 : ${point }</div>
         	<input type="number" id="usePoint" placeholder="사용할 Point를 입력해주세요." value="0"/>
         </div>
@@ -105,7 +113,7 @@ var menuPrices = [];
 var optionPrices = [];
 var quantities = [];
 var killAme = [];
-var user = "";
+var user = '${user.me_user_id}';
 var menuNameList = [];
 var menuNumList = [];
 var selectOptionList = [];
@@ -127,6 +135,7 @@ var makeMerchantUid = hours +  minutes + seconds + milliseconds;
     killAme[${vss.index}] = ${optionChoice.oc_num};
     menuNameList.push('${optionChoice.menu.mn_name}');
     menuNumList.push('${optionChoice.menu.mn_num}');
+	selectOptionList.push('${optionChoice.oc_selected}');
 </c:forEach>
 
 function updateQuantity(num, operation) {
@@ -253,8 +262,7 @@ function requestPay() {
 	}
 }
 
-function allInOneAfterPay(totalPrice, usePoint, user) {
-	
+function allInOneAfterPay(totalPrice, usePoint) {
 	var point = totalPrice - usePoint;
     var menuName = menuNameList.join(',');
     var menuNum = menuNumList.join(',');
@@ -273,14 +281,14 @@ function allInOneAfterPay(totalPrice, usePoint, user) {
         data: {
             point: point,
             usePoint : usePoint,
-            user: "carpcarp",
+            user: user,
             menuName: menuName,
             menuNum: menuNum
         },
         success: function (response) {
         	alert('주문이 완료되었습니다.');
-        		 redirectToMainPage();
-        		 PrintAfterPay();
+        	 	PrintAfterPay();	 
+        		redirectToMainPage();
         },
         error: function (error) {
             console.error('Error in allInOneAfterPay:', error);
@@ -303,7 +311,8 @@ function PrintAfterPay() {
         url: '<c:url value="/call/order"/>',
         data: {
         	  selectOption: selectOption,
-              menuName: menuName
+              menuName: menuName,
+              st_num: ${shop[0].st_num}
               
         },
         success : function(data){

@@ -98,31 +98,13 @@
          </div>
       
       <!-- banner section end -->
-      <!-- about section start -->
-      <div class="about_section layout_padding">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-6">
-                  <div class="about_taital_main">
-                     <div class="about_taital"  style="font-family: 'BM HANNA Pro', sans-serif;">About Us</div>
-                     <p class="about_text"></p>
-                     <p class="about_text"></p>
-                     <div class="read_bt"><a href="#">Read More</a></div>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="about_img"><img src="resources/images/about-img.png"></div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- about section end -->
+     
       <!-- gallery section start -->
       <div class="gallery_section layout_padding">
          <div class="container">
             <div class="row">
                <div class="col-sm-12">
-                  <h1 class="gallery_taital"  style="font-family: 'BM HANNA Pro', sans-serif;">Brands</h1>
+                  <h1 class="gallery_taital"  style="font-family: 'BM HANNA Pro', sans-serif;">브랜드별 주문</h1>
                   <p class="gallery_text"  style="font-family: 'BM HANNA Pro', sans-serif;">다양한 브랜드 커피를 편리하고 손쉽게 주문해보세요.</p>
                </div>
             </div>
@@ -219,6 +201,23 @@
             <div class="seemore_bt"><a href="#">See More</a></div>
          </div>
       </div>
+      <div class="about_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="about_taital_main">
+                     <div class="about_taital"  style="font-family: 'BM HANNA Pro', sans-serif;">About Us</div>
+                     <p class="about_text"></p>
+                     <p class="about_text"></p>
+                     <div class="read_bt"><a href="<c:url value='/main/Introduce'/>">Read More</a></div>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="about_img"><img src="resources/images/about-img.png"></div>
+               </div>
+            </div>
+         </div>
+      </div>
       <!-- gallery section end -->
       <!-- services section start -->
       <div class="services_section layout_padding">
@@ -283,7 +282,6 @@
                         <li><a href="<c:url value='/promotion/list'/>">이벤트&프로모션</a></li>
                         <li><a href="<c:url value='/order/store'/>">주문</a></li>
                         <li><a href="<c:url value='/meetingroom/home'/>">미팅룸예약</a></li>
-                        <li><a href="<c:url value='/main/gallery'/>">갤러리</a></li>
                         <li><a href="resources/contact.html">채용정보</a></li>
                         <li><a href="<c:url value='/main/review'/>">리뷰게시판</a></li>
                         <li><a href="resources/contact.html">고객센터</a></li>
@@ -306,28 +304,7 @@
                       </ul> 
                		</div>
                	</div>
-               <div class="col-lg-3 col-sm-6">
-                  <h1 class="useful_text" style="font-family: 'BM HANNA Pro', sans-serif;">Contact Us</h1>
-                  <div class="location_text">
-                     <ul>
-                        <li>
-                           <a href="#">
-                           <i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left_10">Address : Loram Ipusm</span>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="#">
-                           <i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_10">Call : +01 1234567890</span>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="#">
-                           <i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_10">Email : demo@gmail.com</span>
-                           </a>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
+              
             </div>
          </div>
       </div>

@@ -173,7 +173,7 @@ a,
 }
 
 .about_img img {
-   	width: 80%;
+   	width: 100%;
     height: auto;
     margin-top:15px;
 }
@@ -246,7 +246,7 @@ button {
 
 .layout_padding {
     padding-top: 90px;
-    padding-bottom: 0px;
+    padding-bottom: 90px;
 }
 
 

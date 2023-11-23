@@ -51,7 +51,7 @@
 
 	<select id="getMemberByKakaoId"
 		resultType="kr.kh.finalproject.vo.MemberVO" parameterType="String">
-		SELECT * FROM user WHERE user_id = #{kakaoId}
+		SELECT * FROM member WHERE me_user_id = #{kakaoId}
 	</select>
 
 	<insert id="insertUserKakaoInfo"

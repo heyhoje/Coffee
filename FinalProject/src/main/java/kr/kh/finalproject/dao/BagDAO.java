@@ -13,41 +13,41 @@ public interface BagDAO {
 
 	boolean selectedOption(@Param("selected")String selected, @Param("total")int total, @Param("menu_num")int menu_num, @Param("sb_num")int bagBunho);
 
-	Shop_BasketVO hasBag(@Param("user")MemberVO user);
+	Shop_BasketVO hasBag(@Param("id")String id);
 
-	void makeBag(@Param("user")MemberVO user);
+	void makeBag(@Param("id")String id);
 
-	int bagBunho(@Param("user")MemberVO user);
+	int bagBunho(@Param("id")String id);
 
-	List<Option_ChoiceVO> bagList(@Param("user")MemberVO user);
+	List<Option_ChoiceVO> bagList(@Param("id")String id);
 
 	boolean deleteItem(@Param("oc_num")int oc_num);
 
-	List<ManagerVO> getShopInfo(@Param("user")MemberVO user);
+	List<ManagerVO> getShopInfo(@Param("id")String id);
 
-	boolean givePoint(@Param("givePoint")int givdPoint, @Param("user")String user);
+	boolean givePoint(@Param("givePoint")int givdPoint, @Param("id")String id);
 
-	int getPoint(@Param("user")MemberVO user);
+	int getPoint(@Param("id")String id);
 
-	boolean backPoint(@Param("usePoint")int usePoint, @Param("user")String user);
+	boolean backPoint(@Param("usePoint")int usePoint, @Param("id")String id);
 
-	boolean killBag(@Param("user")String user);
+	boolean killBag(@Param("id")String id);
 
 	boolean makeOrderMenu(@Param("menuName")String menuName, @Param("menuNum")String menuNum);
 
-	int getBasketNum(@Param("user")MemberVO user);
+	int getBasketNum(@Param("id")String id);
 	
 	int getNumFromOM();
 
-	boolean makeOrderList(@Param("user")String user, @Param("or_num")int getNumFromOM, @Param("sb_num")int getSbNum);
+	boolean makeOrderList(@Param("id")String id, @Param("or_num")int getNumFromOM, @Param("sb_num")int getSbNum);
 
-	int getBasketNum1(@Param("user")String user);
+	int getBasketNum1(@Param("id")String id);
 
-	int sameShop(@Param("user")MemberVO user);
+	int sameShop(@Param("id")MemberVO user);
 
 	int anotherShop(@Param("menu_num")int menu_num);
 
-	boolean flipBag(@Param("user")MemberVO user);
+	boolean flipBag(@Param("id")MemberVO user);
 
 
 }

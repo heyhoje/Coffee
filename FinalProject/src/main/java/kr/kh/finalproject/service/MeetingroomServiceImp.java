@@ -38,6 +38,26 @@ public class MeetingroomServiceImp implements MeetingroomService{
 			}
 		return meetingroomDao.selectRsList();
 	}
+
+	@Override
+	public boolean insertRBasket(int room_num, String id, int startTime) {
+		return meetingroomDao.insertRBasket(room_num, id, startTime);
+	}
+
+	@Override
+	public List<RoomBasketVO> rBasketList(String id) {
+		return meetingroomDao.rBasketList(id);
+	}
+
+	@Override
+	public boolean insertRV(String id, String rs_start, String rs_room_num) {
+		return meetingroomDao.insertRV(id, rs_start, rs_room_num);
+	}
+
+	@Override
+	public boolean killBaguni(String id) {
+		return meetingroomDao.killBaguni(id);
+	}
 	
 	// 룸예약 정보를 장바구니에 담기
 	/*

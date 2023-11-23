@@ -14,4 +14,13 @@
     <delete id="deleteMemberInterests">
     	DELETE FROM interest WHERE me_user_id = #{me_user_id}
     </delete>
+    
+    <select id="getMemberInterests" parameterType="String" resultType="String" resultMap="interestResultMap">
+        SELECT interest_name
+        FROM interest
+        WHERE me_user_id = #{me_user_id}
+    </select>
+    <resultMap id="interestResultMap" type="String">
+    <result property="interestName" column="interest_name"/>
+</resultMap>
 </mapper>

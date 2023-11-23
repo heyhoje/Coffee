@@ -10,7 +10,6 @@
 	    <association property="menu" javaType="kr.kh.finalproject.vo.Menu2VO">
 	        <result property="mn_num" column="mn_num" />
 	        <result property="mn_name" column="mn_name" />
-	        <result property="mn_contents" column="mn_contents" />
 	        <result property="mn_price" column="mn_price" />
 	        <result property="mn_st_num" column="mn_st_num" />
 	        <result property="mn_mc_num" column="mn_mc_num" />
@@ -30,14 +29,14 @@
   	</insert>
   	<select id="hasBag" resultType="kr.kh.finalproject.vo.Shop_BasketVO">
   		select * from `shop_basket`
-  		where sb_me_user_id = "carpcarp"
+  		where sb_me_user_id = #{id}
   	</select>
   	<insert id="makeBag">
   		insert into `shop_basket` (sb_me_user_id)
-  		values ("carpcarp")
+  		values (#{id})
   	</insert>
   	<select id="bagBunho" resultType="int">
-  		select sb_num from shop_basket where sb_me_user_id = "carpcarp"
+  		select sb_num from shop_basket where sb_me_user_id = #{id}
   	</select>
   	<select id="bagList" resultMap="optionChoice">
 		select 
@@ -51,14 +50,14 @@
 		left join 
 			`image` on oc_mn_num = image.im_tableNum
 		where 
-			sb_me_user_id = "carpcarp"
+			sb_me_user_id = #{id}
   	</select>
   	<delete id="deleteItem" parameterType="int">
   		delete from `option_choice` where oc_num = #{oc_num}
   	</delete>
   	<select id="getShopInfo" resultType="kr.kh.finalproject.vo.ManagerVO">
   		select
-  			bm_id, bm_pw, bm_num, bm_phone, bm_contents, bm_address, bm_geocoding_lati, bm_geocoding_longi, bm_manager, bm_store_name, bm_image, bm_approval, st_num
+  			bm_id, bm_pw, bm_num, bm_phone, bm_address, bm_geocoding_lati, bm_geocoding_longi, bm_manager, bm_store_name, bm_image, bm_approval, st_num
 		from 
 			option_choice
 		left join 
@@ -70,12 +69,12 @@
 		left join
 			`manager`on st_bm_id = bm_id
 		where 
-			sb_me_user_id = "carpcarp"
+			sb_me_user_id = #{id}
 	</select>
   	<update id="givePoint">
   		update `member`
   		set me_point = me_point + #{givePoint}
-  		where me_user_id = "carpcarp"
+  		where me_user_id = #{id}
   	</update>
   	<select id="getPoint" resultType="int">
   		select
@@ -83,16 +82,16 @@
   		from
   			member
   		where
-  			me_user_id = "carpcarp"
+  			me_user_id = #{id}
   	</select>
   	<update id="backPoint">
 	  	update member
 	  	set me_point = (me_point - #{usePoint})
-	  	where me_user_id = "carpcarp"
+	  	where me_user_id = #{id}
   	</update>
   	<delete id="killBag">
 		DELETE FROM `option_choice`
-		WHERE oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = "carpcarp")
+		WHERE oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = #{id})
   	</delete>
   	<insert id="makeOrderMenu">
   		insert into `order_menu` (or_time, or_status, or_drinks, or_menuNum)
@@ -100,7 +99,7 @@
   	</insert>
   	<select id="getBasketNum" resultType="int">
   		select sb_num from shop_basket
-  		where sb_me_user_id = "carpcarp"
+  		where sb_me_user_id = #{id}
   	</select>
   	<select id="getNumFromOM" resultType="int">
 	    SELECT or_num FROM order_menu
@@ -109,11 +108,11 @@
   	</select>
   	<insert id="makeOrderList">
   		insert into order_list (ol_or_num, ol_sb_num, ol_user_id)
-  			values (#{or_num}, #{sb_num}, "carpcarp")
+  			values (#{or_num}, #{sb_num}, #{id})
   	</insert>
   	<select id="getBasketNum1" resultType="int">
   		select sb_num from shop_basket
-  		where sb_me_user_id = "carpcarp"
+  		where sb_me_user_id = #{id}
   	</select>
   	<select id="sameShop" resultType="int">
   		select DISTINCT
@@ -125,7 +124,7 @@
   		left join
   			shop_basket on oc_sb_num = sb_num
   		where
-  			sb_me_user_id = "carpcarp"
+  			sb_me_user_id = #{id}
   	</select>
   	<select id="anotherShop" resultType="int">
   		select distinct
@@ -139,6 +138,6 @@
   		delete from 
   			option_choice
   		where
-  			oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = "carpcarp")
+  			oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = #{id})
   	</delete>
   </mapper>

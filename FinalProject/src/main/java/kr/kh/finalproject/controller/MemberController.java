@@ -290,13 +290,11 @@ public class MemberController {
 			interestService.deleteMemberInterests(member.getMe_user_id());
 	        List<String> interestsList = Arrays.asList(memberInterests);
 	        interestService.updateMemberInterests(member.getMe_user_id(), interestsList);
-	        
+	        System.out.println(interestsList);
 	    }
 		memberService.infoUpdate(member);
-		System.out.println(memberInterests);
-		System.out.println(member);
-		session.invalidate();
-		model.addAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
+		model.addAttribute("msg", "정보 수정이 완료되었습니다.");
+		model.addAttribute("url", "member/mypageHome");
 		return "/main/message";
 	}
 }

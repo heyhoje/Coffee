@@ -32,10 +32,12 @@ public class BagController {
 	@RequestMapping(value="/order/bag", method=RequestMethod.GET)
 	public String signup(HttpSession session, Model model) {
     	MemberVO user = (MemberVO)session.getAttribute("user");
-    	List<Option_ChoiceVO> jangbaguni = bagService.bagList(user);
-    	List<ManagerVO> shop = bagService.shopInfo(user);
-    	int point = bagService.getPoint(user);
-    	int basketNum = bagService.getBasketNum(user);
+		String id = user.getMe_user_id();
+    	List<Option_ChoiceVO> jangbaguni = bagService.bagList(id);
+    	System.out.println(jangbaguni);
+    	List<ManagerVO> shop = bagService.shopInfo(id);
+    	int point = bagService.getPoint(id);
+    	int basketNum = bagService.getBasketNum(id);
     	
     	model.addAttribute("basketNum", basketNum);
     	model.addAttribute("point", point);
@@ -49,7 +51,7 @@ public class BagController {
     @ResponseBody
     public String addToBag(HttpSession session, @RequestParam("optionAll") String optionAll, @RequestParam("menu_num") int menu_num, @RequestParam("menu_price") int menu_price) {
     	MemberVO user = (MemberVO)session.getAttribute("user");
-
+    	String id = user.getMe_user_id();
         
         String[] parts = optionAll.split(","); 
 
@@ -77,12 +79,12 @@ public class BagController {
             result.setLength(result.length() - 2);
         }
         String selected = result.toString(); 
-        boolean hasBag = bagService.hasBag(user);	
+        boolean hasBag = bagService.hasBag(id);	
         if(!hasBag) {
-        	boolean makeBag = bagService.makeBag(user);
+        	boolean makeBag = bagService.makeBag(id);
         }
         
-        int bagBunho = bagService.bagBunho(user);
+        int bagBunho = bagService.bagBunho(id);
         
 //        int sameShop = bagService.sameShop(user);
 //        int anotherShop = bagService.anotherShop(menu_num);
@@ -106,15 +108,20 @@ public class BagController {
     @PostMapping("/order/bagend")
     @ResponseBody
     public String savePoint(@RequestParam("point") int point, @RequestParam("usePoint") int usePoint, 
-    		@RequestParam("user") String user, @RequestParam("menuName") String menuName, @RequestParam("menuNum") String menuNum) {
+    		@RequestParam("user") String id, @RequestParam("menuName") String menuName, @RequestParam("menuNum") String menuNum) {
+    	System.out.println(point);
+    	System.out.println(usePoint);
+    	System.out.println(id);
+    	System.out.println(menuName);
+    	System.out.println(menuNum);
     	int givePoint = point/10; 
-        boolean jugiPoint = bagService.givePoint(givePoint, user); 
-        boolean patgiPoint = bagService.steelPoint(usePoint, user); 
+        boolean jugiPoint = bagService.givePoint(givePoint, id); 
+        boolean patgiPoint = bagService.steelPoint(usePoint, id); 
         boolean makeOrderMenu_List = bagService.makeOrderMenu(menuName, menuNum); 
         int getNumFromOM = bagService.getNumFromOM();	
-        int getSbNum = bagService.getBasketNum1(user);	
-        boolean makeOrderList = bagService.makeOrderList(user, getNumFromOM, getSbNum);	
-        boolean deleteBag = bagService.killBag(user);	
+        int getSbNum = bagService.getBasketNum1(id);	
+        boolean makeOrderList = bagService.makeOrderList(id, getNumFromOM, getSbNum);	
+        boolean deleteBag = bagService.killBag(id);	
 
         return "/order/bagconfirm";
     }	
