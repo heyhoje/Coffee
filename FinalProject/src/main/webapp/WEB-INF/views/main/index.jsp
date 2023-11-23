@@ -98,31 +98,13 @@
          </div>
       
       <!-- banner section end -->
-      <!-- about section start -->
-      <div class="about_section layout_padding">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-6">
-                  <div class="about_taital_main">
-                     <div class="about_taital"  style="font-family: 'BM HANNA Pro', sans-serif;">About Us</div>
-                     <p class="about_text"></p>
-                     <p class="about_text"></p>
-                     <div class="read_bt"><a href="#">Read More</a></div>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="about_img"><img src="resources/images/about-img.png"></div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- about section end -->
+     
       <!-- gallery section start -->
       <div class="gallery_section layout_padding">
          <div class="container">
             <div class="row">
                <div class="col-sm-12">
-                  <h1 class="gallery_taital"  style="font-family: 'BM HANNA Pro', sans-serif;">Brands</h1>
+                  <h1 class="gallery_taital"  style="font-family: 'BM HANNA Pro', sans-serif;">브랜드별 주문</h1>
                   <p class="gallery_text"  style="font-family: 'BM HANNA Pro', sans-serif;">다양한 브랜드 커피를 편리하고 손쉽게 주문해보세요.</p>
                </div>
             </div>
@@ -217,6 +199,23 @@
                </div>
             </div>
             <div class="seemore_bt"><a href="#">See More</a></div>
+         </div>
+      </div>
+      <div class="about_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="about_taital_main">
+                     <div class="about_taital"  style="font-family: 'BM HANNA Pro', sans-serif;">About Us</div>
+                     <p class="about_text"></p>
+                     <p class="about_text"></p>
+                     <div class="read_bt"><a href="<c:url value='/main/Introduce'/>">Read More</a></div>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="about_img"><img src="resources/images/about-img.png"></div>
+               </div>
+            </div>
          </div>
       </div>
       <!-- gallery section end -->

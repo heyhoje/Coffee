@@ -136,7 +136,7 @@ public class BusinessController {
 	 @PostMapping("/business/realC")
 	 @ResponseBody
 	 public String makeMenu(@RequestParam("st_num") String st_num) {
-		 System.out.println(st_num);
+//		 System.out.println(st_num);
 		 boolean makeMenuMijung = businessService.makeMenuMijung(st_num);
 		 int mn_num = businessService.getMijungMn_num();
 		 boolean makeOptionMijung = businessService.makeOptionMijung(mn_num);
@@ -233,7 +233,7 @@ public class BusinessController {
 	 @PostMapping("/business/realUI")
 	 @ResponseBody
 	 public String updateInsertOption(@RequestParam("ov_os_num") String ov_os_num) {
-		 System.out.println(ov_os_num);
+//		 System.out.println(ov_os_num);
 		 
 		 boolean uInsertOption = businessService.uInsertOption(ov_os_num);
 		 return "";

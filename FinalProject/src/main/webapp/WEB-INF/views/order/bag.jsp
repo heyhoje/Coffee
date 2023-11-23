@@ -22,8 +22,12 @@
                 <li>주문 후 예정 시간에 늦지 않게 오시는걸 권장합니다.</li>
             </ul>
         </div>
+
         <div>
-        	<img src="image/keyboard.jpg" alt="magic keyboard">
+        	<image class="image-menu" src="<c:url value='/image/menu/${shop[0].bm_image}'/>" width="200px" height="200px" alt="">
+
+        <div class="bagst_info">
+
         	<div>가게 이름 : ${shop[0].bm_store_name}</div>   
         	<div>가게 주소 : ${shop[0].bm_address}</div>
         </div>        
@@ -42,8 +46,12 @@
 		    <c:set var="quantity" value="1" />
 		    <c:set var="sumPrice" value="${menuPrice + optionPrice}"/>
             <tr>
-                <td><img src="image/keyboard.jpg" alt="magic keyboard"></td>
+
+                <td><image class="image-menu" src="<c:url value='/image/menu/${optionChoice.menu.image.im_name}'/>" width="200px" height="200px" alt=""></td>
+
+
                 <td id="menuName">${optionChoice.menu.mn_name}</td>
+                <td>
                 <td>${optionChoice.oc_selected }</td>
                 <td>
 					<button class="plusbtn" onclick="updateQuantity(${index.index}, 'decrease')">-</button>
@@ -79,12 +87,12 @@
 		</c:forEach>        
         	<tr>
         		<td colspan="2"></td>
-            	<td colspan="2">전체 가격</td>
-            	<td id="totalPrice">${totalPrice}</td>
+            	<td colspan="2" style="color:black; font-weight:bold;">전체 가격</td>
+            	<td id="totalPrice">${totalPrice}원</td>
             </tr>
         
         </table>
-        <div>
+        <div class="bagpoint-box">
         	<div>보유 포인트 : ${point }</div>
         	<input type="number" id="usePoint" placeholder="사용할 Point를 입력해주세요." value="0"/>
         </div>

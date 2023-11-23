@@ -34,6 +34,7 @@ public class BagController {
     	MemberVO user = (MemberVO)session.getAttribute("user");
 		String id = user.getMe_user_id();
     	List<Option_ChoiceVO> jangbaguni = bagService.bagList(id);
+    	System.out.println(jangbaguni);
     	List<ManagerVO> shop = bagService.shopInfo(id);
     	int point = bagService.getPoint(id);
     	int basketNum = bagService.getBasketNum(id);

@@ -15,7 +15,7 @@
 		<div class="div-content-left">
 				<div class="cont_title">
 					<h2>
-						<span class="inline"><b>CONVENIENCE ORDER & VARIETY</b></span></h2>
+						<span class="inline" style="font-size:40px;"><b>CONVENIENCE ORDER & VARIETY</b></span></h2>
 				</div>
 			<div class="cont_text_wrap">
 				<div class="cont_text cont_text_title">

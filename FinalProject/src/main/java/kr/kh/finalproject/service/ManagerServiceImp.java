@@ -70,7 +70,7 @@ public class ManagerServiceImp implements ManagerService{
 		}
 
 		ManagerVO buser = managerDao.selectManager(manager.getBm_id());
-		System.out.println(buser);
+//		System.out.println(buser);
 		
 		if (buser != null && passwordEncoder.matches(manager.getBm_pw(), buser.getBm_pw())) {
 			return buser;
@@ -148,6 +148,11 @@ public class ManagerServiceImp implements ManagerService{
 	@Override
 	public void infoUpdate(ManagerVO manager) throws Exception {
 		managerDao.infoUpdate(manager);
+	}
+
+	@Override
+	public String getSesstionSt_num(ManagerVO buser) {
+		return managerDao.getSesstionSt_num(buser);
 	}
 
 

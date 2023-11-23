@@ -32,6 +32,7 @@ public class ManagerVO {
    private boolean autoLogin;
    private String bm_session_id;
    private Date bm_session_limit;
+   private String bm_session_st_num;
    
    // 회원 승인 상태
    private int bm_approval;

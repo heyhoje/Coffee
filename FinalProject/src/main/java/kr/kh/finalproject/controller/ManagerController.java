@@ -1,7 +1,5 @@
 package kr.kh.finalproject.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,11 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.kh.finalproject.pagination.Criteria;
-import kr.kh.finalproject.pagination.PageMaker;
 import kr.kh.finalproject.service.ManagerService;
 import kr.kh.finalproject.vo.ManagerVO;
-import kr.kh.finalproject.vo.MemberVO;
 
 @Controller
 public class ManagerController {
@@ -69,7 +64,7 @@ public class ManagerController {
 
 	@PostMapping("/member/login2")
 	public String loginPost(Model model, ManagerVO manager, HttpServletRequest request) {
-		System.out.println(manager);
+//		System.out.println(manager);
 		ManagerVO buser = managerService.login(manager);
 
 		if (buser != null && buser.getBm_approval() == 0) {
@@ -162,9 +157,9 @@ public class ManagerController {
 			ManagerVO managerSearch = managerService.managerIdSearch(manager);
 
 			model.addAttribute("manager", managerSearch);
-			System.out.println(manager);
+//			System.out.println(manager);
 		} catch (Exception e) {
-			System.out.println(e.toString());
+//			System.out.println(e.toString());
 			model.addAttribute("msg", "오류가 발생되었습니다.");
 		}
 
@@ -209,9 +204,9 @@ public class ManagerController {
 	@ResponseBody
 	public int pwCheck(ManagerVO manager) throws Exception {
 		// DB에서 해당 사용자의 해시된 비밀번호 가져오기
-		System.out.println(manager);
+//		System.out.println(manager);
 		String bm_pw = managerService.pwCheck(manager.getBm_id());
-		System.out.println(bm_pw);
+//		System.out.println(bm_pw);
 		// 만약 DB에서 가져온 비밀번호가 null이거나 비밀번호가 일치하지 않으면 0을 반환
 		if (bm_pw == null || !BCrypt.checkpw(manager.getBm_pw(), bm_pw)) {
 			return 0;
@@ -225,9 +220,9 @@ public class ManagerController {
 	public String pwUpdate(String bm_id, String bm_pw1, Model model, HttpSession session) throws Exception {
 		String enpassword = encryptPassword(bm_pw1);
 		managerService.pwUpdate(bm_id, enpassword);
-		System.out.println(bm_id);
-		System.out.println(bm_pw1);
-		System.out.println(enpassword);
+//		System.out.println(bm_id);
+//		System.out.println(bm_pw1);
+//		System.out.println(enpassword);
 		session.invalidate();
 		model.addAttribute("msg", "비밀번호 변경이 완료되었습니다. 다시 로그인해주세요.");
 
@@ -248,7 +243,7 @@ public class ManagerController {
 	public String infoUpdate(HttpServletRequest request, HttpSession session, ManagerVO manager, Model model)
 			throws Exception {
 		managerService.infoUpdate(manager);
-		System.out.println(manager);
+//		System.out.println(manager);
 		session.invalidate();
 		model.addAttribute("msg", "정보 수정이 완료되었습니다.");
 		model.addAttribute("url", "/manager/mypageHome");

@@ -15,14 +15,6 @@
 </head>
 <body>
     <section class="cart">
-        <div class="cart__information">
-            <ul>
-                <li>당일 예약 취소는 불가합니다.</li>
-                <li>취객은 입실이 불가합니다.</li>
-                <li>외부음료와 음식물은 반입이 불가합니다.</li>
-                <li>시설 및 물품 파손시 사전상의 후에 퇴실 해주시기 바랍니다.</li>                
-            </ul>
-        </div>
       	<div class="cart-layout">
         <table class="cart__list">
                 <thead>
@@ -32,15 +24,21 @@
                         <td>상품금액</td>
                     </tr>
                 </thead>
-                <c:forEach items="${rBasketList}" var="rBasketList" varStatus="rvs">
-                	<c:set var="roomPrice" value="${rBasketList.room_price }"/>
-					<tr>
-						<td>${rBasketList.rs_start }</td>
-						<td>${rBasketList.bm_store_name }</td>
-						<td>${rBasketList.bm_address } ${rBasketList.bm_address2 }</td>
-						<td>${rBasketList.room_price }</td>
-					</tr>
-                 </c:forEach>   
+                <c:forEach items="${rBasketList}" var="rBasket" varStatus="rvs">
+				    <c:set var="roomPrice" value="${rBasket.room_price}"/>
+
+
+				    <c:set var="roomStartTime" value="${rBasket.rs_start}"/>
+				    <c:set var="roomEndTime" value="${roomStartTime + 1}"/>
+				
+				    <tr>
+				        <td>${roomStartTime}:00 ~ ${roomEndTime}:00</td>
+				        <td>${rBasket.bm_store_name}</td>
+				        <td>${rBasket.bm_address} ${rBasket.bm_address2}</td>
+				        <td>${roomPrice}</td>
+				    </tr>
+
+				</c:forEach>
                  <c:set var="totalPrice" value="0"/>
                  <c:forEach items="${rBasketList}" var="rBasketList" varStatus="rvs">
                  	<c:set var="totalPrice" value="${totalPrice + roomPrice }"/>
