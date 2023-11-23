@@ -55,18 +55,23 @@ public class BusinessController {
 
 		return "/business/home";
 	}
+	
 	@RequestMapping(value ="/approvalcheck", method = RequestMethod.POST)
 	public String approvalcheck(HttpSession session, Model model) {
 		ManagerVO buser = (ManagerVO) session.getAttribute("buser");
 		String bm_id = buser.getBm_id();
 		int stApproval = storeService.getApprovalByBmId(bm_id);
-		
+		System.out.println(stApproval);
+		System.out.println(bm_id);
 		if(stApproval == 0) {
 			model.addAttribute("msg", "승인 대기중입니다.");
+			model.addAttribute("url", "business/home");
 		}else if(stApproval == 1) {
 			model.addAttribute("msg", "승인 완료되었습니다.");
+			model.addAttribute("url", "business/home");
 		}else {
 			model.addAttribute("msg", "승인 거절되었습니다.");
+			model.addAttribute("url", "business/home");
 		}
 		
 		return "/main/message";

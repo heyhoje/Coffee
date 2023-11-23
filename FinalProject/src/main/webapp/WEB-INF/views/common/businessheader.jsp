@@ -57,7 +57,7 @@
 		<div class="container-fluid">
 			<nav class="navbar navbar-expand-lg navbar">
 				<div class="logo">
-					<a href="<c:url value='/'/>"><img
+					<a href="<c:url value='/business/home'/>"><img
 						src="<c:url value='/resources/images/로고.png'/>"></a>
 				</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -70,7 +70,7 @@
 						<li class="nav-item active"><a class="nav-link"
 							href="<c:url value='/business/plusinfo'/>" 
 							style="font-family: 'BM HANNA Pro', sans-serif; color:white;">매장등록</a></li>
-						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/store'/>" 
+						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/store/${buser.bm_session_st_num}'/>" 
 							style="font-family: 'BM HANNA Pro', sans-serif;">매장관리</a></li>
 						<li class="nav-item active"><a class="nav-link"
 
@@ -80,7 +80,7 @@
 						<li class="nav-item"><a class="nav-link"
 							 href="<c:url value='/business/order/${buser.bm_session_st_num}'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">주문확인</a></li>
-						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/sales'/>"
+						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/sales/${buser.bm_session_st_num}'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">판매정보조회</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/manager/mypageHome'/>"style="border-radius:10px; border: 1px solid white; margin-right: 8px; color: white; font-family: 'BM HANNA Pro', sans-serif; float: right;">${buser.bm_manager}님 어서오세요</a></li>
