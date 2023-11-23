@@ -26,17 +26,18 @@
 	 	</div>
 	 </div>
 		</div>
-	
-		
-	<div class="booking-form" style="font-family:'BM HANNA Pro', sans-serif;">
-		<div class="form-group">
-			<span class="form-label"></span>
-			<input class="form-control" type="text" placeholder="찾고자 하는 위치를 입력하세요" value="${pm.cri.search}">
-		</div>
-		<div style="justify-content:center; display:flex; margin-bottom: 30px;">
-			    <button class="btn btn-outline-success" id="searchbtn2" style="font-family: 'BM HANNA Pro', sans-serif;">검색하기</button>
-		</div>
-	</div>
+	 
+	 <form action="" method="get" onsubmit="handleSearch(event)">
+        <div class="booking-form" style="font-family:'BM HANNA Pro', sans-serif;">
+            <div class="form-group">
+                <span class="form-label"></span>
+                <input class="form-control" type="text" name="search" placeholder="찾고자 하는 매장을 입력하세요" value="${pm.cri.search}">
+                <div style="justify-content:center; display:flex; margin-bottom: 30px;">
+                    <button class="btn btn-outline-success" id="searchbtn2" style="font-family: 'BM HANNA Pro', sans-serif;">검색하기</button>
+                </div>
+            </div>
+        </div>
+    </form>
 			
 	<table class="table" style="font-family: 'BM HANNA Pro', sans-serif; text-align:center;">
 		<thead>
@@ -233,4 +234,26 @@
 	    });
 	}
 	</script>
+	<script>
+    function handleSearch(event) {
+        var searchValue = document.getElementsByName('search')[0].value.toLowerCase(); // Convert to lowercase for case-insensitive search
+
+        // Get all meeting room store names
+        var storeNames = document.querySelectorAll('.meetingroom-store span');
+
+        // Loop through each store name and hide/show based on the search value
+        storeNames.forEach(function (storeName) {
+            var storeNameText = storeName.textContent.toLowerCase();
+            var parentRow = storeName.closest('.inner-box');
+
+            if (storeNameText.includes(searchValue)) {
+                parentRow.style.display = 'table-row';
+            } else {
+                parentRow.style.display = 'none';
+            }
+        });
+
+        event.preventDefault();
+    }
+</script>
 </html>
