@@ -62,23 +62,9 @@
 							<div class="form-group">
 								<div class="flashing column">
 									<figure>
-										<img id="naverIdLogin_loginButton" href="javascript:void(0)"
-											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left;"
-											src="<c:url value='/resources/images/navericon.png'/>">
-									</figure>
-								</div>
-								<div class="flashing column">
-									<figure>
 										<img onclick="kakaoLogin();" href="javascript:void(0)"
 											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
 											src="<c:url value='/resources/images/kakaoicon.png'/>">
-									</figure>
-								</div>
-								<div class="flashing column">
-									<figure>
-										<img id="GgCustomLogin" href="javascript:void(0)"
-											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
-											src="<c:url value='/resources/images/googleicon.png'/>">
 									</figure>
 								</div>
 								<div>
