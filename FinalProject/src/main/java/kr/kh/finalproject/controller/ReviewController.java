@@ -29,6 +29,7 @@ public class ReviewController {
 	@GetMapping("/review/list")
 	public String getReview(Model model) {
 		List<ReviewVO> rvList = reviewService.getRvList();
+//		System.out.println(rvList);
 		
 		model.addAttribute("rvList", rvList);
 		return "/review/list"; 

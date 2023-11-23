@@ -5,6 +5,7 @@ import java.util.List;
 import kr.kh.finalproject.vo.ManagerVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.Option_ChoiceVO;
+import kr.kh.finalproject.vo.OrderMenuVO;
 
 public interface BagService {
 
@@ -30,7 +31,7 @@ public interface BagService {
 
 	boolean killBag(String id);
 
-	boolean makeOrderMenu(String menuName, String menuNum);
+	boolean makeOrderMenu(String menuName, String menuNum, String selectOption);
 
 	int getBasketNum(String id);
 	
@@ -45,6 +46,8 @@ public interface BagService {
 	int anotherShop(int menu_num);
 
 	boolean flipBag(MemberVO user);
+
+	OrderMenuVO getOrderMenu(String id);
 
 
 
