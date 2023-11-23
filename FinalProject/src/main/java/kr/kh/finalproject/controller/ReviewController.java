@@ -59,6 +59,7 @@ public class ReviewController {
 		
 		Map<String, Object> map = new HashMap();
 		MemberVO user = (MemberVO)session.getAttribute("user");
+		System.out.println("review: " + review);
 		
 		boolean res = reviewService.insertReview(review, user);
 		

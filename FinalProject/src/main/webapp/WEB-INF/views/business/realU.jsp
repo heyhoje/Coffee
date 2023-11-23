@@ -45,9 +45,23 @@
 				                       </c:when>
 				                   </c:choose>
 				               </c:forEach>
+				               		<div id="overlay">
+										<div id="popup">
+											<p>정말 삭제하시겠습니까?</p>
+											<button id="btnYes" onclick="killOptionValue(${optionValue.ov_num})">예</button>
+											<button id="btnNo" onclick="handleResponse('아니오')">아니오</button>
+										</div>
+									</div>
 				            </c:forEach>
 				            <button class="btn-outline-warning" onclick="optionChooga(${optionItem.os_num})">옵션값 추가</button>
-				            <button class="btn-outline-warning" onclick="openPopup2(${optionValue.ov_num})">해당 옵션 삭제</button>
+				            <button class="btn-outline-warning" onclick="openPopup2(${optionValue.os_num})">해당 옵션 삭제</button>
+				            <div id="overlay2">
+								  <div id="popup2">
+								    <p>정말 삭제하시겠습니까?</p>
+								    <button id="btnYes" onclick="killOption(${optionItem.os_optionNum})">예</button>
+								    <button id="btnNo" onclick="handleResponse2('아니오')">아니오</button>
+								  </div>
+							</div>
 				            <br><br>
 				        </th>
 				    </c:forEach>
@@ -60,20 +74,8 @@
 		</div>
 		</div>
 	</div>
-				<div id="overlay">
-					  <div id="popup">
-					    <p>정말 삭제하시겠습니까?</p>
-					    <button id="btnYes" onclick="killOptionValue(${optionValue.ov_num})">예</button>
-					    <button id="btnNo" onclick="handleResponse('아니오')">아니오</button>
-					  </div>
-				</div>
-				<div id="overlay2">
-					  <div id="popup2">
-					    <p>정말 삭제하시겠습니까?</p>
-					    <button id="btnYes" onclick="killOption(${optionItem.os_optionNum})">예</button>
-					    <button id="btnNo" onclick="handleResponse2('아니오')">아니오</button>
-					  </div>
-				</div>
+
+
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>	
 <script type="text/javascript">
