@@ -74,8 +74,6 @@
 						<th>번호</th>
 						<th>주문번호</th>
 						<th>아이디</th>
-						<th>매장이름</th>
-						<th>주문한음료</th>
 						<th>리뷰내용</th>
 						<th class="col-2">별점</th>
 						
@@ -87,8 +85,6 @@
 							<td>${review.re_num}</td>
 				            <td>${review.re_ol_num}</td>
 				            <td>${review.re_user_id}</td>
-				            <td>${review.re_store_name}</td>
-				            <td>${review.re_mn_name}</td>
 				            <td>${review.re_contents}</td>
 				            <td class="star-rating">
 							    <!-- Empty stars -->

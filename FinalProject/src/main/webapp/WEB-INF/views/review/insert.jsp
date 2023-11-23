@@ -32,9 +32,9 @@
 							<th></th>
 							<th>아이디</th>
 							<th>주문번호</th>
-							<th>매장이름</th>
 							<th>주문날짜</th>
 							<th>주문한음료</th>
+							<th>선택한옵션</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -44,9 +44,9 @@
 				            			value="${order.or_num}"></td>
 				            	<td>${order.or_user_id}</td>
 				                <td>${order.or_num}</td>
-				                <td>${order.or_store_name}</td>
 				                <td>${order.or_time}</td>
 				                <td>${order.or_drinks}</td>
+				                <td>${order.or_selectOption}</td>
 				            </tr>
 				        </c:forEach>
 					</tbody>
