@@ -67,6 +67,16 @@ width:30px;
 
 
 }
+.mr-pagination-box{
+	justify-content:center;
+	display:flex;
+	letter-spacing:10px;
+}
+.mr-pagination{
+ color:black;
+ font-size:25px;
+ font-family: 'BM HANNA Pro', sans-serif;
+}
 
 
 }

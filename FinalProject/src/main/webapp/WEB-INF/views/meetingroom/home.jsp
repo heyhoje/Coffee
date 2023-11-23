@@ -137,12 +137,12 @@
 		</tbody>
 	</table>
 	
-	<div>
+	<div class="mr-pagination-box">
 		<c:if test="${pm.prev}">
 			<a href="<c:url value='/meetingroom/home${pm.cri.getUrl(pm.startPage-1) }'/>">이전</a>
 		</c:if>
 		<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
-			<a href="<c:url value='/meetingroom/home${pm.cri.getUrl(i) }'/>">${i}</a>
+			<a class="mr-pagination" href="<c:url value='/meetingroom/home${pm.cri.getUrl(i) }'/>">${i}</a>
 		</c:forEach>
 		<c:if test="${pm.next}">
 			<a href="<c:url value='/meetingroom/home${pm.cri.getUrl(pm.endPage+1) }'/>">다음</a>
