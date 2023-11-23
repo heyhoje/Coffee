@@ -8,14 +8,24 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <link rel="stylesheet"
-	href="<c:url value='/resources/css/meetingroom.css'/>">
+  <link rel="stylesheet" href="<c:url value='/resources/css/meetingroom.css'/>">
 
 <meta charset="UTF-8">
 </head>
 <body>
 	<h1 style="text-align: center; margin-top: 50px; margin-bottom:50px; font-family:'BM HANNA Pro', sans-serif;">미팅룸 예약</h1>
-
+		<div class="mr-rule-rayout">
+	 <div class="mr-rule-box">
+	 	<div class="mr-rule-textbox">
+	 		<ul>
+		 		<li>당일 예약 취소는 불가합니다.</li>
+		 		<li>취객은 입실이 불가합니다.</li>
+		 		<li>외부음료와 음식물은 반입이 불가능합니다.</li>
+		 		<li>시설 및 물품 파손시 사전 상의 후에 퇴실 해주시기 바랍니다.</li>
+	 		</ul>
+	 	</div>
+	 </div>
+		</div>
 	
 		
 	<div class="booking-form" style="font-family:'BM HANNA Pro', sans-serif;">

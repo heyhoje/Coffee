@@ -76,7 +76,7 @@
 							 href="<c:url value='/business/menu'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">메뉴관리</a></li>
 						<li class="nav-item"><a class="nav-link"
-							 href="<c:url value='/business/order/${st_num}'/>"
+							 href="<c:url value='/business/order/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">주문확인</a></li>
 						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/1/sales'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">판매정보조회</a></li>

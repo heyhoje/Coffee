@@ -1,9 +1,11 @@
 body {
+  background-color:white;
   margin: 0;
 }
 
 * {
   box-sizing: border-box;
+  margin-top:10p
 }
 
 p,
@@ -28,23 +30,21 @@ a {
   margin: auto;
   padding: 30px;
   font-family:'BM HANNA Pro', sans-serif;
-  font-size:18px;
+  font-size:20px;
 }
 
 .cart ul {
-  background-color: whitesmoke;
   padding: 30px;
   margin-bottom: 50px;
-  border: whitesmoke solid 1px;
-  border-radius: 5px;
-  font-size: 15px;
+  border: solid 1px;
+  border-radius: 1rem;
+  font-size: 20px;
   font-weight: 300;
+  background-color:aliceblue;	
 }
 
 
-.cart ul :first-child {
-  color: limegreen;
-}
+
 table {
   border-top: solid 1.5px black;
   border-collapse: collapse;
@@ -58,14 +58,18 @@ thead {
 }
 
 tbody {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 td {
   padding: 15px 0px;
   border-bottom: 1px solid lightgrey;
 }
-
+.bagst_info{
+	color:limegreen;
+	margin-bottom:35px;
+	
+}
 .cart__list__detail :nth-child(3) {
   vertical-align: top;
 }
@@ -118,7 +122,7 @@ td {
   padding: 7px;
 }
 .deletepopbtn{
-	background-color:white;
+	background-color: white;
 	color:brown;
 }
 .cart__list__detail :nth-child(4),
@@ -162,10 +166,18 @@ td {
   margin: auto;
   border-radius: 5px;
 }
+.bagpoint-box{
+	margin-top:25px;
+}
+#usePoint{
+	margin-top:5px;
+	border-radius:1rem;
+	padding-left:10px;
+}
 .cart-bigorder-leftbox{
 	width: 200px;
     height: 50px;
-    font-size: 16px;
+    font-size: 20px;
     border-radius: 5px;
     border:none;
     background-color:dimgrey;
@@ -175,7 +187,7 @@ td {
 .cart-bigorder-leftbox .cart-bigorder-left {
     color: white;
     border: none;
-    font-size: 16px;
+    font-size: 20px;
 	margin: auto;
 	border-radius: 5px;
 }
@@ -184,6 +196,11 @@ td {
   background-color: limegreen;
   color: white;
   border: none;
+  font-size:20px;
+}
+#totalPrice{
+	color:black;
+	font-weight:bold;
 }
 #overlay {
       display: none;
