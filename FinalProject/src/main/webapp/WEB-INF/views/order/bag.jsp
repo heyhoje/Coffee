@@ -266,13 +266,15 @@ function allInOneAfterPay(totalPrice, usePoint) {
 	var point = totalPrice - usePoint;
     var menuName = menuNameList.join(',');
     var menuNum = menuNumList.join(',');
+    var selectOption = selectOptionList.join('/');
 
 	console.log({
         point: point,
         usePoint : usePoint,
         user: user,
         menuName: menuName,
-        menuNum: menuNum
+        menuNum: menuNum,
+        selectOption: selectOption
     });
 	
     $.ajax({
@@ -283,7 +285,8 @@ function allInOneAfterPay(totalPrice, usePoint) {
             usePoint : usePoint,
             user: user,
             menuName: menuName,
-            menuNum: menuNum
+            menuNum: menuNum,
+            selectOption: selectOption
         },
         success: function (response) {
         	alert('주문이 완료되었습니다.');

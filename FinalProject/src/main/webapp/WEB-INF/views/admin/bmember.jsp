@@ -14,7 +14,7 @@
 	<div class="bmember-title-layout">
 	<h4 class="bmember-title">사업자회원 승인</h4>	
 	</div>
-		<table class="table table-hover" id="bmember-table">
+		<table class="table table-hover" id="bmember-table" style="font-size:25px;">
 			<thead>
 				<tr>
 					<th>아이디</th>

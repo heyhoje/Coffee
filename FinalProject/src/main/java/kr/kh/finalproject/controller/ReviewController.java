@@ -29,6 +29,7 @@ public class ReviewController {
 	@GetMapping("/review/list")
 	public String getReview(Model model) {
 		List<ReviewVO> rvList = reviewService.getRvList();
+//		System.out.println(rvList);
 		
 		model.addAttribute("rvList", rvList);
 		return "/review/list"; 
@@ -58,6 +59,7 @@ public class ReviewController {
 		
 		Map<String, Object> map = new HashMap();
 		MemberVO user = (MemberVO)session.getAttribute("user");
+		System.out.println("review: " + review);
 		
 		boolean res = reviewService.insertReview(review, user);
 		

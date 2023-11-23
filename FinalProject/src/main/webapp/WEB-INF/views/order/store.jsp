@@ -39,7 +39,7 @@
 <body id="storejsp">
 	<div class="nav-searchcategory" style="justify-content:center; text-align:center; display:flex; margin-top:30px; font-size:25px; color:black;">
 	    <a class="nav-link" href="#" style="font-family: 'BM HANNA Pro', sans-serif; font-weight:bold; color:black;">지역으로 검색하기</a>
-	    <a class="nav-link" href="<c:url value='/shop/name'/>" style="font-family: 'BM HANNA Pro', sans-serif; color:black; font-weight:100;">가게 이름으로 검색하기</a>
+	    <a class="nav-link" href="<c:url value='/shop/name'/>" style="font-family: 'BM HANNA Pro', sans-serif; color:black; font-weight:100;">매장명으로 검색하기</a>
 	 </div>
  <div class="search-container">
   		
@@ -156,7 +156,7 @@ function displayMarker(place) {
 	        '				 <div class="ellipsis">${shopList.bm_store_name}</div>'+ 
 	        '                <div class="ellipsis">${shopList.bm_address}</div>' + 
 	        '                <div class="number ellipsis" id="phoneicon">☎${shopList.bm_phone}</div>' + 
-	        '                <a href="/store/menu/${shopList.st_num}/1" target="_blank" class="link"><button type="button" class="btn btn-primary" onclick="">홈페이지</button></a>' + 
+	        '                <a href="/store/menu/${shopList.st_num}/1" target="_blank" class="link"><button type="button" class="btn btn-primary" onclick="">주문하기</button></a>' + 
 	        '            </div>' + 
 	        '        </div>' + 
 	        '    </div>' +    

@@ -9,6 +9,7 @@ import kr.kh.finalproject.dao.BagDAO;
 import kr.kh.finalproject.vo.ManagerVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.Option_ChoiceVO;
+import kr.kh.finalproject.vo.OrderMenuVO;
 import kr.kh.finalproject.vo.Shop_BasketVO;
 
 @Service
@@ -80,8 +81,8 @@ public class BagServiceImp implements BagService{
 	}
 
 	@Override
-	public boolean makeOrderMenu(String menuName, String menuNum) {
-		return bagDao.makeOrderMenu(menuName, menuNum);
+	public boolean makeOrderMenu(String menuName, String menuNum, String selectOption) {
+		return bagDao.makeOrderMenu(menuName, menuNum, selectOption);
 	}
 
 	@Override
@@ -118,6 +119,11 @@ public class BagServiceImp implements BagService{
 	@Override
 	public boolean flipBag(MemberVO user) {
 		return bagDao.flipBag(user);
+	}
+
+	@Override
+	public OrderMenuVO getOrderMenu(String id) {
+		return bagDao.getOrderMenu(id);
 	}
 
 

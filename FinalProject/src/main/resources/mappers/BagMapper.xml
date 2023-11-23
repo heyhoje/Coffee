@@ -94,8 +94,8 @@
 		WHERE oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = #{id})
   	</delete>
   	<insert id="makeOrderMenu">
-  		insert into `order_menu` (or_time, or_status, or_drinks, or_menuNum)
-  			values (now(), "준비중", #{menuName}, #{menuNum})
+  		insert into `order_menu` (or_time, or_status, or_drinks, or_menuNum, or_selectOption)
+  			values (now(), "준비중", #{menuName}, #{menuNum}, #{selectOption})
   	</insert>
   	<select id="getBasketNum" resultType="int">
   		select sb_num from shop_basket
@@ -140,4 +140,16 @@
   		where
   			oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = #{id})
   	</delete>
+  	<select id="getOrderMenu" resultType="kr.kh.finalproject.vo.OrderMenuVO">
+  		select 
+  			or_num, or_drinks, or_time, or_menuNum, or_status, or_selectOption
+  		from 
+  			order_menu
+  		join
+  			order_list on or_num = ol_or_num
+  		where
+  			ol_user_id = #{id}
+  		order 
+  			by ol_num desc limit 1
+  	</select>
   </mapper>
