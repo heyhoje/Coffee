@@ -14,61 +14,17 @@
 	<div class="confirm-backgroundbox" img="/resources/images/barista3.jpg" >
 		<div class="confirmpop-layout">
 		<div class="card mt-50 mb-50">
-	    <div class="col d-flex"><span class="text-muted" id="orderno">#주문번호:1</span></div>
+	    <div class="col d-flex"><span class="text-muted" id="orderno">#주문번호: ${orderMenu.or_num}</span></div>
 
     <div class="title mx-auto"> 주문이 접수되었습니다.</div>
     <div class="main"> <span id="sub-title">
             <p><b>주문목록</b></p>
         </span>
-        <div class="row row-main">
-            <div class="col-3"> <img class="img-fluid" src="이미지1"> </div>
-            <div class="col-6">
-                <div class="row d-flex">
-                    <p><b>${optionChoice.menu.mn_name}아메리카노</b></p>
-                </div>
-                <div class="row d-flex">
-                    <p class="text-muted">옵션:없음 수량:1개</p>
-                </div>
-            </div>
-            <div class="col-3 d-flex justify-content-end">
-                <p><b>3000원</b></p>
-            </div>
-        </div>
-        <div class="row row-main">
-            <div class="col-3"> <img class="img-fluid" src="이미지2"> </div>
-            <div class="col-6">
-                <div class="row d-flex">
-                    <p><b>오늘의커피</b></p>
-                </div>
-                <div class="row d-flex">
-                    <p class="text-muted">옵션:샷추가 수량:1개</p>
-                </div>
-            </div>
-            <div class="col-3 d-flex justify-content-end">
-                <p><b>4000원</b></p>
-            </div>
-        </div>
-        <div class="row row-main">
-            <div class="col-3 "> <img class="img-fluid" src="이미지3"> </div>
-            <div class="col-6">
-                <div class="row d-flex">
-                    <p><b>카페라떼</b></p>
-                </div>
-                <div class="row d-flex">
-                    <p class="text-muted">옵션:샷추가 수량:1개</p>
-                </div>
-            </div>
-            <div class="col-3 d-flex justify-content-end">
-                <p><b>3000원</b></p>
-            </div>
-        </div>
-        <hr>
-        <div class="total">
-            <div class="row">
-                <div class="col"> <b> 총금액:</b> </div>
-                <div class="col d-flex justify-content-end"> 10000원<b></b> </div>
-            
-        </div>
+    <div class="row row-main">
+        <div class="col-3">주문시간 <br> ${orderMenu.or_time }</div>
+        <div class="col-3">주문메뉴 <br> ${orderMenu.or_drinks } </div>
+        <div class="col-3">선택옵션 <br>${orderMenu.or_selectOption } </div>
+        <div class="col-3">상태 : ${orderMenu.or_status} </div>
     </div>
 </div>
 </div>

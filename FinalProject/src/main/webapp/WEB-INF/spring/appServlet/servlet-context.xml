@@ -18,7 +18,7 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<!-- 메뉴페이지 샘플데이터 사진때문에 hoje개인랩탑 경로 임의로 적어놨습니다! -->
-	<resources mapping="/image/menu/**" location="file:///D:\image\메뉴DB/" />	
+	<resources mapping="/image/menu/**" location="file:///C:\Users\user2\Desktop\MenuImage\메뉴DB/" />	
 	
 	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->

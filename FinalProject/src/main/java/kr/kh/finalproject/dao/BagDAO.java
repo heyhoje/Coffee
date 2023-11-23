@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import kr.kh.finalproject.vo.ManagerVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.Option_ChoiceVO;
+import kr.kh.finalproject.vo.OrderMenuVO;
 import kr.kh.finalproject.vo.Shop_BasketVO;
 
 public interface BagDAO {
@@ -33,7 +34,7 @@ public interface BagDAO {
 
 	boolean killBag(@Param("id")String id);
 
-	boolean makeOrderMenu(@Param("menuName")String menuName, @Param("menuNum")String menuNum);
+	boolean makeOrderMenu(@Param("menuName")String menuName, @Param("menuNum")String menuNum, @Param("selectOption")String selectOption);
 
 	int getBasketNum(@Param("id")String id);
 	
@@ -48,6 +49,8 @@ public interface BagDAO {
 	int anotherShop(@Param("menu_num")int menu_num);
 
 	boolean flipBag(@Param("id")MemberVO user);
+
+	OrderMenuVO getOrderMenu(@Param("id")String id);
 
 
 }

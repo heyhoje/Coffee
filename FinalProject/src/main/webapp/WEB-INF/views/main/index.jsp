@@ -104,7 +104,7 @@
          <div class="container">
             <div class="row">
                <div class="col-sm-12">
-                  <h1 class="gallery_taital"  style="font-family: 'BM HANNA Pro', sans-serif;">브랜드별 주문</h1>
+                  <h1 class="gallery_taital"  style="font-family: 'BM HANNA Pro', sans-serif;">제휴 브랜드</h1>
                   <p class="gallery_text"  style="font-family: 'BM HANNA Pro', sans-serif;">다양한 브랜드 커피를 편리하고 손쉽게 주문해보세요.</p>
                </div>
             </div>
@@ -258,7 +258,7 @@
                            <img src="resources/images/communication.png" class="image_1">
                            <img src="resources/images/communication.png" class="image_2">
                         </div>
-                        <h3 class="decorate_text"  style="font-family: 'BM HANNA Pro', sans-serif;">소셜서비스</h3>
+                        <h3 class="decorate_text"  style="font-family: 'BM HANNA Pro', sans-serif;">리뷰서비스</h3>
                         <p class="tation_text"></p>
                         <div class="readmore_bt"><a href="#"></a></div>
                      </div>
@@ -284,7 +284,6 @@
                         <li><a href="<c:url value='/meetingroom/home'/>">미팅룸예약</a></li>
                         <li><a href="resources/contact.html">채용정보</a></li>
                         <li><a href="<c:url value='/main/review'/>">리뷰게시판</a></li>
-                        <li><a href="resources/contact.html">고객센터</a></li>
                      </ul>
                   </div>
                </div>

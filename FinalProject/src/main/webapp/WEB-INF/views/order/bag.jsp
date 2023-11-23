@@ -24,7 +24,7 @@
         </div>
 
         <div>
-        	<image class="image-menu" src="<c:url value='/image/menu/${shop[0].bm_image}'/>" width="200px" height="200px" alt="">
+        	<image class="image-menu" src="<c:url value='https://lh3.googleusercontent.com/p/AF1QipMPlz8zFjP5zVJNMYfkx5iIi95PZwaO5TFlXsvI=s680-w680-h510'/>" width="200px" height="200px" alt="">
 
         <div class="bagst_info">
 
@@ -266,13 +266,15 @@ function allInOneAfterPay(totalPrice, usePoint) {
 	var point = totalPrice - usePoint;
     var menuName = menuNameList.join(',');
     var menuNum = menuNumList.join(',');
+    var selectOption = selectOptionList.join('/');
 
 	console.log({
         point: point,
         usePoint : usePoint,
         user: user,
         menuName: menuName,
-        menuNum: menuNum
+        menuNum: menuNum,
+        selectOption: selectOption
     });
 	
     $.ajax({
@@ -283,7 +285,8 @@ function allInOneAfterPay(totalPrice, usePoint) {
             usePoint : usePoint,
             user: user,
             menuName: menuName,
-            menuNum: menuNum
+            menuNum: menuNum,
+            selectOption: selectOption
         },
         success: function (response) {
         	alert('주문이 완료되었습니다.');

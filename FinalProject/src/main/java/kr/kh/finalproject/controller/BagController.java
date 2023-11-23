@@ -1,5 +1,6 @@
 package kr.kh.finalproject.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -19,6 +20,7 @@ import kr.kh.finalproject.service.BagService;
 import kr.kh.finalproject.vo.ManagerVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.Option_ChoiceVO;
+import kr.kh.finalproject.vo.OrderMenuVO;
 
 @Controller
 public class BagController {
@@ -108,16 +110,16 @@ public class BagController {
     @PostMapping("/order/bagend")
     @ResponseBody
     public String savePoint(@RequestParam("point") int point, @RequestParam("usePoint") int usePoint, 
-    		@RequestParam("user") String id, @RequestParam("menuName") String menuName, @RequestParam("menuNum") String menuNum) {
-    	System.out.println(point);
-    	System.out.println(usePoint);
-    	System.out.println(id);
-    	System.out.println(menuName);
-    	System.out.println(menuNum);
+    		@RequestParam("user") String id, @RequestParam("menuName") String menuName, @RequestParam("menuNum") String menuNum, @RequestParam("selectOption") String selectOption) {
+//    	System.out.println(point);
+//    	System.out.println(usePoint);
+//    	System.out.println(id);
+//    	System.out.println(menuName);
+//    	System.out.println(menuNum);
     	int givePoint = point/10; 
         boolean jugiPoint = bagService.givePoint(givePoint, id); 
         boolean patgiPoint = bagService.steelPoint(usePoint, id); 
-        boolean makeOrderMenu_List = bagService.makeOrderMenu(menuName, menuNum); 
+        boolean makeOrderMenu_List = bagService.makeOrderMenu(menuName, menuNum, selectOption); 
         int getNumFromOM = bagService.getNumFromOM();	
         int getSbNum = bagService.getBasketNum1(id);	
         boolean makeOrderList = bagService.makeOrderList(id, getNumFromOM, getSbNum);	
@@ -126,8 +128,24 @@ public class BagController {
         return "/order/bagconfirm";
     }	
 	@RequestMapping(value = "/order/confirm")
-	public String orderconfirm() {
-	
+	public String orderconfirm(HttpSession session, Model model) {
+    	MemberVO user = (MemberVO)session.getAttribute("user");
+    	String id = user.getMe_user_id();
+    	OrderMenuVO orderMenu = bagService.getOrderMenu(id);
+    	System.out.println("orderMenu: " + orderMenu);
+
+		model.addAttribute("orderMenu", orderMenu);
 		return "/order/confirm";
 	}
+	
+	
+	 // 문자열을 ','를 기준으로 나누어 리스트로 저장하는 메소드
+	 private static List<String> splitAndToList(String input) {
+		 String[] array = input.split(",");
+		 List<String> list = new ArrayList<String>();
+		 for (String value : array) {
+			 list.add(value);
+		 }
+		 return list;
+	 }
 }

@@ -281,6 +281,7 @@ public class BusinessController {
 	 @PostMapping("/business/realUDV")
 	 @ResponseBody
 	 public String deleteOptionValue(@RequestParam("ov_num") String ov_num) {
+		 System.out.println(ov_num);
 		 boolean deleteOptionValue = businessService.deleteOptionValue(ov_num);
 		 return "";
 	 }
