@@ -35,6 +35,7 @@
         <table class="cart__list">
          	<tr>
 				<td colspan="2">상품정보</td>
+				<td></td>
                 <td>옵션</td>
                 <td>수량</td>
                 <td>상품금액</td>
