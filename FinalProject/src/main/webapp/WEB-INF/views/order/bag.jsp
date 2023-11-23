@@ -23,7 +23,7 @@
             </ul>
         </div>
         <div>
-        	<img src="image/keyboard.jpg" alt="magic keyboard">
+        	<image class="image-menu" src="<c:url value='/image/menu/${shop[0].bm_image}'/>" width="200px" height="200px" alt="">
         	<div>가게 이름 : ${shop[0].bm_store_name}</div>   
         	<div>가게 주소 : ${shop[0].bm_address}</div>
         </div>        
@@ -42,7 +42,7 @@
 		    <c:set var="quantity" value="1" />
 		    <c:set var="sumPrice" value="${menuPrice + optionPrice}"/>
             <tr>
-                <td><img src="image/keyboard.jpg" alt="magic keyboard"></td>
+                <td><image class="image-menu" src="<c:url value='/image/menu/${optionChoice.menu.image.im_name}'/>" width="200px" height="200px" alt=""></td>
                 <td id="menuName">${optionChoice.menu.mn_name}</td>
                 <td>${optionChoice.oc_selected }</td>
                 <td>
