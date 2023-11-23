@@ -58,6 +58,9 @@
 				</div>
 				<div class="row mb-3 form-row">
 					<div class="col-md-3">
+						<label for="br_name">브랜드로고</h6>
+					</div>
+					<div class="col-md-3">
 						<input type="file" name="files">
 					</div>
 				</div>

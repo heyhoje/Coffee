@@ -69,6 +69,7 @@
 		</form>
 	</div>
 	
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script>
 	 $(document).ready(function () { 
         $('.btn-review').click(function () { // 라디오를 눌렀을때가 아니라, '등록버튼'을 눌렀을때 이벤트가 발생해야한다.  
