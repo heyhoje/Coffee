@@ -31,9 +31,9 @@
 					<div class="card-header">
 						<h3 style="color: white;">회원 로그인</h3>
 					</div>
-					<div class="card-body">
-						<form action="<c:url value='/member/login'/>"
-							style="font-size: 18px;" method="post">
+					<form action="<c:url value='/member/login'/>"
+						style="font-size: 18px;" method="post">
+						<div class="card-body">
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -59,36 +59,36 @@
 									type="checkbox" name="autoLogin"> 자동 로그인
 								</label>
 							</div>
+							<br>
 							<div class="form-group">
-								<div class="flashing column">
-									<figure>
-										<img onclick="kakaoLogin();" href="javascript:void(0)"
-											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
-											src="<c:url value='/resources/images/kakaoicon.png'/>">
-									</figure>
-								</div>
 								<div>
 									<input
-										style="max-height: 44px; max-width: 100px; margin: auto; float: right; background-color: #F0F0F0;"
+										style="max-height: 44px; width: 100%; margin: auto; float: right; background-color: #F0F0F0;"
 										type="submit" value="로그인" class="btn login_btn">
 								</div>
-							</div>
-							<div class="card-footer" style="margin-top: 70px;">
-								<div class="d-flex justify-content-center links" id="signupbtn">
-									<a id="fotgotid-button" href="<c:url value='/member/signup2'/>">
-										회원가입</a>
-								</div>
-								<div class="d-flex justify-content-center" id="Id">
-									<a id="fotgotid-button"
-										href="<c:url value='/member/search_id'/>">아이디찾기</a>
-								</div>
-								<div class="d-flex justify-content-center" id="pw">
-									<a id="fotgotpw-button"
-										href="<c:url value='/member/search_pw'/>">비밀번호찾기</a>
+								<div>
+									<img onclick="kakaoLogin();" href="javascript:void(0)"
+										style="margin-top: 5px; width: 100%; max-height: 40px; border-radius: 5px;"
+										src="<c:url value='/resources/images/kakaoicon.png'/>">
 								</div>
 							</div>
-						</form>
-					</div>
+						</div>
+						<div class="card-footer">
+							<div class="d-flex justify-content-center links" id="signupbtn">
+								<a id="fotgotid-button" href="<c:url value='/member/signup2'/>">
+									회원가입</a>
+							</div>
+							<div class="d-flex justify-content-center" id="Id">
+								<a id="fotgotid-button"
+									href="<c:url value='/member/search_id'/>">아이디찾기</a>
+							</div>
+							<div class="d-flex justify-content-center" id="pw">
+								<a id="fotgotpw-button"
+									href="<c:url value='/member/search_pw'/>">비밀번호찾기</a>
+							</div>
+						</div>
+
+					</form>
 				</div>
 			</div>
 		</div>
@@ -104,9 +104,9 @@
 					<div class="card-header">
 						<h3 style="color: white;">사업자 로그인</h3>
 					</div>
-					<div class="card-body">
-						<form action="<c:url value='/member/login2'/>"
-							style="font-size: 18px;" method="post">
+					<form action="<c:url value='/member/login2'/>"
+						style="font-size: 18px;" method="post">
+						<div class="card-body">
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -131,34 +131,33 @@
 									type="checkbox" name="autoLogin"> 자동 로그인
 								</label>
 							</div>
+							<br>
 							<div class="form-group">
-								<div class="flashing column">
-									<figure>
-										<img onclick="kakaoLogin();" href="javascript:void(0)"
-											style="margin-top: 2px; max-width: 38px; max-height: 38px; float: left; margin-left: 5%;"
-											src="<c:url value='/resources/images/kakaoicon.png'/>">
-									</figure>
-								</div>
 								<div>
 									<input
-										style="max-height: 44px; max-width: 100px; margin: auto; float: right; background-color: #F0F0F0;"
+										style="max-height: 44px; width: 100%; margin: auto; background-color: #F0F0F0;"
 										type="submit" value="로그인" class="btn login_btn">
 								</div>
-							</div>
-							<div class="card-footer" style="margin-top: 70px;">
-								<div style="color: white;"
-									class="d-flex justify-content-center links">
-									<a href="<c:url value='/member/signup2'/>">회원가입</a>
-								</div>
-								<div class="d-flex justify-content-center">
-									<a href="<c:url value='/manager/search_id'/>">아이디찾기</a>
-								</div>
-								<div class="d-flex justify-content-center">
-									<a href="<c:url value='/manager/search_pw'/>">비밀번호찾기</a>
+								<div>
+									<img onclick="kakaoLogin();" href="javascript:void(0)"
+										style="margin-top: 5px; width: 100%; max-height: 40px; border-radius: 5px;"
+										src="<c:url value='/resources/images/kakaoicon.png'/>">
 								</div>
 							</div>
-						</form>
-					</div>
+						</div>
+						<div class="card-footer">
+							<div style="color: white;"
+								class="d-flex justify-content-center links">
+								<a href="<c:url value='/manager/signup2'/>">회원가입</a>
+							</div>
+							<div class="d-flex justify-content-center">
+								<a href="<c:url value='/manager/search_id'/>">아이디찾기</a>
+							</div>
+							<div class="d-flex justify-content-center">
+								<a href="<c:url value='/manager/search_pw'/>">비밀번호찾기</a>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

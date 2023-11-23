@@ -14,15 +14,41 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/mypage.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+<style>
+.bg-video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 1400px;
+	width: 100%;
+	z-index: -1;
+}
+
+.bg-video__content {
+	height: 100%;
+	width: 100%;
+	object-fit: cover; //
+	background-size: cover 와 비슷함.(HTML 요소 or 비디오와 작동)
+}
+</style>
 </head>
 <body>
+	<div class="bg-video">
+		<video class="bg-video__content" autoplay muted loop>
+			<source src="/resources/images/barista2.mp4" type="video/mp4" />
+			<source src="img/video.webm" type="video/webm" />
+		</video>
+	</div>
 	<div class="col-sm-8" id="mypage-container" style="margin: 0 auto;">
-		<h3 id="Mypage-title">회원정보 수정</h3>
-		<hr>
-		<div class="bg-white rounded shadow-sm container p-3">
+	<br>
+	<br>
+		<div class="bg-white rounded shadow-sm container p-3"
+			style="background-color: rgba(255, 255, 255, 0.7) !important;">
 			<form id="infoView" action="/member/infoUpdate" method="POST"
 				autocomplete="off" class="form-horizontal" role="form">
-				
+				<h3 id="Mypage-title">회원정보 수정</h3>
+				<hr>
+
 				<!-- 아이디 -->
 				<div class="row mb-3 form-row">
 					<div class="col-md-3">
@@ -208,12 +234,13 @@
 								name="memberInterest" id="etc" value="기타"> <label
 								class="form-check-label custom-control-label" for="etc">기타</label>
 						</div>
-						
+
 						<div class="form-check form-check-inline" style="width: 150px;">
 							<input type="checkbox"
 								class="form-check-input custom-control-input"
 								name="memberInterest" id="not" value="관심 브랜드가 없습니다."> <label
-								class="form-check-label custom-control-label" for="not">관심 브랜드가 없습니다.</label>
+								class="form-check-label custom-control-label" for="not">관심
+								브랜드가 없습니다.</label>
 						</div>
 
 					</div>
@@ -276,25 +303,27 @@
 				$("#me_address2").focus();
 				return false;
 			}
-			
+
 			var selectedInterests = [];
-	        $("input[name='memberInterest']:checked").each(function() {
-	            selectedInterests.push($(this).val());
-	        });
+			$("input[name='memberInterest']:checked").each(function() {
+				selectedInterests.push($(this).val());
+			});
 
-	        // 기존 관심사를 Hidden input에서 제거
-	        $("input[name='memberInterests']").remove();
+			// 기존 관심사를 Hidden input에서 제거
+			$("input[name='memberInterests']").remove();
 
-	        // 새로운 관심사를 Hidden input에 추가
-	        $('#infoView').append('<input type="hidden" name="memberInterests" value="' + selectedInterests.join(',') + '">');
+			// 새로운 관심사를 Hidden input에 추가
+			$('#infoView').append(
+					'<input type="hidden" name="memberInterests" value="'
+							+ selectedInterests.join(',') + '">');
 
-	        // 선택된 관심사 확인 (콘솔 출력)
-	        console.log(selectedInterests);
+			// 선택된 관심사 확인 (콘솔 출력)
+			console.log(selectedInterests);
 
-	        if (confirm("수정하시겠습니까?")) {
-	            $('#infoView').submit();
-	            return false;
-	        }
+			if (confirm("수정하시겠습니까?")) {
+				$('#infoView').submit();
+				return false;
+			}
 		}
 	</script>
 </body>

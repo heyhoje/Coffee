@@ -293,8 +293,8 @@ public class MemberController {
 	        System.out.println(interestsList);
 	    }
 		memberService.infoUpdate(member);
-		model.addAttribute("msg", "정보 수정이 완료되었습니다.");
-		model.addAttribute("url", "member/mypageHome");
+		session.invalidate();
+		model.addAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
 		return "/main/message";
 	}
 }

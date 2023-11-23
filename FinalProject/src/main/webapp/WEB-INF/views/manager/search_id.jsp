@@ -13,19 +13,44 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
+<style>
+.bg-video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 1400px;
+	width: 100%;
+	z-index: -1;
+}
+
+.bg-video__content {
+	height: 100%;
+	width: 100%;
+	object-fit: cover; //
+	background-size: cover 와 비슷함.(HTML 요소 or 비디오와 작동)
+}
+</style>
 <title>아이디 찾기</title>
 </head>
-<form commandName="manager" id="createForm"
-	action="${path}/manager/search_result_id" method="post">
-	<body>
+<div class="bg-video">
+	<video class="bg-video__content" autoplay muted loop>
+		<source src="/resources/images/barista2.mp4" type="video/mp4" />
+		<source src="img/video.webm" type="video/webm" />
+	</video>
+</div>
+<body>
+	<form commandName="manager" id="createForm"
+		action="${path}/manager/search_result_id" method="post">
 		<div class="container mt-5">
-			<div class="row justify-content-center">
+			<div class="row justify-content-center" style="font-family: 'BM HANNA Pro', sans-serif;">
 				<div class="col-md-6"
-					style="height: 440px; border: 1px solid black; border-radius: 10px;">
+					style="height: 440px; border: 1px solid black; border-radius: 10px; background-color: rgba(255, 255, 255, 0.7) !important;">
 					<h2 class="text-center mb-4">사업자회원 아이디찾기</h2>
-					<div class="form-group">
+					<div class="form-group"
+						style="background-color: rgba(255, 255, 255, 0.7) !important;">
 						<input type="text" class="form-control form-control-user"
-							id="bm_manager" name="bm_manager" placeholder="가입된 계정의 사업자명을 입력하세요.">
+							id="bm_manager" name="bm_manager"
+							placeholder="가입된 계정의 사업자명을 입력하세요.">
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control form-control-user"
@@ -48,8 +73,8 @@
 				</div>
 			</div>
 		</div>
-	</body>
-</form>
+	</form>
+</body>
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

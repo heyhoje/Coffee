@@ -6,15 +6,42 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/resources/css/mypage.css">
+<style>
+.bg-video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 1400px;
+	width: 100%;
+	z-index: -1;
+}
+
+.bg-video__content {
+	height: 100%;
+	width: 100%;
+	object-fit: cover; //
+	background-size: cover 와 비슷함.(HTML 요소 or 비디오와 작동)
+}
+</style>
 </head>
 <body>
+	<div class="bg-video">
+		<video class="bg-video__content" autoplay muted loop>
+			<source src="/resources/images/barista2.mp4" type="video/mp4" />
+			<source src="img/video.webm" type="video/webm" />
+		</video>
+	</div>
 	<form action="/member/pwUpdate" method="post" id="pwUpdateForm"
 		name="pwUpdateForm">
-		<input type="hidden" id="me_user_id" name="me_user_id" value="${user.me_user_id}">
-		<h3 id="Mypage-title">비밀번호 변경</h3>
-		<hr style="width: 900px;">
+		<input type="hidden" id="me_user_id" name="me_user_id"
+			value="${user.me_user_id}">
+			<br>
+			<br>
 		<div class="bg-white rounded shadow-sm container p-3"
-			id="mypage-container" style="margin: 0 auto; width: 900px;">
+			id="mypage-container"
+			style="margin: 0 auto; width: 900px; background-color: rgba(255, 255, 255, 0.7) !important;">
+		<h3 id="Mypage-title">비밀번호 변경</h3>
+		<hr>
 			<input type="hidden" id="memberId" name="memberId"
 				value="${login.me_user_id}">
 			<div class="row mb-3 form-row">
@@ -79,7 +106,7 @@
 				if ($("#me_pw1").val() != $("#me_pw2").val()) {
 					alert("변경 비밀번호가 일치하지 않습니다.");
 					$("#me_pw2").focus();
-				}				
+				}
 				// 여기서부터 수정
 				$.ajax({
 					url : "/member/pwCheck",
