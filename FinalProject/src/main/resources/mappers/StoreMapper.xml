@@ -81,6 +81,10 @@
 		bm_num = #{buser.bm_num}
 
 	</select>
+	<select id="getApprovalByBmId" resultType="int" parameterType="String">
+        SELECT st_approval FROM store WHERE st_bm_id = #{bm_id}
+    </select>
+	
 </mapper>
 
 

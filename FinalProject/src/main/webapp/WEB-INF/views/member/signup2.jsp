@@ -112,25 +112,13 @@
 
 						</div>
 						<input type="hidden" name="user_aorb" value="회원">
-						<div class="form-group form-row">
-							<div class="col-md-12">
-								<label class="custom-control custom-checkbox checkbox-lg">
-									<input type="checkbox" class="custom-control-input"
-									id="customCheck1">
-									<div class="custom-control-label" for="customCheck1">
-										I agree with <a href="#" target="_blank">terms and
-											conditions</a>
-									</div>
-								</label>
-							</div>
-						</div>
 						<hr class="mt-3 mb-4">
 						<div class="col-12">
 							<div
 								class="d-flex flex-wrap justify-content-between align-items-center">
-								<div class="custom-checkbox d-block">
+								<div class="custom-checkbox d-block" >
 									<a href="<c:url value='/'/>"
-										class="nav-link-inline font-size-sm">이미 계정이 있으신가요? 로그인</a>
+										class="nav-link-inline font-size-sm" style="color: black;">이미 계정이 있으신가요? 로그인</a>
 								</div>
 								<button class="btn btn-primary mt-3 mt-sm-0" type="submit">회원가입</button>
 							</div>

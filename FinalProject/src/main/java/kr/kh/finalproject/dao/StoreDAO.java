@@ -32,4 +32,6 @@ public interface StoreDAO {
 
 	int getStore(@Param("buser")ManagerVO buser);
 
+	int getApprovalByBmId(String bm_id);
+
 }

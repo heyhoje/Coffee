@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.pagination.PageMaker;
 import kr.kh.finalproject.service.BusinessService;
+import kr.kh.finalproject.service.ManagerService;
 import kr.kh.finalproject.service.MenuService;
 import kr.kh.finalproject.service.OptionService;
 import kr.kh.finalproject.service.StoreService;
@@ -34,7 +35,6 @@ import kr.kh.finalproject.vo.StoreVO;
 
 @Controller
 public class BusinessController {
-	
 	
 	/** 매장등록( bmember + bstore ) */ 
 	@Autowired
@@ -55,7 +55,22 @@ public class BusinessController {
 
 		return "/business/home";
 	}
-
+	@RequestMapping(value ="/approvalcheck", method = RequestMethod.POST)
+	public String approvalcheck(HttpSession session, Model model) {
+		ManagerVO buser = (ManagerVO) session.getAttribute("buser");
+		String bm_id = buser.getBm_id();
+		int stApproval = storeService.getApprovalByBmId(bm_id);
+		
+		if(stApproval == 0) {
+			model.addAttribute("msg", "승인 대기중입니다.");
+		}else if(stApproval == 1) {
+			model.addAttribute("msg", "승인 완료되었습니다.");
+		}else {
+			model.addAttribute("msg", "승인 거절되었습니다.");
+		}
+		
+		return "/main/message";
+	}
 	// 사업자페이지 [메뉴]
 	@RequestMapping(value = "/business/menu/{a}/{b}", method = RequestMethod.GET)
 	public String menu(Model model, int[] mc_numList, Criteria cri,

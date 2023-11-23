@@ -95,4 +95,9 @@ public class StoreServiceImp implements StoreService{
 	public int getStore(ManagerVO buser) {
 		return storeDao.getStore(buser);
 	}
+
+	@Override
+	public int getApprovalByBmId(String bm_id) {
+		return storeDao.getApprovalByBmId(bm_id);
+	}
 }

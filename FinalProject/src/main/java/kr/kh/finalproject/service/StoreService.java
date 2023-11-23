@@ -24,6 +24,8 @@ public interface StoreService {
 
 	int getStore(ManagerVO user);
 
+	int getApprovalByBmId(String bm_id);
+
 	
 
 }
