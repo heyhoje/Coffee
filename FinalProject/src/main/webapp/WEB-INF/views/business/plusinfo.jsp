@@ -10,8 +10,8 @@
 <body>
 	<!-- form태그안에 div태그 vs div태그안에 form태그 어떤것이 맞는 방법인가? = 2번  -->
 	<!-- 그렇다면 mypage에서 div-div-form 으로 박스안에 박스를 또 넣은 이유는? 레이아웃 지정 및 css처리 때문이겠지? -->
-	<div class="col-sm-8" id="plusInfo-container">
-		<h3 class="mt-5">매장 추가정보 입력</h3>
+	<div class="col-sm-8" id="plusInfo-container" style="margin: 0 auto;">
+		<h3 class="mt-5" style="text-align: center;">매장 추가정보 입력</h3>
 		<hr>
 		<div class="bg-white rounded shadow-sm container p-3">
 			<form action="<c:url value='/business/plusinfo'/>" method="post" enctype="multipart/form-data">
