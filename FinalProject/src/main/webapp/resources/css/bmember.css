@@ -5,13 +5,12 @@
 	display:flex;
 	margin-top:56px;
 	margin-bottom:50px;
-	font-size:20px;
 }
 
 
 .bmember-title{
 	font-family: 'BM HANNA Pro', sans-serif;
-	font-size:20px;
+	font-size:35px;
 	font-weight:bold;
 }
 #bmember-table{

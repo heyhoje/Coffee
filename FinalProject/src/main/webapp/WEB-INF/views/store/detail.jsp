@@ -89,7 +89,7 @@
         },
         error: function (error) {
           // Handle any errors that occur during the AJAX request
-          alert("무언가 잘못 되어 장바구니에 안담겼을지도?");
+          alert("로그인이 필요합니다.");
         }
       });
     });

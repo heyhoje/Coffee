@@ -123,7 +123,7 @@
 									class="form-control" id="inputEmail4" placeholder="이메일을 입력하세요"
 									name="bm_email" required="">
 							</div>
-							<div class="form-group col-md-12">
+							<div class="form-group col-md-12"style="padding-left:0px; padding-right:0px;">
 								<label for="bm_pw">비밀번호</label> <input type="password"
 									class="form-control" id="inputPassword4"
 									placeholder="비밀번호를 입력하세요" name="bm_pw" required="">

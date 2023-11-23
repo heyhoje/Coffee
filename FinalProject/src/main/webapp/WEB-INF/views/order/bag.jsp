@@ -24,7 +24,7 @@
         </div>
 
         <div>
-        	<image class="image-menu" src="<c:url value='/image/menu/${shop[0].bm_image}'/>" width="200px" height="200px" alt="">
+        	<image class="image-menu" src="<c:url value='https://lh3.googleusercontent.com/p/AF1QipMPlz8zFjP5zVJNMYfkx5iIi95PZwaO5TFlXsvI=s680-w680-h510'/>" width="200px" height="200px" alt="">
 
         <div class="bagst_info">
 
