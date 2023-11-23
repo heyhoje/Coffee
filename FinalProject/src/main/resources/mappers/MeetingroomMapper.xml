@@ -44,9 +44,7 @@
 
 	<!-- 미팅룸리스트 -->
 	<select id="selectMrList" resultType="kr.kh.finalproject.vo.MeetingroomVO">
-		
-		
-			select room_num, 
+		select room_num, 
 			bm_store_name as room_store_name,
 			room_price,
 			room_seat,
@@ -59,7 +57,7 @@
 				join store on room_st_num = st_num
 				join manager on st_bm_id = bm_id
 			order by room_num asc
-			limit #{cri.pageStart}, #{cri.perPageNum}
+		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	<select id="selectMrTotalCount" resultType="int">
 		select count(*)

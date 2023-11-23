@@ -11,15 +11,14 @@
 	
 </head>
 <body>
-	
 	<h2 class="bm-subject">사이트 관리자 페이지 입니다.</h2>
 	<div class="bm-menu-container">
-	    <div class="btn-group btn-group-lg">
-	        <a href="<c:url value='/admin/bmember'/>" class="btn btn-outline-primary">사업자 회원가입 승인</a>
-	        <a href="<c:url value='/admin/bstore'/>" class="btn btn-outline-primary">매장등록 승인</a>
-	        <a href="<c:url value='/admin/ad'/>" class="btn btn-outline-primary">프로모션 관리</a>
-	        <a href="<c:url value='/admin/review'/>" class="btn btn-outline-primary">(일반회원)리뷰 관리</a>
-	    </div>
+		<div class="btn-group btn-group-lg">
+			<a href="<c:url value='/admin/bmember'/>" class="btn btn-outline-primary">사업자 회원가입 승인</a>
+			<a href="<c:url value='/admin/bstore'/>" class="btn btn-outline-primary">매장등록 승인</a>
+			<a href="<c:url value='/admin/ad'/>" class="btn btn-outline-primary">프로모션 관리</a>
+			<a href="<c:url value='/admin/review'/>" class="btn btn-outline-primary">(일반회원)리뷰 관리</a>
+		</div>
 	</div>
 	<div class="update-table-container" style="margin-top:50px; text-align: center;">
 		<div class="update-table-box width" style="width: 1000px; margin: 0 auto;">
@@ -34,17 +33,17 @@
 	            <tbody>
 	                <tr>
 	                    <td>1</td>
-	                    <td>관리자 : /admin/home 에서도 '관리자님 어서오세요' 표시</td>
+	                    <td></td>
 	                    <td>금일예정</td>
 	                </tr>
 	                <tr>
 	                    <td>2</td>
-	                    <td>서버 : 첨부파일 이미지 등록</td>
+	                    <td></td>
 	                    <td></td>
 	                </tr>
 	                <tr>
 	                    <td>3</td>
-	                    <td>고객센터 : 일반/사업자회원의 요구사항 수집</td>
+	                    <td></td>
 	                    <td></td>
 	                </tr>
 	                <tr>
@@ -55,7 +54,7 @@
 	            </tbody>
 	        </table>
         </div>
-	</div>	
+	</div>
 		<!-- 홈에 관리자 권한 없이 들어왔을때, 로그인 알람을 띄운다. -->	
 		<%-- if(me_user_id == '' || me_authority != 'admin'){
 		if(confirm('관리자 권한이 필요합니다. 관리자로 로그인 하시겠습니까?')){

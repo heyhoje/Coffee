@@ -69,5 +69,3 @@
         	manager on store.st_bm_id = manager.bm_id
 	</select>
 </mapper>
-
-

@@ -24,7 +24,7 @@
     		join shop_basket on ol_sb_num = sb_num
     		join option_choice on sb_num = oc_sb_num
     		join menu on oc_mn_num = mn_num
-    		join store on mn_st_num = st_num    	
+    		join store on mn_st_num = st_num   	
     		join manager on st_bm_id = bm_id;
 	</select>
 	

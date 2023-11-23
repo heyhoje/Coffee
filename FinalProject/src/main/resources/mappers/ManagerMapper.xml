@@ -5,7 +5,7 @@
   
 <mapper namespace="kr.kh.finalproject.dao.ManagerDAO">
 	<insert id="insertManager" parameterType="kr.kh.finalproject.vo.ManagerVO">
-		insert into manager(bm_id, bm_pw, bm_num, bm_phone, bm_post, bm_address, bm_address2, bm_manager, bm_store_name, bm_geocoding_lati, bm_geocoding_longi)
+		insert into manager(bm_id, bm_pw, bm_num, bm_phone,bm_post, bm_address,	bm_address2, bm_manager, bm_store_name, bm_geocoding_lati, bm_geocoding_longi)
 		values(#{manager.bm_id},#{manager.bm_pw},#{manager.bm_num},#{manager.bm_phone}, #{manager.bm_post}, #{manager.bm_address}, #{manager.bm_address2}, #{manager.bm_manager}, #{manager.bm_store_name}, #{manager.bm_geocoding_lati}, #{manager.bm_geocoding_longi})
 	</insert>
 	
