@@ -26,16 +26,19 @@
                 </thead>
                 <c:forEach items="${rBasketList}" var="rBasket" varStatus="rvs">
 				    <c:set var="roomPrice" value="${rBasket.room_price}"/>
-				    <c:set var="startTime" value="${rBasket.rs_start}"/>
-				    <c:set var="endTime" value="${rBasket.rs_start + 1}"/>
-				    
+
+
+				    <c:set var="roomStartTime" value="${rBasket.rs_start}"/>
+				    <c:set var="roomEndTime" value="${roomStartTime + 1}"/>
+				
 				    <tr>
-				        <td>${startTime}:00 ~ ${endTime}:00</td>
+				        <td>${roomStartTime}:00 ~ ${roomEndTime}:00</td>
 				        <td>${rBasket.bm_store_name}</td>
 				        <td>${rBasket.bm_address} ${rBasket.bm_address2}</td>
 				        <td>${roomPrice}</td>
 				    </tr>
-				</c:forEach>   
+
+				</c:forEach>
                  <c:set var="totalPrice" value="0"/>
                  <c:forEach items="${rBasketList}" var="rBasketList" varStatus="rvs">
                  	<c:set var="totalPrice" value="${totalPrice + roomPrice }"/>

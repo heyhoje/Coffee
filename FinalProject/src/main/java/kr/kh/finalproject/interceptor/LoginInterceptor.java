@@ -87,14 +87,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			
 			// (!null) 있으면 세션에 저장, 저장한 이름을 잘 기억 => 곳곳에서 사용될 예정
 			request.getSession().setAttribute("buser", buser);
-			
 			// 자동로그인 체크를 안했으면
 			if(!buser.isAutoLogin()) {
 				return;
 			}
 			// 했으면 세션아이디 저장? 생성?
 			String bmSessionId = request.getSession().getId();
-			System.out.println(bmSessionId);
+//			System.out.println("bmSesstionId : " + bmSessionId);
+			String getSessionSt_num = managerService.getSesstionSt_num(buser);
+//			System.out.println("getSessionSt_num: " + getSessionSt_num);
 			// 쿠키 생성
 			Cookie cookie = new Cookie("bmLoginCookie", bmSessionId);
 			
@@ -108,6 +109,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			
 			// DB 회원 정보에 쿠키 정보를 전달
 			Date date = new Date(System.currentTimeMillis() + time * 1000);
+			buser.setBm_session_st_num(getSessionSt_num);
 			buser.setBm_session_id(bmSessionId);
 			buser.setBm_session_limit(date);
 			
