@@ -123,7 +123,7 @@
                         <div class="container_main">
                            <img src="resources/images/twosome.jpg" alt="Avatar" class="image">
                            <div class="overlay">
-                              <div class="text"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></div>
+                              <div class="text"><a href="<c:url value='/store/menu/2/1'/>"><i class="fa fa-search" aria-hidden="true"></i></a></div>
                            </div>
                         </div>
                      </div>
