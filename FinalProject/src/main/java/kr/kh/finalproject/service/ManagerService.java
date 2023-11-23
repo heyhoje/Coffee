@@ -40,6 +40,8 @@ public interface ManagerService {
 
 	void infoUpdate(ManagerVO manager)throws Exception;
 
+	String getSesstionSt_num(ManagerVO buser);
+
 
 
 

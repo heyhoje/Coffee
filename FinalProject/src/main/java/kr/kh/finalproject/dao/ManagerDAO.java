@@ -42,6 +42,7 @@ public interface ManagerDAO {
 
 	void infoUpdate(ManagerVO manager)throws Exception;
 
+	String getSesstionSt_num(@Param("manager")ManagerVO buser);
 
 //	int selectCountManagerList(@Param("manager") ManagerVO manager, @Param("cri")Criteria cri);
 

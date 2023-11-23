@@ -70,15 +70,15 @@
 						<li class="nav-item active"><a class="nav-link"
 							href="<c:url value='/business/plusinfo'/>" 
 							style="font-family: 'BM HANNA Pro', sans-serif; color:white;">매장등록</a></li>
-						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/1/store'/>" 
+						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/store'/>" 
 							style="font-family: 'BM HANNA Pro', sans-serif;">매장관리</a></li>
 						<li class="nav-item active"><a class="nav-link"
-							 href="<c:url value='/business/menu'/>"
+							 href="<c:url value='/business/menu/${buser.bm_session_st_num}/1'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">메뉴관리</a></li>
 						<li class="nav-item"><a class="nav-link"
-							 href="<c:url value='/business/order/${st_num}'/>"
+							 href="<c:url value='/business/order/${buser.bm_session_st_num}'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">주문확인</a></li>
-						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/1/sales'/>"
+						<li class="nav-item"><a class="nav-link"  href="<c:url value='/business/sales'/>"
 							style="font-family: 'BM HANNA Pro', sans-serif;">판매정보조회</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/manager/mypageHome'/>"style="border-radius:10px; border: 1px solid white; margin-right: 8px; color: white; font-family: 'BM HANNA Pro', sans-serif; float: right;">${buser.bm_manager}님 어서오세요</a></li>
