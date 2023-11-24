@@ -28,14 +28,14 @@ public class StoreServiceImp implements StoreService{
 		return storeDao.selectBsList(st_approval);
 	}
 
-//	/** 매장등록 승인&거절 */
-//	@Override
-//	public boolean updateStore(StoreVO store) {
-//		if(store == null) {
-//			return false;
-//		}
-//		return storeDao.updateStore(store);
-//	}
+/** 매장등록 승인&거절 */
+	@Override
+	public boolean updateStore(StoreVO store) {
+		if(store == null) {
+			return false;
+		}
+		return storeDao.updateStore(store);
+	}
 
 	@Override
 	public boolean makeStore(ManagerVO manager) {

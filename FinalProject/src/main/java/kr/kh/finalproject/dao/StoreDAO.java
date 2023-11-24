@@ -14,7 +14,7 @@ public interface StoreDAO {
 	List<StoreVO> selectBsList(@Param("st_approval")int st_approval);
 
 	// 매장등록 승인&거절
-	// boolean updateStore(@Param("store")StoreVO store);
+	boolean updateStore(@Param("store")StoreVO store);
 
 	// 첨부파일 등록
 	void insertImage(@Param("image")ImageVO imageVo);

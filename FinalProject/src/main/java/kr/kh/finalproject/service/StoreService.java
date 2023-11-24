@@ -13,7 +13,7 @@ public interface StoreService {
 	List<StoreVO> getBstoreList(int st_approval);
 	
 	// 매장등록 승인&거절 -> 필요없어짐
-	// boolean updateStore(StoreVO store);
+	boolean updateStore(StoreVO store);
 
 	/** 일단 회원가입과 동시에 st_num을 발급해주기 위한 메소드 추가 */
 	boolean makeStore(ManagerVO manager); // insert, delete, update는 검색(select)가 아니기 때문에 
