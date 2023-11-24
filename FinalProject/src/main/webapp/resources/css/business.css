@@ -83,7 +83,7 @@
 }
 
 .modal .btn_box input[type="submit"] {
-	background: #30DAD9;
+	background: #000000;
 }
 
 
@@ -281,7 +281,7 @@
 }
 
 #btn_box button:last-child {
-	background: rgb(48, 218, 217);
+	background:black;
 }
 
 @media ( max-width :767px) {
@@ -321,8 +321,6 @@
 }
 
 .add_menu_modal .option {
-	border: 1px solid #000;
-	width: 70%;
 	margin: 0 auto;
 	border-radius: 10px;
 	display: flex;

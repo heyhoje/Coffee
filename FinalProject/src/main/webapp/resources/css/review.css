@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+#review-container{
+	font-family: 'BM HANNA Pro', sans-serif;
+	
+}
+
+
+
+#review-title{
+	justify-content:center;
+	display:flex;
+	margin-top:56px;
+	margin-bottom:30px;
+	font-weight:bold;
+	font-size:35px;
+	
+}
+#review-table{
+	text-align:center;
+	font-size:19px;
+}
+a{
+	color:burlywood;
+	text-decoration:none;
+	outline: none !important;
+	
+}
+a:hover{
+	color:#f76d37;
+}

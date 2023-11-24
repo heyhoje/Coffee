@@ -43,6 +43,7 @@ body {
     line-height: 1.80857;
     font-weight: normal;
     overflow-x: hidden !important;
+    background-color:antiquewhite;
 }
 
 a {
@@ -83,7 +84,7 @@ h2 {
 }
 
 h3 {
-    font-size: 18px
+    font-size: 28px;
 }
 
 h4 {
@@ -91,7 +92,7 @@ h4 {
 }
 
 h5 {
-    font-size: 14px
+    font-size: 18px
 }
 
 h6 {
@@ -129,7 +130,6 @@ button:focus {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     margin-top:100px;
-    margin-bottom: 100px;
     list-style: none;
     font-size:15px;
     font-weight:bold;
@@ -155,7 +155,7 @@ p {
 }
 
 a {
-    color: #222222;
+    color: #ffffff;
     text-decoration: none;
     outline: none !important;
 }
@@ -169,10 +169,11 @@ a,
     -ms-transition: all .3s ease-in-out;
     -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
+    
 }
 
 .about_img img {
-   	width: 80%;
+   	width: 100%;
     height: auto;
     margin-top:15px;
 }
@@ -215,6 +216,12 @@ marker{
 .navbar-form input {
     border: none !important;
 }
+.navbar-expand-lg .navbar-nav .nav-link{
+    padding-right: .5rem;
+    padding-left: .5rem;
+    font-size: 18px;
+    color: #ffffff;
+}
 
 .badge {
     font-weight: 500;
@@ -239,7 +246,7 @@ button {
 
 .layout_padding {
     padding-top: 90px;
-    padding-bottom: 0px;
+    padding-bottom: 90px;
 }
 
 
@@ -317,6 +324,7 @@ button {
     width: 100%;
     float: left;
     padding-bottom: 90px;
+    background-color:white;
 }
 
 .gallery_taital {
@@ -433,7 +441,7 @@ a:hover {
     width: 100%;
     float: left;
     font-size: 40px;
-    color: #ffffff;
+    color: linen;
     font-weight: bold;
     text-align: center;
 }
@@ -511,7 +519,7 @@ a:hover {
 .decorate_text {
     width: 100%;
     font-size: 28px;
-    color: #ffffff;
+    color: black;
     padding-top: 30px;
     text-align: center;
 }
@@ -581,36 +589,9 @@ a:hover {
     padding-bottom: 100px;
 }
 
-.testimonial_section_2 {
-    width: 100%;
-    float: left;
-    padding: 0px 40px 30px 40px;
-    position: relative;
-}
 
-.testimonial_section_2::after {
-    content: '';
-    position: absolute;
-    width: 100px;
-    height: 150px;
-    border-top: 3px solid #252525;
-    border-left: 3px solid #252525;
-    top: 12px;
-    left: 0px;
-    right: initial;
-}
 
-.testimonial_section_2::before {
-    content: '';
-    position: absolute;
-    width: 100px;
-    height: 150px;
-    border-bottom: 3px solid #252525;
-    border-right: 3px solid #252525;
-    top: 12px;
-    left: initial;
-    right: 0px;
-}
+
 
 .client_name_text {
     width: 100%;

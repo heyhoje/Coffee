@@ -3,23 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.finalproject.dao.PromotionDAO">
- <resultMap type="kr.kh.finalproject.vo.PromotionVO" id="PromotionVO">
- <id property="ad_num" column="ad_num"/>
- <result property="ad_contents" column="ad_contents"/>
- <result property="ad_image" column="ad_image"/>
- <result property="ad_date" column="ad_date"/>
- <result property="ad_st_num" column="ad_st_num"/>
- </resultMap>
-
-<select id="selectPromotionList" resultType="kr.kh.finalproject.vo.PromotionVO">
-	select * from advertisement order by ad_num asc
+ 	<!-- 사이트 관리자 페이지 -->
+	<select id="selectPrList" resultType="kr.kh.finalproject.vo.PromotionVO">
+		select * from promotion where pr_approval = #{pr_approval}
+	</select>
 	
-</select>
-<select id="selectPromotionTotalCount" resultType="int">
-	select count(*) from advertisement
-</select>
-
-
+	<!-- 프로모션 승인&거절 -->
+	<update id="updatePromotion">
+		update promotion 
+			set pr_approval = #{promotion.pr_approval}
+			where pr_num = #{promotion.pr_num}
+	</update>
 </mapper> 
  
  

@@ -1,5 +1,6 @@
 package kr.kh.finalproject.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +11,15 @@ import kr.kh.finalproject.dao.GalleryDAO;
 import kr.kh.finalproject.pagination.Criteria;
 import kr.kh.finalproject.util.uploadFileUtils;
 import kr.kh.finalproject.vo.FileVO;
+import kr.kh.finalproject.vo.GalleryTypeVO;
 import kr.kh.finalproject.vo.GalleryVO;
 import kr.kh.finalproject.vo.MemberVO;
 
 @Service
 public class GalleryServiceImp implements GalleryService{
-
+	
 	@Autowired
 	GalleryDAO galleryDao;
-	
 	String uploadPath = "D:\\uploadfiles";
 
 	@Override
@@ -34,49 +35,152 @@ public class GalleryServiceImp implements GalleryService{
 		if(cri == null) {
 			cri = new Criteria();
 		}
-		return galleryDao.selectCountGalleryList(cri);
+		return galleryDao.selectGalleryCount(cri);
 	}
-	
+
 	@Override
-	public boolean insertCoffee(GalleryVO gallery, MemberVO user, MultipartFile[] fileList) {
-		if(gallery == null || 
-				gallery.getGal_title() == null) {
-				return false;
-			}
-			//작성자가 없으면 안되기 때문
-			if(user == null) {
-				return false;
-			}
-			//게시글 작성자를 로그인한 회원 아이디로 수정
-			gallery.setGal_me_user_id(user.getMe_user_id());
-			//게시글을 DB에 저장
-			boolean res = galleryDao.insertCoffeeBoard(gallery);
-			
-			if(!res) {
-				return false;
-			}
-			//첨부파일 등록
-			if(fileList == null || fileList.length == 0) {
-				return true;
-			}
-			
-			for(MultipartFile file : fileList) {
-				if(file == null || file.getOriginalFilename().length() == 0) {
-					continue;
-				}
-				try {
-					//원래 파일명
-					String fi_ori_name = file.getOriginalFilename();
-					//서버에 업로드 후 업로드된 경로와 uuid가 포함된 파일명
-					String fi_name = uploadFileUtils.uploadFile(uploadPath, fi_ori_name, file.getBytes());
-					//파일 객체
-					FileVO fileVo = new FileVO(gallery.getGal_num(), fi_name, fi_ori_name);
-					galleryDao.insertFile(fileVo);
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
-			}
-			
+	public List<GalleryTypeVO> getGalleryTypeList() {
+		return galleryDao.selectGalleryTypeList();
+	}
+
+	@Override
+	public boolean insertGallery(GalleryVO gallery, MemberVO user, MultipartFile[] files2) {
+		if(user == null || user.getMe_user_id() == null) {
+			return false;
+		}
+		if(gallery == null || gallery.getGal_title()== null || gallery.getGal_title().length() == 0) {
+			return false;
+		}
+		gallery.setGal_me_user_id(user.getMe_user_id());
+		if(!galleryDao.insertGallery(gallery)) {
+			return false;
+		}
+		if(files2 == null || files2.length == 0) {
 			return true;
 		}
-}
+				
+		uploadFileAndInsert(files2, gallery.getGal_num());
+				
+		return true;
+	}
+
+	private void uploadFileAndInsert(MultipartFile[] files2, int fi_gal_num) {
+		if(files2 == null || files2.length == 0) {
+			return;
+		}
+		for(MultipartFile file : files2) {
+			if(file == null || file.getOriginalFilename().length() == 0) {
+				continue;
+			}
+			try {
+				String fi_name = uploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
+				FileVO fileVo = new FileVO(fi_gal_num, fi_name, file.getOriginalFilename());
+				galleryDao.insertFile(fileVo);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void updatehits(Integer gal_num) {
+		if(gal_num == null) {
+			return;
+		}
+		galleryDao.updateGalleryhits(gal_num);
+	}
+
+	@Override
+	public GalleryVO getGallery(Integer gal_num) {
+		if(gal_num == null) {
+			return null;
+		}
+		return galleryDao.selectGallery(gal_num);
+	}
+
+	@Override
+	public boolean updateGallery(GalleryVO gallery, MultipartFile[] files, Integer[] delFiles, MemberVO user) {
+		if(gallery == null || gallery.getGal_title()==null || gallery.getGal_title().length() == 0 ) {
+			return false;
+				}
+		//�������Խñ� ������ ������(�α����� ȸ���� �ۼ��ڰ� ������ Ȯ���� ����) 
+		GalleryVO dbGallery = galleryDao.selectGallery(gallery.getGal_num());
+		//db�� �ش� �Խñ��� ���ų� �������Խñ� �ۼ��ڿ� �α����� ȸ���� �ٸ� ���
+		if(dbGallery == null)
+		{
+			return false;
+		}
+		if(!dbGallery.getGal_me_user_id().equals(user.getMe_user_id()) && !user.getMe_authority().equals("ADMIN")) {
+			return false;
+		}
+		
+		if(!galleryDao.updateGallery(gallery)) {
+			return false;
+		}
+		//÷������ ������Ʈ 
+		//�߰��� ÷�������� ������ ���ε� �� DB�� �߰�
+		uploadFileAndInsert(files,gallery.getGal_num());
+		
+		//������ ÷�������� �������� ���� �� DB���� ����
+		deleteFile(delFiles);
+		return true;
+	}
+
+	private void deleteFile(Integer[] delFiles) {
+		if(delFiles == null || delFiles.length == 0) {
+			return;
+		}
+		
+		for(Integer num : delFiles) {
+			if(num == null) {
+				continue;
+			}
+			//÷������ ������ ������
+			FileVO fileVo = galleryDao.selectFile(num);
+			if(fileVo == null) {
+				continue;
+			}
+			uploadFileUtils.deleteFile(uploadPath, fileVo.getFi_name());
+			//DB���� ���� 
+			galleryDao.deleteFile(num);
+				}
+	}
+
+	@Override
+	public boolean deleteBoard(Integer gal_num, MemberVO user) {
+		if(gal_num == null || user == null) {
+			return false;
+		}
+		GalleryVO gallery = galleryDao.selectGallery(gal_num);
+		//���� �Խñ��̰ų� �ۼ��ڰ� �ƴϸ� 
+		if(gallery == null){
+			return false;
+		}
+		if(!gallery.getGal_me_user_id().equals(user.getMe_user_id()) && !user.getMe_authority().equals("ADMIN")) {
+			return false;
+		}
+		//÷������ ����
+		List<FileVO> fileList = gallery.getFileVoList();
+		deleteFile(fileList);
+		//�Խñ� ���� 
+		galleryDao.deleteGallery(gal_num);
+		return true;
+			}
+
+	private void deleteFile(List<FileVO> fileList) {
+		if(fileList == null || fileList.size() == 0) {
+			return;
+		}
+		
+		Integer [] nums = new Integer[fileList.size()];
+		for(int i = 0; i<nums.length; i++) {
+			nums[i] = fileList.get(i).getFi_num();
+		}
+		deleteFile(nums);
+	}
+
+
+			
+	
+	
+}		

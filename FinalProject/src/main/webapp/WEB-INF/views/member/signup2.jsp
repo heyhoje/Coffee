@@ -6,282 +6,219 @@
 <head>
 <!-- signup css -->
 <link rel="stylesheet" href="<c:url value='/resources/css/signup.css'/>">
-
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.8.1/css/all.css"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- jQuery 라이브러리 추가 -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c4efc38a6ad2e481f05e226066782e8c&libraries=services"></script>
 <title>회원가입 페이지</title>
-
 </head>
 <body>
-	<div class="signup_v4 mb-30 card card_wrap ">
-		<div class="card-body">
-			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				<li class="nav-item" role="presentation"><a
-					class="nav-link active" id="login-tab" data-toggle="tab"
-					href="#login" role="tab" aria-controls="login" aria-selected="true">멤버 회원가입</a>
-				</li>
-				<li class="nav-item" role="presentation"><a class="nav-link"
-					id="register-tab" data-toggle="tab" href="#register" role="tab"
-					aria-controls="register" aria-selected="false">매니저 회원가입</a></li>
-			</ul>
-			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane fade show active" id="login" role="tabpanel"
-					aria-labelledby="login-tab">
-					<form action="<c:url value='/member/signup2'/>" method="post">
-						<div class="form-row">
-							<div class="form-group col-md-12">
-								<label for="me_name">이름</label> 
-								<input type="text"
-									class="form-control" id="inputmembername4" placeholder="이름을 입력하세요"
-									name="me_name" required="">
-							</div>
-							<div class="form-group col-md-12">
-								<label for="user_id">아이디</label> 
-								<input type="text"
-									class="form-control" id="inputmemberid4"
-									placeholder="아이디를 입력하세요" name="user_id" required="">
-							</div>
-							<div class="form-group col-md-12">
-								<label for="user_phone">전화번호</label> 
-								<input type="text"
-									class="form-control" id="inputmemberphone4"
-									placeholder="전화번호를 입력하세요" name="user_phone" required="">
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-group col-md-12">
-								<label for="me_email">이메일</label> 
-								<input type="email"
-									class="form-control" id="inputEmail4" placeholder="이메일을 입력하세요"
-									name="me_email" required="">
-							</div>
-							<div class="form-group col-md-12">
-								<label for="me_pw">비밀번호</label> 
-								<input type="password"
-									class="form-control" id="inputPassword4"
-									placeholder="비밀번호를 입력하세요" name="me_pw" required="">
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-group col-md-12">
-								<label for="me_pw2">비밀번호 확인</label> 
-								<input type="password"
-									class="form-control" id="inputPasswordCheck4"
-									placeholder="동일한 비밀번호를 입력하세요." name="me_pw2" required="">
-							</div>
-
-						</div>
-						<input type="hidden" name="user_aorb" value="회원">
-						<div class="form-group form-row">
-							<div class="col-md-12">
-								<label class="custom-control custom-checkbox checkbox-lg">
-									<input type="checkbox" class="custom-control-input"
-									id="customCheck1">
-									<div class="custom-control-label" for="customCheck1">
-										I agree with <a href="#" target="_blank">terms and
-											conditions</a>
-									</div>
-								</label>
-							</div>
-						</div>
-						<hr class="mt-3 mb-4">
-						<div class="col-12">
-							<div
-								class="d-flex flex-wrap justify-content-between align-items-center">
-								<div class="custom-checkbox d-block">
-									<a href="<c:url value='/'/>"
-										class="nav-link-inline font-size-sm">이미 계정이 있으신가요? 로그인</a>
-								</div>
-								<button class="btn btn-primary mt-3 mt-sm-0" type="submit">회원가입</button>
-							</div>
-						</div>
-					</form>
-
+	<div class="bg-video">
+		<video class="bg-video__content" autoplay muted loop>
+			<source src="/resources/images/barista2.mp4" type="video/mp4" />
+			<source src="img/video.webm" type="video/webm" />
+		</video>
+	</div>
+	<div class="col-sm-8" id="mypage-container" style="margin: 0 auto;">
+		<br>
+		<br>
+		<div class="bg-white rounded shadow-sm container p-3"
+			style="background-color: rgba(255, 255, 255, 0.7) !important; font-family: 'BM HANNA Pro', sans-serif;">
+			<h3 style="text-align: center;">멤버 회원가입</h3>
+			<hr>
+			<form id="infoView" action="/member/signup2" method="POST"
+				autocomplete="off" class="form-horizontal" role="form">
+				<div class="row mb-3 form-row">
+					<div class="col-md-3">
+						<label for="me_name">이름</label>
+					</div>
+					<div class="col-md-9" style="display: flex; align-items: flex-end;">
+						<input type="text" class="form-control" id="me_name"
+							placeholder="이름을 입력하세요" name="me_name" required="">
+					</div>
 				</div>
-				<div class="tab-pane fade" id="register" role="tabpanel"
-					aria-labelledby="register-tab">
-					<form action="<c:url value='/manager/signup2'/>" method="post">
-						<div class="form-row">
-							<div class="form-group col-md-12">
-								<label for="bm_manager">매니저</label> 
-								<input type="text"
-									class="form-control" id="inputmanager4" placeholder="성함을 입력하세요"
-									name="bm_manager" required="">
-							</div>
-							<div class="form-group col-md-12">
-								<label for="bm_id">아이디</label> 
-								<input type="text"
-									class="form-control" id="inputid4"
-									placeholder="아이디를 입력하세요" name="bm_id" required="">
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-group col-md-12">
-								<label for="bm_email">이메일</label> 
-								<input type="email"
-									class="form-control" id="inputEmail4" placeholder="이메일을 입력하세요"
-									name="bm_email" required="">
-							</div>
-							<div class="form-group col-md-12">
-								<label for="bm_pw">비밀번호</label> 
-								<input type="password"
-									class="form-control" id="inputPassword4"
-									placeholder="비밀번호를 입력하세요" name="bm_pw" required="">
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-group col-md-12">
-								<label for="bm_pw2">비밀번호 확인</label> 
-								<input type="password"
-									class="form-control" id="inputPasswordCheck4"
-									placeholder="동일한 비밀번호를 입력하세요" name="bm_pw2" required="">
-							</div>
-
-						</div>
-						<div class="form-row">
-							<div class="form-group col-md-12">
-								<label for="bm_num">사업자 등록 번호</label> 
-								<input type="text"
-									class="form-control" id="inputbri4"
-									placeholder="사업자 등록 번호를 입력하세요" name="bm_num" required="">
-									<button class="btn btn-primary" id="bidsearch" style="margin-top:10px;">조회</button>
-							</div>
-
-						</div>
-						<div class="form-row">
-							<div class="form-group col-md-12">
-								<label for="bm_store_name">매장명</label> 
-								<input type="text"
-									class="form-control" id="inputstorename4"
-									placeholder="매장 전화번호를 입력하세요" name="bm_store_name" required="">
-							</div>
-
-						</div>
-						<div class="form-row">
-							<div class="form-group col-md-12">
-								<label for="bm_phone">매장 전화번호</label> 
-								<input type="text"
-									class="form-control" id="inputstorephone4"
-									placeholder="매장 전화번호를 입력하세요" name="bm_phone" required="">
-							</div>
-
-						</div>
-						<div class="form-row">
-							<div class="form-group col-md-12">
-								<label for="bm_address">매장 주소</label> 
-								<input type="text"
-									class="form-control" id="inputstoreaddress4"
-									placeholder="매장 주소를 입력하세요" name="bm_address" required="">
-									<button class="btn btn-primary" onclick="sample5_execDaumPostcode()">주소 검색</button><br>
-									<div id="map" style="width:450px; height:300px; margin-top:10px; display:none"></div>
-							</div>
-						<input type="hidden" name="user_aorb" value="매니저">
-						</div>
-						<div class="form-group form-row">
-							<div class="col-md-12">
-								<label class="custom-control custom-checkbox checkbox-lg">
-									<input type="checkbox" class="custom-control-input"
-									id="customCheck1">
-									<div class="custom-control-label" for="customCheck1">
-										I agree with <a href="#" target="_blank">terms and
-											conditions</a>
-									</div>
-								</label>
-							</div>
-						</div>
-						<hr class="mt-3 mb-4">
-						<div class="col-12">
-							<div
-								class="d-flex flex-wrap justify-content-between align-items-center">
-								<div class="custom-checkbox d-block">
-									<a href="<c:url value='/'/>"
-										class="nav-link-inline font-size-sm">이미 계정이 있으신가요? 로그인</a>
-								</div>
-								<button class="btn btn-primary mt-3 mt-sm-0" type="submit">회원가입</button>
-							</div>
-						</div>
-					</form>
+				<div class="row mb-3 form-row">
+					<div class="col-md-3">
+						<label for="user_id">아이디</label>
+					</div>
+					<div class="col-md-9" style="display: flex; align-items: flex-end;">
+						<input type="text" class="form-control" id="user_id"
+							placeholder="아이디를 입력하세요" name="user_id" required="">
+					</div>
 				</div>
-			</div>
+				<div class="row mb-3 form-row">
+					<div class="col-md-3">
+						<label for="user_phone">전화번호</label>
+					</div>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="user_phone"
+							name="user_phone" placeholder="전화번호를 입력하세요" required="">
+					</div>
+				</div>
+				<div class="row mb-3 form-row">
+					<div class="col-md-3">
+						<label for="me_email">이메일</label>
+					</div>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="me_email"
+							name="me_email" placeholder="이메일을 입력하세요" required="">
+					</div>
+				</div>
+				<div class="row mb-3 form-row">
+					<div class="col-md-3">
+						<label for="me_pw">비밀번호</label>
+					</div>
+					<div class="col-md-9">
+						<input type="password" class="form-control" id="me_pw"
+							name="me_pw" placeholder="비밀번호를 입력하세요" required="">
+					</div>
+				</div>
+				<div class="row mb-3 form-row">
+					<div class="col-md-3">
+						<label for="me_pw2">비밀번호 확인</label>
+					</div>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="me_pw2" name="me_pw2"
+							placeholder="동일한 비밀번호를 입력하세요" required="">
+					</div>
+				</div>
+				<div class="row mb-3 form-row">
+					<div class="col-md-3">
+						<label for="postcodify_search_button">우편번호</label>
+					</div>
+					<div class="col-md-3">
+						<input type="text" name="me_post" id="me_post"
+							class="form-control postcodify_postcode5" value="${address[0] }">
+					</div>
+					<div class="col-md-3">
+						<button type="button" class="btn btn-primary"
+							id="postcodify_search_button" name="postcodify_search_button"
+							style="border: 1px solid black; background-color: floralwhite; color: black;">검색</button>
+					</div>
+				</div>
+
+				<div class="row mb-3 form-row">
+					<div class="col-md-3">
+						<label for="address">도로명 주소</label>
+					</div>
+					<div class="col-md-9">
+						<input type="text" class="form-control postcodify_address"
+							name="me_address" id="address" value="${address[1] }">
+					</div>
+				</div>
+
+				<div class="row mb-3 form-row">
+					<div class="col-md-3">
+						<label for="address2">상세주소</label>
+					</div>
+					<div class="col-md-9">
+						<input type="text" class="form-control postcodify_details"
+							name="me_address2" id="address2" placeholder="상세주소를 입력하세요"
+							value="${address[2] }">
+					</div>
+				</div>
+				<hr class="mb-4">
+				<button class="btn btn-primary btn-lg btn-block" type="submit"
+					style="border: 1px solid black; background-color: floralwhite; color: black;"
+					onclick="fnSubmit(); return false;">회원가입</button>
+				<a type="button" class="btn btn-primary btn-lg btn-block"
+					style="width: 100%; border: 1px solid black; background-color: floralwhite; color: black;"
+					href="/manager/signup2" class="btn btn-default">사업자 회원가입 바로가기</a>
+				<a type="button" class="btn btn-primary btn-lg btn-block"
+					style="width: 100%; border: 1px solid black; background-color: floralwhite; color: black;"
+					href="/" class="btn btn-default">취소</a>
+			</form>
 		</div>
 	</div>
-	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=78358885b7ecd8ad872014f2c478c6c5&libraries=services"></script>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c4efc38a6ad2e481f05e226066782e8c&libraries=services"></script>
 	<script>
-	// 다음 맵 부분
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-        mapOption = {
-            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-            level: 5 // 지도의 확대 레벨
-        };
+		$(document).ready(function() {
+			$("#login-tab").click(function() {
 
-    //지도를 미리 생성
-    var map = new daum.maps.Map(mapContainer, mapOption);
-    //주소-좌표 변환 객체를 생성
-    var geocoder = new daum.maps.services.Geocoder();
-    //마커를 미리 생성
-    var marker = new daum.maps.Marker({
-        position: new daum.maps.LatLng(37.537187, 127.005476),
-        map: map
-    });
+				// 모든 탭을 숨김
+				$("#login").show();
+				$("#register").hide();
 
+			});
+		});
 
-    function sample5_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                var addr = data.address; // 최종 주소 변수
+		$(document).ready(function() {
+			$("#register-tab").click(function() {
 
-                // 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("inputstoreaddress4").value = addr;
-                // 주소로 상세 정보를 검색
-                geocoder.addressSearch(data.address, function(results, status) {
-                    // 정상적으로 검색이 완료됐으면
-                    if (status === daum.maps.services.Status.OK) {
+				// 모든 탭을 숨김
+				$("#login").hide();
+				$("#register").show();
 
-                        var result = results[0]; //첫번째 결과의 값을 활용
+			});
+		});
 
-                        // 해당 주소에 대한 좌표를 받아서
-                        var coords = new daum.maps.LatLng(result.y, result.x);
-                        // 지도를 보여준다.
-                        mapContainer.style.display = "block";
-                        map.relayout();
-                        // 지도 중심을 변경한다.
-                        map.setCenter(coords);
-                        // 마커를 결과값으로 받은 위치로 옮긴다.
-                        marker.setPosition(coords)
-                    }
-                });
-            }
-        }).open();
-    }
-    /* 사업자등록번호 조회 시작 */
-	var button = document.getElementById("bidsearch");
-   		button.addEventListener("click", function(){
-      	let b_no = document.getElementById("inputbri4").value
-   	var data = {
-           "b_no": [b_no] // 사업자번호 "xxxxxxx" 로 조회 시,
-          }; 
-          
-       $.ajax({
-         url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=6%2FljNK6ok3aEAXy70qeiTeq3cPC%2FF9P75ny1k%2F2W3w6eAf9mYAOPohyUQB60NWpRBv%2FH9z85nzxjJgSzwKhYtw%3D%3D",  // serviceKey 값을 xxxxxx에 입력
-         type: "POST",
-         data: JSON.stringify(data), // json 을 string으로 변환하여 전송
-         dataType: "JSON",
-         contentType: "application/json",
-         accept: "application/json",
-         success: function(result) {
-             console.log(result);
-                /* API에서 사업자 등록번호 추출 */
-             if(result.match_cnt) {
-                alert('사업 인증이 확인되었습니다.')
-                
-             } else{
-            	 alert(result.data[0].tax_type)
-             }
-         },
-       })
-   });
+		// 장소 검색 객체를 생성합니다
+		var ps = new kakao.maps.services.Places();
+		ps.keywordSearch('이태원 맛집', placesSearchCB);
 
+		//키워드 검색을 요청하는 함수입니다
+		function searchPlaces() {
+
+			var keyword = document.getElementById('address1').value;
+
+			if (!keyword.replace(/^\s+|\s+$/g, '')) {
+				alert('키워드를 입력해주세요!');
+				return false;
+			}
+
+			// 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+			ps.keywordSearch(keyword, placesSearchCB);
+		}
+
+		// 키워드 검색 완료 시 호출되는 콜백함수 입니다
+		function placesSearchCB(data, status, pagination) {
+			if (status === kakao.maps.services.Status.OK) {
+
+				// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+				// LatLngBounds 객체에 좌표를 추가합니다
+				var bounds = new kakao.maps.LatLngBounds();
+
+				for (var i = 0; i < data.length; i++) {
+					displayMarker(data[0]);
+				}
+
+			}
+
+		}
+
+		// 지도에 마커를 표시하는 함수입니다
+		function displayMarker(place) {
+
+			// 마커를 생성하고 지도에 표시합니다
+			var marker = new kakao.maps.Marker({
+				position : new kakao.maps.LatLng(place.y, place.x)
+			});
+			document.getElementById('manager_latitude').value = marker
+					.getPosition().getLat();
+			document.getElementById('manager_longitude').value = marker
+					.getPosition().getLng();
+		}
+	</script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+	<script>
+		$(function() {
+			$("#postcodify_search_button").postcodifyPopUp();
+		});
+	</script>
+	<script>
+		$(function() {
+			$("#postcodify_search_button2").postcodifyPopUp();
+		});
 	</script>
 </body>
+
 </html>

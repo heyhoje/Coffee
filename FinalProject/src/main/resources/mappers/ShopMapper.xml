@@ -3,12 +3,40 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="kr.kh.finalproject.dao.ShopDAO">
- 	<select id="selectShopList" resultType="kr.kh.finalproject.vo.ShopVO">
- 		select * from business_member where bm_store_name like concat('%', #{cri.search}, '%')
+<resultMap type="kr.kh.finalproject.vo.ManagerVO" id="ForSearch">
+    <result property="bm_id" column="bm_id" />
+    <result property="bm_pw" column="bm_pw" />
+    <result property="bm_num" column="bm_num" />
+    <result property="bm_phone" column="bm_phone" />
+    <result property="bm_address" column="bm_address" />
+    <result property="bm_geocoding_lati" column="bm_geocoding_lati" />
+    <result property="bm_geocoding_longi" column="bm_geocoding_longi" />
+    <result property="bm_manager" column="bm_manager" />
+    <result property="bm_store_name" column="bm_store_name" />
+    <result property="bm_image" column="bm_image" />
+    <result property="bm_approval" column="bm_approval" />
+    <result property="st_num" column="st_num" />
+</resultMap>
+ 	<select id="selectShopList" resultMap="ForSearch">
+ 		select
+ 			 bm.bm_id, bm.bm_pw, bm.bm_num, bm.bm_phone,  
+ 			 bm.bm_address, bm.bm_geocoding_lati, bm.bm_geocoding_longi, 
+ 			 bm.bm_manager, bm.bm_store_name, bm.bm_image, bm.bm_approval, st.st_num
+ 		from 
+ 			manager bm
+ 		join
+ 			store st on bm_id = st_bm_id
+ 		where 
+ 			bm_store_name like concat('%', #{cri.search}, '%')
  	</select>
-	<select id="selectShopListKm" resultType="kr.kh.finalproject.vo.ShopVO">
-		select *
-			from business_member
+	<select id="selectShopListKm" resultType="kr.kh.finalproject.vo.ManagerVO">
+		select 
+		 	 bm.bm_id, bm.bm_pw, bm.bm_num, bm.bm_phone,  
+ 			 bm.bm_address, bm.bm_geocoding_lati, bm.bm_geocoding_longi, 
+ 			 bm.bm_manager, bm.bm_store_name, bm.bm_image, bm.bm_approval, st.st_num, st.st_contents
+		from manager bm
+		join
+			store st on bm_id = st_bm_id
 			where bm_store_name like concat('%', #{cri.search}, '%')
 		and 5000 > st_distance_sphere(Point(#{ipLongi}, #{ipLati}), Point(bm_geocoding_longi, bm_geocoding_lati))
 		order by  st_distance_sphere(Point(#{ipLongi}, #{ipLati}), Point(bm_geocoding_longi, bm_geocoding_lati)) asc

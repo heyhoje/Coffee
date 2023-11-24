@@ -5,21 +5,120 @@
   
 <mapper namespace="kr.kh.finalproject.dao.ManagerDAO">
 	<insert id="insertManager" parameterType="kr.kh.finalproject.vo.ManagerVO">
-		insert into business_member(bm_id, bm_pw, bm_num, bm_phone, bm_address, bm_manager, bm_store_name)
-		values(#{manager.bm_id},#{manager.bm_pw},#{manager.bm_num},#{manager.bm_phone},#{manager.bm_address}, #{manager.bm_manager}, #{manager.bm_store_name})
+		insert into manager(bm_id, bm_pw, bm_num, bm_phone,bm_post, bm_address,	bm_address2, bm_manager, bm_store_name, bm_geocoding_lati, bm_geocoding_longi)
+		values(#{manager.bm_id},#{manager.bm_pw},#{manager.bm_num},#{manager.bm_phone}, #{manager.bm_post}, #{manager.bm_address}, #{manager.bm_address2}, #{manager.bm_manager}, #{manager.bm_store_name}, #{manager.bm_geocoding_lati}, #{manager.bm_geocoding_longi})
 	</insert>
 	
 	<select id="selectManager" resultType="kr.kh.finalproject.vo.ManagerVO">
-		select * from business_member where bm_id = #{bm_id}
+		select * from manager where bm_id = #{bm_id}
 	</select>
 	
-	<update id="updateMemberSession">
+	<!-- 사업자회원 - 자동 로그인 -->
+	<update id="updateBMemberSession">
 		update
-			business_member
+			manager
 		set
-			bm_session_id = #{businessmember.bm_session_id},
-			bm_session_limit = #{businessmember.bm_session_limit}
+			bm_session_id = #{manager.bm_session_id},
+			bm_session_limit = #{manager.bm_session_limit},
+			bm_session_st_num = #{manager.bm_session_st_num}
 		where
-			bm_id = #{businessmember.bm_id}
+			bm_id = #{manager.bm_id}
 	</update>
+	
+	<select id="selectBMemberBySessionId" resultType="kr.kh.finalproject.vo.ManagerVO">
+		select * from manager 
+		where
+			bm_session_id = #{bm_session_id} and  bm_session_limit >= now() 
+	</select>
+	
+	<!-- 사이트 관리자 페이지 -->
+	<select id="selectBMemberList" resultType="kr.kh.finalproject.vo.ManagerVO">
+		select * from manager where bm_approval = #{bm_approval}
+	</select>
+	
+	<!-- 승인&거절 버튼 -->
+	<update id="updateManager">
+		update manager 
+			set bm_approval = #{manager.bm_approval}
+			where bm_id = #{manager.bm_id}
+	</update>
+	<!-- <select id="selectCountManagerList" resultType="int">
+		select count(*) manager where bm_id = #{manager.bm_id}
+	</select> -->
+	
+	<!-- 아이디 찾기 -->
+    <select id="managerIdSearch" parameterType="kr.kh.finalproject.vo.ManagerVO" resultType="kr.kh.finalproject.vo.ManagerVO">
+	<![CDATA[
+	    select
+	        *
+	    from
+	        manager
+	    where
+	        bm_manager = #{bm_manager}
+	    and
+	        bm_num = #{bm_num}
+	]]>    
+	</select>
+	<!-- 비밀번호 찾기 -->
+	<select id="managerPwdCheck" parameterType="kr.kh.finalproject.vo.ManagerVO" resultType="java.lang.Integer">
+	<![CDATA[
+	    select
+	        count(*)
+	    from
+	        manager
+	    where
+	        bm_manager = #{bm_manager}
+	    and
+	        bm_num = #{bm_num}
+	    and
+	        bm_id = #{bm_id}
+	]]>    
+	</select>
+	
+	<update id="passwordUpdate" parameterType="kr.kh.finalproject.vo.ManagerVO" >
+	    UPDATE 
+	        manager 
+	    SET 
+	        bm_pw = #{bm_pw}
+	    where
+	        bm_manager = #{bm_manager}
+	    and
+	        bm_num = #{bm_num}
+	    and
+	        bm_id = #{bm_id}
+	</update>
+	
+	<!-- 비밀번호 변경 -->
+	<select id="pwCheck" resultType="String">
+		select bm_pw from manager where bm_id = #{bm_id}
+	</select>
+	<update id="pwUpdate">
+		update manager set bm_pw = #{bm_pw1} where bm_id = #{bm_id}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="deleteManager">
+		delete from manager WHERE bm_id = #{bm_id};
+	</delete>
+	
+	<!-- 사업자정보 수정 -->
+	<update id="infoUpdate">
+		update manager set bm_manager = #{bm_manager},
+						  bm_num = #{bm_num}, 
+						  bm_store_name = #{bm_store_name},
+						  bm_post = #{bm_post}, 
+						  bm_address = #{bm_address}, 
+						  bm_address2 = #{bm_address2} 
+		where bm_id = #{bm_id}
+	</update>
+	<select id="getSesstionSt_num" resultType="String">
+		select 
+			st_num
+		from 
+			store
+		join
+			manager on st_bm_id = bm_id
+		where
+			bm_id = #{manager.bm_id}
+	</select>
 </mapper>

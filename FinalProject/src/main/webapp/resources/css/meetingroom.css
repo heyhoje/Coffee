@@ -1,0 +1,176 @@
+@charset "UTF-8";
+.mr-rule-box{
+	width:100%;
+	height:200px;
+	margin-bottom: 30px;
+	padding-top: 40px;
+	border:1px solid gainsboro;
+	border-radius: 1rem;
+	font-size:20px;
+	background-color:cornsilk;
+}
+
+
+.mr-rule-textbox{
+	border-radius: 1rem;
+	font-family: 'BM HANNA Pro', sans-serif;
+}
+
+
+.search-mr{
+	width: 100%;
+	background-color:#ffffff;
+	display:flex;
+	justify-content:center;
+	margin-top:30px;
+}
+.search-mr-box{
+	width:80%;
+	height:32px;
+	background-color:#f0f0f0;
+	border-radius:30px;
+	font-weight: 400;
+	font-size:12px;
+	border:white;
+	text-align:center;
+	margin-bottom:50px;
+}
+.btn-search{
+	top:285px;
+	right:218px;
+	width:12px;
+	height:12px;
+	z-index: 1;
+	background-image:url(/resources/images/돋보기.png);
+	background-size:cover;
+	position:absolute;
+}
+.input-box{
+	width:100%;
+	border:hidden;
+	background-color:#f0f0f0;
+}
+#reservation-btn{
+	justify-content:center;
+	display:flex;
+	background-color:white;
+}
+#reservation-btn:hover{
+	transition-duration:0.5s;
+	background-color:skyblue;
+}
+.popup_box .m_header-banner-close .closebutton{
+border:0px;
+background: border-box;
+float:right;
+width:30px;
+
+
+}
+.mr-pagination-box{
+	justify-content:center;
+	display:flex;
+	letter-spacing:10px;
+}
+.mr-pagination{
+ color:black;
+ font-size:25px;
+ font-family: 'BM HANNA Pro', sans-serif;
+}
+
+
+}
+
+/*popup*/
+.popup_layer {position:fixed;top:0;left:0;z-index: 10000; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); }
+/*팝업 박스*/
+.popup_box{position: absolute;left:50%; overflow: auto; max-height: 650px; max-width:700px;transform:translate(-50%, -50%);z-index:1002;box-sizing:border-box;background:#fff;box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);-webkit-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);-moz-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);}
+/*컨텐츠 영역*/
+.popup_box .popup_cont {line-height:1.4rem;font-size:14px; display:inline;}
+.popup_box .popup_cont h2 {padding:15px 0;color:#333;margin:0;}
+.popup_box .popup_cont h5 {text-align:center; margin-bottom:30px; font-weight:bold;}
+.popup_box .popup_cont p{ border-top: 1px solid #666;padding-top: 30px;}
+.popup_box .popup_cont .timebox{
+	width:100%;
+	border:1px solid white;
+}	
+.popup_box .popup_cont .reservationbutton-box{
+	justify-content:center;
+	display:flex;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.popup_box .popup_cont .reservationbutton{
+	width:100px;
+	height:50px;
+	border:1px solid black;
+	border-radius:0.25rem;
+	font-weight:600;
+}
+.popup_box .popup_cont .reservationbutton:hover{
+	text-decoration:underline;
+	transition-duration:0.5s;
+
+}
+.popup_box .popup_cont .timebox .buttonbox{
+	display:inline;
+}
+.popup_box .popup_cont .timebox .timebutton{
+	border:1px solid lightblue;
+	background-color:white;
+	width:100px;
+	height:50px;
+	margin-left:10px;
+	margin-top:45px;
+	border-radius:0.25rem;
+	pointer-events:none;
+	
+}
+.popup_box .popup_cont .timebox .timebutton:hover {
+	background-color:lightblue;
+	transition-duration:0.5s;
+}
+.popup_box .popup_cont .timebox .timebutton:clicked+checkbox{
+	display:none;
+}
+/*버튼영역*/
+.popup_box .popup_btn {display:table;table-layout: fixed;width:100%;height:70px;background:#ECECEC;word-break: break-word;}
+.popup_box .popup_btn a {position: relative; display: table-cell; height:70px;  font-size:17px;text-align:center;vertical-align:middle;text-decoration:none; background:#ECECEC;}
+.popup_box .popup_btn a:before{content:'';display:block;position:absolute;top:26px;right:29px;width:1px;height:21px; -moz-transform: rotate(-45deg); -webkit-transform: rotate(-45deg); -ms-transform: rotate(-45deg); -o-transform: rotate(-45deg); transform: rotate(-45deg);}
+.popup_box .popup_btn a:after{content:'';display:block;position:absolute;top:26px;right:29px;width:1px;height:21px; -moz-transform: rotate(45deg); -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg);}
+.popup_box .popup_btn a.close_day {background:#5d5d5d;}
+.popup_box .popup_btn a.close_day:before, .popup_box .popup_btn a.close_day:after{display:none;}
+/*오버레이 뒷배경*/
+.popup_overlay{position:fixed;top:0px;right:0;left:0;bottom:0;z-index:1001;;background:rgba(0,0,0,0.5);}
+/*popup*/
+
+
+[name=aaa]{
+	display: none;
+}
+
+[name=aaa]:checked+button{
+	background: lightblue !important;
+}
+
+[name=arr_room_starttime]{
+	display: none;
+}
+
+[name=arr_room_starttime]:checked+button{
+	background: lightblue !important;
+}
+.disabled+button{
+	background: gray !important;
+}
+
+a {
+    color: burlywood;
+    text-decoration: none;
+    outline: none !important;
+}	
+a:hover{
+	color:#f76d37;
+}
+
+a, a:hover, a:visited{ text-decoration:none;}

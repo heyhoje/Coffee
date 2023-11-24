@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.kh.finalproject.dao.StoreDAO">
+	<resultMap type="kr.kh.finalproject.vo.StoreVO" id="StoreVO">
+		<id property="st_num" column="st_num" />
+		<result property="st_br_name" column="st_br_name" />
+		<result property="st_bm_id" column="st_bm_id" />
+		<result property="st_open" column="st_open" />
+		<result property="st_opentime" column="st_opentime" />
+		<result property="st_closetime" column="st_closetime" />
+		<result property="st_contents" column="st_contents" />
+		<result property="st_approval" column="st_approval" />
+		<result property="st_store_name" column="st_store_name" />
+	</resultMap>
+	<!-- 사이트 관리자 - 매장등록 리스트 -->
+	<select id="selectBsList"
+		resultType="kr.kh.finalproject.vo.StoreVO">
+		select st_num, st_bm_id, bm_store_name as st_store_name,
+		st_br_name,
+		bm_num as st_bm_num, st_opentime, st_closetime, st_approval
+		from store
+		join manager on st_bm_id = bm_id
+		where st_approval = #{st_approval}
+	</select>
+
+	<!-- 매장등록 승인&거절 버튼 -->
+	<update id="updateStore">
+		update store
+		set st_approval = #{store.st_approval}
+		where st_num = #{store.st_num}
+	</update>
+
+
+	<!-- (회원가입) + 매장번호 선등록 -->
+	<insert id="makeStore">
+		INSERT INTO store (st_bm_id)
+		SELECT #{makeStore.bm_id}
+		FROM dual
+		WHERE NOT EXISTS (
+		SELECT 1 FROM store WHERE st_bm_id = #{makeStore.bm_id}
+		)
+	</insert>
+
+	<!-- 매장등록 추가정보 입력 // 업데이트문으로 변경 -->
+	<!-- 첨부파일 추가를 위해 useGeneratedKeys, keyProperty 추가 -->
+	<update id="updatePlusInfo" useGeneratedKeys="true"
+		keyProperty="store.st_num">
+		update store
+		set
+		st_br_name = #{plus.st_br_name},
+		st_opentime = #{plus.st_opentime},
+		st_closetime = #{plus.st_closetime},
+		st_contents = #{plus.st_contents}
+		where st_bm_id = #{buser.bm_id}
+	</update>
+	<!-- * <insert id="insertPlusInfo"> insert into store(st_br_name, st_opentime, 
+		st_closetime, st_contents, st_bm_id) select (#{plus.st_br_name}, #{plus.st_opentime}, 
+		#{plus.st_closetime}, #{plus.st_contents}, #{buser.bm_id} - buser를 넘겨줄거면 
+		이렇게 id값 넣어도 됨) where st_bm_id = #{buser.bm_id} </insert> -->
+
+	<!-- 첨부파일 등록 -->
+	<insert id="insertImage">
+		insert into image(im_name, im_ori_name, im_tableName,
+		im_tableNum)
+		values(#{image.im_name}, #{image.im_ori_name},
+		#{image.im_tableName}, #{image.im_tableNum})
+	</insert>
+
+	<select id="selectStore" parameterType="int"
+		resultType="kr.kh.finalproject.vo.StoreVO">
+		SELECT
+		st_num
+		FROM
+		store
+		join
+		manager on store.st_bm_id = manager.bm_id
+
+		where
+		bm_num = #{buser.bm_num}
+
+	</select>
+
+	<select id="getApprovalByBmId" resultType="int" parameterType="String">
+        SELECT st_approval FROM store WHERE st_bm_id = #{bm_id}
+    </select>
+
+</mapper>

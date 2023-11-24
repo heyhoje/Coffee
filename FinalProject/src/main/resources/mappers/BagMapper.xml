@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="kr.kh.finalproject.dao.BagDAO">
+	<resultMap type="kr.kh.finalproject.vo.Option_ChoiceVO" id="optionChoice">
+	    <id property="oc_num" column="oc_num" />
+	    <result property="oc_selected" column="oc_selected" />
+	    <result property="oc_selected_price" column="oc_selected_price" />
+	    <association property="menu" javaType="kr.kh.finalproject.vo.Menu2VO">
+	        <result property="mn_num" column="mn_num" />
+	        <result property="mn_name" column="mn_name" />
+	        <result property="mn_price" column="mn_price" />
+	        <result property="mn_st_num" column="mn_st_num" />
+	        <result property="mn_mc_num" column="mn_mc_num" />
+	        <association property="image" javaType="kr.kh.finalproject.vo.Image2VO">
+	            <result property="im_num" column="im_num" />
+	            <result property="im_name" column="im_name" />
+	            <result property="im_ori_name" column="im_ori_name" />
+	            <result property="im_contents" column="im_contents" />
+	            <result property="im_tableName" column="im_tableName" />
+	            <result property="im_tableNum" column="im_tableNum" />
+	        </association>
+	    </association>
+	 </resultMap>
+  	<insert id="selectedOption">
+  		insert into `option_choice` (oc_sb_num, oc_mn_num, oc_selected, oc_selected_price)
+  		values (#{sb_num}, #{menu_num}, #{selected}, #{total})
+  	</insert>
+  	<select id="hasBag" resultType="kr.kh.finalproject.vo.Shop_BasketVO">
+  		select * from `shop_basket`
+  		where sb_me_user_id = #{id}
+  	</select>
+  	<insert id="makeBag">
+  		insert into `shop_basket` (sb_me_user_id)
+  		values (#{id})
+  	</insert>
+  	<select id="bagBunho" resultType="int">
+  		select sb_num from shop_basket where sb_me_user_id = #{id}
+  	</select>
+  	<select id="bagList" resultMap="optionChoice">
+		select 
+			* 
+		from 
+			option_choice
+		left join 
+			`shop_basket` on oc_sb_num = sb_num
+		left join 
+			`menu` on oc_mn_num = mn_num
+		left join 
+			`image` on oc_mn_num = image.im_tableNum
+		where 
+			sb_me_user_id = #{id}
+  	</select>
+  	<delete id="deleteItem" parameterType="int">
+  		delete from `option_choice` where oc_num = #{oc_num}
+  	</delete>
+  	<select id="getShopInfo" resultType="kr.kh.finalproject.vo.ManagerVO">
+  		select
+  			bm_id, bm_pw, bm_num, bm_phone, bm_address, bm_geocoding_lati, bm_geocoding_longi, bm_manager, bm_store_name, bm_image, bm_approval, st_num
+		from 
+			option_choice
+		left join 
+			 `shop_basket` on oc_sb_num = sb_num
+		left join 
+			`menu` on oc_mn_num = mn_num
+		left join 
+			`store` on mn_st_num = st_num
+		left join
+			`manager`on st_bm_id = bm_id
+		where 
+			sb_me_user_id = #{id}
+	</select>
+  	<update id="givePoint">
+  		update `member`
+  		set me_point = me_point + #{givePoint}
+  		where me_user_id = #{id}
+  	</update>
+  	<select id="getPoint" resultType="int">
+  		select
+  			me_point
+  		from
+  			member
+  		where
+  			me_user_id = #{id}
+  	</select>
+  	<update id="backPoint">
+	  	update member
+	  	set me_point = (me_point - #{usePoint})
+	  	where me_user_id = #{id}
+  	</update>
+  	<delete id="killBag">
+		DELETE FROM `option_choice`
+		WHERE oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = #{id})
+  	</delete>
+  	<insert id="makeOrderMenu">
+  		insert into `order_menu` (or_time, or_status, or_drinks, or_menuNum, or_selectOption)
+  			values (now(), "준비중", #{menuName}, #{menuNum}, #{selectOption})
+  	</insert>
+  	<select id="getBasketNum" resultType="int">
+  		select sb_num from shop_basket
+  		where sb_me_user_id = #{id}
+  	</select>
+  	<select id="getNumFromOM" resultType="int">
+	    SELECT or_num FROM order_menu
+	    ORDER BY or_time DESC
+	    LIMIT 1
+  	</select>
+  	<insert id="makeOrderList">
+  		insert into order_list (ol_or_num, ol_sb_num, ol_user_id)
+  			values (#{or_num}, #{sb_num}, #{id})
+  	</insert>
+  	<select id="getBasketNum1" resultType="int">
+  		select sb_num from shop_basket
+  		where sb_me_user_id = #{id}
+  	</select>
+  	<select id="sameShop" resultType="int">
+  		select DISTINCT
+  			mn_st_num
+  		from 
+  			menu
+  		left join
+  			option_choice on mn_num = oc_mn_num
+  		left join
+  			shop_basket on oc_sb_num = sb_num
+  		where
+  			sb_me_user_id = #{id}
+  	</select>
+  	<select id="anotherShop" resultType="int">
+  		select distinct
+  			mn_st_num 
+  		from
+  			menu
+  		where
+  			mn_num = #{menu_num}
+  	</select>
+  	<delete id="flipBag">
+  		delete from 
+  			option_choice
+  		where
+  			oc_sb_num IN (SELECT sb_num FROM `shop_basket` WHERE sb_me_user_id = #{id})
+  	</delete>
+  	<select id="getOrderMenu" resultType="kr.kh.finalproject.vo.OrderMenuVO">
+  		select 
+  			or_num, or_drinks, or_time, or_menuNum, or_status, or_selectOption
+  		from 
+  			order_menu
+  		join
+  			order_list on or_num = ol_or_num
+  		where
+  			ol_user_id = #{id}
+  		order 
+  			by ol_num desc limit 1
+  	</select>
+  </mapper>

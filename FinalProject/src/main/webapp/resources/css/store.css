@@ -36,3 +36,26 @@
 	height:38px;
 	line-height:normal;
 }
+a {
+    color: burlywood;
+    text-decoration: none;
+    outline: none !important;
+}
+a:hover{
+	color:#f76d37;
+}
+
+a,
+.btn {
+    text-decoration: none !important;
+    outline: none !important;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    
+}
+h3{
+	font-size:28px;
+}

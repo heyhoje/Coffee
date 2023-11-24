@@ -8,6 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.kh.finalproject.dao.MemberDAO;
+import kr.kh.finalproject.vo.InterestVO;
+import kr.kh.finalproject.vo.KakaoVO;
 import kr.kh.finalproject.vo.MemberVO;
 import kr.kh.finalproject.vo.UserVO;
 
@@ -18,6 +20,7 @@ public class MemberServiceImp implements MemberService {
 	@Autowired MemberDAO memberDao;
 	@Autowired BCryptPasswordEncoder passwordEncoder;
 	
+	/** 회원가입, 정규화체크, 중복확인, 로그인 */
 	@Override
 	public boolean signup(MemberVO member) {
 		if(member == null) {
@@ -75,7 +78,8 @@ public class MemberServiceImp implements MemberService {
 		}
 		return null;
 	}
-
+	
+	/** 일반회원 - 자동 로그인 */
 	@Override
 	public void updateMemberSession(MemberVO user) {
 		if(user == null) {
@@ -90,6 +94,7 @@ public class MemberServiceImp implements MemberService {
 		return memberDao.selectMemberBySessionId(sId);
 	}
 	
+	/** 카카오 로그인 */
 	@Override
     public void insertMemberKakao(MemberVO member) {
         memberDao.insertMemberKakao(member);
@@ -108,5 +113,63 @@ public class MemberServiceImp implements MemberService {
 	public UserVO selectUserKakaoInfo(String userId) {
 		return memberDao.selectUserKakaoInfo(userId);
 	}
+	@Autowired
+	public MemberServiceImp(MemberDAO memberDao) {
+	    this.memberDao = memberDao;
+	}
 
+
+
+	@Override
+	public boolean checkUserExists(String kakaoId) {
+		int count = memberDao.checkUserExists(kakaoId);
+        return count > 0;
+	}
+
+	@Override
+	public MemberVO getMemberByKakaoId(String kakaoId) {
+	    return memberDao.getMemberByKakaoId(kakaoId);
+	}
+
+	//아이디찾기
+	@Override
+	public MemberVO memberIdSearch(MemberVO memberSearch) {
+		return memberDao.memberIdSearch(memberSearch);
+	}
+	//비밀번호찾기
+	@Override
+	public int memberPwdCheck(MemberVO member) {
+		return memberDao.memberPwdCheck(member);
+	}
+	@Override
+	public void passwordUpdate(MemberVO member) {
+		memberDao.passwordUpdate(member);
+	}
+	//비밀번호변경
+	@Override
+	public void pwUpdate(String me_user_id, String enpassword)throws Exception {
+		memberDao.pwUpdate(me_user_id, enpassword);
+		
+	}
+	@Override
+	public String pwCheck(String me_pw) throws Exception {
+		return memberDao.pwCheck(me_pw);
+	}
+	@Override
+	public void deleteMember(String me_user_id) throws Exception {
+		memberDao.deleteMember(me_user_id);
+	}
+	@Override
+	public void deleteUser(String me_user_id) throws Exception {
+		memberDao.deleteUser(me_user_id);
+	}
+	@Override
+	public void infoUpdate(MemberVO member) throws Exception {
+		memberDao.infoUpdate(member);
+	}
+	@Override
+	public void interestUpdate(InterestVO interest) throws Exception {
+		memberDao.interestUpdate(interest);
+	}
+	
 }

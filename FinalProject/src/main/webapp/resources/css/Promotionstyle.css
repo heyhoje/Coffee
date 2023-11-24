@@ -3,7 +3,11 @@
 body{
 	
 }
-
+a{
+    color: burlywood;
+    text-decoration: none;
+    outline: none !important;
+}
 .col-md-6 {
 flex: 0 0 70%;
 max-width: 80%;
@@ -63,7 +67,7 @@ margin-top:20px;
 .event-schedule-area .tab-area .tab-content .table {
     margin-bottom: 0;
     width: 80%;
-    
+    color: #212529;
 }
 .event-schedule-area .tab-area .tab-content .table thead td,
 .event-schedule-area .tab-area .tab-content .table thead th {
@@ -258,4 +262,8 @@ margin-top:20px;
     width: 100px;
     height: 100px;
     border-radius: 8px;
+}
+.promotion-pagination{
+	justify-content:center;
+	display:flex;
 }

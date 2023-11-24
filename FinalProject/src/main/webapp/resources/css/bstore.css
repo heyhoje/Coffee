@@ -1,0 +1,14 @@
+@charset "UTF-8";
+#regi-store{
+	font-family: 'BM HANNA Pro', sans-serif;	
+	justify-content:center;
+	display:flex;
+	font-weight:bold;
+	margin-top:56px;
+	margin-bottom:30px;
+	font-size:35px;
+}
+#regi-table{
+	font-family: 'BM HANNA Pro', sans-serif;
+	text-align: center;
+}

@@ -20,24 +20,25 @@ public class AutoLoginInterceptor2 extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		HttpSession session = request.getSession();
-		ManagerVO user2 = (ManagerVO)session.getAttribute("user2");
 		
-		//�̹� �α��� �� == �ڵ� �α��� ���ص� ��
-		if(user2 != null) {
+		HttpSession session = request.getSession();
+		ManagerVO buser = (ManagerVO)session.getAttribute("buser");
+		
+		//이미 로그인 됨 == 자동 로그인 안해도 됨
+		if(buser != null) {
 			return true;
 		}
-		//��Ű ������ ������
-		Cookie cookie = WebUtils.getCookie(request, "FinalProject");
-		//��Ű ������ ���� == �ڵ� �α��� ���ص� ��
+		//쿠키 정보를 가져옴
+		Cookie cookie = WebUtils.getCookie(request, "bmLoginCookie");
+		//쿠키 정보가 없음 == 자동 로그인 안해도 됨
 		if(cookie == null) {
 			return true;
 		}
 		
-		//��Ű���� ���� ������ ���� ȸ�� ������ ������
-		user2 = managerService.getMemberBySessionId(cookie.getValue());
-		if(user2 != null) {
-			session.setAttribute("user2", user2);
+		//쿠키값과 같은 정보를 가진 회원 정보를 가져옴
+		buser = managerService.getBMemberBySessionId(cookie.getValue());
+		if(buser != null) {
+			session.setAttribute("buser", buser);
 		}
 		return true;
 	}
